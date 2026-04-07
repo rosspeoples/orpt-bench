@@ -15,6 +15,48 @@ const historyDir = path.join(process.cwd(), 'results/history');
 const historyFiles = fs.existsSync(historyDir)
   ? fs.readdirSync(historyDir).filter((entry) => entry.endsWith('.json')).sort().reverse()
   : [];
+const chartDefinitions = [
+  {
+    slug: 'composite-score',
+    eyebrow: 'Primary ranking',
+    title: 'Composite score',
+    description: 'Default benchmark ordering: correctness first, efficiency second.',
+    jsonPath: 'results/charts/composite-score.json',
+    htmlPath: 'results/charts/composite-score.html',
+    layout: {
+      title: 'Composite Score by Model',
+      xaxis: { automargin: true },
+      yaxis: { title: 'Composite Score %', range: [0, 100] },
+    },
+  },
+  {
+    slug: 'success-rate',
+    eyebrow: 'Correctness view',
+    title: 'Success rate',
+    description: 'Shows how often a model actually closes benchmark tasks, independent of efficiency.',
+    jsonPath: 'results/charts/success-rate.json',
+    htmlPath: 'results/charts/success-rate.html',
+    layout: {
+      title: 'Task Success Rate by Model',
+      xaxis: { automargin: true },
+      yaxis: { title: 'Success Rate %', range: [0, 100] },
+    },
+  },
+  {
+    slug: 'orpt',
+    eyebrow: 'Efficiency view',
+    title: 'ORPT',
+    description: 'Lower is better: fewer OpenCode requests required per successful task.',
+    jsonPath: 'results/charts/orpt.json',
+    htmlPath: 'results/charts/orpt.html',
+    layout: {
+      title: 'Average OpenCode Requests Per Successful Task',
+      xaxis: { automargin: true },
+      yaxis: { title: 'Requests' },
+    },
+  },
+];
+const publishedCharts = buildPublishedCharts(chartDefinitions);
 
 const siteData = {
   generatedAt: new Date().toISOString(),
@@ -37,6 +79,7 @@ const siteData = {
   taskCatalog: latest.taskCatalog ?? [],
   modelSummary: sortByComposite(latest.modelSummary ?? latest.leaderboard ?? []),
   taskSummary: sortByComposite(latest.taskSummary ?? []),
+  charts: publishedCharts.map(({ data, layout, ...chart }) => chart),
   history: historyFiles.map((fileName) => summarizeHistoricalRun(fileName, latest.run?.id ?? null)),
 };
 
@@ -51,6 +94,47 @@ function readJson(filePath) {
 function writeJson(filePath, value) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+}
+
+function buildPublishedCharts(definitions) {
+  return definitions.flatMap((definition) => {
+    const sourcePath = path.join(process.cwd(), definition.jsonPath);
+    if (!fs.existsSync(sourcePath)) {
+      return [];
+    }
+
+    const data = readJson(sourcePath);
+    const targetPath = path.join(outputDir, definition.htmlPath);
+    fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+    fs.writeFileSync(targetPath, renderStandaloneChartHtml({
+      title: definition.title,
+      data,
+      layout: definition.layout,
+    }), 'utf8');
+
+    return [{ ...definition, data }];
+  });
+}
+
+function renderStandaloneChartHtml({ title, data, layout }) {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtmlMarkup(title)}</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <div id="chart" style="width:100%;height:90vh"></div>
+  <script>
+    const data = ${JSON.stringify(data)};
+    const layout = ${JSON.stringify(layout)};
+    Plotly.newPlot('chart', data, layout, {responsive: true});
+  </script>
+</body>
+</html>
+`;
 }
 
 function detectRepositoryUrl() {
@@ -451,38 +535,7 @@ function renderHtml(data) {
           <p class="panel-copy">Charts are the fastest way to scan leaderboard shape before drilling into row-level comparisons.</p>
         </div>
       </div>
-      <div class="chart-grid">
-        <article class="chart-card">
-          <div class="micro muted">Primary ranking</div>
-          <h3>Composite score</h3>
-          <p class="panel-copy">Default benchmark ordering: correctness first, efficiency second.</p>
-          <iframe loading="lazy" src="results/charts/composite-score.html" title="Composite score chart"></iframe>
-          <div class="card-actions">
-            <a class="card-link" href="results/charts/composite-score.html">Open chart</a>
-            <a class="card-link" href="results/charts/composite-score.json">View chart data</a>
-          </div>
-        </article>
-        <article class="chart-card">
-          <div class="micro muted">Correctness view</div>
-          <h3>Success rate</h3>
-          <p class="panel-copy">Shows how often a model actually closes benchmark tasks, independent of efficiency.</p>
-          <iframe loading="lazy" src="results/charts/success-rate.html" title="Success rate chart"></iframe>
-          <div class="card-actions">
-            <a class="card-link" href="results/charts/success-rate.html">Open chart</a>
-            <a class="card-link" href="results/charts/success-rate.json">View chart data</a>
-          </div>
-        </article>
-        <article class="chart-card">
-          <div class="micro muted">Efficiency view</div>
-          <h3>ORPT</h3>
-          <p class="panel-copy">Lower is better: fewer OpenCode requests required per successful task.</p>
-          <iframe loading="lazy" src="results/charts/orpt.html" title="ORPT chart"></iframe>
-          <div class="card-actions">
-            <a class="card-link" href="results/charts/orpt.html">Open chart</a>
-            <a class="card-link" href="results/charts/orpt.json">View chart data</a>
-          </div>
-        </article>
-      </div>
+      ${renderChartCards(data.charts)}
     </section>
     <section class="section" id="comparison">
       <div class="section-header">
@@ -824,4 +877,36 @@ function renderHtml(data) {
 </body>
 </html>
 `;
+}
+
+function renderChartCards(charts) {
+  if (!Array.isArray(charts) || charts.length === 0) {
+    return '<div class="empty">No published charts are available for this benchmark run.</div>';
+  }
+
+  return `<div class="chart-grid">
+${charts.map((chart) => `        <article class="chart-card">
+          <div class="micro muted">${escapeHtmlMarkup(chart.eyebrow)}</div>
+          <h3>${escapeHtmlMarkup(chart.title)}</h3>
+          <p class="panel-copy">${escapeHtmlMarkup(chart.description)}</p>
+          <iframe loading="lazy" src="${escapeAttributeMarkup(chart.htmlPath)}" title="${escapeAttributeMarkup(chart.title)} chart"></iframe>
+          <div class="card-actions">
+            <a class="card-link" href="${escapeAttributeMarkup(chart.htmlPath)}">Open chart</a>
+            <a class="card-link" href="${escapeAttributeMarkup(chart.jsonPath)}">View chart data</a>
+          </div>
+        </article>`).join('\n')}
+      </div>`;
+}
+
+function escapeHtmlMarkup(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function escapeAttributeMarkup(value) {
+  return escapeHtmlMarkup(value);
 }
