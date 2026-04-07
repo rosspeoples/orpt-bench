@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-workspace-pattern-catalog
+  namespace: ai-build
+data:
+  workspace-patterns.yaml: |
+    version: v1
+    workspacePatterns:
+      - slug: repo
+        displayName: Repo
+        runtimeProfile: dev-default
+        repoAccessProfile: gitea-write
+        budgetPolicy: standard-interactive
+      - slug: platform-ops
+        displayName: Platform Ops
+        runtimeProfile: platform-gitops
+        repoAccessProfile: gitea-write
+        budgetPolicy: standard-interactive

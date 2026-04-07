@@ -126,7 +126,7 @@ This avoids presenting a made-up ORPT number.
 
 ## Task set
 
-Nine deterministic tasks are currently included.
+Fourteen deterministic tasks are currently included.
 
 Difficulty intent:
 
@@ -170,6 +170,26 @@ Difficulty intent:
 9. `09-gitops-workspace-render-validation`
    Repair a workspace request, provider record, and rendered GitOps manifests so source-of-truth and rendered resources are consistent.
    Intended difficulty: `high`
+
+10. `10-bootstrap-phase-validation-repair`
+   Repair the phase-specific validation flow for bootstrap-era Gitea automation.
+   Intended difficulty: `expert`
+
+11. `11-mcp-openbao-contract-repair`
+   Repair the Build workspace MCP provider, registry, and OpenBao target contract.
+   Intended difficulty: `expert`
+
+12. `12-pre-argocd-bootstrap-sequencing`
+   Repair the documented pre-ArgoCD bootstrap sequencing across wrapper and playbooks.
+   Intended difficulty: `expert`
+
+13. `13-wildcard-tls-route-coverage`
+   Repair wildcard TLS and route host coverage for the Build lane.
+   Intended difficulty: `expert`
+
+14. `14-build-workspace-plane-convergence`
+   Repair the Build workspace request, raw catalogs, generated registry, and rendered manifests so the workspace plane converges on a single contract.
+   Intended difficulty: `expert`
 
 Each verifier checks repository state or script output, not subjective prose. Verifiers should prefer semantic parsing and tool-based validation over answer-key substring matching.
 

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-budget-policy-catalog
+  namespace: ai-build
+data:
+  budget-policies.yaml: |
+    version: v1
+    budgetPolicies:
+      - slug: shared-bootstrap
+      - slug: standard-interactive

@@ -1,0 +1,10 @@
+{
+  "id": "14-build-workspace-plane-convergence",
+  "name": "Build workspace plane convergence",
+  "category": "gitops",
+  "difficulty": "expert",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the Build workspace-plane request, raw catalogs, generated registry, and rendered manifests so they converge on the intended workspace contract described in the local request and design notes. Make the smallest correct changes, keep the render flow deterministic, and do not add unrelated files. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 420
+}

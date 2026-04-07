@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-engineering
+spec:
+  template:
+    spec:
+      containers:
+      - name: opencode
+        env:
+        - name: WORKSPACE_OIDC_GROUP
+          value: thepeoples_dev_build_release_engineering_users

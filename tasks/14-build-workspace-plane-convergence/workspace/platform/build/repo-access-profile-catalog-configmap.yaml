@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-repo-access-profile-catalog
+  namespace: ai-build
+data:
+  repo-access-profiles.yaml: |
+    version: v1
+    repoAccessProfiles:
+      - slug: none
+      - slug: gitea-readonly
+      - slug: gitea-write

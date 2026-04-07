@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-workspace-registry
+  namespace: ai-build
+data:
+  workspaces-resolved.yaml: "version: v1\nworkspaces:\n- workspaceSlug: release-engineering\n\
+    \  displayName: Release Engineering\n  resolvedPattern: platform-ops\n  resolvedRuntimeProfile:\
+    \ platform-gitops\n  resolvedRepoAccessProfile: gitea-write\n  resolvedBudgetPolicy:\
+    \ standard-interactive\n  hostname: release-engineering.build.ai.thepeoples.dev\n"

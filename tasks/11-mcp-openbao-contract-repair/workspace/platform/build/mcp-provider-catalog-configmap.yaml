@@ -11,11 +11,11 @@ data:
         displayName: Gitea MCP
         enabled: true
         secretNameSuffix: gitea-mcp
-        secretKey: GITEA_ACCESS_TOKEN
+        secretKey: GITEA_TOKEN
         secretRemotePathSuffix: mcp/gitea
       - slug: argocd
         displayName: ArgoCD MCP
         enabled: true
         secretNameSuffix: argocd-mcp
         secretKey: ARGOCD_AUTH_TOKEN
-        secretRemotePathSuffix: mcp/argo
+        secretRemotePathSuffix: mcp/argocd

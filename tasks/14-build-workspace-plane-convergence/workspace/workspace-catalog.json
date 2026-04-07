@@ -1,0 +1,28 @@
+{
+  "workspaces": [
+    {
+      "workspaceSlug": "release-engineering",
+      "displayName": "Release Engineering",
+      "workspacePatternSlug": "platform-ops",
+      "workspaceOidcGroup": "thepeoples_dev_build_release_engineering_users",
+      "hostname": "release-engineering.build.ai.thepeoples.dev",
+      "budgetPolicy": "standard-interactive",
+      "mcpAccess": {
+        "gitea": {
+          "enabled": true,
+          "accessMode": "read_only",
+          "allowedRepos": [
+            "benchmarks/orpt-bench"
+          ]
+        },
+        "argocd": {
+          "enabled": true,
+          "accessMode": "read_only",
+          "allowedApplications": [
+            "platform-build"
+          ]
+        }
+      }
+    }
+  ]
+}

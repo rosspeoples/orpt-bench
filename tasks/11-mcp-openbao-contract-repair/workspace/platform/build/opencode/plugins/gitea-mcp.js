@@ -11,7 +11,7 @@ export const GiteaMcpPlugin = async () => {
         command: "npx",
         args: ["-y", "--package=gitea-mcp-tool", "gitea-mcp"],
         env: {
-          GITEA_TOKEN: "{env:GITEA_ACCESS_TOKEN}",
+          GITEA_TOKEN: "{env:GITEA_TOKEN}",
           GITEA_BASE_URL: "{env:GITEA_BASE_URL}",
         },
       },
