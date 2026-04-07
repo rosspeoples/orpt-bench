@@ -113,7 +113,7 @@ else
 fi
 
 printf 'syncing source branch %s to %s\n' "${source_branch}" "${PUBLISH_GITHUB_REPOSITORY}"
-git push github "HEAD:${source_branch}"
+git push --force github "HEAD:${source_branch}"
 
 if [[ ! -f "${build_script}" ]]; then
   printf 'no %s found; skipping Pages publication after source sync\n' "${build_script}"
