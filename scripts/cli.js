@@ -1,4 +1,5 @@
 import { runBenchmark, runBenchmarkSingle, validateWorkspace } from './lib/benchmark.js'
+import { selectBenchmarkCycle, syncAutomationArtifacts, useBenchmarkCycle } from './lib/automation.js'
 import { loadRuntimeConfig } from './lib/config.js'
 import { selectModelMatrix, syncModelCatalog, useModelMatrix } from './lib/models.js'
 import { generateReports } from './lib/report.js'
@@ -47,6 +48,11 @@ async function main() {
     return
   }
 
+  if (command === 'sync-automation') {
+    await syncAutomationArtifacts(runtime)
+    return
+  }
+
   if (command === 'select-matrix') {
     const mode = process.argv[3] || 'dev'
     const result = await selectModelMatrix(runtime, mode)
@@ -58,6 +64,20 @@ async function main() {
     const mode = process.argv[3] || 'dev'
     const result = await useModelMatrix(runtime, mode)
     console.log(`Updated .env.benchmark to ${mode}: ${result.csv}`)
+    return
+  }
+
+  if (command === 'select-cycle') {
+    const cycle = process.argv[3] || 'weekly'
+    const result = await selectBenchmarkCycle(runtime, cycle)
+    console.log(result.csv)
+    return
+  }
+
+  if (command === 'use-cycle') {
+    const cycle = process.argv[3] || 'weekly'
+    const result = await useBenchmarkCycle(runtime, cycle)
+    console.log(`Updated .env.benchmark to ${cycle}: ${result.csv}`)
     return
   }
 

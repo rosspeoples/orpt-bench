@@ -1,14 +1,10 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
+import { loadModelPolicy, syncAutomationArtifacts } from './automation.js'
 import { nowIso, readJson, writeJson, writeText } from './fs.js'
 
 const OPENROUTER_MODELS_URL = 'https://openrouter.ai/api/v1/models'
-
-const CURATED_MATRIX_INCLUSIONS = {
-  balanced: ['opencode/grok-4.20'],
-  frontier: ['opencode/claude-sonnet-4-6']
-}
 
 function normalizeOpenRouterResponse(payload) {
   if (Array.isArray(payload)) return payload
@@ -418,8 +414,8 @@ function chooseModels(catalog, mode) {
   return sorted.slice(0, 5)
 }
 
-function withCuratedMatrixInclusions(models, mode) {
-  const inclusions = CURATED_MATRIX_INCLUSIONS[mode] || []
+function withCuratedMatrixInclusions(models, mode, policy) {
+  const inclusions = policy?.matrixInclusions?.[mode] || []
   if (!inclusions.length) return models
 
   const merged = [...models]
@@ -430,7 +426,7 @@ function withCuratedMatrixInclusions(models, mode) {
   return merged
 }
 
-function buildMatrices(catalog, taskCapabilitySet = { taskIds: [], requiredCapabilities: [] }) {
+function buildMatrices(catalog, taskCapabilitySet = { taskIds: [], requiredCapabilities: [] }, policy = null) {
   const dev = chooseModels(catalog, 'dev')
   const cheapHeadless = chooseModels({
     ...catalog,
@@ -440,8 +436,8 @@ function buildMatrices(catalog, taskCapabilitySet = { taskIds: [], requiredCapab
   const cheapComparable = chooseModels({ ...catalog, models: taskComparable }, 'cheap')
   const balancedComparable = chooseModels({ ...catalog, models: taskComparable }, 'balanced')
   const cheap = chooseModels(catalog, 'cheap')
-  const frontier = withCuratedMatrixInclusions(chooseModels(catalog, 'frontier').map((item) => item.model), 'frontier')
-  const balanced = withCuratedMatrixInclusions(chooseModels(catalog, 'balanced').map((item) => item.model), 'balanced')
+  const frontier = withCuratedMatrixInclusions(chooseModels(catalog, 'frontier').map((item) => item.model), 'frontier', policy)
+  const balanced = withCuratedMatrixInclusions(chooseModels(catalog, 'balanced').map((item) => item.model), 'balanced', policy)
   const release = chooseModels(catalog, 'release')
 
   return {
@@ -484,7 +480,7 @@ function buildMatrices(catalog, taskCapabilitySet = { taskIds: [], requiredCapab
   }
 }
 
-function renderMatricesMarkdown(matrices) {
+export function renderMatricesMarkdown(matrices) {
   const lines = ['# Suggested Matrices', '']
 
   for (const [name, matrix] of Object.entries(matrices.matrices)) {
@@ -527,6 +523,7 @@ export async function syncModelCatalog(runtime) {
   const benchmarksManual = await readJson(path.join(runtime.rootDir, 'data/model-benchmarks.manual.json'))
   const stabilityManual = await readJson(path.join(runtime.rootDir, 'data/model-stability.manual.json'))
   const excluded = await readJson(path.join(runtime.rootDir, 'models/excluded.json')).catch(() => ({ models: [] }))
+  const policy = await loadModelPolicy(runtime.rootDir)
   const manual = composeManualSources(benchmarksManual, stabilityManual)
   const models = sortCatalog(applyDenylist(normalizeOpenCodeResponse(payload).map((entry) => enrichModel(entry, manual, openRouterIndex)), excluded))
 
@@ -540,7 +537,7 @@ export async function syncModelCatalog(runtime) {
     models
   }
   const taskCapabilitySet = await loadTaskCapabilitySet(runtime.rootDir)
-  const matrices = buildMatrices(catalog, taskCapabilitySet)
+  const matrices = buildMatrices(catalog, taskCapabilitySet, policy)
 
   await writeJson(path.join(runtime.rootDir, 'models/catalog.json'), catalog)
   await writeJson(path.join(runtime.rootDir, 'models/catalog.latest.raw.json'), payload)
@@ -563,19 +560,22 @@ export async function syncModelCatalog(runtime) {
       unattendedBenchmarkRuns: model.featureSupport?.unattendedBenchmarkRuns ?? 'unknown'
     }))
   })
+  const automation = await syncAutomationArtifacts(runtime)
 
   return {
     catalog,
     markdown: renderModelCatalogMarkdown(catalog),
     matrices,
-    matricesMarkdown: renderMatricesMarkdown(matrices)
+    matricesMarkdown: renderMatricesMarkdown(matrices),
+    automation
   }
 }
 
 export async function selectModelMatrix(runtime, mode) {
   const catalog = await readJson(path.join(runtime.rootDir, 'models/catalog.json'))
   const taskCapabilitySet = await loadTaskCapabilitySet(runtime.rootDir)
-  const matrices = buildMatrices(catalog, taskCapabilitySet)
+  const policy = await loadModelPolicy(runtime.rootDir)
+  const matrices = buildMatrices(catalog, taskCapabilitySet, policy)
   const selected = matrices.matrices[mode]
 
   if (!selected) {

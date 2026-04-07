@@ -1,6 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
+import { DEFAULT_MODEL_POLICY } from '../scripts/lib/automation.js'
 import {
   applyDenylist,
   applyManualBenchmarkEnrichment,
@@ -59,7 +60,7 @@ test('matrix cadence keeps expensive models out of cheap and in frontier/release
     ]
   }
 
-  const matrices = buildMatrices(catalog, { taskIds: ['05-log-audit-script'], requiredCapabilities: ['unattendedBenchmarkRuns'] })
+  const matrices = buildMatrices(catalog, { taskIds: ['05-log-audit-script'], requiredCapabilities: ['unattendedBenchmarkRuns'] }, DEFAULT_MODEL_POLICY)
 
   assert.deepEqual(matrices.matrices.cheap.models, ['opencode/gpt-5.4-mini'])
   assert.ok(matrices.matrices.frontier.models.includes('opencode/gpt-5.4'))
@@ -82,7 +83,7 @@ test('balanced matrix can include curated model outside current catalog ranking'
     ]
   }
 
-  const matrices = buildMatrices(catalog, { taskIds: ['05-log-audit-script'], requiredCapabilities: ['unattendedBenchmarkRuns'] })
+  const matrices = buildMatrices(catalog, { taskIds: ['05-log-audit-script'], requiredCapabilities: ['unattendedBenchmarkRuns'] }, DEFAULT_MODEL_POLICY)
 
   assert.ok(matrices.matrices.balanced.models.includes('opencode/grok-4.20'))
 })
@@ -148,7 +149,7 @@ test('denylist excludes models from generated matrices without removing catalog 
     })
   }
 
-  const matrices = buildMatrices(catalog, { taskIds: ['05-log-audit-script'], requiredCapabilities: ['unattendedBenchmarkRuns'] })
+  const matrices = buildMatrices(catalog, { taskIds: ['05-log-audit-script'], requiredCapabilities: ['unattendedBenchmarkRuns'] }, DEFAULT_MODEL_POLICY)
 
   assert.equal(catalog.models.find((model) => model.model === 'opencode/gpt-5.4-pro')?.excludedFromMatrices, true)
   assert.ok(!matrices.matrices.frontier.models.includes('opencode/gpt-5.4-pro'))

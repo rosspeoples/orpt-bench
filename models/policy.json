@@ -1,0 +1,47 @@
+{
+  "matrixInclusions": {
+    "balanced": [
+      "opencode/grok-4.20"
+    ],
+    "frontier": [
+      "opencode/claude-sonnet-4-6"
+    ]
+  },
+  "lifecycle": {
+    "sunsetAfterDays": 30,
+    "promotionSmokeSuccessesRequired": 2,
+    "bootstrapSmokePromotionBefore": "2026-04-07T16:12:30.832Z",
+    "forceActiveModels": [],
+    "forceDeprecatedModels": [],
+    "forceSunsetModels": []
+  },
+  "benchmarkCycles": {
+    "candidate_smoke": {
+      "description": "Control-task smoke run for newly discovered models before they enter broader recurring benchmarks",
+      "taskGlob": "05*",
+      "repeats": 1,
+      "maxModels": 4
+    },
+    "weekly": {
+      "description": "Primary comparable weekly benchmark run",
+      "matrix": "current_task_cheap_comparable",
+      "fallbackMatrices": [
+        "cheap_headless",
+        "cheap",
+        "dev"
+      ],
+      "taskGlob": "*",
+      "repeats": 1
+    },
+    "monthly": {
+      "description": "Higher-signal monthly benchmark run over the release cohort",
+      "matrix": "release",
+      "fallbackMatrices": [
+        "frontier",
+        "balanced"
+      ],
+      "taskGlob": "*",
+      "repeats": 1
+    }
+  }
+}

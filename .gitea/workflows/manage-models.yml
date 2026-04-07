@@ -1,0 +1,34 @@
+name: manage-models
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  manage-models:
+    runs-on: ubuntu-latest
+    env:
+      OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build runner image
+        run: docker compose build
+
+      - name: Refresh model inventory and automation plan
+        run: docker compose run --rm runner sync-models
+
+      - name: Run automation tests
+        run: docker compose run --rm --entrypoint bash runner -lc "node --test tests/models.test.js tests/automation.test.js"
+
+      - name: Commit model-management updates
+        run: |
+          export GIT_AUTHOR_NAME=gitea-actions
+          export GIT_AUTHOR_EMAIL=gitea-actions@localhost
+          export GIT_COMMITTER_NAME=gitea-actions
+          export GIT_COMMITTER_EMAIL=gitea-actions@localhost
+          git add models README.md .github/workflows/benchmark.yml .github/workflows/manage-models.yml .gitea/workflows/benchmark.yml .gitea/workflows/manage-models.yml ci/commit-results.sh package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js tests/models.test.js tests/automation.test.js
+          git commit -m "automate model lifecycle planning" || exit 0
+          git push || true

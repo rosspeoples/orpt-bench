@@ -9,7 +9,7 @@ jobs:
   benchmark:
     runs-on: ubuntu-latest
     env:
-      BENCHMARK_MODELS: ${BENCHMARK_MODELS:-opencode/gpt-5.4-mini,opencode/minimax-m2.5-free}
+      BENCHMARK_CYCLE: ${BENCHMARK_CYCLE:-weekly}
       BENCHMARK_REPEATS: ${BENCHMARK_REPEATS:-1}
       BENCHMARK_WRITE_README: "1"
       OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
@@ -22,6 +22,9 @@ jobs:
 
       - name: Sync model catalog
         run: docker compose run --rm runner sync-models
+
+      - name: Apply selected benchmark cycle
+        run: docker compose run --rm runner use-cycle "$BENCHMARK_CYCLE"
 
       - name: Validate fixtures
         run: docker compose run --rm runner validate

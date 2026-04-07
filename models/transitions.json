@@ -1,0 +1,36 @@
+{
+  "updatedAt": "2026-04-07T16:16:57.253Z",
+  "summary": {
+    "discovered": 0,
+    "stageChanges": 0,
+    "inventoryChanges": 0,
+    "candidateSmokeQueued": 4,
+    "deprecated": 0,
+    "sunset": 0
+  },
+  "discovered": [],
+  "stageChanges": [],
+  "inventoryChanges": [],
+  "candidateSmokeQueue": [
+    {
+      "model": "opencode/claude-opus-4-6",
+      "reason": "Discovered in the current inventory and awaiting initial smoke benchmarking."
+    },
+    {
+      "model": "opencode/claude-sonnet-4-6",
+      "reason": "Discovered in the current inventory and awaiting initial smoke benchmarking."
+    },
+    {
+      "model": "opencode/glm-5",
+      "reason": "Discovered in the current inventory and awaiting initial smoke benchmarking."
+    },
+    {
+      "model": "opencode/gpt-5.4",
+      "reason": "Successful benchmark data exists, but the model has not yet met the 2-run smoke promotion requirement."
+    }
+  ],
+  "smokeQueueChanges": {
+    "added": [],
+    "removed": []
+  }
+}

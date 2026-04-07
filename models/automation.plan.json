@@ -1,0 +1,48 @@
+{
+  "updatedAt": "2026-04-07T16:16:33.973Z",
+  "lifecycleSummary": {
+    "candidate": 22,
+    "active": 1,
+    "deprecated": 16,
+    "sunset": 0
+  },
+  "cycles": {
+    "candidate_smoke": {
+      "description": "Control-task smoke run for newly discovered models before they enter broader recurring benchmarks",
+      "enabled": true,
+      "matrix": null,
+      "taskGlob": "05*",
+      "repeats": 1,
+      "models": [
+        "opencode/gpt-5.4",
+        "opencode/claude-opus-4-6",
+        "opencode/claude-sonnet-4-6",
+        "opencode/glm-5"
+      ]
+    },
+    "weekly": {
+      "description": "Primary comparable weekly benchmark run",
+      "enabled": true,
+      "matrix": "current_task_cheap_comparable",
+      "taskGlob": "*",
+      "repeats": 1,
+      "models": [
+        "opencode/gpt-5.4-mini"
+      ]
+    },
+    "monthly": {
+      "description": "Higher-signal monthly benchmark run over the release cohort",
+      "enabled": true,
+      "matrix": "release",
+      "taskGlob": "*",
+      "repeats": 1,
+      "models": [
+        "opencode/gemini-3.1-pro",
+        "opencode/gpt-5.4",
+        "opencode/claude-sonnet-4-6",
+        "opencode/glm-5",
+        "opencode/claude-opus-4-6"
+      ]
+    }
+  }
+}

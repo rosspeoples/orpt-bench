@@ -7,8 +7,12 @@
   "scripts": {
     "benchmark": "node scripts/cli.js benchmark",
     "report": "node scripts/cli.js report",
+    "select-cycle": "node scripts/cli.js select-cycle",
     "select-matrix": "node scripts/cli.js select-matrix",
+    "sync-github-issues": "node scripts/sync-github-issues.js",
+    "sync-automation": "node scripts/cli.js sync-automation",
     "sync-models": "node scripts/cli.js sync-models",
+    "use-cycle": "node scripts/cli.js use-cycle",
     "use-matrix": "node scripts/cli.js use-matrix",
     "validate": "node scripts/cli.js validate",
     "test": "node --test tests/*.test.js"

@@ -2,6 +2,8 @@
 
 OpenCode Agentic Efficiency Benchmark measures how many OpenCode requests a model consumes per successful task on reproducible DevOps and light-coding fixtures.
 
+The suite is intended for senior-level platform and infrastructure repair work. One control task provides a basic sanity check, while the scored benchmark should otherwise skew toward medium/high difficulty and reward models that can sustain real multi-step investigation loops.
+
 Model pricing in this repo is generated for benchmark use during `sync-models`. The normalized catalog keeps both the actual listed blended price and, when useful, a clearly labeled reference blended price for free variants derived from a paid sibling or nearby family model.
 
 ## Model Summary
@@ -79,7 +81,7 @@ Composite Score blends correctness and efficiency.
 
 | Capability | Required By Tasks | Supported Models | Limited Models | Unsupported Models | Unknown Models |
 | --- | --- | --- | --- | --- | --- |
-| unattendedBenchmarkRuns | 01-iac-kubernetes-rollout, 02-terraform-static-site, 03-ansible-nginx-role, 04-docker-compose-observability, 05-log-audit-script, 06-kubernetes-oidc-rbac-repair, 07-cnpg-restore-manifest-repair, 08-workspace-transplant-bundle-repair, 09-gitops-workspace-render-validation | opencode/gpt-5.4-mini | - | - | - |
+| unattendedBenchmarkRuns | 01-iac-kubernetes-rollout, 02-terraform-static-site, 03-ansible-nginx-role, 04-docker-compose-observability, 05-log-audit-script, 06-kubernetes-oidc-rbac-repair, 07-cnpg-restore-manifest-repair, 08-workspace-transplant-bundle-repair, 09-gitops-workspace-render-validation, 10-bootstrap-phase-validation-repair, 11-mcp-openbao-contract-repair | opencode/gpt-5.4-mini | - | - | - |
 
 Charts:
 
@@ -90,29 +92,35 @@ Charts:
 
 ## Included Tasks
 
-1. Kubernetes rollout repair
-2. Terraform static site repair
-3. Ansible nginx role completion
-4. Docker Compose observability fix
-5. Log audit shell script
-6. Kubernetes OIDC RBAC repair
-7. CNPG restore manifest repair
-8. Workspace transplant bundle repair
-9. GitOps workspace render validation
+- Difficulty mix: control=1, medium=1, high=7, expert=2
+
+1. Kubernetes rollout repair (01-iac-kubernetes-rollout, medium)
+2. Terraform static site repair (02-terraform-static-site, high)
+3. Ansible nginx role completion (03-ansible-nginx-role, high)
+4. Docker Compose observability fix (04-docker-compose-observability, high)
+5. Log audit shell script (05-log-audit-script, control)
+6. Kubernetes OIDC RBAC repair (06-kubernetes-oidc-rbac-repair, high)
+7. CNPG restore manifest repair (07-cnpg-restore-manifest-repair, high)
+8. Workspace transplant bundle repair (08-workspace-transplant-bundle-repair, high)
+9. GitOps workspace render validation (09-gitops-workspace-render-validation, high)
+10. Bootstrap phase validation repair (10-bootstrap-phase-validation-repair, expert)
+11. MCP OpenBao contract repair (11-mcp-openbao-contract-repair, expert)
 
 ## Task Requirements
 
-| Task | Required Capabilities |
-| --- | --- |
-| 01-iac-kubernetes-rollout | unattendedBenchmarkRuns |
-| 02-terraform-static-site | unattendedBenchmarkRuns |
-| 03-ansible-nginx-role | unattendedBenchmarkRuns |
-| 04-docker-compose-observability | unattendedBenchmarkRuns |
-| 05-log-audit-script | unattendedBenchmarkRuns |
-| 06-kubernetes-oidc-rbac-repair | unattendedBenchmarkRuns |
-| 07-cnpg-restore-manifest-repair | unattendedBenchmarkRuns |
-| 08-workspace-transplant-bundle-repair | unattendedBenchmarkRuns |
-| 09-gitops-workspace-render-validation | unattendedBenchmarkRuns |
+| Task | Difficulty | Required Capabilities |
+| --- | --- | --- |
+| 01-iac-kubernetes-rollout | medium | unattendedBenchmarkRuns |
+| 02-terraform-static-site | high | unattendedBenchmarkRuns |
+| 03-ansible-nginx-role | high | unattendedBenchmarkRuns |
+| 04-docker-compose-observability | high | unattendedBenchmarkRuns |
+| 05-log-audit-script | control | unattendedBenchmarkRuns |
+| 06-kubernetes-oidc-rbac-repair | high | unattendedBenchmarkRuns |
+| 07-cnpg-restore-manifest-repair | high | unattendedBenchmarkRuns |
+| 08-workspace-transplant-bundle-repair | high | unattendedBenchmarkRuns |
+| 09-gitops-workspace-render-validation | high | unattendedBenchmarkRuns |
+| 10-bootstrap-phase-validation-repair | expert | unattendedBenchmarkRuns |
+| 11-mcp-openbao-contract-repair | expert | unattendedBenchmarkRuns |
 
 ## Quickstart
 

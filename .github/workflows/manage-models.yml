@@ -1,0 +1,94 @@
+name: manage-models
+
+on:
+  workflow_dispatch:
+    inputs:
+      open_pr:
+        description: Open a pull request when lifecycle or plan changes are detected
+        required: false
+        default: "true"
+  schedule:
+    - cron: "0 5 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  manage-models:
+    runs-on: ubuntu-latest
+    env:
+      OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build runner image
+        run: docker compose build
+
+      - name: Refresh model inventory and automation plan
+        run: docker compose run --rm runner sync-models
+
+      - name: Run candidate smoke cycle when queued
+        run: |
+          node -e "const fs=require('fs'); const plan=JSON.parse(fs.readFileSync('models/automation.plan.json','utf8')); process.exit(plan.cycles?.candidate_smoke?.enabled ? 0 : 1)" \
+            && docker compose run --rm runner use-cycle candidate_smoke \
+            && docker compose run --rm runner benchmark \
+            && docker compose run --rm runner sync-models \
+            || true
+
+      - name: Run automation tests
+        run: docker compose run --rm --entrypoint bash runner -lc "node --test tests/models.test.js tests/automation.test.js"
+
+      - name: Detect model-management changes
+        id: changes
+        run: |
+          if git diff --quiet -- models README.md .github/workflows/benchmark.yml .gitea/workflows/benchmark.yml ci/commit-results.sh package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js tests/models.test.js tests/automation.test.js; then
+            printf 'changed=false\n' >> "$GITHUB_OUTPUT"
+          else
+            printf 'changed=true\n' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload model-management artifacts
+        if: steps.changes.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-management-artifacts
+          path: |
+            models
+            README.md
+
+      - name: Sync lifecycle issues
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/sync-github-issues.js
+
+      - name: Commit model-management updates
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          export GIT_AUTHOR_NAME=github-actions
+          export GIT_AUTHOR_EMAIL=github-actions@users.noreply.github.com
+          export GIT_COMMITTER_NAME=github-actions
+          export GIT_COMMITTER_EMAIL=github-actions@users.noreply.github.com
+          git checkout -B automation/model-lifecycle
+          git add models README.md .github/workflows/benchmark.yml .gitea/workflows/benchmark.yml ci/commit-results.sh package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js tests/models.test.js tests/automation.test.js
+          git commit -m "automate model lifecycle planning" || exit 0
+          git push -u origin automation/model-lifecycle --force-with-lease
+
+      - name: Open or update pull request
+        if: steps.changes.outputs.changed == 'true' && (github.event_name == 'schedule' || inputs.open_pr == 'true')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node -e "const fs=require('fs'); const transitions=JSON.parse(fs.readFileSync('models/transitions.json','utf8')); const lines=['## Summary']; if (transitions.summary.discovered) lines.push(`- discovered ${transitions.summary.discovered} models`); if (transitions.summary.stageChanges) lines.push(`- recorded ${transitions.summary.stageChanges} lifecycle stage changes`); if (transitions.summary.candidateSmokeQueued) lines.push(`- queued ${transitions.summary.candidateSmokeQueued} candidate smoke models`); if (!lines.slice(1).length) lines.push('- refresh model inventory, lifecycle state, and recurring benchmark plan'); const stageLines=transitions.stageChanges.slice(0,8).map((entry)=>`- ${entry.model}: ${entry.from} -> ${entry.to}`); const smokeLines=transitions.candidateSmokeQueue.slice(0,8).map((entry)=>`- ${entry.model}`); let body=`${lines.join('\n')}\n`; if (stageLines.length) body += `\n## Stage Changes\n${stageLines.join('\n')}\n`; if (smokeLines.length) body += `\n## Candidate Smoke Queue\n${smokeLines.join('\n')}\n`; fs.writeFileSync('.tmp-pr-body.md', body);"
+          PR_BODY=$(cat <<'EOF'
+          $(cat .tmp-pr-body.md)
+          EOF
+          )
+          gh pr create \
+            --head automation/model-lifecycle \
+            --base main \
+            --title "Automate model lifecycle updates" \
+            --body "$PR_BODY" || gh pr edit automation/model-lifecycle --title "Automate model lifecycle updates" --body "$PR_BODY"

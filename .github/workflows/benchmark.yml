@@ -3,10 +3,10 @@ name: orpt-bench
 on:
   workflow_dispatch:
     inputs:
-      matrix:
-        description: Generated matrix name to benchmark
+      cycle:
+        description: Generated benchmark cycle to run
         required: false
-        default: cheap
+        default: weekly
       repeats:
         description: Repeat count per task/model
         required: false
@@ -26,20 +26,20 @@ jobs:
   benchmark:
     runs-on: ubuntu-latest
     env:
-      BENCHMARK_MATRIX: ${{ inputs.matrix || '' }}
+      BENCHMARK_CYCLE: ${{ inputs.cycle || '' }}
       BENCHMARK_REPEATS: ${{ inputs.repeats || vars.BENCHMARK_REPEATS || '1' }}
       BENCHMARK_WRITE_README: "1"
       OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Select scheduled matrix
+      - name: Select scheduled cycle
         if: ${{ github.event_name == 'schedule' }}
         run: |
           if [ "${{ github.event.schedule }}" = "0 6 * * 1" ]; then
-            printf 'BENCHMARK_MATRIX=cheap\n' >> "$GITHUB_ENV"
+            printf 'BENCHMARK_CYCLE=weekly\n' >> "$GITHUB_ENV"
           else
-            printf 'BENCHMARK_MATRIX=release\n' >> "$GITHUB_ENV"
+            printf 'BENCHMARK_CYCLE=monthly\n' >> "$GITHUB_ENV"
           fi
 
       - name: Build runner image
@@ -48,8 +48,11 @@ jobs:
       - name: Sync model catalog
         run: docker compose run --rm runner sync-models
 
-      - name: Apply selected model matrix
-        run: docker compose run --rm runner use-matrix "$BENCHMARK_MATRIX"
+      - name: Apply selected benchmark cycle
+        run: docker compose run --rm runner use-cycle "$BENCHMARK_CYCLE"
+
+      - name: Show planned automation cycles
+        run: node -e "const fs=require('fs'); const plan=JSON.parse(fs.readFileSync('models/automation.plan.json','utf8')); console.log(JSON.stringify(plan.cycles, null, 2))"
 
       - name: Validate fixtures
         run: docker compose run --rm runner validate
@@ -63,7 +66,7 @@ jobs:
       - name: Upload benchmark artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: orpt-bench-results-${{ env.BENCHMARK_MATRIX }}
+          name: orpt-bench-results-${{ env.BENCHMARK_CYCLE }}
           path: |
             results
             models

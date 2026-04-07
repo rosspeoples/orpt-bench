@@ -492,14 +492,16 @@ export async function runBenchmarkSingle(runtime, modelsOverride = null, runIDOv
       id: runID,
       startedAt: nowIso(),
       completedAt: null,
+      benchmarkCycle: runtime.benchmarkCycle || null,
       models,
       taskCount: tasks.length,
+      taskPatterns: runtime.taskPatterns,
       repeats: runtime.repeats
     },
     results: [],
     leaderboard: [],
     modelCatalog: await readJson(path.join(runtime.rootDir, 'models/catalog.json')).catch(() => ({ models: [] })),
-    taskCatalog: tasks.map((task) => ({ id: task.id, name: task.name, requiredCapabilities: task.requiredCapabilities || [] })),
+    taskCatalog: tasks.map((task) => ({ id: task.id, name: task.name, difficulty: task.difficulty || 'medium', requiredCapabilities: task.requiredCapabilities || [] })),
     scoring: runtime.scoring
   }
 
@@ -581,8 +583,10 @@ export async function runBenchmark(runtime) {
       id: runID,
       startedAt: nowIso(),
       completedAt: null,
+      benchmarkCycle: runtime.benchmarkCycle || null,
       models: runtime.models,
       taskCount: tasks.length,
+      taskPatterns: runtime.taskPatterns,
       repeats: runtime.repeats
     },
     results: [],
@@ -590,7 +594,7 @@ export async function runBenchmark(runtime) {
     modelSummary: [],
     taskSummary: [],
     modelCatalog: await readJson(path.join(runtime.rootDir, 'models/catalog.json')).catch(() => ({ models: [] })),
-    taskCatalog: tasks.map((task) => ({ id: task.id, name: task.name, requiredCapabilities: task.requiredCapabilities || [] })),
+    taskCatalog: tasks.map((task) => ({ id: task.id, name: task.name, difficulty: task.difficulty || 'medium', requiredCapabilities: task.requiredCapabilities || [] })),
     scoring: runtime.scoring
   }
 

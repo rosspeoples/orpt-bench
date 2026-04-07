@@ -87,7 +87,9 @@ export async function loadRuntimeConfig() {
   return {
     rootDir,
     baseConfig,
+    benchmarkCycle: process.env.BENCHMARK_CYCLE || null,
     models,
+    taskPatterns,
     taskDirs,
     repeats,
     taskTimeoutMs,
