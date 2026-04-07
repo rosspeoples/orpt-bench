@@ -20,6 +20,16 @@ jobs:
       - name: Refresh model inventory and automation plan
         run: docker compose run --rm runner sync-models
 
+      - name: Run candidate smoke cycle when queued
+        run: |
+          if node -e "const fs=require('fs'); const plan=JSON.parse(fs.readFileSync('models/automation.plan.json','utf8')); process.exit(plan.cycles?.candidate_smoke?.enabled ? 0 : 1)"; then
+            docker compose run --rm runner use-cycle candidate_smoke
+            docker compose run --rm runner benchmark
+            docker compose run --rm runner sync-models
+          else
+            echo "No candidate smoke cycle queued"
+          fi
+
       - name: Run automation tests
         run: docker compose run --rm --entrypoint bash runner -lc "node --test tests/models.test.js tests/automation.test.js"
 
@@ -29,6 +39,6 @@ jobs:
           export GIT_AUTHOR_EMAIL=gitea-actions@localhost
           export GIT_COMMITTER_NAME=gitea-actions
           export GIT_COMMITTER_EMAIL=gitea-actions@localhost
-          git add models README.md .github/workflows/benchmark.yml .github/workflows/manage-models.yml .gitea/workflows/benchmark.yml .gitea/workflows/manage-models.yml ci/commit-results.sh package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js tests/models.test.js tests/automation.test.js
+          git add models README.md .github/workflows/benchmark.yml .github/workflows/manage-models.yml .gitea/workflows/benchmark.yml .gitea/workflows/manage-models.yml ci/commit-results.sh package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js scripts/lib/config.js scripts/lib/benchmark.js scripts/sync-github-issues.js tests/models.test.js tests/automation.test.js
           git commit -m "automate model lifecycle planning" || exit 0
           git push || true
