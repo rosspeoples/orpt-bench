@@ -1,0 +1,22 @@
+name: GitHub Publication
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish-github:
+    runs-on: benchmarks-orpt-bench
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Publish GitHub source and Pages
+        env:
+          PUBLISH_GITHUB_USERNAME: ${{ secrets.PUBLISH_GITHUB_USERNAME }}
+          PUBLISH_GITHUB_TOKEN: ${{ secrets.PUBLISH_GITHUB_TOKEN }}
+          PUBLISH_GITHUB_REPOSITORY: ${{ secrets.PUBLISH_GITHUB_REPOSITORY }}
+          PUBLISH_GITHUB_PAGES_BRANCH: ${{ secrets.PUBLISH_GITHUB_PAGES_BRANCH }}
+        run: bash scripts/publish-github-pages.sh
