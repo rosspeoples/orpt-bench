@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-07T20:06:00.936Z",
+  "generatedAt": "2026-04-07T21:16:22.113Z",
   "repository": {
     "url": "https://github.com/rosspeoples/orpt-bench",
     "pagesUrl": "https://rosspeoples.github.io/orpt-bench/",
@@ -663,6 +663,32 @@
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "charts": [
+    {
+      "slug": "composite-score",
+      "eyebrow": "Primary ranking",
+      "title": "Composite score",
+      "description": "Default benchmark ordering: correctness first, efficiency second.",
+      "jsonPath": "results/charts/composite-score.json",
+      "htmlPath": "results/charts/composite-score.html"
+    },
+    {
+      "slug": "success-rate",
+      "eyebrow": "Correctness view",
+      "title": "Success rate",
+      "description": "Shows how often a model actually closes benchmark tasks, independent of efficiency.",
+      "jsonPath": "results/charts/success-rate.json",
+      "htmlPath": "results/charts/success-rate.html"
+    },
+    {
+      "slug": "orpt",
+      "eyebrow": "Efficiency view",
+      "title": "ORPT",
+      "description": "Lower is better: fewer OpenCode requests required per successful task.",
+      "jsonPath": "results/charts/orpt.json",
+      "htmlPath": "results/charts/orpt.html"
     }
   ],
   "history": [

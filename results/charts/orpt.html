@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ORPT</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <div id="chart" style="width:100%;height:90vh"></div>
+  <script>
+    const data = [{"type":"bar","x":["opencode/gpt-5.4-mini"],"y":[10.285714285714286],"marker":{"color":"#2563eb"},"name":"ORPT"}];
+    const layout = {"title":"Average OpenCode Requests Per Successful Task","xaxis":{"automargin":true},"yaxis":{"title":"Requests"}};
+    Plotly.newPlot('chart', data, layout, {responsive: true});
+  </script>
+</body>
+</html>
