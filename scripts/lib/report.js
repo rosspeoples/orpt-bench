@@ -236,27 +236,12 @@ function renderIncludedTasks(run) {
 }
 
 function renderReadme(run) {
-  const catalogByModel = new Map((run.modelCatalog?.models || []).map((entry) => [entry.model, entry]))
-  const taskCatalogById = new Map((run.taskCatalog || []).map((entry) => [entry.id, entry]))
-  const comparableModelSummary = (run.modelSummary || []).filter((entry) => getComparabilityDetails(entry, catalogByModel, taskCatalogById).comparable)
-  const limitedModelSummary = (run.modelSummary || []).filter((entry) => !getComparabilityDetails(entry, catalogByModel, taskCatalogById).comparable)
-  const modelSummaryTable = renderModelSummaryTable(comparableModelSummary, catalogByModel, taskCatalogById)
-  const limitedModelSummaryTable = renderModelSummaryTable(limitedModelSummary, catalogByModel, taskCatalogById)
-  const comparableTaskSummary = (run.taskSummary || []).filter((entry) => getComparabilityDetails(entry, catalogByModel, taskCatalogById).comparable)
-  const limitedTaskSummary = (run.taskSummary || []).filter((entry) => !getComparabilityDetails(entry, catalogByModel, taskCatalogById).comparable)
-  const taskSummaryTable = renderTaskSummaryTable(comparableTaskSummary, catalogByModel, taskCatalogById)
-  const limitedTaskSummaryTable = renderTaskSummaryTable(limitedTaskSummary, catalogByModel, taskCatalogById)
   const totals = {
     models: new Set((run.results || []).map((entry) => entry.model)).size,
     tasks: new Set((run.results || []).map((entry) => entry.taskId)).size,
     runs: run.results?.length || 0,
     successes: run.results?.filter((entry) => entry.success).length || 0
   }
-  const capabilityCoverage = buildCapabilityCoverage(run, catalogByModel, taskCatalogById)
-  const capabilityCoverageTable = renderCapabilityCoverageTable(run, catalogByModel)
-  const taskRequirementTable = renderTaskRequirementTable(run)
-  const pricingProvenanceTable = renderPricingProvenanceTable(run, catalogByModel)
-  const valueScoreComponentsTable = renderValueScoreComponentsTable(run)
   const includedTasksList = renderIncludedTasks(run)
   const valueScoreWeights = run.scoring?.valueScoreWeights || { orpt: 0.45, cost: 0.35, time: 0.2 }
   const compositeWeights = run.scoring?.compositeScoreWeights || { score: 0.7, valueScore: 0.3 }
@@ -269,25 +254,7 @@ function renderReadme(run) {
     .filter((difficulty) => tasksByDifficulty[difficulty])
     .map((difficulty) => `${difficulty}=${tasksByDifficulty[difficulty]}`)
     .join(', ') || 'none declared'
-  const scoringNotes = [
-    '## Value Score',
-    '',
-    'Value Score is a secondary efficiency metric. It does not replace correctness.',
-    '',
-    '- `Score` remains binary task correctness: pass = `1`, fail = `0`.',
-    '- `Value Score` is computed only from successful comparable runs.',
-    '- It combines normalized request efficiency, actual observed cost, and wall time using a weighted geometric mean.',
-    `- Current weights: ORPT \`${Number(valueScoreWeights.orpt).toFixed(2)}\`, cost \`${Number(valueScoreWeights.cost).toFixed(2)}\`, time \`${Number(valueScoreWeights.time).toFixed(2)}\`.`,
-    '- Failed or non-comparable runs receive `0.000`.',
-    '',
-    '## Composite Score',
-    '',
-    'Composite Score blends correctness and efficiency.',
-    '',
-    `- \`Composite Score = ${Number(compositeWeights.score).toFixed(2)} * Score + ${Number(compositeWeights.valueScore).toFixed(2)} * Value Score\`.`,
-    '- This keeps correctness dominant while still rewarding efficient successful runs.',
-    '- Comparable model rankings are sorted by `Composite Score`, with ORPT used as a tie-breaker.'
-  ].join('\n')
+  const pagesUrl = 'https://rosspeoples.github.io/orpt-bench/'
 
   return `# ORPT-Bench
 
@@ -297,56 +264,48 @@ The suite is intended for senior-level platform and infrastructure repair work. 
 
 Model pricing in this repo is generated for benchmark use during \`sync-models\`. The normalized catalog keeps both the actual listed blended price and, when useful, a clearly labeled reference blended price for free variants derived from a paid sibling or nearby family model.
 
-## Model Summary
+## Live Results
 
-${modelSummaryTable}
+- Live benchmark site: <${pagesUrl}>
+- Latest raw results: \`results/latest.json\`
+- Historical raw results: \`results/history/*.json\`
 
-## Limited Comparability
+The GitHub Pages publication is the canonical place for dynamic benchmark output:
 
-The following models are included for transparency but excluded from the primary comparable cohort when they have known benchmark-affecting feature limitations such as incomplete unattended-run support.
+- chart-first summaries for composite score, success rate, and ORPT
+- sortable comparison tables that default to composite score
+- links to raw JSON artifacts, the result schema, and deeper docs
+- historical snapshot links when archived runs are available
 
-${limitedModelSummaryTable}
+## Scoring
 
-## Task Detail
+- \`Score\` remains binary correctness: pass = \`1\`, fail = \`0\`
+- \`Value Score\` is a secondary efficiency metric computed only from successful comparable runs
+- \`Value Score\` combines normalized ORPT, actual observed cost, and wall time using a weighted geometric mean
+- Current value weights: ORPT \`${Number(valueScoreWeights.orpt).toFixed(2)}\`, cost \`${Number(valueScoreWeights.cost).toFixed(2)}\`, time \`${Number(valueScoreWeights.time).toFixed(2)}\`
+- Failed or non-comparable runs receive \`0.000\`
+- \`Composite Score = ${Number(compositeWeights.score).toFixed(2)} * Score + ${Number(compositeWeights.valueScore).toFixed(2)} * Value Score\`
+- Comparable rankings sort by \`Composite Score\`, with ORPT used as a tie-breaker
 
-${taskSummaryTable}
+## Benchmark Shape
 
-## Task Detail: Limited Comparability
+- The task set is intentionally weighted toward real repair-oriented DevOps work rather than toy prompts
+- Capability gating matters: models with benchmark-affecting limitations can be surfaced, but excluded from the primary comparable cohort when appropriate
+- Tasks live under \`tasks/*\`, each with its own fixture, prompt, and verifier
 
-${limitedTaskSummaryTable}
+Included task areas:
 
-${scoringNotes}
-
-## Value Score Components
-
-${valueScoreComponentsTable}
-
-## Pricing Provenance
-
-${pricingProvenanceTable}
-
-${capabilityCoverage}
-
-### Capability Matrix
-
-${capabilityCoverageTable}
-
-Charts:
-
-- [ORPT leaderboard](results/charts/orpt.html)
-- [Success rate](results/charts/success-rate.html)
-- [Composite score](results/charts/composite-score.html)
-- [Model catalog](models/README.md)
+- Kubernetes and GitOps repair
+- Terraform and Ansible completion or fixup
+- Docker Compose observability repair
+- Shell scripting and workspace bundle repair
+- Bootstrap sequencing and platform validation
 
 ## Included Tasks
 
 - Difficulty mix: ${difficultySummary}
 
 ${includedTasksList}
-
-## Task Requirements
-
-${taskRequirementTable}
 
 ## Quickstart
 
@@ -415,16 +374,13 @@ Useful smoke-test example:
 BENCHMARK_MODELS=opencode/gpt-5.4-mini BENCHMARK_TASK_GLOB=05* docker compose run --rm runner benchmark
 \`\`\`
 
-## Artifact Summary
-
-- Models in latest result: ${totals.models}
-- Distinct tasks exercised: ${totals.tasks}
-- Total task runs: ${totals.runs}
-- Successful task runs: ${totals.successes}
+Generated benchmark artifacts are written to \`results/\` locally. Use the live Pages site for published rankings, tables, and history rather than checking volatile result tables into the root README.
 
 ## Design
 
 See [DESIGN.md](DESIGN.md) for benchmark architecture, telemetry rules, and CI behavior.
+See [docs/result-schema.json](docs/result-schema.json) for the benchmark result contract.
+See <${pagesUrl}> for the live published leaderboard, charts, and history.
 `
 }
 

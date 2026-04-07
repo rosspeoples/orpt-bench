@@ -1,0 +1,15 @@
+[
+  {
+    "type": "bar",
+    "x": [
+      "opencode/gpt-5.4-mini"
+    ],
+    "y": [
+      38.46
+    ],
+    "marker": {
+      "color": "#16a34a"
+    },
+    "name": "Success Rate %"
+  }
+]

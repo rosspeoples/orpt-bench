@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Success Rate</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <div id="chart" style="width:100%;height:90vh"></div>
+  <script>
+    const data = [{"type":"bar","x":["opencode/gpt-5.4-mini"],"y":[38.46],"marker":{"color":"#16a34a"},"name":"Success Rate %"}];
+    const layout = {"title":"Task Success Rate by Model","xaxis":{"automargin":true},"yaxis":{"title":"Success Rate %","range":[0,100]}};
+    Plotly.newPlot('chart', data, layout, {responsive: true});
+  </script>
+</body>
+</html>

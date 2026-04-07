@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ORPT-Bench Results",
+  "type": "object",
+  "required": ["run", "results", "leaderboard", "modelSummary", "taskSummary"],
+  "properties": {
+    "modelCatalog": {
+      "type": "object",
+      "properties": {
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "model": { "type": "string" },
+              "benchmark": {
+                "type": "object",
+                "properties": {
+                  "blendedPricePer1mTokensUsd": { "type": ["number", "null"] },
+                  "referenceBlendedPricePer1mTokensUsd": { "type": ["number", "null"] },
+                  "source": { "type": ["string", "null"] },
+                  "sourceUrl": { "type": ["string", "null"] },
+                  "pricingSourceType": { "type": ["string", "null"] },
+                  "pricingConfidence": { "type": ["string", "null"] },
+                  "pricingNotes": { "type": ["string", "null"] }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "taskCatalog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "difficulty": { "type": "string" },
+          "requiredCapabilities": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "run": {
+      "type": "object",
+      "required": ["id", "startedAt", "completedAt", "models"],
+      "properties": {
+        "id": { "type": "string" },
+        "startedAt": { "type": "string" },
+        "completedAt": { "type": ["string", "null"] },
+        "models": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["taskId", "model", "success", "durationMs", "steps"],
+        "properties": {
+          "taskId": { "type": "string" },
+          "taskName": { "type": "string" },
+          "category": { "type": "string" },
+          "model": { "type": "string" },
+          "provider": { "type": "string" },
+          "success": { "type": "boolean" },
+          "score": { "type": "number" },
+          "valueScore": { "type": "number" },
+          "compositeScore": { "type": "number" },
+          "valueScoreComponents": {
+            "type": "object",
+            "properties": {
+              "orptFactor": { "type": "number" },
+              "costFactor": { "type": "number" },
+              "timeFactor": { "type": "number" }
+            }
+          },
+          "requestCount": { "type": "number" },
+          "durationMs": { "type": "number" },
+          "steps": { "type": "number" },
+          "requestUnits": { "type": ["number", "null"] },
+          "requestAccountingSource": { "type": ["string", "null"] },
+          "costUsd": { "type": "number" },
+          "sessionId": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "leaderboard": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["model", "successRate"],
+        "properties": {
+          "model": { "type": "string" },
+          "successRate": { "type": "number" },
+          "orpt": { "type": ["number", "null"] },
+          "eligible": { "type": "boolean" },
+          "comparable": { "type": "boolean" },
+          "comparabilityNote": { "type": ["string", "null"] },
+          "unattendedBenchmarkRuns": { "type": ["string", "null"] },
+          "requiredCapabilities": { "type": "array", "items": { "type": "string" } },
+          "unsupportedCapabilities": { "type": "array", "items": { "type": "object" } },
+          "knownLimitations": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "modelSummary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["model", "successRate", "score"],
+        "properties": {
+          "model": { "type": "string" },
+          "provider": { "type": "string" },
+          "runs": { "type": "number" },
+          "successfulTasks": { "type": "number" },
+          "failedTasks": { "type": "number" },
+          "successRate": { "type": "number" },
+          "score": { "type": "number" },
+          "valueScore": { "type": "number" },
+          "compositeScore": { "type": "number" },
+          "totalRequestCount": { "type": "number" },
+          "orpt": { "type": ["number", "null"] },
+          "totalRequestUnits": { "type": ["number", "null"] },
+          "totalWallTimeMs": { "type": "number" },
+          "totalCostUsd": { "type": "number" },
+          "averageDurationMs": { "type": "number" },
+          "medianSteps": { "type": ["number", "null"] },
+          "averageCostUsd": { "type": "number" },
+          "eligible": { "type": "boolean" },
+          "comparable": { "type": "boolean" },
+          "comparabilityNote": { "type": ["string", "null"] },
+          "unattendedBenchmarkRuns": { "type": ["string", "null"] },
+          "requiredCapabilities": { "type": "array", "items": { "type": "string" } },
+          "unsupportedCapabilities": { "type": "array", "items": { "type": "object" } },
+          "knownLimitations": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "taskSummary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["taskId", "taskName", "model", "score", "successRate"],
+        "properties": {
+          "taskId": { "type": "string" },
+          "taskName": { "type": "string" },
+          "category": { "type": "string" },
+          "model": { "type": "string" },
+          "provider": { "type": "string" },
+          "runs": { "type": "number" },
+          "successes": { "type": "number" },
+          "failures": { "type": "number" },
+          "score": { "type": "number" },
+          "valueScore": { "type": "number" },
+          "compositeScore": { "type": "number" },
+          "successRate": { "type": "number" },
+          "totalRequestCount": { "type": "number" },
+          "totalRequestUnits": { "type": ["number", "null"] },
+          "averageRequestUnits": { "type": ["number", "null"] },
+          "totalWallTimeMs": { "type": "number" },
+          "averageWallTimeMs": { "type": "number" },
+          "totalCostUsd": { "type": "number" },
+          "averageCostUsd": { "type": "number" },
+          "averageSteps": { "type": "number" },
+          "eligible": { "type": "boolean" },
+          "comparable": { "type": "boolean" },
+          "comparabilityNote": { "type": ["string", "null"] },
+          "unattendedBenchmarkRuns": { "type": ["string", "null"] },
+          "requiredCapabilities": { "type": "array", "items": { "type": "string" } },
+          "unsupportedCapabilities": { "type": "array", "items": { "type": "object" } },
+          "knownLimitations": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

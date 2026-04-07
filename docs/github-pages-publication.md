@@ -19,7 +19,17 @@ The build script publishes a small static site using the repository's generated 
 
 - `results/leaderboard.md`
 - `results/latest.json`
+- `results/history/*.json`
 - `results/charts/*.html`
 - `models/README.md`
+- `docs/result-schema.json`
+- `DESIGN.md`
+
+The generated Pages site is an interactive static dashboard rather than a markdown dump. It includes:
+
+- chart-first navigation for composite score, success rate, and ORPT
+- sortable comparison tables that default to composite score
+- documentation links for the design doc, result schema, model catalog, and raw JSON artifacts
+- a generated history index when archived run snapshots are present
 
 The publication flow treats `Gitea` as the source of truth and force-pushes both the GitHub source branch and the generated `gh-pages` branch.
