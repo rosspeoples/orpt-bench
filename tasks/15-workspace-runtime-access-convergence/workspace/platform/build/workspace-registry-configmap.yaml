@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-workspace-registry
+  namespace: ai-build
+data:
+  workspaces-resolved.yaml: |
+    version: v1
+    workspaces:
+      - workspaceSlug: release-eng
+        displayName: Release Eng
+        resolvedPattern: repo
+        resolvedTemplate: dev-default
+        resolvedRuntimeProfile: dev-default
+        resolvedRuntimeAccessProfile: none
+        resolvedRepoAccessProfile: gitea-readonly
+        hostname: release-eng.build.thepeoples.dev

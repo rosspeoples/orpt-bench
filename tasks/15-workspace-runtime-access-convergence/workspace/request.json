@@ -1,0 +1,11 @@
+{
+  "workspaceSlug": "release-eng",
+  "displayName": "Release Eng",
+  "pattern": "repo",
+  "template": "dev-default",
+  "runtimeProfile": "dev-default",
+  "runtimeAccessProfile": "none",
+  "repoAccessProfile": "gitea-readonly",
+  "hostname": "release-eng.build.thepeoples.dev",
+  "workspaceOidcGroup": "thepeoples_dev_build_users"
+}

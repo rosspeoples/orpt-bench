@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-runtime-profile-catalog
+  namespace: ai-build
+data:
+  runtime-profiles.yaml: |
+    version: v1
+    runtimeProfiles:
+      - slug: dev-default
+        runtimeAccessProfile: none
+        allowedRepoAccessProfiles:
+          - none
+          - gitea-readonly
+          - gitea-write
+      - slug: platform-gitops
+        runtimeAccessProfile: platform-gitops
+        allowedRepoAccessProfiles:
+          - none
+          - gitea-readonly
+          - gitea-write

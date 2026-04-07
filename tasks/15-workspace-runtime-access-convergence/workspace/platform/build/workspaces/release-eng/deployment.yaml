@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-eng
+spec:
+  template:
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: opencode
+          image: git.thepeoples.dev/platform/agent-base:latest
+          env:
+            - name: WORKSPACE_OIDC_GROUP
+              value: thepeoples_dev_build_users
+            - name: GUIDANCE_PROFILE
+              value: dev-default

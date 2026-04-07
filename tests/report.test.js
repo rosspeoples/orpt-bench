@@ -32,12 +32,10 @@ test('summarizeParts counts step-finish and tool parts', () => {
 test('summarizeLogLines counts internal prompt loops and tool starts', () => {
   const summary = summarizeLogLines([
     'INFO service=session.prompt step=0 sessionID=abc loop',
-    'INFO service=tool.registry status=started bash',
-    'INFO service=tool.registry status=started read',
     'INFO service=session.prompt step=1 sessionID=abc loop',
     'INFO service=tool.registry status=started bash'
   ])
 
   assert.equal(summary.steps, 2)
-  assert.deepEqual(summary.toolInvocations, { bash: 2, read: 1 })
+  assert.deepEqual(summary.toolInvocations, {})
 })

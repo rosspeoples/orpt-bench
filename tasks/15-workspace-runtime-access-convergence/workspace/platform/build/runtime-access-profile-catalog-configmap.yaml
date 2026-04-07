@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-runtime-access-profile-catalog
+  namespace: ai-build
+data:
+  runtime-access-profiles.yaml: |
+    version: v1
+    runtimeAccessProfiles:
+      - slug: none
+        projectedServiceAccountToken: false
+        namespacePermissions: []
+      - slug: platform-gitops
+        projectedServiceAccountToken: true
+        namespacePermissions:
+          - namespace: argocd
+            rules:
+              - apiGroups:
+                  - argoproj.io
+                resources:
+                  - applications
+                verbs:
+                  - get
+                  - list
+                  - watch
+                  - create
+                  - update
+                  - patch

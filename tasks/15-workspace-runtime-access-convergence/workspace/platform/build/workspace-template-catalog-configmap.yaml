@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-workspace-template-catalog
+  namespace: ai-build
+data:
+  templates.yaml: |
+    version: v1
+    templates:
+      - slug: dev-default
+        runtimeProfile: dev-default
+        image: git.thepeoples.dev/platform/agent-base:latest
+        guidanceProfile: dev-default
+      - slug: platform-gitops
+        runtimeProfile: platform-gitops
+        image: git.thepeoples.dev/platform/agent-platform:latest
+        guidanceProfile: platform-gitops
