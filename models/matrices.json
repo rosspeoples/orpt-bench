@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T03:25:08.815Z",
+  "updatedAt": "2026-04-07T15:05:27.314Z",
   "taskSet": {
     "taskIds": [
       "01-iac-kubernetes-rollout",
@@ -49,7 +49,8 @@
         "opencode/gpt-5.4",
         "opencode/glm-5",
         "opencode/claude-sonnet-4-6",
-        "opencode/claude-opus-4-6"
+        "opencode/claude-opus-4-6",
+        "opencode/grok-4.20"
       ]
     },
     "frontier": {

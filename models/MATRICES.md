@@ -38,6 +38,7 @@ Broader comparison set balancing price, speed, and intelligence, including expen
 - opencode/glm-5
 - opencode/claude-sonnet-4-6
 - opencode/claude-opus-4-6
+- opencode/grok-4.20
 
 ## frontier
 

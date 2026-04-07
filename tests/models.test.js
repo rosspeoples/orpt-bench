@@ -48,6 +48,13 @@ test('matrix cadence keeps expensive models out of cheap and in frontier/release
         stability: { headlessFriendly: null },
         featureSupport: { unattendedBenchmarkRuns: 'supported' },
         benchmark: { intelligenceScore: 53, agenticScore: null, speedTokensPerSecond: 49, blendedPricePer1mTokensUsd: 10 }
+      },
+      {
+        model: 'opencode/claude-sonnet-4-6',
+        devTier: 'standard',
+        stability: { headlessFriendly: null },
+        featureSupport: { unattendedBenchmarkRuns: 'supported' },
+        benchmark: { intelligenceScore: 52, agenticScore: null, speedTokensPerSecond: 67, blendedPricePer1mTokensUsd: 6 }
       }
     ]
   }
@@ -57,8 +64,27 @@ test('matrix cadence keeps expensive models out of cheap and in frontier/release
   assert.deepEqual(matrices.matrices.cheap.models, ['opencode/gpt-5.4-mini'])
   assert.ok(matrices.matrices.frontier.models.includes('opencode/gpt-5.4'))
   assert.ok(matrices.matrices.frontier.models.includes('opencode/claude-opus-4-6'))
+  assert.ok(matrices.matrices.frontier.models.includes('opencode/claude-sonnet-4-6'))
   assert.ok(matrices.matrices.release.models.includes('opencode/gpt-5.4'))
   assert.ok(matrices.matrices.release.models.includes('opencode/claude-opus-4-6'))
+})
+
+test('balanced matrix can include curated model outside current catalog ranking', () => {
+  const catalog = {
+    models: [
+      {
+        model: 'opencode/gpt-5.4-mini',
+        devTier: 'dev-cheap',
+        stability: { headlessFriendly: true },
+        featureSupport: { unattendedBenchmarkRuns: 'supported' },
+        benchmark: { intelligenceScore: null, agenticScore: null, speedTokensPerSecond: null, blendedPricePer1mTokensUsd: 1.68 }
+      }
+    ]
+  }
+
+  const matrices = buildMatrices(catalog, { taskIds: ['05-log-audit-script'], requiredCapabilities: ['unattendedBenchmarkRuns'] })
+
+  assert.ok(matrices.matrices.balanced.models.includes('opencode/grok-4.20'))
 })
 
 test('automatic free pricing sets reference semantics clearly', () => {

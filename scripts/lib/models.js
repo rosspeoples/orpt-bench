@@ -5,6 +5,11 @@ import { nowIso, readJson, writeJson, writeText } from './fs.js'
 
 const OPENROUTER_MODELS_URL = 'https://openrouter.ai/api/v1/models'
 
+const CURATED_MATRIX_INCLUSIONS = {
+  balanced: ['opencode/grok-4.20'],
+  frontier: ['opencode/claude-sonnet-4-6']
+}
+
 function normalizeOpenRouterResponse(payload) {
   if (Array.isArray(payload)) return payload
   if (Array.isArray(payload?.data)) return payload.data
@@ -413,6 +418,18 @@ function chooseModels(catalog, mode) {
   return sorted.slice(0, 5)
 }
 
+function withCuratedMatrixInclusions(models, mode) {
+  const inclusions = CURATED_MATRIX_INCLUSIONS[mode] || []
+  if (!inclusions.length) return models
+
+  const merged = [...models]
+  for (const model of inclusions) {
+    if (!merged.includes(model)) merged.push(model)
+  }
+
+  return merged
+}
+
 function buildMatrices(catalog, taskCapabilitySet = { taskIds: [], requiredCapabilities: [] }) {
   const dev = chooseModels(catalog, 'dev')
   const cheapHeadless = chooseModels({
@@ -423,8 +440,8 @@ function buildMatrices(catalog, taskCapabilitySet = { taskIds: [], requiredCapab
   const cheapComparable = chooseModels({ ...catalog, models: taskComparable }, 'cheap')
   const balancedComparable = chooseModels({ ...catalog, models: taskComparable }, 'balanced')
   const cheap = chooseModels(catalog, 'cheap')
-  const frontier = chooseModels(catalog, 'frontier')
-  const balanced = chooseModels(catalog, 'balanced')
+  const frontier = withCuratedMatrixInclusions(chooseModels(catalog, 'frontier').map((item) => item.model), 'frontier')
+  const balanced = withCuratedMatrixInclusions(chooseModels(catalog, 'balanced').map((item) => item.model), 'balanced')
   const release = chooseModels(catalog, 'release')
 
   return {
@@ -449,11 +466,11 @@ function buildMatrices(catalog, taskCapabilitySet = { taskIds: [], requiredCapab
       },
       balanced: {
         description: 'Broader comparison set balancing price, speed, and intelligence, including expensive frontier models that should usually run less often than cheap matrices',
-        models: balanced.map((item) => item.model)
+        models: balanced
       },
       frontier: {
         description: 'Expensive frontier models for occasional high-signal comparison runs',
-        models: frontier.map((item) => item.model)
+        models: frontier
       },
       current_task_balanced_comparable: {
         description: 'Broader models fully comparable for the current checked-in task set',
