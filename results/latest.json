@@ -1,0 +1,4259 @@
+{
+  "run": {
+    "id": "2026-04-07T13-47-37-642Z",
+    "startedAt": "2026-04-07T13:47:37.642Z",
+    "completedAt": "2026-04-07T13:57:28.189Z",
+    "models": [
+      "opencode/gpt-5.4-mini"
+    ],
+    "taskCount": 9,
+    "repeats": 1
+  },
+  "results": [
+    {
+      "runId": "2026-04-07T13-47-37-642Z",
+      "repeat": 1,
+      "taskId": "01-iac-kubernetes-rollout",
+      "taskName": "Kubernetes rollout repair",
+      "category": "iac",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_297cd1accffeWt3PVSo6uigxmw",
+      "success": false,
+      "score": 0,
+      "durationMs": 44054,
+      "startedAt": "2026-04-07T13:47:39.066Z",
+      "completedAt": "2026-04-07T13:48:23.120Z",
+      "steps": 1,
+      "requestCount": 11,
+      "tokens": {
+        "total": 15329,
+        "input": 841,
+        "output": 115,
+        "reasoning": 37,
+        "cache": {
+          "write": 0,
+          "read": 14336
+        }
+      },
+      "costUsd": 0.00238995,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 11,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897c440b5ec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:47:40 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:47:43.170Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897c5b8c0ec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:47:44 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:47:45.788Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897c6b8887c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:47:46 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:47:57.551Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897cb5bebbc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:47:58 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:01.700Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897cd5de35c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:03 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:05.941Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897ce9c975c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:06 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:09.682Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897d0109d3c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:10 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:11.780Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897d0e2f17c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:12 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:15.088Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897d22aa8cc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:15 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:16.683Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897d2ccd06c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:17 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:19.253Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897d3cae55c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:19 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:23.048Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:48:23 +2ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:48:23 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:48:23 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T13:48:23 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=session.prompt step=11 sessionID=ses_297cd1accffeWt3PVSo6uigxmw loop",
+        "INFO  2026-04-07T13:48:23 +1ms service=session.prompt sessionID=ses_297cd1accffeWt3PVSo6uigxmw exiting loop",
+        "INFO  2026-04-07T13:48:23 +2ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T13:48:23 +1ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T13:48:23 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:48:23 +1ms service=session.compaction pruning",
+        "INFO  2026-04-07T13:48:23 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T13:48:23 +0ms service=server method=GET path=/session/ses_297cd1accffeWt3PVSo6uigxmw/diff request",
+        "INFO  2026-04-07T13:48:23 +0ms service=server status=started method=GET path=/session/ses_297cd1accffeWt3PVSo6uigxmw/diff request",
+        "INFO  2026-04-07T13:48:23 +4ms service=server status=completed duration=4 method=GET path=/session/ses_297cd1accffeWt3PVSo6uigxmw/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 1,
+        "stdout": "image must be upgraded to 1.4.2\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 0,
+      "valueScoreComponents": {
+        "orptFactor": 0,
+        "costFactor": 0,
+        "timeFactor": 0
+      },
+      "compositeScore": 0
+    },
+    {
+      "runId": "2026-04-07T13-47-37-642Z",
+      "repeat": 1,
+      "taskId": "02-terraform-static-site",
+      "taskName": "Terraform static site repair",
+      "category": "terraform",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_297cc6f19ffeQO4MZUkY7qOxJF",
+      "success": false,
+      "score": 0,
+      "durationMs": 58646,
+      "startedAt": "2026-04-07T13:48:23.128Z",
+      "completedAt": "2026-04-07T13:49:21.774Z",
+      "steps": 1,
+      "requestCount": 6,
+      "tokens": {
+        "total": 16235,
+        "input": 949,
+        "output": 123,
+        "reasoning": 315,
+        "cache": {
+          "write": 0,
+          "read": 14848
+        }
+      },
+      "costUsd": 0.00379635,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 6,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897d55083ac744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:23 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:26.713Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897d6b5e7ec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:27 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:28.316Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897d753ea1c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:28 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:46.851Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897dea1c08c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:47 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:48:49.632Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897dfa7997c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:48:50 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:49:12.082Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897e876e5bc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:49:12 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:49:21.655Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:49:21 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T13:49:21 +3ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=session.prompt step=6 sessionID=ses_297cc6f19ffeQO4MZUkY7qOxJF loop",
+        "INFO  2026-04-07T13:49:21 +1ms service=session.prompt sessionID=ses_297cc6f19ffeQO4MZUkY7qOxJF exiting loop",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T13:49:21 +0ms service=session.compaction pruning",
+        "INFO  2026-04-07T13:49:21 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:49:21 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T13:49:21 +6ms service=server method=GET path=/session/ses_297cc6f19ffeQO4MZUkY7qOxJF/diff request",
+        "INFO  2026-04-07T13:49:21 +0ms service=server status=started method=GET path=/session/ses_297cc6f19ffeQO4MZUkY7qOxJF/diff request",
+        "INFO  2026-04-07T13:49:21 +3ms service=server status=completed duration=3 method=GET path=/session/ses_297cc6f19ffeQO4MZUkY7qOxJF/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 1,
+        "stdout": "index document must be index.html\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 0,
+      "valueScoreComponents": {
+        "orptFactor": 0,
+        "costFactor": 0,
+        "timeFactor": 0
+      },
+      "compositeScore": 0
+    },
+    {
+      "runId": "2026-04-07T13-47-37-642Z",
+      "repeat": 1,
+      "taskId": "03-ansible-nginx-role",
+      "taskName": "Ansible nginx role completion",
+      "category": "ansible",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_297cb89f7ffeBvZ0dCF5k4TikD",
+      "success": false,
+      "score": 0,
+      "durationMs": 61855,
+      "startedAt": "2026-04-07T13:49:21.780Z",
+      "completedAt": "2026-04-07T13:50:23.635Z",
+      "steps": 1,
+      "requestCount": 9,
+      "tokens": {
+        "total": 15351,
+        "input": 375,
+        "output": 112,
+        "reasoning": 16,
+        "cache": {
+          "write": 0,
+          "read": 14848
+        }
+      },
+      "costUsd": 0.00197085,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 9,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897ec3ae52c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:49:22 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:49:24.964Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897ed778b2c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:49:25 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:49:26.962Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897ee3c8d9c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:49:27 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:49:38.329Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897f2fddbac744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:49:39 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:49:42.718Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897f465c2ac744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:49:43 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:49:47.422Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897f63d8aac744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:49:48 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:07.765Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e897fe3693dc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:08 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:12.520Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8980008d34c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:13 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:20.588Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8980333a3ec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:21 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:23.563Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:50:23 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:50:23 +2ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:50:23 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T13:50:23 +2ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=session.prompt step=9 sessionID=ses_297cb89f7ffeBvZ0dCF5k4TikD loop",
+        "INFO  2026-04-07T13:50:23 +1ms service=session.prompt sessionID=ses_297cb89f7ffeBvZ0dCF5k4TikD exiting loop",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:50:23 +1ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T13:50:23 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:50:23 +0ms service=session.compaction pruning",
+        "INFO  2026-04-07T13:50:23 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T13:50:23 +0ms service=server method=GET path=/session/ses_297cb89f7ffeBvZ0dCF5k4TikD/diff request",
+        "INFO  2026-04-07T13:50:23 +0ms service=server status=started method=GET path=/session/ses_297cb89f7ffeBvZ0dCF5k4TikD/diff request",
+        "INFO  2026-04-07T13:50:23 +2ms service=server status=completed duration=2 method=GET path=/session/ses_297cb89f7ffeBvZ0dCF5k4TikD/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 1,
+        "stdout": "template destination incorrect\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 0,
+      "valueScoreComponents": {
+        "orptFactor": 0,
+        "costFactor": 0,
+        "timeFactor": 0
+      },
+      "compositeScore": 0
+    },
+    {
+      "runId": "2026-04-07T13-47-37-642Z",
+      "repeat": 1,
+      "taskId": "04-docker-compose-observability",
+      "taskName": "Docker Compose observability fix",
+      "category": "docker-compose",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_297ca9856ffeaO07BwTMGXZMGL",
+      "success": false,
+      "score": 0,
+      "durationMs": 93022,
+      "startedAt": "2026-04-07T13:50:23.642Z",
+      "completedAt": "2026-04-07T13:51:56.664Z",
+      "steps": 1,
+      "requestCount": 15,
+      "tokens": {
+        "total": 21170,
+        "input": 588,
+        "output": 109,
+        "reasoning": 1017,
+        "cache": {
+          "write": 0,
+          "read": 19456
+        }
+      },
+      "costUsd": 0.0069672,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 15,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8980464db1c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:24 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:26.976Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89805b0adac744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:27 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:28.891Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898066d897c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:29 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:32.967Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8980805f8ac744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:33 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:34.856Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89808c1cbfc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:35 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:39.412Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8980a8b864c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:43 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:50:54.493Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8981176a8dc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:50:58 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:11.497Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8981740825c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:51:12 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:16.027Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89818d89f0c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:51:16 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:22.059Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8981c06db7c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:51:25 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:29.928Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8981e46a63c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:51:30 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:34.275Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898201c861c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:51:35 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:36.114Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89820aefebc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:51:36 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:40.552Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898226d8d2c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:51:41 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:44.095Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89823ceeeec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:51:44 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:56.557Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:51:56 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:51:56 +2ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:51:56 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T13:51:56 +2ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=session.prompt step=15 sessionID=ses_297ca9856ffeaO07BwTMGXZMGL loop",
+        "INFO  2026-04-07T13:51:56 +1ms service=session.prompt sessionID=ses_297ca9856ffeaO07BwTMGXZMGL exiting loop",
+        "INFO  2026-04-07T13:51:56 +2ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T13:51:56 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:51:56 +0ms service=session.compaction pruning",
+        "INFO  2026-04-07T13:51:56 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T13:51:56 +0ms service=server method=GET path=/session/ses_297ca9856ffeaO07BwTMGXZMGL/diff request",
+        "INFO  2026-04-07T13:51:56 +0ms service=server status=started method=GET path=/session/ses_297ca9856ffeaO07BwTMGXZMGL/diff request",
+        "INFO  2026-04-07T13:51:56 +2ms service=server status=completed duration=2 method=GET path=/session/ses_297ca9856ffeaO07BwTMGXZMGL/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 1,
+        "stdout": "grafana port mapping missing\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 0,
+      "valueScoreComponents": {
+        "orptFactor": 0,
+        "costFactor": 0,
+        "timeFactor": 0
+      },
+      "compositeScore": 0
+    },
+    {
+      "runId": "2026-04-07T13-47-37-642Z",
+      "repeat": 1,
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_297c92cf4ffeBbHShASQUu6dhn",
+      "success": true,
+      "score": 1,
+      "durationMs": 33903,
+      "startedAt": "2026-04-07T13:51:56.672Z",
+      "completedAt": "2026-04-07T13:52:30.575Z",
+      "steps": 1,
+      "requestCount": 8,
+      "tokens": {
+        "total": 13370,
+        "input": 427,
+        "output": 83,
+        "reasoning": 60,
+        "cache": {
+          "write": 0,
+          "read": 12800
+        }
+      },
+      "costUsd": 0.00192375,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 8,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89828bad4ec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:51:57 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:51:59.699Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89829e7f39c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:00 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:02.248Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8982ae4b00c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:02 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:11.964Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8982ecf8bec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:12 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:17.476Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89830dbb16c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:17 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:22.389Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89832d6881c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:23 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:26.023Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898343ff11c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:26 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked",
+            "vary": "Accept-Encoding"
+          },
+          "at": "2026-04-07T13:52:27.478Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89834c0c25c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:27 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:30.497Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:52:30 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:52:30 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:52:30 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T13:52:30 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=session.prompt step=8 sessionID=ses_297c92cf4ffeBbHShASQUu6dhn loop",
+        "INFO  2026-04-07T13:52:30 +1ms service=session.prompt sessionID=ses_297c92cf4ffeBbHShASQUu6dhn exiting loop",
+        "INFO  2026-04-07T13:52:30 +1ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T13:52:30 +1ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:52:30 +0ms service=session.compaction pruning",
+        "INFO  2026-04-07T13:52:30 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T13:52:30 +0ms service=server method=GET path=/session/ses_297c92cf4ffeBbHShASQUu6dhn/diff request",
+        "INFO  2026-04-07T13:52:30 +0ms service=server status=started method=GET path=/session/ses_297c92cf4ffeBbHShASQUu6dhn/diff request",
+        "INFO  2026-04-07T13:52:30 +2ms service=server status=completed duration=2 method=GET path=/session/ses_297c92cf4ffeBbHShASQUu6dhn/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 0,
+        "stdout": "ok\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 1,
+      "valueScoreComponents": {
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
+      },
+      "compositeScore": 1
+    },
+    {
+      "runId": "2026-04-07T13-47-37-642Z",
+      "repeat": 1,
+      "taskId": "06-kubernetes-oidc-rbac-repair",
+      "taskName": "Kubernetes OIDC RBAC repair",
+      "category": "kubernetes",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_297c8a878fferZ2QrOvPJVR2w3",
+      "success": false,
+      "score": 0,
+      "durationMs": 105388,
+      "startedAt": "2026-04-07T13:52:30.582Z",
+      "completedAt": "2026-04-07T13:54:15.970Z",
+      "steps": 1,
+      "requestCount": 14,
+      "tokens": {
+        "total": 21307,
+        "input": 641,
+        "output": 116,
+        "reasoning": 70,
+        "cache": {
+          "write": 0,
+          "read": 20480
+        }
+      },
+      "costUsd": 0.00285375,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 14,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89835fad96c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:31 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:34.886Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89837a5dfec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:35 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:37.075Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898387fd27c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:37 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:41.194Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8983a1dbf8c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:41 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:52:56.285Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8984005ce0c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:52:56 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:53:22.132Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8984a4ad26c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:53:23 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:53:28.616Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8984ca1b06c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:53:29 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:53:30.065Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8984d329e5c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:53:30 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:53:37.319Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898500bdc4c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:53:37 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:53:41.954Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89851dacc1c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:53:42 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:53:46.268Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898538ac2bc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:53:46 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:53:50.034Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89855018f4c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:53:50 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:09.450Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8985cc7ffec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:10 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:12.529Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8985dcddadc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:13 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:15.899Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:54:15 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:54:15 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:54:15 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:54:15 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T13:54:15 +2ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=session.prompt step=14 sessionID=ses_297c8a878fferZ2QrOvPJVR2w3 loop",
+        "INFO  2026-04-07T13:54:15 +1ms service=session.prompt sessionID=ses_297c8a878fferZ2QrOvPJVR2w3 exiting loop",
+        "INFO  2026-04-07T13:54:15 +2ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T13:54:15 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:54:15 +0ms service=session.compaction pruning",
+        "INFO  2026-04-07T13:54:15 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T13:54:15 +0ms service=server method=GET path=/session/ses_297c8a878fferZ2QrOvPJVR2w3/diff request",
+        "INFO  2026-04-07T13:54:15 +0ms service=server status=started method=GET path=/session/ses_297c8a878fferZ2QrOvPJVR2w3/diff request",
+        "INFO  2026-04-07T13:54:15 +3ms service=server status=completed duration=3 method=GET path=/session/ses_297c8a878fferZ2QrOvPJVR2w3/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 1,
+        "stdout": "wrong OIDC issuer URL\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 0,
+      "valueScoreComponents": {
+        "orptFactor": 0,
+        "costFactor": 0,
+        "timeFactor": 0
+      },
+      "compositeScore": 0
+    },
+    {
+      "runId": "2026-04-07T13-47-37-642Z",
+      "repeat": 1,
+      "taskId": "07-cnpg-restore-manifest-repair",
+      "taskName": "CNPG restore manifest repair",
+      "category": "kubernetes",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_297c70cc8ffeiMHdIYzPf4iAOQ",
+      "success": false,
+      "score": 0,
+      "durationMs": 63012,
+      "startedAt": "2026-04-07T13:54:15.977Z",
+      "completedAt": "2026-04-07T13:55:18.989Z",
+      "steps": 1,
+      "requestCount": 13,
+      "tokens": {
+        "total": 28410,
+        "input": 341,
+        "output": 114,
+        "reasoning": 307,
+        "cache": {
+          "write": 0,
+          "read": 27648
+        }
+      },
+      "costUsd": 0.00422385,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 13,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8985f28827c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:16 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:19.195Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8986067c82c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:21 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:24.910Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89862a1b81c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:25 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:28.873Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8986431b60c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:29 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:32.861Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89865c780cc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:33 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:36.016Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89867b08c6c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:38 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:40.860Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8986951eb9c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:42 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:55.549Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8986ec5b0bc744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:56 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:54:59.215Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8987005edec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:54:59 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:04.341Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8987207838c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:04 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:06.941Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898730b900c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:07 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:10.160Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898744cbfec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:10 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:15.190Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898764482ec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:15 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:18.925Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:55:18 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T13:55:18 +2ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=session.prompt step=13 sessionID=ses_297c70cc8ffeiMHdIYzPf4iAOQ loop",
+        "INFO  2026-04-07T13:55:18 +2ms service=session.prompt sessionID=ses_297c70cc8ffeiMHdIYzPf4iAOQ exiting loop",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T13:55:18 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:55:18 +0ms service=session.compaction pruning",
+        "INFO  2026-04-07T13:55:18 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T13:55:18 +1ms service=server method=GET path=/session/ses_297c70cc8ffeiMHdIYzPf4iAOQ/diff request",
+        "INFO  2026-04-07T13:55:18 +0ms service=server status=started method=GET path=/session/ses_297c70cc8ffeiMHdIYzPf4iAOQ/diff request",
+        "INFO  2026-04-07T13:55:18 +2ms service=server status=completed duration=2 method=GET path=/session/ses_297c70cc8ffeiMHdIYzPf4iAOQ/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 1,
+        "stdout": "restore must reference the expected backup resource\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 0,
+      "valueScoreComponents": {
+        "orptFactor": 0,
+        "costFactor": 0,
+        "timeFactor": 0
+      },
+      "compositeScore": 0
+    },
+    {
+      "runId": "2026-04-07T13-47-37-642Z",
+      "repeat": 1,
+      "taskId": "08-workspace-transplant-bundle-repair",
+      "taskName": "Workspace transplant bundle repair",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_297c61691ffeTBXhRDfEj5ihGA",
+      "success": false,
+      "score": 0,
+      "durationMs": 89522,
+      "startedAt": "2026-04-07T13:55:19.002Z",
+      "completedAt": "2026-04-07T13:56:48.524Z",
+      "steps": 1,
+      "requestCount": 14,
+      "tokens": {
+        "total": 18873,
+        "input": 278,
+        "output": 118,
+        "reasoning": 45,
+        "cache": {
+          "write": 0,
+          "read": 18432
+        }
+      },
+      "costUsd": 0.0023244,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 14,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89877c5c6ec744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:19 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:22.339Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8987910a0ac744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:22 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:25.210Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8987a2e992c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:25 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:28.721Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8987b8eb62c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:29 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:32.447Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8987d02be3c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:33 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:36.767Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8987eb3ce3c744-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:55:37 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:55:55.386Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8988ce4881b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:13 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:17.788Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8988eba9c1b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:18 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:20.868Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8988ff1f67b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:21 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:24.271Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8989144a29b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:24 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:30.114Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898938aeccb5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:30 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:32.137Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8989456a43b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:32 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:41.382Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e89897f7f71b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:41 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:44.908Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898994ff65b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:45 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:48.418Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:56:48 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:56:48 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:56:48 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T13:56:48 +2ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=session.prompt step=14 sessionID=ses_297c61691ffeTBXhRDfEj5ihGA loop",
+        "INFO  2026-04-07T13:56:48 +1ms service=session.prompt sessionID=ses_297c61691ffeTBXhRDfEj5ihGA exiting loop",
+        "INFO  2026-04-07T13:56:48 +2ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T13:56:48 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:56:48 +0ms service=session.compaction pruning",
+        "INFO  2026-04-07T13:56:48 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T13:56:48 +1ms service=server method=GET path=/session/ses_297c61691ffeTBXhRDfEj5ihGA/diff request",
+        "INFO  2026-04-07T13:56:48 +0ms service=server status=started method=GET path=/session/ses_297c61691ffeTBXhRDfEj5ihGA/diff request",
+        "INFO  2026-04-07T13:56:48 +2ms service=server status=completed duration=2 method=GET path=/session/ses_297c61691ffeTBXhRDfEj5ihGA/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 1,
+        "stdout": "workspace notes missing\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 0,
+      "valueScoreComponents": {
+        "orptFactor": 0,
+        "costFactor": 0,
+        "timeFactor": 0
+      },
+      "compositeScore": 0
+    },
+    {
+      "runId": "2026-04-07T13-47-37-642Z",
+      "repeat": 1,
+      "taskId": "09-gitops-workspace-render-validation",
+      "taskName": "GitOps workspace render validation",
+      "category": "gitops",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_297c4b8daffeDp6CnjkZbah9Mg",
+      "success": false,
+      "score": 0,
+      "durationMs": 39642,
+      "startedAt": "2026-04-07T13:56:48.533Z",
+      "completedAt": "2026-04-07T13:57:28.175Z",
+      "steps": 1,
+      "requestCount": 7,
+      "tokens": {
+        "total": 14991,
+        "input": 569,
+        "output": 42,
+        "reasoning": 44,
+        "cache": {
+          "write": 0,
+          "read": 14336
+        }
+      },
+      "costUsd": 0.00188895,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 7,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8989abda63b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:49 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:51.707Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8989bf7c3bb5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:52 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:54.751Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8989d26e48b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:55 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:56:57.541Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8989e3ec4db5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:56:58 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:57:04.501Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898a165c7eb5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:57:07 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:57:11.844Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898a3d5c59b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:57:12 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:57:26.500Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e898a993bb0b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 13:57:26 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T13:57:28.131Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=session.prompt step=7 sessionID=ses_297c4b8daffeDp6CnjkZbah9Mg loop",
+        "INFO  2026-04-07T13:57:28 +0ms service=session.prompt sessionID=ses_297c4b8daffeDp6CnjkZbah9Mg exiting loop",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T13:57:28 +1ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T13:57:28 +0ms service=session.compaction pruning",
+        "INFO  2026-04-07T13:57:28 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T13:57:28 +0ms service=server method=GET path=/session/ses_297c4b8daffeDp6CnjkZbah9Mg/diff request",
+        "INFO  2026-04-07T13:57:28 +0ms service=server status=started method=GET path=/session/ses_297c4b8daffeDp6CnjkZbah9Mg/diff request",
+        "INFO  2026-04-07T13:57:28 +1ms service=server status=completed duration=1 method=GET path=/session/ses_297c4b8daffeDp6CnjkZbah9Mg/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 1,
+        "stdout": "workspaceOidcGroup is wrong\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 0,
+      "valueScoreComponents": {
+        "orptFactor": 0,
+        "costFactor": 0,
+        "timeFactor": 0
+      },
+      "compositeScore": 0
+    }
+  ],
+  "leaderboard": [
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 9,
+      "successfulTasks": 1,
+      "failedTasks": 8,
+      "successRate": 0.1111111111111111,
+      "score": 0.1111111111111111,
+      "valueScore": 0.1111111111111111,
+      "compositeScore": 0.1111111111111111,
+      "orpt": 8,
+      "totalRequestCount": 97,
+      "totalRequestUnits": 97,
+      "totalWallTimeMs": 589044,
+      "totalCostUsd": 0.02833905,
+      "averageDurationMs": 33903,
+      "medianSteps": 1,
+      "averageCostUsd": 0.00192375,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "modelCatalog": {
+    "updatedAt": "2026-04-07T03:25:08.813Z",
+    "source": {
+      "provider": "opencode",
+      "inventoryUrl": "https://opencode.ai/zen/v1/models",
+      "enrichmentSources": [
+        {
+          "id": "artificial-analysis",
+          "name": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai",
+          "notes": "Manual seed data for model intelligence, agentic, speed, and selected benchmark price metrics until a stable machine-readable source is integrated."
+        },
+        {
+          "id": "openrouter",
+          "name": "OpenRouter",
+          "url": "https://openrouter.ai/api/v1/models",
+          "notes": "Automatic pricing enrichment source from OpenRouter model listings. When ORPT-Bench shows a reference price for a free model, it is explicitly labeled as a paid sibling or nearby family reference derived with a 3:1 input:output blend from OpenRouter prompt/output prices."
+        }
+      ]
+    },
+    "models": [
+      {
+        "model": "opencode/gemini-3.1-pro",
+        "modelId": "gemini-3.1-pro",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "google",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": 57,
+          "agenticScore": null,
+          "speedTokensPerSecond": 127,
+          "blendedPricePer1mTokensUsd": 4.5,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for google/gemini-3.1-pro-preview is 4.5 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gemini-3-flash",
+        "modelId": "gemini-3-flash",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "google",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": 46,
+          "agenticScore": null,
+          "speedTokensPerSecond": 179,
+          "blendedPricePer1mTokensUsd": 1.1,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for google/gemini-3-flash-preview is 1.125 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": false,
+          "notes": "Observed to loop and hit the benchmark process deadline on the task-05 scripting smoke run, so it should not be in the default headless dev matrix."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "limited",
+          "knownLimitations": [
+            "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+          ]
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/nemotron-3-super-free",
+        "modelId": "nemotron-3-super-free",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "nvidia",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": 36,
+          "agenticScore": null,
+          "speedTokensPerSecond": 155,
+          "blendedPricePer1mTokensUsd": 0,
+          "referenceBlendedPricePer1mTokensUsd": 0.2,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/nvidia-nemotron-3-super-120b-a12b",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for nvidia/nemotron-3-super-120b-a12b:free is 0 USD per 1M tokens using a 3:1 input:output mix. Reference price uses nvidia/nemotron-3-super-120b-a12b at 0.2 USD per 1M tokens from the same OpenRouter family."
+        },
+        "stability": {
+          "headlessFriendly": false,
+          "notes": "Observed to take a slow, tool-heavy path on the scripting smoke task."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "limited",
+          "knownLimitations": [
+            "Takes a slow, tool-heavy path on the scripting smoke task."
+          ]
+        },
+        "priceTier": "free",
+        "recommendedUse": "dev-smoke",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-3-5-haiku",
+        "modelId": "claude-3-5-haiku",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 10,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.5 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-haiku-4-5",
+        "modelId": "claude-haiku-4-5",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4.6 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gemini-3-pro",
+        "modelId": "gemini-3-pro",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "google",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.5625,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing google/gemini-3.1-flash-lite-preview using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5-nano",
+        "modelId": "gpt-5-nano",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.1375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5-nano using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.1-codex-mini",
+        "modelId": "gpt-5.1-codex-mini",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.6875,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.1-codex-mini using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.4-mini",
+        "modelId": "gpt-5.4-mini",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 1.6875,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-mini using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": true,
+          "notes": "Observed to complete ORPT-Bench scripting smoke runs cleanly and is the current preferred headless dev baseline."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "supported",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.4-nano",
+        "modelId": "gpt-5.4-nano",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.4625,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-nano using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/minimax-m2.1",
+        "modelId": "minimax-m2.1",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "minimax",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.44,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing minimax/minimax-m2.1 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/minimax-m2.5",
+        "modelId": "minimax-m2.5",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "minimax",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.336,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing minimax/minimax-m2.5 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/minimax-m2.5-free",
+        "modelId": "minimax-m2.5-free",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "minimax",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0,
+          "referenceBlendedPricePer1mTokensUsd": 0.336,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing minimax/minimax-m2.5:free using a 3:1 input:output blend. Reference price uses minimax/minimax-m2.5 at 0.336 USD per 1M tokens from the same OpenRouter family."
+        },
+        "stability": {
+          "headlessFriendly": false,
+          "notes": "Observed to trigger external_directory permission prompts in headless runs."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unsupported",
+          "knownLimitations": [
+            "Triggers external_directory permission prompts in headless runs."
+          ]
+        },
+        "priceTier": "free",
+        "recommendedUse": "dev-smoke",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/qwen3.6-plus-free",
+        "modelId": "qwen3.6-plus-free",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "unknown",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing qwen/qwen3.6-plus:free using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "free",
+        "recommendedUse": "dev-smoke",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/trinity-large-preview-free",
+        "modelId": "trinity-large-preview-free",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "unknown",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0,
+          "referenceBlendedPricePer1mTokensUsd": 0.3775,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing arcee-ai/trinity-large-preview:free using a 3:1 input:output blend. Reference price uses arcee-ai/trinity-large-thinking at 0.3775 USD per 1M tokens from the same OpenRouter family."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "free",
+        "recommendedUse": "dev-smoke",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-opus-4-6",
+        "modelId": "claude-opus-4-6",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "expensive",
+        "benchmark": {
+          "intelligenceScore": 53,
+          "agenticScore": null,
+          "speedTokensPerSecond": 49,
+          "blendedPricePer1mTokensUsd": 10,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for anthropic/claude-sonnet-4.6 is 6 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "balanced-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-opus-4-1",
+        "modelId": "claude-opus-4-1",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "expensive",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4.6 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-opus-4-5",
+        "modelId": "claude-opus-4-5",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "expensive",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4.6 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.4-pro",
+        "modelId": "gpt-5.4-pro",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "expensive",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 67.5,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-pro using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": true
+      },
+      {
+        "model": "opencode/gpt-5.4",
+        "modelId": "gpt-5.4",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": 57,
+          "agenticScore": null,
+          "speedTokensPerSecond": 74,
+          "blendedPricePer1mTokensUsd": 5.6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-4",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for openai/gpt-5.4 is 5.625 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "release-frontier",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-sonnet-4-6",
+        "modelId": "claude-sonnet-4-6",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": 52,
+          "agenticScore": null,
+          "speedTokensPerSecond": 67,
+          "blendedPricePer1mTokensUsd": 6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for anthropic/claude-sonnet-4.6 is 6 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "balanced-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/glm-5",
+        "modelId": "glm-5",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": 50,
+          "agenticScore": null,
+          "speedTokensPerSecond": 70,
+          "blendedPricePer1mTokensUsd": 1.6,
+          "referenceBlendedPricePer1mTokensUsd": 1.115,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/glm-5",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for z-ai/glm-5 is 1.115 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "balanced-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/big-pickle",
+        "modelId": "big-pickle",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "unknown",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "manual",
+          "sourceUrl": null,
+          "confidence": "manual",
+          "pricingSourceType": null,
+          "pricingConfidence": null,
+          "pricingNotes": "No trustworthy automatic pricing reference found yet, so cost is currently unknown."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-sonnet-4",
+        "modelId": "claude-sonnet-4",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-sonnet-4-5",
+        "modelId": "claude-sonnet-4-5",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4.6 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/glm-4.6",
+        "modelId": "glm-4.6",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.7675,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing z-ai/glm-4.6 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/glm-4.7",
+        "modelId": "glm-4.7",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.73,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing z-ai/glm-4.7 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5",
+        "modelId": "gpt-5",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5-codex",
+        "modelId": "gpt-5-codex",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5-codex using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.1",
+        "modelId": "gpt-5.1",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.1 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.1-codex",
+        "modelId": "gpt-5.1-codex",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.1-codex using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.1-codex-max",
+        "modelId": "gpt-5.1-codex-max",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.1-codex-max using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.2",
+        "modelId": "gpt-5.2",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 4.8125,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.2 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.2-codex",
+        "modelId": "gpt-5.2-codex",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 4.8125,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.2-codex using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.3-codex",
+        "modelId": "gpt-5.3-codex",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 4.8125,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.3-codex using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.3-codex-spark",
+        "modelId": "gpt-5.3-codex-spark",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.4625,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-nano using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/kimi-k2",
+        "modelId": "kimi-k2",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "moonshot",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 1.0025,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing moonshotai/kimi-k2 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/kimi-k2-thinking",
+        "modelId": "kimi-k2-thinking",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "moonshot",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.8525,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing moonshotai/kimi-k2-thinking using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/kimi-k2.5",
+        "modelId": "kimi-k2.5",
+        "object": "model",
+        "created": 1775532308,
+        "ownedBy": "opencode",
+        "family": "moonshot",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.717025,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing moonshotai/kimi-k2.5 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      }
+    ]
+  },
+  "taskCatalog": [
+    {
+      "id": "01-iac-kubernetes-rollout",
+      "name": "Kubernetes rollout repair",
+      "difficulty": "medium",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "02-terraform-static-site",
+      "name": "Terraform static site repair",
+      "difficulty": "high",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "03-ansible-nginx-role",
+      "name": "Ansible nginx role completion",
+      "difficulty": "high",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "04-docker-compose-observability",
+      "name": "Docker Compose observability fix",
+      "difficulty": "high",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "05-log-audit-script",
+      "name": "Log audit shell script",
+      "difficulty": "control",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "06-kubernetes-oidc-rbac-repair",
+      "name": "Kubernetes OIDC RBAC repair",
+      "difficulty": "high",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "07-cnpg-restore-manifest-repair",
+      "name": "CNPG restore manifest repair",
+      "difficulty": "high",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "08-workspace-transplant-bundle-repair",
+      "name": "Workspace transplant bundle repair",
+      "difficulty": "high",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "09-gitops-workspace-render-validation",
+      "name": "GitOps workspace render validation",
+      "difficulty": "high",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "10-bootstrap-phase-validation-repair",
+      "name": "Bootstrap phase validation repair",
+      "difficulty": "expert",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "11-mcp-openbao-contract-repair",
+      "name": "MCP OpenBao contract repair",
+      "difficulty": "expert",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    }
+  ],
+  "scoring": {
+    "valueScoreWeights": {
+      "orpt": 0.45,
+      "cost": 0.35,
+      "time": 0.2
+    },
+    "compositeScoreWeights": {
+      "score": 0.7,
+      "valueScore": 0.3
+    }
+  },
+  "modelSummary": [
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 9,
+      "successfulTasks": 1,
+      "failedTasks": 8,
+      "successRate": 0.1111111111111111,
+      "score": 0.1111111111111111,
+      "valueScore": 0.1111111111111111,
+      "compositeScore": 0.1111111111111111,
+      "orpt": 8,
+      "totalRequestCount": 97,
+      "totalRequestUnits": 97,
+      "totalWallTimeMs": 589044,
+      "totalCostUsd": 0.02833905,
+      "averageDurationMs": 33903,
+      "medianSteps": 1,
+      "averageCostUsd": 0.00192375,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "taskSummary": [
+    {
+      "taskId": "01-iac-kubernetes-rollout",
+      "taskName": "Kubernetes rollout repair",
+      "category": "iac",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 11,
+      "totalRequestUnits": 11,
+      "averageRequestUnits": 11,
+      "totalWallTimeMs": 44054,
+      "averageWallTimeMs": 44054,
+      "totalCostUsd": 0.00238995,
+      "averageCostUsd": 0.00238995,
+      "averageSteps": 1,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "02-terraform-static-site",
+      "taskName": "Terraform static site repair",
+      "category": "terraform",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 6,
+      "totalRequestUnits": 6,
+      "averageRequestUnits": 6,
+      "totalWallTimeMs": 58646,
+      "averageWallTimeMs": 58646,
+      "totalCostUsd": 0.00379635,
+      "averageCostUsd": 0.00379635,
+      "averageSteps": 1,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "03-ansible-nginx-role",
+      "taskName": "Ansible nginx role completion",
+      "category": "ansible",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 9,
+      "totalRequestUnits": 9,
+      "averageRequestUnits": 9,
+      "totalWallTimeMs": 61855,
+      "averageWallTimeMs": 61855,
+      "totalCostUsd": 0.00197085,
+      "averageCostUsd": 0.00197085,
+      "averageSteps": 1,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "04-docker-compose-observability",
+      "taskName": "Docker Compose observability fix",
+      "category": "docker-compose",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 15,
+      "totalRequestUnits": 15,
+      "averageRequestUnits": 15,
+      "totalWallTimeMs": 93022,
+      "averageWallTimeMs": 93022,
+      "totalCostUsd": 0.0069672,
+      "averageCostUsd": 0.0069672,
+      "averageSteps": 1,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 1,
+      "failures": 0,
+      "score": 1,
+      "valueScore": 1,
+      "compositeScore": 1,
+      "successRate": 1,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "averageRequestUnits": 8,
+      "totalWallTimeMs": 33903,
+      "averageWallTimeMs": 33903,
+      "totalCostUsd": 0.00192375,
+      "averageCostUsd": 0.00192375,
+      "averageSteps": 1,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "06-kubernetes-oidc-rbac-repair",
+      "taskName": "Kubernetes OIDC RBAC repair",
+      "category": "kubernetes",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 14,
+      "totalRequestUnits": 14,
+      "averageRequestUnits": 14,
+      "totalWallTimeMs": 105388,
+      "averageWallTimeMs": 105388,
+      "totalCostUsd": 0.00285375,
+      "averageCostUsd": 0.00285375,
+      "averageSteps": 1,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "07-cnpg-restore-manifest-repair",
+      "taskName": "CNPG restore manifest repair",
+      "category": "kubernetes",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 13,
+      "totalRequestUnits": 13,
+      "averageRequestUnits": 13,
+      "totalWallTimeMs": 63012,
+      "averageWallTimeMs": 63012,
+      "totalCostUsd": 0.00422385,
+      "averageCostUsd": 0.00422385,
+      "averageSteps": 1,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "08-workspace-transplant-bundle-repair",
+      "taskName": "Workspace transplant bundle repair",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 14,
+      "totalRequestUnits": 14,
+      "averageRequestUnits": 14,
+      "totalWallTimeMs": 89522,
+      "averageWallTimeMs": 89522,
+      "totalCostUsd": 0.0023244,
+      "averageCostUsd": 0.0023244,
+      "averageSteps": 1,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "09-gitops-workspace-render-validation",
+      "taskName": "GitOps workspace render validation",
+      "category": "gitops",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 7,
+      "totalRequestUnits": 7,
+      "averageRequestUnits": 7,
+      "totalWallTimeMs": 39642,
+      "averageWallTimeMs": 39642,
+      "totalCostUsd": 0.00188895,
+      "averageCostUsd": 0.00188895,
+      "averageSteps": 1,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "requestExtractors": {
+    "headerCandidates": [
+      "x-opencode-requests-used",
+      "x-opencode-request-units",
+      "x-request-cost-units",
+      "x-usage-requests",
+      "x-ratelimit-requests-used"
+    ],
+    "logRegexes": [
+      "requests?[_ -]?used[=: ]+([0-9]+)",
+      "request[_ -]?units[=: ]+([0-9]+)",
+      "quota[_ -]?used[=: ]+([0-9]+)"
+    ]
+  }
+}

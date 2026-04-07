@@ -1,0 +1,15 @@
+[
+  {
+    "type": "bar",
+    "x": [
+      "opencode/gpt-5.4-mini"
+    ],
+    "y": [
+      11.11
+    ],
+    "marker": {
+      "color": "#7c3aed"
+    },
+    "name": "Composite Score %"
+  }
+]
