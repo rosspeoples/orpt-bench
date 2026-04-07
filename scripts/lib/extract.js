@@ -70,8 +70,42 @@ export function summarizeParts(parts) {
   return { steps, toolInvocations }
 }
 
-export function summarizeMessage(info, parts) {
-  const { steps, toolInvocations } = summarizeParts(parts)
+export function summarizeLogLines(logLines) {
+  const toolInvocations = {}
+  let maxStep = -1
+
+  for (const line of logLines) {
+    const stepMatch = line.match(/service=session\.prompt\s+step=(\d+)/)
+    if (stepMatch) {
+      maxStep = Math.max(maxStep, Number(stepMatch[1]))
+    }
+
+    const toolMatch = line.match(/service=tool(?:\.registry)?\s+status=started\s+([a-zA-Z0-9._-]+)/)
+    if (toolMatch) {
+      const tool = toolMatch[1]
+      toolInvocations[tool] = (toolInvocations[tool] || 0) + 1
+    }
+  }
+
+  return {
+    steps: maxStep >= 0 ? maxStep + 1 : 0,
+    toolInvocations
+  }
+}
+
+function mergeToolInvocations(primary, secondary) {
+  const merged = { ...primary }
+  for (const [tool, count] of Object.entries(secondary)) {
+    merged[tool] = Math.max(merged[tool] || 0, count)
+  }
+  return merged
+}
+
+export function summarizeMessage(info, parts, logLines = []) {
+  const partSummary = summarizeParts(parts)
+  const logSummary = summarizeLogLines(logLines)
+  const steps = Math.max(partSummary.steps, logSummary.steps)
+  const toolInvocations = mergeToolInvocations(partSummary.toolInvocations, logSummary.toolInvocations)
   const stepParts = parts.filter((part) => part.type === 'step-finish')
   const totalTokensFromSteps = stepParts.reduce(
     (acc, part) => {

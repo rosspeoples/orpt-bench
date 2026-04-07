@@ -1,12 +1,12 @@
 {
-  "workspaceSlug": "release-engineering",
-  "displayName": "Release Engineering",
-  "pattern": "platform-ops",
-  "budgetPolicy": "standard-interactive",
-  "runtimeProfile": "platform-gitops",
-  "repoAccessProfile": "gitea-write",
-  "hostname": "release-engineering.build.ai.thepeoples.dev",
-  "workspaceOidcGroup": "thepeoples_dev_build_release_engineering_users",
+  "workspaceSlug": "release-eng",
+  "displayName": "Release Eng",
+  "pattern": "repo",
+  "budgetPolicy": "shared-bootstrap",
+  "runtimeProfile": "dev-default",
+  "repoAccessProfile": "gitea-readonly",
+  "hostname": "release-eng.build.thepeoples.dev",
+  "workspaceOidcGroup": "thepeoples_dev_build_users",
   "allowedRepos": ["benchmarks/orpt-bench"],
   "allowedApplications": ["platform-build"]
 }

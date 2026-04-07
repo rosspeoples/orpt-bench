@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { extractRequestUnits, summarizeParts } from '../scripts/lib/extract.js'
+import { extractRequestUnits, summarizeLogLines, summarizeParts } from '../scripts/lib/extract.js'
 
 test('extractRequestUnits sums matching proxy header values', () => {
   const summary = extractRequestUnits({
@@ -26,5 +26,18 @@ test('summarizeParts counts step-finish and tool parts', () => {
   ])
 
   assert.equal(summary.steps, 1)
+  assert.deepEqual(summary.toolInvocations, { bash: 2, read: 1 })
+})
+
+test('summarizeLogLines counts internal prompt loops and tool starts', () => {
+  const summary = summarizeLogLines([
+    'INFO service=session.prompt step=0 sessionID=abc loop',
+    'INFO service=tool.registry status=started bash',
+    'INFO service=tool.registry status=started read',
+    'INFO service=session.prompt step=1 sessionID=abc loop',
+    'INFO service=tool.registry status=started bash'
+  ])
+
+  assert.equal(summary.steps, 2)
   assert.deepEqual(summary.toolInvocations, { bash: 2, read: 1 })
 })

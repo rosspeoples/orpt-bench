@@ -11,7 +11,7 @@ data:
         displayName: Gitea MCP
         enabled: true
         secretNameSuffix: gitea-mcp
-        secretKey: GITEA_TOKEN
+        secretKey: GITEA_ACCESS_TOKEN
         secretRemotePathSuffix: mcp/gitea
       - slug: argocd
         displayName: ArgoCD MCP

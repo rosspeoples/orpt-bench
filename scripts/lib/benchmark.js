@@ -436,7 +436,7 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     cost: 0,
     tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
   }
-  const messageSummary = summarizeMessage(messageInfo, promptPayload?.parts || [])
+  const messageSummary = summarizeMessage(messageInfo, promptPayload?.parts || [], logLines)
 
   return {
     runId: runID,
