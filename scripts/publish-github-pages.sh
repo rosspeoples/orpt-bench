@@ -96,7 +96,7 @@ ensure_github_pages() {
   esac
 
   case "${status}" in
-    200|201|202)
+    200|201|202|204)
       printf 'ensured GitHub Pages source %s on %s/%s\n' "${PUBLISH_GITHUB_PAGES_BRANCH}" "${github_repo_owner}" "${github_repo_name}"
       ;;
     *)
