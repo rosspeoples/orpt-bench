@@ -1,0 +1,1762 @@
+{
+  "run": {
+    "id": "2026-04-07T01-21-18-353Z",
+    "startedAt": "2026-04-07T01:21:18.353Z",
+    "completedAt": "2026-04-07T01:24:05.719Z",
+    "models": [
+      "opencode/gpt-5.4-mini",
+      "opencode/gemini-3-flash"
+    ],
+    "taskCount": 1,
+    "repeats": 1
+  },
+  "results": [
+    {
+      "runId": "2026-04-07T01-21-18-353Z",
+      "repeat": 1,
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_29a7861a9ffeQBHsWfAl8SO5kQ",
+      "success": true,
+      "score": 1,
+      "durationMs": 30735,
+      "startedAt": "2026-04-07T01:21:19.862Z",
+      "completedAt": "2026-04-07T01:21:50.597Z",
+      "steps": 1,
+      "requestCount": 8,
+      "tokens": {
+        "total": 13190,
+        "input": 225,
+        "output": 92,
+        "reasoning": 73,
+        "cache": {
+          "write": 0,
+          "read": 12800
+        }
+      },
+      "costUsd": 0.00187125,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 8,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e853706cc290c9d-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 01:21:21 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:21:23.941Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e85371d6c0f0c9d-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 01:21:24 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:21:26.754Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e85372ebf6f0c9d-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 01:21:27 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:21:33.169Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8537581bd80c9d-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 01:21:33 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:21:36.798Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e85376daea90c9d-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 01:21:37 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:21:41.330Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e853789cf5b0c9d-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 01:21:41 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:21:45.487Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8537a4cada0c9d-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 01:21:46 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:21:47.205Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8537ae4bac0c9d-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 01:21:47 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:21:50.507Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T01:21:50 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=session.prompt step=8 sessionID=ses_29a7861a9ffeQBHsWfAl8SO5kQ loop",
+        "INFO  2026-04-07T01:21:50 +0ms service=session.prompt sessionID=ses_29a7861a9ffeQBHsWfAl8SO5kQ exiting loop",
+        "INFO  2026-04-07T01:21:50 +2ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T01:21:50 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T01:21:50 +1ms service=session.compaction pruning",
+        "INFO  2026-04-07T01:21:50 +6ms service=server method=GET path=/session/ses_29a7861a9ffeQBHsWfAl8SO5kQ/diff request",
+        "INFO  2026-04-07T01:21:50 +0ms service=server status=started method=GET path=/session/ses_29a7861a9ffeQBHsWfAl8SO5kQ/diff request",
+        "INFO  2026-04-07T01:21:50 +4ms service=server status=completed duration=4 method=GET path=/session/ses_29a7861a9ffeQBHsWfAl8SO5kQ/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 0,
+        "stdout": "ok\n",
+        "stderr": ""
+      },
+      "error": null
+    },
+    {
+      "runId": "2026-04-07T01-21-18-353Z",
+      "repeat": 1,
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "sessionId": "ses_29a77e371ffei31KWfkhzVF16F",
+      "success": false,
+      "score": 0,
+      "durationMs": 106589,
+      "startedAt": "2026-04-07T01:21:52.172Z",
+      "completedAt": "2026-04-07T01:23:38.761Z",
+      "steps": 0,
+      "requestCount": 6,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "costUsd": 0,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 6,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/models/gemini-3-flash:streamGenerateContent",
+          "upstreamUrl": "https://opencode.ai/zen/v1/models/gemini-3-flash:streamGenerateContent?alt=sse",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8537cf4cc450e6-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Tue, 07 Apr 2026 01:22:02 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:22:15.999Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/models/gemini-3-flash:streamGenerateContent",
+          "upstreamUrl": "https://opencode.ai/zen/v1/models/gemini-3-flash:streamGenerateContent?alt=sse",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e853862bc1f50e6-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Tue, 07 Apr 2026 01:22:18 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:22:19.318Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/models/gemini-3-flash:streamGenerateContent",
+          "upstreamUrl": "https://opencode.ai/zen/v1/models/gemini-3-flash:streamGenerateContent?alt=sse",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8538770afc50e6-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Tue, 07 Apr 2026 01:22:37 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:22:37.342Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/models/gemini-3-flash:streamGenerateContent",
+          "upstreamUrl": "https://opencode.ai/zen/v1/models/gemini-3-flash:streamGenerateContent?alt=sse",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8538e79ad750e6-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Tue, 07 Apr 2026 01:22:39 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:22:39.797Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/models/gemini-3-flash:streamGenerateContent",
+          "upstreamUrl": "https://opencode.ai/zen/v1/models/gemini-3-flash:streamGenerateContent?alt=sse",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8538f6fa1650e6-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Tue, 07 Apr 2026 01:22:48 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:22:49.151Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/models/gemini-3-flash:streamGenerateContent",
+          "upstreamUrl": "https://opencode.ai/zen/v1/models/gemini-3-flash:streamGenerateContent?alt=sse",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e8539317f7550e6-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Tue, 07 Apr 2026 01:22:51 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T01:22:52.617Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T01:22:52 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T01:22:52 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T01:22:52 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T01:22:52 +3ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T01:22:52 +2ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T01:22:52 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T01:22:52 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T01:22:52 +3ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T01:22:52 +2ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T01:22:52 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T01:22:52 +0ms service=session.prompt step=6 sessionID=ses_29a77e371ffei31KWfkhzVF16F loop",
+        "INFO  2026-04-07T01:22:52 +2ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T01:22:52 +0ms service=session.prompt status=started resolveTools",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started invalid",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started question",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started bash",
+        "INFO  2026-04-07T01:22:52 +0ms service=bash-tool shell=/usr/bin/bash bash tool using shell",
+        "INFO  2026-04-07T01:22:52 +1ms service=tool.registry status=started read",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started glob",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started grep",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started edit",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started webfetch",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started write",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started todowrite",
+        "INFO  2026-04-07T01:22:52 +1ms service=tool.registry status=completed duration=2 invalid",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started task",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started websearch",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=2 question",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=1 read",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=1 grep",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started codesearch",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=1 write",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=1 glob",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=1 codesearch",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=1 edit",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=1 websearch",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=started skill",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=1 webfetch",
+        "INFO  2026-04-07T01:22:52 +0ms service=permission permission=task pattern=explore ruleset=[{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"doom_loop\",\"action\":\"ask\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/root/.local/share/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"question\",\"action\":\"deny\",\"pattern\":\"*\"},{\"permission\":\"plan_enter\",\"action\":\"deny\",\"pattern\":\"*\"},{\"permission\":\"plan_exit\",\"action\":\"deny\",\"pattern\":\"*\"},{\"permission\":\"read\",\"pattern\":\"*\",\"action\":\"allow\"},{\"permission\":\"read\",\"pattern\":\"*.env\",\"action\":\"ask\"},{\"permission\":\"read\",\"pattern\":\"*.env.*\",\"action\":\"ask\"},{\"permission\":\"read\",\"pattern\":\"*.env.example\",\"action\":\"allow\"},{\"permission\":\"question\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"plan_enter\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"edit\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"bash\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"webfetch\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"task\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"edit\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"bash\",\"pattern\":\"*\",\"action\":\"allow\"},{\"permission\":\"webfetch\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"task\",\"pattern\":\"*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"pattern\":\"/root/.local/share/opencode/tool-output/*\",\"action\":\"allow\"}] evaluate",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=2 bash",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=1 todowrite",
+        "INFO  2026-04-07T01:22:52 +0ms service=permission permission=task pattern=general ruleset=[{\"permission\":\"*\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"doom_loop\",\"action\":\"ask\",\"pattern\":\"*\"},{\"permission\":\"external_directory\",\"pattern\":\"*\",\"action\":\"ask\"},{\"permission\":\"external_directory\",\"pattern\":\"/root/.local/share/opencode/tool-output/*\",\"action\":\"allow\"},{\"permission\":\"question\",\"action\":\"deny\",\"pattern\":\"*\"},{\"permission\":\"plan_enter\",\"action\":\"deny\",\"pattern\":\"*\"},{\"permission\":\"plan_exit\",\"action\":\"deny\",\"pattern\":\"*\"},{\"permission\":\"read\",\"pattern\":\"*\",\"action\":\"allow\"},{\"permission\":\"read\",\"pattern\":\"*.env\",\"action\":\"ask\"},{\"permission\":\"read\",\"pattern\":\"*.env.*\",\"action\":\"ask\"},{\"permission\":\"read\",\"pattern\":\"*.env.example\",\"action\":\"allow\"},{\"permission\":\"question\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"plan_enter\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"edit\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"bash\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"webfetch\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"task\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"edit\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"bash\",\"pattern\":\"*\",\"action\":\"allow\"},{\"permission\":\"webfetch\",\"action\":\"allow\",\"pattern\":\"*\"},{\"permission\":\"task\",\"pattern\":\"*\",\"action\":\"allow\"},{\"permission\":\"external_directory\",\"pattern\":\"/root/.local/share/opencode/tool-output/*\",\"action\":\"allow\"}] evaluate",
+        "INFO  2026-04-07T01:22:52 +1ms service=tool.registry status=completed duration=2 skill",
+        "INFO  2026-04-07T01:22:52 +0ms service=tool.registry status=completed duration=2 task",
+        "INFO  2026-04-07T01:22:52 +2ms service=session.prompt status=completed duration=5 resolveTools",
+        "INFO  2026-04-07T01:22:52 +0ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T01:22:52 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T01:22:52 +9ms service=session.processor process",
+        "INFO  2026-04-07T01:22:52 +1ms service=llm providerID=opencode modelID=gemini-3-flash sessionID=ses_29a77e371ffei31KWfkhzVF16F small=false agent=build mode=primary stream",
+        "INFO  2026-04-07T01:22:52 +4ms service=bus type=session.status publishing"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 1,
+        "stdout": "",
+        "stderr": ""
+      },
+      "error": {
+        "message": "Timed out after 106468ms",
+        "stack": "Error: Timed out after 106468ms\n    at node:internal/deps/undici/undici:14976:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async requestJson (file:///workspace/scripts/lib/opencode.js:18:22)\n    at async Object.promptSession (file:///workspace/scripts/lib/opencode.js:190:24)\n    at async executeTask (file:///workspace/scripts/lib/benchmark.js:281:21)\n    at async runBenchmarkSingle (file:///workspace/scripts/lib/benchmark.js:389:28)\n    at async main (file:///workspace/scripts/cli.js:19:20)"
+      }
+    }
+  ],
+  "leaderboard": [
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 1,
+      "failedTasks": 0,
+      "successRate": 1,
+      "score": 1,
+      "orpt": 8,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "totalWallTimeMs": 30735,
+      "totalCostUsd": 0.00187125,
+      "averageDurationMs": 30735,
+      "medianSteps": 1,
+      "averageCostUsd": 0.00187125,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 0,
+      "failedTasks": 1,
+      "successRate": 0,
+      "score": 0,
+      "orpt": null,
+      "totalRequestCount": 6,
+      "totalRequestUnits": 6,
+      "totalWallTimeMs": 106589,
+      "totalCostUsd": 0,
+      "averageDurationMs": 0,
+      "medianSteps": null,
+      "averageCostUsd": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": null
+    }
+  ],
+  "modelSummary": [
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 1,
+      "failedTasks": 0,
+      "successRate": 1,
+      "score": 1,
+      "orpt": 8,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "totalWallTimeMs": 30735,
+      "totalCostUsd": 0.00187125,
+      "averageDurationMs": 30735,
+      "medianSteps": 1,
+      "averageCostUsd": 0.00187125,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 0,
+      "failedTasks": 1,
+      "successRate": 0,
+      "score": 0,
+      "orpt": null,
+      "totalRequestCount": 6,
+      "totalRequestUnits": 6,
+      "totalWallTimeMs": 106589,
+      "totalCostUsd": 0,
+      "averageDurationMs": 0,
+      "medianSteps": null,
+      "averageCostUsd": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": null
+    }
+  ],
+  "taskSummary": [
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 1,
+      "failures": 0,
+      "score": 1,
+      "successRate": 1,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "averageRequestUnits": 8,
+      "totalWallTimeMs": 30735,
+      "averageWallTimeMs": 30735,
+      "totalCostUsd": 0.00187125,
+      "averageCostUsd": 0.00187125,
+      "averageSteps": 1,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "successRate": 0,
+      "totalRequestCount": 6,
+      "totalRequestUnits": 6,
+      "averageRequestUnits": 6,
+      "totalWallTimeMs": 106589,
+      "averageWallTimeMs": 106589,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "modelCatalog": {
+    "updatedAt": "2026-04-07T01:06:02.221Z",
+    "source": {
+      "provider": "opencode",
+      "inventoryUrl": "https://opencode.ai/zen/v1/models",
+      "enrichmentSources": [
+        {
+          "id": "artificial-analysis",
+          "name": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai",
+          "notes": "Manual seed data for model intelligence, agentic, speed, and blended price metrics until a stable machine-readable source is integrated."
+        }
+      ]
+    },
+    "models": [
+      {
+        "model": "opencode/gemini-3.1-pro",
+        "modelId": "gemini-3.1-pro",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "google",
+        "devTier": "dev-cheap",
+        "priceTier": "medium",
+        "recommendedUse": "dev-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": 57,
+          "agenticScore": null,
+          "speedTokensPerSecond": 127,
+          "blendedPricePer1mTokensUsd": 4.5,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+          "confidence": "manual"
+        }
+      },
+      {
+        "model": "opencode/gemini-3-flash",
+        "modelId": "gemini-3-flash",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "google",
+        "devTier": "dev-cheap",
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "stability": {
+          "headlessFriendly": false,
+          "notes": "Observed to loop and hit the benchmark process deadline on the task-05 scripting smoke run, so it should not be in the default headless dev matrix."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "limited",
+          "knownLimitations": [
+            "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+          ]
+        },
+        "benchmark": {
+          "intelligenceScore": 46,
+          "agenticScore": null,
+          "speedTokensPerSecond": 179,
+          "blendedPricePer1mTokensUsd": 1.1,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+          "confidence": "manual"
+        }
+      },
+      {
+        "model": "opencode/nemotron-3-super-free",
+        "modelId": "nemotron-3-super-free",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "nvidia",
+        "devTier": "dev-cheap",
+        "priceTier": "free",
+        "recommendedUse": "dev-smoke",
+        "stability": {
+          "headlessFriendly": false,
+          "notes": "Observed to take a slow, tool-heavy path on the scripting smoke task."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "limited",
+          "knownLimitations": [
+            "Takes a slow, tool-heavy path on the scripting smoke task."
+          ]
+        },
+        "benchmark": {
+          "intelligenceScore": 36,
+          "agenticScore": null,
+          "speedTokensPerSecond": 155,
+          "blendedPricePer1mTokensUsd": 0,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/nvidia-nemotron-3-super-120b-a12b",
+          "confidence": "manual"
+        }
+      },
+      {
+        "model": "opencode/claude-3-5-haiku",
+        "modelId": "claude-3-5-haiku",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "dev-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/claude-haiku-4-5",
+        "modelId": "claude-haiku-4-5",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "dev-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gemini-3-pro",
+        "modelId": "gemini-3-pro",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "google",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "dev-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5-nano",
+        "modelId": "gpt-5-nano",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.1-codex-mini",
+        "modelId": "gpt-5.1-codex-mini",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "dev-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.4-mini",
+        "modelId": "gpt-5.4-mini",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "dev-general",
+        "stability": {
+          "headlessFriendly": true,
+          "notes": "Observed to complete ORPT-Bench scripting smoke runs cleanly and is the current preferred headless dev baseline."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "supported",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": null,
+          "confidence": "manual-unmatched"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.4-nano",
+        "modelId": "gpt-5.4-nano",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/minimax-m2.1",
+        "modelId": "minimax-m2.1",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "minimax",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "dev-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/minimax-m2.5",
+        "modelId": "minimax-m2.5",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "minimax",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "dev-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": null,
+          "confidence": "manual-unmatched"
+        }
+      },
+      {
+        "model": "opencode/minimax-m2.5-free",
+        "modelId": "minimax-m2.5-free",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "minimax",
+        "devTier": "dev-cheap",
+        "priceTier": "free",
+        "recommendedUse": "dev-smoke",
+        "stability": {
+          "headlessFriendly": false,
+          "notes": "Observed to trigger external_directory permission prompts in headless runs."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unsupported",
+          "knownLimitations": [
+            "Triggers external_directory permission prompts in headless runs."
+          ]
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0,
+          "source": "manual",
+          "sourceUrl": null,
+          "confidence": "manual"
+        }
+      },
+      {
+        "model": "opencode/qwen3.6-plus-free",
+        "modelId": "qwen3.6-plus-free",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "unknown",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "dev-smoke",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/trinity-large-preview-free",
+        "modelId": "trinity-large-preview-free",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "unknown",
+        "devTier": "dev-cheap",
+        "priceTier": "unknown",
+        "recommendedUse": "dev-smoke",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/claude-opus-4-6",
+        "modelId": "claude-opus-4-6",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "expensive",
+        "priceTier": "high",
+        "recommendedUse": "balanced-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": 53,
+          "agenticScore": null,
+          "speedTokensPerSecond": 49,
+          "blendedPricePer1mTokensUsd": 10,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
+          "confidence": "manual"
+        }
+      },
+      {
+        "model": "opencode/claude-opus-4-1",
+        "modelId": "claude-opus-4-1",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "expensive",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/claude-opus-4-5",
+        "modelId": "claude-opus-4-5",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "expensive",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.4-pro",
+        "modelId": "gpt-5.4-pro",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "expensive",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.4",
+        "modelId": "gpt-5.4",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "medium",
+        "recommendedUse": "release-frontier",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": 57,
+          "agenticScore": null,
+          "speedTokensPerSecond": 74,
+          "blendedPricePer1mTokensUsd": 5.6,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-4",
+          "confidence": "manual"
+        }
+      },
+      {
+        "model": "opencode/claude-sonnet-4-6",
+        "modelId": "claude-sonnet-4-6",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "standard",
+        "priceTier": "medium",
+        "recommendedUse": "balanced-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": 52,
+          "agenticScore": null,
+          "speedTokensPerSecond": 67,
+          "blendedPricePer1mTokensUsd": 6,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
+          "confidence": "manual"
+        }
+      },
+      {
+        "model": "opencode/glm-5",
+        "modelId": "glm-5",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "priceTier": "low",
+        "recommendedUse": "balanced-general",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": 50,
+          "agenticScore": null,
+          "speedTokensPerSecond": 70,
+          "blendedPricePer1mTokensUsd": 1.6,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/glm-5",
+          "confidence": "manual"
+        }
+      },
+      {
+        "model": "opencode/big-pickle",
+        "modelId": "big-pickle",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "unknown",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/claude-sonnet-4",
+        "modelId": "claude-sonnet-4",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/claude-sonnet-4-5",
+        "modelId": "claude-sonnet-4-5",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/glm-4.6",
+        "modelId": "glm-4.6",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/glm-4.7",
+        "modelId": "glm-4.7",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5",
+        "modelId": "gpt-5",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5-codex",
+        "modelId": "gpt-5-codex",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.1",
+        "modelId": "gpt-5.1",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.1-codex",
+        "modelId": "gpt-5.1-codex",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.1-codex-max",
+        "modelId": "gpt-5.1-codex-max",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.2",
+        "modelId": "gpt-5.2",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.2-codex",
+        "modelId": "gpt-5.2-codex",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.3-codex",
+        "modelId": "gpt-5.3-codex",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/gpt-5.3-codex-spark",
+        "modelId": "gpt-5.3-codex-spark",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/kimi-k2",
+        "modelId": "kimi-k2",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "moonshot",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/kimi-k2-thinking",
+        "modelId": "kimi-k2-thinking",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "moonshot",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": null,
+          "sourceUrl": null,
+          "confidence": "none"
+        }
+      },
+      {
+        "model": "opencode/kimi-k2.5",
+        "modelId": "kimi-k2.5",
+        "object": "model",
+        "created": 1775523962,
+        "ownedBy": "opencode",
+        "family": "moonshot",
+        "devTier": "standard",
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": null,
+          "confidence": "manual-unmatched"
+        }
+      }
+    ]
+  },
+  "taskCatalog": [
+    {
+      "id": "05-log-audit-script",
+      "name": "Log audit shell script",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    }
+  ],
+  "requestExtractors": {
+    "headerCandidates": [
+      "x-opencode-requests-used",
+      "x-opencode-request-units",
+      "x-request-cost-units",
+      "x-usage-requests",
+      "x-ratelimit-requests-used"
+    ],
+    "logRegexes": [
+      "requests?[_ -]?used[=: ]+([0-9]+)",
+      "request[_ -]?units[=: ]+([0-9]+)",
+      "quota[_ -]?used[=: ]+([0-9]+)"
+    ]
+  }
+}

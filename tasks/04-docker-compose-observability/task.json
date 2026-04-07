@@ -1,0 +1,9 @@
+{
+  "id": "04-docker-compose-observability",
+  "name": "Docker Compose observability fix",
+  "category": "docker-compose",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the Docker Compose stack so the app, prometheus, and grafana services are wired correctly and the healthcheck is valid. Keep the stack small and consistent with the fixture. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 300
+}

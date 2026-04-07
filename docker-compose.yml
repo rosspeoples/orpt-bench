@@ -1,0 +1,19 @@
+services:
+  runner:
+    build:
+      context: .
+      dockerfile: ci/Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - runner_node_modules:/workspace/node_modules
+    env_file:
+      - .env.benchmark
+    environment:
+      OPENCODE_API_KEY: ${OPENCODE_API_KEY:-}
+      ORPT_RESULTS_DIR: /workspace/results
+      ORPT_TMP_DIR: /workspace/.tmp
+    command: ["benchmark"]
+
+volumes:
+  runner_node_modules:

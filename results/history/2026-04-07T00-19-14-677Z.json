@@ -1,0 +1,302 @@
+{
+  "run": {
+    "id": "2026-04-07T00-19-14-677Z",
+    "startedAt": "2026-04-07T00:19:14.678Z",
+    "completedAt": null,
+    "models": [
+      "opencode/gpt-5.4-mini",
+      "opencode/gemini-3-flash"
+    ],
+    "taskCount": 1,
+    "repeats": 1
+  },
+  "results": [
+    {
+      "runId": "2026-04-07T00-19-14-677Z",
+      "repeat": 1,
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_29ab133d8fferVgbBWS1Z6hqvM",
+      "success": true,
+      "score": 1,
+      "durationMs": 25645,
+      "startedAt": "2026-04-07T00:19:16.049Z",
+      "completedAt": "2026-04-07T00:19:41.694Z",
+      "steps": 1,
+      "requestCount": 7,
+      "tokens": {
+        "total": 12842,
+        "input": 502,
+        "output": 52,
+        "reasoning": 0,
+        "cache": {
+          "write": 0,
+          "read": 12288
+        }
+      },
+      "costUsd": 0.0015321,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 7,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84dc1c5bb05f62-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:19:17 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:19:20.578Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84dc365b555f62-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:19:21 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:19:22.881Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84dc44796a5f62-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:19:23 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:19:29.969Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84dc721bdf5f62-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:19:30 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked",
+            "vary": "Accept-Encoding"
+          },
+          "at": "2026-04-07T00:19:33.098Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84dc849b515f62-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:19:33 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:19:36.422Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84dc992f295f62-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:19:37 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:19:40.579Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84dcb30d215f62-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:19:41 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:19:41.630Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T00:19:41 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T00:19:41 +2ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=session.prompt step=7 sessionID=ses_29ab133d8fferVgbBWS1Z6hqvM loop",
+        "INFO  2026-04-07T00:19:41 +1ms service=session.prompt sessionID=ses_29ab133d8fferVgbBWS1Z6hqvM exiting loop",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T00:19:41 +0ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T00:19:41 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T00:19:41 +1ms service=session.compaction pruning",
+        "INFO  2026-04-07T00:19:41 +1ms service=server method=GET path=/session/ses_29ab133d8fferVgbBWS1Z6hqvM/diff request",
+        "INFO  2026-04-07T00:19:41 +0ms service=server status=started method=GET path=/session/ses_29ab133d8fferVgbBWS1Z6hqvM/diff request",
+        "INFO  2026-04-07T00:19:41 +4ms service=server status=completed duration=4 method=GET path=/session/ses_29ab133d8fferVgbBWS1Z6hqvM/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 0,
+        "stdout": "ok\n",
+        "stderr": ""
+      },
+      "error": null
+    }
+  ],
+  "leaderboard": [
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 1,
+      "failedTasks": 0,
+      "successRate": 1,
+      "score": 1,
+      "orpt": 7,
+      "totalRequestCount": 7,
+      "totalRequestUnits": 7,
+      "totalWallTimeMs": 25645,
+      "totalCostUsd": 0.0015321,
+      "averageDurationMs": 25645,
+      "medianSteps": 1,
+      "averageCostUsd": 0.0015321,
+      "eligible": true,
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "modelSummary": [
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 1,
+      "failedTasks": 0,
+      "successRate": 1,
+      "score": 1,
+      "orpt": 7,
+      "totalRequestCount": 7,
+      "totalRequestUnits": 7,
+      "totalWallTimeMs": 25645,
+      "totalCostUsd": 0.0015321,
+      "averageDurationMs": 25645,
+      "medianSteps": 1,
+      "averageCostUsd": 0.0015321,
+      "eligible": true,
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "taskSummary": [
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 1,
+      "failures": 0,
+      "score": 1,
+      "successRate": 1,
+      "totalRequestCount": 7,
+      "totalRequestUnits": 7,
+      "averageRequestUnits": 7,
+      "totalWallTimeMs": 25645,
+      "averageWallTimeMs": 25645,
+      "totalCostUsd": 0.0015321,
+      "averageCostUsd": 0.0015321,
+      "averageSteps": 1,
+      "eligible": true,
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "requestExtractors": {
+    "headerCandidates": [
+      "x-opencode-requests-used",
+      "x-opencode-request-units",
+      "x-request-cost-units",
+      "x-usage-requests",
+      "x-ratelimit-requests-used"
+    ],
+    "logRegexes": [
+      "requests?[_ -]?used[=: ]+([0-9]+)",
+      "request[_ -]?units[=: ]+([0-9]+)",
+      "quota[_ -]?used[=: ]+([0-9]+)"
+    ]
+  }
+}

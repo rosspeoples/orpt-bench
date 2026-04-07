@@ -1,0 +1,80 @@
+name: orpt-bench
+
+on:
+  workflow_dispatch:
+    inputs:
+      matrix:
+        description: Generated matrix name to benchmark
+        required: false
+        default: cheap
+      repeats:
+        description: Repeat count per task/model
+        required: false
+        default: "1"
+      commit_results:
+        description: Commit generated artifacts back to the branch
+        required: false
+        default: "true"
+  schedule:
+    - cron: "0 6 * * 1"
+    - cron: "0 6 1 * *"
+
+permissions:
+  contents: write
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    env:
+      BENCHMARK_MATRIX: ${{ inputs.matrix || '' }}
+      BENCHMARK_REPEATS: ${{ inputs.repeats || vars.BENCHMARK_REPEATS || '1' }}
+      BENCHMARK_WRITE_README: "1"
+      OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select scheduled matrix
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          if [ "${{ github.event.schedule }}" = "0 6 * * 1" ]; then
+            printf 'BENCHMARK_MATRIX=cheap\n' >> "$GITHUB_ENV"
+          else
+            printf 'BENCHMARK_MATRIX=release\n' >> "$GITHUB_ENV"
+          fi
+
+      - name: Build runner image
+        run: docker compose build
+
+      - name: Sync model catalog
+        run: docker compose run --rm runner sync-models
+
+      - name: Apply selected model matrix
+        run: docker compose run --rm runner use-matrix "$BENCHMARK_MATRIX"
+
+      - name: Validate fixtures
+        run: docker compose run --rm runner validate
+
+      - name: Run benchmark
+        run: docker compose run --rm runner benchmark
+
+      - name: Run unit tests
+        run: docker compose run --rm --entrypoint bash runner -lc "npm test"
+
+      - name: Upload benchmark artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: orpt-bench-results-${{ env.BENCHMARK_MATRIX }}
+          path: |
+            results
+            models
+            README.md
+
+      - name: Commit updated artifacts
+        if: ${{ github.event_name == 'schedule' || inputs.commit_results == 'true' }}
+        run: |
+          export GIT_AUTHOR_NAME=github-actions
+          export GIT_AUTHOR_EMAIL=github-actions@users.noreply.github.com
+          export GIT_COMMITTER_NAME=github-actions
+          export GIT_COMMITTER_EMAIL=github-actions@users.noreply.github.com
+          bash ci/commit-results.sh
+          git push

@@ -1,0 +1,51 @@
+{
+  "updatedAt": "2026-04-06T00:00:00.000Z",
+  "models": {
+    "opencode/gpt-5.4-mini": {
+      "stability": {
+        "headlessFriendly": true,
+        "notes": "Observed to complete ORPT-Bench scripting smoke runs cleanly and is the current preferred headless dev baseline."
+      },
+      "featureSupport": {
+        "unattendedBenchmarkRuns": "supported",
+        "knownLimitations": []
+      }
+    },
+    "opencode/gemini-3-flash": {
+      "stability": {
+        "headlessFriendly": false,
+        "notes": "Observed to loop and hit the benchmark process deadline on the task-05 scripting smoke run, so it should not be in the default headless dev matrix."
+      },
+      "featureSupport": {
+        "unattendedBenchmarkRuns": "limited",
+        "knownLimitations": [
+          "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+        ]
+      }
+    },
+    "opencode/minimax-m2.5-free": {
+      "stability": {
+        "headlessFriendly": false,
+        "notes": "Observed to trigger external_directory permission prompts in headless runs."
+      },
+      "featureSupport": {
+        "unattendedBenchmarkRuns": "unsupported",
+        "knownLimitations": [
+          "Triggers external_directory permission prompts in headless runs."
+        ]
+      }
+    },
+    "opencode/nemotron-3-super-free": {
+      "stability": {
+        "headlessFriendly": false,
+        "notes": "Observed to take a slow, tool-heavy path on the scripting smoke task."
+      },
+      "featureSupport": {
+        "unattendedBenchmarkRuns": "limited",
+        "knownLimitations": [
+          "Takes a slow, tool-heavy path on the scripting smoke task."
+        ]
+      }
+    }
+  }
+}

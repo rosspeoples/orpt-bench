@@ -1,0 +1,8 @@
+{
+  "models": [
+    {
+      "id": "opencode/gpt-5.4-pro",
+      "reason": "Excluded from generated benchmark matrices because it is currently too expensive for the intended benchmark cadence."
+    }
+  ]
+}

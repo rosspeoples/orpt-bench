@@ -1,0 +1,3 @@
+2026-04-01T10:00:00Z worker INFO started
+2026-04-01T10:01:00Z worker ERROR retry_exhausted
+2026-04-01T10:02:00Z worker WARN queue_depth_high

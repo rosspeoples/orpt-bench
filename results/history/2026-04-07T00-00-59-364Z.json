@@ -1,0 +1,316 @@
+{
+  "run": {
+    "id": "2026-04-07T00-00-59-364Z",
+    "startedAt": "2026-04-07T00:00:59.364Z",
+    "completedAt": "2026-04-07T00:01:35.047Z",
+    "models": [
+      "opencode/gpt-5.4-mini"
+    ],
+    "taskCount": 1,
+    "repeats": 1
+  },
+  "results": [
+    {
+      "runId": "2026-04-07T00-00-59-364Z",
+      "repeat": 1,
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "sessionId": "ses_29ac1ea34ffeVsPdfSsx8OYwOi",
+      "success": true,
+      "score": 1,
+      "durationMs": 34300,
+      "startedAt": "2026-04-07T00:01:00.742Z",
+      "completedAt": "2026-04-07T00:01:35.042Z",
+      "steps": 1,
+      "requestCount": 8,
+      "tokens": {
+        "total": 13431,
+        "input": 540,
+        "output": 91,
+        "reasoning": 0,
+        "cache": {
+          "write": 0,
+          "read": 12800
+        }
+      },
+      "costUsd": 0.0017745,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 8,
+      "requestAccountingSource": "proxy-call-count",
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84c15e3a99b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:01:01 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:01:04.375Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84c173197ab5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:01:04 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:01:08.825Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84c18eabbbb5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:01:09 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:01:20.414Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84c1d8babeb5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:01:21 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:01:24.425Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84c1f06a41b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:01:25 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:01:28.888Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84c20c1f20b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:01:29 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:01:30.729Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84c2178d39b5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:01:31 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:01:33.590Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/responses",
+          "upstreamUrl": "https://opencode.ai/zen/v1/responses",
+          "status": 200,
+          "responseHeaders": {
+            "cf-ray": "9e84c229387db5fc-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream; charset=utf-8",
+            "date": "Tue, 07 Apr 2026 00:01:33 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-07T00:01:34.968Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T00:01:34 +2ms service=bus type=session.updated publishing",
+        "INFO  2026-04-07T00:01:34 +2ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=session.prompt step=8 sessionID=ses_29ac1ea34ffeVsPdfSsx8OYwOi loop",
+        "INFO  2026-04-07T00:01:34 +1ms service=session.prompt sessionID=ses_29ac1ea34ffeVsPdfSsx8OYwOi exiting loop",
+        "INFO  2026-04-07T00:01:34 +2ms service=bus type=session.status publishing",
+        "INFO  2026-04-07T00:01:34 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=session.diff publishing",
+        "INFO  2026-04-07T00:01:35 +1ms service=session.compaction pruning",
+        "INFO  2026-04-07T00:01:34 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-07T00:01:35 +2ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-07T00:01:35 +0ms service=server method=GET path=/session/ses_29ac1ea34ffeVsPdfSsx8OYwOi/diff request",
+        "INFO  2026-04-07T00:01:35 +0ms service=server status=started method=GET path=/session/ses_29ac1ea34ffeVsPdfSsx8OYwOi/diff request",
+        "INFO  2026-04-07T00:01:35 +4ms service=server status=completed duration=4 method=GET path=/session/ses_29ac1ea34ffeVsPdfSsx8OYwOi/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 0,
+        "stdout": "ok\n",
+        "stderr": ""
+      },
+      "error": null
+    }
+  ],
+  "leaderboard": [
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 1,
+      "failedTasks": 0,
+      "successRate": 1,
+      "score": 1,
+      "orpt": 8,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "totalWallTimeMs": 34300,
+      "totalCostUsd": 0.0017745,
+      "averageDurationMs": 34300,
+      "medianSteps": 1,
+      "averageCostUsd": 0.0017745,
+      "eligible": true,
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "modelSummary": [
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 1,
+      "failedTasks": 0,
+      "successRate": 1,
+      "score": 1,
+      "orpt": 8,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "totalWallTimeMs": 34300,
+      "totalCostUsd": 0.0017745,
+      "averageDurationMs": 34300,
+      "medianSteps": 1,
+      "averageCostUsd": 0.0017745,
+      "eligible": true,
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "taskSummary": [
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gpt-5.4-mini",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 1,
+      "failures": 0,
+      "score": 1,
+      "successRate": 1,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "averageRequestUnits": 8,
+      "totalWallTimeMs": 34300,
+      "averageWallTimeMs": 34300,
+      "totalCostUsd": 0.0017745,
+      "averageCostUsd": 0.0017745,
+      "averageSteps": 1,
+      "eligible": true,
+      "requestAccountingSource": "proxy-call-count"
+    }
+  ],
+  "requestExtractors": {
+    "headerCandidates": [
+      "x-opencode-requests-used",
+      "x-opencode-request-units",
+      "x-request-cost-units",
+      "x-usage-requests",
+      "x-ratelimit-requests-used"
+    ],
+    "logRegexes": [
+      "requests?[_ -]?used[=: ]+([0-9]+)",
+      "request[_ -]?units[=: ]+([0-9]+)",
+      "quota[_ -]?used[=: ]+([0-9]+)"
+    ]
+  }
+}

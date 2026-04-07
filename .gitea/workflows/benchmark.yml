@@ -1,0 +1,42 @@
+name: orpt-bench
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    env:
+      BENCHMARK_MODELS: ${BENCHMARK_MODELS:-opencode/gpt-5.4-mini,opencode/minimax-m2.5-free}
+      BENCHMARK_REPEATS: ${BENCHMARK_REPEATS:-1}
+      BENCHMARK_WRITE_README: "1"
+      OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build runner image
+        run: docker compose build
+
+      - name: Sync model catalog
+        run: docker compose run --rm runner sync-models
+
+      - name: Validate fixtures
+        run: docker compose run --rm runner validate
+
+      - name: Run unit tests
+        run: docker compose run --rm --entrypoint bash runner -lc "npm test"
+
+      - name: Run benchmark
+        run: docker compose run --rm runner benchmark
+
+      - name: Commit updated artifacts
+        run: |
+          export GIT_AUTHOR_NAME=gitea-actions
+          export GIT_AUTHOR_EMAIL=gitea-actions@localhost
+          export GIT_COMMITTER_NAME=gitea-actions
+          export GIT_COMMITTER_EMAIL=gitea-actions@localhost
+          bash ci/commit-results.sh || true
+          git push || true

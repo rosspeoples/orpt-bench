@@ -1,0 +1,10 @@
+- name: Install web packages
+  package:
+    name: curl
+    state: present
+
+- name: Start service
+  service:
+    name: nginx
+    state: stopped
+    enabled: false

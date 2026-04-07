@@ -1,0 +1,81 @@
+{
+  "updatedAt": "2026-04-07T03:25:08.815Z",
+  "taskSet": {
+    "taskIds": [
+      "01-iac-kubernetes-rollout",
+      "02-terraform-static-site",
+      "03-ansible-nginx-role",
+      "04-docker-compose-observability",
+      "05-log-audit-script"
+    ],
+    "requiredCapabilities": [
+      "unattendedBenchmarkRuns"
+    ]
+  },
+  "matrices": {
+    "dev": {
+      "description": "Fastest cheap matrix for local development and harness debugging",
+      "models": [
+        "opencode/gpt-5.4-mini"
+      ]
+    },
+    "cheap_headless": {
+      "description": "Lowest-cost matrix limited to observed headless-friendly models",
+      "models": [
+        "opencode/gpt-5.4-mini"
+      ]
+    },
+    "cheap": {
+      "description": "Lowest-cost generally capable matrix",
+      "models": [
+        "opencode/gemini-3-flash",
+        "opencode/nemotron-3-super-free",
+        "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
+        "opencode/minimax-m2.5-free"
+      ]
+    },
+    "current_task_cheap_comparable": {
+      "description": "Lowest-cost models fully comparable for the current checked-in task set",
+      "models": [
+        "opencode/gpt-5.4-mini"
+      ]
+    },
+    "balanced": {
+      "description": "Broader comparison set balancing price, speed, and intelligence, including expensive frontier models that should usually run less often than cheap matrices",
+      "models": [
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash",
+        "opencode/gpt-5.4",
+        "opencode/glm-5",
+        "opencode/claude-sonnet-4-6",
+        "opencode/claude-opus-4-6"
+      ]
+    },
+    "frontier": {
+      "description": "Expensive frontier models for occasional high-signal comparison runs",
+      "models": [
+        "opencode/gpt-5.4",
+        "opencode/claude-opus-4-6",
+        "opencode/claude-sonnet-4-6",
+        "opencode/claude-opus-4-1"
+      ]
+    },
+    "current_task_balanced_comparable": {
+      "description": "Broader models fully comparable for the current checked-in task set",
+      "models": [
+        "opencode/gpt-5.4-mini"
+      ]
+    },
+    "release": {
+      "description": "Recommended higher-signal leaderboard matrix for less frequent full runs, including expensive models like gpt-5.4 and claude-opus-4-6",
+      "models": [
+        "opencode/gemini-3.1-pro",
+        "opencode/gpt-5.4",
+        "opencode/claude-sonnet-4-6",
+        "opencode/glm-5",
+        "opencode/claude-opus-4-6"
+      ]
+    }
+  }
+}

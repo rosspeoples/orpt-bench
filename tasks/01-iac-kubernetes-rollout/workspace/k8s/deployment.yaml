@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ap1
+  template:
+    metadata:
+      labels:
+        app: ap1
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/example/api:1.4.1
+          ports:
+            - containerPort: 8000
+---

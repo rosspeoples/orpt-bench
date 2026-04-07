@@ -1,0 +1,17 @@
+[
+  {
+    "type": "bar",
+    "x": [
+      "opencode/gpt-5.4-mini",
+      "opencode/gemini-3-flash"
+    ],
+    "y": [
+      100,
+      0
+    ],
+    "marker": {
+      "color": "#16a34a"
+    },
+    "name": "Success Rate %"
+  }
+]

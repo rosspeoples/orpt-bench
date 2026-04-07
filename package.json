@@ -1,0 +1,22 @@
+{
+  "name": "orpt-bench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenCode Agentic Efficiency Benchmark",
+  "scripts": {
+    "benchmark": "node scripts/cli.js benchmark",
+    "report": "node scripts/cli.js report",
+    "select-matrix": "node scripts/cli.js select-matrix",
+    "sync-models": "node scripts/cli.js sync-models",
+    "use-matrix": "node scripts/cli.js use-matrix",
+    "validate": "node scripts/cli.js validate",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@opencode-ai/sdk": "1.3.17",
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1",
+    "plotly.js-dist-min": "3.1.0"
+  }
+}

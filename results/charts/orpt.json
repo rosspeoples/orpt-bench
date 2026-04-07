@@ -1,0 +1,15 @@
+[
+  {
+    "type": "bar",
+    "x": [
+      "opencode/gpt-5.4-mini"
+    ],
+    "y": [
+      6
+    ],
+    "marker": {
+      "color": "#2563eb"
+    },
+    "name": "ORPT"
+  }
+]

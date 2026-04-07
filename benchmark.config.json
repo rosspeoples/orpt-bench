@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "ORPT-Bench",
+  "results": {
+    "historyDir": "results/history",
+    "latestFile": "results/latest.json",
+    "leaderboardFile": "results/leaderboard.md",
+    "chartsDir": "results/charts"
+  },
+  "runner": {
+    "server": {
+      "hostname": "127.0.0.1",
+      "port": 4096,
+      "startupTimeoutMs": 15000
+    },
+    "taskTimeoutMs": 600000,
+    "agent": "build",
+    "smallModelStrategy": "same-as-benchmark-model",
+    "scoring": {
+      "valueScoreWeights": {
+        "orpt": 0.45,
+        "cost": 0.35,
+        "time": 0.2
+      },
+      "compositeScoreWeights": {
+        "score": 0.7,
+        "valueScore": 0.3
+      }
+    },
+    "requestExtractors": {
+      "headerCandidates": [
+        "x-opencode-requests-used",
+        "x-opencode-request-units",
+        "x-request-cost-units",
+        "x-usage-requests",
+        "x-ratelimit-requests-used"
+      ],
+      "logRegexes": [
+        "requests?[_ -]?used[=: ]+([0-9]+)",
+        "request[_ -]?units[=: ]+([0-9]+)",
+        "quota[_ -]?used[=: ]+([0-9]+)"
+      ]
+    }
+  },
+  "proxy": {
+    "enabled": true,
+    "listenPort": 18080,
+    "routes": {
+      "opencode": {
+        "listenPathPrefix": "/zen/v1",
+        "upstreamBaseUrl": "https://opencode.ai/zen/v1"
+      }
+    }
+  },
+  "models": [],
+  "tasksDir": "tasks"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "02-terraform-static-site",
+  "name": "Terraform static site repair",
+  "category": "terraform",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the Terraform configuration for a static site bucket and CDN. Keep the configuration simple and valid for the fixture, preserve the current intent, and do not introduce unrelated resources. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 300
+}

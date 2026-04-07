@@ -1,0 +1,133 @@
+{
+  "updatedAt": "2026-04-06T00:00:00.000Z",
+  "sources": [
+    {
+      "id": "artificial-analysis",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai",
+      "notes": "Manual seed data for model intelligence, agentic, speed, and selected benchmark price metrics until a stable machine-readable source is integrated."
+    },
+    {
+      "id": "openrouter",
+      "name": "OpenRouter",
+      "url": "https://openrouter.ai/api/v1/models",
+      "notes": "Automatic pricing enrichment source from OpenRouter model listings. When ORPT-Bench shows a reference price for a free model, it is explicitly labeled as a paid sibling or nearby family reference derived with a 3:1 input:output blend from OpenRouter prompt/output prices."
+    }
+  ],
+  "models": {
+    "opencode/gpt-5.4": {
+      "benchmark": {
+        "intelligenceScore": 57,
+        "agenticScore": null,
+        "speedTokensPerSecond": 74,
+        "blendedPricePer1mTokensUsd": 5.6,
+        "source": "artificial-analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-4",
+        "confidence": "manual"
+      }
+    },
+    "opencode/gpt-5.4-mini": {
+      "benchmark": {
+        "intelligenceScore": null,
+        "agenticScore": null,
+        "speedTokensPerSecond": null,
+        "blendedPricePer1mTokensUsd": null,
+        "source": "artificial-analysis",
+        "sourceUrl": null,
+        "confidence": "manual-unmatched"
+      }
+    },
+    "opencode/claude-opus-4-6": {
+      "benchmark": {
+        "intelligenceScore": 53,
+        "agenticScore": null,
+        "speedTokensPerSecond": 49,
+        "blendedPricePer1mTokensUsd": 10,
+        "source": "artificial-analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
+        "confidence": "manual"
+      }
+    },
+    "opencode/claude-sonnet-4-6": {
+      "benchmark": {
+        "intelligenceScore": 52,
+        "agenticScore": null,
+        "speedTokensPerSecond": 67,
+        "blendedPricePer1mTokensUsd": 6,
+        "source": "artificial-analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
+        "confidence": "manual"
+      }
+    },
+    "opencode/glm-5": {
+      "benchmark": {
+        "intelligenceScore": 50,
+        "agenticScore": null,
+        "speedTokensPerSecond": 70,
+        "blendedPricePer1mTokensUsd": 1.6,
+        "referenceBlendedPricePer1mTokensUsd": 1.115,
+        "source": "artificial-analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/glm-5",
+        "confidence": "manual",
+        "pricingNotes": "Primary blended price comes from Artificial Analysis. OpenRouter listing for z-ai/glm-5 implies an approximate 1.115 USD per 1M blended price using a 3:1 input:output mix."
+      }
+    },
+    "opencode/gemini-3.1-pro": {
+      "benchmark": {
+        "intelligenceScore": 57,
+        "agenticScore": null,
+        "speedTokensPerSecond": 127,
+        "blendedPricePer1mTokensUsd": 4.5,
+        "source": "artificial-analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+        "confidence": "manual"
+      }
+    },
+    "opencode/gemini-3-flash": {
+      "benchmark": {
+        "intelligenceScore": 46,
+        "agenticScore": null,
+        "speedTokensPerSecond": 179,
+        "blendedPricePer1mTokensUsd": 1.1,
+        "source": "artificial-analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+        "confidence": "manual"
+      }
+    },
+    "opencode/big-pickle": {
+      "benchmark": {
+        "intelligenceScore": null,
+        "agenticScore": null,
+        "speedTokensPerSecond": null,
+        "blendedPricePer1mTokensUsd": null,
+        "referenceBlendedPricePer1mTokensUsd": null,
+        "source": "manual",
+        "sourceUrl": null,
+        "confidence": "manual",
+        "pricingNotes": "No trustworthy automatic pricing reference found yet, so cost is currently unknown."
+      }
+    },
+    "opencode/nemotron-3-super-free": {
+      "benchmark": {
+        "intelligenceScore": 36,
+        "agenticScore": null,
+        "speedTokensPerSecond": 155,
+        "blendedPricePer1mTokensUsd": 0,
+        "source": "artificial-analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/nvidia-nemotron-3-super-120b-a12b",
+        "confidence": "manual"
+      }
+    },
+    "opencode/kimi-k2.5": {
+      "benchmark": {
+        "intelligenceScore": null,
+        "agenticScore": null,
+        "speedTokensPerSecond": null,
+        "blendedPricePer1mTokensUsd": null,
+        "source": "artificial-analysis",
+        "sourceUrl": null,
+        "confidence": "manual-unmatched"
+      }
+    }
+  }
+}
