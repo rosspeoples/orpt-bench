@@ -3,43 +3,643 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ORPT Bench</title>
+  <title>ORPT-Bench</title>
+  <meta name="color-scheme" content="dark light">
   <style>
-    body { font-family: system-ui, sans-serif; margin: 2rem auto; max-width: 60rem; padding: 0 1rem; line-height: 1.5; }
-    h1 { margin-bottom: 0.5rem; }
-    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin: 2rem 0; }
-    .card { border: 1px solid #d4d4d8; border-radius: 0.75rem; padding: 1rem; }
-    a { color: #2563eb; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ul { padding-left: 1.25rem; }
+    :root {
+      --bg: #060816;
+      --panel: rgba(15, 20, 38, 0.88);
+      --panel-strong: #0f1830;
+      --border: rgba(122, 162, 255, 0.18);
+      --text: #edf2ff;
+      --muted: #99a4c8;
+      --accent: #73f0c5;
+      --accent-2: #86a8ff;
+      --danger: #ff7a9a;
+      --warning: #ffd36e;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(134, 168, 255, 0.18), transparent 35%),
+        radial-gradient(circle at 85% 15%, rgba(115, 240, 197, 0.12), transparent 28%),
+        linear-gradient(180deg, #080b18 0%, #05070f 100%);
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .shell { width: min(1380px, calc(100vw - 32px)); margin: 0 auto; padding: 28px 0 72px; }
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px;
+      margin-bottom: 22px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(7, 10, 21, 0.74);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.01em; }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      border: 1px solid rgba(115, 240, 197, 0.28);
+      background: linear-gradient(135deg, rgba(115, 240, 197, 0.18), rgba(134, 168, 255, 0.16));
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; }
+    .nav a, .button {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      transition: 160ms ease;
+    }
+    .nav a:hover, .button:hover {
+      color: var(--text);
+      border-color: var(--border);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .button.primary {
+      color: #06111f;
+      background: linear-gradient(135deg, var(--accent), #9dc0ff);
+      box-shadow: 0 14px 30px rgba(115, 240, 197, 0.22);
+    }
+    .hero, .panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16, 21, 41, 0.96), rgba(9, 12, 24, 0.96));
+      box-shadow: var(--shadow);
+    }
+    .hero { padding: 34px; margin-bottom: 22px; }
+    .hero::before, .panel::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(115, 240, 197, 0.18), rgba(134, 168, 255, 0.24), transparent 60%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .hero-grid, .stats-grid, .chart-grid, .docs-grid { display: grid; gap: 16px; }
+    .hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.9fr); align-items: start; gap: 24px; }
+    .eyebrow, .hint, .micro { font-family: var(--mono); letter-spacing: 0.04em; text-transform: uppercase; }
+    .eyebrow { color: var(--accent); font-size: 0.78rem; margin-bottom: 10px; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 0.95; letter-spacing: -0.04em; max-width: 14ch; margin-bottom: 16px; }
+    .hero p, .panel-copy, .muted { color: var(--muted); line-height: 1.6; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .summary-list { display: grid; gap: 10px; margin-top: 18px; }
+    .summary-item, .metric, .doc-card, .chart-card, .table-panel {
+      border: 1px solid rgba(122, 162, 255, 0.12);
+      border-radius: var(--radius-sm);
+      background: rgba(9, 14, 28, 0.78);
+    }
+    .summary-item { padding: 14px 16px; }
+    .summary-item strong { display: block; margin-bottom: 6px; font-size: 0.95rem; }
+    .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 22px; }
+    .metric { padding: 18px; }
+    .metric-label { font-size: 0.76rem; color: var(--muted); margin-bottom: 10px; }
+    .metric-value { font-size: clamp(1.35rem, 2.2vw, 2rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 4px; }
+    .metric-note { color: var(--muted); font-size: 0.88rem; }
+    .section { margin-top: 22px; }
+    .section-header { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.3rem, 2vw, 1.7rem); letter-spacing: -0.03em; margin-bottom: 4px; }
+    .hint { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--warning); font-size: 0.72rem; }
+    .chart-grid, .docs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .chart-card, .doc-card, .table-panel { padding: 18px; }
+    .chart-card iframe {
+      width: 100%;
+      height: 320px;
+      border: 0;
+      border-radius: 12px;
+      background: #ffffff;
+      margin: 14px 0 12px;
+    }
+    .card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .card-link {
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    .table-panel { padding-bottom: 8px; }
+    .table-wrap {
+      overflow: auto;
+      margin-top: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(122, 162, 255, 0.08);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 920px;
+      background: rgba(7, 10, 20, 0.82);
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(122, 162, 255, 0.08);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.93rem;
+    }
+    th {
+      position: sticky;
+      top: 0;
+      background: rgba(12, 18, 35, 0.96);
+      z-index: 1;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    th button { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; color: inherit; }
+    th button:hover { color: var(--text); }
+    tbody tr:hover { background: rgba(115, 240, 197, 0.04); }
+    .mono { font-family: var(--mono); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(122, 162, 255, 0.14);
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+    .pill.good { color: var(--accent); border-color: rgba(115, 240, 197, 0.24); background: rgba(115, 240, 197, 0.08); }
+    .pill.warn { color: var(--warning); border-color: rgba(255, 211, 110, 0.24); background: rgba(255, 211, 110, 0.08); }
+    .empty { padding: 22px; border-radius: 14px; border: 1px dashed rgba(122, 162, 255, 0.16); color: var(--muted); }
+    footer { margin-top: 22px; padding: 18px 2px 0; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 1180px) {
+      .hero-grid, .stats-grid, .chart-grid, .docs-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 840px) {
+      .shell { width: min(100vw - 20px, 1380px); padding-top: 14px; }
+      .topbar { position: static; border-radius: 22px; }
+      .hero, .panel, .chart-card, .doc-card, .table-panel, .metric { padding: 16px; }
+      .hero-grid, .stats-grid, .chart-grid, .docs-grid, .section-header {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .chart-card iframe { height: 260px; }
+    }
   </style>
 </head>
 <body>
-  <h1>ORPT Bench</h1>
-  <p>OpenCode Agentic Efficiency Benchmark publication generated by Gitea Actions.</p>
-  <div class="grid">
-    <div class="card">
-      <h2>Benchmark Summary</h2>
-      <ul>
-        <li><a href="leaderboard.md">Leaderboard markdown</a></li>
-        <li><a href="results/latest.json">Latest raw results</a></li>
-        <li><a href="index.md">Repository README snapshot</a></li>
-      </ul>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark">oc</div>
+        <div>ORPT-Bench</div>
+      </div>
+      <div class="nav">
+        <a href="#charts">Charts</a>
+        <a href="#comparison">Comparison</a>
+        <a href="#docs">Docs</a>
+        <a href="#history">History</a>
+      </div>
     </div>
-    <div class="card">
-      <h2>Charts</h2>
-      <ul>
-        <li><a href="results/charts/orpt.html">ORPT leaderboard</a></li>
-        <li><a href="results/charts/success-rate.html">Success rate</a></li>
-        <li><a href="results/charts/composite-score.html">Composite score</a></li>
-      </ul>
-    </div>
-    <div class="card">
-      <h2>Model Catalog</h2>
-      <ul>
-        <li><a href="models/index.md">Model catalog</a></li>
-      </ul>
-    </div>
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">OpenCode benchmark publication</div>
+          <h1>Requests per solved task, published for fast comparison.</h1>
+          <p>
+            ORPT-Bench measures how many OpenCode requests a model spends per successful benchmark task.
+            This page keeps the live benchmark output focused on the parts you actually compare: charts,
+            sortable tables, scoring context, and historical snapshots.
+          </p>
+          <div class="hero-actions" id="hero-actions"></div>
+          <div class="hint">Hint: every comparison table is sortable and starts in composite-score order.</div>
+        </div>
+        <div class="summary-list">
+          <div class="summary-item">
+            <strong>How to read the ranking</strong>
+            <div class="muted">Composite score keeps correctness dominant, then rewards efficient successful runs with ORPT, cost, and wall time.</div>
+          </div>
+          <div class="summary-item">
+            <strong>What lives here</strong>
+            <div class="muted">Live charts, model and task comparisons, raw result links, model catalog access, and historical run snapshots.</div>
+          </div>
+          <div class="summary-item">
+            <strong>Where deeper detail lives</strong>
+            <div class="muted">Use the docs section for the benchmark design, result schema, raw JSON artifacts, and the source repository.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="stats-grid" id="stats"></section>
+    <section class="section" id="charts">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Charts First</div>
+          <p class="panel-copy">Charts are the fastest way to scan leaderboard shape before drilling into row-level comparisons.</p>
+        </div>
+      </div>
+      <div class="chart-grid">
+        <article class="chart-card">
+          <div class="micro muted">Primary ranking</div>
+          <h3>Composite score</h3>
+          <p class="panel-copy">Default benchmark ordering: correctness first, efficiency second.</p>
+          <iframe loading="lazy" src="results/charts/composite-score.html" title="Composite score chart"></iframe>
+          <div class="card-actions">
+            <a class="card-link" href="results/charts/composite-score.html">Open chart</a>
+            <a class="card-link" href="results/charts/composite-score.json">View chart data</a>
+          </div>
+        </article>
+        <article class="chart-card">
+          <div class="micro muted">Correctness view</div>
+          <h3>Success rate</h3>
+          <p class="panel-copy">Shows how often a model actually closes benchmark tasks, independent of efficiency.</p>
+          <iframe loading="lazy" src="results/charts/success-rate.html" title="Success rate chart"></iframe>
+          <div class="card-actions">
+            <a class="card-link" href="results/charts/success-rate.html">Open chart</a>
+            <a class="card-link" href="results/charts/success-rate.json">View chart data</a>
+          </div>
+        </article>
+        <article class="chart-card">
+          <div class="micro muted">Efficiency view</div>
+          <h3>ORPT</h3>
+          <p class="panel-copy">Lower is better: fewer OpenCode requests required per successful task.</p>
+          <iframe loading="lazy" src="results/charts/orpt.html" title="ORPT chart"></iframe>
+          <div class="card-actions">
+            <a class="card-link" href="results/charts/orpt.html">Open chart</a>
+            <a class="card-link" href="results/charts/orpt.json">View chart data</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="section" id="comparison">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Comparison Tables</div>
+          <p class="panel-copy">Sortable tables keep the current benchmark state inspectable without dumping raw markdown into the repository README.</p>
+          <div class="hint">Hint: click any column header to re-sort. Composite score is the default.</div>
+        </div>
+      </div>
+      <div class="panel table-panel">
+        <div class="micro muted">Comparable cohort overview</div>
+        <h3>Model summary</h3>
+        <p class="panel-copy">Use this table for the main leaderboard view across models in the latest run.</p>
+        <div id="model-summary-table"></div>
+      </div>
+      <div class="panel table-panel section">
+        <div class="micro muted">Task-by-task breakdown</div>
+        <h3>Task summary</h3>
+        <p class="panel-copy">This is the fastest way to see where a model succeeded, where it missed, and what each task cost in requests, time, and dollars.</p>
+        <div id="task-summary-table"></div>
+      </div>
+    </section>
+    <section class="section" id="docs">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Docs And Artifacts</div>
+          <p class="panel-copy">Short summaries here link out to the detailed docs and raw benchmark artifacts behind the dashboard.</p>
+        </div>
+      </div>
+      <div class="docs-grid" id="docs-grid"></div>
+    </section>
+    <section class="section" id="history">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Historical Snapshots</div>
+          <p class="panel-copy">Each historical entry links to the raw archived JSON snapshot so longitudinal comparisons remain possible without bloating the root README.</p>
+        </div>
+      </div>
+      <div class="panel table-panel">
+        <div class="micro muted">If available, older benchmark publications appear here</div>
+        <h3>Run history</h3>
+        <p class="panel-copy">Snapshots are sorted by their top composite score by default. Use the raw JSON links for detailed offline analysis.</p>
+        <div id="history-table"></div>
+      </div>
+    </section>
+    <footer id="footer"></footer>
   </div>
+  <script>
+    window.__SITE_DATA__ = {"generatedAt":"2026-04-07T20:06:00.936Z","repository":{"url":"https://github.com/rosspeoples/orpt-bench","pagesUrl":"https://rosspeoples.github.io/orpt-bench/","owner":"rosspeoples","name":"orpt-bench"},"docs":{"latestResultPath":"results/latest.json","leaderboardPath":"leaderboard.md","modelCatalogPath":"models/index.md","resultSchemaPath":"docs/result-schema.json","designDocPath":"docs/design.md","historyIndexPath":"results/history/index.json","sourceUrl":"https://github.com/rosspeoples/orpt-bench"},"latestRun":{"id":"2026-04-07T19-50-48-298Z","startedAt":"2026-04-07T19:50:48.299Z","completedAt":"2026-04-07T20:03:00.446Z","benchmarkCycle":null,"taskCount":14,"taskPatterns":["*"],"repeats":1,"modelCount":1,"totalRuns":14,"successfulRuns":7,"comparableModels":1,"topModel":{"model":"opencode/gpt-5.4-mini","provider":"opencode","runs":14,"successfulTasks":7,"failedTasks":7,"successRate":0.5,"score":0.5,"valueScore":0.5,"compositeScore":0.5,"orpt":10.285714285714286,"totalRequestCount":147,"totalRequestUnits":147,"totalWallTimeMs":730425,"totalCostUsd":0.03562755,"averageDurationMs":55301.57142857143,"medianSteps":1,"averageCostUsd":0.0020595214285714287,"eligible":true,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"}},"scoring":{"valueScoreWeights":{"orpt":0.45,"cost":0.35,"time":0.2},"compositeScoreWeights":{"score":0.7,"valueScore":0.3}},"taskCatalog":[{"id":"01-iac-kubernetes-rollout","name":"Kubernetes rollout repair","difficulty":"medium","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"02-terraform-static-site","name":"Terraform static site repair","difficulty":"high","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"03-ansible-nginx-role","name":"Ansible nginx role completion","difficulty":"high","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"04-docker-compose-observability","name":"Docker Compose observability fix","difficulty":"high","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"05-log-audit-script","name":"Log audit shell script","difficulty":"control","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"06-kubernetes-oidc-rbac-repair","name":"Kubernetes OIDC RBAC repair","difficulty":"high","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"07-cnpg-restore-manifest-repair","name":"CNPG restore manifest repair","difficulty":"high","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"08-workspace-transplant-bundle-repair","name":"Workspace transplant bundle repair","difficulty":"high","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"09-gitops-workspace-render-validation","name":"GitOps workspace render validation","difficulty":"high","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"10-bootstrap-phase-validation-repair","name":"Bootstrap phase validation repair","difficulty":"expert","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"11-mcp-openbao-contract-repair","name":"MCP OpenBao contract repair","difficulty":"expert","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"12-pre-argocd-bootstrap-sequencing","name":"Pre-ArgoCD bootstrap sequencing","difficulty":"expert","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"13-wildcard-tls-route-coverage","name":"Wildcard TLS route coverage","difficulty":"expert","requiredCapabilities":["unattendedBenchmarkRuns"]},{"id":"14-build-workspace-plane-convergence","name":"Build workspace plane convergence","difficulty":"expert","requiredCapabilities":["unattendedBenchmarkRuns"]}],"modelSummary":[{"model":"opencode/gpt-5.4-mini","provider":"opencode","runs":14,"successfulTasks":7,"failedTasks":7,"successRate":0.5,"score":0.5,"valueScore":0.5,"compositeScore":0.5,"orpt":10.285714285714286,"totalRequestCount":147,"totalRequestUnits":147,"totalWallTimeMs":730425,"totalCostUsd":0.03562755,"averageDurationMs":55301.57142857143,"medianSteps":1,"averageCostUsd":0.0020595214285714287,"eligible":true,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"}],"taskSummary":[{"taskId":"01-iac-kubernetes-rollout","taskName":"Kubernetes rollout repair","category":"iac","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":1,"failures":0,"score":1,"valueScore":1,"compositeScore":1,"successRate":1,"totalRequestCount":13,"totalRequestUnits":13,"averageRequestUnits":13,"totalWallTimeMs":54668,"averageWallTimeMs":54668,"totalCostUsd":0.0023331,"averageCostUsd":0.0023331,"averageSteps":1,"eligible":true,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"05-log-audit-script","taskName":"Log audit shell script","category":"scripting","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":1,"failures":0,"score":1,"valueScore":1,"compositeScore":1,"successRate":1,"totalRequestCount":5,"totalRequestUnits":5,"averageRequestUnits":5,"totalWallTimeMs":21650,"averageWallTimeMs":21650,"totalCostUsd":0.00183645,"averageCostUsd":0.00183645,"averageSteps":1,"eligible":true,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"07-cnpg-restore-manifest-repair","taskName":"CNPG restore manifest repair","category":"kubernetes","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":1,"failures":0,"score":1,"valueScore":1,"compositeScore":1,"successRate":1,"totalRequestCount":13,"totalRequestUnits":13,"averageRequestUnits":13,"totalWallTimeMs":49916,"averageWallTimeMs":49916,"totalCostUsd":0.00240105,"averageCostUsd":0.00240105,"averageSteps":1,"eligible":true,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"08-workspace-transplant-bundle-repair","taskName":"Workspace transplant bundle repair","category":"scripting","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":1,"failures":0,"score":1,"valueScore":1,"compositeScore":1,"successRate":1,"totalRequestCount":13,"totalRequestUnits":13,"averageRequestUnits":13,"totalWallTimeMs":87753,"averageWallTimeMs":87753,"totalCostUsd":0.00276555,"averageCostUsd":0.00276555,"averageSteps":1,"eligible":true,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"11-mcp-openbao-contract-repair","taskName":"MCP OpenBao contract repair","category":"gitops","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":1,"failures":0,"score":1,"valueScore":1,"compositeScore":1,"successRate":1,"totalRequestCount":12,"totalRequestUnits":12,"averageRequestUnits":12,"totalWallTimeMs":90137,"averageWallTimeMs":90137,"totalCostUsd":0.0030465,"averageCostUsd":0.0030465,"averageSteps":1,"eligible":true,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"13-wildcard-tls-route-coverage","taskName":"Wildcard TLS route coverage","category":"gitops","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":1,"failures":0,"score":1,"valueScore":1,"compositeScore":1,"successRate":1,"totalRequestCount":9,"totalRequestUnits":9,"averageRequestUnits":9,"totalWallTimeMs":44690,"averageWallTimeMs":44690,"totalCostUsd":0.002034,"averageCostUsd":0.002034,"averageSteps":1,"eligible":true,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"14-build-workspace-plane-convergence","taskName":"Build workspace plane convergence","category":"gitops","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":1,"failures":0,"score":1,"valueScore":1,"compositeScore":1,"successRate":1,"totalRequestCount":7,"totalRequestUnits":7,"averageRequestUnits":7,"totalWallTimeMs":38297,"averageWallTimeMs":38297,"totalCostUsd":0,"averageCostUsd":0,"averageSteps":1,"eligible":true,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"02-terraform-static-site","taskName":"Terraform static site repair","category":"terraform","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":0,"failures":1,"score":0,"valueScore":0,"compositeScore":0,"successRate":0,"totalRequestCount":9,"totalRequestUnits":9,"averageRequestUnits":9,"totalWallTimeMs":39543,"averageWallTimeMs":39543,"totalCostUsd":0.002865,"averageCostUsd":0.002865,"averageSteps":1,"eligible":false,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"03-ansible-nginx-role","taskName":"Ansible nginx role completion","category":"ansible","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":0,"failures":1,"score":0,"valueScore":0,"compositeScore":0,"successRate":0,"totalRequestCount":10,"totalRequestUnits":10,"averageRequestUnits":10,"totalWallTimeMs":32040,"averageWallTimeMs":32040,"totalCostUsd":0.0017082,"averageCostUsd":0.0017082,"averageSteps":1,"eligible":false,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"04-docker-compose-observability","taskName":"Docker Compose observability fix","category":"docker-compose","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":0,"failures":1,"score":0,"valueScore":0,"compositeScore":0,"successRate":0,"totalRequestCount":11,"totalRequestUnits":11,"averageRequestUnits":11,"totalWallTimeMs":41760,"averageWallTimeMs":41760,"totalCostUsd":0.0022017,"averageCostUsd":0.0022017,"averageSteps":1,"eligible":false,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"06-kubernetes-oidc-rbac-repair","taskName":"Kubernetes OIDC RBAC repair","category":"kubernetes","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":0,"failures":1,"score":0,"valueScore":0,"compositeScore":0,"successRate":0,"totalRequestCount":8,"totalRequestUnits":8,"averageRequestUnits":8,"totalWallTimeMs":39207,"averageWallTimeMs":39207,"totalCostUsd":0.003204,"averageCostUsd":0.003204,"averageSteps":1,"eligible":false,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"09-gitops-workspace-render-validation","taskName":"GitOps workspace render validation","category":"gitops","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":0,"failures":1,"score":0,"valueScore":0,"compositeScore":0,"successRate":0,"totalRequestCount":11,"totalRequestUnits":11,"averageRequestUnits":11,"totalWallTimeMs":62363,"averageWallTimeMs":62363,"totalCostUsd":0.00330585,"averageCostUsd":0.00330585,"averageSteps":1,"eligible":false,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"10-bootstrap-phase-validation-repair","taskName":"Bootstrap phase validation repair","category":"platform-bootstrap","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":0,"failures":1,"score":0,"valueScore":0,"compositeScore":0,"successRate":0,"totalRequestCount":17,"totalRequestUnits":17,"averageRequestUnits":17,"totalWallTimeMs":72777,"averageWallTimeMs":72777,"totalCostUsd":0.0049683,"averageCostUsd":0.0049683,"averageSteps":1,"eligible":false,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"},{"taskId":"12-pre-argocd-bootstrap-sequencing","taskName":"Pre-ArgoCD bootstrap sequencing","category":"platform-bootstrap","model":"opencode/gpt-5.4-mini","provider":"opencode","runs":1,"successes":0,"failures":1,"score":0,"valueScore":0,"compositeScore":0,"successRate":0,"totalRequestCount":9,"totalRequestUnits":9,"averageRequestUnits":9,"totalWallTimeMs":55624,"averageWallTimeMs":55624,"totalCostUsd":0.00295785,"averageCostUsd":0.00295785,"averageSteps":1,"eligible":false,"comparable":true,"comparabilityNote":null,"unattendedBenchmarkRuns":"supported","requiredCapabilities":["unattendedBenchmarkRuns"],"unsupportedCapabilities":[],"knownLimitations":[],"requestAccountingSource":"proxy-call-count"}],"history":[{"id":"2026-04-07T19-50-48-298Z","startedAt":"2026-04-07T19:50:48.299Z","completedAt":"2026-04-07T20:03:00.446Z","benchmarkCycle":null,"taskCount":14,"modelCount":1,"repeats":1,"totalRuns":14,"successfulRuns":7,"topModel":"opencode/gpt-5.4-mini","topCompositeScore":0.5,"topSuccessRate":0.5,"href":"results/history/2026-04-07T19-50-48-298Z.json","isLatest":true},{"id":"2026-04-07T18-07-37-822Z","startedAt":"2026-04-07T18:07:37.823Z","completedAt":"2026-04-07T18:19:50.125Z","benchmarkCycle":null,"taskCount":13,"modelCount":1,"repeats":1,"totalRuns":13,"successfulRuns":5,"topModel":"opencode/gpt-5.4-mini","topCompositeScore":0.38461538461538464,"topSuccessRate":0.38461538461538464,"href":"results/history/2026-04-07T18-07-37-822Z.json","isLatest":false},{"id":"2026-04-07T13-47-37-642Z","startedAt":"2026-04-07T13:47:37.642Z","completedAt":"2026-04-07T13:57:28.189Z","benchmarkCycle":null,"taskCount":9,"modelCount":1,"repeats":1,"totalRuns":9,"successfulRuns":1,"topModel":"opencode/gpt-5.4-mini","topCompositeScore":0.1111111111111111,"topSuccessRate":0.1111111111111111,"href":"results/history/2026-04-07T13-47-37-642Z.json","isLatest":false},{"id":"2026-04-06T22-08-15-922Z","startedAt":"2026-04-06T22:08:15.922Z","completedAt":"2026-04-06T22:32:45.565Z","benchmarkCycle":null,"taskCount":5,"modelCount":2,"repeats":1,"totalRuns":10,"successfulRuns":2,"topModel":"opencode/gpt-5.4","topCompositeScore":null,"topSuccessRate":0.2,"href":"results/history/2026-04-06T22-08-15-922Z.json","isLatest":false}]};
+    const siteData = window.__SITE_DATA__;
+    const docs = siteData.docs || {};
+    const latestRun = siteData.latestRun || {};
+    const topModel = latestRun.topModel || null;
+    const heroActions = document.getElementById('hero-actions');
+    heroActions.appendChild(linkButton(siteData.repository?.pagesUrl || '#comparison', 'Live site', true));
+    heroActions.appendChild(linkButton(docs.latestResultPath, 'Latest raw JSON'));
+    if (docs.sourceUrl) {
+      heroActions.appendChild(linkButton(docs.sourceUrl, 'Source repo'));
+    }
+    const stats = [
+      {
+        label: 'Latest run',
+        value: formatDateTime(latestRun.completedAt) || 'Unknown',
+        note: latestRun.id ? latestRun.id : 'No run id available',
+      },
+      {
+        label: 'Tasks benchmarked',
+        value: formatInteger(latestRun.taskCount),
+        note: latestRun.repeats ? String(latestRun.repeats) + ' repeat(s) per task' : 'Repeat count unavailable',
+      },
+      {
+        label: 'Comparable models',
+        value: formatInteger(latestRun.comparableModels),
+        note: topModel ? 'Top model: ' + topModel.model : 'No comparable models yet',
+      },
+      {
+        label: 'Best composite score',
+        value: topModel ? formatScore(topModel.compositeScore) : 'n/a',
+        note: topModel ? formatPercent(topModel.successRate) + ' success, ' + formatDecimal(topModel.orpt, 2) + ' ORPT' : 'No leaderboard data yet',
+      },
+    ];
+    const statsRoot = document.getElementById('stats');
+    for (const stat of stats) {
+      const node = document.createElement('article');
+      node.className = 'metric';
+      node.innerHTML = '
+        <div class="metric-label micro">' + escapeHtml(stat.label) + '</div>
+        <div class="metric-value">' + escapeHtml(stat.value) + '</div>
+        <div class="metric-note">' + escapeHtml(stat.note) + '</div>
+      ';
+      statsRoot.appendChild(node);
+    }
+    const docsGrid = document.getElementById('docs-grid');
+    const docCards = [
+      { title: 'Benchmark design', summary: 'Benchmark architecture, telemetry rules, and CI publication behavior.', href: docs.designDocPath, label: 'Open design doc' },
+      { title: 'Result schema', summary: 'Machine-readable contract for the benchmark JSON artifacts.', href: docs.resultSchemaPath, label: 'Open schema' },
+      { title: 'Model catalog', summary: 'Pricing provenance, capability notes, and model inventory details.', href: docs.modelCatalogPath, label: 'Open catalog' },
+      { title: 'Latest raw results', summary: 'Full benchmark output for the current publication, including all run-level detail.', href: docs.latestResultPath, label: 'Open latest JSON' },
+      { title: 'History index', summary: 'Compact index of archived benchmark snapshots published with the site.', href: docs.historyIndexPath, label: 'Open history index' },
+      { title: 'Source repository', summary: 'Benchmark harness, task fixtures, and publication pipeline source.', href: docs.sourceUrl, label: 'Open repository' },
+    ].filter((card) => card.href);
+    for (const card of docCards) {
+      const node = document.createElement('article');
+      node.className = 'doc-card';
+      node.innerHTML = '
+        <div class="micro muted">Detailed reference</div>
+        <h3>' + escapeHtml(card.title) + '</h3>
+        <p class="panel-copy">' + escapeHtml(card.summary) + '</p>
+      ';
+      const actions = document.createElement('div');
+      actions.className = 'card-actions';
+      actions.appendChild(linkPill(card.href, card.label));
+      node.appendChild(actions);
+      docsGrid.appendChild(node);
+    }
+    renderSortableTable(document.getElementById('model-summary-table'), {
+      rows: siteData.modelSummary || [],
+      defaultSortKey: 'compositeScore',
+      defaultDirection: 'desc',
+      emptyMessage: 'No model summary is available for the current run.',
+      columns: [
+        { key: 'model', label: 'Model', type: 'text', render: (row) => row.model },
+        { key: 'score', label: 'Score', type: 'number', render: (row) => formatScore(row.score) },
+        { key: 'valueScore', label: 'Value', type: 'number', render: (row) => formatScore(row.valueScore) },
+        { key: 'compositeScore', label: 'Composite', type: 'number', render: (row) => formatScore(row.compositeScore) },
+        { key: 'successRate', label: 'Success', type: 'number', render: (row) => formatPercent(row.successRate) },
+        { key: 'orpt', label: 'ORPT', type: 'number', render: (row) => formatDecimal(row.orpt, 2) },
+        { key: 'totalRequestUnits', label: 'Requests', type: 'number', render: (row) => formatInteger(row.totalRequestUnits) },
+        { key: 'totalWallTimeMs', label: 'Wall time', type: 'number', render: (row) => formatDuration(row.totalWallTimeMs) },
+        { key: 'totalCostUsd', label: 'Cost', type: 'number', render: (row) => formatCurrency(row.totalCostUsd) },
+        { key: 'comparable', label: 'Status', type: 'text', render: (row) => badge(row.comparable ? 'Comparable' : 'Limited', row.comparable ? 'good' : 'warn') },
+      ],
+    });
+    renderSortableTable(document.getElementById('task-summary-table'), {
+      rows: siteData.taskSummary || [],
+      defaultSortKey: 'compositeScore',
+      defaultDirection: 'desc',
+      emptyMessage: 'No task summary is available for the current run.',
+      columns: [
+        { key: 'taskName', label: 'Task', type: 'text', render: (row) => row.taskName },
+        { key: 'model', label: 'Model', type: 'text', render: (row) => row.model },
+        { key: 'category', label: 'Category', type: 'text', render: (row) => row.category },
+        { key: 'score', label: 'Score', type: 'number', render: (row) => formatScore(row.score) },
+        { key: 'valueScore', label: 'Value', type: 'number', render: (row) => formatScore(row.valueScore) },
+        { key: 'compositeScore', label: 'Composite', type: 'number', render: (row) => formatScore(row.compositeScore) },
+        { key: 'successRate', label: 'Success', type: 'number', render: (row) => formatPercent(row.successRate) },
+        { key: 'averageRequestUnits', label: 'Avg requests', type: 'number', render: (row) => formatDecimal(row.averageRequestUnits, 2) },
+        { key: 'averageWallTimeMs', label: 'Avg wall time', type: 'number', render: (row) => formatDuration(row.averageWallTimeMs) },
+        { key: 'averageCostUsd', label: 'Avg cost', type: 'number', render: (row) => formatCurrency(row.averageCostUsd) },
+      ],
+    });
+    renderSortableTable(document.getElementById('history-table'), {
+      rows: siteData.history || [],
+      defaultSortKey: 'topCompositeScore',
+      defaultDirection: 'desc',
+      emptyMessage: 'No historical snapshots were published with this site build.',
+      columns: [
+        { key: 'completedAt', label: 'Completed', type: 'number', sortValue: (row) => row.completedAt ? Date.parse(row.completedAt) : Number.NEGATIVE_INFINITY, render: (row) => String(formatDateTime(row.completedAt) || 'n/a') + (row.isLatest ? ' (latest)' : '') },
+        { key: 'id', label: 'Run id', type: 'text', render: (row) => row.id },
+        { key: 'taskCount', label: 'Tasks', type: 'number', render: (row) => formatInteger(row.taskCount) },
+        { key: 'modelCount', label: 'Models', type: 'number', render: (row) => formatInteger(row.modelCount) },
+        { key: 'topModel', label: 'Top model', type: 'text', render: (row) => row.topModel || 'n/a' },
+        { key: 'topCompositeScore', label: 'Top composite', type: 'number', render: (row) => formatScore(row.topCompositeScore) },
+        { key: 'topSuccessRate', label: 'Top success', type: 'number', render: (row) => formatPercent(row.topSuccessRate) },
+        { key: 'href', label: 'Artifact', type: 'text', render: (row) => linkHtml(row.href, 'Raw JSON') },
+      ],
+    });
+    const footer = document.getElementById('footer');
+    footer.textContent = [
+      latestRun.completedAt ? 'Latest publication completed ' + formatDateTime(latestRun.completedAt) + '.' : null,
+      latestRun.id ? 'Run id ' + latestRun.id + '.' : null,
+      siteData.repository?.pagesUrl ? 'Live URL ' + siteData.repository.pagesUrl : null,
+    ].filter(Boolean).join(' ');
+    function renderSortableTable(root, config) {
+      if (!root) {
+        return;
+      }
+      if (!Array.isArray(config.rows) || config.rows.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = config.emptyMessage;
+        root.replaceChildren(empty);
+        return;
+      }
+      const state = { sortKey: config.defaultSortKey, direction: config.defaultDirection };
+      const panel = document.createElement('div');
+      const wrap = document.createElement('div');
+      wrap.className = 'table-wrap';
+      const table = document.createElement('table');
+      const thead = document.createElement('thead');
+      const tbody = document.createElement('tbody');
+      table.append(thead, tbody);
+      wrap.appendChild(table);
+      panel.appendChild(wrap);
+      root.replaceChildren(panel);
+      const render = () => {
+        thead.replaceChildren();
+        tbody.replaceChildren();
+        const headRow = document.createElement('tr');
+        for (const column of config.columns) {
+          const th = document.createElement('th');
+          const button = document.createElement('button');
+          const active = state.sortKey === column.key;
+          button.innerHTML = escapeHtml(column.label) + (active ? ' <span class="mono">' + (state.direction === 'desc' ? 'v' : '^') + '</span>' : '');
+          button.addEventListener('click', () => {
+            if (state.sortKey === column.key) {
+              state.direction = state.direction === 'desc' ? 'asc' : 'desc';
+            } else {
+              state.sortKey = column.key;
+              state.direction = config.defaultSortKey === column.key ? config.defaultDirection : 'desc';
+            }
+            render();
+          });
+          th.appendChild(button);
+          headRow.appendChild(th);
+        }
+        thead.appendChild(headRow);
+        const sortedRows = [...config.rows].sort((left, right) => compareRows(left, right, config.columns, state));
+        for (const row of sortedRows) {
+          const tr = document.createElement('tr');
+          for (const column of config.columns) {
+            const td = document.createElement('td');
+            const html = column.render(row);
+            if (typeof html === 'string') {
+              td.innerHTML = html;
+            } else {
+              td.appendChild(html);
+            }
+            tr.appendChild(td);
+          }
+          tbody.appendChild(tr);
+        }
+      };
+      render();
+    }
+    function compareRows(left, right, columns, state) {
+      const column = columns.find((entry) => entry.key === state.sortKey) || columns[0];
+      const leftValue = column.sortValue ? column.sortValue(left) : left[column.key];
+      const rightValue = column.sortValue ? column.sortValue(right) : right[column.key];
+      let result = 0;
+      if (column.type === 'number') {
+        result = toNumericSortValue(leftValue) - toNumericSortValue(rightValue);
+      } else {
+        result = String(leftValue ?? '').localeCompare(String(rightValue ?? ''));
+      }
+      if (result === 0 && column.key !== 'compositeScore' && 'compositeScore' in left && 'compositeScore' in right) {
+        result = toNumericSortValue(left.compositeScore) - toNumericSortValue(right.compositeScore);
+      }
+      if (result === 0 && 'orpt' in left && 'orpt' in right) {
+        result = toNumericSortValue(right.orpt) - toNumericSortValue(left.orpt);
+      }
+      return state.direction === 'desc' ? -result : result;
+    }
+    function toNumericSortValue(value) { return Number.isFinite(value) ? value : Number.NEGATIVE_INFINITY; }
+    function badge(label, tone) { return '<span class="pill ' + tone + '">' + escapeHtml(label) + '</span>'; }
+    function linkHtml(href, label) { return '<a class="card-link" href="' + escapeAttribute(href) + '">' + escapeHtml(label) + '</a>'; }
+    function linkButton(href, label, primary = false) {
+      const node = document.createElement('a');
+      node.className = 'button' + (primary ? ' primary' : '');
+      node.href = href;
+      node.textContent = label;
+      return node;
+    }
+    function linkPill(href, label) {
+      const node = document.createElement('a');
+      node.className = 'card-link';
+      node.href = href;
+      node.textContent = label;
+      return node;
+    }
+    function formatScore(value) {
+      if (!Number.isFinite(value)) {
+        return 'n/a';
+      }
+      return Number(value).toFixed(3).replace(/0+$/, '').replace(/.$/, '.0');
+    }
+    function formatPercent(value) {
+      if (!Number.isFinite(value)) {
+        return 'n/a';
+      }
+      return String(Math.round(value * 100)) + '%';
+    }
+    function formatDecimal(value, decimals) {
+      if (!Number.isFinite(value)) {
+        return 'n/a';
+      }
+      return Number(value).toFixed(decimals);
+    }
+    function formatCurrency(value) {
+      if (!Number.isFinite(value)) {
+        return 'n/a';
+      }
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 4,
+        maximumFractionDigits: 4,
+      }).format(value);
+    }
+    function formatInteger(value) {
+      if (!Number.isFinite(value)) {
+        return 'n/a';
+      }
+      return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(value);
+    }
+    function formatDuration(value) {
+      if (!Number.isFinite(value)) {
+        return 'n/a';
+      }
+      const seconds = Math.round(value / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const remainder = seconds % 60;
+      if (minutes === 0) {
+        return String(remainder) + 's';
+      }
+      return String(minutes) + 'm ' + String(remainder).padStart(2, '0') + 's';
+    }
+    function formatDateTime(value) {
+      if (!value) {
+        return null;
+      }
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return value;
+      }
+      return new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZoneName: 'short',
+      }).format(date);
+    }
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+    function escapeAttribute(value) {
+      return escapeHtml(value);
+    }
+  </script>
 </body>
 </html>
