@@ -1,0 +1,8 @@
+write-kubeconfig-mode: "0644"
+kube-apiserver-arg:
+  - oidc-issuer-url=https://auth.thepeoples.dev/application/o/kubernetes/
+  - oidc-client-id=kubernetes-api
+  - oidc-username-claim=email
+  - oidc-groups-claim=roles
+  - oidc-username-prefix=user:
+  - oidc-groups-prefix=group:

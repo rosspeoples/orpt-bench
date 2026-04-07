@@ -1,0 +1,41 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: gitea-postgresql
+  namespace: gitea
+spec:
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  storage:
+    size: 20Gi
+    storageClass: ceph-rbd
+  superuserSecret:
+    name: gitea-postgresql-auth
+  bootstrap:
+    recovery:
+      backup:
+        name: latest-backup
+      database: gitea
+      owner: gitea
+      secret:
+        name: gitea-postgresql-auth
+  backup:
+    target: prefer-standby
+    retentionPolicy: 7d
+    barmanObjectStore:
+      destinationPath: s3://cnpg-backups/gitea-postgresql/
+      endpointURL: https://s3.thepeoples.dev
+      s3Credentials:
+        accessKeyId:
+          name: gitea-backups
+          key: access_key
+        secretAccessKey:
+          name: gitea-backups
+          key: secret_key
+        region:
+          name: gitea-backups
+          key: region
+      data:
+        compression: gzip
+      wal:
+        compression: gzip

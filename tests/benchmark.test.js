@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { computeCompositeScore, computeCompositeValueScore } from '../scripts/lib/benchmark.js'
+import { aggregateRun, collectRemainingTaskEntries, computeCompositeScore, computeCompositeValueScore } from '../scripts/lib/benchmark.js'
 
 test('computeCompositeValueScore returns 1 for task-best comparable run', () => {
   const score = computeCompositeValueScore({
@@ -63,4 +63,70 @@ test('computeCompositeScore keeps correctness dominant', () => {
   assert.equal(computeCompositeScore(0, 0), 0)
   assert.equal(computeCompositeScore(1, 0.5), 0.85)
   assert.equal(computeCompositeScore(0, 1), 0.3)
+})
+
+test('collectRemainingTaskEntries includes current and subsequent tasks across repeats', () => {
+  const tasks = [
+    { id: '01' },
+    { id: '02' },
+    { id: '03' }
+  ]
+
+  const remaining = collectRemainingTaskEntries(tasks, 2, 1, 1)
+  assert.deepEqual(remaining, [
+    { task: tasks[1], repeat: 1 },
+    { task: tasks[2], repeat: 1 },
+    { task: tasks[0], repeat: 2 },
+    { task: tasks[1], repeat: 2 },
+    { task: tasks[2], repeat: 2 }
+  ])
+})
+
+test('aggregateRun keeps failed runs comparable when capability support is present', () => {
+  const run = {
+    results: [
+      {
+        taskId: 'task-1',
+        taskName: 'Task 1',
+        category: 'scripting',
+        model: 'opencode/gpt-5.4-mini',
+        provider: 'opencode',
+        success: false,
+        score: 0,
+        durationMs: 1000,
+        requestUnits: 5,
+        requestAccountingSource: 'proxy-call-count',
+        costUsd: 0.1,
+        steps: 1,
+        tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
+      }
+    ],
+    modelCatalog: {
+      models: [
+        {
+          model: 'opencode/gpt-5.4-mini',
+          featureSupport: {
+            unattendedBenchmarkRuns: 'supported'
+          }
+        }
+      ]
+    },
+    taskCatalog: [
+      {
+        id: 'task-1',
+        name: 'Task 1',
+        requiredCapabilities: ['unattendedBenchmarkRuns']
+      }
+    ],
+    scoring: {
+      valueScoreWeights: { orpt: 0.45, cost: 0.35, time: 0.2 },
+      compositeScoreWeights: { score: 0.7, valueScore: 0.3 }
+    }
+  }
+
+  aggregateRun(run, { headerCandidates: [], logRegexes: [] })
+
+  assert.equal(run.modelSummary[0].comparable, true)
+  assert.equal(run.taskSummary[0].comparable, true)
+  assert.equal(run.results[0].valueScore, 0)
 })

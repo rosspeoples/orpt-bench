@@ -8,7 +8,7 @@ Model pricing in this repo is generated for benchmark use during `sync-models`. 
 
 | Rank | Model | Score | Value Score | Composite Score | Success Rate | Request Count | ORPT | Total Wall Time (s) | Total Cost (USD) | Eligible | Comparable | Cohort Note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | opencode/gpt-5.4-mini | 1.00 | 1.000 | 1.000 | 100% | 6 | 6.00 | 48.3 | 0.0106 | yes | yes |  |
+| 1 | opencode/gpt-5.4-mini | 0.11 | 0.111 | 0.111 | 11% | 97 | 8.00 | 589.0 | 0.0283 | yes | yes |  |
 
 ## Limited Comparability
 
@@ -16,19 +16,27 @@ The following models are included for transparency but excluded from the primary
 
 | Rank | Model | Score | Value Score | Composite Score | Success Rate | Request Count | ORPT | Total Wall Time (s) | Total Cost (USD) | Eligible | Comparable | Cohort Note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | opencode/gemini-3-flash | 0.00 | 0.000 | 0.000 | 0% | 4 | n/a | 106.6 | 0.0000 | no | no | unattendedBenchmarkRuns: limited |
+| - | No runs yet | - | - | - | - | - | - | - | - | - | - | - |
 
 ## Task Detail
 
 | Task | Model | Score | Value Score | Composite Score | Success Rate | Request Count | Avg Requests | Total Wall Time (s) | Total Cost (USD) | Avg Steps | Comparable | Cohort Note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 05-log-audit-script | opencode/gpt-5.4-mini | 1.00 | 1.000 | 1.000 | 100% | 6 | 6.00 | 48.3 | 0.0106 | 1.00 | yes |  |
+| 01-iac-kubernetes-rollout | opencode/gpt-5.4-mini | 0.00 | 0.000 | 0.000 | 0% | 11 | 11.00 | 44.1 | 0.0024 | 1.00 | yes |  |
+| 02-terraform-static-site | opencode/gpt-5.4-mini | 0.00 | 0.000 | 0.000 | 0% | 6 | 6.00 | 58.6 | 0.0038 | 1.00 | yes |  |
+| 03-ansible-nginx-role | opencode/gpt-5.4-mini | 0.00 | 0.000 | 0.000 | 0% | 9 | 9.00 | 61.9 | 0.0020 | 1.00 | yes |  |
+| 04-docker-compose-observability | opencode/gpt-5.4-mini | 0.00 | 0.000 | 0.000 | 0% | 15 | 15.00 | 93.0 | 0.0070 | 1.00 | yes |  |
+| 05-log-audit-script | opencode/gpt-5.4-mini | 1.00 | 1.000 | 1.000 | 100% | 8 | 8.00 | 33.9 | 0.0019 | 1.00 | yes |  |
+| 06-kubernetes-oidc-rbac-repair | opencode/gpt-5.4-mini | 0.00 | 0.000 | 0.000 | 0% | 14 | 14.00 | 105.4 | 0.0029 | 1.00 | yes |  |
+| 07-cnpg-restore-manifest-repair | opencode/gpt-5.4-mini | 0.00 | 0.000 | 0.000 | 0% | 13 | 13.00 | 63.0 | 0.0042 | 1.00 | yes |  |
+| 08-workspace-transplant-bundle-repair | opencode/gpt-5.4-mini | 0.00 | 0.000 | 0.000 | 0% | 14 | 14.00 | 89.5 | 0.0023 | 1.00 | yes |  |
+| 09-gitops-workspace-render-validation | opencode/gpt-5.4-mini | 0.00 | 0.000 | 0.000 | 0% | 7 | 7.00 | 39.6 | 0.0019 | 1.00 | yes |  |
 
 ## Task Detail: Limited Comparability
 
 | Task | Model | Score | Value Score | Composite Score | Success Rate | Request Count | Avg Requests | Total Wall Time (s) | Total Cost (USD) | Avg Steps | Comparable | Cohort Note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 05-log-audit-script | opencode/gemini-3-flash | 0.00 | 0.000 | 0.000 | 0% | 4 | 4.00 | 106.6 | 0.0000 | 0.00 | no | unattendedBenchmarkRuns: limited |
+| No runs yet | - | - | - | - | - | - | - | - | - | - | - | - |
 
 ## Value Score
 
@@ -59,23 +67,19 @@ Composite Score blends correctness and efficiency.
 | Model | Benchmark Price $/1M | Reference Price $/1M | Price Source | Price Type | Price Confidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | opencode/gpt-5.4-mini | 1.6875 | n/a | openrouter | automatic-openrouter-primary | medium | Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-mini using a 3:1 input:output blend. |
-| opencode/gemini-3-flash | 1.1 | n/a | artificial-analysis | manual-primary-with-openrouter-reference | high | OpenRouter reference blend for google/gemini-3-flash-preview is 1.125 USD per 1M tokens using a 3:1 input:output mix. |
 
 ## Capability Coverage
 
 - Fully comparable models for the current task set: opencode/gpt-5.4-mini
-- Models with limited comparability: opencode/gemini-3-flash
+- Models with limited comparability: none
 - Task set capability requirements: unattendedBenchmarkRuns
-
-Known exclusions by model:
-- opencode/gemini-3-flash: 05-log-audit-script (unattendedBenchmarkRuns: limited)
 
 
 ### Capability Matrix
 
 | Capability | Required By Tasks | Supported Models | Limited Models | Unsupported Models | Unknown Models |
 | --- | --- | --- | --- | --- | --- |
-| unattendedBenchmarkRuns | 01-iac-kubernetes-rollout, 02-terraform-static-site, 03-ansible-nginx-role, 04-docker-compose-observability, 05-log-audit-script | opencode/gpt-5.4-mini | opencode/gemini-3-flash | - | - |
+| unattendedBenchmarkRuns | 01-iac-kubernetes-rollout, 02-terraform-static-site, 03-ansible-nginx-role, 04-docker-compose-observability, 05-log-audit-script, 06-kubernetes-oidc-rbac-repair, 07-cnpg-restore-manifest-repair, 08-workspace-transplant-bundle-repair, 09-gitops-workspace-render-validation | opencode/gpt-5.4-mini | - | - | - |
 
 Charts:
 
@@ -91,6 +95,10 @@ Charts:
 3. Ansible nginx role completion
 4. Docker Compose observability fix
 5. Log audit shell script
+6. Kubernetes OIDC RBAC repair
+7. CNPG restore manifest repair
+8. Workspace transplant bundle repair
+9. GitOps workspace render validation
 
 ## Task Requirements
 
@@ -101,6 +109,10 @@ Charts:
 | 03-ansible-nginx-role | unattendedBenchmarkRuns |
 | 04-docker-compose-observability | unattendedBenchmarkRuns |
 | 05-log-audit-script | unattendedBenchmarkRuns |
+| 06-kubernetes-oidc-rbac-repair | unattendedBenchmarkRuns |
+| 07-cnpg-restore-manifest-repair | unattendedBenchmarkRuns |
+| 08-workspace-transplant-bundle-repair | unattendedBenchmarkRuns |
+| 09-gitops-workspace-render-validation | unattendedBenchmarkRuns |
 
 ## Quickstart
 
@@ -121,7 +133,7 @@ Environment variables:
 - `BENCHMARK_MODELS`: comma-separated model matrix
 - `BENCHMARK_REPEATS`: repeat count per task/model
 - `BENCHMARK_TASK_GLOB`: task subset filter
-- `BENCHMARK_PROCESS_TIMEOUT_SECONDS`: hard timeout for the benchmark process during development
+- `BENCHMARK_PROCESS_TIMEOUT_SECONDS`: hard timeout for the benchmark process during development; keep `0` for full real benchmark runs
 - `BENCHMARK_WRITE_README`: write generated README and charts
 
 ## Model Inventory
@@ -171,9 +183,9 @@ BENCHMARK_MODELS=opencode/gpt-5.4-mini BENCHMARK_TASK_GLOB=05* docker compose ru
 
 ## Artifact Summary
 
-- Models in latest result: 2
-- Distinct tasks exercised: 1
-- Total task runs: 2
+- Models in latest result: 1
+- Distinct tasks exercised: 9
+- Total task runs: 9
 - Successful task runs: 1
 
 ## Design

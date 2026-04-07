@@ -3950,7 +3950,7 @@
       "averageCostUsd": 0.00238995,
       "averageSteps": 1,
       "eligible": false,
-      "comparable": true,
+      "comparable": false,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
       "requiredCapabilities": [
@@ -3982,7 +3982,7 @@
       "averageCostUsd": 0.00379635,
       "averageSteps": 1,
       "eligible": false,
-      "comparable": true,
+      "comparable": false,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
       "requiredCapabilities": [
@@ -4014,7 +4014,7 @@
       "averageCostUsd": 0.00197085,
       "averageSteps": 1,
       "eligible": false,
-      "comparable": true,
+      "comparable": false,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
       "requiredCapabilities": [
@@ -4046,7 +4046,7 @@
       "averageCostUsd": 0.0069672,
       "averageSteps": 1,
       "eligible": false,
-      "comparable": true,
+      "comparable": false,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
       "requiredCapabilities": [
@@ -4110,7 +4110,7 @@
       "averageCostUsd": 0.00285375,
       "averageSteps": 1,
       "eligible": false,
-      "comparable": true,
+      "comparable": false,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
       "requiredCapabilities": [
@@ -4142,7 +4142,7 @@
       "averageCostUsd": 0.00422385,
       "averageSteps": 1,
       "eligible": false,
-      "comparable": true,
+      "comparable": false,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
       "requiredCapabilities": [
@@ -4174,7 +4174,7 @@
       "averageCostUsd": 0.0023244,
       "averageSteps": 1,
       "eligible": false,
-      "comparable": true,
+      "comparable": false,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
       "requiredCapabilities": [
@@ -4206,7 +4206,7 @@
       "averageCostUsd": 0.00188895,
       "averageSteps": 1,
       "eligible": false,
-      "comparable": true,
+      "comparable": false,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
       "requiredCapabilities": [

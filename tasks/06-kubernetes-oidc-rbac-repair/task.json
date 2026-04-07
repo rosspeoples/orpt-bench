@@ -1,0 +1,9 @@
+{
+  "id": "06-kubernetes-oidc-rbac-repair",
+  "name": "Kubernetes OIDC RBAC repair",
+  "category": "kubernetes",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the Kubernetes OIDC and namespace RBAC configuration so Authentik-issued users can operate in agents-cluster-ops without gaining equivalent access elsewhere. Keep the existing intent, make the smallest correct changes, and do not add unrelated files. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 300
+}

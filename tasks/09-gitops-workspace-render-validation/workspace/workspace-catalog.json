@@ -1,0 +1,10 @@
+{
+  "workspaces": [
+    {
+      "workspaceSlug": "release-eng",
+      "workspaceOidcGroup": "thepeoples_dev_build_users",
+      "hostname": "release-eng.build.thepeoples.dev",
+      "pattern": "standard-build"
+    }
+  ]
+}

@@ -19,6 +19,8 @@ export function computeCompositeScore(score, valueScore, weights = { score: 0.7,
   return Number(clamp((score * weights.score) + (valueScore * weights.valueScore), 0, 1).toFixed(6))
 }
 
+const minimumTaskStartBudgetMs = 5000
+
 function createTaskValueBaseline() {
   return {
     bestRequestUnits: null,
@@ -132,6 +134,19 @@ function buildSyntheticFailureResults({ runID, modelName, provider, entries, rea
   return results
 }
 
+export function collectRemainingTaskEntries(tasks, repeats, startRepeatIndex, startTaskIndex) {
+  const entries = []
+
+  for (let repeat = startRepeatIndex; repeat <= repeats; repeat += 1) {
+    const fromTaskIndex = repeat === startRepeatIndex ? startTaskIndex : 0
+    for (let taskIndex = fromTaskIndex; taskIndex < tasks.length; taskIndex += 1) {
+      entries.push({ task: tasks[taskIndex], repeat })
+    }
+  }
+
+  return entries
+}
+
 async function writeChildOutput(run) {
   if (!process.env.BENCHMARK_CHILD_OUTPUT_FILE) return
   await writeJson(process.env.BENCHMARK_CHILD_OUTPUT_FILE, run)
@@ -195,14 +210,14 @@ async function runCommand(command, args, options = {}) {
   })
 }
 
-function aggregateRun(run, extractors) {
+export function aggregateRun(run, extractors) {
   const byModel = new Map()
   const byTaskAndModel = new Map()
   const modelCatalog = new Map((run.modelCatalog?.models || []).map((entry) => [entry.model, entry]))
   const taskCatalog = new Map((run.taskCatalog || []).map((task) => [task.id, task]))
   const taskValueBaselines = new Map()
 
-  function evaluateTaskComparability(modelName, taskId, eligible) {
+  function evaluateTaskComparability(modelName, taskId) {
     const catalogEntry = modelCatalog.get(modelName)
     const task = taskCatalog.get(taskId)
     const requiredCapabilities = task?.requiredCapabilities || []
@@ -215,7 +230,7 @@ function aggregateRun(run, extractors) {
       }
     }
 
-    const comparable = eligible && unsupported.length === 0
+    const comparable = unsupported.length === 0
     const comparabilityNote = unsupported.length
       ? unsupported.map(({ capability, support }) => `${capability}: ${support}`).join(', ')
       : null
@@ -236,16 +251,16 @@ function aggregateRun(run, extractors) {
     if (!byTaskAndModel.has(taskKey)) byTaskAndModel.set(taskKey, [])
     byTaskAndModel.get(taskKey).push(result)
 
-    const comparability = evaluateTaskComparability(result.model, result.taskId, result.success && result.requestUnits != null)
-    if (comparability.comparable) {
+    const comparability = evaluateTaskComparability(result.model, result.taskId)
+    if (comparability.comparable && result.success && result.requestUnits != null) {
       const baseline = taskValueBaselines.get(result.taskId) || createTaskValueBaseline()
       taskValueBaselines.set(result.taskId, updateTaskValueBaseline(baseline, result))
     }
   }
 
   for (const result of run.results) {
-    const comparability = evaluateTaskComparability(result.model, result.taskId, result.success && result.requestUnits != null)
-    const composite = comparability.comparable
+    const comparability = evaluateTaskComparability(result.model, result.taskId)
+    const composite = comparability.comparable && result.success && result.requestUnits != null
       ? computeCompositeValueScore({
         requestUnits: result.requestUnits,
         costUsd: result.costUsd,
@@ -274,8 +289,8 @@ function aggregateRun(run, extractors) {
       const requestUnits = successful.map((entry) => entry.requestUnits).filter((value) => value != null)
       const allRequestUnits = entries.map((entry) => entry.requestUnits).filter((value) => value != null)
       const catalogEntry = modelCatalog.get(model)
-      const modelTaskChecks = entries.map((entry) => evaluateTaskComparability(model, entry.taskId, eligible))
-      const comparable = eligible && modelTaskChecks.every((entry) => entry.comparable)
+      const modelTaskChecks = entries.map((entry) => evaluateTaskComparability(model, entry.taskId))
+      const comparable = modelTaskChecks.every((entry) => entry.comparable)
       const notes = [...new Set(modelTaskChecks.map((entry) => entry.comparabilityNote).filter(Boolean))]
       return {
         model,
@@ -324,7 +339,7 @@ function aggregateRun(run, extractors) {
       const requestUnits = entries.map((entry) => entry.requestUnits).filter((value) => value != null)
       const catalogEntry = modelCatalog.get(sample.model)
       const eligible = successful.length > 0 && successful.every((entry) => entry.requestUnits != null)
-      const comparability = evaluateTaskComparability(sample.model, sample.taskId, eligible)
+      const comparability = evaluateTaskComparability(sample.model, sample.taskId)
       return {
         taskId: sample.taskId,
         taskName: sample.taskName,
@@ -378,7 +393,7 @@ async function prepareRunTaskDir(runtime, runID, task, model, repeatIndex) {
   }
 }
 
-async function executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, processDeadlineAt = null }) {
+async function executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, taskTimeoutMs }) {
   const { runTaskDir, workspaceDir } = await prepareRunTaskDir(runtime, runID, task, model, repeatIndex)
   const startedAt = nowIso()
   const startedMs = Date.now()
@@ -398,7 +413,7 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
       directory: workspaceDir,
       sessionID,
       prompt: task.prompt,
-      taskTimeoutMs: computeTaskTimeoutMs(runtime, task, processDeadlineAt),
+      taskTimeoutMs,
       agent: runtime.agent,
       model
     })
@@ -501,9 +516,32 @@ export async function runBenchmarkSingle(runtime, modelsOverride = null, runIDOv
       const server = await startOpenCodeServer({ runtime, model, proxy })
 
       try {
+        let exhaustedProcessBudget = false
         for (let repeatIndex = 1; repeatIndex <= runtime.repeats; repeatIndex += 1) {
-          for (const task of tasks) {
-            const result = await executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, processDeadlineAt })
+          if (exhaustedProcessBudget) break
+
+          for (let taskIndex = 0; taskIndex < tasks.length; taskIndex += 1) {
+            const task = tasks[taskIndex]
+            const taskTimeoutMs = computeTaskTimeoutMs(runtime, task, processDeadlineAt)
+
+            // Don't start a new task when the enclosing process budget is nearly exhausted.
+            if (processDeadlineAt && taskTimeoutMs < minimumTaskStartBudgetMs) {
+              const synthetic = buildSyntheticFailureResults({
+                runID,
+                modelName: `${model.providerID}/${model.modelID}`,
+                provider: model.providerID,
+                entries: collectRemainingTaskEntries(tasks, runtime.repeats, repeatIndex, taskIndex),
+                reason: 'Benchmark process timeout budget was exhausted before remaining tasks could start',
+                durationMs: 0
+              })
+              run.results.push(...synthetic)
+              await flushRunProgress(runtime, run, writeArtifacts)
+              console.log(`TIMEOUT ${model.providerID}/${model.modelID} remaining=${synthetic.length}`)
+              exhaustedProcessBudget = true
+              break
+            }
+
+            const result = await executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, taskTimeoutMs })
             run.results.push(result)
             await flushRunProgress(runtime, run, writeArtifacts)
             console.log(`${result.success ? 'PASS' : 'FAIL'} ${result.taskId} ${result.model} steps=${result.steps} requestUnits=${result.requestUnits ?? 'n/a'}`)
@@ -617,8 +655,6 @@ export async function runBenchmark(runtime) {
   await writeRunArtifacts(runtime, combined)
   return combined
 }
-
-export { aggregateRun }
 
 export async function validateWorkspace(runtime) {
   const tasks = await loadTasks(runtime)

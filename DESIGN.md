@@ -23,6 +23,8 @@ Secondary metrics:
 - median OpenCode steps per task
 - median token usage per successful task
 - median cost per successful task
+- `valueScore`: normalized efficiency score derived from request units, observed cost, and wall time
+- `compositeScore`: correctness-first blend of `score` and `valueScore`
 
 If request-unit accounting is unavailable from the provider path, the run is marked `request_accounting="unavailable"` and excluded from the ORPT leaderboard while still preserving other telemetry.
 
@@ -115,7 +117,7 @@ This avoids presenting a made-up ORPT number.
 
 ## Task set for MVP
 
-Five deterministic tasks are included.
+Nine deterministic tasks are included.
 
 1. `01-iac-kubernetes-rollout`
    Fix a Kubernetes deployment/service/ingress rollout issue.
@@ -131,6 +133,18 @@ Five deterministic tasks are included.
 
 5. `05-log-audit-script`
    Implement a shell script that audits log files and emits a JSON summary.
+
+6. `06-kubernetes-oidc-rbac-repair`
+   Repair Kubernetes API OIDC settings and namespace-scoped RBAC bindings.
+
+7. `07-cnpg-restore-manifest-repair`
+   Fix a CloudNativePG restore manifest so it follows safe recovery and backup-contract rules.
+
+8. `08-workspace-transplant-bundle-repair`
+   Repair a portable workspace transplant helper so it preserves durable state while excluding transient runtime data.
+
+9. `09-gitops-workspace-render-validation`
+   Repair a workspace catalog and rendered GitOps manifests so slug, hostname, provider record, and rendered resources are consistent.
 
 Each verifier checks repository state or script output, not subjective prose.
 
@@ -197,6 +211,8 @@ Aggregates contain:
 - average requests per successful task
 - average duration for successful tasks
 - medians for steps/tokens/cost
+- `valueScore`
+- `compositeScore`
 - leaderboard eligibility
 
 ## Reporting

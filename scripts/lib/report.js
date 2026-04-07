@@ -1,5 +1,6 @@
 import path from 'node:path'
 
+import { aggregateRun } from './benchmark.js'
 import { ensureDir, readJson, writeJson, writeText } from './fs.js'
 
 async function loadFullTaskCatalog(rootDir) {
@@ -323,6 +324,10 @@ Charts:
 3. Ansible nginx role completion
 4. Docker Compose observability fix
 5. Log audit shell script
+6. Kubernetes OIDC RBAC repair
+7. CNPG restore manifest repair
+8. Workspace transplant bundle repair
+9. GitOps workspace render validation
 
 ## Task Requirements
 
@@ -347,7 +352,7 @@ Environment variables:
 - \`BENCHMARK_MODELS\`: comma-separated model matrix
 - \`BENCHMARK_REPEATS\`: repeat count per task/model
 - \`BENCHMARK_TASK_GLOB\`: task subset filter
-- \`BENCHMARK_PROCESS_TIMEOUT_SECONDS\`: hard timeout for the benchmark process during development
+- \`BENCHMARK_PROCESS_TIMEOUT_SECONDS\`: hard timeout for the benchmark process during development; keep \`0\` for full real benchmark runs
 - \`BENCHMARK_WRITE_README\`: write generated README and charts
 
 ## Model Inventory
@@ -420,6 +425,9 @@ export async function generateReports(runtime, runOverride = null) {
   } else if (!run.taskCatalog) {
     run.taskCatalog = []
   }
+
+  aggregateRun(run, runtime.baseConfig.runner.requestExtractors)
+  await writeJson(path.join(runtime.rootDir, runtime.baseConfig.results.latestFile), run)
 
   const catalogByModel = new Map((run.modelCatalog?.models || []).map((entry) => [entry.model, entry]))
   const taskCatalogById = new Map((run.taskCatalog || []).map((entry) => [entry.id, entry]))
