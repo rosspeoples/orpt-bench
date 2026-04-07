@@ -1,0 +1,5 @@
+{
+  "restoreClusterName": "gitea-postgresql",
+  "backupName": "latest-backup",
+  "restoreDestinationPath": "s3://cnpg-backups/gitea-postgresql/"
+}

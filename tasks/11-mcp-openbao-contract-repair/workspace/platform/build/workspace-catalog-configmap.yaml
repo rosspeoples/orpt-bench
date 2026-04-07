@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-workspace-catalog
+  namespace: ai-build
+data:
+  workspaces.yaml: |
+    version: v1
+    workspaces:
+      - workspaceSlug: release-engineering
+        workspaceOidcGroup: thepeoples_dev_build_release_engineering_users
+        mcpAccess:
+          gitea:
+            enabled: true
+            accessMode: read_only
+            allowedRepos:
+              - benchmarks/orpt-bench
+          argocd:
+            enabled: true
+            accessMode: read_only
+            allowedApplications:
+              - platform-build

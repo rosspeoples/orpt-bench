@@ -37,6 +37,7 @@
         "properties": {
           "id": { "type": "string" },
           "name": { "type": "string" },
+          "difficulty": { "type": "string" },
           "requiredCapabilities": { "type": "array", "items": { "type": "string" } }
         }
       }

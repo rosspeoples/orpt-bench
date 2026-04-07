@@ -1,0 +1,9 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: release-engineering-tls
+  namespace: ai-build
+spec:
+  secretName: release-engineering-tls
+  dnsNames:
+    - release-engineering.ask.ai.thepeoples.dev

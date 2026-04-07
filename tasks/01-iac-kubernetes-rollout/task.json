@@ -2,6 +2,7 @@
   "id": "01-iac-kubernetes-rollout",
   "name": "Kubernetes rollout repair",
   "category": "iac",
+  "difficulty": "medium",
   "requiredCapabilities": ["unattendedBenchmarkRuns"],
   "prompt": "You are working in a benchmark fixture. Fix the Kubernetes manifests so the api deployment is valid and production-safe for this fixture. Keep the existing intent, make the smallest correct changes, and do not add extra files. Success means the verifier script passes.",
   "verifier": "python3 verify.py",

@@ -11,7 +11,7 @@ async function loadFullTaskCatalog(rootDir) {
     for (const entry of entries.filter((item) => item.isDirectory()).sort((a, b) => a.name.localeCompare(b.name))) {
       try {
         const task = await readJson(path.join(tasksDir, entry.name, 'task.json'))
-        tasks.push({ id: task.id, name: task.name, requiredCapabilities: task.requiredCapabilities || [] })
+        tasks.push({ id: task.id, name: task.name, difficulty: task.difficulty || 'medium', requiredCapabilities: task.requiredCapabilities || [] })
       } catch {
         continue
       }
@@ -211,19 +211,28 @@ function renderCapabilityCoverageTable(run, catalogByModel) {
 
 function renderTaskRequirementTable(run) {
   const lines = [
-    '| Task | Required Capabilities |',
-    '| --- | --- |'
+    '| Task | Difficulty | Required Capabilities |',
+    '| --- | --- | --- |'
   ]
 
   for (const task of run.taskCatalog || []) {
-    lines.push(`| ${task.id} | ${(task.requiredCapabilities || []).join(', ') || 'none'} |`)
+    lines.push(`| ${task.id} | ${task.difficulty || 'medium'} | ${(task.requiredCapabilities || []).join(', ') || 'none'} |`)
   }
 
   if (!(run.taskCatalog || []).length) {
-    lines.push('| No tasks recorded | - |')
+    lines.push('| No tasks recorded | - | - |')
   }
 
   return lines.join('\n')
+}
+
+function renderIncludedTasks(run) {
+  const tasks = run.taskCatalog || []
+  if (!tasks.length) return '1. No tasks recorded'
+
+  return tasks
+    .map((task, index) => `${index + 1}. ${task.name} (${task.id}, ${task.difficulty || 'medium'})`)
+    .join('\n')
 }
 
 function renderReadme(run) {
@@ -248,8 +257,18 @@ function renderReadme(run) {
   const taskRequirementTable = renderTaskRequirementTable(run)
   const pricingProvenanceTable = renderPricingProvenanceTable(run, catalogByModel)
   const valueScoreComponentsTable = renderValueScoreComponentsTable(run)
+  const includedTasksList = renderIncludedTasks(run)
   const valueScoreWeights = run.scoring?.valueScoreWeights || { orpt: 0.45, cost: 0.35, time: 0.2 }
   const compositeWeights = run.scoring?.compositeScoreWeights || { score: 0.7, valueScore: 0.3 }
+  const tasksByDifficulty = (run.taskCatalog || []).reduce((acc, task) => {
+    const difficulty = task.difficulty || 'medium'
+    acc[difficulty] = (acc[difficulty] || 0) + 1
+    return acc
+  }, {})
+  const difficultySummary = ['control', 'medium', 'high', 'expert']
+    .filter((difficulty) => tasksByDifficulty[difficulty])
+    .map((difficulty) => `${difficulty}=${tasksByDifficulty[difficulty]}`)
+    .join(', ') || 'none declared'
   const scoringNotes = [
     '## Value Score',
     '',
@@ -273,6 +292,8 @@ function renderReadme(run) {
   return `# ORPT-Bench
 
 OpenCode Agentic Efficiency Benchmark measures how many OpenCode requests a model consumes per successful task on reproducible DevOps and light-coding fixtures.
+
+The suite is intended for senior-level platform and infrastructure repair work. One control task provides a basic sanity check, while the scored benchmark should otherwise skew toward medium/high difficulty and reward models that can sustain real multi-step investigation loops.
 
 Model pricing in this repo is generated for benchmark use during \`sync-models\`. The normalized catalog keeps both the actual listed blended price and, when useful, a clearly labeled reference blended price for free variants derived from a paid sibling or nearby family model.
 
@@ -319,15 +340,9 @@ Charts:
 
 ## Included Tasks
 
-1. Kubernetes rollout repair
-2. Terraform static site repair
-3. Ansible nginx role completion
-4. Docker Compose observability fix
-5. Log audit shell script
-6. Kubernetes OIDC RBAC repair
-7. CNPG restore manifest repair
-8. Workspace transplant bundle repair
-9. GitOps workspace render validation
+- Difficulty mix: ${difficultySummary}
+
+${includedTasksList}
 
 ## Task Requirements
 

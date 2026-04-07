@@ -2,8 +2,9 @@
   "id": "03-ansible-nginx-role",
   "name": "Ansible nginx role completion",
   "category": "ansible",
+  "difficulty": "high",
   "requiredCapabilities": ["unattendedBenchmarkRuns"],
-  "prompt": "You are working in a benchmark fixture. Complete the Ansible role so it installs nginx, renders the virtual host, enables it, and reloads the service when the config changes. Keep the role compact and conventional. Success means the verifier script passes.",
+  "prompt": "You are working in a benchmark fixture. Complete the Ansible role so it matches the local service handoff notes: install nginx, render the intended virtual host, enable it, and reload nginx only when config changes. Keep the role compact and conventional. Success means the verifier script passes.",
   "verifier": "python3 verify.py",
   "timeoutSeconds": 300
 }

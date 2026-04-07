@@ -1,0 +1,26 @@
+---
+- name: Validate Gitea bootstrap inputs
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Assert required Gitea bootstrap variables
+      ansible.builtin.assert:
+        that:
+          - lookup('env', 'KUBECONFIG_OUT') | length > 0
+          - lookup('env', 'GITEA_URL') | length > 0
+          - lookup('env', 'GITEA_HOSTNAME') | length > 0
+          - lookup('env', 'GITEA_POSTGRESQL_DATABASE') | length > 0
+          - lookup('env', 'GITEA_POSTGRESQL_USERNAME') | length > 0
+          - lookup('env', 'OIDC_ISSUER_URL') | length > 0
+          - lookup('env', 'OIDC_CLIENT_ID_GITEA') | length > 0
+          - lookup('env', 'BOOTSTRAP_GITEA_STORAGE_CLASS') | length > 0
+          - lookup('env', 'BOOTSTRAP_CNPG_STORAGE_CLASS') | length > 0
+        fail_msg: Missing required Gitea bootstrap variables
+
+    - name: Assert required Ceph RBD-backed storage classes are available
+      ansible.builtin.assert:
+        that:
+          - lookup('env', 'BOOTSTRAP_GITEA_STORAGE_PROVISIONER') == 'cephfs.csi.ceph.com'
+          - lookup('env', 'BOOTSTRAP_CNPG_STORAGE_PROVISIONER') == 'rbd.csi.ceph.com'
+        fail_msg: storage class must exist and use the expected Ceph RBD provisioner

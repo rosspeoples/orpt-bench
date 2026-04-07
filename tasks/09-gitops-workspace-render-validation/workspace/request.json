@@ -1,0 +1,7 @@
+{
+  "workspaceSlug": "release-engineering",
+  "lane": "build",
+  "pattern": "standard-build",
+  "hostname": "release-eng.build.thepeoples.dev",
+  "workspaceOidcGroup": "thepeoples_dev_build_users"
+}

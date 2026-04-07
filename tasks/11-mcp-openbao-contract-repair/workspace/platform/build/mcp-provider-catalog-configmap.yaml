@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-mcp-provider-catalog
+  namespace: ai-build
+data:
+  mcp-providers.yaml: |
+    version: v1
+    mcpProviders:
+      - slug: gitea
+        displayName: Gitea MCP
+        enabled: true
+        secretNameSuffix: gitea-mcp
+        secretKey: GITEA_ACCESS_TOKEN
+        secretRemotePathSuffix: mcp/gitea
+      - slug: argocd
+        displayName: ArgoCD MCP
+        enabled: true
+        secretNameSuffix: argocd-mcp
+        secretKey: ARGOCD_AUTH_TOKEN
+        secretRemotePathSuffix: mcp/argo

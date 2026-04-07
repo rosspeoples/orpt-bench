@@ -1,0 +1,4 @@
+---
+- name: bootstrap-gitea placeholder
+  hosts: localhost
+  gather_facts: false

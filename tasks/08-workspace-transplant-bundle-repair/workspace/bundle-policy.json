@@ -1,0 +1,10 @@
+{
+  "include": [
+    "agents/session-1.json",
+    "identity/device.json",
+    "identity/device-auth.json",
+    "logs/runtime.log",
+    "workspace/operator-notes.md",
+    "workspace/.git/config"
+  ]
+}

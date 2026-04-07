@@ -1,0 +1,4 @@
+---
+- name: bootstrap-argocd placeholder
+  hosts: localhost
+  gather_facts: false

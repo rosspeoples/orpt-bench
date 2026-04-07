@@ -10,6 +10,7 @@ export async function loadTasks(runtime) {
     tasks.push({
       ...task,
       requiredCapabilities: Array.isArray(task.requiredCapabilities) ? task.requiredCapabilities : [],
+      difficulty: task.difficulty || 'medium',
       taskDir,
       workspaceDir: path.join(taskDir, 'workspace')
     })

@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-eng
+spec:
+  template:
+    spec:
+      containers:
+      - name: opencode
+        image: ghcr.io/example/opencode:latest
+        env:
+        - name: WORKSPACE_OIDC_GROUP
+          value: thepeoples_dev_build_users

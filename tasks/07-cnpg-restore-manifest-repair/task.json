@@ -2,8 +2,9 @@
   "id": "07-cnpg-restore-manifest-repair",
   "name": "CNPG restore manifest repair",
   "category": "kubernetes",
+  "difficulty": "high",
   "requiredCapabilities": ["unattendedBenchmarkRuns"],
-  "prompt": "You are working in a benchmark fixture. Repair the CNPG restore manifest so it follows the documented safe restore pattern: restore into a new cluster name, use the expected S3 secret contract, and write backups to a distinct restore prefix. Keep the manifest simple and production-safe for this fixture. Success means the verifier script passes.",
+  "prompt": "You are working in a benchmark fixture. Repair the CNPG restore input and generated manifest so they follow the local restore runbook and secret contract: restore into a new cluster name, use the expected S3 secret contract, and write backups to a distinct restore prefix. Keep the manifest simple and production-safe for this fixture. Success means the verifier script passes.",
   "verifier": "python3 verify.py",
   "timeoutSeconds": 300
 }

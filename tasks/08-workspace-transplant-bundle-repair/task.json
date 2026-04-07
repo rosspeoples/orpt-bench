@@ -2,8 +2,9 @@
   "id": "08-workspace-transplant-bundle-repair",
   "name": "Workspace transplant bundle repair",
   "category": "scripting",
+  "difficulty": "high",
   "requiredCapabilities": ["unattendedBenchmarkRuns"],
-  "prompt": "You are working in a benchmark fixture. Repair the portable workspace transplant helper so it includes only the durable OpenClaw state needed for a portable restore and excludes transient or stale runtime state. Keep the script small and deterministic. Success means the verifier script passes.",
+  "prompt": "You are working in a benchmark fixture. Repair the portable workspace transplant helper and its broken bundle policy so they follow the local durable-state policy: include only portable OpenClaw state required for a restore and exclude transient or stale runtime state. Keep the script small and deterministic. Success means the verifier script passes.",
   "verifier": "python3 verify.py",
   "timeoutSeconds": 300
 }

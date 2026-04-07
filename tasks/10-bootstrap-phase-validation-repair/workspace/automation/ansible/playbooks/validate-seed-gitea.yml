@@ -1,0 +1,9 @@
+---
+- name: Validate seed-gitea inputs
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Placeholder seed-gitea validation
+      ansible.builtin.debug:
+        msg: seed-gitea validation placeholder

@@ -8,6 +8,13 @@ ORPT-Bench measures agentic efficiency inside OpenCode using a task-oriented met
 
 The benchmark answers a practical question: how many OpenCode requests does a model consume to finish real infrastructure and scripting work successfully?
 
+The benchmark is intentionally opinionated:
+
+- one control task exists for basic tool/runtime validation
+- the scored suite should otherwise skew toward medium/high difficulty
+- future growth should add explicit expert-tier tasks
+- ORPT should reflect real investigation and repair loops, not verifier scraping or one-file literal patching
+
 ## Primary Metric
 
 For a benchmark run:
@@ -51,10 +58,12 @@ Each task lives under `tasks/<id-name>/` and contains:
 
 Each task is designed to be:
 
-- small enough for CI
-- realistic for platform engineering work
-- verifiable by deterministic scripts
+- realistic for senior platform engineering work
+- difficult enough to expose weak models quickly
+- grounded in local source-of-truth artifacts such as runbooks, handoff notes, or request specs
+- verifiable by deterministic semantic checks, not just raw substring matches
 - independent from external cloud credentials
+- still small enough for CI, but large enough to require non-trivial investigation
 
 ### 2. Runner container
 
@@ -115,38 +124,54 @@ The benchmark is intentionally strict:
 
 This avoids presenting a made-up ORPT number.
 
-## Task set for MVP
+## Task set
 
-Nine deterministic tasks are included.
+Nine deterministic tasks are currently included.
+
+Difficulty intent:
+
+- `control`: simple sanity check for basic model/tooling validation
+- `medium`: meaningful multi-file repair with some local source-of-truth discovery
+- `high`: senior-level platform repair expected to require broad search, synthesis, and iterative validation
+- `expert`: reserved for future fixtures that should challenge even frontier models heavily
 
 1. `01-iac-kubernetes-rollout`
    Fix a Kubernetes deployment/service/ingress rollout issue.
+   Intended difficulty: `medium`
 
 2. `02-terraform-static-site`
    Repair and complete a Terraform module for a static site stack.
+   Intended difficulty: `high`
 
 3. `03-ansible-nginx-role`
    Finish an Ansible role that configures nginx with a templated vhost.
+   Intended difficulty: `high`
 
 4. `04-docker-compose-observability`
    Fix a Docker Compose stack for app + metrics + healthchecks.
+   Intended difficulty: `high`
 
 5. `05-log-audit-script`
    Implement a shell script that audits log files and emits a JSON summary.
+   Intended difficulty: `control`
 
 6. `06-kubernetes-oidc-rbac-repair`
    Repair Kubernetes API OIDC settings and namespace-scoped RBAC bindings.
+   Intended difficulty: `high`
 
 7. `07-cnpg-restore-manifest-repair`
    Fix a CloudNativePG restore manifest so it follows safe recovery and backup-contract rules.
+   Intended difficulty: `high`
 
 8. `08-workspace-transplant-bundle-repair`
    Repair a portable workspace transplant helper so it preserves durable state while excluding transient runtime data.
+   Intended difficulty: `high`
 
 9. `09-gitops-workspace-render-validation`
-   Repair a workspace catalog and rendered GitOps manifests so slug, hostname, provider record, and rendered resources are consistent.
+   Repair a workspace request, provider record, and rendered GitOps manifests so source-of-truth and rendered resources are consistent.
+   Intended difficulty: `high`
 
-Each verifier checks repository state or script output, not subjective prose.
+Each verifier checks repository state or script output, not subjective prose. Verifiers should prefer semantic parsing and tool-based validation over answer-key substring matching.
 
 ## Session configuration
 

@@ -4,4 +4,4 @@ metadata:
   name: release-engineering
 spec:
   hostnames:
-    - release-eng.build.thepeoples.dev
+  - release-eng.build.thepeoples.dev

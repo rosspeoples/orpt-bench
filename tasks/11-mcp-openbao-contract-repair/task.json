@@ -1,0 +1,10 @@
+{
+  "id": "11-mcp-openbao-contract-repair",
+  "name": "MCP OpenBao contract repair",
+  "category": "gitops",
+  "difficulty": "expert",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the Build workspace MCP contract so the provider catalog, workspace request, credential registry, issuer expectations, and plugin environment contract all agree. Follow the local design notes, make the smallest correct changes, and do not add unrelated files. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 300
+}

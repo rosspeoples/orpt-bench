@@ -24,17 +24,17 @@ spec:
     retentionPolicy: 7d
     barmanObjectStore:
       destinationPath: s3://cnpg-backups/gitea-postgresql/
-      endpointURL: https://s3.thepeoples.dev
+      endpointURL: https://s3.thepeoples.cc
       s3Credentials:
         accessKeyId:
-          name: gitea-backups
-          key: access_key
+          name: cnpg-backups-s3
+          key: ACCESS_KEY_ID
         secretAccessKey:
-          name: gitea-backups
-          key: secret_key
+          name: cnpg-backups-s3
+          key: ACCESS_SECRET_KEY
         region:
-          name: gitea-backups
-          key: region
+          name: cnpg-backups-s3
+          key: AWS_REGION
       data:
         compression: gzip
       wal:

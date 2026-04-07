@@ -6,29 +6,25 @@ import tarfile
 from pathlib import Path
 
 
-INCLUDE_FILES = [
-    "agents/session-1.json",
-    "identity/device.json",
-    "identity/device-auth.json",
-    "logs/runtime.log",
-    "workspace/operator-notes.md",
-    "workspace/.git/config",
-]
+def load_include_files(source_dir: Path) -> list[str]:
+    policy = json.loads((source_dir.parent / "bundle-policy.json").read_text())
+    return list(policy.get("include", []))
 
 
 def create_bundle(source_dir: Path, output_path: Path) -> None:
+    include_files = load_include_files(source_dir)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with tarfile.open(output_path, "w:gz") as archive:
         manifest = {
             "format": "act-portable-v1",
-            "included": INCLUDE_FILES,
+            "included": include_files,
         }
         manifest_bytes = json.dumps(manifest, indent=2).encode("utf-8")
         info = tarfile.TarInfo("manifest.json")
         info.size = len(manifest_bytes)
         archive.addfile(info, fileobj=__import__("io").BytesIO(manifest_bytes))
 
-        for relative_name in INCLUDE_FILES:
+        for relative_name in include_files:
             archive.add(source_dir / relative_name, arcname=f"state/{relative_name}")
 
 

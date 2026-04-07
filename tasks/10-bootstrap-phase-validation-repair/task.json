@@ -1,0 +1,10 @@
+{
+  "id": "10-bootstrap-phase-validation-repair",
+  "name": "Bootstrap phase validation repair",
+  "category": "platform-bootstrap",
+  "difficulty": "expert",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the bootstrap validation flow so preflight and the gitea phase validation align with the local platform automation contract. Follow the included design notes, keep the changes minimal, and make sure the provided verification script passes. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 300
+}

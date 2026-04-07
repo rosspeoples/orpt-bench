@@ -10,6 +10,7 @@ RUN apt-get update \
     git \
     jq \
     python3 \
+    python3-yaml \
     python3-venv \
     python3-pip \
     rsync \
@@ -20,7 +21,8 @@ WORKDIR /workspace
 COPY package.json /workspace/package.json
 
 RUN npm install --no-fund --no-audit \
-  && npm install -g opencode-ai@1.3.17
+  && npm install -g opencode-ai@1.3.17 \
+  && python3 -m pip install --no-cache-dir --break-system-packages python-hcl2
 
 COPY . /workspace
 

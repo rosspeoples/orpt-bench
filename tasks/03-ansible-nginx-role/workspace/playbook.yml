@@ -1,0 +1,7 @@
+- hosts: all
+  gather_facts: false
+  vars:
+    server_name: demo.internal
+    document_root: /srv/demo/current/public
+  roles:
+    - web

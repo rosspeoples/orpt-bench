@@ -1,0 +1,12 @@
+{
+  "site": {
+    "bucketVariable": "bucket_name",
+    "indexDocument": "index.html",
+    "errorDocument": "404.html"
+  },
+  "cdn": {
+    "enabled": true,
+    "viewerProtocolPolicy": "redirect-to-https",
+    "defaultRootObject": "index.html"
+  }
+}

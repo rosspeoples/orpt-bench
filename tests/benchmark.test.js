@@ -130,3 +130,23 @@ test('aggregateRun keeps failed runs comparable when capability support is prese
   assert.equal(run.taskSummary[0].comparable, true)
   assert.equal(run.results[0].valueScore, 0)
 })
+
+test('aggregateRun preserves task difficulty metadata in task catalog inputs', () => {
+  const run = {
+    results: [],
+    modelCatalog: { models: [] },
+    taskCatalog: [
+      { id: 'task-control', name: 'Control', difficulty: 'control', requiredCapabilities: [] },
+      { id: 'task-high', name: 'High', difficulty: 'high', requiredCapabilities: ['unattendedBenchmarkRuns'] }
+    ],
+    scoring: {
+      valueScoreWeights: { orpt: 0.45, cost: 0.35, time: 0.2 },
+      compositeScoreWeights: { score: 0.7, valueScore: 0.3 }
+    }
+  }
+
+  aggregateRun(run, { headerCandidates: [], logRegexes: [] })
+
+  assert.equal(run.taskCatalog[0].difficulty, 'control')
+  assert.equal(run.taskCatalog[1].difficulty, 'high')
+})

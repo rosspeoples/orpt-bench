@@ -2,8 +2,9 @@
   "id": "09-gitops-workspace-render-validation",
   "name": "GitOps workspace render validation",
   "category": "gitops",
+  "difficulty": "high",
   "requiredCapabilities": ["unattendedBenchmarkRuns"],
-  "prompt": "You are working in a benchmark fixture. Repair the workspace catalog and rendered manifest set so the workspace slug, OIDC provider record, hostname, and generated files are all consistent with the intended Build workspace request. Keep the fixture compact and deterministic. Success means the verifier script passes.",
+  "prompt": "You are working in a benchmark fixture. Repair the workspace request, generator config, and rendered manifest set so they are all consistent with the intended Build workspace. Follow the local request and generation notes, keep the fixture compact and deterministic, and do not add unrelated files. Success means the verifier script passes.",
   "verifier": "python3 verify.py",
   "timeoutSeconds": 300
 }

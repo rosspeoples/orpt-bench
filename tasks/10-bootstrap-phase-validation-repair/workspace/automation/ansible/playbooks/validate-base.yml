@@ -1,0 +1,9 @@
+---
+- name: Validate base bootstrap inputs
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Placeholder base validation
+      ansible.builtin.debug:
+        msg: base validation placeholder

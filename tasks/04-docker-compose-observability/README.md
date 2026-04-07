@@ -2,4 +2,5 @@
 
 Repair a compact local monitoring stack.
 
-The verifier checks service definitions and Prometheus scrape configuration.
+The workspace includes a small observability handoff note.
+The verifier resolves the rendered Compose model and Prometheus configuration semantically.

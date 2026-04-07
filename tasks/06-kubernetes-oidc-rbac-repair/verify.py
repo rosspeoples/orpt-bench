@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import yaml
+
 
 def require(cond: bool, message: str) -> None:
     if not cond:
@@ -10,19 +12,26 @@ def require(cond: bool, message: str) -> None:
 
 
 root = Path(__file__).parent / "workspace"
-k3s_config = (root / "k3s" / "config.yaml").read_text()
-rb_agents_cluster_ops = (root / "rbac" / "agents-cluster-ops-rolebinding.yaml").read_text()
-rb_agents = (root / "rbac" / "agents-rolebinding.yaml").read_text()
+k3s = yaml.safe_load((root / "k3s" / "config.yaml").read_text())
+rb_agents_cluster_ops = yaml.safe_load((root / "rbac" / "agents-cluster-ops-rolebinding.yaml").read_text())
+rb_agents = yaml.safe_load((root / "rbac" / "agents-rolebinding.yaml").read_text())
 
-require("kube-apiserver-arg:" in k3s_config, "k3s API server args missing")
-require("oidc-issuer-url=https://auth.thepeoples.cc/application/o/kubernetes/" in k3s_config, "wrong OIDC issuer URL")
-require("oidc-client-id=kubernetes" in k3s_config, "wrong OIDC client ID")
-require("oidc-username-claim=preferred_username" in k3s_config, "wrong username claim")
-require("oidc-groups-claim=groups" in k3s_config, "wrong groups claim")
-require("oidc-username-prefix=oidc:" in k3s_config, "wrong username prefix")
-require("oidc-groups-prefix=oidc:" in k3s_config, "wrong groups prefix")
-require("oidc:thepeoples_dev_k8s_cluster_ops_devs" in rb_agents_cluster_ops, "cluster ops RoleBinding must target the expected OIDC group")
-require("namespace: agents-cluster-ops" in rb_agents_cluster_ops, "RoleBinding must stay in agents-cluster-ops")
-require("oidc:thepeoples_dev_k8s_cluster_ops_devs" not in rb_agents, "cluster ops group must not be bound in the agents namespace")
+api_args = set(k3s.get("kube-apiserver-arg") or [])
+expected_args = {
+    "oidc-issuer-url=https://auth.thepeoples.cc/application/o/kubernetes/",
+    "oidc-client-id=kubernetes",
+    "oidc-username-claim=preferred_username",
+    "oidc-groups-claim=groups",
+    "oidc-username-prefix=oidc:",
+    "oidc-groups-prefix=oidc:",
+}
+require(expected_args.issubset(api_args), "k3s OIDC args do not match the cluster access contract")
+
+cluster_ops_subjects = rb_agents_cluster_ops.get("subjects") or []
+require(rb_agents_cluster_ops.get("metadata", {}).get("namespace") == "agents-cluster-ops", "RoleBinding must stay in agents-cluster-ops")
+require(any(subject.get("kind") == "Group" and subject.get("name") == "oidc:thepeoples_dev_k8s_cluster_ops_devs" for subject in cluster_ops_subjects), "cluster ops RoleBinding must target the expected OIDC group")
+
+shared_subjects = rb_agents.get("subjects") or []
+require(all(subject.get("name") != "oidc:thepeoples_dev_k8s_cluster_ops_devs" for subject in shared_subjects), "cluster ops group must not be bound in the agents namespace")
 
 print("ok")

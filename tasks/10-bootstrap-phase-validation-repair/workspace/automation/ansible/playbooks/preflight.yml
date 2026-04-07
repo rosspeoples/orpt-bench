@@ -1,0 +1,13 @@
+---
+- name: Preflight checks
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Assert required environment variables
+      ansible.builtin.assert:
+        that:
+          - lookup('env', 'CLUSTER_SSH_HOST') | length > 0
+          - lookup('env', 'CLUSTER_SSH_USER') | length > 0
+          - lookup('env', 'GITEA_URL') | length > 0
+        fail_msg: Missing one or more required bootstrap environment variables

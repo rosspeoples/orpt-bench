@@ -1,0 +1,4 @@
+---
+- name: bootstrap-base placeholder
+  hosts: localhost
+  gather_facts: false

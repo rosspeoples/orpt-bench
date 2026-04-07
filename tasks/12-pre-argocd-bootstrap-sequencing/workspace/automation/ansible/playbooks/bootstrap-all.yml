@@ -1,0 +1,21 @@
+---
+- name: Run full bootstrap sequence
+  ansible.builtin.import_playbook: preflight.yml
+
+- name: Run k3s bootstrap sequence
+  ansible.builtin.import_playbook: bootstrap-k3s.yml
+
+- name: Run base platform bootstrap sequence
+  ansible.builtin.import_playbook: bootstrap-base.yml
+
+- name: Run ArgoCD bootstrap sequence
+  ansible.builtin.import_playbook: bootstrap-argocd.yml
+
+- name: Run Gitea bootstrap sequence
+  ansible.builtin.import_playbook: bootstrap-gitea.yml
+
+- name: Run CloudNativePG bootstrap sequence
+  ansible.builtin.import_playbook: bootstrap-cnpg.yml
+
+- name: Run repo seeding sequence
+  ansible.builtin.import_playbook: seed-gitea-repo.yml

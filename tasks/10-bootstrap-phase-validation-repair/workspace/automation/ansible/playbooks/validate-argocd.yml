@@ -1,0 +1,9 @@
+---
+- name: Validate ArgoCD bootstrap inputs
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Placeholder argocd validation
+      ansible.builtin.debug:
+        msg: argocd validation placeholder

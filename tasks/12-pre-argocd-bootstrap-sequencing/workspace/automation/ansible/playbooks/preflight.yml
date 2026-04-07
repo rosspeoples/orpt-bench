@@ -1,0 +1,4 @@
+---
+- name: preflight placeholder
+  hosts: localhost
+  gather_facts: false

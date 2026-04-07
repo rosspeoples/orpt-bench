@@ -662,9 +662,12 @@ export async function runBenchmark(runtime) {
 
 export async function validateWorkspace(runtime) {
   const tasks = await loadTasks(runtime)
+  const validationRoot = path.join(runtime.tmpDir, 'validation-fixtures')
 
   for (const task of tasks) {
-    const result = await runCommand('python3', [path.join(task.taskDir, 'verify.py')], { cwd: task.taskDir, env: process.env })
+    const taskCopyDir = path.join(validationRoot, path.basename(task.taskDir))
+    await copyDir(task.taskDir, taskCopyDir)
+    const result = await runCommand('python3', [path.join(taskCopyDir, 'verify.py')], { cwd: taskCopyDir, env: process.env })
     if (result.code === 0) {
       throw new Error(`Task fixture ${task.id} already passes verifier; benchmark fixtures must start broken.`)
     }

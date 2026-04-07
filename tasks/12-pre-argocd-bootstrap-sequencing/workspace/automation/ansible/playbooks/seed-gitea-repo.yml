@@ -1,0 +1,4 @@
+---
+- name: seed-gitea-repo placeholder
+  hosts: localhost
+  gather_facts: false

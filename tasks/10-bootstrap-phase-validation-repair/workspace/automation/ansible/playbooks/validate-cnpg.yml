@@ -1,0 +1,9 @@
+---
+- name: Validate CNPG bootstrap inputs
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Placeholder cnpg validation
+      ansible.builtin.debug:
+        msg: cnpg validation placeholder
