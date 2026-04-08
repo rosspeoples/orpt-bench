@@ -9,30 +9,26 @@
         "opencode/gpt-5.4-mini"
       ],
       "y": [
-        "Kubernetes rollout repair [medium]",
-        "Terraform static site repair [high]",
-        "Ansible nginx role completion [high]",
-        "Docker Compose observability fix [high]",
         "Log audit shell script [control]",
-        "Kubernetes OIDC RBAC repair [high]",
-        "CNPG restore manifest repair [high]",
-        "Workspace transplant bundle repair [high]",
-        "GitOps workspace render validation [high]",
-        "Bootstrap phase validation repair [expert]",
-        "MCP OpenBao contract repair [expert]",
-        "Pre-ArgoCD bootstrap sequencing [expert]",
-        "Wildcard TLS route coverage [expert]",
-        "Build workspace plane convergence [expert]",
-        "Workspace runtime access convergence [expert]"
+        "Ansible nginx role completion [n/a]",
+        "Bootstrap phase validation repair [n/a]",
+        "Build workspace plane convergence [n/a]",
+        "CNPG restore manifest repair [n/a]",
+        "Docker Compose observability fix [n/a]",
+        "GitOps workspace render validation [n/a]",
+        "Kubernetes OIDC RBAC repair [n/a]",
+        "Kubernetes rollout repair [n/a]",
+        "MCP OpenBao contract repair [n/a]",
+        "Pre-ArgoCD bootstrap sequencing [n/a]",
+        "Terraform static site repair [n/a]",
+        "Wildcard TLS route coverage [n/a]",
+        "Workspace runtime access convergence [n/a]",
+        "Workspace transplant bundle repair [n/a]"
       ],
       "z": [
         [
-          0,
-          0
-        ],
-        [
-          0,
-          0
+          0.885708,
+          0.982504
         ],
         [
           0.851447,
@@ -43,24 +39,24 @@
           0
         ],
         [
-          0.885708,
-          0.982504
-        ],
-        [
-          1,
-          0
+          0.904334,
+          0.973911
         ],
         [
           0.895106,
           1
         ],
         [
-          0.890532,
-          1
+          0,
+          0
         ],
         [
           0.888896,
           0.979895
+        ],
+        [
+          1,
+          0
         ],
         [
           0,
@@ -75,26 +71,26 @@
           0
         ],
         [
+          0,
+          0
+        ],
+        [
           0.865749,
           1
         ],
         [
-          0.904334,
-          0.973911
-        ],
-        [
           0,
           0
+        ],
+        [
+          0.890532,
+          1
         ]
       ],
       "text": [
         [
-          "0.0",
-          "0.0"
-        ],
-        [
-          "0.0",
-          "0.0"
+          "0.886",
+          "0.983"
         ],
         [
           "0.851",
@@ -105,24 +101,24 @@
           "0.0"
         ],
         [
-          "0.886",
-          "0.983"
-        ],
-        [
-          "1.0",
-          "0.0"
+          "0.904",
+          "0.974"
         ],
         [
           "0.895",
           "1.0"
         ],
         [
-          "0.891",
-          "1.0"
+          "0.0",
+          "0.0"
         ],
         [
           "0.889",
           "0.98"
+        ],
+        [
+          "1.0",
+          "0.0"
         ],
         [
           "0.0",
@@ -137,58 +133,58 @@
           "0.0"
         ],
         [
+          "0.0",
+          "0.0"
+        ],
+        [
           "0.866",
           "1.0"
         ],
         [
-          "0.904",
-          "0.974"
-        ],
-        [
           "0.0",
           "0.0"
+        ],
+        [
+          "0.891",
+          "1.0"
         ]
       ],
       "customdata": [
         [
-          "Composite: 0.0<br>Success: 0%<br>Avg requests: 11.00<br>Avg cost: $0.0084<br>Avg wall time: 1m 13s",
-          "Composite: 0.0<br>Success: 0%<br>Avg requests: 6.00<br>Avg cost: $0.0030<br>Avg wall time: 32s"
-        ],
-        [
-          "Composite: 0.0<br>Success: 0%<br>Avg requests: 16.00<br>Avg cost: $0.0097<br>Avg wall time: 2m 30s",
-          "Composite: 0.0<br>Success: 0%<br>Avg requests: 7.00<br>Avg cost: $0.0018<br>Avg wall time: 1m 06s"
+          "Composite: 0.886<br>Success: 100%<br>Avg requests: 7.00<br>Avg cost: $0.0053<br>Avg wall time: 35s",
+          "Composite: 0.983<br>Success: 100%<br>Avg requests: 8.00<br>Avg cost: $0.0015<br>Avg wall time: 29s"
         ],
         [
           "Composite: 0.851<br>Success: 100%<br>Avg requests: 11.00<br>Avg cost: $0.0067<br>Avg wall time: 52s",
           "Composite: 1.0<br>Success: 100%<br>Avg requests: 7.00<br>Avg cost: $0.0023<br>Avg wall time: 29s"
         ],
         [
-          "Composite: 0.0<br>Success: 0%<br>Avg requests: 8.00<br>Avg cost: $0.0066<br>Avg wall time: 35s",
-          "Composite: 0.0<br>Success: 0%<br>Avg requests: 10.00<br>Avg cost: $0.0021<br>Avg wall time: 33s"
+          "Composite: 0.0<br>Success: 0%<br>Avg requests: 14.00<br>Avg cost: $0.0146<br>Avg wall time: 1m 50s",
+          "Composite: 0.0<br>Success: 0%<br>Avg requests: 10.00<br>Avg cost: $0.0037<br>Avg wall time: 1m 04s"
         ],
         [
-          "Composite: 0.886<br>Success: 100%<br>Avg requests: 7.00<br>Avg cost: $0.0053<br>Avg wall time: 35s",
-          "Composite: 0.983<br>Success: 100%<br>Avg requests: 8.00<br>Avg cost: $0.0015<br>Avg wall time: 29s"
-        ],
-        [
-          "Composite: 1.0<br>Success: 100%<br>Avg requests: 20.00<br>Avg cost: $0.0084<br>Avg wall time: 1m 53s",
-          "Composite: 0.0<br>Success: 0%<br>Avg requests: 10.00<br>Avg cost: $0.0021<br>Avg wall time: 38s"
+          "Composite: 0.904<br>Success: 100%<br>Avg requests: 13.00<br>Avg cost: $0.0123<br>Avg wall time: 1m 39s",
+          "Composite: 0.974<br>Success: 100%<br>Avg requests: 15.00<br>Avg cost: $0.0041<br>Avg wall time: 1m 53s"
         ],
         [
           "Composite: 0.895<br>Success: 100%<br>Avg requests: 14.00<br>Avg cost: $0.0095<br>Avg wall time: 1m 34s",
           "Composite: 1.0<br>Success: 100%<br>Avg requests: 10.00<br>Avg cost: $0.0060<br>Avg wall time: 52s"
         ],
         [
-          "Composite: 0.891<br>Success: 100%<br>Avg requests: 15.00<br>Avg cost: $0.0125<br>Avg wall time: 1m 50s",
-          "Composite: 1.0<br>Success: 100%<br>Avg requests: 15.00<br>Avg cost: $0.0041<br>Avg wall time: 1m 18s"
+          "Composite: 0.0<br>Success: 0%<br>Avg requests: 8.00<br>Avg cost: $0.0066<br>Avg wall time: 35s",
+          "Composite: 0.0<br>Success: 0%<br>Avg requests: 10.00<br>Avg cost: $0.0021<br>Avg wall time: 33s"
         ],
         [
           "Composite: 0.889<br>Success: 100%<br>Avg requests: 12.00<br>Avg cost: $0.0089<br>Avg wall time: 1m 28s",
           "Composite: 0.98<br>Success: 100%<br>Avg requests: 14.00<br>Avg cost: $0.0028<br>Avg wall time: 1m 06s"
         ],
         [
-          "Composite: 0.0<br>Success: 0%<br>Avg requests: 14.00<br>Avg cost: $0.0146<br>Avg wall time: 1m 50s",
-          "Composite: 0.0<br>Success: 0%<br>Avg requests: 10.00<br>Avg cost: $0.0037<br>Avg wall time: 1m 04s"
+          "Composite: 1.0<br>Success: 100%<br>Avg requests: 20.00<br>Avg cost: $0.0084<br>Avg wall time: 1m 53s",
+          "Composite: 0.0<br>Success: 0%<br>Avg requests: 10.00<br>Avg cost: $0.0021<br>Avg wall time: 38s"
+        ],
+        [
+          "Composite: 0.0<br>Success: 0%<br>Avg requests: 11.00<br>Avg cost: $0.0084<br>Avg wall time: 1m 13s",
+          "Composite: 0.0<br>Success: 0%<br>Avg requests: 6.00<br>Avg cost: $0.0030<br>Avg wall time: 32s"
         ],
         [
           "Composite: 0.833<br>Success: 100%<br>Avg requests: 13.00<br>Avg cost: $0.0087<br>Avg wall time: 1m 38s",
@@ -199,16 +195,20 @@
           "Composite: 0.0<br>Success: 0%<br>Avg requests: 10.00<br>Avg cost: $0.0034<br>Avg wall time: 41s"
         ],
         [
+          "Composite: 0.0<br>Success: 0%<br>Avg requests: 16.00<br>Avg cost: $0.0097<br>Avg wall time: 2m 30s",
+          "Composite: 0.0<br>Success: 0%<br>Avg requests: 7.00<br>Avg cost: $0.0018<br>Avg wall time: 1m 06s"
+        ],
+        [
           "Composite: 0.866<br>Success: 100%<br>Avg requests: 13.00<br>Avg cost: $0.0090<br>Avg wall time: 1m 00s",
           "Composite: 1.0<br>Success: 100%<br>Avg requests: 10.00<br>Avg cost: $0.0026<br>Avg wall time: 48s"
         ],
         [
-          "Composite: 0.904<br>Success: 100%<br>Avg requests: 13.00<br>Avg cost: $0.0123<br>Avg wall time: 1m 39s",
-          "Composite: 0.974<br>Success: 100%<br>Avg requests: 15.00<br>Avg cost: $0.0041<br>Avg wall time: 1m 53s"
-        ],
-        [
           "Composite: 0.0<br>Success: 0%<br>Avg requests: 21.00<br>Avg cost: $0.0132<br>Avg wall time: 2m 37s",
           "Composite: 0.0<br>Success: 0%<br>Avg requests: 15.00<br>Avg cost: $0.0036<br>Avg wall time: 2m 01s"
+        ],
+        [
+          "Composite: 0.891<br>Success: 100%<br>Avg requests: 15.00<br>Avg cost: $0.0125<br>Avg wall time: 1m 50s",
+          "Composite: 1.0<br>Success: 100%<br>Avg requests: 15.00<br>Avg cost: $0.0041<br>Avg wall time: 1m 18s"
         ]
       ],
       "texttemplate": "%{text}",

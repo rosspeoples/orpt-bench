@@ -8706,6 +8706,7 @@
       "successfulTasks": 9,
       "failedTasks": 6,
       "dnfTasks": 0,
+      "providerLimited": false,
       "successRate": 0.6,
       "score": 0.6,
       "valueScore": 0.38116466666666665,
@@ -8736,6 +8737,7 @@
       "successfulTasks": 8,
       "failedTasks": 7,
       "dnfTasks": 0,
+      "providerLimited": false,
       "successRate": 0.5333333333333333,
       "score": 0.5333333333333333,
       "valueScore": 0.51918,
@@ -8768,6 +8770,7 @@
       "successfulTasks": 9,
       "failedTasks": 6,
       "dnfTasks": 0,
+      "providerLimited": false,
       "successRate": 0.6,
       "score": 0.6,
       "valueScore": 0.38116466666666665,
@@ -8798,6 +8801,7 @@
       "successfulTasks": 8,
       "failedTasks": 7,
       "dnfTasks": 0,
+      "providerLimited": false,
       "successRate": 0.5333333333333333,
       "score": 0.5333333333333333,
       "valueScore": 0.51918,
@@ -8833,6 +8837,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -8849,9 +8854,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -8866,6 +8869,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -8882,9 +8886,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -8899,6 +8901,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -8915,9 +8918,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -8932,6 +8933,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -8948,9 +8950,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -8965,6 +8965,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.504825,
       "compositeScore": 0.851447,
@@ -8981,9 +8982,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -8998,6 +8997,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 1,
       "compositeScore": 1,
@@ -9014,9 +9014,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9031,6 +9029,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -9047,9 +9046,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9064,6 +9061,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -9080,9 +9078,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9097,6 +9093,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.619026,
       "compositeScore": 0.885708,
@@ -9130,6 +9127,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.941681,
       "compositeScore": 0.982504,
@@ -9163,6 +9161,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 1,
       "compositeScore": 1,
@@ -9179,9 +9178,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9196,6 +9193,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -9212,9 +9210,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9229,6 +9225,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.650355,
       "compositeScore": 0.895106,
@@ -9245,9 +9242,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9262,6 +9257,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 1,
       "compositeScore": 1,
@@ -9278,9 +9274,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9295,6 +9289,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.635107,
       "compositeScore": 0.890532,
@@ -9311,9 +9306,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9328,6 +9321,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 1,
       "compositeScore": 1,
@@ -9344,9 +9338,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9361,6 +9353,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.629653,
       "compositeScore": 0.888896,
@@ -9377,9 +9370,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9394,6 +9385,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.932983,
       "compositeScore": 0.979895,
@@ -9410,9 +9402,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9427,6 +9417,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -9443,9 +9434,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9460,6 +9449,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -9476,9 +9466,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9493,6 +9481,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.444895,
       "compositeScore": 0.833468,
@@ -9509,9 +9498,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9526,6 +9513,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 1,
       "compositeScore": 1,
@@ -9542,9 +9530,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9559,6 +9545,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -9575,9 +9562,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9592,6 +9577,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -9608,9 +9594,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9625,6 +9609,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.552496,
       "compositeScore": 0.865749,
@@ -9641,9 +9626,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9658,6 +9641,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 1,
       "compositeScore": 1,
@@ -9674,9 +9658,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9691,6 +9673,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.681113,
       "compositeScore": 0.904334,
@@ -9707,9 +9690,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9724,6 +9705,7 @@
       "successes": 1,
       "failures": 0,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 1,
       "valueScore": 0.913036,
       "compositeScore": 0.973911,
@@ -9740,9 +9722,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9757,6 +9737,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -9773,9 +9754,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -9790,6 +9769,7 @@
       "successes": 0,
       "failures": 1,
       "dnfs": 0,
+      "providerLimited": false,
       "score": 0,
       "valueScore": 0,
       "compositeScore": 0,
@@ -9806,9 +9786,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
@@ -11165,136 +11143,10 @@
   },
   "taskCatalog": [
     {
-      "id": "01-iac-kubernetes-rollout",
-      "name": "Kubernetes rollout repair",
-      "difficulty": "medium",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "02-terraform-static-site",
-      "name": "Terraform static site repair",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "03-ansible-nginx-role",
-      "name": "Ansible nginx role completion",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "04-docker-compose-observability",
-      "name": "Docker Compose observability fix",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
       "id": "05-log-audit-script",
       "name": "Log audit shell script",
       "difficulty": "control",
       "timeoutSeconds": 60,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "06-kubernetes-oidc-rbac-repair",
-      "name": "Kubernetes OIDC RBAC repair",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "07-cnpg-restore-manifest-repair",
-      "name": "CNPG restore manifest repair",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "08-workspace-transplant-bundle-repair",
-      "name": "Workspace transplant bundle repair",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "09-gitops-workspace-render-validation",
-      "name": "GitOps workspace render validation",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "10-bootstrap-phase-validation-repair",
-      "name": "Bootstrap phase validation repair",
-      "difficulty": "expert",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "11-mcp-openbao-contract-repair",
-      "name": "MCP OpenBao contract repair",
-      "difficulty": "expert",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "12-pre-argocd-bootstrap-sequencing",
-      "name": "Pre-ArgoCD bootstrap sequencing",
-      "difficulty": "expert",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "13-wildcard-tls-route-coverage",
-      "name": "Wildcard TLS route coverage",
-      "difficulty": "expert",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "14-build-workspace-plane-convergence",
-      "name": "Build workspace plane convergence",
-      "difficulty": "expert",
-      "timeoutSeconds": 420,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "15-workspace-runtime-access-convergence",
-      "name": "Workspace runtime access convergence",
-      "difficulty": "expert",
-      "timeoutSeconds": 420,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
