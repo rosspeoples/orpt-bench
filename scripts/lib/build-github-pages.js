@@ -185,6 +185,7 @@ const siteData = {
   taskCatalog: publicationContext.publishedRun.taskCatalog ?? [],
   modelSummary: sortByComposite(publicationContext.publishedRun.modelSummary ?? publicationContext.publishedRun.leaderboard ?? []),
   taskSummary: buildPublishedTaskSummary(publicationContext.publishedRun),
+  taskInsights: buildTaskInsightRows(buildPublishedTaskSummary(publicationContext.publishedRun), publicationContext.publishedRun.taskCatalog ?? []),
   benchmarkedModels: buildBenchmarkedModels(publicationContext.publishedRun),
   benchmarkComposition: buildBenchmarkComposition(publicationContext.publishedRun),
   leaderboardHighlights: buildLeaderboardHighlights(publicationContext.publishedRun),
@@ -984,6 +985,7 @@ function buildModelBarChart({ rows, metricKey, title, axisTitle, valueFormatter,
       title,
       yaxis: { title: axisTitle },
       height: 420,
+      margin: { l: 72, r: 24, t: 72, b: 112 },
     }),
   };
 }
@@ -1494,7 +1496,11 @@ function renderStandaloneChartHtml({ title, data, layout }) {
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 </head>
 <body>
-  <div id="chart" style="width:100%;height:90vh"></div>
+  <style>
+    html, body { margin: 0; height: 100%; background: #08101f; }
+    #chart { width: 100%; height: 100%; }
+  </style>
+  <div id="chart"></div>
   <script>
     const data = ${JSON.stringify(data)};
     const layout = ${JSON.stringify(layout)};
@@ -1842,7 +1848,7 @@ function renderHtml(data) {
     }
     .chart-card.featured iframe { height: 620px; }
     .chart-card.wide iframe { height: 720px; }
-    .chart-card.compact iframe { height: 340px; }
+    .chart-card.compact iframe { height: 420px; }
     .chart-card.compact .chart-note { margin-top: 6px; }
     .chart-card.executive h3 { font-size: 1.05rem; }
     .chart-card.executive .panel-copy { line-height: 1.5; }
@@ -2010,7 +2016,7 @@ function renderHtml(data) {
       .chart-card iframe { height: 340px; }
       .chart-card.featured iframe { height: 420px; }
       .chart-card.wide iframe { height: 520px; }
-      .chart-card.compact iframe { height: 320px; }
+      .chart-card.compact iframe { height: 380px; }
     }
   </style>
 </head>
@@ -2092,7 +2098,7 @@ function renderHtml(data) {
           <div class="micro muted">Comparative task readout</div>
           <h3>Task insights</h3>
           <p class="panel-copy">One row per task. See who won, how wide the gap was, whether the field agreed, and what the fastest successful path actually cost.</p>
-          <div id="task-summary-table">${renderTaskInsightsTable(data.taskSummary || [], data.taskCatalog || [])}</div>
+          <div id="task-summary-table">${renderTaskInsightsTable(data.taskInsights || [])}</div>
         </div>
       </section>
       <section class="section" id="matrix">
@@ -2278,8 +2284,6 @@ function renderHtml(data) {
       emptyMessage: 'No model summary is available for the current run.',
       columns: [
         { key: 'model', label: 'Model', type: 'text', render: (row) => row.model },
-        { key: 'score', label: 'Score', type: 'number', render: (row) => formatScore(row.score) },
-        { key: 'valueScore', label: 'Value', type: 'number', render: (row) => formatScore(row.valueScore) },
         { key: 'compositeScore', label: 'Composite', type: 'number', render: (row) => formatScore(row.compositeScore) },
         { key: 'successRate', label: 'Success', type: 'number', render: (row) => formatPercent(row.successRate) },
         { key: 'dnfTasks', label: 'DNF', type: 'number', render: (row) => formatInteger(row.dnfTasks) },
@@ -2292,27 +2296,23 @@ function renderHtml(data) {
        ],
      });
     renderSortableTable(document.getElementById('task-summary-table'), {
-      rows: siteData.taskSummary || [],
-      defaultSortKey: 'compositeScore',
+      rows: siteData.taskInsights || [],
+      defaultSortKey: 'fieldReadPriority',
       defaultDirection: 'desc',
       emptyMessage: 'No task summary is available for the current run.',
       columns: [
         { key: 'taskName', label: 'Task', type: 'text', render: (row) => row.taskName },
-        { key: 'model', label: 'Model', type: 'text', render: (row) => row.model },
-         { key: 'category', label: 'Category', type: 'text', render: (row) => row.category },
-         { key: 'outcome', label: 'Outcome', type: 'text', sortValue: (row) => row.outcome || 'unknown', render: (row) => badge(row.outcome || 'unknown', row.outcomeTone || 'warn') + (row.failureDetail ? '<div class="muted">' + escapeHtml(row.failureDetail) + '</div>' : '') },
-         { key: 'score', label: 'Score', type: 'number', render: (row) => formatScore(row.score) },
-        { key: 'valueScore', label: 'Value', type: 'number', render: (row) => formatScore(row.valueScore) },
-        { key: 'compositeScore', label: 'Composite', type: 'number', render: (row) => formatScore(row.compositeScore) },
-        { key: 'successRate', label: 'Success', type: 'number', render: (row) => formatPercent(row.successRate) },
-         { key: 'dnfs', label: 'DNF', type: 'number', render: (row) => formatInteger(row.dnfs) },
-         { key: 'runs', label: 'Runs', type: 'number', render: (row) => formatInteger(row.runs) },
-         { key: 'averageRequestUnits', label: 'Avg requests', type: 'number', render: (row) => formatDecimal(row.averageRequestUnits, 2) },
-         { key: 'averageWallTimeMs', label: 'Avg wall time', type: 'number', render: (row) => formatDuration(row.averageWallTimeMs) },
-         { key: 'averageCostUsd', label: 'Avg cost', type: 'number', render: (row) => formatCurrency(row.averageCostUsd) },
-         { key: 'eligible', label: 'Eligible', type: 'text', render: (row) => badge(row.eligible ? 'Scored' : 'Unscored', row.eligible ? 'good' : 'warn') },
+        { key: 'category', label: 'Category', type: 'text', render: (row) => row.category },
+        { key: 'winnerModel', label: 'Winner', type: 'text', sortValue: (row) => row.winnerModel || '', render: (row) => row.winnerModel ? escapeHtml(row.winnerModel) + '<div class="muted">' + formatScore(row.winnerCompositeScore) + ' composite</div>' : badge('No scored winner', 'warn') },
+        { key: 'runnerUpModel', label: 'Runner-up', type: 'text', sortValue: (row) => row.runnerUpModel || '', render: (row) => row.runnerUpModel ? escapeHtml(row.runnerUpModel) + '<div class="muted">' + formatScore(row.runnerUpCompositeScore) + ' composite</div>' : '<span class="muted">n/a</span>' },
+        { key: 'margin', label: 'Gap', type: 'number', render: (row) => formatScore(row.margin) },
+        { key: 'successCoverage', label: 'Completion', type: 'number', render: (row) => formatInteger(row.successfulModels) + '/' + formatInteger(row.modelCount) + '<div class="muted">' + formatPercent(row.successCoverage) + ' models passed</div>' },
+        { key: 'cheapestWinnerCostUsd', label: 'Cheapest win', type: 'number', render: (row) => formatCurrency(row.cheapestWinnerCostUsd) },
+        { key: 'fastestWinnerWallTimeMs', label: 'Fastest win', type: 'number', render: (row) => formatDuration(row.fastestWinnerWallTimeMs) },
+        { key: 'bestWinnerOrpt', label: 'Best ORPT', type: 'number', render: (row) => formatDecimal(row.bestWinnerOrpt, 2) },
+        { key: 'fieldReadPriority', label: 'Field read', type: 'number', render: (row) => badge(row.fieldReadLabel, row.fieldReadTone) },
        ],
-     });
+      });
     renderSortableTable(document.getElementById('history-table'), {
       rows: siteData.history || [],
       defaultSortKey: 'topCompositeScore',
@@ -2580,8 +2580,8 @@ function renderModelSummaryTable(rows) {
   });
 }
 
-function renderTaskInsightsTable(rows, taskCatalog) {
-  const insightRows = buildTaskInsightRows(rows, taskCatalog);
+function renderTaskInsightsTable(rows) {
+  const insightRows = Array.isArray(rows) ? rows : [];
   if (!insightRows.length) {
     return '<div class="empty">No task summary is available for the current run.</div>';
   }
@@ -2650,11 +2650,12 @@ function buildTaskInsightRows(rows, taskCatalog) {
       bestWinnerOrpt: leanestWinner?.averageRequestUnits ?? null,
       fieldReadLabel: fieldRead.label,
       fieldReadTone: fieldRead.tone,
+      fieldReadPriority: fieldRead.priority,
     };
   });
 
   return insights.sort((left, right) => {
-    const competitivenessDelta = fieldReadRank(right.fieldReadTone) - fieldReadRank(left.fieldReadTone);
+    const competitivenessDelta = toComparableNumber(right.fieldReadPriority) - toComparableNumber(left.fieldReadPriority);
     if (competitivenessDelta !== 0) {
       return competitivenessDelta;
     }
@@ -2668,29 +2669,18 @@ function buildTaskInsightRows(rows, taskCatalog) {
 
 function classifyTaskField(successCoverage, margin, successfulModels) {
   if (successfulModels === 0) {
-    return { label: 'Nobody solved it', tone: 'bad' };
+    return { label: 'Nobody solved it', tone: 'bad', priority: 5 };
   }
   if (successfulModels === 1) {
-    return { label: 'Single solver', tone: 'warn' };
+    return { label: 'Single solver', tone: 'warn', priority: 4 };
   }
   if (successCoverage === 1 && margin < 0.05) {
-    return { label: 'Crowded field', tone: 'good' };
+    return { label: 'Crowded field', tone: 'good', priority: 1 };
   }
   if (margin >= 0.15) {
-    return { label: 'Clear separation', tone: 'warn' };
+    return { label: 'Clear separation', tone: 'warn', priority: 3 };
   }
-  return { label: 'Competitive split', tone: 'good' };
-}
-
-function fieldReadRank(tone) {
-  switch (tone) {
-    case 'bad':
-      return 3;
-    case 'warn':
-      return 2;
-    default:
-      return 1;
-  }
+  return { label: 'Competitive split', tone: 'good', priority: 2 };
 }
 
 function renderStaticTable({ rows, columns }) {
