@@ -5,9 +5,10 @@ import { selectModelMatrix, syncModelCatalog, useModelMatrix } from './lib/model
 import { generateReports } from './lib/report.js'
 
 function ensureSafeFullBenchmarkRuntime(runtime) {
+  const configuredProcessTimeoutSeconds = Number.parseInt(process.env.BENCHMARK_PROCESS_TIMEOUT_SECONDS || '0', 10)
   const isFullTaskRun = runtime.taskPatterns.length === 1 && runtime.taskPatterns[0] === '*'
-  if (isFullTaskRun && runtime.processTimeoutMs > 0) {
-    throw new Error(`Refusing full benchmark run with BENCHMARK_PROCESS_TIMEOUT_SECONDS=${Math.round(runtime.processTimeoutMs / 1000)}. Set it to 0 for publication-quality runs.`)
+  if (isFullTaskRun && Number.isFinite(configuredProcessTimeoutSeconds) && configuredProcessTimeoutSeconds > 0) {
+    throw new Error(`Refusing full benchmark run with explicit BENCHMARK_PROCESS_TIMEOUT_SECONDS=${configuredProcessTimeoutSeconds}. Full runs derive their outer timeout from selected task budgets.`)
   }
 }
 

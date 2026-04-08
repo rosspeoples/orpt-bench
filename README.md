@@ -34,6 +34,7 @@ The GitHub Pages publication is the canonical place for dynamic benchmark output
 - The task set is intentionally weighted toward real repair-oriented DevOps work rather than toy prompts
 - Capability gating matters: models with benchmark-affecting limitations can be surfaced, but excluded from the primary comparable cohort when appropriate
 - Tasks live under `tasks/*`, each with its own fixture, prompt, and verifier
+- Benchmark execution and publication rules are defined in `docs/benchmark-operations-policy.md`
 
 Included task areas:
 
@@ -82,7 +83,7 @@ Environment variables:
 - `BENCHMARK_MODELS`: comma-separated model matrix
 - `BENCHMARK_REPEATS`: repeat count per task/model
 - `BENCHMARK_TASK_GLOB`: task subset filter
-- `BENCHMARK_PROCESS_TIMEOUT_SECONDS`: hard timeout for the benchmark process during development; keep `0` for full real benchmark runs
+- `BENCHMARK_PROCESS_TIMEOUT_SECONDS`: development-only process cap; safe full runs derive their outer timeout from the selected task budgets instead
 - `BENCHMARK_WRITE_README`: write generated README and charts
 
 ## Model Inventory
@@ -136,10 +137,17 @@ For publication-quality full runs, use the wrapper that explicitly disables the 
 bash scripts/run-full-benchmark.sh
 ```
 
+Operational rules for failed models, smoke gating, DNF handling, invalid-run rejection, and preflight checks live in:
+
+```bash
+docs/benchmark-operations-policy.md
+```
+
 Generated benchmark artifacts are written to `results/` locally. Use the live Pages site for published rankings, tables, and history rather than checking volatile result tables into the root README.
 
 ## Design
 
 See [DESIGN.md](DESIGN.md) for benchmark architecture, telemetry rules, and CI behavior.
+See [docs/benchmark-operations-policy.md](docs/benchmark-operations-policy.md) for benchmark execution and publication guardrails.
 See [docs/result-schema.json](docs/result-schema.json) for the benchmark result contract.
 See <https://rosspeoples.github.io/orpt-bench/> for the live published leaderboard, charts, and history.

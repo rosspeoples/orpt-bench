@@ -55,6 +55,24 @@ async function discoverTaskDirs(rootDir, taskPatterns) {
     .sort()
 }
 
+async function loadTaskBudgetCatalog(rootDir, taskNames) {
+  const budgets = []
+  for (const name of taskNames) {
+    const taskDir = path.join(rootDir, 'tasks', name)
+    const task = await readJson(path.join(taskDir, 'task.json'))
+    if (!Number.isFinite(task.timeoutSeconds) || task.timeoutSeconds <= 0) {
+      throw new Error(`Task ${task.id || name} must declare a positive timeoutSeconds value`)
+    }
+    budgets.push({
+      id: task.id,
+      name: task.name,
+      difficulty: task.difficulty || 'medium',
+      timeoutSeconds: task.timeoutSeconds
+    })
+  }
+  return budgets
+}
+
 export async function loadRuntimeConfig() {
   const rootDir = process.cwd()
   const baseConfig = await readJson(path.join(rootDir, 'benchmark.config.json'))
@@ -64,10 +82,15 @@ export async function loadRuntimeConfig() {
 
   const taskPatterns = parseList(process.env.BENCHMARK_TASK_GLOB || '*')
   const taskNames = await discoverTaskDirs(rootDir, taskPatterns)
+  const taskBudgetCatalog = await loadTaskBudgetCatalog(rootDir, taskNames)
   const taskDirs = taskNames.map((name) => path.join(rootDir, 'tasks', name))
   const repeats = parseInteger(process.env.BENCHMARK_REPEATS, 1)
-  const taskTimeoutMs = parseInteger(process.env.BENCHMARK_TIMEOUT_SECONDS, Math.round(baseConfig.runner.taskTimeoutMs / 1000)) * 1000
-  const processTimeoutMs = parseInteger(process.env.BENCHMARK_PROCESS_TIMEOUT_SECONDS, 0) * 1000
+  const maxTaskTimeoutSeconds = taskBudgetCatalog.reduce((max, task) => Math.max(max, task.timeoutSeconds), 0)
+  const taskTimeoutSeconds = maxTaskTimeoutSeconds
+  const taskTimeoutMs = taskTimeoutSeconds * 1000
+  const derivedRunTimeoutSeconds = (taskBudgetCatalog.reduce((total, task) => total + task.timeoutSeconds, 0) + taskBudgetCatalog.length) * repeats
+  const processTimeoutSeconds = derivedRunTimeoutSeconds
+  const processTimeoutMs = processTimeoutSeconds * 1000
   const modelConcurrency = Math.max(1, parseInteger(process.env.BENCHMARK_MODEL_CONCURRENCY, 1))
   const providerOverrides = process.env.BENCHMARK_PROVIDER_OVERRIDES_JSON
     ? JSON.parse(process.env.BENCHMARK_PROVIDER_OVERRIDES_JSON)
@@ -98,7 +121,11 @@ export async function loadRuntimeConfig() {
     taskDirs,
     repeats,
     taskTimeoutMs,
+    taskTimeoutSeconds,
     processTimeoutMs,
+    processTimeoutSeconds,
+    derivedRunTimeoutSeconds,
+    taskBudgetCatalog,
     modelConcurrency,
     writeReadme,
     resultsDir: resolvePath(rootDir, process.env.ORPT_RESULTS_DIR || 'results'),

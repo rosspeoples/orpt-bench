@@ -11,7 +11,7 @@ async function loadFullTaskCatalog(rootDir) {
     for (const entry of entries.filter((item) => item.isDirectory()).sort((a, b) => a.name.localeCompare(b.name))) {
       try {
         const task = await readJson(path.join(tasksDir, entry.name, 'task.json'))
-        tasks.push({ id: task.id, name: task.name, difficulty: task.difficulty || 'medium', requiredCapabilities: task.requiredCapabilities || [] })
+        tasks.push({ id: task.id, name: task.name, difficulty: task.difficulty || 'medium', timeoutSeconds: task.timeoutSeconds, requiredCapabilities: task.requiredCapabilities || [] })
       } catch {
         continue
       }
@@ -211,16 +211,16 @@ function renderCapabilityCoverageTable(run, catalogByModel) {
 
 function renderTaskRequirementTable(run) {
   const lines = [
-    '| Task | Difficulty | Required Capabilities |',
-    '| --- | --- | --- |'
+    '| Task | Difficulty | Timeout (s) | Required Capabilities |',
+    '| --- | --- | --- | --- |'
   ]
 
   for (const task of run.taskCatalog || []) {
-    lines.push(`| ${task.id} | ${task.difficulty || 'medium'} | ${(task.requiredCapabilities || []).join(', ') || 'none'} |`)
+    lines.push(`| ${task.id} | ${task.difficulty || 'medium'} | ${task.timeoutSeconds ?? 'n/a'} | ${(task.requiredCapabilities || []).join(', ') || 'none'} |`)
   }
 
   if (!(run.taskCatalog || []).length) {
-    lines.push('| No tasks recorded | - | - |')
+    lines.push('| No tasks recorded | - | - | - |')
   }
 
   return lines.join('\n')

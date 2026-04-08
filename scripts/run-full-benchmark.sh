@@ -36,7 +36,7 @@ done
 # Full publication-quality runs must never inherit the dev process timeout.
 export BENCHMARK_PROCESS_TIMEOUT_SECONDS=0
 
-printf '%s\n' "Full benchmark preflight: models=${BENCHMARK_MODELS:-<unset>} task_glob=${BENCHMARK_TASK_GLOB:-<unset>} repeats=${BENCHMARK_REPEATS:-<unset>} task_timeout=${BENCHMARK_TIMEOUT_SECONDS:-<unset>} process_timeout=${BENCHMARK_PROCESS_TIMEOUT_SECONDS}" >&2
+node -e 'import("./scripts/lib/config.js").then(async ({ loadRuntimeConfig }) => { const runtime = await loadRuntimeConfig(); const models = runtime.models.join(",") || "<unset>"; const tasks = runtime.taskBudgetCatalog.map((task) => `${task.id}:${task.timeoutSeconds}s`).join(",") || "<unset>"; console.error(`Full benchmark preflight: models=${models} task_glob=${runtime.taskPatterns.join(",")} repeats=${runtime.repeats} tasks=[${tasks}] derived_task_timeout=${runtime.taskTimeoutSeconds} derived_run_timeout=${runtime.derivedRunTimeoutSeconds}`); })' >&2
 
 exec docker compose run --rm \
   -e BENCHMARK_MODELS \

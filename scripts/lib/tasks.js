@@ -7,10 +7,14 @@ export async function loadTasks(runtime) {
 
   for (const taskDir of runtime.taskDirs) {
     const task = await readJson(path.join(taskDir, 'task.json'))
+    if (!Number.isFinite(task.timeoutSeconds) || task.timeoutSeconds <= 0) {
+      throw new Error(`Task ${task.id || taskDir} must declare a positive timeoutSeconds value`)
+    }
     tasks.push({
       ...task,
       requiredCapabilities: Array.isArray(task.requiredCapabilities) ? task.requiredCapabilities : [],
       difficulty: task.difficulty || 'medium',
+      timeoutSeconds: task.timeoutSeconds,
       taskDir,
       workspaceDir: path.join(taskDir, 'workspace')
     })

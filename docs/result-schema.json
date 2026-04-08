@@ -34,10 +34,12 @@
       "type": "array",
       "items": {
         "type": "object",
+        "required": ["id", "name", "difficulty", "timeoutSeconds", "requiredCapabilities"],
         "properties": {
           "id": { "type": "string" },
           "name": { "type": "string" },
           "difficulty": { "type": "string" },
+          "timeoutSeconds": { "type": "number" },
           "requiredCapabilities": { "type": "array", "items": { "type": "string" } }
         }
       }
@@ -49,7 +51,10 @@
         "id": { "type": "string" },
         "startedAt": { "type": "string" },
         "completedAt": { "type": ["string", "null"] },
-        "models": { "type": "array", "items": { "type": "string" } }
+        "models": { "type": "array", "items": { "type": "string" } },
+        "taskTimeoutSeconds": { "type": ["number", "null"] },
+        "processTimeoutSeconds": { "type": ["number", "null"] },
+        "derivedRunTimeoutSeconds": { "type": ["number", "null"] }
       }
     },
     "results": {

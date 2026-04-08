@@ -24,7 +24,7 @@ test('full benchmark safety gate rejects nonzero process timeout', async () => {
     child.on('exit', (code) => {
       try {
         assert.notEqual(code, 0)
-        assert.match(stderr, /Refusing full benchmark run with BENCHMARK_PROCESS_TIMEOUT_SECONDS=120/)
+        assert.match(stderr, /Refusing full benchmark run with explicit BENCHMARK_PROCESS_TIMEOUT_SECONDS=120/)
         resolve()
       } catch (error) {
         reject(error)

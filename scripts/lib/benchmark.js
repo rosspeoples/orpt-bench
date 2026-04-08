@@ -19,8 +19,6 @@ export function computeCompositeScore(score, valueScore, weights = { score: 0.7,
   return Number(clamp((score * weights.score) + (valueScore * weights.valueScore), 0, 1).toFixed(6))
 }
 
-const minimumTaskStartBudgetMs = 5000
-
 function createTaskValueBaseline() {
   return {
     bestRequestUnits: null,
@@ -164,12 +162,11 @@ async function flushRunProgress(runtime, run, writeArtifacts) {
 
 function createProcessDeadline(processTimeoutMs) {
   if (!(processTimeoutMs > 0)) return null
-  const shutdownBufferMs = Math.min(15000, Math.max(5000, Math.round(processTimeoutMs * 0.1)))
-  return Date.now() + Math.max(1000, processTimeoutMs - shutdownBufferMs)
+  return Date.now() + processTimeoutMs
 }
 
 function computeTaskTimeoutMs(runtime, task, processDeadlineAt) {
-  const taskLimitMs = Math.min(runtime.taskTimeoutMs, (task.timeoutSeconds || 300) * 1000)
+  const taskLimitMs = (task.timeoutSeconds || 300) * 1000
   if (!processDeadlineAt) return taskLimitMs
 
   const remainingMs = processDeadlineAt - Date.now()
@@ -527,12 +524,15 @@ export async function runBenchmarkSingle(runtime, modelsOverride = null, runIDOv
       models,
       taskCount: tasks.length,
       taskPatterns: runtime.taskPatterns,
-      repeats: runtime.repeats
+      repeats: runtime.repeats,
+      taskTimeoutSeconds: runtime.taskTimeoutSeconds,
+      processTimeoutSeconds: runtime.processTimeoutSeconds,
+      derivedRunTimeoutSeconds: runtime.derivedRunTimeoutSeconds
     },
     results: [],
     leaderboard: [],
     modelCatalog: await readJson(path.join(runtime.rootDir, 'models/catalog.json')).catch(() => ({ models: [] })),
-    taskCatalog: tasks.map((task) => ({ id: task.id, name: task.name, difficulty: task.difficulty || 'medium', requiredCapabilities: task.requiredCapabilities || [] })),
+    taskCatalog: tasks.map((task) => ({ id: task.id, name: task.name, difficulty: task.difficulty || 'medium', timeoutSeconds: task.timeoutSeconds, requiredCapabilities: task.requiredCapabilities || [] })),
     scoring: runtime.scoring
   }
 
@@ -549,30 +549,10 @@ export async function runBenchmarkSingle(runtime, modelsOverride = null, runIDOv
       let server = await startOpenCodeServer({ runtime, model, proxy })
 
       try {
-        let exhaustedProcessBudget = false
         for (let repeatIndex = 1; repeatIndex <= runtime.repeats; repeatIndex += 1) {
-          if (exhaustedProcessBudget) break
-
           for (let taskIndex = 0; taskIndex < tasks.length; taskIndex += 1) {
             const task = tasks[taskIndex]
             const taskTimeoutMs = computeTaskTimeoutMs(runtime, task, processDeadlineAt)
-
-            // Don't start a new task when the enclosing process budget is nearly exhausted.
-            if (processDeadlineAt && taskTimeoutMs < minimumTaskStartBudgetMs) {
-              const synthetic = buildSyntheticFailureResults({
-                runID,
-                modelName: `${model.providerID}/${model.modelID}`,
-                provider: model.providerID,
-                entries: collectRemainingTaskEntries(tasks, runtime.repeats, repeatIndex, taskIndex),
-                reason: 'Benchmark process timeout budget was exhausted before remaining tasks could start',
-                durationMs: 0
-              })
-              run.results.push(...synthetic)
-              await flushRunProgress(runtime, run, writeArtifacts)
-              console.log(`TIMEOUT ${model.providerID}/${model.modelID} remaining=${synthetic.length}`)
-              exhaustedProcessBudget = true
-              break
-            }
 
             const result = await executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, taskTimeoutMs })
             run.results.push(result)
@@ -623,20 +603,23 @@ export async function runBenchmark(runtime) {
       models: runtime.models,
       taskCount: tasks.length,
       taskPatterns: runtime.taskPatterns,
-      repeats: runtime.repeats
+      repeats: runtime.repeats,
+      taskTimeoutSeconds: runtime.taskTimeoutSeconds,
+      processTimeoutSeconds: runtime.processTimeoutSeconds,
+      derivedRunTimeoutSeconds: runtime.derivedRunTimeoutSeconds
     },
     results: [],
     leaderboard: [],
     modelSummary: [],
     taskSummary: [],
     modelCatalog: await readJson(path.join(runtime.rootDir, 'models/catalog.json')).catch(() => ({ models: [] })),
-    taskCatalog: tasks.map((task) => ({ id: task.id, name: task.name, difficulty: task.difficulty || 'medium', requiredCapabilities: task.requiredCapabilities || [] })),
+    taskCatalog: tasks.map((task) => ({ id: task.id, name: task.name, difficulty: task.difficulty || 'medium', timeoutSeconds: task.timeoutSeconds, requiredCapabilities: task.requiredCapabilities || [] })),
     scoring: runtime.scoring
   }
 
   await ensureDir(path.join(runtime.tmpDir, 'child-runs'))
 
-  const childTimeoutMs = runtime.processTimeoutMs > 0 ? runtime.processTimeoutMs + 15000 : 0
+  const childTimeoutMs = runtime.processTimeoutMs > 0 ? runtime.processTimeoutMs : 0
   const remainingModels = [...runtime.models]
   const childResults = []
 

@@ -211,3 +211,31 @@ test('runtime config defaults model concurrency to one when unset', async () => 
     else process.env.BENCHMARK_MODEL_CONCURRENCY = previous
   }
 })
+
+test('runtime config derives process timeout from selected task budgets', async () => {
+  const { loadRuntimeConfig } = await import('../scripts/lib/config.js')
+  const previousTaskGlob = process.env.BENCHMARK_TASK_GLOB
+  const previousProcessTimeout = process.env.BENCHMARK_PROCESS_TIMEOUT_SECONDS
+  const previousRepeats = process.env.BENCHMARK_REPEATS
+
+  process.env.BENCHMARK_TASK_GLOB = '05*'
+  process.env.BENCHMARK_REPEATS = '1'
+  process.env.BENCHMARK_PROCESS_TIMEOUT_SECONDS = '999'
+
+  try {
+    const runtime = await loadRuntimeConfig()
+    assert.equal(runtime.taskBudgetCatalog.length, 1)
+    assert.equal(runtime.taskBudgetCatalog[0].id, '05-log-audit-script')
+    assert.equal(runtime.taskBudgetCatalog[0].timeoutSeconds, 300)
+    assert.equal(runtime.derivedRunTimeoutSeconds, 301)
+    assert.equal(runtime.processTimeoutSeconds, 301)
+    assert.equal(runtime.taskTimeoutSeconds, 300)
+  } finally {
+    if (previousTaskGlob == null) delete process.env.BENCHMARK_TASK_GLOB
+    else process.env.BENCHMARK_TASK_GLOB = previousTaskGlob
+    if (previousProcessTimeout == null) delete process.env.BENCHMARK_PROCESS_TIMEOUT_SECONDS
+    else process.env.BENCHMARK_PROCESS_TIMEOUT_SECONDS = previousProcessTimeout
+    if (previousRepeats == null) delete process.env.BENCHMARK_REPEATS
+    else process.env.BENCHMARK_REPEATS = previousRepeats
+  }
+})
