@@ -130,6 +130,12 @@ Useful smoke-test example:
 BENCHMARK_MODELS=opencode/gpt-5.4-mini BENCHMARK_TASK_GLOB=05* docker compose run --rm runner benchmark
 ```
 
+For publication-quality full runs, use the wrapper that explicitly disables the dev-only process timeout inside the container:
+
+```bash
+bash scripts/run-full-benchmark.sh
+```
+
 Generated benchmark artifacts are written to `results/` locally. Use the live Pages site for published rankings, tables, and history rather than checking volatile result tables into the root README.
 
 ## Design

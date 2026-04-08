@@ -276,7 +276,19 @@ function isPublishableRun(report, fullTaskCount) {
     return false;
   }
 
+  if (runContainsSyntheticTimeoutRows(report)) {
+    return false;
+  }
+
   return true;
+}
+
+function runContainsSyntheticTimeoutRows(report) {
+  return (report.results || []).some((entry) => {
+    const source = entry?.requestAccountingSource || null;
+    const message = entry?.error?.message || entry?.verifier?.stderr || '';
+    return source === 'synthetic-timeout' || /process timeout budget was exhausted|Model run timed out/i.test(message);
+  });
 }
 
 function modelNamesForRun(report) {
