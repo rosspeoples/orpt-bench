@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T13:29:08.980Z",
+  "generatedAt": "2026-04-08T14:47:52.043Z",
   "repository": {
     "url": "https://github.com/rosspeoples/orpt-bench",
     "pagesUrl": "https://rosspeoples.github.io/orpt-bench/",
@@ -1463,7 +1463,9 @@
         "retryAfter": null,
         "requestUnits": 11,
         "requestCount": 11,
-        "steps": 12
+        "steps": 12,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": "Traceback (most recent call last):\n  File \"/tmp/orpt-bench-sandbox/runs/2026-04-07T23-14-03-414Z/01-iac-kubernetes-rollout/opencode-gpt-5-4/repeat-1/verify.py\", line 15, in <module>\n    deployment = yaml.safe_load((root / \"deployment.yaml\").read_text())\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3/dist-packages/yaml/__init__.py\", line 125, in safe_load\n    return load(stream, SafeLoader)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3/dist-packages/yaml/__init__.py\", line 81, in load\n    return loader.get_single_data()\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3/dist-packages/yaml/constructor.py\", line 49, in get_single_data\n    node = self.get_single_node()\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3/dist-packages/yaml/composer.py\", line 41, in get_single_node\n    raise ComposerError(\"expected a single document in the stream\",\nyaml.composer.ComposerError: expected a single document in the stream\n  in \"<unicode string>\", line 1, column 1:\n    apiVersion: apps/v1\n    ^\nbut found another document\n  in \"<unicode string>\", line 28, column 1:\n    ---\n    ^\n"
     },
@@ -1514,7 +1516,9 @@
         "retryAfter": null,
         "requestUnits": 6,
         "requestCount": 6,
-        "steps": 7
+        "steps": 7,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -1565,7 +1569,9 @@
         "retryAfter": null,
         "requestUnits": 20,
         "requestCount": 20,
-        "steps": 20
+        "steps": 20,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": "Timed out after 300000ms | Task exceeded 300s hard timeout"
     },
@@ -1616,7 +1622,9 @@
         "retryAfter": null,
         "requestUnits": 16,
         "requestCount": 16,
-        "steps": 17
+        "steps": 17,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -1667,7 +1675,9 @@
         "retryAfter": null,
         "requestUnits": 7,
         "requestCount": 7,
-        "steps": 8
+        "steps": 8,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -1718,7 +1728,9 @@
         "retryAfter": null,
         "requestUnits": 10,
         "requestCount": 10,
-        "steps": 10
+        "steps": 10,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -1769,7 +1781,9 @@
         "retryAfter": null,
         "requestUnits": 8,
         "requestCount": 8,
-        "steps": 9
+        "steps": 9,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -1820,7 +1834,9 @@
         "retryAfter": null,
         "requestUnits": 10,
         "requestCount": 10,
-        "steps": 11
+        "steps": 11,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -1871,7 +1887,9 @@
         "retryAfter": null,
         "requestUnits": 7,
         "requestCount": 7,
-        "steps": 8
+        "steps": 8,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": "Traceback (most recent call last):\n  File \"/tmp/orpt-bench-sandbox/runs/2026-04-08T07-55-40-964Z/06-kubernetes-oidc-rbac-repair/opencode-glm-5/repeat-1/verify.py\", line 19, in <module>\n    api_args = set(k3s.get(\"kube-apiserver-arg\") or [])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: unhashable type: 'dict'\n"
     },
@@ -1922,7 +1940,9 @@
         "retryAfter": null,
         "requestUnits": 10,
         "requestCount": 10,
-        "steps": 11
+        "steps": 11,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": "Traceback (most recent call last):\n  File \"/tmp/orpt-bench-sandbox/runs/2026-04-07T23-14-03-414Z/06-kubernetes-oidc-rbac-repair/opencode-gpt-5-4-mini/repeat-1/verify.py\", line 19, in <module>\n    api_args = set(k3s.get(\"kube-apiserver-arg\") or [])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: unhashable type: 'dict'\n"
     },
@@ -1973,7 +1993,9 @@
         "retryAfter": null,
         "requestUnits": 10,
         "requestCount": 10,
-        "steps": 11
+        "steps": 11,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -2024,7 +2046,9 @@
         "retryAfter": null,
         "requestUnits": 14,
         "requestCount": 14,
-        "steps": 15
+        "steps": 15,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -2075,7 +2099,9 @@
         "retryAfter": null,
         "requestUnits": 10,
         "requestCount": 10,
-        "steps": 11
+        "steps": 11,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -2126,7 +2152,9 @@
         "retryAfter": null,
         "requestUnits": 9,
         "requestCount": 9,
-        "steps": 10
+        "steps": 10,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": "Traceback (most recent call last):\n  File \"/tmp/orpt-bench-sandbox/runs/2026-04-07T23-14-03-414Z/12-pre-argocd-bootstrap-sequencing/opencode-gpt-5-4/repeat-1/verify.py\", line 31, in <module>\n    require(wrapper.index(\"bootstrap-all.yml\") < wrapper.index(\"bootstrap-openbao.yml\"), \"OpenBao post-bootstrap configuration must run after the main bootstrap-all playbook\")\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: substring not found\n"
     },
@@ -2177,7 +2205,9 @@
         "retryAfter": null,
         "requestUnits": 10,
         "requestCount": 10,
-        "steps": 11
+        "steps": 11,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -2228,7 +2258,9 @@
         "retryAfter": null,
         "requestUnits": 21,
         "requestCount": 21,
-        "steps": 22
+        "steps": 22,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": null
     },
@@ -2279,7 +2311,9 @@
         "retryAfter": null,
         "requestUnits": 15,
         "requestCount": 15,
-        "steps": 16
+        "steps": 16,
+        "errorSignature": null,
+        "suggestedModel": null
       },
       "failureDetail": "Traceback (most recent call last):\n  File \"/tmp/orpt-bench-sandbox/runs/2026-04-07T23-14-03-414Z/15-workspace-runtime-access-convergence/opencode-gpt-5-4-mini/repeat-1/verify.py\", line 27, in <module>\n    catalog = json.loads((root / \"workspace-catalog.json\").read_text())\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.11/json/__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.11/json/decoder.py\", line 337, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.11/json/decoder.py\", line 355, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n"
     }
@@ -2919,6 +2953,7 @@
           "totalRequestUnits": 26,
           "totalRequestCount": 26,
           "totalSteps": 27,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": "Timed out after 59641ms",
@@ -2934,7 +2969,9 @@
             "retryAfter": null,
             "requestUnits": 26,
             "requestCount": 26,
-            "steps": 27
+            "steps": 27,
+            "errorSignature": null,
+            "suggestedModel": null
           }
         }
       ]
@@ -2961,11 +2998,12 @@
           "totalRequestUnits": 1,
           "totalRequestCount": 1,
           "totalSteps": 1,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": null,
           "failureSummary": {
-            "outcomeLabel": "failed",
+            "outcomeLabel": "provider-http-error",
             "providerLimited": false,
             "dnf": false,
             "dnfReason": null,
@@ -2976,7 +3014,9 @@
             "retryAfter": null,
             "requestUnits": 1,
             "requestCount": 1,
-            "steps": 1
+            "steps": 1,
+            "errorSignature": "AI_APICallError",
+            "suggestedModel": null
           }
         }
       ]
@@ -3003,11 +3043,12 @@
           "totalRequestUnits": 0,
           "totalRequestCount": 0,
           "totalSteps": 1,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": null,
           "failureSummary": {
-            "outcomeLabel": "failed",
+            "outcomeLabel": "provider-model-not-found",
             "providerLimited": false,
             "dnf": false,
             "dnfReason": null,
@@ -3018,7 +3059,9 @@
             "retryAfter": null,
             "requestUnits": null,
             "requestCount": 0,
-            "steps": 1
+            "steps": 1,
+            "errorSignature": "ProviderModelNotFoundError",
+            "suggestedModel": null
           }
         }
       ]
@@ -3045,11 +3088,12 @@
           "totalRequestUnits": 0,
           "totalRequestCount": 0,
           "totalSteps": 1,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": null,
           "failureSummary": {
-            "outcomeLabel": "failed",
+            "outcomeLabel": "provider-model-not-found",
             "providerLimited": false,
             "dnf": false,
             "dnfReason": null,
@@ -3060,7 +3104,9 @@
             "retryAfter": null,
             "requestUnits": null,
             "requestCount": 0,
-            "steps": 1
+            "steps": 1,
+            "errorSignature": "ProviderModelNotFoundError",
+            "suggestedModel": null
           }
         }
       ]
@@ -3087,6 +3133,7 @@
           "totalRequestUnits": 17,
           "totalRequestCount": 17,
           "totalSteps": 18,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": "Timed out after 59640ms",
@@ -3102,7 +3149,9 @@
             "retryAfter": null,
             "requestUnits": 17,
             "requestCount": 17,
-            "steps": 18
+            "steps": 18,
+            "errorSignature": null,
+            "suggestedModel": null
           }
         }
       ]
@@ -3129,11 +3178,12 @@
           "totalRequestUnits": 0,
           "totalRequestCount": 0,
           "totalSteps": 1,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": null,
           "failureSummary": {
-            "outcomeLabel": "failed",
+            "outcomeLabel": "provider-model-not-found",
             "providerLimited": false,
             "dnf": false,
             "dnfReason": null,
@@ -3144,7 +3194,9 @@
             "retryAfter": null,
             "requestUnits": null,
             "requestCount": 0,
-            "steps": 1
+            "steps": 1,
+            "errorSignature": "ProviderModelNotFoundError",
+            "suggestedModel": null
           }
         }
       ]
@@ -3171,6 +3223,7 @@
           "totalRequestUnits": 10,
           "totalRequestCount": 10,
           "totalSteps": 11,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": "Timed out after 59588ms",
@@ -3186,7 +3239,9 @@
             "retryAfter": null,
             "requestUnits": 10,
             "requestCount": 10,
-            "steps": 11
+            "steps": 11,
+            "errorSignature": null,
+            "suggestedModel": null
           }
         }
       ]
@@ -3213,6 +3268,7 @@
           "totalRequestUnits": 6,
           "totalRequestCount": 6,
           "totalSteps": 7,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": "Timed out after 59641ms",
@@ -3228,7 +3284,9 @@
             "retryAfter": null,
             "requestUnits": 6,
             "requestCount": 6,
-            "steps": 7
+            "steps": 7,
+            "errorSignature": null,
+            "suggestedModel": null
           }
         }
       ]
@@ -3255,12 +3313,13 @@
           "totalRequestUnits": 5,
           "totalRequestCount": 5,
           "totalSteps": 1,
+          "passed": false,
           "failed": true,
-          "providerLimited": false,
+          "providerLimited": true,
           "lastError": "Timed out after 59690ms",
           "failureSummary": {
-            "outcomeLabel": "timed out",
-            "providerLimited": false,
+            "outcomeLabel": "provider-limited",
+            "providerLimited": true,
             "dnf": true,
             "dnfReason": "task-timeout",
             "verifierCode": 124,
@@ -3270,7 +3329,9 @@
             "retryAfter": null,
             "requestUnits": 5,
             "requestCount": 5,
-            "steps": 1
+            "steps": 1,
+            "errorSignature": null,
+            "suggestedModel": null
           }
         }
       ]
@@ -3297,11 +3358,12 @@
           "totalRequestUnits": 0,
           "totalRequestCount": 0,
           "totalSteps": 1,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": null,
           "failureSummary": {
-            "outcomeLabel": "failed",
+            "outcomeLabel": "provider-model-not-found",
             "providerLimited": false,
             "dnf": false,
             "dnfReason": null,
@@ -3312,7 +3374,9 @@
             "retryAfter": null,
             "requestUnits": null,
             "requestCount": 0,
-            "steps": 1
+            "steps": 1,
+            "errorSignature": "ProviderModelNotFoundError",
+            "suggestedModel": "gemini-3.1-pro"
           }
         }
       ]
@@ -3339,6 +3403,7 @@
           "totalRequestUnits": 0,
           "totalRequestCount": 0,
           "totalSteps": 1,
+          "passed": false,
           "failed": true,
           "providerLimited": false,
           "lastError": "Timed out after 59642ms",
@@ -3354,7 +3419,9 @@
             "retryAfter": null,
             "requestUnits": null,
             "requestCount": 0,
-            "steps": 1
+            "steps": 1,
+            "errorSignature": null,
+            "suggestedModel": null
           }
         }
       ]
@@ -3381,6 +3448,7 @@
           "totalRequestUnits": 20,
           "totalRequestCount": 20,
           "totalSteps": 21,
+          "passed": true,
           "failed": false,
           "providerLimited": false,
           "lastError": null,
@@ -3410,6 +3478,7 @@
           "totalRequestUnits": 1,
           "totalRequestCount": 1,
           "totalSteps": 1,
+          "passed": false,
           "failed": true,
           "providerLimited": true,
           "lastError": "Timed out after 59539ms",
@@ -3425,7 +3494,9 @@
             "retryAfter": "62757",
             "requestUnits": 1,
             "requestCount": 1,
-            "steps": 1
+            "steps": 1,
+            "errorSignature": "AI_APICallError",
+            "suggestedModel": null
           }
         }
       ]
@@ -3452,6 +3523,7 @@
           "totalRequestUnits": 1,
           "totalRequestCount": 1,
           "totalSteps": 1,
+          "passed": false,
           "failed": true,
           "providerLimited": true,
           "lastError": "Timed out after 59588ms",
@@ -3467,7 +3539,9 @@
             "retryAfter": "64258",
             "requestUnits": 1,
             "requestCount": 1,
-            "steps": 1
+            "steps": 1,
+            "errorSignature": "AI_APICallError",
+            "suggestedModel": null
           }
         }
       ]
