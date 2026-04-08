@@ -2,10 +2,10 @@
   {
     "type": "bar",
     "x": [
-      "opencode/nemotron-3-super-free"
+      "opencode/glm-5.1"
     ],
     "y": [
-      0
+      94.12
     ],
     "marker": {
       "color": "#16a34a"

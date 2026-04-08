@@ -2,7 +2,7 @@
 
 OpenCode Agentic Efficiency Benchmark measures how many OpenCode requests a model consumes per successful task on reproducible DevOps and light-coding fixtures.
 
-The suite is intended for senior-level platform and infrastructure repair work. A three-step control ramp provides a basic unattended sanity check before the scored benchmark leans into medium/high difficulty and rewards models that can sustain real multi-step investigation loops.
+The suite is intended for senior-level platform and infrastructure repair work. One control task provides a basic sanity check, while the scored benchmark should otherwise skew toward medium/high difficulty and reward models that can sustain real multi-step investigation loops.
 
 Model pricing in this repo is generated for benchmark use during `sync-models`. The normalized catalog keeps both the actual listed blended price and, when useful, a clearly labeled reference blended price for free variants derived from a paid sibling or nearby family model.
 
@@ -34,7 +34,6 @@ The GitHub Pages publication is the canonical place for dynamic benchmark output
 - The task set is intentionally weighted toward real repair-oriented DevOps work rather than toy prompts
 - Capability gating matters: models with benchmark-affecting limitations can be surfaced, but excluded from the primary comparable cohort when appropriate
 - Tasks live under `tasks/*`, each with its own fixture, prompt, and verifier
-- Candidate smoke runs use an ordered control ramp: `16-event-status-shell` -> `17-log-level-rollup` -> `05-log-audit-script`
 
 Included task areas:
 
@@ -131,19 +130,6 @@ Useful smoke-test example:
 
 ```bash
 BENCHMARK_MODELS=opencode/gpt-5.4-mini BENCHMARK_TASK_GLOB=16-event-status-shell,17-log-level-rollup,05* docker compose run --rm runner benchmark
-```
-
-Durable publication-quality full run:
-
-```bash
-BENCHMARK_MODELS=opencode/glm-5 bash scripts/run-full-benchmark.sh
-bash scripts/persist-benchmark-results.sh main "publish manual benchmark results"
-```
-
-Durable overnight cheap-Zen sweep:
-
-```bash
-nohup bash scripts/run-overnight-cheap-zen.sh > .tmp/logs/overnight-launch.out 2>&1 &
 ```
 
 Generated benchmark artifacts are written to `results/` locally. Use the live Pages site for published rankings, tables, and history rather than checking volatile result tables into the root README.
