@@ -651,6 +651,8 @@ test('pages build surfaces executive leaderboard and pre-rendered comparison tab
     assert.match(html, /Top 10 models/)
     assert.match(html, /id="top-model-table">\s*<div class="table-wrap"><table>/)
     assert.match(html, /id="model-summary-table">\s*<div class="table-wrap"><table>/)
+    assert.match(html, /Task insights/)
+    assert.match(html, /Field read/)
     assert.match(html, /id="task-summary-table">\s*<div class="table-wrap"><table>/)
     assert.match(html, /Completion score/)
     assert.match(html, /Completion vs benchmark cost/)

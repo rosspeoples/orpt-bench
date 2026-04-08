@@ -2089,10 +2089,10 @@ function renderHtml(data) {
           <div id="model-summary-table">${renderModelSummaryTable(data.modelSummary || [])}</div>
         </div>
         <div class="panel table-panel section">
-          <div class="micro muted">Task-by-task breakdown</div>
-          <h3>Task summary</h3>
-          <p class="panel-copy">This is the fastest way to see where a model succeeded, where it missed, and what each task cost in requests, time, and dollars.</p>
-          <div id="task-summary-table">${renderTaskSummaryTable(data.taskSummary || [])}</div>
+          <div class="micro muted">Comparative task readout</div>
+          <h3>Task insights</h3>
+          <p class="panel-copy">One row per task. See who won, how wide the gap was, whether the field agreed, and what the fastest successful path actually cost.</p>
+          <div id="task-summary-table">${renderTaskInsightsTable(data.taskSummary || [], data.taskCatalog || [])}</div>
         </div>
       </section>
       <section class="section" id="matrix">
@@ -2547,8 +2547,6 @@ function renderTopModelsTable(rows, limit = 10) {
     columns: [
       { key: 'rank', label: '#', render: (_row, index) => escapeHtmlMarkup(String(index + 1)) },
       { key: 'model', label: 'Model', render: (row) => escapeHtmlMarkup(row.model) },
-      { key: 'score', label: 'Completion', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.score)) },
-      { key: 'valueScore', label: 'Value', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.valueScore)) },
       { key: 'compositeScore', label: 'Composite', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.compositeScore)) },
       { key: 'successRate', label: 'Success', render: (row) => escapeHtmlMarkup(formatPercentMarkup(row.successRate)) },
       { key: 'orpt', label: 'ORPT', render: (row) => escapeHtmlMarkup(formatDecimalMarkup(row.orpt, 2)) },
@@ -2569,8 +2567,6 @@ function renderModelSummaryTable(rows) {
     rows: normalizedRows,
     columns: [
       { key: 'model', label: 'Model', render: (row) => escapeHtmlMarkup(row.model) },
-      { key: 'score', label: 'Score', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.score)) },
-      { key: 'valueScore', label: 'Value', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.valueScore)) },
       { key: 'compositeScore', label: 'Composite', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.compositeScore)) },
       { key: 'successRate', label: 'Success', render: (row) => escapeHtmlMarkup(formatPercentMarkup(row.successRate)) },
       { key: 'dnfTasks', label: 'DNF', render: (row) => escapeHtmlMarkup(formatIntegerMarkup(row.dnfTasks)) },
@@ -2584,31 +2580,117 @@ function renderModelSummaryTable(rows) {
   });
 }
 
-function renderTaskSummaryTable(rows) {
-  const normalizedRows = Array.isArray(rows) ? rows : [];
-  if (!normalizedRows.length) {
+function renderTaskInsightsTable(rows, taskCatalog) {
+  const insightRows = buildTaskInsightRows(rows, taskCatalog);
+  if (!insightRows.length) {
     return '<div class="empty">No task summary is available for the current run.</div>';
   }
 
   return renderStaticTable({
-    rows: normalizedRows,
+    rows: insightRows,
     columns: [
       { key: 'taskName', label: 'Task', render: (row) => escapeHtmlMarkup(row.taskName) },
-      { key: 'model', label: 'Model', render: (row) => escapeHtmlMarkup(row.model) },
       { key: 'category', label: 'Category', render: (row) => escapeHtmlMarkup(row.category) },
-      { key: 'outcome', label: 'Outcome', render: (row) => badgeMarkup(row.outcome || 'unknown', row.outcomeTone || 'warn') + (row.failureDetail ? '<div class="muted">' + escapeHtmlMarkup(row.failureDetail) + '</div>' : '') },
-      { key: 'score', label: 'Score', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.score)) },
-      { key: 'valueScore', label: 'Value', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.valueScore)) },
-      { key: 'compositeScore', label: 'Composite', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.compositeScore)) },
-      { key: 'successRate', label: 'Success', render: (row) => escapeHtmlMarkup(formatPercentMarkup(row.successRate)) },
-      { key: 'dnfs', label: 'DNF', render: (row) => escapeHtmlMarkup(formatIntegerMarkup(row.dnfs)) },
-      { key: 'runs', label: 'Runs', render: (row) => escapeHtmlMarkup(formatIntegerMarkup(row.runs)) },
-      { key: 'averageRequestUnits', label: 'Avg requests', render: (row) => escapeHtmlMarkup(formatDecimalMarkup(row.averageRequestUnits, 2)) },
-      { key: 'averageWallTimeMs', label: 'Avg wall time', render: (row) => escapeHtmlMarkup(formatDurationMarkup(row.averageWallTimeMs)) },
-      { key: 'averageCostUsd', label: 'Avg cost', render: (row) => escapeHtmlMarkup(formatCurrencyMarkup(row.averageCostUsd)) },
-      { key: 'eligible', label: 'Eligible', render: (row) => badgeMarkup(row.eligible ? 'Scored' : 'Unscored', row.eligible ? 'good' : 'warn') },
+      { key: 'winner', label: 'Winner', render: (row) => row.winnerModel ? `${escapeHtmlMarkup(row.winnerModel)}<div class="muted">${escapeHtmlMarkup(formatScoreMarkup(row.winnerCompositeScore))} composite</div>` : badgeMarkup('No scored winner', 'warn') },
+      { key: 'runnerUp', label: 'Runner-up', render: (row) => row.runnerUpModel ? `${escapeHtmlMarkup(row.runnerUpModel)}<div class="muted">${escapeHtmlMarkup(formatScoreMarkup(row.runnerUpCompositeScore))} composite</div>` : '<span class="muted">n/a</span>' },
+      { key: 'margin', label: 'Gap', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.margin)) },
+      { key: 'completion', label: 'Completion', render: (row) => `${escapeHtmlMarkup(formatIntegerMarkup(row.successfulModels))}/${escapeHtmlMarkup(formatIntegerMarkup(row.modelCount))}<div class="muted">${escapeHtmlMarkup(formatPercentMarkup(row.successCoverage))} models passed</div>` },
+      { key: 'cheapestWinnerCost', label: 'Cheapest win', render: (row) => escapeHtmlMarkup(formatCurrencyMarkup(row.cheapestWinnerCostUsd)) },
+      { key: 'fastestWinnerTime', label: 'Fastest win', render: (row) => escapeHtmlMarkup(formatDurationMarkup(row.fastestWinnerWallTimeMs)) },
+      { key: 'bestOrpt', label: 'Best ORPT', render: (row) => escapeHtmlMarkup(formatDecimalMarkup(row.bestWinnerOrpt, 2)) },
+      { key: 'fieldRead', label: 'Field read', render: (row) => badgeMarkup(row.fieldReadLabel, row.fieldReadTone) },
     ],
   });
+}
+
+function buildTaskInsightRows(rows, taskCatalog) {
+  const normalizedRows = Array.isArray(rows) ? rows : [];
+  if (!normalizedRows.length) {
+    return [];
+  }
+
+  const taskMetaById = new Map((Array.isArray(taskCatalog) ? taskCatalog : []).map((task) => [task.id, task]));
+  const grouped = new Map();
+  for (const row of normalizedRows) {
+    if (!grouped.has(row.taskId)) {
+      grouped.set(row.taskId, []);
+    }
+    grouped.get(row.taskId).push(row);
+  }
+
+  const insights = [...grouped.entries()].map(([taskId, taskRows]) => {
+    const sorted = [...taskRows].sort((left, right) => toComparableNumber(right.compositeScore) - toComparableNumber(left.compositeScore));
+    const winners = sorted.filter((row) => row.eligible && row.successRate > 0);
+    const winner = winners[0] || null;
+    const runnerUp = winners[1] || null;
+    const successfulRows = taskRows.filter((row) => row.successRate > 0);
+    const cheapestWinner = successfulRows.filter((row) => Number.isFinite(row.averageCostUsd)).sort((left, right) => left.averageCostUsd - right.averageCostUsd)[0] || null;
+    const fastestWinner = successfulRows.filter((row) => Number.isFinite(row.averageWallTimeMs)).sort((left, right) => left.averageWallTimeMs - right.averageWallTimeMs)[0] || null;
+    const leanestWinner = successfulRows.filter((row) => Number.isFinite(row.averageRequestUnits)).sort((left, right) => left.averageRequestUnits - right.averageRequestUnits)[0] || null;
+    const successfulModels = successfulRows.length;
+    const modelCount = taskRows.length;
+    const successCoverage = modelCount ? successfulModels / modelCount : 0;
+    const margin = winner && runnerUp ? Math.max(0, toComparableNumber(winner.compositeScore) - toComparableNumber(runnerUp.compositeScore)) : winner ? toComparableNumber(winner.compositeScore) : 0;
+    const fieldRead = classifyTaskField(successCoverage, margin, successfulModels);
+
+    return {
+      taskId,
+      taskName: winner?.taskName || sorted[0]?.taskName || taskMetaById.get(taskId)?.name || taskId,
+      category: winner?.category || sorted[0]?.category || taskCategoryForTask({ taskSummary: normalizedRows }, taskId) || 'uncategorized',
+      winnerModel: winner?.model || null,
+      winnerCompositeScore: winner?.compositeScore ?? null,
+      runnerUpModel: runnerUp?.model || null,
+      runnerUpCompositeScore: runnerUp?.compositeScore ?? null,
+      margin,
+      successfulModels,
+      modelCount,
+      successCoverage,
+      cheapestWinnerCostUsd: cheapestWinner?.averageCostUsd ?? null,
+      fastestWinnerWallTimeMs: fastestWinner?.averageWallTimeMs ?? null,
+      bestWinnerOrpt: leanestWinner?.averageRequestUnits ?? null,
+      fieldReadLabel: fieldRead.label,
+      fieldReadTone: fieldRead.tone,
+    };
+  });
+
+  return insights.sort((left, right) => {
+    const competitivenessDelta = fieldReadRank(right.fieldReadTone) - fieldReadRank(left.fieldReadTone);
+    if (competitivenessDelta !== 0) {
+      return competitivenessDelta;
+    }
+    const marginDelta = toComparableNumber(right.margin) - toComparableNumber(left.margin);
+    if (marginDelta !== 0) {
+      return marginDelta;
+    }
+    return String(left.taskName).localeCompare(String(right.taskName));
+  });
+}
+
+function classifyTaskField(successCoverage, margin, successfulModels) {
+  if (successfulModels === 0) {
+    return { label: 'Nobody solved it', tone: 'bad' };
+  }
+  if (successfulModels === 1) {
+    return { label: 'Single solver', tone: 'warn' };
+  }
+  if (successCoverage === 1 && margin < 0.05) {
+    return { label: 'Crowded field', tone: 'good' };
+  }
+  if (margin >= 0.15) {
+    return { label: 'Clear separation', tone: 'warn' };
+  }
+  return { label: 'Competitive split', tone: 'good' };
+}
+
+function fieldReadRank(tone) {
+  switch (tone) {
+    case 'bad':
+      return 3;
+    case 'warn':
+      return 2;
+    default:
+      return 1;
+  }
 }
 
 function renderStaticTable({ rows, columns }) {
