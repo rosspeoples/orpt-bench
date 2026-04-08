@@ -1842,7 +1842,7 @@ function renderHtml(data) {
     }
     .chart-card.featured iframe { height: 620px; }
     .chart-card.wide iframe { height: 720px; }
-    .chart-card.compact iframe { height: 300px; }
+    .chart-card.compact iframe { height: 340px; }
     .chart-card.compact .chart-note { margin-top: 6px; }
     .chart-card.executive h3 { font-size: 1.05rem; }
     .chart-card.executive .panel-copy { line-height: 1.5; }
@@ -1857,6 +1857,7 @@ function renderHtml(data) {
     }
     .table-panel { padding-bottom: 8px; }
     .chart-note { color: var(--muted); font-size: 0.88rem; line-height: 1.55; margin-top: 8px; }
+    .chart-note:empty { display: none; }
     details.disclosure {
       border: 1px solid rgba(122, 162, 255, 0.12);
       border-radius: var(--radius-sm);
@@ -2009,7 +2010,7 @@ function renderHtml(data) {
       .chart-card iframe { height: 340px; }
       .chart-card.featured iframe { height: 420px; }
       .chart-card.wide iframe { height: 520px; }
-      .chart-card.compact iframe { height: 280px; }
+      .chart-card.compact iframe { height: 320px; }
     }
   </style>
 </head>
@@ -2065,6 +2066,12 @@ function renderHtml(data) {
           </div>
         </div>
         ${renderChartCards(selectCharts(data.charts, ['composite-vs-cost']), 'frontier')}
+        <div class="panel table-panel section">
+          <div class="micro muted">Fast read leaderboard</div>
+          <h3>Top 10 models</h3>
+          <p class="panel-copy">The top-ranked cohort with the columns you actually need for a quick decision.</p>
+          <div id="top-model-table">${renderTopModelsTable(data.modelSummary || [], 10)}</div>
+        </div>
       </section>
       <section class="stats-grid" id="stats"></section>
       <section class="section" id="comparison">
@@ -2079,13 +2086,13 @@ function renderHtml(data) {
           <div class="micro muted">Comparable cohort overview</div>
           <h3>Model summary</h3>
           <p class="panel-copy">Use this table for the main leaderboard view across models in the latest run.</p>
-          <div id="model-summary-table"></div>
+          <div id="model-summary-table">${renderModelSummaryTable(data.modelSummary || [])}</div>
         </div>
         <div class="panel table-panel section">
           <div class="micro muted">Task-by-task breakdown</div>
           <h3>Task summary</h3>
           <p class="panel-copy">This is the fastest way to see where a model succeeded, where it missed, and what each task cost in requests, time, and dollars.</p>
-          <div id="task-summary-table"></div>
+          <div id="task-summary-table">${renderTaskSummaryTable(data.taskSummary || [])}</div>
         </div>
       </section>
       <section class="section" id="matrix">
@@ -2529,6 +2536,100 @@ ${charts.map((chart) => `        <article class="chart-card${cardVariantClass}${
        </div>`;
 }
 
+function renderTopModelsTable(rows, limit = 10) {
+  const topRows = sortByComposite(Array.isArray(rows) ? rows : []).slice(0, limit);
+  if (!topRows.length) {
+    return '<div class="empty">No model summary is available for the current run.</div>';
+  }
+
+  return renderStaticTable({
+    rows: topRows,
+    columns: [
+      { key: 'rank', label: '#', render: (_row, index) => escapeHtmlMarkup(String(index + 1)) },
+      { key: 'model', label: 'Model', render: (row) => escapeHtmlMarkup(row.model) },
+      { key: 'score', label: 'Completion', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.score)) },
+      { key: 'valueScore', label: 'Value', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.valueScore)) },
+      { key: 'compositeScore', label: 'Composite', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.compositeScore)) },
+      { key: 'successRate', label: 'Success', render: (row) => escapeHtmlMarkup(formatPercentMarkup(row.successRate)) },
+      { key: 'orpt', label: 'ORPT', render: (row) => escapeHtmlMarkup(formatDecimalMarkup(row.orpt, 2)) },
+      { key: 'totalCostUsd', label: 'Cost', render: (row) => escapeHtmlMarkup(formatCurrencyMarkup(row.totalCostUsd)) },
+      { key: 'totalWallTimeMs', label: 'Wall time', render: (row) => escapeHtmlMarkup(formatDurationMarkup(row.totalWallTimeMs)) },
+      { key: 'status', label: 'Status', render: (row) => badgeMarkup(row.comparable ? 'Comparable' : 'Limited', row.comparable ? 'good' : 'warn') },
+    ],
+  });
+}
+
+function renderModelSummaryTable(rows) {
+  const normalizedRows = Array.isArray(rows) ? rows : [];
+  if (!normalizedRows.length) {
+    return '<div class="empty">No model summary is available for the current run.</div>';
+  }
+
+  return renderStaticTable({
+    rows: normalizedRows,
+    columns: [
+      { key: 'model', label: 'Model', render: (row) => escapeHtmlMarkup(row.model) },
+      { key: 'score', label: 'Score', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.score)) },
+      { key: 'valueScore', label: 'Value', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.valueScore)) },
+      { key: 'compositeScore', label: 'Composite', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.compositeScore)) },
+      { key: 'successRate', label: 'Success', render: (row) => escapeHtmlMarkup(formatPercentMarkup(row.successRate)) },
+      { key: 'dnfTasks', label: 'DNF', render: (row) => escapeHtmlMarkup(formatIntegerMarkup(row.dnfTasks)) },
+      { key: 'orpt', label: 'ORPT', render: (row) => escapeHtmlMarkup(formatDecimalMarkup(row.orpt, 2)) },
+      { key: 'totalRequestUnits', label: 'Requests', render: (row) => escapeHtmlMarkup(formatIntegerMarkup(row.totalRequestUnits)) },
+      { key: 'totalWallTimeMs', label: 'Wall time', render: (row) => escapeHtmlMarkup(formatDurationMarkup(row.totalWallTimeMs)) },
+      { key: 'totalCostUsd', label: 'Cost', render: (row) => escapeHtmlMarkup(formatCurrencyMarkup(row.totalCostUsd)) },
+      { key: 'averageCostUsd', label: 'Avg task cost', render: (row) => escapeHtmlMarkup(formatCurrencyMarkup(row.averageCostUsd)) },
+      { key: 'comparable', label: 'Status', render: (row) => badgeMarkup(row.comparable ? 'Comparable' : 'Limited', row.comparable ? 'good' : 'warn') },
+    ],
+  });
+}
+
+function renderTaskSummaryTable(rows) {
+  const normalizedRows = Array.isArray(rows) ? rows : [];
+  if (!normalizedRows.length) {
+    return '<div class="empty">No task summary is available for the current run.</div>';
+  }
+
+  return renderStaticTable({
+    rows: normalizedRows,
+    columns: [
+      { key: 'taskName', label: 'Task', render: (row) => escapeHtmlMarkup(row.taskName) },
+      { key: 'model', label: 'Model', render: (row) => escapeHtmlMarkup(row.model) },
+      { key: 'category', label: 'Category', render: (row) => escapeHtmlMarkup(row.category) },
+      { key: 'outcome', label: 'Outcome', render: (row) => badgeMarkup(row.outcome || 'unknown', row.outcomeTone || 'warn') + (row.failureDetail ? '<div class="muted">' + escapeHtmlMarkup(row.failureDetail) + '</div>' : '') },
+      { key: 'score', label: 'Score', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.score)) },
+      { key: 'valueScore', label: 'Value', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.valueScore)) },
+      { key: 'compositeScore', label: 'Composite', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.compositeScore)) },
+      { key: 'successRate', label: 'Success', render: (row) => escapeHtmlMarkup(formatPercentMarkup(row.successRate)) },
+      { key: 'dnfs', label: 'DNF', render: (row) => escapeHtmlMarkup(formatIntegerMarkup(row.dnfs)) },
+      { key: 'runs', label: 'Runs', render: (row) => escapeHtmlMarkup(formatIntegerMarkup(row.runs)) },
+      { key: 'averageRequestUnits', label: 'Avg requests', render: (row) => escapeHtmlMarkup(formatDecimalMarkup(row.averageRequestUnits, 2)) },
+      { key: 'averageWallTimeMs', label: 'Avg wall time', render: (row) => escapeHtmlMarkup(formatDurationMarkup(row.averageWallTimeMs)) },
+      { key: 'averageCostUsd', label: 'Avg cost', render: (row) => escapeHtmlMarkup(formatCurrencyMarkup(row.averageCostUsd)) },
+      { key: 'eligible', label: 'Eligible', render: (row) => badgeMarkup(row.eligible ? 'Scored' : 'Unscored', row.eligible ? 'good' : 'warn') },
+    ],
+  });
+}
+
+function renderStaticTable({ rows, columns }) {
+  return `<div class="table-wrap"><table>
+    <thead>
+      <tr>
+${columns.map((column) => `        <th>${escapeHtmlMarkup(column.label)}</th>`).join('\n')}
+      </tr>
+    </thead>
+    <tbody>
+${rows.map((row, index) => `      <tr>
+${columns.map((column) => `        <td>${column.render(row, index)}</td>`).join('\n')}
+      </tr>`).join('\n')}
+    </tbody>
+  </table></div>`;
+}
+
+function badgeMarkup(label, tone) {
+  return `<span class="pill ${escapeAttributeMarkup(tone)}">${escapeHtmlMarkup(label)}</span>`;
+}
+
 function selectCharts(charts, includeSlugs = [], excludeSlugs = []) {
   if (!Array.isArray(charts) || charts.length === 0) {
     return [];
@@ -2566,7 +2667,7 @@ function chartReadingHint(chart) {
     case 'task-duration-heatmap':
       return 'Use this to spot slow tasks and whether the delay tracks with better outcomes or wasted effort.';
     default:
-      return 'Each model keeps the same color across direct comparison charts so cross-chart scanning is consistent.';
+      return '';
   }
 }
 

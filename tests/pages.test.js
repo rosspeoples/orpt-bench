@@ -530,3 +530,131 @@ test('pages build classifies provider model-not-found and provider http smoke fa
     await fs.rm(rootDir, { recursive: true, force: true })
   }
 })
+
+test('pages build surfaces executive leaderboard and pre-rendered comparison tables', async () => {
+  const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'orpt-bench-pages-'))
+  const outputDir = path.join(rootDir, 'site')
+
+  try {
+    await fs.mkdir(path.join(rootDir, 'results', 'history'), { recursive: true })
+    await fs.mkdir(path.join(rootDir, 'models'), { recursive: true })
+    await fs.mkdir(path.join(rootDir, 'docs'), { recursive: true })
+
+    const fullRun = {
+      run: {
+        id: 'full-run-1',
+        startedAt: '2026-04-08T00:00:00.000Z',
+        completedAt: '2026-04-08T00:10:00.000Z',
+        benchmarkCycle: 'weekly',
+        models: ['opencode/gpt-5.4-mini', 'opencode/glm-5'],
+        taskCount: 2,
+        taskPatterns: ['*'],
+        repeats: 1,
+      },
+      results: [
+        {
+          taskId: '01-sample-task',
+          taskName: 'Sample task',
+          category: 'scripting',
+          model: 'opencode/gpt-5.4-mini',
+          provider: 'opencode',
+          success: true,
+          score: 1,
+          durationMs: 1200,
+          requestUnits: 2,
+          requestCount: 2,
+          requestAccountingSource: 'proxy-call-count',
+          costUsd: 0.01,
+          steps: 2,
+          tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
+        },
+        {
+          taskId: '02-sample-task',
+          taskName: 'Another sample task',
+          category: 'gitops',
+          model: 'opencode/glm-5',
+          provider: 'opencode',
+          success: true,
+          score: 1,
+          durationMs: 1800,
+          requestUnits: 3,
+          requestCount: 3,
+          requestAccountingSource: 'proxy-call-count',
+          costUsd: 0.02,
+          steps: 3,
+          tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
+        }
+      ],
+      modelCatalog: {
+        models: [
+          {
+            model: 'opencode/gpt-5.4-mini',
+            family: 'openai',
+            devTier: 'dev-cheap',
+            priceTier: 'low',
+            recommendedUse: 'dev-general',
+            benchmark: { blendedPricePer1mTokensUsd: 1.68 },
+            stability: { headlessFriendly: true, notes: null },
+            featureSupport: { unattendedBenchmarkRuns: 'supported', knownLimitations: [] }
+          },
+          {
+            model: 'opencode/glm-5',
+            family: 'z-ai',
+            devTier: 'balanced-general',
+            priceTier: 'low',
+            recommendedUse: 'standard',
+            benchmark: { blendedPricePer1mTokensUsd: 1.11 },
+            stability: { headlessFriendly: true, notes: null },
+            featureSupport: { unattendedBenchmarkRuns: 'supported', knownLimitations: [] }
+          }
+        ]
+      },
+      taskCatalog: [
+        {
+          id: '01-sample-task',
+          name: 'Sample task',
+          difficulty: 'control',
+          timeoutSeconds: 60,
+          requiredCapabilities: []
+        },
+        {
+          id: '02-sample-task',
+          name: 'Another sample task',
+          difficulty: 'medium',
+          timeoutSeconds: 60,
+          requiredCapabilities: []
+        }
+      ],
+      scoring: {
+        valueScoreWeights: { orpt: 0.45, cost: 0.35, time: 0.2 },
+        compositeScoreWeights: { score: 0.7, valueScore: 0.3 }
+      }
+    }
+
+    await fs.writeFile(path.join(rootDir, 'results', 'latest.json'), `${JSON.stringify(fullRun, null, 2)}\n`, 'utf8')
+    await fs.writeFile(path.join(rootDir, 'results', 'history', 'full-run-1.json'), `${JSON.stringify(fullRun, null, 2)}\n`, 'utf8')
+    await fs.writeFile(path.join(rootDir, 'results', 'leaderboard.md'), '# fixture\n', 'utf8')
+    await fs.writeFile(path.join(rootDir, 'models', 'README.md'), '# models\n', 'utf8')
+    await fs.writeFile(path.join(rootDir, 'docs', 'result-schema.json'), '{}\n', 'utf8')
+    await fs.writeFile(path.join(rootDir, 'DESIGN.md'), '# design\n', 'utf8')
+
+    await runNode(['/var/home/rpeoples/Code/orpt-bench/scripts/lib/build-github-pages.js'], {
+      cwd: rootDir,
+      env: {
+        ...process.env,
+        PUBLISH_PAGES_OUTPUT_DIR: outputDir,
+        PUBLISH_GITHUB_REPOSITORY: 'https://github.com/example/orpt-bench'
+      }
+    })
+
+    const html = await fs.readFile(path.join(outputDir, 'index.html'), 'utf8')
+    assert.match(html, /Top 10 models/)
+    assert.match(html, /id="top-model-table">\s*<div class="table-wrap"><table>/)
+    assert.match(html, /id="model-summary-table">\s*<div class="table-wrap"><table>/)
+    assert.match(html, /id="task-summary-table">\s*<div class="table-wrap"><table>/)
+    assert.match(html, /Completion score/)
+    assert.match(html, /Completion vs benchmark cost/)
+  } finally {
+    await fs.rm(rootDir, { recursive: true, force: true })
+  }
+})
