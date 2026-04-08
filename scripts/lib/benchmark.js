@@ -120,6 +120,8 @@ function buildSyntheticFailureResults({ runID, modelName, provider, entries, rea
       diff: [],
       requestUnits: 0,
       requestAccountingSource: 'synthetic-timeout',
+      dnf: true,
+      dnfReason: 'process-timeout',
       proxyRecords: [],
       logExcerpt: [],
       verifier: {
@@ -173,6 +175,15 @@ function computeTaskTimeoutMs(runtime, task, processDeadlineAt) {
   const remainingMs = processDeadlineAt - Date.now()
   if (remainingMs <= 0) return 1
   return Math.max(1, Math.min(taskLimitMs, remainingMs))
+}
+
+function isTaskTimeoutError(error) {
+  const message = error?.message || ''
+  return /Timed out after \d+ms|Task exceeded \d+s hard timeout/i.test(message)
+}
+
+export function runContainsSyntheticTimeoutRows(run) {
+  return (run?.results || []).some((entry) => entry?.requestAccountingSource === 'synthetic-timeout' || entry?.dnfReason === 'process-timeout')
 }
 
 async function runCommand(command, args, options = {}) {
@@ -285,6 +296,7 @@ export function aggregateRun(run, extractors) {
   run.modelSummary = [...byModel.entries()]
     .map(([model, entries]) => {
       const successful = entries.filter((entry) => entry.success)
+      const dnfEntries = entries.filter((entry) => entry.dnf)
       const eligible = successful.every((entry) => entry.requestUnits != null) && successful.length > 0
       const requestUnits = successful.map((entry) => entry.requestUnits).filter((value) => value != null)
       const allRequestUnits = entries.map((entry) => entry.requestUnits).filter((value) => value != null)
@@ -298,6 +310,7 @@ export function aggregateRun(run, extractors) {
         runs: entries.length,
         successfulTasks: successful.length,
         failedTasks: entries.length - successful.length,
+        dnfTasks: dnfEntries.length,
         successRate: entries.length ? successful.length / entries.length : 0,
         score: average(entries.map((entry) => entry.score)) || 0,
         valueScore: average(entries.map((entry) => entry.valueScore ?? 0)) || 0,
@@ -336,6 +349,7 @@ export function aggregateRun(run, extractors) {
     .map((entries) => {
       const sample = entries[0]
       const successful = entries.filter((entry) => entry.success)
+      const dnfEntries = entries.filter((entry) => entry.dnf)
       const requestUnits = entries.map((entry) => entry.requestUnits).filter((value) => value != null)
       const catalogEntry = modelCatalog.get(sample.model)
       const eligible = successful.length > 0 && successful.every((entry) => entry.requestUnits != null)
@@ -349,6 +363,7 @@ export function aggregateRun(run, extractors) {
         runs: entries.length,
         successes: successful.length,
         failures: entries.length - successful.length,
+        dnfs: dnfEntries.length,
         score: average(entries.map((entry) => entry.score)) || 0,
         valueScore: average(entries.map((entry) => entry.valueScore ?? 0)) || 0,
         compositeScore: average(entries.map((entry) => entry.compositeScore ?? 0)) || 0,
@@ -405,6 +420,8 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
   let verifier = { code: 1, stdout: '', stderr: '' }
   let error = null
   let diff = []
+  let dnf = false
+  let dnfReason = null
 
   try {
     const session = await server.createSession(workspaceDir, `${task.id}:${model.providerID}/${model.modelID}`)
@@ -421,6 +438,15 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     verifier = await runCommand('python3', [path.join(runTaskDir, 'verify.py')], { cwd: runTaskDir, env: process.env })
   } catch (caught) {
     error = caught
+    if (isTaskTimeoutError(caught)) {
+      dnf = true
+      dnfReason = 'task-timeout'
+      verifier = {
+        code: 124,
+        stdout: '',
+        stderr: `Task exceeded ${Math.round(taskTimeoutMs / 1000)}s hard timeout`
+      }
+    }
   }
 
   const completedAt = nowIso()
@@ -461,6 +487,8 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     diff,
     requestUnits: requestSummary.requestUnits,
     requestAccountingSource: requestSummary.source,
+    dnf,
+    dnfReason,
     proxyRecords,
     logExcerpt: logLines.slice(-50),
     verifier: {
@@ -476,8 +504,11 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
 async function writeRunArtifacts(runtime, run) {
   const latestFile = path.join(runtime.rootDir, runtime.baseConfig.results.latestFile)
   const historyFile = path.join(runtime.rootDir, runtime.baseConfig.results.historyDir, `${run.run.id}.json`)
-  await writeJson(latestFile, run)
   await writeJson(historyFile, run)
+
+  if (!runContainsSyntheticTimeoutRows(run)) {
+    await writeJson(latestFile, run)
+  }
 }
 
 export async function runBenchmarkSingle(runtime, modelsOverride = null, runIDOverride = null, writeArtifacts = true) {
@@ -515,7 +546,7 @@ export async function runBenchmarkSingle(runtime, modelsOverride = null, runIDOv
     for (const modelName of models) {
       const model = parseModel(modelName)
       console.log(`START model ${model.providerID}/${model.modelID}`)
-      const server = await startOpenCodeServer({ runtime, model, proxy })
+      let server = await startOpenCodeServer({ runtime, model, proxy })
 
       try {
         let exhaustedProcessBudget = false
@@ -546,7 +577,12 @@ export async function runBenchmarkSingle(runtime, modelsOverride = null, runIDOv
             const result = await executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, taskTimeoutMs })
             run.results.push(result)
             await flushRunProgress(runtime, run, writeArtifacts)
-            console.log(`${result.success ? 'PASS' : 'FAIL'} ${result.taskId} ${result.model} steps=${result.steps} requestUnits=${result.requestUnits ?? 'n/a'}`)
+            console.log(`${result.success ? 'PASS' : result.dnf ? 'DNF' : 'FAIL'} ${result.taskId} ${result.model} steps=${result.steps} requestUnits=${result.requestUnits ?? 'n/a'}`)
+
+            if (result.dnf) {
+              await server.close()
+              server = await startOpenCodeServer({ runtime, model, proxy })
+            }
           }
         }
       } finally {

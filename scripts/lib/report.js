@@ -47,19 +47,19 @@ function getComparabilityDetails(entry, catalogByModel, taskCatalogById) {
 
 function renderModelSummaryTable(summary, catalogByModel, taskCatalogById) {
   const lines = [
-    '| Rank | Model | Score | Value Score | Composite Score | Success Rate | Request Count | ORPT | Total Wall Time (s) | Total Cost (USD) | Eligible | Comparable | Cohort Note |',
-    '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |'
+    '| Rank | Model | Score | Value Score | Composite Score | Success Rate | DNF | Request Count | ORPT | Total Wall Time (s) | Total Cost (USD) | Eligible | Comparable | Cohort Note |',
+    '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |'
   ]
 
   summary.forEach((entry, index) => {
     const comparability = getComparabilityDetails(entry, catalogByModel, taskCatalogById)
     lines.push(
-      `| ${index + 1} | ${entry.model} | ${entry.score.toFixed(2)} | ${(entry.valueScore ?? 0).toFixed(3)} | ${(entry.compositeScore ?? 0).toFixed(3)} | ${(entry.successRate * 100).toFixed(0)}% | ${entry.totalRequestCount.toFixed(0)} | ${entry.orpt == null ? 'n/a' : entry.orpt.toFixed(2)} | ${(entry.totalWallTimeMs / 1000).toFixed(1)} | ${entry.totalCostUsd.toFixed(4)} | ${entry.eligible ? 'yes' : 'no'} | ${comparability.comparable ? 'yes' : 'no'} | ${comparability.comparabilityNote} |`
+      `| ${index + 1} | ${entry.model} | ${entry.score.toFixed(2)} | ${(entry.valueScore ?? 0).toFixed(3)} | ${(entry.compositeScore ?? 0).toFixed(3)} | ${(entry.successRate * 100).toFixed(0)}% | ${(entry.dnfTasks ?? 0).toFixed(0)} | ${entry.totalRequestCount.toFixed(0)} | ${entry.orpt == null ? 'n/a' : entry.orpt.toFixed(2)} | ${(entry.totalWallTimeMs / 1000).toFixed(1)} | ${entry.totalCostUsd.toFixed(4)} | ${entry.eligible ? 'yes' : 'no'} | ${comparability.comparable ? 'yes' : 'no'} | ${comparability.comparabilityNote} |`
     )
   })
 
   if (summary.length === 0) {
-    lines.push('| - | No runs yet | - | - | - | - | - | - | - | - | - | - | - |')
+    lines.push('| - | No runs yet | - | - | - | - | - | - | - | - | - | - | - | - |')
   }
 
   return lines.join('\n')
@@ -67,19 +67,19 @@ function renderModelSummaryTable(summary, catalogByModel, taskCatalogById) {
 
 function renderTaskSummaryTable(summary, catalogByModel, taskCatalogById) {
   const lines = [
-    '| Task | Model | Score | Value Score | Composite Score | Success Rate | Request Count | Avg Requests | Total Wall Time (s) | Total Cost (USD) | Avg Steps | Comparable | Cohort Note |',
-    '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |'
+    '| Task | Model | Score | Value Score | Composite Score | Success Rate | DNF | Request Count | Avg Requests | Total Wall Time (s) | Total Cost (USD) | Avg Steps | Comparable | Cohort Note |',
+    '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |'
   ]
 
   summary.forEach((entry) => {
     const comparability = getComparabilityDetails(entry, catalogByModel, taskCatalogById)
     lines.push(
-      `| ${entry.taskId} | ${entry.model} | ${entry.score.toFixed(2)} | ${(entry.valueScore ?? 0).toFixed(3)} | ${(entry.compositeScore ?? 0).toFixed(3)} | ${(entry.successRate * 100).toFixed(0)}% | ${entry.totalRequestCount.toFixed(0)} | ${entry.averageRequestUnits == null ? 'n/a' : entry.averageRequestUnits.toFixed(2)} | ${(entry.totalWallTimeMs / 1000).toFixed(1)} | ${entry.totalCostUsd.toFixed(4)} | ${entry.averageSteps.toFixed(2)} | ${comparability.comparable ? 'yes' : 'no'} | ${comparability.comparabilityNote} |`
+      `| ${entry.taskId} | ${entry.model} | ${entry.score.toFixed(2)} | ${(entry.valueScore ?? 0).toFixed(3)} | ${(entry.compositeScore ?? 0).toFixed(3)} | ${(entry.successRate * 100).toFixed(0)}% | ${(entry.dnfs ?? 0).toFixed(0)} | ${entry.totalRequestCount.toFixed(0)} | ${entry.averageRequestUnits == null ? 'n/a' : entry.averageRequestUnits.toFixed(2)} | ${(entry.totalWallTimeMs / 1000).toFixed(1)} | ${entry.totalCostUsd.toFixed(4)} | ${entry.averageSteps.toFixed(2)} | ${comparability.comparable ? 'yes' : 'no'} | ${comparability.comparabilityNote} |`
     )
   })
 
   if (summary.length === 0) {
-    lines.push('| No runs yet | - | - | - | - | - | - | - | - | - | - | - | - |')
+    lines.push('| No runs yet | - | - | - | - | - | - | - | - | - | - | - | - | - |')
   }
 
   return lines.join('\n')
