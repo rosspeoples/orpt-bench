@@ -1,4 +1,17 @@
 {
-  "updatedAt": "2026-04-07T16:16:57.253Z",
-  "items": []
+  "updatedAt": "2026-04-08T02:03:06.421Z",
+  "items": [
+    {
+      "id": "deprecated:opencode/glm-5",
+      "kind": "deprecated",
+      "model": "opencode/glm-5",
+      "title": "Deprecate opencode/glm-5",
+      "labels": [
+        "automation",
+        "models",
+        "deprecated"
+      ],
+      "body": "Model: opencode/glm-5\nTransition: candidate -> deprecated\nReason: Superseded by opencode/glm-5.1.\nSuccessor: opencode/glm-5.1"
+    }
+  ]
 }

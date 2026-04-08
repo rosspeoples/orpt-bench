@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T03:25:08.813Z",
+  "updatedAt": "2026-04-08T02:03:06.400Z",
   "models": [
     {
       "model": "opencode/gemini-3.1-pro",
@@ -62,13 +62,13 @@
       "devTier": "dev-cheap",
       "intelligenceScore": null,
       "agenticScore": null,
-      "blendedPricePer1mTokensUsd": 6,
+      "blendedPricePer1mTokensUsd": 60,
       "referenceBlendedPricePer1mTokensUsd": null,
       "pricingSource": "openrouter",
       "pricingSourceUrl": "https://openrouter.ai/api/v1/models",
       "pricingSourceType": "automatic-openrouter-primary",
       "pricingConfidence": "medium",
-      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4.6 using a 3:1 input:output blend.",
+      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.6-fast using a 3:1 input:output blend.",
       "unattendedBenchmarkRuns": "unknown"
     },
     {
@@ -188,13 +188,13 @@
       "devTier": "dev-cheap",
       "intelligenceScore": null,
       "agenticScore": null,
-      "blendedPricePer1mTokensUsd": 0,
-      "referenceBlendedPricePer1mTokensUsd": null,
+      "blendedPricePer1mTokensUsd": 1.125,
+      "referenceBlendedPricePer1mTokensUsd": 1.125,
       "pricingSource": "openrouter",
       "pricingSourceUrl": "https://openrouter.ai/api/v1/models",
       "pricingSourceType": "automatic-openrouter-primary",
       "pricingConfidence": "medium",
-      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing qwen/qwen3.6-plus:free using a 3:1 input:output blend.",
+      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing qwen/qwen3.6-plus using a 3:1 input:output blend. Reference price uses qwen/qwen3.6-plus at 1.125 USD per 1M tokens from the same OpenRouter family.",
       "unattendedBenchmarkRuns": "unknown"
     },
     {
@@ -222,7 +222,7 @@
       "pricingSourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
       "pricingSourceType": "manual-primary-with-openrouter-reference",
       "pricingConfidence": "high",
-      "pricingNotes": "OpenRouter reference blend for anthropic/claude-sonnet-4.6 is 6 USD per 1M tokens using a 3:1 input:output mix.",
+      "pricingNotes": "OpenRouter reference blend for anthropic/claude-opus-4.6-fast is 60 USD per 1M tokens using a 3:1 input:output mix.",
       "unattendedBenchmarkRuns": "unknown"
     },
     {
@@ -230,13 +230,13 @@
       "devTier": "expensive",
       "intelligenceScore": null,
       "agenticScore": null,
-      "blendedPricePer1mTokensUsd": 6,
+      "blendedPricePer1mTokensUsd": 60,
       "referenceBlendedPricePer1mTokensUsd": null,
       "pricingSource": "openrouter",
       "pricingSourceUrl": "https://openrouter.ai/api/v1/models",
       "pricingSourceType": "automatic-openrouter-primary",
       "pricingConfidence": "medium",
-      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4.6 using a 3:1 input:output blend.",
+      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.6-fast using a 3:1 input:output blend.",
       "unattendedBenchmarkRuns": "unknown"
     },
     {
@@ -244,13 +244,13 @@
       "devTier": "expensive",
       "intelligenceScore": null,
       "agenticScore": null,
-      "blendedPricePer1mTokensUsd": 6,
+      "blendedPricePer1mTokensUsd": 60,
       "referenceBlendedPricePer1mTokensUsd": null,
       "pricingSource": "openrouter",
       "pricingSourceUrl": "https://openrouter.ai/api/v1/models",
       "pricingSourceType": "automatic-openrouter-primary",
       "pricingConfidence": "medium",
-      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4.6 using a 3:1 input:output blend.",
+      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.6-fast using a 3:1 input:output blend.",
       "unattendedBenchmarkRuns": "unknown"
     },
     {
@@ -292,7 +292,7 @@
       "pricingSourceUrl": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
       "pricingSourceType": "manual-primary-with-openrouter-reference",
       "pricingConfidence": "high",
-      "pricingNotes": "OpenRouter reference blend for anthropic/claude-sonnet-4.6 is 6 USD per 1M tokens using a 3:1 input:output mix.",
+      "pricingNotes": "OpenRouter reference blend for anthropic/claude-opus-4.6-fast is 60 USD per 1M tokens using a 3:1 input:output mix.",
       "unattendedBenchmarkRuns": "unknown"
     },
     {
@@ -342,13 +342,13 @@
       "devTier": "standard",
       "intelligenceScore": null,
       "agenticScore": null,
-      "blendedPricePer1mTokensUsd": 6,
+      "blendedPricePer1mTokensUsd": 60,
       "referenceBlendedPricePer1mTokensUsd": null,
       "pricingSource": "openrouter",
       "pricingSourceUrl": "https://openrouter.ai/api/v1/models",
       "pricingSourceType": "automatic-openrouter-primary",
       "pricingConfidence": "medium",
-      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4.6 using a 3:1 input:output blend.",
+      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.6-fast using a 3:1 input:output blend.",
       "unattendedBenchmarkRuns": "unknown"
     },
     {
@@ -377,6 +377,20 @@
       "pricingSourceType": "automatic-openrouter-primary",
       "pricingConfidence": "medium",
       "pricingNotes": "Primary blended price derived automatically from OpenRouter listing z-ai/glm-4.7 using a 3:1 input:output blend.",
+      "unattendedBenchmarkRuns": "unknown"
+    },
+    {
+      "model": "opencode/glm-5.1",
+      "devTier": "standard",
+      "intelligenceScore": null,
+      "agenticScore": null,
+      "blendedPricePer1mTokensUsd": 1.935,
+      "referenceBlendedPricePer1mTokensUsd": null,
+      "pricingSource": "openrouter",
+      "pricingSourceUrl": "https://openrouter.ai/api/v1/models",
+      "pricingSourceType": "automatic-openrouter-primary",
+      "pricingConfidence": "medium",
+      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing z-ai/glm-5.1 using a 3:1 input:output blend.",
       "unattendedBenchmarkRuns": "unknown"
     },
     {

@@ -1,15 +1,28 @@
 {
-  "updatedAt": "2026-04-07T16:16:57.253Z",
+  "updatedAt": "2026-04-08T02:03:06.421Z",
   "summary": {
-    "discovered": 0,
-    "stageChanges": 0,
+    "discovered": 1,
+    "stageChanges": 1,
     "inventoryChanges": 0,
     "candidateSmokeQueued": 4,
-    "deprecated": 0,
+    "deprecated": 1,
     "sunset": 0
   },
-  "discovered": [],
-  "stageChanges": [],
+  "discovered": [
+    {
+      "model": "opencode/glm-5.1",
+      "lifecycleStage": "candidate",
+      "reason": "Discovered in the current inventory and awaiting initial smoke benchmarking."
+    }
+  ],
+  "stageChanges": [
+    {
+      "model": "opencode/glm-5",
+      "from": "candidate",
+      "to": "deprecated",
+      "reason": "Superseded by opencode/glm-5.1."
+    }
+  ],
   "inventoryChanges": [],
   "candidateSmokeQueue": [
     {
@@ -21,7 +34,7 @@
       "reason": "Discovered in the current inventory and awaiting initial smoke benchmarking."
     },
     {
-      "model": "opencode/glm-5",
+      "model": "opencode/gemini-3.1-pro",
       "reason": "Discovered in the current inventory and awaiting initial smoke benchmarking."
     },
     {
@@ -30,7 +43,11 @@
     }
   ],
   "smokeQueueChanges": {
-    "added": [],
-    "removed": []
+    "added": [
+      "opencode/gemini-3.1-pro"
+    ],
+    "removed": [
+      "opencode/glm-5"
+    ]
   }
 }

@@ -1,12 +1,22 @@
 {
-  "updatedAt": "2026-04-07T15:05:27.314Z",
+  "updatedAt": "2026-04-08T02:16:22.219Z",
   "taskSet": {
     "taskIds": [
       "01-iac-kubernetes-rollout",
       "02-terraform-static-site",
       "03-ansible-nginx-role",
       "04-docker-compose-observability",
-      "05-log-audit-script"
+      "05-log-audit-script",
+      "06-kubernetes-oidc-rbac-repair",
+      "07-cnpg-restore-manifest-repair",
+      "08-workspace-transplant-bundle-repair",
+      "09-gitops-workspace-render-validation",
+      "10-bootstrap-phase-validation-repair",
+      "11-mcp-openbao-contract-repair",
+      "12-pre-argocd-bootstrap-sequencing",
+      "13-wildcard-tls-route-coverage",
+      "14-build-workspace-plane-convergence",
+      "15-workspace-runtime-access-convergence"
     ],
     "requiredCapabilities": [
       "unattendedBenchmarkRuns"

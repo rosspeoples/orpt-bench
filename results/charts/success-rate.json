@@ -2,12 +2,18 @@
   {
     "type": "bar",
     "x": [
-      "opencode/gpt-5.4",
-      "opencode/gpt-5.4-mini"
+      "opencode/glm-5",
+      "opencode/gemini-3.1-pro",
+      "opencode/gemini-3-flash",
+      "opencode/nemotron-3-super-free",
+      "opencode/minimax-m2.5-free"
     ],
     "y": [
-      60,
-      53.33
+      6.67,
+      0,
+      0,
+      0,
+      0
     ],
     "marker": {
       "color": "#16a34a"

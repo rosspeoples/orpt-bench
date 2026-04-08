@@ -4,235 +4,241 @@
     {
       "id": "claude-opus-4-6",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "claude-opus-4-5",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "claude-opus-4-1",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "claude-sonnet-4-6",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "claude-sonnet-4-5",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "claude-sonnet-4",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "claude-3-5-haiku",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "claude-haiku-4-5",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gemini-3.1-pro",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gemini-3-pro",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gemini-3-flash",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.4",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.4-pro",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.4-mini",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.4-nano",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.3-codex-spark",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.3-codex",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.2",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.2-codex",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.1",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.1-codex-max",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.1-codex",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5.1-codex-mini",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5-codex",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "gpt-5-nano",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
+      "owned_by": "opencode"
+    },
+    {
+      "id": "glm-5.1",
+      "object": "model",
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "glm-5",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "glm-4.7",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "glm-4.6",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "minimax-m2.5",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "minimax-m2.5-free",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "minimax-m2.1",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "qwen3.6-plus-free",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "kimi-k2.5",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "kimi-k2",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "kimi-k2-thinking",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "trinity-large-preview-free",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "big-pickle",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     },
     {
       "id": "nemotron-3-super-free",
       "object": "model",
-      "created": 1775532308,
+      "created": 1775613785,
       "owned_by": "opencode"
     }
   ]
