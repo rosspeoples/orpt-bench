@@ -11168,6 +11168,7 @@
       "id": "01-iac-kubernetes-rollout",
       "name": "Kubernetes rollout repair",
       "difficulty": "medium",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11176,6 +11177,7 @@
       "id": "02-terraform-static-site",
       "name": "Terraform static site repair",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11184,6 +11186,7 @@
       "id": "03-ansible-nginx-role",
       "name": "Ansible nginx role completion",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11192,6 +11195,7 @@
       "id": "04-docker-compose-observability",
       "name": "Docker Compose observability fix",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11200,6 +11204,7 @@
       "id": "05-log-audit-script",
       "name": "Log audit shell script",
       "difficulty": "control",
+      "timeoutSeconds": 60,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11208,6 +11213,7 @@
       "id": "06-kubernetes-oidc-rbac-repair",
       "name": "Kubernetes OIDC RBAC repair",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11216,6 +11222,7 @@
       "id": "07-cnpg-restore-manifest-repair",
       "name": "CNPG restore manifest repair",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11224,6 +11231,7 @@
       "id": "08-workspace-transplant-bundle-repair",
       "name": "Workspace transplant bundle repair",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11232,6 +11240,7 @@
       "id": "09-gitops-workspace-render-validation",
       "name": "GitOps workspace render validation",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11240,6 +11249,7 @@
       "id": "10-bootstrap-phase-validation-repair",
       "name": "Bootstrap phase validation repair",
       "difficulty": "expert",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11248,6 +11258,7 @@
       "id": "11-mcp-openbao-contract-repair",
       "name": "MCP OpenBao contract repair",
       "difficulty": "expert",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11256,6 +11267,7 @@
       "id": "12-pre-argocd-bootstrap-sequencing",
       "name": "Pre-ArgoCD bootstrap sequencing",
       "difficulty": "expert",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11264,6 +11276,7 @@
       "id": "13-wildcard-tls-route-coverage",
       "name": "Wildcard TLS route coverage",
       "difficulty": "expert",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11272,6 +11285,7 @@
       "id": "14-build-workspace-plane-convergence",
       "name": "Build workspace plane convergence",
       "difficulty": "expert",
+      "timeoutSeconds": 420,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -11280,6 +11294,7 @@
       "id": "15-workspace-runtime-access-convergence",
       "name": "Workspace runtime access convergence",
       "difficulty": "expert",
+      "timeoutSeconds": 420,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]

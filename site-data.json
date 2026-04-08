@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T05:48:22.733Z",
+  "generatedAt": "2026-04-08T06:11:29.765Z",
   "repository": {
     "url": "https://github.com/rosspeoples/orpt-bench",
     "pagesUrl": "https://rosspeoples.github.io/orpt-bench/",
@@ -62,47 +62,55 @@
     }
   },
   "latestRawRun": {
-    "id": "2026-04-08T02-26-48-652Z",
-    "startedAt": "2026-04-08T02:26:48.653Z",
-    "completedAt": "2026-04-08T02:36:45.349Z",
-    "benchmarkCycle": null,
-    "taskCount": 15,
+    "id": "2026-04-08T06-09-00-496Z",
+    "startedAt": "2026-04-08T06:09:00.496Z",
+    "completedAt": "2026-04-08T06:10:03.148Z",
+    "benchmarkCycle": "candidate_smoke",
+    "taskCount": 1,
     "taskPatterns": [
-      "*"
+      "05*"
     ],
     "repeats": 1,
-    "modelCount": 5,
-    "totalRuns": 75,
-    "successfulRuns": 1,
-    "comparableModels": 2,
+    "modelCount": 1,
+    "totalRuns": 1,
+    "successfulRuns": 0,
+    "comparableModels": 0,
     "topModel": {
-      "model": "opencode/glm-5",
+      "model": "opencode/nemotron-3-super-free",
       "provider": "opencode",
-      "runs": 15,
-      "successfulTasks": 1,
-      "failedTasks": 14,
-      "successRate": 0.06666666666666667,
-      "score": 0.06666666666666667,
-      "valueScore": 0.06666666666666667,
-      "compositeScore": 0.06666666666666667,
-      "orpt": 20,
-      "totalRequestCount": 25,
-      "totalRequestUnits": 25,
-      "totalWallTimeMs": 106647,
-      "totalCostUsd": 0.0044668,
-      "averageDurationMs": 83299,
-      "medianSteps": 21,
-      "averageCostUsd": 0.0044668,
-      "eligible": true,
-      "comparable": true,
-      "comparabilityNote": null,
-      "unattendedBenchmarkRuns": "unknown",
+      "runs": 1,
+      "successfulTasks": 0,
+      "failedTasks": 1,
+      "dnfTasks": 1,
+      "successRate": 0,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "orpt": null,
+      "totalRequestCount": 1,
+      "totalRequestUnits": 1,
+      "totalWallTimeMs": 59703,
+      "totalCostUsd": 0,
+      "averageDurationMs": 0,
+      "medianSteps": null,
+      "averageCostUsd": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ],
-      "unsupportedCapabilities": [],
-      "knownLimitations": [],
-      "requestAccountingSource": "proxy-call-count"
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": null
     }
   },
   "scoring": {
@@ -121,6 +129,7 @@
       "id": "01-iac-kubernetes-rollout",
       "name": "Kubernetes rollout repair",
       "difficulty": "medium",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -129,6 +138,7 @@
       "id": "02-terraform-static-site",
       "name": "Terraform static site repair",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -137,6 +147,7 @@
       "id": "03-ansible-nginx-role",
       "name": "Ansible nginx role completion",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -145,6 +156,7 @@
       "id": "04-docker-compose-observability",
       "name": "Docker Compose observability fix",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -153,6 +165,7 @@
       "id": "05-log-audit-script",
       "name": "Log audit shell script",
       "difficulty": "control",
+      "timeoutSeconds": 60,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -161,6 +174,7 @@
       "id": "06-kubernetes-oidc-rbac-repair",
       "name": "Kubernetes OIDC RBAC repair",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -169,6 +183,7 @@
       "id": "07-cnpg-restore-manifest-repair",
       "name": "CNPG restore manifest repair",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -177,6 +192,7 @@
       "id": "08-workspace-transplant-bundle-repair",
       "name": "Workspace transplant bundle repair",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -185,6 +201,7 @@
       "id": "09-gitops-workspace-render-validation",
       "name": "GitOps workspace render validation",
       "difficulty": "high",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -193,6 +210,7 @@
       "id": "10-bootstrap-phase-validation-repair",
       "name": "Bootstrap phase validation repair",
       "difficulty": "expert",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -201,6 +219,7 @@
       "id": "11-mcp-openbao-contract-repair",
       "name": "MCP OpenBao contract repair",
       "difficulty": "expert",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -209,6 +228,7 @@
       "id": "12-pre-argocd-bootstrap-sequencing",
       "name": "Pre-ArgoCD bootstrap sequencing",
       "difficulty": "expert",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -217,6 +237,7 @@
       "id": "13-wildcard-tls-route-coverage",
       "name": "Wildcard TLS route coverage",
       "difficulty": "expert",
+      "timeoutSeconds": 300,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -225,6 +246,7 @@
       "id": "14-build-workspace-plane-convergence",
       "name": "Build workspace plane convergence",
       "difficulty": "expert",
+      "timeoutSeconds": 420,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -233,6 +255,7 @@
       "id": "15-workspace-runtime-access-convergence",
       "name": "Workspace runtime access convergence",
       "difficulty": "expert",
+      "timeoutSeconds": 420,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -1746,6 +1769,33 @@
       "reasoningTokens": 2516,
       "cacheReadTokens": 261120,
       "cacheWriteTokens": 0
+    }
+  ],
+  "smokeRuns": [
+    {
+      "fileName": "2026-04-08T06-09-00-496Z.json",
+      "id": "2026-04-08T06-09-00-496Z",
+      "startedAt": "2026-04-08T06:09:00.496Z",
+      "completedAt": "2026-04-08T06:10:03.148Z",
+      "benchmarkCycle": "candidate_smoke",
+      "taskCount": 1,
+      "taskIds": [
+        "05-log-audit-script"
+      ],
+      "models": [
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "successes": 0,
+          "dnfs": 1,
+          "runs": 1,
+          "successRate": 0,
+          "totalCostUsd": 0,
+          "totalWallTimeMs": 59703,
+          "totalRequestUnits": 1,
+          "failed": true,
+          "lastError": "Timed out after 59588ms"
+        }
+      ]
     }
   ],
   "charts": [
