@@ -7,7 +7,9 @@ on:
 
 jobs:
   benchmark:
-    runs-on: ubuntu-latest
+    runs-on: benchmarks-orpt-bench
+    container:
+      image: docker.gitea.com/runner-images:ubuntu-latest
     env:
       BENCHMARK_CYCLE: ${BENCHMARK_CYCLE:-weekly}
       BENCHMARK_REPEATS: ${BENCHMARK_REPEATS:-1}
@@ -38,12 +40,7 @@ jobs:
       - name: Commit updated artifacts
         run: |
           branch="${GITHUB_REF_NAME:-main}"
-          export GIT_AUTHOR_NAME=gitea-actions
-          export GIT_AUTHOR_EMAIL=gitea-actions@localhost
-          export GIT_COMMITTER_NAME=gitea-actions
-          export GIT_COMMITTER_EMAIL=gitea-actions@localhost
-          bash ci/commit-results.sh
-          git push origin "HEAD:${branch}"
+          bash scripts/persist-benchmark-results.sh "${branch}" "Update ORPT benchmark results"
 
       - name: Publish GitHub Pages from benchmark result
         env:

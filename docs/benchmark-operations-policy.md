@@ -85,3 +85,11 @@ If any of these are wrong, do not run the benchmark.
 
 Bad models should be measured and exposed.
 Bad benchmark runs should be rejected and never promoted.
+
+## Persistence Requirement
+
+Completed benchmark value must not die in a local worktree.
+
+- Any benchmark command path used for meaningful smoke or full runs must have a corresponding persist step that commits and pushes the resulting artifacts.
+- Scheduled workflows must use a runner label that actually exists on the Gitea instance.
+- Overnight or manual batch scripts must checkpoint benchmark artifacts during execution rather than waiting until the very end.

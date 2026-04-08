@@ -130,6 +130,19 @@ Useful smoke-test example:
 BENCHMARK_MODELS=opencode/gpt-5.4-mini BENCHMARK_TASK_GLOB=05* docker compose run --rm runner benchmark
 ```
 
+Durable publication-quality full run:
+
+```bash
+BENCHMARK_MODELS=opencode/glm-5 bash scripts/run-full-benchmark.sh
+bash scripts/persist-benchmark-results.sh main "publish manual benchmark results"
+```
+
+Durable overnight cheap-Zen sweep:
+
+```bash
+nohup bash scripts/run-overnight-cheap-zen.sh > .tmp/logs/overnight-launch.out 2>&1 &
+```
+
 Generated benchmark artifacts are written to `results/` locally. Use the live Pages site for published rankings, tables, and history rather than checking volatile result tables into the root README.
 
 ## Design

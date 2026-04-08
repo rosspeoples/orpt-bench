@@ -47,7 +47,7 @@ jobs:
       - name: Detect model-management changes
         id: changes
         run: |
-          if git diff --quiet -- models README.md .github/workflows/benchmark.yml .github/workflows/manage-models.yml .gitea/workflows/benchmark.yml .gitea/workflows/manage-models.yml ci/commit-results.sh package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js scripts/lib/config.js scripts/lib/benchmark.js scripts/sync-github-issues.js tests/models.test.js tests/automation.test.js; then
+          if git diff --quiet -- models README.md .github/workflows/benchmark.yml .github/workflows/manage-models.yml .gitea/workflows/benchmark.yml .gitea/workflows/manage-models.yml package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js scripts/lib/config.js scripts/lib/benchmark.js scripts/persist-benchmark-results.sh scripts/run-overnight-cheap-zen.sh scripts/sync-github-issues.js tests/models.test.js tests/automation.test.js; then
             printf 'changed=false\n' >> "$GITHUB_OUTPUT"
           else
             printf 'changed=true\n' >> "$GITHUB_OUTPUT"
@@ -78,7 +78,7 @@ jobs:
             fi
           fi
           git checkout -B automation/model-lifecycle
-          git add models README.md .github/workflows/benchmark.yml .github/workflows/manage-models.yml .gitea/workflows/benchmark.yml .gitea/workflows/manage-models.yml ci/commit-results.sh package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js scripts/lib/config.js scripts/lib/benchmark.js scripts/sync-github-issues.js tests/models.test.js tests/automation.test.js
+          git add models README.md .github/workflows/benchmark.yml .github/workflows/manage-models.yml .gitea/workflows/benchmark.yml .gitea/workflows/manage-models.yml package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js scripts/lib/config.js scripts/lib/benchmark.js scripts/persist-benchmark-results.sh scripts/run-overnight-cheap-zen.sh scripts/sync-github-issues.js tests/models.test.js tests/automation.test.js
           git commit -m "automate model lifecycle planning" || exit 0
           git push -u origin automation/model-lifecycle --force-with-lease
 

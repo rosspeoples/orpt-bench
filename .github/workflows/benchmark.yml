@@ -79,5 +79,5 @@ jobs:
           export GIT_AUTHOR_EMAIL=github-actions@users.noreply.github.com
           export GIT_COMMITTER_NAME=github-actions
           export GIT_COMMITTER_EMAIL=github-actions@users.noreply.github.com
-          bash ci/commit-results.sh
-          git push
+          branch="${GITHUB_REF_NAME:-main}"
+          bash scripts/persist-benchmark-results.sh "${branch}" "Update ORPT benchmark results"
