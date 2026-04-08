@@ -8,6 +8,21 @@ output_dir="${PUBLISH_PAGES_OUTPUT_DIR:-${GITHUB_PAGES_OUTPUT_DIR:-}}"
   exit 1
 }
 
+ensure_node_dependencies() {
+  if npm ls --depth=0 >/dev/null 2>&1; then
+    return
+  fi
+
+  printf 'installing node dependencies for Pages build\n'
+  if git ls-files --error-unmatch "package-lock.json" >/dev/null 2>&1; then
+    npm ci --no-fund --no-audit
+  else
+    npm install --no-fund --no-audit --package-lock=false
+  fi
+}
+
+ensure_node_dependencies
+
 rm -rf "${output_dir}"
 mkdir -p "${output_dir}/results/charts" "${output_dir}/results/history" "${output_dir}/models" "${output_dir}/docs"
 
