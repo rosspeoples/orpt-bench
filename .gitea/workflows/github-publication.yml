@@ -8,7 +8,7 @@ on:
 
 jobs:
   publish-github:
-    runs-on: ubuntu-latest
+    runs-on: benchmarks-orpt-bench
     steps:
       - name: Checkout
         uses: actions/checkout@v4

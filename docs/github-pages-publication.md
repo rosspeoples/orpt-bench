@@ -33,3 +33,5 @@ The generated Pages site is an interactive static dashboard rather than a markdo
 - a generated history index when archived run snapshots are present
 
 The publication flow treats `Gitea` as the source of truth and force-pushes both the GitHub source branch and the generated `gh-pages` branch.
+
+The `GitHub Publication` workflow currently targets the custom `benchmarks-orpt-bench` runner label. This repository does not have an `ubuntu-latest` runner available, so changing the workflow to `runs-on: ubuntu-latest` leaves publication jobs queued indefinitely until that label is provisioned on the Gitea instance.
