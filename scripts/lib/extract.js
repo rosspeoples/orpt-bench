@@ -112,7 +112,11 @@ export function summarizeMessage(info, parts, logLines = []) {
   return {
     steps,
     toolInvocations,
-    costUsd: info.cost || stepParts.reduce((total, part) => total + part.cost, 0),
+    costUsd: (() => {
+      if (typeof info.cost === 'number' && Number.isFinite(info.cost)) return info.cost
+      if (stepParts.length === 0) return null
+      return stepParts.reduce((total, part) => total + part.cost, 0)
+    })(),
     tokens: info.tokens && Object.keys(info.tokens).length ? info.tokens : totalTokensFromSteps
   }
 }

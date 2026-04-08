@@ -97,10 +97,11 @@ verify_remote_branch_sha() {
 
 verify_pages_site_content() {
   local pages_url="$1"
-  local body_file="${tmpdir}/pages-body.txt"
+  local site_data_url="${pages_url%/}/site-data.json"
+  local site_data_file="${tmpdir}/site-data.json"
 
-  curl -fsSL "${pages_url}" -o "${body_file}"
-  grep -q 'Requests per solved task, published for fast comparison.' "${body_file}"
+  curl -fsSL "${site_data_url}" -o "${site_data_file}"
+  jq -e '.generatedAt and .repository and .charts' "${site_data_file}" >/dev/null
 }
 
 github_api_request() {

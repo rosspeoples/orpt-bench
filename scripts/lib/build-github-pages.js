@@ -168,7 +168,7 @@ const siteData = {
   scoring: publicationContext.publishedRun.scoring ?? null,
   taskCatalog: publicationContext.publishedRun.taskCatalog ?? [],
   modelSummary: sortByComposite(publicationContext.publishedRun.modelSummary ?? publicationContext.publishedRun.leaderboard ?? []),
-  taskSummary: sortByComposite(publicationContext.publishedRun.taskSummary ?? []),
+  taskSummary: buildPublishedTaskSummary(publicationContext.publishedRun),
   benchmarkedModels: buildBenchmarkedModels(publicationContext.publishedRun),
   benchmarkComposition: buildBenchmarkComposition(publicationContext.publishedRun),
   leaderboardHighlights: buildLeaderboardHighlights(publicationContext.publishedRun),
@@ -316,20 +316,108 @@ function summarizeSmokeRun(fileName, report) {
       const rows = resultRows.filter((entry) => entry.model === model);
       const successes = rows.filter((entry) => entry.success).length;
       const dnfs = rows.filter((entry) => entry.dnf).length;
+      const representativeFailure = selectRepresentativeFailure(rows);
       return {
         model,
         successes,
         dnfs,
         runs: rows.length,
         successRate: rows.length ? successes / rows.length : 0,
-        totalCostUsd: sum(rows.map((entry) => entry.costUsd || 0)),
+        totalCostUsd: summarizeSmokeCostUsd(rows),
         totalWallTimeMs: sum(rows.map((entry) => entry.durationMs || 0)),
         totalRequestUnits: sum(rows.map((entry) => entry.requestUnits || 0)),
+        totalRequestCount: sum(rows.map((entry) => entry.requestCount || 0)),
+        totalSteps: sum(rows.map((entry) => entry.steps || 0)),
         failed: rows.length > 0 && successes === 0,
+        providerLimited: rows.some((entry) => isProviderLimitedEntry(entry)),
         lastError: rows.find((entry) => entry.error?.message)?.error?.message || rows.find((entry) => entry.verifier?.stderr)?.verifier?.stderr || null,
+        failureSummary: summarizeFailureEvidence(representativeFailure),
       };
     }),
   };
+}
+
+function selectRepresentativeFailure(rows) {
+  const failures = rows.filter((entry) => !entry.success);
+  if (!failures.length) {
+    return null;
+  }
+  return failures.find((entry) => isProviderLimitedEntry(entry))
+    || failures.find((entry) => entry.dnf)
+    || failures.find((entry) => entry.verifier?.code && entry.verifier.code !== 0)
+    || failures[0];
+}
+
+function isProviderLimitedEntry(entry) {
+  const proxyStatus = firstFinite((entry?.proxyRecords || []).map((record) => record?.status));
+  const combinedMessage = `${entry?.error?.message || ''} ${entry?.verifier?.stderr || ''}`;
+  return entry?.providerLimited === true
+    || proxyStatus === 429
+    || /AI_APICallError|failed with 429/i.test(combinedMessage);
+}
+
+function summarizeFailureEvidence(entry) {
+  if (!entry) {
+    return null;
+  }
+
+  const proxyStatus = firstFinite((entry.proxyRecords || []).map((record) => record?.status));
+  const retryAfter = firstPresent((entry.proxyRecords || []).map((record) => record?.responseHeaders?.['retry-after'] || record?.responseHeaders?.['Retry-After']));
+
+  return {
+    outcomeLabel: classifySmokeOutcome(entry),
+    providerLimited: isProviderLimitedEntry(entry),
+    dnf: entry.dnf === true,
+    dnfReason: entry.dnfReason || null,
+    verifierCode: Number.isFinite(entry.verifier?.code) ? entry.verifier.code : null,
+    verifierStderr: entry.verifier?.stderr || null,
+    errorMessage: entry.error?.message || null,
+    proxyStatus,
+    retryAfter,
+    requestUnits: Number.isFinite(entry.requestUnits) ? entry.requestUnits : null,
+    requestCount: Number.isFinite(entry.requestCount) ? entry.requestCount : null,
+    steps: Number.isFinite(entry.steps) ? entry.steps : null,
+  };
+}
+
+function classifySmokeOutcome(entry) {
+  if (!entry) {
+    return 'unknown';
+  }
+  if (isProviderLimitedEntry(entry)) {
+    return 'provider-limited';
+  }
+  if (entry.dnf && entry.dnfReason === 'task-timeout') {
+    return 'timed out';
+  }
+  if (entry.success) {
+    return 'passed';
+  }
+  return 'failed';
+}
+
+function firstFinite(values) {
+  return values.find((value) => Number.isFinite(value)) ?? null;
+}
+
+function firstPresent(values) {
+  return values.find((value) => value != null && value !== '') ?? null;
+}
+
+function summarizeSmokeCostUsd(rows) {
+  const finiteCosts = rows.map((entry) => entry?.costUsd).filter((value) => Number.isFinite(value));
+  if (!finiteCosts.length) {
+    return null;
+  }
+
+  const total = sum(finiteCosts);
+  const anySuccessful = rows.some((entry) => entry?.success);
+  const anyPositiveCost = finiteCosts.some((value) => value > 0);
+  const anyProviderLimited = rows.some((entry) => isProviderLimitedEntry(entry));
+  if (total === 0 && !anySuccessful && !anyPositiveCost && anyProviderLimited) {
+    return null;
+  }
+  return total;
 }
 
 function runContainsSyntheticTimeoutRows(report) {
@@ -1031,6 +1119,54 @@ function buildTaskMatrix(report) {
   return { models, tasks, matrix };
 }
 
+function buildPublishedTaskSummary(report) {
+  return sortByComposite(report.taskSummary ?? []).map((row) => {
+    const failureSummary = summarizeTaskFailureEvidence(report, row);
+    return {
+      ...row,
+      outcome: summarizeTaskOutcome(row),
+      outcomeTone: taskOutcomeTone(row),
+      failureSummary,
+      failureDetail: buildFailureDetailLine(failureSummary),
+    };
+  });
+}
+
+function summarizeTaskOutcome(row) {
+  const failureOutcome = row?.failureSummary?.outcomeLabel || null;
+  if (failureOutcome === 'provider-limited' || row?.providerLimited) {
+    return 'provider-limited';
+  }
+  if (Number.isFinite(row?.dnfs) && row.dnfs > 0) {
+    return 'dnf';
+  }
+  if (row?.successRate === 1) {
+    return 'passed';
+  }
+  if (row?.successRate === 0) {
+    return 'failed';
+  }
+  return 'mixed';
+}
+
+function taskOutcomeTone(row) {
+  if ((row?.failureSummary?.outcomeLabel || null) === 'provider-limited' || row?.providerLimited) return 'warn';
+  if (Number.isFinite(row?.dnfs) && row.dnfs > 0) return 'warn';
+  if (row?.successRate === 1) return 'good';
+  return 'bad';
+}
+
+function summarizeTaskFailureEvidence(report, row) {
+  const entries = (report?.results || []).filter((entry) => entry.taskId === row?.taskId && entry.model === row?.model);
+  const failure = selectRepresentativeFailure(entries);
+  if (!failure) {
+    return null;
+  }
+
+  const summary = summarizeFailureEvidence(failure);
+  return summary;
+}
+
 function buildBenchmarkedModels(report) {
   const catalogModels = report.modelCatalog?.models || [];
   const catalogByModel = new Map(catalogModels.map((entry) => [entry.model, entry]));
@@ -1255,6 +1391,14 @@ function average(values) {
 
 function sum(values) {
   return values.reduce((total, value) => total + (Number.isFinite(value) ? value : 0), 0);
+}
+
+function sumDefined(values) {
+  const filtered = values.filter((value) => Number.isFinite(value));
+  if (!filtered.length) {
+    return null;
+  }
+  return sum(filtered);
 }
 
 function renderStandaloneChartHtml({ title, data, layout }) {
@@ -1731,6 +1875,7 @@ function renderHtml(data) {
     }
     .pill.good { color: var(--accent); border-color: rgba(115, 240, 197, 0.24); background: rgba(115, 240, 197, 0.08); }
     .pill.warn { color: var(--warning); border-color: rgba(255, 211, 110, 0.24); background: rgba(255, 211, 110, 0.08); }
+    .pill.bad { color: var(--danger); border-color: rgba(255, 122, 154, 0.24); background: rgba(255, 122, 154, 0.08); }
     .empty { padding: 22px; border-radius: 14px; border: 1px dashed rgba(122, 162, 255, 0.16); color: var(--muted); }
     footer { margin-top: 22px; padding: 18px 2px 0; color: var(--muted); font-size: 0.92rem; }
     @media (max-width: 1180px) {
@@ -1859,7 +2004,7 @@ function renderHtml(data) {
       <div class="panel list-panel">
         <div class="micro muted">Published control-task evidence</div>
         <h3>Candidate smoke outcomes</h3>
-        <p class="panel-copy">These runs are not mixed into the main full-run leaderboard, but they are intentionally published for transparency.</p>
+         <p class="panel-copy">These runs are not mixed into the main full-run leaderboard, but they are intentionally published for transparency, including provider-side failures, timeout behavior, and raw verifier evidence.</p>
         ${renderSmokeRuns(data.smokeRuns || [])}
       </div>
     </section>
@@ -2031,8 +2176,9 @@ function renderHtml(data) {
       columns: [
         { key: 'taskName', label: 'Task', type: 'text', render: (row) => row.taskName },
         { key: 'model', label: 'Model', type: 'text', render: (row) => row.model },
-        { key: 'category', label: 'Category', type: 'text', render: (row) => row.category },
-        { key: 'score', label: 'Score', type: 'number', render: (row) => formatScore(row.score) },
+         { key: 'category', label: 'Category', type: 'text', render: (row) => row.category },
+         { key: 'outcome', label: 'Outcome', type: 'text', sortValue: (row) => row.outcome || 'unknown', render: (row) => badge(row.outcome || 'unknown', row.outcomeTone || 'warn') + (row.failureDetail ? '<div class="muted">' + escapeHtml(row.failureDetail) + '</div>' : '') },
+         { key: 'score', label: 'Score', type: 'number', render: (row) => formatScore(row.score) },
         { key: 'valueScore', label: 'Value', type: 'number', render: (row) => formatScore(row.valueScore) },
         { key: 'compositeScore', label: 'Composite', type: 'number', render: (row) => formatScore(row.compositeScore) },
         { key: 'successRate', label: 'Success', type: 'number', render: (row) => formatPercent(row.successRate) },
@@ -2371,8 +2517,76 @@ function renderSmokeRuns(runs) {
   }
 
   return `<div class="key-list">
-${runs.map((run) => run.models.map((model) => `<div class="key-row"><div><strong>${escapeHtmlMarkup(model.model)}</strong><div class="muted">${escapeHtmlMarkup((run.taskIds || []).join(', ') || 'no task ids')} | ${escapeHtmlMarkup(run.id || 'unknown run')}</div></div><div><div class="key-row-value">${model.failed ? 'failed smoke' : 'passed smoke'}</div><div class="muted">success=${escapeHtmlMarkup(formatPercentMarkup(model.successRate))} | dnf=${escapeHtmlMarkup(formatIntegerMarkup(model.dnfs))} | cost=${escapeHtmlMarkup(formatCurrencyMarkup(model.totalCostUsd))} | wall=${escapeHtmlMarkup(formatDurationMarkup(model.totalWallTimeMs))}</div>${model.lastError ? `<div class="muted">${escapeHtmlMarkup(model.lastError)}</div>` : ''}</div></div>`).join('\n')).join('\n')}
+${runs.map((run) => run.models.map((model) => `<div class="key-row"><div><strong>${escapeHtmlMarkup(model.model)}</strong><div class="muted">${escapeHtmlMarkup((run.taskIds || []).join(', ') || 'no task ids')} | ${escapeHtmlMarkup(run.id || 'unknown run')}</div></div><div><div class="key-row-value">${escapeHtmlMarkup(renderSmokeOutcomeLabel(model))}</div><div class="muted">success=${escapeHtmlMarkup(formatPercentMarkup(model.successRate))} | dnf=${escapeHtmlMarkup(formatIntegerMarkup(model.dnfs))} | requests=${escapeHtmlMarkup(formatIntegerMarkup(model.totalRequestUnits))} | calls=${escapeHtmlMarkup(formatIntegerMarkup(model.totalRequestCount))} | steps=${escapeHtmlMarkup(formatIntegerMarkup(model.totalSteps))} | cost=${escapeHtmlMarkup(formatSmokeCostMarkup(model))} | wall=${escapeHtmlMarkup(formatDurationMarkup(model.totalWallTimeMs))}</div>${renderSmokeFailureDetails(model)}</div></div>`).join('\n')).join('\n')}
   </div>`;
+}
+
+function renderSmokeOutcomeLabel(model) {
+  if (model.providerLimited) return 'provider-limited smoke';
+  if (model.failed) return 'failed smoke';
+  return 'passed smoke';
+}
+
+function renderSmokeFailureDetails(model) {
+  const details = [];
+  const failure = model.failureSummary || null;
+  if (failure?.proxyStatus != null) {
+    details.push(`provider_http=${failure.proxyStatus}`);
+  }
+  if (failure?.retryAfter) {
+    details.push(`retry_after=${failure.retryAfter}`);
+  }
+  if (failure?.dnfReason) {
+    details.push(`dnf_reason=${failure.dnfReason}`);
+  }
+  if (failure?.verifierCode != null) {
+    details.push(`verifier_exit=${failure.verifierCode}`);
+  }
+  if (failure?.requestUnits != null) {
+    details.push(`request_units=${failure.requestUnits}`);
+  }
+  if (failure?.requestCount != null) {
+    details.push(`request_count=${failure.requestCount}`);
+  }
+  if (failure?.steps != null) {
+    details.push(`steps=${failure.steps}`);
+  }
+
+  const lines = [];
+  if (details.length) {
+    lines.push(`<div class="muted">${escapeHtmlMarkup(details.join(' | '))}</div>`);
+  }
+  const failureDetailLine = buildFailureDetailLine(failure);
+  if (failureDetailLine) {
+    lines.push(`<div class="muted">${escapeHtmlMarkup(failureDetailLine)}</div>`);
+  } else if (model.lastError) {
+    lines.push(`<div class="muted">${escapeHtmlMarkup(model.lastError)}</div>`);
+  }
+  return lines.join('');
+}
+
+function buildFailureDetailLine(failure) {
+  if (!failure) {
+    return null;
+  }
+  const parts = [];
+  if (failure.errorMessage) {
+    parts.push(failure.errorMessage);
+  }
+  if (failure.verifierStderr && failure.verifierStderr !== failure.errorMessage) {
+    parts.push(failure.verifierStderr);
+  }
+  return parts.join(' | ') || null;
+}
+
+function formatSmokeCostMarkup(model) {
+  if (!Number.isFinite(model.totalCostUsd)) {
+    return 'unknown';
+  }
+  if (model.totalCostUsd === 0 && model.failed) {
+    return 'unknown';
+  }
+  return formatCurrencyMarkup(model.totalCostUsd);
 }
 
 function renderTaskMatrix(data) {

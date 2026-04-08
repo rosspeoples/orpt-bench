@@ -179,6 +179,11 @@ function isTaskTimeoutError(error) {
   return /Timed out after \d+ms|Task exceeded \d+s hard timeout/i.test(message)
 }
 
+function isProviderLimitedFailure({ verifier, error, proxyRecords }) {
+  const message = `${error?.message || ''} ${verifier?.stderr || ''}`
+  return /OpenCode API .* failed with 429|AI_APICallError/i.test(message) || (proxyRecords || []).some((record) => record.status === 429)
+}
+
 export function runContainsSyntheticTimeoutRows(run) {
   return (run?.results || []).some((entry) => entry?.requestAccountingSource === 'synthetic-timeout' || entry?.dnfReason === 'process-timeout')
 }
@@ -294,6 +299,7 @@ export function aggregateRun(run, extractors) {
     .map(([model, entries]) => {
       const successful = entries.filter((entry) => entry.success)
       const dnfEntries = entries.filter((entry) => entry.dnf)
+      const providerLimitedEntries = entries.filter((entry) => entry.providerLimited)
       const eligible = successful.every((entry) => entry.requestUnits != null) && successful.length > 0
       const requestUnits = successful.map((entry) => entry.requestUnits).filter((value) => value != null)
       const allRequestUnits = entries.map((entry) => entry.requestUnits).filter((value) => value != null)
@@ -308,6 +314,7 @@ export function aggregateRun(run, extractors) {
         successfulTasks: successful.length,
         failedTasks: entries.length - successful.length,
         dnfTasks: dnfEntries.length,
+        providerLimited: providerLimitedEntries.length > 0,
         successRate: entries.length ? successful.length / entries.length : 0,
         score: average(entries.map((entry) => entry.score)) || 0,
         valueScore: average(entries.map((entry) => entry.valueScore ?? 0)) || 0,
@@ -316,10 +323,10 @@ export function aggregateRun(run, extractors) {
         totalRequestCount: allRequestUnits.length ? sum(allRequestUnits) : 0,
         totalRequestUnits: allRequestUnits.length ? sum(allRequestUnits) : null,
         totalWallTimeMs: sum(entries.map((entry) => entry.durationMs)),
-        totalCostUsd: sum(entries.map((entry) => entry.costUsd)),
+        totalCostUsd: sumDefined(entries.map((entry) => entry.costUsd)),
         averageDurationMs: average(successful.map((entry) => entry.durationMs)) || 0,
         medianSteps: medianNumber(successful.map((entry) => entry.steps)),
-        averageCostUsd: average(successful.map((entry) => entry.costUsd)) || 0,
+        averageCostUsd: average(successful.map((entry) => entry.costUsd).filter((value) => Number.isFinite(value))) || null,
         eligible,
         comparable,
         comparabilityNote: notes.join('; ') || null,
@@ -347,6 +354,7 @@ export function aggregateRun(run, extractors) {
       const sample = entries[0]
       const successful = entries.filter((entry) => entry.success)
       const dnfEntries = entries.filter((entry) => entry.dnf)
+      const providerLimitedEntries = entries.filter((entry) => entry.providerLimited)
       const requestUnits = entries.map((entry) => entry.requestUnits).filter((value) => value != null)
       const catalogEntry = modelCatalog.get(sample.model)
       const eligible = successful.length > 0 && successful.every((entry) => entry.requestUnits != null)
@@ -361,6 +369,7 @@ export function aggregateRun(run, extractors) {
         successes: successful.length,
         failures: entries.length - successful.length,
         dnfs: dnfEntries.length,
+        providerLimited: providerLimitedEntries.length > 0,
         score: average(entries.map((entry) => entry.score)) || 0,
         valueScore: average(entries.map((entry) => entry.valueScore ?? 0)) || 0,
         compositeScore: average(entries.map((entry) => entry.compositeScore ?? 0)) || 0,
@@ -370,8 +379,8 @@ export function aggregateRun(run, extractors) {
         averageRequestUnits: requestUnits.length ? average(requestUnits) : null,
         totalWallTimeMs: sum(entries.map((entry) => entry.durationMs)),
         averageWallTimeMs: average(entries.map((entry) => entry.durationMs)) || 0,
-        totalCostUsd: sum(entries.map((entry) => entry.costUsd)),
-        averageCostUsd: average(entries.map((entry) => entry.costUsd)) || 0,
+        totalCostUsd: sumDefined(entries.map((entry) => entry.costUsd)),
+        averageCostUsd: average(entries.map((entry) => entry.costUsd).filter((value) => Number.isFinite(value))) || null,
         averageSteps: average(entries.map((entry) => entry.steps)) || 0,
         eligible,
         comparable: comparability.comparable,
@@ -394,6 +403,12 @@ function medianNumber(values) {
   const sorted = [...values].sort((a, b) => a - b)
   const middle = Math.floor(sorted.length / 2)
   return sorted.length % 2 === 0 ? (sorted[middle - 1] + sorted[middle]) / 2 : sorted[middle]
+}
+
+function sumDefined(values) {
+  const filtered = values.filter((value) => Number.isFinite(value))
+  if (!filtered.length) return null
+  return sum(filtered)
 }
 
 async function prepareRunTaskDir(runtime, runID, task, model, repeatIndex) {
@@ -456,10 +471,11 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     extractors: runtime.baseConfig.runner.requestExtractors
   })
   const messageInfo = promptPayload?.info || {
-    cost: 0,
+    cost: null,
     tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
   }
   const messageSummary = summarizeMessage(messageInfo, promptPayload?.parts || [], logLines)
+  const providerLimited = isProviderLimitedFailure({ verifier, error, proxyRecords })
 
   return {
     runId: runID,
@@ -486,6 +502,7 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     requestAccountingSource: requestSummary.source,
     dnf,
     dnfReason,
+    providerLimited,
     proxyRecords,
     logExcerpt: logLines.slice(-50),
     verifier: {

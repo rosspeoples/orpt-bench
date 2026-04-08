@@ -39,3 +39,9 @@ test('summarizeLogLines counts internal prompt loops and tool starts', () => {
   assert.equal(summary.steps, 2)
   assert.deepEqual(summary.toolInvocations, {})
 })
+
+test('summarizeMessage returns null cost when provider cost is unavailable', async () => {
+  const { summarizeMessage } = await import('../scripts/lib/extract.js')
+  const summary = summarizeMessage({}, [], [])
+  assert.equal(summary.costUsd, null)
+})

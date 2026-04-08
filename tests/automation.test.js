@@ -224,6 +224,43 @@ test('candidate model remains candidate until required smoke passes are met', ()
   assert.match(lifecycle.models[0].lifecycleReason, /2-run smoke promotion requirement/i)
 })
 
+test('provider-limited smoke run does not count as a failed smoke benchmark', () => {
+  const lifecycle = buildLifecycleCatalog({
+    catalog: {
+      models: [
+        {
+          model: 'opencode/nemotron-3-super-free',
+          modelId: 'nemotron-3-super-free',
+          family: 'nvidia',
+          created: 1776000000,
+          recommendedUse: 'dev-smoke',
+          benchmark: { intelligenceScore: 36 }
+        }
+      ]
+    },
+    previousLifecycle: { models: [] },
+    benchmarkHistory: [
+      {
+        run: {
+          id: 'smoke-provider-limited',
+          benchmarkCycle: 'candidate_smoke',
+          completedAt: '2026-04-08T06:10:03.148Z'
+        },
+        taskCatalog: [{ id: '05-log-audit-script' }],
+        modelSummary: [
+          { model: 'opencode/nemotron-3-super-free', runs: 1, successfulTasks: 0, comparable: false, providerLimited: true }
+        ]
+      }
+    ],
+    policy: DEFAULT_MODEL_POLICY,
+    now: '2026-04-08T07:00:00.000Z'
+  })
+
+  assert.equal(lifecycle.models[0].failedSmokeBenchmarkSessions, 0)
+  assert.equal(lifecycle.models[0].providerLimitedSmokeBenchmarkSessions, 1)
+  assert.equal(lifecycle.models[0].lifecycleStage, 'candidate')
+})
+
 test('previously active model stays active during stricter smoke rollout', () => {
   const lifecycle = buildLifecycleCatalog({
     catalog: {

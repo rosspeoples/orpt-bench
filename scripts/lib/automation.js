@@ -217,19 +217,21 @@ function summarizeRunModelEntries(run) {
       runs: entry.runs || 0,
       successfulTasks: entry.successfulTasks || 0,
       comparable: entry.comparable === true,
-      taskCount: entry.runs || 0
+      taskCount: entry.runs || 0,
+      providerLimited: entry.providerLimited === true
     }))
   }
 
   const grouped = new Map()
   for (const result of run.results || []) {
     if (!grouped.has(result.model)) {
-      grouped.set(result.model, { model: result.model, runs: 0, successfulTasks: 0, comparable: false, taskCount: 0 })
+      grouped.set(result.model, { model: result.model, runs: 0, successfulTasks: 0, comparable: false, taskCount: 0, providerLimited: false })
     }
     const summary = grouped.get(result.model)
     summary.runs += 1
     summary.taskCount += 1
     if (result.success) summary.successfulTasks += 1
+    if (result.providerLimited) summary.providerLimited = true
   }
 
   return [...grouped.values()]
@@ -261,6 +263,7 @@ export function buildBenchmarkHistoryIndex(runs) {
           smokeBenchmarkSessions: 0,
           successfulSmokeBenchmarkSessions: 0,
           failedSmokeBenchmarkSessions: 0,
+          providerLimitedSmokeBenchmarkSessions: 0,
           totalTaskRuns: 0,
           successfulTaskRuns: 0,
           lastBenchmarkedAt: null,
@@ -278,7 +281,8 @@ export function buildBenchmarkHistoryIndex(runs) {
       if (entry.comparable) summary.comparableBenchmarkSessions += 1
       if (smokeBenchmark) {
         summary.smokeBenchmarkSessions += 1
-        if (entry.successfulTasks > 0) summary.successfulSmokeBenchmarkSessions += 1
+        if (entry.providerLimited) summary.providerLimitedSmokeBenchmarkSessions += 1
+        else if (entry.successfulTasks > 0) summary.successfulSmokeBenchmarkSessions += 1
         else summary.failedSmokeBenchmarkSessions += 1
       }
       if (benchmarkedAt) {
@@ -334,6 +338,7 @@ export function buildLifecycleCatalog({ catalog, previousLifecycle = { models: [
       smokeBenchmarkSessions: 0,
       successfulSmokeBenchmarkSessions: 0,
       failedSmokeBenchmarkSessions: 0,
+      providerLimitedSmokeBenchmarkSessions: 0,
       totalTaskRuns: 0,
       successfulTaskRuns: 0,
       lastBenchmarkedAt: null,
@@ -411,6 +416,7 @@ export function buildLifecycleCatalog({ catalog, previousLifecycle = { models: [
       smokeBenchmarkSessions: history.smokeBenchmarkSessions,
       successfulSmokeBenchmarkSessions: history.successfulSmokeBenchmarkSessions,
       failedSmokeBenchmarkSessions: history.failedSmokeBenchmarkSessions,
+      providerLimitedSmokeBenchmarkSessions: history.providerLimitedSmokeBenchmarkSessions,
       totalTaskRuns: history.totalTaskRuns,
       successfulTaskRuns: history.successfulTaskRuns,
       successRate: history.successRate,
