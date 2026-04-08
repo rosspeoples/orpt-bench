@@ -20,36 +20,113 @@ const publicationContext = buildPublicationContext(allRunEntries, latestRawRun);
 const chartDefinitions = [
   {
     slug: 'composite-score',
-    eyebrow: 'Primary ranking',
+    eyebrow: 'Leaderboard',
     title: 'Composite score',
-    description: 'Default benchmark ordering: correctness first, efficiency second.',
-    layout: {
-      title: 'Composite Score by Model',
-      xaxis: { automargin: true },
-      yaxis: { title: 'Composite Score %', range: [0, 100] },
-    },
+    description: 'Correctness-first overall ranking across the full benchmark set.',
+    build: buildCompositeScoreChart,
   },
   {
     slug: 'success-rate',
-    eyebrow: 'Correctness view',
+    eyebrow: 'Reliability',
     title: 'Success rate',
-    description: 'Shows how often a model actually closes benchmark tasks, independent of efficiency.',
-    layout: {
-      title: 'Task Success Rate by Model',
-      xaxis: { automargin: true },
-      yaxis: { title: 'Success Rate %', range: [0, 100] },
-    },
+    description: 'How often each model actually closes tasks, independent of efficiency.',
+    build: buildSuccessRateChart,
   },
   {
     slug: 'orpt',
-    eyebrow: 'Efficiency view',
+    eyebrow: 'Request efficiency',
     title: 'ORPT',
-    description: 'Lower is better: fewer OpenCode requests required per successful task.',
-    layout: {
-      title: 'Average OpenCode Requests Per Successful Task',
-      xaxis: { automargin: true },
-      yaxis: { title: 'Requests' },
-    },
+    description: 'Lower is better: fewer requests per successful task.',
+    build: buildOrptChart,
+  },
+  {
+    slug: 'total-cost',
+    eyebrow: 'Benchmark economics',
+    title: 'Total benchmark cost',
+    description: 'Total spend per model across the published full run.',
+    build: buildTotalCostChart,
+  },
+  {
+    slug: 'composite-vs-cost',
+    eyebrow: 'Tradeoff frontier',
+    title: 'Composite vs benchmark cost',
+    description: 'Quality against the actual cost of clearing the published benchmark suite.',
+    build: buildCompositeVsCostChart,
+  },
+  {
+    slug: 'composite-vs-catalog-price',
+    eyebrow: 'Catalog priors',
+    title: 'Composite vs catalog price',
+    description: 'Observed ORPT-Bench quality against catalog blended price per 1M tokens.',
+    build: buildCompositeVsCatalogPriceChart,
+  },
+  {
+    slug: 'total-wall-time',
+    eyebrow: 'Benchmark speed',
+    title: 'Total wall time',
+    description: 'Lower is better: total elapsed model runtime across benchmark tasks.',
+    build: buildTotalWallTimeChart,
+  },
+  {
+    slug: 'total-requests',
+    eyebrow: 'Traffic profile',
+    title: 'Total requests',
+    description: 'Total request units consumed across the published run.',
+    build: buildTotalRequestsChart,
+  },
+  {
+    slug: 'cost-by-outcome',
+    eyebrow: 'Failure burn',
+    title: 'Spend split by outcome',
+    description: 'How much benchmark spend went to solved tasks versus failed attempts.',
+    build: buildCostByOutcomeChart,
+  },
+  {
+    slug: 'token-breakdown',
+    eyebrow: 'Execution profile',
+    title: 'Token breakdown',
+    description: 'Input, output, reasoning, and cache token mix by model across the suite.',
+    build: buildTokenBreakdownChart,
+  },
+  {
+    slug: 'category-composite-heatmap',
+    eyebrow: 'Benchmark composition',
+    title: 'Category composite heatmap',
+    description: 'Average composite score by benchmark category and model.',
+    wide: true,
+    build: buildCategoryCompositeHeatmap,
+  },
+  {
+    slug: 'difficulty-success-heatmap',
+    eyebrow: 'Benchmark composition',
+    title: 'Difficulty success heatmap',
+    description: 'Average success rate by task difficulty and model.',
+    wide: true,
+    build: buildDifficultySuccessHeatmap,
+  },
+  {
+    slug: 'task-composite-heatmap',
+    eyebrow: 'Task breakdown',
+    title: 'Task composite heatmap',
+    description: 'Per-task comparative quality. Higher is better.',
+    wide: true,
+    build: buildTaskCompositeHeatmap,
+  },
+  {
+    slug: 'task-cost-heatmap',
+    eyebrow: 'Task economics',
+    title: 'Task cost heatmap',
+    description: 'Per-task average cost by model. Lower is better.',
+    wide: true,
+    build: buildTaskCostHeatmap,
+  },
+  {
+    slug: 'task-duration-heatmap',
+    eyebrow: 'Task speed',
+    title: 'Task duration heatmap',
+    description: 'Per-task average duration by model. Lower is better.',
+    wide: true,
+    build: buildTaskDurationHeatmap,
   },
 ];
 const publishedCharts = buildPublishedCharts(chartDefinitions, publicationContext.publishedRun);
@@ -77,6 +154,13 @@ const siteData = {
   taskCatalog: publicationContext.publishedRun.taskCatalog ?? [],
   modelSummary: sortByComposite(publicationContext.publishedRun.modelSummary ?? publicationContext.publishedRun.leaderboard ?? []),
   taskSummary: sortByComposite(publicationContext.publishedRun.taskSummary ?? []),
+  benchmarkedModels: buildBenchmarkedModels(publicationContext.publishedRun),
+  benchmarkComposition: buildBenchmarkComposition(publicationContext.publishedRun),
+  leaderboardHighlights: buildLeaderboardHighlights(publicationContext.publishedRun),
+  pairwiseSummary: buildPairwiseSummary(publicationContext.publishedRun),
+  categorySummary: buildCategorySummary(publicationContext.publishedRun),
+  difficultySummary: buildDifficultySummary(publicationContext.publishedRun),
+  tokenSummary: buildTokenSummary(publicationContext.publishedRun),
   charts: publishedCharts.map(({ data, layout, ...chart }) => chart),
   history: publicationContext.history.map(({ fileName, report }) => summarizeHistoricalRun(fileName, report, publicationContext.latestIncludedRunId)),
 };
@@ -249,55 +333,815 @@ function writeJson(filePath, value) {
 }
 
 function buildPublishedCharts(definitions, report) {
-  const leaderboard = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
-  const eligible = leaderboard.filter((entry) => entry.comparable && entry.eligible && entry.orpt != null);
-  const chartDataBySlug = {
-    'composite-score': [
-      {
-        type: 'bar',
-        x: leaderboard.map((entry) => entry.model),
-        y: leaderboard.map((entry) => Number(((entry.compositeScore ?? 0) * 100).toFixed(2))),
-        marker: { color: '#7c3aed' },
-        name: 'Composite Score %',
-      },
-    ],
-    'success-rate': [
-      {
-        type: 'bar',
-        x: leaderboard.map((entry) => entry.model),
-        y: leaderboard.map((entry) => Number(((entry.successRate ?? 0) * 100).toFixed(2))),
-        marker: { color: '#16a34a' },
-        name: 'Success Rate %',
-      },
-    ],
-    orpt: [
-      {
-        type: 'bar',
-        x: eligible.map((entry) => entry.model),
-        y: eligible.map((entry) => entry.orpt),
-        marker: { color: '#2563eb' },
-        name: 'ORPT',
-      },
-    ],
-  };
-
   return definitions.flatMap((definition) => {
-    const data = chartDataBySlug[definition.slug];
-    if (!data) {
+    const built = definition.build(report);
+    if (!built?.data?.length) {
       return [];
     }
 
     const jsonPath = `results/charts/${definition.slug}.json`;
     const htmlPath = `results/charts/${definition.slug}.html`;
-    writeJson(path.join(outputDir, jsonPath), data);
+    writeJson(path.join(outputDir, jsonPath), {
+      title: definition.title,
+      description: definition.description,
+      data: built.data,
+      layout: built.layout,
+    });
     fs.writeFileSync(path.join(outputDir, htmlPath), renderStandaloneChartHtml({
       title: definition.title,
-      data,
-      layout: definition.layout,
+      data: built.data,
+      layout: built.layout,
     }), 'utf8');
 
-    return [{ ...definition, jsonPath, htmlPath, data }];
+    return [{ ...definition, jsonPath, htmlPath, data: built.data, layout: built.layout }];
   });
+}
+
+function buildCompositeScoreChart(report) {
+  const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
+  return buildModelBarChart({
+    rows,
+    metricKey: 'compositeScore',
+    title: 'Composite score',
+    axisTitle: 'Composite score',
+    color: '#7c3aed',
+    valueFormatter: (value) => Number((value ?? 0).toFixed(3)),
+    customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatDecimalMarkup(row.orpt, 2)} ORPT`,
+  });
+}
+
+function buildSuccessRateChart(report) {
+  const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
+  return buildModelBarChart({
+    rows,
+    metricKey: 'successRate',
+    title: 'Success rate',
+    axisTitle: 'Success rate (%)',
+    color: '#16a34a',
+    valueFormatter: (value) => Number((((value ?? 0) * 100)).toFixed(2)),
+    customText: (row) => `${formatScoreMarkup(row.compositeScore)} composite | ${formatIntegerMarkup(row.successfulTasks)} solved`,
+  });
+}
+
+function buildOrptChart(report) {
+  const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? [])
+    .filter((entry) => entry.comparable && entry.eligible && Number.isFinite(entry.orpt))
+    .sort((left, right) => left.orpt - right.orpt);
+  return buildModelBarChart({
+    rows,
+    metricKey: 'orpt',
+    title: 'ORPT',
+    axisTitle: 'Requests per solved task',
+    color: '#2563eb',
+    valueFormatter: (value) => Number((value ?? 0).toFixed(2)),
+    customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
+  });
+}
+
+function buildTotalCostChart(report) {
+  const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? [])
+    .filter((entry) => Number.isFinite(entry.totalCostUsd))
+    .sort((left, right) => left.totalCostUsd - right.totalCostUsd);
+  return buildModelBarChart({
+    rows,
+    metricKey: 'totalCostUsd',
+    title: 'Total benchmark cost',
+    axisTitle: 'USD',
+    color: '#f59e0b',
+    valueFormatter: (value) => Number((value ?? 0).toFixed(4)),
+    customText: (row) => `${formatScoreMarkup(row.compositeScore)} composite | ${formatIntegerMarkup(row.totalRequestUnits)} requests`,
+  });
+}
+
+function buildCompositeVsCostChart(report) {
+  const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? [])
+    .filter((entry) => Number.isFinite(entry.compositeScore) && Number.isFinite(entry.totalCostUsd));
+  if (!rows.length) {
+    return null;
+  }
+
+  return {
+    data: [
+      {
+        type: 'scatter',
+        mode: 'markers+text',
+        x: rows.map((entry) => Number(entry.totalCostUsd.toFixed(4))),
+        y: rows.map((entry) => Number(entry.compositeScore.toFixed(3))),
+        text: rows.map((entry) => entry.model),
+        textposition: 'top center',
+        marker: {
+          size: rows.map((entry) => 16 + Math.round((entry.successRate ?? 0) * 18)),
+          color: rows.map((entry) => entry.successRate ?? 0),
+          colorscale: [
+            [0, '#ef4444'],
+            [0.5, '#f59e0b'],
+            [1, '#22c55e'],
+          ],
+          line: { color: '#0f172a', width: 1 },
+          colorbar: { title: 'Success', tickformat: ',.0%' },
+        },
+        customdata: rows.map((entry) => [
+          formatPercentMarkup(entry.successRate),
+          formatDecimalMarkup(entry.orpt, 2),
+          formatIntegerMarkup(entry.totalRequestUnits),
+          formatDurationMarkup(entry.totalWallTimeMs),
+        ]),
+        hovertemplate: '%{text}<br>Total cost: $%{x:.4f}<br>Composite: %{y:.3f}<br>Success: %{customdata[0]}<br>ORPT: %{customdata[1]}<br>Requests: %{customdata[2]}<br>Wall time: %{customdata[3]}<extra></extra>',
+      },
+    ],
+    layout: buildChartLayout({
+      title: 'Composite vs benchmark cost',
+      xaxis: { title: 'Total benchmark cost (USD)' },
+      yaxis: { title: 'Composite score', range: [0, 1.05] },
+      height: 390,
+    }),
+  };
+}
+
+function buildCompositeVsCatalogPriceChart(report) {
+  const rows = buildBenchmarkedModels(report)
+    .filter((entry) => Number.isFinite(entry.compositeScore) && Number.isFinite(entry.blendedPricePer1mTokensUsd));
+  if (!rows.length) {
+    return null;
+  }
+
+  return {
+    data: [
+      {
+        type: 'scatter',
+        mode: 'markers+text',
+        x: rows.map((entry) => Number(entry.blendedPricePer1mTokensUsd.toFixed(4))),
+        y: rows.map((entry) => Number(entry.compositeScore.toFixed(3))),
+        text: rows.map((entry) => entry.model),
+        textposition: 'top center',
+        marker: {
+          size: rows.map((entry) => 16 + Math.round((entry.successRate ?? 0) * 18)),
+          color: rows.map((entry) => entry.intelligenceScore ?? 0),
+          colorscale: [
+            [0, '#3b82f6'],
+            [1, '#7c3aed'],
+          ],
+          line: { color: '#0f172a', width: 1 },
+          colorbar: { title: 'Catalog intelligence' },
+        },
+        customdata: rows.map((entry) => [
+          formatPercentMarkup(entry.successRate),
+          formatCurrencyMarkup(entry.totalCostUsd),
+          formatIntegerMarkup(entry.totalRequestUnits),
+          entry.intelligenceScore != null ? String(entry.intelligenceScore) : 'n/a',
+        ]),
+        hovertemplate: '%{text}<br>Catalog price: $%{x:.4f} / 1M tok<br>Composite: %{y:.3f}<br>Success: %{customdata[0]}<br>Observed benchmark cost: %{customdata[1]}<br>Requests: %{customdata[2]}<br>Catalog intelligence: %{customdata[3]}<extra></extra>',
+      },
+    ],
+    layout: buildChartLayout({
+      title: 'Composite vs catalog price',
+      xaxis: { title: 'Catalog blended price (USD / 1M tok)' },
+      yaxis: { title: 'Composite score', range: [0, 1.05] },
+      height: 390,
+    }),
+  };
+}
+
+function buildTotalWallTimeChart(report) {
+  const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? [])
+    .filter((entry) => Number.isFinite(entry.totalWallTimeMs))
+    .sort((left, right) => left.totalWallTimeMs - right.totalWallTimeMs);
+  return buildModelBarChart({
+    rows,
+    metricKey: 'totalWallTimeMs',
+    title: 'Total wall time',
+    axisTitle: 'Minutes',
+    color: '#06b6d4',
+    valueFormatter: (value) => Number((((value ?? 0) / 60000)).toFixed(2)),
+    customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
+  });
+}
+
+function buildTotalRequestsChart(report) {
+  const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? [])
+    .filter((entry) => Number.isFinite(entry.totalRequestUnits))
+    .sort((left, right) => left.totalRequestUnits - right.totalRequestUnits);
+  return buildModelBarChart({
+    rows,
+    metricKey: 'totalRequestUnits',
+    title: 'Total requests',
+    axisTitle: 'Request units',
+    color: '#ec4899',
+    valueFormatter: (value) => Number((value ?? 0).toFixed(0)),
+    customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatDurationMarkup(row.totalWallTimeMs)} wall time`,
+  });
+}
+
+function buildCostByOutcomeChart(report) {
+  const models = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
+  const results = Array.isArray(report.results) ? report.results : [];
+  if (!models.length || !results.length) {
+    return null;
+  }
+
+  const costByModel = new Map(models.map((entry) => [entry.model, { success: 0, failure: 0 }]));
+  for (const result of results) {
+    const bucket = costByModel.get(result.model);
+    if (!bucket) {
+      continue;
+    }
+    if (result.success) {
+      bucket.success += result.costUsd || 0;
+    } else {
+      bucket.failure += result.costUsd || 0;
+    }
+  }
+
+  return {
+    data: [
+      {
+        type: 'bar',
+        name: 'Solved tasks cost',
+        x: models.map((entry) => entry.model),
+        y: models.map((entry) => Number(costByModel.get(entry.model).success.toFixed(4))),
+        marker: { color: '#22c55e' },
+      },
+      {
+        type: 'bar',
+        name: 'Failed tasks cost',
+        x: models.map((entry) => entry.model),
+        y: models.map((entry) => Number(costByModel.get(entry.model).failure.toFixed(4))),
+        marker: { color: '#ef4444' },
+      },
+    ],
+    layout: buildChartLayout({
+      title: 'Spend split by outcome',
+      barmode: 'stack',
+      yaxis: { title: 'USD' },
+      height: 390,
+    }),
+  };
+}
+
+function buildTokenBreakdownChart(report) {
+  const summary = buildTokenSummary(report);
+  if (!summary.length) {
+    return null;
+  }
+
+  const models = summary.map((entry) => entry.model);
+  return {
+    data: [
+      { type: 'bar', name: 'Input', x: models, y: summary.map((entry) => entry.inputTokens), marker: { color: '#3b82f6' } },
+      { type: 'bar', name: 'Output', x: models, y: summary.map((entry) => entry.outputTokens), marker: { color: '#22c55e' } },
+      { type: 'bar', name: 'Reasoning', x: models, y: summary.map((entry) => entry.reasoningTokens), marker: { color: '#7c3aed' } },
+      { type: 'bar', name: 'Cache read', x: models, y: summary.map((entry) => entry.cacheReadTokens), marker: { color: '#f59e0b' } },
+      { type: 'bar', name: 'Cache write', x: models, y: summary.map((entry) => entry.cacheWriteTokens), marker: { color: '#ec4899' } },
+    ],
+    layout: buildChartLayout({
+      title: 'Token breakdown',
+      barmode: 'stack',
+      yaxis: { title: 'Tokens' },
+      height: 390,
+    }),
+  };
+}
+
+function buildCategoryCompositeHeatmap(report) {
+  return buildGroupedMetricHeatmap({
+    report,
+    title: 'Category composite heatmap',
+    groupKey: 'category',
+    metricKey: 'compositeScore',
+    groups: buildCategorySummary(report),
+    labelFormatter: (entry) => `${entry.category} (${entry.taskCount} tasks)`,
+    textFormatter: (entry) => formatScoreMarkup(entry.averageCompositeScore),
+    valueFormatter: (entry) => entry.averageCompositeScore,
+    colorscale: [
+      [0, '#26122b'],
+      [0.25, '#6d1f62'],
+      [0.5, '#8b5cf6'],
+      [0.75, '#3b82f6'],
+      [1, '#73f0c5'],
+    ],
+    zmin: 0,
+    zmax: 1,
+    hoverFormatter: (entry) => [
+      `Avg composite: ${formatScoreMarkup(entry.averageCompositeScore)}`,
+      `Avg success: ${formatPercentMarkup(entry.averageSuccessRate)}`,
+      `Avg requests: ${formatDecimalMarkup(entry.averageRequestUnits, 2)}`,
+      `Avg cost: ${formatCurrencyMarkup(entry.averageCostUsd)}`,
+      `Tasks in category: ${formatIntegerMarkup(entry.taskCount)}`,
+    ],
+  });
+}
+
+function buildDifficultySuccessHeatmap(report) {
+  return buildGroupedMetricHeatmap({
+    report,
+    title: 'Difficulty success heatmap',
+    groupKey: 'difficulty',
+    metricKey: 'averageSuccessRate',
+    groups: buildDifficultySummary(report),
+    labelFormatter: (entry) => `${entry.difficulty} (${entry.taskCount} tasks)`,
+    textFormatter: (entry) => formatPercentMarkup(entry.averageSuccessRate),
+    valueFormatter: (entry) => entry.averageSuccessRate,
+    colorscale: [
+      [0, '#ef4444'],
+      [0.5, '#f59e0b'],
+      [1, '#22c55e'],
+    ],
+    zmin: 0,
+    zmax: 1,
+    hoverFormatter: (entry) => [
+      `Avg success: ${formatPercentMarkup(entry.averageSuccessRate)}`,
+      `Avg composite: ${formatScoreMarkup(entry.averageCompositeScore)}`,
+      `Avg requests: ${formatDecimalMarkup(entry.averageRequestUnits, 2)}`,
+      `Avg cost: ${formatCurrencyMarkup(entry.averageCostUsd)}`,
+      `Tasks in band: ${formatIntegerMarkup(entry.taskCount)}`,
+    ],
+  });
+}
+
+function buildTaskCompositeHeatmap(report) {
+  return buildTaskHeatmap({
+    report,
+    metricKey: 'compositeScore',
+    title: 'Task composite heatmap',
+    colorscale: [
+      [0, '#26122b'],
+      [0.25, '#6d1f62'],
+      [0.5, '#8b5cf6'],
+      [0.75, '#3b82f6'],
+      [1, '#73f0c5'],
+    ],
+    zmin: 0,
+    zmax: 1,
+    textFormatter: (row) => formatScoreMarkup(row.compositeScore),
+    hoverFormatter: (row) => [
+      `Composite: ${formatScoreMarkup(row.compositeScore)}`,
+      `Success: ${formatPercentMarkup(row.successRate)}`,
+      `Avg requests: ${formatDecimalMarkup(row.averageRequestUnits, 2)}`,
+      `Avg cost: ${formatCurrencyMarkup(row.averageCostUsd)}`,
+      `Avg wall time: ${formatDurationMarkup(row.averageWallTimeMs)}`,
+    ],
+  });
+}
+
+function buildTaskCostHeatmap(report) {
+  return buildTaskHeatmap({
+    report,
+    metricKey: 'averageCostUsd',
+    title: 'Task cost heatmap',
+    colorscale: [
+      [0, '#73f0c5'],
+      [0.3, '#22c55e'],
+      [0.6, '#f59e0b'],
+      [1, '#ef4444'],
+    ],
+    reverseScale: false,
+    textFormatter: (row) => formatCurrencyMarkup(row.averageCostUsd),
+    hoverFormatter: (row) => [
+      `Avg cost: ${formatCurrencyMarkup(row.averageCostUsd)}`,
+      `Composite: ${formatScoreMarkup(row.compositeScore)}`,
+      `Avg requests: ${formatDecimalMarkup(row.averageRequestUnits, 2)}`,
+      `Avg wall time: ${formatDurationMarkup(row.averageWallTimeMs)}`,
+    ],
+  });
+}
+
+function buildTaskDurationHeatmap(report) {
+  return buildTaskHeatmap({
+    report,
+    metricKey: 'averageWallTimeMs',
+    title: 'Task duration heatmap',
+    colorscale: [
+      [0, '#73f0c5'],
+      [0.3, '#06b6d4'],
+      [0.6, '#f59e0b'],
+      [1, '#ef4444'],
+    ],
+    textFormatter: (row) => formatDurationMarkup(row.averageWallTimeMs),
+    valueTransformer: (value) => Number((((value ?? 0) / 1000)).toFixed(1)),
+    hoverFormatter: (row) => [
+      `Avg wall time: ${formatDurationMarkup(row.averageWallTimeMs)}`,
+      `Composite: ${formatScoreMarkup(row.compositeScore)}`,
+      `Avg requests: ${formatDecimalMarkup(row.averageRequestUnits, 2)}`,
+      `Avg cost: ${formatCurrencyMarkup(row.averageCostUsd)}`,
+    ],
+  });
+}
+
+function buildModelBarChart({ rows, metricKey, title, axisTitle, color, valueFormatter, customText }) {
+  if (!rows.length) {
+    return null;
+  }
+
+  return {
+    data: [
+      {
+        type: 'bar',
+        x: rows.map((entry) => entry.model),
+        y: rows.map((entry) => valueFormatter(entry[metricKey])),
+        marker: { color, line: { color: 'rgba(255,255,255,0.18)', width: 1 } },
+        text: rows.map((entry) => valueFormatter(entry[metricKey])),
+        textposition: 'auto',
+        hovertemplate: rows.map((entry) => `${entry.model}<br>${axisTitle}: ${escapeHtmlMarkup(String(valueFormatter(entry[metricKey])))}<br>${escapeHtmlMarkup(customText(entry))}<extra></extra>`),
+      },
+    ],
+    layout: buildChartLayout({
+      title,
+      yaxis: { title: axisTitle },
+    }),
+  };
+}
+
+function buildTaskHeatmap({ report, metricKey, title, colorscale, zmin = null, zmax = null, textFormatter, hoverFormatter, valueTransformer = (value) => value }) {
+  const { models, tasks, matrix } = buildTaskMatrix(report);
+  if (!models.length || !tasks.length) {
+    return null;
+  }
+
+  const z = tasks.map((task) => models.map((model) => {
+    const row = matrix.get(task.id)?.get(model.model) || null;
+    return row && Number.isFinite(row[metricKey]) ? valueTransformer(row[metricKey]) : null;
+  }));
+  const text = tasks.map((task) => models.map((model) => {
+    const row = matrix.get(task.id)?.get(model.model) || null;
+    return row ? textFormatter(row) : 'n/a';
+  }));
+  const customdata = tasks.map((task) => models.map((model) => {
+    const row = matrix.get(task.id)?.get(model.model) || null;
+    return row ? hoverFormatter(row).join('<br>') : 'No run published';
+  }));
+
+  return {
+    data: [
+      {
+        type: 'heatmap',
+        x: models.map((entry) => entry.model),
+        y: tasks.map((entry) => `${entry.name} [${entry.difficulty || 'n/a'}]`),
+        z,
+        text,
+        customdata,
+        texttemplate: '%{text}',
+        textfont: { size: 11, color: '#edf2ff' },
+        colorscale,
+        zmin,
+        zmax,
+        xgap: 2,
+        ygap: 2,
+        hovertemplate: '%{x}<br>%{y}<br>%{customdata}<extra></extra>',
+        colorbar: { tickfont: { color: '#99a4c8' } },
+      },
+    ],
+    layout: buildChartLayout({
+      title,
+      height: Math.max(420, 110 + (tasks.length * 34)),
+      margin: { l: 240, r: 24, t: 54, b: 90 },
+      xaxis: { tickangle: -24 },
+      yaxis: { automargin: true, autorange: 'reversed' },
+    }),
+  };
+}
+
+function buildGroupedMetricHeatmap({ report, title, groupKey, groups, labelFormatter, textFormatter, valueFormatter, colorscale, zmin = null, zmax = null, hoverFormatter }) {
+  const models = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
+  if (!models.length || !groups.length) {
+    return null;
+  }
+
+  const groupedRows = new Map();
+  for (const group of groups) {
+    groupedRows.set(group[groupKey], new Map(group.models.map((entry) => [entry.model, entry])));
+  }
+
+  const z = groups.map((group) => models.map((model) => {
+    const row = groupedRows.get(group[groupKey])?.get(model.model) || null;
+    return row ? valueFormatter(row) : null;
+  }));
+  const text = groups.map((group) => models.map((model) => {
+    const row = groupedRows.get(group[groupKey])?.get(model.model) || null;
+    return row ? textFormatter(row) : 'n/a';
+  }));
+  const customdata = groups.map((group) => models.map((model) => {
+    const row = groupedRows.get(group[groupKey])?.get(model.model) || null;
+    return row ? hoverFormatter(row).join('<br>') : 'No published rows';
+  }));
+
+  return {
+    data: [
+      {
+        type: 'heatmap',
+        x: models.map((entry) => entry.model),
+        y: groups.map((entry) => labelFormatter(entry)),
+        z,
+        text,
+        customdata,
+        texttemplate: '%{text}',
+        textfont: { size: 11, color: '#edf2ff' },
+        colorscale,
+        zmin,
+        zmax,
+        xgap: 2,
+        ygap: 2,
+        hovertemplate: '%{x}<br>%{y}<br>%{customdata}<extra></extra>',
+        colorbar: { tickfont: { color: '#99a4c8' } },
+      },
+    ],
+    layout: buildChartLayout({
+      title,
+      height: Math.max(320, 140 + (groups.length * 72)),
+      margin: { l: 180, r: 24, t: 54, b: 90 },
+      xaxis: { tickangle: -24 },
+      yaxis: { automargin: true, autorange: 'reversed' },
+    }),
+  };
+}
+
+function buildChartLayout(overrides = {}) {
+  return {
+    paper_bgcolor: '#ffffff',
+    plot_bgcolor: '#ffffff',
+    font: { family: 'Inter, ui-sans-serif, system-ui, sans-serif', color: '#0f172a', size: 12 },
+    margin: { l: 56, r: 24, t: 54, b: 56 },
+    height: 360,
+    xaxis: {
+      automargin: true,
+      tickfont: { size: 11 },
+      gridcolor: 'rgba(15, 23, 42, 0.08)',
+    },
+    yaxis: {
+      automargin: true,
+      zeroline: false,
+      gridcolor: 'rgba(15, 23, 42, 0.08)',
+    },
+    ...overrides,
+    margin: { l: 56, r: 24, t: 54, b: 56, ...(overrides.margin || {}) },
+    xaxis: { automargin: true, tickfont: { size: 11 }, gridcolor: 'rgba(15, 23, 42, 0.08)', ...(overrides.xaxis || {}) },
+    yaxis: { automargin: true, zeroline: false, gridcolor: 'rgba(15, 23, 42, 0.08)', ...(overrides.yaxis || {}) },
+  };
+}
+
+function buildTaskMatrix(report) {
+  const models = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
+  const taskCatalog = Array.isArray(report.taskCatalog) ? report.taskCatalog : [];
+  const taskSummary = Array.isArray(report.taskSummary) ? report.taskSummary : [];
+  const taskMap = new Map(taskCatalog.map((task) => [task.id, task]));
+  const matrix = new Map();
+
+  for (const row of taskSummary) {
+    if (!matrix.has(row.taskId)) {
+      matrix.set(row.taskId, new Map());
+    }
+    matrix.get(row.taskId).set(row.model, row);
+    if (!taskMap.has(row.taskId)) {
+      taskMap.set(row.taskId, {
+        id: row.taskId,
+        name: row.taskName,
+        difficulty: null,
+        requiredCapabilities: row.requiredCapabilities || [],
+      });
+    }
+  }
+
+  const tasks = [...taskMap.values()].sort((left, right) => {
+    const leftIndex = taskCatalog.findIndex((entry) => entry.id === left.id);
+    const rightIndex = taskCatalog.findIndex((entry) => entry.id === right.id);
+    if (leftIndex !== -1 && rightIndex !== -1) {
+      return leftIndex - rightIndex;
+    }
+    if (leftIndex !== -1) {
+      return -1;
+    }
+    if (rightIndex !== -1) {
+      return 1;
+    }
+    return String(left.name || left.id).localeCompare(String(right.name || right.id));
+  });
+
+  return { models, tasks, matrix };
+}
+
+function buildBenchmarkedModels(report) {
+  const catalogModels = report.modelCatalog?.models || [];
+  const catalogByModel = new Map(catalogModels.map((entry) => [entry.model, entry]));
+  return sortByComposite(report.modelSummary ?? report.leaderboard ?? []).map((summary) => {
+    const catalogEntry = catalogByModel.get(summary.model) || null;
+    return {
+      model: summary.model,
+      compositeScore: summary.compositeScore ?? null,
+      successRate: summary.successRate ?? null,
+      totalCostUsd: summary.totalCostUsd ?? null,
+      totalWallTimeMs: summary.totalWallTimeMs ?? null,
+      totalRequestUnits: summary.totalRequestUnits ?? null,
+      priceTier: catalogEntry?.priceTier ?? null,
+      devTier: catalogEntry?.devTier ?? null,
+      recommendedUse: catalogEntry?.recommendedUse ?? null,
+      family: catalogEntry?.family ?? null,
+      intelligenceScore: catalogEntry?.benchmark?.intelligenceScore ?? null,
+      agenticScore: catalogEntry?.benchmark?.agenticScore ?? null,
+      speedTokensPerSecond: catalogEntry?.benchmark?.speedTokensPerSecond ?? null,
+      blendedPricePer1mTokensUsd: catalogEntry?.benchmark?.blendedPricePer1mTokensUsd ?? null,
+      sourceUrl: catalogEntry?.benchmark?.sourceUrl ?? null,
+      pricingNotes: catalogEntry?.benchmark?.pricingNotes ?? null,
+      headlessFriendly: catalogEntry?.stability?.headlessFriendly ?? null,
+      stabilityNotes: catalogEntry?.stability?.notes ?? null,
+      unattendedBenchmarkRuns: catalogEntry?.featureSupport?.unattendedBenchmarkRuns ?? null,
+      knownLimitations: catalogEntry?.featureSupport?.knownLimitations ?? [],
+    };
+  });
+}
+
+function buildBenchmarkComposition(report) {
+  const tasks = Array.isArray(report.taskCatalog) ? report.taskCatalog : [];
+  const results = Array.isArray(report.results) ? report.results : [];
+  const categoryCounts = new Map();
+  const difficultyCounts = new Map();
+  const requiredCapabilities = new Set();
+
+  for (const task of tasks) {
+    const category = taskCategoryForTask(report, task.id) || 'uncategorized';
+    categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1);
+    const difficulty = task.difficulty || 'unspecified';
+    difficultyCounts.set(difficulty, (difficultyCounts.get(difficulty) || 0) + 1);
+    for (const capability of task.requiredCapabilities || []) {
+      requiredCapabilities.add(capability);
+    }
+  }
+
+  const totalRequestUnits = sum(results.map((entry) => entry.requestUnits || 0));
+  const totalCostUsd = sum(results.map((entry) => entry.costUsd || 0));
+  const totalDurationMs = sum(results.map((entry) => entry.durationMs || 0));
+
+  return {
+    taskCount: tasks.length,
+    categoryCount: categoryCounts.size,
+    difficultyCount: difficultyCounts.size,
+    requiredCapabilities: [...requiredCapabilities].sort(),
+    categories: [...categoryCounts.entries()].map(([label, count]) => ({ label, count })).sort((left, right) => right.count - left.count || left.label.localeCompare(right.label)),
+    difficulties: [...difficultyCounts.entries()].map(([label, count]) => ({ label, count })).sort((left, right) => right.count - left.count || left.label.localeCompare(right.label)),
+    totalRequestUnits,
+    totalCostUsd,
+    totalDurationMs,
+  };
+}
+
+function buildLeaderboardHighlights(report) {
+  const models = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
+  if (!models.length) {
+    return [];
+  }
+
+  const cheapest = [...models].filter((entry) => Number.isFinite(entry.totalCostUsd)).sort((a, b) => a.totalCostUsd - b.totalCostUsd)[0] || null;
+  const fastest = [...models].filter((entry) => Number.isFinite(entry.totalWallTimeMs)).sort((a, b) => a.totalWallTimeMs - b.totalWallTimeMs)[0] || null;
+  const leanest = [...models].filter((entry) => Number.isFinite(entry.orpt)).sort((a, b) => a.orpt - b.orpt)[0] || null;
+  const reliable = [...models].filter((entry) => Number.isFinite(entry.successRate)).sort((a, b) => b.successRate - a.successRate)[0] || null;
+  return [
+    cheapest ? { label: 'Cheapest full run', model: cheapest.model, value: formatCurrencyMarkup(cheapest.totalCostUsd), detail: `${formatScoreMarkup(cheapest.compositeScore)} composite` } : null,
+    fastest ? { label: 'Fastest full run', model: fastest.model, value: formatDurationMarkup(fastest.totalWallTimeMs), detail: `${formatPercentMarkup(fastest.successRate)} success` } : null,
+    leanest ? { label: 'Best ORPT', model: leanest.model, value: formatDecimalMarkup(leanest.orpt, 2), detail: 'requests per solved task' } : null,
+    reliable ? { label: 'Most reliable', model: reliable.model, value: formatPercentMarkup(reliable.successRate), detail: `${formatIntegerMarkup(reliable.successfulTasks)} solved tasks` } : null,
+  ].filter(Boolean);
+}
+
+function buildPairwiseSummary(report) {
+  const models = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
+  const { tasks, matrix } = buildTaskMatrix(report);
+  if (models.length < 2 || !tasks.length) {
+    return [];
+  }
+
+  const pairs = [];
+  for (let leftIndex = 0; leftIndex < models.length; leftIndex += 1) {
+    for (let rightIndex = leftIndex + 1; rightIndex < models.length; rightIndex += 1) {
+      const left = models[leftIndex];
+      const right = models[rightIndex];
+      let leftWins = 0;
+      let rightWins = 0;
+      let ties = 0;
+      for (const task of tasks) {
+        const leftRow = matrix.get(task.id)?.get(left.model) || null;
+        const rightRow = matrix.get(task.id)?.get(right.model) || null;
+        if (!leftRow || !rightRow) {
+          continue;
+        }
+        const delta = toComparableNumber(leftRow.compositeScore) - toComparableNumber(rightRow.compositeScore);
+        if (delta > 0.000001) {
+          leftWins += 1;
+        } else if (delta < -0.000001) {
+          rightWins += 1;
+        } else {
+          ties += 1;
+        }
+      }
+      pairs.push({
+        leftModel: left.model,
+        rightModel: right.model,
+        leftWins,
+        rightWins,
+        ties,
+        comparedTasks: leftWins + rightWins + ties,
+        margin: leftWins - rightWins,
+      });
+    }
+  }
+
+  return pairs.sort((a, b) => Math.abs(b.margin) - Math.abs(a.margin) || b.comparedTasks - a.comparedTasks);
+}
+
+function buildCategorySummary(report) {
+  const taskSummary = Array.isArray(report.taskSummary) ? report.taskSummary : [];
+  const grouped = new Map();
+  for (const row of taskSummary) {
+    const category = row.category || taskCategoryForTask(report, row.taskId) || 'uncategorized';
+    if (!grouped.has(category)) {
+      grouped.set(category, new Map());
+    }
+    const modelGroup = grouped.get(category);
+    if (!modelGroup.has(row.model)) {
+      modelGroup.set(row.model, []);
+    }
+    modelGroup.get(row.model).push(row);
+  }
+
+  return [...grouped.entries()].map(([category, byModel]) => ({
+    category,
+    taskCount: new Set(taskSummary.filter((row) => (row.category || taskCategoryForTask(report, row.taskId) || 'uncategorized') === category).map((row) => row.taskId)).size,
+    models: [...byModel.entries()].map(([model, rows]) => summarizeTaskRows(model, rows)),
+  })).sort((left, right) => right.taskCount - left.taskCount || left.category.localeCompare(right.category));
+}
+
+function buildDifficultySummary(report) {
+  const taskSummary = Array.isArray(report.taskSummary) ? report.taskSummary : [];
+  const difficultyByTask = new Map((report.taskCatalog || []).map((task) => [task.id, task.difficulty || 'unspecified']));
+  const grouped = new Map();
+  for (const row of taskSummary) {
+    const difficulty = difficultyByTask.get(row.taskId) || 'unspecified';
+    if (!grouped.has(difficulty)) {
+      grouped.set(difficulty, new Map());
+    }
+    const modelGroup = grouped.get(difficulty);
+    if (!modelGroup.has(row.model)) {
+      modelGroup.set(row.model, []);
+    }
+    modelGroup.get(row.model).push(row);
+  }
+
+  return [...grouped.entries()].map(([difficulty, byModel]) => ({
+    difficulty,
+    taskCount: new Set(taskSummary.filter((row) => (difficultyByTask.get(row.taskId) || 'unspecified') === difficulty).map((row) => row.taskId)).size,
+    models: [...byModel.entries()].map(([model, rows]) => summarizeTaskRows(model, rows)),
+  })).sort((left, right) => left.difficulty.localeCompare(right.difficulty));
+}
+
+function buildTokenSummary(report) {
+  const byModel = new Map();
+  for (const result of report.results || []) {
+    if (!byModel.has(result.model)) {
+      byModel.set(result.model, {
+        model: result.model,
+        inputTokens: 0,
+        outputTokens: 0,
+        reasoningTokens: 0,
+        cacheReadTokens: 0,
+        cacheWriteTokens: 0,
+      });
+    }
+    const bucket = byModel.get(result.model);
+    const tokens = result.tokens || {};
+    bucket.inputTokens += tokens.input || 0;
+    bucket.outputTokens += tokens.output || 0;
+    bucket.reasoningTokens += tokens.reasoning || 0;
+    bucket.cacheReadTokens += tokens.cache?.read || 0;
+    bucket.cacheWriteTokens += tokens.cache?.write || 0;
+  }
+
+  return sortByComposite(report.modelSummary ?? report.leaderboard ?? []).map((entry) => byModel.get(entry.model)).filter(Boolean);
+}
+
+function summarizeTaskRows(model, rows) {
+  return {
+    model,
+    taskCount: rows.length,
+    averageCompositeScore: average(rows.map((entry) => entry.compositeScore ?? 0)) || 0,
+    averageSuccessRate: average(rows.map((entry) => entry.successRate ?? 0)) || 0,
+    averageRequestUnits: average(rows.map((entry) => entry.averageRequestUnits ?? 0)) || 0,
+    averageCostUsd: average(rows.map((entry) => entry.averageCostUsd ?? 0)) || 0,
+    averageWallTimeMs: average(rows.map((entry) => entry.averageWallTimeMs ?? 0)) || 0,
+  };
+}
+
+function taskCategoryForTask(report, taskId) {
+  const taskSummaryRow = (report.taskSummary || []).find((entry) => entry.taskId === taskId && entry.category);
+  return taskSummaryRow?.category || null;
+}
+
+function average(values) {
+  const filtered = values.filter((value) => Number.isFinite(value));
+  if (!filtered.length) {
+    return null;
+  }
+  return sum(filtered) / filtered.length;
+}
+
+function sum(values) {
+  return values.reduce((total, value) => total + (Number.isFinite(value) ? value : 0), 0);
 }
 
 function renderStandaloneChartHtml({ title, data, layout }) {
@@ -450,6 +1294,59 @@ function toComparableNumber(value) {
   return Number.isFinite(value) ? value : Number.NEGATIVE_INFINITY;
 }
 
+function formatScoreMarkup(value) {
+  if (!Number.isFinite(value)) {
+    return 'n/a';
+  }
+  return Number(value).toFixed(3).replace(/0+$/, '').replace(/\.$/, '.0');
+}
+
+function formatPercentMarkup(value) {
+  if (!Number.isFinite(value)) {
+    return 'n/a';
+  }
+  return `${Math.round(value * 100)}%`;
+}
+
+function formatDecimalMarkup(value, decimals) {
+  if (!Number.isFinite(value)) {
+    return 'n/a';
+  }
+  return Number(value).toFixed(decimals);
+}
+
+function formatCurrencyMarkup(value) {
+  if (!Number.isFinite(value)) {
+    return 'n/a';
+  }
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 4,
+    maximumFractionDigits: 4,
+  }).format(value);
+}
+
+function formatIntegerMarkup(value) {
+  if (!Number.isFinite(value)) {
+    return 'n/a';
+  }
+  return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(value);
+}
+
+function formatDurationMarkup(value) {
+  if (!Number.isFinite(value)) {
+    return 'n/a';
+  }
+  const seconds = Math.round(value / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  if (minutes === 0) {
+    return `${remainder}s`;
+  }
+  return `${minutes}m ${String(remainder).padStart(2, '0')}s`;
+}
+
 function renderHtml(data) {
   const safeData = JSON.stringify(data).replace(/</g, '\\u003c');
 
@@ -562,7 +1459,7 @@ function renderHtml(data) {
       mask-composite: exclude;
       pointer-events: none;
     }
-    .hero-grid, .stats-grid, .chart-grid, .docs-grid { display: grid; gap: 16px; }
+    .hero-grid, .stats-grid, .chart-grid, .docs-grid, .insight-grid, .summary-grid { display: grid; gap: 16px; }
     .hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.9fr); align-items: start; gap: 24px; }
     .eyebrow, .hint, .micro { font-family: var(--mono); letter-spacing: 0.04em; text-transform: uppercase; }
     .eyebrow { color: var(--accent); font-size: 0.78rem; margin-bottom: 10px; }
@@ -587,8 +1484,11 @@ function renderHtml(data) {
     .section-header { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 14px; }
     .section-title { font-size: clamp(1.3rem, 2vw, 1.7rem); letter-spacing: -0.03em; margin-bottom: 4px; }
     .hint { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--warning); font-size: 0.72rem; }
-    .chart-grid, .docs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .chart-grid, .docs-grid, .model-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .insight-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .chart-card, .doc-card, .table-panel { padding: 18px; }
+    .chart-card.wide { grid-column: 1 / -1; }
     .chart-card iframe {
       width: 100%;
       height: 320px;
@@ -597,6 +1497,7 @@ function renderHtml(data) {
       background: #ffffff;
       margin: 14px 0 12px;
     }
+    .chart-card.wide iframe { height: 620px; }
     .card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
     .card-link {
       padding: 9px 12px;
@@ -606,6 +1507,70 @@ function renderHtml(data) {
       font-size: 0.9rem;
     }
     .table-panel { padding-bottom: 8px; }
+    .insight-card {
+      border: 1px solid rgba(122, 162, 255, 0.12);
+      border-radius: var(--radius-sm);
+      background: rgba(9, 14, 28, 0.78);
+      padding: 18px;
+    }
+    .insight-value { font-size: 1.2rem; font-weight: 700; margin: 6px 0; }
+    .insight-detail { color: var(--muted); font-size: 0.88rem; }
+    .list-panel { padding: 18px; }
+    .key-list { display: grid; gap: 10px; margin-top: 14px; }
+    .key-row {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 14px;
+      border: 1px solid rgba(122, 162, 255, 0.08);
+      border-radius: 12px;
+      background: rgba(7, 10, 20, 0.72);
+    }
+    .key-row strong { display: block; margin-bottom: 4px; }
+    .key-row-value { text-align: right; font-weight: 700; }
+    .matrix-wrap { overflow: auto; margin-top: 14px; }
+    .task-matrix {
+      min-width: 960px;
+      display: grid;
+      gap: 2px;
+      background: rgba(122, 162, 255, 0.08);
+      border: 1px solid rgba(122, 162, 255, 0.08);
+      border-radius: 14px;
+      padding: 2px;
+    }
+    .matrix-cell {
+      background: rgba(7, 10, 20, 0.92);
+      padding: 12px;
+      min-height: 86px;
+    }
+    .matrix-head {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: rgba(12, 18, 35, 0.98);
+      color: var(--text);
+      font-weight: 600;
+    }
+    .matrix-task {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background: rgba(12, 18, 35, 0.98);
+    }
+    .matrix-metric { font-size: 0.8rem; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+    .matrix-score { font-size: 1rem; font-weight: 700; }
+    .model-cards { display: grid; gap: 16px; }
+    .model-card {
+      border: 1px solid rgba(122, 162, 255, 0.12);
+      border-radius: var(--radius-sm);
+      background: rgba(9, 14, 28, 0.78);
+      padding: 18px;
+    }
+    .model-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
+    .stat-list { display: grid; gap: 8px; }
+    .stat-row { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 0.9rem; }
+    .stat-row strong { color: var(--text); font-weight: 600; }
     .table-wrap {
       overflow: auto;
       margin-top: 14px;
@@ -652,18 +1617,19 @@ function renderHtml(data) {
     .empty { padding: 22px; border-radius: 14px; border: 1px dashed rgba(122, 162, 255, 0.16); color: var(--muted); }
     footer { margin-top: 22px; padding: 18px 2px 0; color: var(--muted); font-size: 0.92rem; }
     @media (max-width: 1180px) {
-      .hero-grid, .stats-grid, .chart-grid, .docs-grid { grid-template-columns: 1fr 1fr; }
+      .hero-grid, .stats-grid, .chart-grid, .docs-grid, .model-cards, .insight-grid, .summary-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 840px) {
       .shell { width: min(100vw - 20px, 1380px); padding-top: 14px; }
       .topbar { position: static; border-radius: 22px; }
       .hero, .panel, .chart-card, .doc-card, .table-panel, .metric { padding: 16px; }
-      .hero-grid, .stats-grid, .chart-grid, .docs-grid, .section-header {
+      .hero-grid, .stats-grid, .chart-grid, .docs-grid, .model-cards, .insight-grid, .summary-grid, .section-header {
         grid-template-columns: 1fr;
         flex-direction: column;
         align-items: stretch;
       }
       .chart-card iframe { height: 260px; }
+      .chart-card.wide iframe { height: 420px; }
     }
   </style>
 </head>
@@ -676,7 +1642,10 @@ function renderHtml(data) {
       </div>
       <div class="nav">
         <a href="#charts">Charts</a>
+        <a href="#insights">Insights</a>
         <a href="#comparison">Comparison</a>
+        <a href="#matrix">Matrix</a>
+        <a href="#catalog">Catalog</a>
         <a href="#docs">Docs</a>
         <a href="#history">History</a>
       </div>
@@ -685,37 +1654,86 @@ function renderHtml(data) {
       <div class="hero-grid">
         <div>
           <div class="eyebrow">OpenCode benchmark publication</div>
-          <h1>Requests per solved task, published for fast comparison.</h1>
-          <p>
-            ORPT-Bench measures how many OpenCode requests a model spends per successful benchmark task.
-            This page keeps the live benchmark output focused on the parts you actually compare: charts,
-            sortable tables, scoring context, and historical snapshots.
-          </p>
+           <h1>Benchmark data you can actually compare at a glance.</h1>
+           <p>
+             ORPT-Bench measures correctness, request efficiency, time, and cost across a fixed task suite.
+             This publication is the operator view: rankings, per-task deltas, cost and speed tradeoffs,
+             catalog context, and links back to the raw benchmark artifacts.
+           </p>
           <div class="hero-actions" id="hero-actions"></div>
           <div class="hint">Hint: every comparison table is sortable and starts in composite-score order.</div>
         </div>
         <div class="summary-list">
           <div class="summary-item">
             <strong>How to read the ranking</strong>
-            <div class="muted">Composite score keeps correctness dominant, then rewards efficient successful runs with ORPT, cost, and wall time.</div>
-          </div>
-          <div class="summary-item">
-            <strong>What lives here</strong>
-            <div class="muted">Live charts, model and task comparisons, raw result links, model catalog access, and historical run snapshots.</div>
-          </div>
-          <div class="summary-item">
-            <strong>Where deeper detail lives</strong>
-            <div class="muted">Use the docs section for the benchmark design, result schema, raw JSON artifacts, and the source repository.</div>
+             <div class="muted">Composite score is 70% raw task score and 30% value score. Value score blends ORPT, total cost, and wall time using the published scoring weights.</div>
+           </div>
+           <div class="summary-item">
+             <strong>What lives here</strong>
+             <div class="muted">Model leaderboard tables, task-by-task comparison grids, benchmarked model catalog cards, embedded charts, docs links, and historical snapshots.</div>
+           </div>
+           <div class="summary-item">
+             <strong>Where deeper detail lives</strong>
+              <div class="muted">Use the docs section for the benchmark design, schema, model catalog, raw JSON, and history index. Every embedded chart also has a direct artifact link.</div>
+            </div>
+            <div class="summary-item">
+              <strong>Research framing</strong>
+              <div class="muted">Artificial Analysis style depth comes from making tradeoffs visible: benchmark-composition context, category and difficulty splits, pairwise deltas, and observed-versus-prior cost/speed comparisons.</div>
+            </div>
           </div>
         </div>
+     </section>
+     <section class="stats-grid" id="stats"></section>
+    <section class="section" id="insights">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Research Highlights</div>
+          <p class="panel-copy">This section answers the questions a benchmark reader usually asks first: what the suite contains, who won which tradeoff, and how the models compare head-to-head.</p>
+        </div>
+      </div>
+      <div class="insight-grid">
+        ${renderLeaderboardHighlights(data.leaderboardHighlights || [])}
+      </div>
+      <div class="summary-grid section">
+        <div class="panel list-panel">
+          <div class="micro muted">Benchmark composition</div>
+          <h3>Suite composition</h3>
+          <p class="panel-copy">A benchmark is only meaningful if you can see what kinds of tasks dominate the signal.</p>
+          ${renderBenchmarkComposition(data.benchmarkComposition)}
+        </div>
+        <div class="panel list-panel">
+          <div class="micro muted">Head-to-head</div>
+          <h3>Pairwise outcomes</h3>
+          <p class="panel-copy">Task-level pairwise wins show whether the leaderboard leader actually dominates the suite or just edges ahead on aggregate.</p>
+          ${renderPairwiseSummary(data.pairwiseSummary || [])}
+        </div>
+      </div>
+      <div class="summary-grid section">
+        <div class="panel list-panel">
+          <div class="micro muted">Category splits</div>
+          <h3>Category summary</h3>
+          <p class="panel-copy">Average quality, speed, and cost by benchmark category.</p>
+          ${renderGroupedSummary(data.categorySummary || [], 'category')}
+        </div>
+        <div class="panel list-panel">
+          <div class="micro muted">Difficulty splits</div>
+          <h3>Difficulty summary</h3>
+          <p class="panel-copy">How performance changes as the suite moves from control to expert tasks.</p>
+          ${renderGroupedSummary(data.difficultySummary || [], 'difficulty')}
+        </div>
+      </div>
+      <div class="panel list-panel section">
+        <div class="micro muted">Execution profile</div>
+        <h3>Token and execution profile</h3>
+        <p class="panel-copy">Observed token mix across the suite helps explain whether a model is spending heavily on reasoning, cached context, or generation.</p>
+        ${renderTokenSummary(data.tokenSummary || [])}
       </div>
     </section>
-    <section class="stats-grid" id="stats"></section>
     <section class="section" id="charts">
       <div class="section-header">
         <div>
           <div class="section-title">Charts First</div>
-          <p class="panel-copy">Charts are the fastest way to scan leaderboard shape before drilling into row-level comparisons.</p>
+          <p class="panel-copy">These charts now cover overall ranking, cost and speed frontiers, execution profiles, and category or task-level breakdowns in the same spirit as benchmark publications like Artificial Analysis.</p>
         </div>
       </div>
       ${renderChartCards(data.charts)}
@@ -740,6 +1758,29 @@ function renderHtml(data) {
         <p class="panel-copy">This is the fastest way to see where a model succeeded, where it missed, and what each task cost in requests, time, and dollars.</p>
         <div id="task-summary-table"></div>
       </div>
+    </section>
+    <section class="section" id="matrix">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Task Comparison Matrix</div>
+          <p class="panel-copy">Each task row shows exactly how the published models compare on composite score, success, requests, cost, and time for that benchmark target.</p>
+        </div>
+      </div>
+      <div class="panel table-panel">
+        <div class="micro muted">Per-task model deltas</div>
+        <h3>Task-by-task model matrix</h3>
+        <p class="panel-copy">Use this when you need to know not just who won overall, but where they paid for it and where they failed.</p>
+        ${renderTaskMatrix(data)}
+      </div>
+    </section>
+    <section class="section" id="catalog">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Benchmarked Model Cards</div>
+          <p class="panel-copy">Published benchmark results paired with catalog metadata make it easier to understand whether a model is cheap, fast, stable, or just happened to land higher this run.</p>
+        </div>
+      </div>
+      ${renderBenchmarkedModels(data.benchmarkedModels || [])}
     </section>
     <section class="section" id="docs">
       <div class="section-header">
@@ -773,7 +1814,8 @@ function renderHtml(data) {
     const latestRun = siteData.latestRun || {};
     const topModel = latestRun.topModel || null;
     const heroActions = document.getElementById('hero-actions');
-    heroActions.appendChild(linkButton(siteData.repository?.pagesUrl || '#comparison', 'Live site', true));
+    heroActions.appendChild(linkButton('#comparison', 'Leaderboard', true));
+    heroActions.appendChild(linkButton('#matrix', 'Task matrix'));
     heroActions.appendChild(linkButton(docs.latestResultPath, 'Latest raw JSON'));
     if (docs.sourceUrl) {
       heroActions.appendChild(linkButton(docs.sourceUrl, 'Source repo'));
@@ -797,9 +1839,9 @@ function renderHtml(data) {
       {
         label: 'Best composite score',
         value: topModel ? formatScore(topModel.compositeScore) : 'n/a',
-        note: topModel ? formatPercent(topModel.successRate) + ' success, ' + formatDecimal(topModel.orpt, 2) + ' ORPT' : 'No leaderboard data yet',
-      },
-    ];
+         note: topModel ? formatPercent(topModel.successRate) + ' success, ' + formatDecimal(topModel.orpt, 2) + ' ORPT, ' + formatCurrency(topModel.totalCostUsd) + ' total cost' : 'No leaderboard data yet',
+       },
+     ];
     const statsRoot = document.getElementById('stats');
     for (const stat of stats) {
       const node = document.createElement('article');
@@ -812,10 +1854,11 @@ function renderHtml(data) {
       { title: 'Benchmark design', summary: 'Benchmark architecture, telemetry rules, and CI publication behavior.', href: docs.designDocPath, label: 'Open design doc' },
       { title: 'Result schema', summary: 'Machine-readable contract for the benchmark JSON artifacts.', href: docs.resultSchemaPath, label: 'Open schema' },
       { title: 'Model catalog', summary: 'Pricing provenance, capability notes, and model inventory details.', href: docs.modelCatalogPath, label: 'Open catalog' },
-      { title: 'Latest raw results', summary: 'Full benchmark output for the current publication, including all run-level detail.', href: docs.latestResultPath, label: 'Open latest JSON' },
-      { title: 'History index', summary: 'Compact index of archived benchmark snapshots published with the site.', href: docs.historyIndexPath, label: 'Open history index' },
-      { title: 'Source repository', summary: 'Benchmark harness, task fixtures, and publication pipeline source.', href: docs.sourceUrl, label: 'Open repository' },
-    ].filter((card) => card.href);
+       { title: 'Published benchmark snapshot', summary: 'Merged full-run publication JSON backing this site, including model and task summaries.', href: docs.latestResultPath, label: 'Open published JSON' },
+       { title: 'Latest raw run', summary: 'The most recently written raw benchmark run artifact before publication merging.', href: docs.latestRawResultPath, label: 'Open latest raw run' },
+       { title: 'History index', summary: 'Compact index of archived benchmark snapshots published with the site.', href: docs.historyIndexPath, label: 'Open history index' },
+       { title: 'Source repository', summary: 'Benchmark harness, task fixtures, and publication pipeline source.', href: docs.sourceUrl, label: 'Open repository' },
+     ].filter((card) => card.href);
     for (const card of docCards) {
       const node = document.createElement('article');
       node.className = 'doc-card';
@@ -839,11 +1882,12 @@ function renderHtml(data) {
         { key: 'successRate', label: 'Success', type: 'number', render: (row) => formatPercent(row.successRate) },
         { key: 'orpt', label: 'ORPT', type: 'number', render: (row) => formatDecimal(row.orpt, 2) },
         { key: 'totalRequestUnits', label: 'Requests', type: 'number', render: (row) => formatInteger(row.totalRequestUnits) },
-        { key: 'totalWallTimeMs', label: 'Wall time', type: 'number', render: (row) => formatDuration(row.totalWallTimeMs) },
-        { key: 'totalCostUsd', label: 'Cost', type: 'number', render: (row) => formatCurrency(row.totalCostUsd) },
-        { key: 'comparable', label: 'Status', type: 'text', render: (row) => badge(row.comparable ? 'Comparable' : 'Limited', row.comparable ? 'good' : 'warn') },
-      ],
-    });
+         { key: 'totalWallTimeMs', label: 'Wall time', type: 'number', render: (row) => formatDuration(row.totalWallTimeMs) },
+         { key: 'totalCostUsd', label: 'Cost', type: 'number', render: (row) => formatCurrency(row.totalCostUsd) },
+         { key: 'averageCostUsd', label: 'Avg task cost', type: 'number', render: (row) => formatCurrency(row.averageCostUsd) },
+         { key: 'comparable', label: 'Status', type: 'text', render: (row) => badge(row.comparable ? 'Comparable' : 'Limited', row.comparable ? 'good' : 'warn') },
+       ],
+     });
     renderSortableTable(document.getElementById('task-summary-table'), {
       rows: siteData.taskSummary || [],
       defaultSortKey: 'compositeScore',
@@ -857,11 +1901,13 @@ function renderHtml(data) {
         { key: 'valueScore', label: 'Value', type: 'number', render: (row) => formatScore(row.valueScore) },
         { key: 'compositeScore', label: 'Composite', type: 'number', render: (row) => formatScore(row.compositeScore) },
         { key: 'successRate', label: 'Success', type: 'number', render: (row) => formatPercent(row.successRate) },
-        { key: 'averageRequestUnits', label: 'Avg requests', type: 'number', render: (row) => formatDecimal(row.averageRequestUnits, 2) },
-        { key: 'averageWallTimeMs', label: 'Avg wall time', type: 'number', render: (row) => formatDuration(row.averageWallTimeMs) },
-        { key: 'averageCostUsd', label: 'Avg cost', type: 'number', render: (row) => formatCurrency(row.averageCostUsd) },
-      ],
-    });
+         { key: 'runs', label: 'Runs', type: 'number', render: (row) => formatInteger(row.runs) },
+         { key: 'averageRequestUnits', label: 'Avg requests', type: 'number', render: (row) => formatDecimal(row.averageRequestUnits, 2) },
+         { key: 'averageWallTimeMs', label: 'Avg wall time', type: 'number', render: (row) => formatDuration(row.averageWallTimeMs) },
+         { key: 'averageCostUsd', label: 'Avg cost', type: 'number', render: (row) => formatCurrency(row.averageCostUsd) },
+         { key: 'eligible', label: 'Eligible', type: 'text', render: (row) => badge(row.eligible ? 'Scored' : 'Unscored', row.eligible ? 'good' : 'warn') },
+       ],
+     });
     renderSortableTable(document.getElementById('history-table'), {
       rows: siteData.history || [],
       defaultSortKey: 'topCompositeScore',
@@ -985,7 +2031,7 @@ function renderHtml(data) {
       if (!Number.isFinite(value)) {
         return 'n/a';
       }
-      return Number(value).toFixed(3).replace(/0+$/, '').replace(/\.$/, '.0');
+      return Number(value).toFixed(3).replace(/0+$/, '').replace(/\\.$/, '.0');
     }
     function formatPercent(value) {
       if (!Number.isFinite(value)) {
@@ -1068,7 +2114,7 @@ function renderChartCards(charts) {
   }
 
   return `<div class="chart-grid">
-${charts.map((chart) => `        <article class="chart-card">
+${charts.map((chart) => `        <article class="chart-card${chart.wide ? ' wide' : ''}">
           <div class="micro muted">${escapeHtmlMarkup(chart.eyebrow)}</div>
           <h3>${escapeHtmlMarkup(chart.title)}</h3>
           <p class="panel-copy">${escapeHtmlMarkup(chart.description)}</p>
@@ -1079,6 +2125,172 @@ ${charts.map((chart) => `        <article class="chart-card">
           </div>
         </article>`).join('\n')}
       </div>`;
+}
+
+function renderLeaderboardHighlights(highlights) {
+  if (!Array.isArray(highlights) || highlights.length === 0) {
+    return '<div class="empty">No leaderboard highlights are available for this publication.</div>';
+  }
+
+  return highlights.map((entry) => `<article class="insight-card">
+    <div class="micro muted">${escapeHtmlMarkup(entry.label)}</div>
+    <h3>${escapeHtmlMarkup(entry.model)}</h3>
+    <div class="insight-value">${escapeHtmlMarkup(entry.value)}</div>
+    <div class="insight-detail">${escapeHtmlMarkup(entry.detail)}</div>
+  </article>`).join('\n');
+}
+
+function renderBenchmarkComposition(composition) {
+  if (!composition) {
+    return '<div class="empty">No benchmark composition summary is available.</div>';
+  }
+
+  return `<div class="key-list">
+    <div class="key-row"><div><strong>Task inventory</strong><div class="muted">${escapeHtmlMarkup(String(composition.categoryCount))} categories, ${escapeHtmlMarkup(String(composition.difficultyCount))} difficulty bands</div></div><div class="key-row-value">${escapeHtmlMarkup(formatIntegerMarkup(composition.taskCount))} tasks</div></div>
+    <div class="key-row"><div><strong>Observed suite cost</strong><div class="muted">Combined spend across all model-task runs in the publication</div></div><div class="key-row-value">${escapeHtmlMarkup(formatCurrencyMarkup(composition.totalCostUsd))}</div></div>
+    <div class="key-row"><div><strong>Observed request volume</strong><div class="muted">Request units recorded by the benchmark proxy</div></div><div class="key-row-value">${escapeHtmlMarkup(formatIntegerMarkup(composition.totalRequestUnits))}</div></div>
+    <div class="key-row"><div><strong>Observed wall time</strong><div class="muted">Aggregate elapsed model runtime across all runs</div></div><div class="key-row-value">${escapeHtmlMarkup(formatDurationMarkup(composition.totalDurationMs))}</div></div>
+    <div class="key-row"><div><strong>Required capabilities</strong><div class="muted">${escapeHtmlMarkup((composition.requiredCapabilities || []).join(', ') || 'none declared')}</div></div><div class="key-row-value">${escapeHtmlMarkup(formatIntegerMarkup((composition.requiredCapabilities || []).length))}</div></div>
+  </div>`;
+}
+
+function renderPairwiseSummary(rows) {
+  if (!Array.isArray(rows) || rows.length === 0) {
+    return '<div class="empty">No pairwise comparison summary is available.</div>';
+  }
+
+  return `<div class="key-list">
+${rows.map((entry) => `<div class="key-row"><div><strong>${escapeHtmlMarkup(entry.leftModel)} vs ${escapeHtmlMarkup(entry.rightModel)}</strong><div class="muted">${escapeHtmlMarkup(String(entry.comparedTasks))} tasks compared, ${escapeHtmlMarkup(String(entry.ties))} ties</div></div><div class="key-row-value">${escapeHtmlMarkup(String(entry.leftWins))}-${escapeHtmlMarkup(String(entry.rightWins))}</div></div>`).join('\n')}
+  </div>`;
+}
+
+function renderGroupedSummary(groups, key) {
+  if (!Array.isArray(groups) || groups.length === 0) {
+    return '<div class="empty">No grouped summary is available.</div>';
+  }
+
+  return `<div class="key-list">
+${groups.map((group) => `<div class="key-row"><div><strong>${escapeHtmlMarkup(group[key])}</strong><div class="muted">${escapeHtmlMarkup(formatIntegerMarkup(group.taskCount))} tasks</div></div><div>${group.models.map((entry) => `<div class="key-row-value">${escapeHtmlMarkup(entry.model)}: ${escapeHtmlMarkup(formatScoreMarkup(entry.averageCompositeScore))} comp | ${escapeHtmlMarkup(formatPercentMarkup(entry.averageSuccessRate))} success</div>`).join('')}</div></div>`).join('\n')}
+  </div>`;
+}
+
+function renderTokenSummary(rows) {
+  if (!Array.isArray(rows) || rows.length === 0) {
+    return '<div class="empty">No token summary is available.</div>';
+  }
+
+  return `<div class="table-wrap"><table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Input</th>
+        <th>Output</th>
+        <th>Reasoning</th>
+        <th>Cache Read</th>
+        <th>Cache Write</th>
+      </tr>
+    </thead>
+    <tbody>
+${rows.map((entry) => `      <tr>
+        <td>${escapeHtmlMarkup(entry.model)}</td>
+        <td>${escapeHtmlMarkup(formatIntegerMarkup(entry.inputTokens))}</td>
+        <td>${escapeHtmlMarkup(formatIntegerMarkup(entry.outputTokens))}</td>
+        <td>${escapeHtmlMarkup(formatIntegerMarkup(entry.reasoningTokens))}</td>
+        <td>${escapeHtmlMarkup(formatIntegerMarkup(entry.cacheReadTokens))}</td>
+        <td>${escapeHtmlMarkup(formatIntegerMarkup(entry.cacheWriteTokens))}</td>
+      </tr>`).join('\n')}
+    </tbody>
+  </table></div>`;
+}
+
+function renderTaskMatrix(data) {
+  const { models, tasks, matrix } = buildTaskMatrix({
+    modelSummary: data.modelSummary,
+    taskSummary: data.taskSummary,
+    taskCatalog: data.taskCatalog,
+  });
+  if (!models.length || !tasks.length) {
+    return '<div class="empty">No task comparison matrix is available for this publication.</div>';
+  }
+
+  const columns = models.length + 1;
+  const cells = [];
+  cells.push(`<div class="matrix-cell matrix-head mono">Task</div>`);
+  for (const model of models) {
+    cells.push(`<div class="matrix-cell matrix-head"><div>${escapeHtmlMarkup(model.model)}</div><div class="matrix-metric">${escapeHtmlMarkup(formatScoreMarkup(model.compositeScore))} composite | ${escapeHtmlMarkup(formatPercentMarkup(model.successRate))} success</div></div>`);
+  }
+
+  for (const task of tasks) {
+    cells.push(`<div class="matrix-cell matrix-task"><div><strong>${escapeHtmlMarkup(task.name || task.id)}</strong></div><div class="matrix-metric">${escapeHtmlMarkup(task.id)}${task.difficulty ? ` | ${escapeHtmlMarkup(task.difficulty)}` : ''}</div></div>`);
+    for (const model of models) {
+      const row = matrix.get(task.id)?.get(model.model) || null;
+      if (!row) {
+        cells.push('<div class="matrix-cell"><div class="matrix-score">n/a</div><div class="matrix-metric">No published run</div></div>');
+        continue;
+      }
+      cells.push(`<div class="matrix-cell">
+        <div class="matrix-score">${escapeHtmlMarkup(formatScoreMarkup(row.compositeScore))}</div>
+        <div class="matrix-metric">${escapeHtmlMarkup(formatPercentMarkup(row.successRate))} success</div>
+        <div class="matrix-metric">${escapeHtmlMarkup(formatDecimalMarkup(row.averageRequestUnits, 2))} req | ${escapeHtmlMarkup(formatCurrencyMarkup(row.averageCostUsd))}</div>
+        <div class="matrix-metric">${escapeHtmlMarkup(formatDurationMarkup(row.averageWallTimeMs))} | ${row.eligible ? 'scored' : 'unscored'}</div>
+      </div>`);
+    }
+  }
+
+  return `<div class="matrix-wrap"><div class="task-matrix" style="grid-template-columns: minmax(240px, 1.2fr) repeat(${columns - 1}, minmax(220px, 1fr));">${cells.join('')}</div></div>`;
+}
+
+function renderBenchmarkedModels(models) {
+  if (!Array.isArray(models) || models.length === 0) {
+    return '<div class="empty">No benchmarked model metadata is available for this publication.</div>';
+  }
+
+  return `<div class="model-cards">
+${models.map((model) => `      <article class="model-card">
+        <div class="micro muted">Benchmarked model</div>
+        <h3>${escapeHtmlMarkup(model.model)}</h3>
+        <div class="model-meta">
+          ${renderModelMetaPill(model.family || 'unknown family')}
+          ${model.priceTier ? renderModelMetaPill(`${model.priceTier} price tier`) : ''}
+          ${model.devTier ? renderModelMetaPill(model.devTier) : ''}
+          ${model.recommendedUse ? renderModelMetaPill(model.recommendedUse) : ''}
+          ${model.headlessFriendly === true ? renderModelMetaPill('headless friendly') : ''}
+          ${model.headlessFriendly === false ? renderModelMetaPill('headless caution') : ''}
+        </div>
+        <div class="stat-list">
+          ${renderStatRow('Composite', formatScoreMarkup(model.compositeScore))}
+          ${renderStatRow('Success', formatPercentMarkup(model.successRate))}
+          ${renderStatRow('Requests', formatIntegerMarkup(model.totalRequestUnits))}
+          ${renderStatRow('Wall time', formatDurationMarkup(model.totalWallTimeMs))}
+          ${renderStatRow('Total cost', formatCurrencyMarkup(model.totalCostUsd))}
+          ${renderStatRow('Catalog speed', model.speedTokensPerSecond != null ? `${escapeHtmlMarkup(formatIntegerMarkup(model.speedTokensPerSecond))} tok/s` : 'n/a')}
+          ${renderStatRow('Catalog blended price', formatCurrencyMarkupPerMillion(model.blendedPricePer1mTokensUsd))}
+          ${renderStatRow('Intelligence', model.intelligenceScore != null ? escapeHtmlMarkup(String(model.intelligenceScore)) : 'n/a')}
+          ${renderStatRow('Agentic', model.agenticScore != null ? escapeHtmlMarkup(String(model.agenticScore)) : 'n/a')}
+          ${renderStatRow('Benchmark support', escapeHtmlMarkup(model.unattendedBenchmarkRuns || 'unknown'))}
+        </div>
+        ${model.pricingNotes ? `<p class="panel-copy" style="margin-top:14px;">${escapeHtmlMarkup(model.pricingNotes)}</p>` : ''}
+        ${model.stabilityNotes ? `<p class="panel-copy" style="margin-top:10px;">${escapeHtmlMarkup(model.stabilityNotes)}</p>` : ''}
+        <div class="card-actions">
+          ${model.sourceUrl ? `<a class="card-link" href="${escapeAttributeMarkup(model.sourceUrl)}">Catalog source</a>` : ''}
+        </div>
+      </article>`).join('\n')}
+    </div>`;
+}
+
+function renderModelMetaPill(label) {
+  return `<span class="pill">${escapeHtmlMarkup(label)}</span>`;
+}
+
+function renderStatRow(label, value) {
+  return `<div class="stat-row"><span>${escapeHtmlMarkup(label)}</span><strong>${value}</strong></div>`;
+}
+
+function formatCurrencyMarkupPerMillion(value) {
+  if (!Number.isFinite(value)) {
+    return 'n/a';
+  }
+  return `${escapeHtmlMarkup(formatCurrencyMarkup(value))} / 1M tok`;
 }
 
 function escapeHtmlMarkup(value) {
