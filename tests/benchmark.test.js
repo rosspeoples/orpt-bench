@@ -226,10 +226,10 @@ test('runtime config derives process timeout from selected task budgets', async 
     const runtime = await loadRuntimeConfig()
     assert.equal(runtime.taskBudgetCatalog.length, 1)
     assert.equal(runtime.taskBudgetCatalog[0].id, '05-log-audit-script')
-    assert.equal(runtime.taskBudgetCatalog[0].timeoutSeconds, 300)
-    assert.equal(runtime.derivedRunTimeoutSeconds, 301)
-    assert.equal(runtime.processTimeoutSeconds, 301)
-    assert.equal(runtime.taskTimeoutSeconds, 300)
+    assert.equal(runtime.taskBudgetCatalog[0].timeoutSeconds, 60)
+    assert.equal(runtime.derivedRunTimeoutSeconds, 61)
+    assert.equal(runtime.processTimeoutSeconds, 61)
+    assert.equal(runtime.taskTimeoutSeconds, 60)
   } finally {
     if (previousTaskGlob == null) delete process.env.BENCHMARK_TASK_GLOB
     else process.env.BENCHMARK_TASK_GLOB = previousTaskGlob

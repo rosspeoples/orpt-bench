@@ -6,5 +6,5 @@
   "requiredCapabilities": ["unattendedBenchmarkRuns"],
   "prompt": "You are working in a benchmark fixture. Implement the shell script so it audits the provided log directory and prints a single JSON object with total_lines, error_lines, warning_lines, and unique_services. Keep the script POSIX shell compatible where practical, make it executable, and do not change fixture logs. Success means the verifier script passes.",
   "verifier": "python3 verify.py",
-  "timeoutSeconds": 300
+  "timeoutSeconds": 60
 }

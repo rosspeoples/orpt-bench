@@ -176,6 +176,7 @@ const siteData = {
   categorySummary: buildCategorySummary(publicationContext.publishedRun),
   difficultySummary: buildDifficultySummary(publicationContext.publishedRun),
   tokenSummary: buildTokenSummary(publicationContext.publishedRun),
+  smokeRuns: buildSmokeRuns(allRunEntries),
   charts: publishedCharts.map(({ data, layout, ...chart }) => chart),
   history: publicationContext.history.map(({ fileName, report }) => summarizeHistoricalRun(fileName, report, publicationContext.latestIncludedRunId)),
 };
@@ -248,6 +249,13 @@ function buildPublicationContext(allEntries, latestReport) {
   };
 }
 
+function buildSmokeRuns(allEntries) {
+  return allEntries
+    .filter(({ report }) => isSmokeBenchmarkRun(report))
+    .map(({ fileName, report }) => summarizeSmokeRun(fileName, report))
+    .sort((left, right) => Date.parse(right.completedAt || right.startedAt || 0) - Date.parse(left.completedAt || left.startedAt || 0));
+}
+
 function inferTaskCount(report) {
   return report?.run?.taskCount || report?.taskCatalog?.length || new Set((report?.results || []).map((entry) => entry.taskId)).size || 0;
 }
@@ -281,6 +289,47 @@ function isPublishableRun(report, fullTaskCount) {
   }
 
   return true;
+}
+
+function isSmokeBenchmarkRun(report) {
+  const benchmarkCycle = report?.run?.benchmarkCycle || null;
+  if (benchmarkCycle === 'candidate_smoke') return true;
+
+  const taskPatterns = Array.isArray(report?.run?.taskPatterns) ? report.run.taskPatterns.filter(Boolean) : [];
+  if (taskPatterns.length === 1 && taskPatterns[0] === '05*') return true;
+
+  const taskIds = Array.isArray(report?.taskCatalog) ? report.taskCatalog.map((task) => task.id).filter(Boolean) : [];
+  return taskIds.length === 1 && taskIds[0].startsWith('05-');
+}
+
+function summarizeSmokeRun(fileName, report) {
+  const resultRows = Array.isArray(report?.results) ? report.results : [];
+  return {
+    fileName,
+    id: report?.run?.id || fileName || null,
+    startedAt: report?.run?.startedAt || null,
+    completedAt: report?.run?.completedAt || null,
+    benchmarkCycle: report?.run?.benchmarkCycle || null,
+    taskCount: report?.run?.taskCount || report?.taskCatalog?.length || 0,
+    taskIds: (report?.taskCatalog || []).map((task) => task.id),
+    models: (report?.run?.models || []).map((model) => {
+      const rows = resultRows.filter((entry) => entry.model === model);
+      const successes = rows.filter((entry) => entry.success).length;
+      const dnfs = rows.filter((entry) => entry.dnf).length;
+      return {
+        model,
+        successes,
+        dnfs,
+        runs: rows.length,
+        successRate: rows.length ? successes / rows.length : 0,
+        totalCostUsd: sum(rows.map((entry) => entry.costUsd || 0)),
+        totalWallTimeMs: sum(rows.map((entry) => entry.durationMs || 0)),
+        totalRequestUnits: sum(rows.map((entry) => entry.requestUnits || 0)),
+        failed: rows.length > 0 && successes === 0,
+        lastError: rows.find((entry) => entry.error?.message)?.error?.message || rows.find((entry) => entry.verifier?.stderr)?.verifier?.stderr || null,
+      };
+    }),
+  };
 }
 
 function runContainsSyntheticTimeoutRows(report) {
@@ -1713,6 +1762,7 @@ function renderHtml(data) {
       <div class="nav">
         <a href="#charts">Charts</a>
         <a href="#insights">Insights</a>
+        <a href="#smoke">Smoke</a>
         <a href="#comparison">Comparison</a>
         <a href="#matrix">Matrix</a>
         <a href="#catalog">Catalog</a>
@@ -1797,6 +1847,20 @@ function renderHtml(data) {
         <h3>Token and execution profile</h3>
         <p class="panel-copy">Observed token mix across the suite helps explain whether a model is spending heavily on reasoning, cached context, or generation.</p>
         ${renderTokenSummary(data.tokenSummary || [])}
+      </div>
+    </section>
+    <section class="section" id="smoke">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Smoke Failures</div>
+          <p class="panel-copy">Failed smoke runs are useful evidence. They stay visible here so bad cheap models are measured once, published honestly, and then kept out of recurring unattended loops.</p>
+        </div>
+      </div>
+      <div class="panel list-panel">
+        <div class="micro muted">Published control-task evidence</div>
+        <h3>Candidate smoke outcomes</h3>
+        <p class="panel-copy">These runs are not mixed into the main full-run leaderboard, but they are intentionally published for transparency.</p>
+        ${renderSmokeRuns(data.smokeRuns || [])}
       </div>
     </section>
     <section class="section" id="charts">
@@ -2299,6 +2363,16 @@ ${rows.map((entry) => `      <tr>
       </tr>`).join('\n')}
     </tbody>
   </table></div>`;
+}
+
+function renderSmokeRuns(runs) {
+  if (!Array.isArray(runs) || runs.length === 0) {
+    return '<div class="empty">No smoke benchmark runs have been published yet.</div>';
+  }
+
+  return `<div class="key-list">
+${runs.map((run) => run.models.map((model) => `<div class="key-row"><div><strong>${escapeHtmlMarkup(model.model)}</strong><div class="muted">${escapeHtmlMarkup((run.taskIds || []).join(', ') || 'no task ids')} | ${escapeHtmlMarkup(run.id || 'unknown run')}</div></div><div><div class="key-row-value">${model.failed ? 'failed smoke' : 'passed smoke'}</div><div class="muted">success=${escapeHtmlMarkup(formatPercentMarkup(model.successRate))} | dnf=${escapeHtmlMarkup(formatIntegerMarkup(model.dnfs))} | cost=${escapeHtmlMarkup(formatCurrencyMarkup(model.totalCostUsd))} | wall=${escapeHtmlMarkup(formatDurationMarkup(model.totalWallTimeMs))}</div>${model.lastError ? `<div class="muted">${escapeHtmlMarkup(model.lastError)}</div>` : ''}</div></div>`).join('\n')).join('\n')}
+  </div>`;
 }
 
 function renderTaskMatrix(data) {

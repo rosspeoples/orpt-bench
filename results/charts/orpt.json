@@ -1,12 +1,8 @@
 [
   {
     "type": "bar",
-    "x": [
-      "opencode/glm-5"
-    ],
-    "y": [
-      20
-    ],
+    "x": [],
+    "y": [],
     "marker": {
       "color": "#2563eb"
     },
