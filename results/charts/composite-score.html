@@ -9,7 +9,7 @@
 <body>
   <div id="chart" style="width:100%;height:90vh"></div>
   <script>
-    const data = [{"type":"bar","x":["opencode/gpt-5.4-mini"],"y":[50],"marker":{"color":"#7c3aed"},"name":"Composite Score %"}];
+    const data = [{"type":"bar","x":["opencode/gpt-5.4","opencode/gpt-5.4-mini"],"y":[53.43,52.91],"marker":{"color":"#7c3aed"},"name":"Composite Score %"}];
     const layout = {"title":"Composite Score by Model","xaxis":{"automargin":true},"yaxis":{"title":"Composite Score %","range":[0,100]}};
     Plotly.newPlot('chart', data, layout, {responsive: true});
   </script>

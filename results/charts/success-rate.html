@@ -9,7 +9,7 @@
 <body>
   <div id="chart" style="width:100%;height:90vh"></div>
   <script>
-    const data = [{"type":"bar","x":["opencode/gpt-5.4-mini"],"y":[50],"marker":{"color":"#16a34a"},"name":"Success Rate %"}];
+    const data = [{"type":"bar","x":["opencode/gpt-5.4","opencode/gpt-5.4-mini"],"y":[60,53.33],"marker":{"color":"#16a34a"},"name":"Success Rate %"}];
     const layout = {"title":"Task Success Rate by Model","xaxis":{"automargin":true},"yaxis":{"title":"Success Rate %","range":[0,100]}};
     Plotly.newPlot('chart', data, layout, {responsive: true});
   </script>

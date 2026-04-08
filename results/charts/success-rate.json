@@ -2,10 +2,12 @@
   {
     "type": "bar",
     "x": [
+      "opencode/gpt-5.4",
       "opencode/gpt-5.4-mini"
     ],
     "y": [
-      50
+      60,
+      53.33
     ],
     "marker": {
       "color": "#16a34a"

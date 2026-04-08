@@ -12,7 +12,11 @@
     "taskPatterns": [
       "*"
     ],
-    "repeats": 1
+    "repeats": 1,
+    "publishedView": true,
+    "sourceRunIds": [
+      "2026-04-07T23-14-03-414Z"
+    ]
   },
   "results": [
     {
