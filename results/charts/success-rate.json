@@ -6,16 +6,31 @@
       "type": "bar",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash",
+        "opencode/nemotron-3-super-free",
+        "opencode/minimax-m2.5-free"
       ],
       "y": [
         60,
-        53.33
+        53.33,
+        6.67,
+        0,
+        0,
+        0,
+        0
       ],
       "marker": {
         "color": [
           "#86a8ff",
-          "#f472b6"
+          "#f472b6",
+          "#73f0c5",
+          "#c084fc",
+          "#c084fc",
+          "#fb7185",
+          "#38bdf8"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -24,7 +39,12 @@
       },
       "text": [
         60,
-        53.33
+        53.33,
+        6.67,
+        0,
+        0,
+        0,
+        0
       ],
       "textposition": "auto",
       "textfont": {
@@ -33,7 +53,12 @@
       },
       "hovertemplate": [
         "opencode/gpt-5.4<br>Success rate (%): 60<br>0.534 composite | 9 solved<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Success rate (%): 53.33<br>0.529 composite | 8 solved<extra></extra>"
+        "opencode/gpt-5.4-mini<br>Success rate (%): 53.33<br>0.529 composite | 8 solved<extra></extra>",
+        "opencode/glm-5<br>Success rate (%): 6.67<br>0.067 composite | 1 solved<extra></extra>",
+        "opencode/gemini-3.1-pro<br>Success rate (%): 0<br>0.0 composite | 0 solved<extra></extra>",
+        "opencode/gemini-3-flash<br>Success rate (%): 0<br>0.0 composite | 0 solved<extra></extra>",
+        "opencode/nemotron-3-super-free<br>Success rate (%): 0<br>0.0 composite | 0 solved<extra></extra>",
+        "opencode/minimax-m2.5-free<br>Success rate (%): 0<br>0.0 composite | 0 solved<extra></extra>"
       ]
     }
   ],

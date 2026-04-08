@@ -7,11 +7,21 @@
       "name": "Input",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash",
+        "opencode/nemotron-3-super-free",
+        "opencode/minimax-m2.5-free"
       ],
       "y": [
         6583,
-        8275
+        8275,
+        1211,
+        0,
+        0,
+        0,
+        0
       ],
       "marker": {
         "color": "#2dd4bf"
@@ -22,11 +32,21 @@
       "name": "Output",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash",
+        "opencode/nemotron-3-super-free",
+        "opencode/minimax-m2.5-free"
       ],
       "y": [
         3288,
-        1852
+        1852,
+        103,
+        0,
+        0,
+        0,
+        0
       ],
       "marker": {
         "color": "#60a5fa"
@@ -37,11 +57,21 @@
       "name": "Reasoning",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash",
+        "opencode/nemotron-3-super-free",
+        "opencode/minimax-m2.5-free"
       ],
       "y": [
         669,
-        2516
+        2516,
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "marker": {
         "color": "#c084fc"
@@ -52,11 +82,21 @@
       "name": "Cache read",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash",
+        "opencode/nemotron-3-super-free",
+        "opencode/minimax-m2.5-free"
       ],
       "y": [
         281856,
-        261120
+        261120,
+        14631,
+        0,
+        0,
+        0,
+        0
       ],
       "marker": {
         "color": "#fbbf24"
@@ -67,9 +107,19 @@
       "name": "Cache write",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash",
+        "opencode/nemotron-3-super-free",
+        "opencode/minimax-m2.5-free"
       ],
       "y": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0
       ],

@@ -7,15 +7,30 @@
       "mode": "markers+text",
       "x": [
         0.1463,
-        0.0454
+        0.0454,
+        0.0045,
+        0,
+        0,
+        0,
+        0
       ],
       "y": [
         0.534,
-        0.529
+        0.529,
+        0.067,
+        0,
+        0,
+        0,
+        0
       ],
       "text": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash",
+        "opencode/nemotron-3-super-free",
+        "opencode/minimax-m2.5-free"
       ],
       "textposition": "top center",
       "textfont": {
@@ -25,11 +40,21 @@
       "marker": {
         "size": [
           27,
-          26
+          26,
+          17,
+          16,
+          16,
+          16,
+          16
         ],
         "color": [
           "#86a8ff",
-          "#f472b6"
+          "#f472b6",
+          "#73f0c5",
+          "#c084fc",
+          "#c084fc",
+          "#fb7185",
+          "#38bdf8"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -48,6 +73,36 @@
           "11.00",
           "156",
           "14m 10s"
+        ],
+        [
+          "7%",
+          "20.00",
+          "25",
+          "1m 47s"
+        ],
+        [
+          "0%",
+          "n/a",
+          "8",
+          "1m 47s"
+        ],
+        [
+          "0%",
+          "n/a",
+          "3",
+          "1m 47s"
+        ],
+        [
+          "0%",
+          "n/a",
+          "8",
+          "1m 47s"
+        ],
+        [
+          "0%",
+          "n/a",
+          "8",
+          "1m 47s"
         ]
       ],
       "hovertemplate": "%{text}<br>Total cost: $%{x:.4f}<br>Composite: %{y:.3f}<br>Success: %{customdata[0]}<br>ORPT: %{customdata[1]}<br>Requests: %{customdata[2]}<br>Wall time: %{customdata[3]}<extra></extra>"

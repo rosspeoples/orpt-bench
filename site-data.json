@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T02:06:34.058Z",
+  "generatedAt": "2026-04-08T02:43:05.832Z",
   "repository": {
     "url": "https://github.com/rosspeoples/orpt-bench",
     "pagesUrl": "https://rosspeoples.github.io/orpt-bench/",
@@ -17,19 +17,19 @@
     "sourceUrl": "https://github.com/rosspeoples/orpt-bench"
   },
   "latestRun": {
-    "id": "2026-04-07T23-14-03-414Z",
-    "startedAt": "2026-04-07T23:14:03.415Z",
-    "completedAt": "2026-04-07T23:36:23.749Z",
+    "id": "2026-04-08T02-26-48-652Z",
+    "startedAt": "2026-04-08T02:26:48.653Z",
+    "completedAt": "2026-04-08T02:36:45.349Z",
     "benchmarkCycle": null,
     "taskCount": 15,
     "taskPatterns": [
       "*"
     ],
     "repeats": 1,
-    "modelCount": 2,
-    "totalRuns": 30,
-    "successfulRuns": 17,
-    "comparableModels": 2,
+    "modelCount": 7,
+    "totalRuns": 105,
+    "successfulRuns": 18,
+    "comparableModels": 4,
     "topModel": {
       "model": "opencode/gpt-5.4",
       "provider": "opencode",
@@ -61,37 +61,37 @@
     }
   },
   "latestRawRun": {
-    "id": "2026-04-07T23-14-03-414Z",
-    "startedAt": "2026-04-07T23:14:03.415Z",
-    "completedAt": "2026-04-07T23:36:23.749Z",
+    "id": "2026-04-08T02-26-48-652Z",
+    "startedAt": "2026-04-08T02:26:48.653Z",
+    "completedAt": "2026-04-08T02:36:45.349Z",
     "benchmarkCycle": null,
     "taskCount": 15,
     "taskPatterns": [
       "*"
     ],
     "repeats": 1,
-    "modelCount": 2,
-    "totalRuns": 30,
-    "successfulRuns": 17,
+    "modelCount": 5,
+    "totalRuns": 75,
+    "successfulRuns": 1,
     "comparableModels": 2,
     "topModel": {
-      "model": "opencode/gpt-5.4",
+      "model": "opencode/glm-5",
       "provider": "opencode",
       "runs": 15,
-      "successfulTasks": 9,
-      "failedTasks": 6,
-      "successRate": 0.6,
-      "score": 0.6,
-      "valueScore": 0.38116466666666665,
-      "compositeScore": 0.5343493333333333,
-      "orpt": 13.11111111111111,
-      "totalRequestCount": 197,
-      "totalRequestUnits": 197,
-      "totalWallTimeMs": 1338550,
-      "totalCostUsd": 0.1462765,
-      "averageDurationMs": 83112.33333333333,
-      "medianSteps": 14,
-      "averageCostUsd": 0.009029833333333332,
+      "successfulTasks": 1,
+      "failedTasks": 14,
+      "successRate": 0.06666666666666667,
+      "score": 0.06666666666666667,
+      "valueScore": 0.06666666666666667,
+      "compositeScore": 0.06666666666666667,
+      "orpt": 20,
+      "totalRequestCount": 25,
+      "totalRequestUnits": 25,
+      "totalWallTimeMs": 106647,
+      "totalCostUsd": 0.0044668,
+      "averageDurationMs": 83299,
+      "medianSteps": 21,
+      "averageCostUsd": 0.0044668,
       "eligible": true,
       "comparable": true,
       "comparabilityNote": null,
@@ -295,9 +295,375 @@
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 15,
+      "successfulTasks": 1,
+      "failedTasks": 14,
+      "successRate": 0.06666666666666667,
+      "score": 0.06666666666666667,
+      "valueScore": 0.06666666666666667,
+      "compositeScore": 0.06666666666666667,
+      "orpt": 20,
+      "totalRequestCount": 25,
+      "totalRequestUnits": 25,
+      "totalWallTimeMs": 106647,
+      "totalCostUsd": 0.0044668,
+      "averageDurationMs": 83299,
+      "medianSteps": 21,
+      "averageCostUsd": 0.0044668,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 15,
+      "successfulTasks": 0,
+      "failedTasks": 15,
+      "successRate": 0,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "orpt": null,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "totalWallTimeMs": 106715,
+      "totalCostUsd": 0,
+      "averageDurationMs": 0,
+      "medianSteps": null,
+      "averageCostUsd": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": null
+    },
+    {
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 15,
+      "successfulTasks": 0,
+      "failedTasks": 15,
+      "successRate": 0,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "orpt": null,
+      "totalRequestCount": 3,
+      "totalRequestUnits": 3,
+      "totalWallTimeMs": 106764,
+      "totalCostUsd": 0,
+      "averageDurationMs": 0,
+      "medianSteps": null,
+      "averageCostUsd": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": null
+    },
+    {
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 15,
+      "successfulTasks": 0,
+      "failedTasks": 15,
+      "successRate": 0,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "orpt": null,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "totalWallTimeMs": 106714,
+      "totalCostUsd": 0,
+      "averageDurationMs": 0,
+      "medianSteps": null,
+      "averageCostUsd": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": null
+    },
+    {
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 15,
+      "successfulTasks": 0,
+      "failedTasks": 15,
+      "successRate": 0,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "orpt": null,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "totalWallTimeMs": 106710,
+      "totalCostUsd": 0,
+      "averageDurationMs": 0,
+      "medianSteps": null,
+      "averageCostUsd": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": null
     }
   ],
   "taskSummary": [
+    {
+      "taskId": "01-iac-kubernetes-rollout",
+      "taskName": "Kubernetes rollout repair",
+      "category": "iac",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 1,
+      "failures": 0,
+      "score": 1,
+      "valueScore": 1,
+      "compositeScore": 1,
+      "successRate": 1,
+      "totalRequestCount": 20,
+      "totalRequestUnits": 20,
+      "averageRequestUnits": 20,
+      "totalWallTimeMs": 83299,
+      "averageWallTimeMs": 83299,
+      "totalCostUsd": 0.0044668,
+      "averageCostUsd": 0.0044668,
+      "averageSteps": 21,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
     {
       "taskId": "03-ansible-nginx-role",
       "taskName": "Ansible nginx role completion",
@@ -846,6 +1212,77 @@
       "taskId": "01-iac-kubernetes-rollout",
       "taskName": "Kubernetes rollout repair",
       "category": "iac",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 3,
+      "totalRequestUnits": 3,
+      "averageRequestUnits": 3,
+      "totalWallTimeMs": 106764,
+      "averageWallTimeMs": 106764,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 4,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "01-iac-kubernetes-rollout",
+      "taskName": "Kubernetes rollout repair",
+      "category": "iac",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "averageRequestUnits": 8,
+      "totalWallTimeMs": 106715,
+      "averageWallTimeMs": 106715,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 9,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "01-iac-kubernetes-rollout",
+      "taskName": "Kubernetes rollout repair",
+      "category": "iac",
       "model": "opencode/gpt-5.4",
       "provider": "opencode",
       "runs": 1,
@@ -899,6 +1336,187 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "supported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "01-iac-kubernetes-rollout",
+      "taskName": "Kubernetes rollout repair",
+      "category": "iac",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "averageRequestUnits": 8,
+      "totalWallTimeMs": 106710,
+      "averageWallTimeMs": 106710,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 9,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "01-iac-kubernetes-rollout",
+      "taskName": "Kubernetes rollout repair",
+      "category": "iac",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "averageRequestUnits": 8,
+      "totalWallTimeMs": 106714,
+      "averageWallTimeMs": 106714,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 9,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "02-terraform-static-site",
+      "taskName": "Terraform static site repair",
+      "category": "terraform",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "02-terraform-static-site",
+      "taskName": "Terraform static site repair",
+      "category": "terraform",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "02-terraform-static-site",
+      "taskName": "Terraform static site repair",
+      "category": "terraform",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 5,
+      "totalRequestUnits": 5,
+      "averageRequestUnits": 5,
+      "totalWallTimeMs": 23348,
+      "averageWallTimeMs": 23348,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 5,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ],
@@ -971,6 +1589,368 @@
       "requestAccountingSource": "proxy-call-count"
     },
     {
+      "taskId": "02-terraform-static-site",
+      "taskName": "Terraform static site repair",
+      "category": "terraform",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "02-terraform-static-site",
+      "taskName": "Terraform static site repair",
+      "category": "terraform",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "03-ansible-nginx-role",
+      "taskName": "Ansible nginx role completion",
+      "category": "ansible",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "03-ansible-nginx-role",
+      "taskName": "Ansible nginx role completion",
+      "category": "ansible",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "03-ansible-nginx-role",
+      "taskName": "Ansible nginx role completion",
+      "category": "ansible",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "03-ansible-nginx-role",
+      "taskName": "Ansible nginx role completion",
+      "category": "ansible",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "03-ansible-nginx-role",
+      "taskName": "Ansible nginx role completion",
+      "category": "ansible",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "04-docker-compose-observability",
+      "taskName": "Docker Compose observability fix",
+      "category": "docker-compose",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "04-docker-compose-observability",
+      "taskName": "Docker Compose observability fix",
+      "category": "docker-compose",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "04-docker-compose-observability",
+      "taskName": "Docker Compose observability fix",
+      "category": "docker-compose",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
       "taskId": "04-docker-compose-observability",
       "taskName": "Docker Compose observability fix",
       "category": "docker-compose",
@@ -1035,6 +2015,368 @@
       "requestAccountingSource": "proxy-call-count"
     },
     {
+      "taskId": "04-docker-compose-observability",
+      "taskName": "Docker Compose observability fix",
+      "category": "docker-compose",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "04-docker-compose-observability",
+      "taskName": "Docker Compose observability fix",
+      "category": "docker-compose",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "05-log-audit-script",
+      "taskName": "Log audit shell script",
+      "category": "scripting",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "06-kubernetes-oidc-rbac-repair",
+      "taskName": "Kubernetes OIDC RBAC repair",
+      "category": "kubernetes",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "06-kubernetes-oidc-rbac-repair",
+      "taskName": "Kubernetes OIDC RBAC repair",
+      "category": "kubernetes",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "06-kubernetes-oidc-rbac-repair",
+      "taskName": "Kubernetes OIDC RBAC repair",
+      "category": "kubernetes",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
       "taskId": "06-kubernetes-oidc-rbac-repair",
       "taskName": "Kubernetes OIDC RBAC repair",
       "category": "kubernetes",
@@ -1065,6 +2407,730 @@
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "06-kubernetes-oidc-rbac-repair",
+      "taskName": "Kubernetes OIDC RBAC repair",
+      "category": "kubernetes",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "06-kubernetes-oidc-rbac-repair",
+      "taskName": "Kubernetes OIDC RBAC repair",
+      "category": "kubernetes",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "07-cnpg-restore-manifest-repair",
+      "taskName": "CNPG restore manifest repair",
+      "category": "kubernetes",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "07-cnpg-restore-manifest-repair",
+      "taskName": "CNPG restore manifest repair",
+      "category": "kubernetes",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "07-cnpg-restore-manifest-repair",
+      "taskName": "CNPG restore manifest repair",
+      "category": "kubernetes",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "07-cnpg-restore-manifest-repair",
+      "taskName": "CNPG restore manifest repair",
+      "category": "kubernetes",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "07-cnpg-restore-manifest-repair",
+      "taskName": "CNPG restore manifest repair",
+      "category": "kubernetes",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "08-workspace-transplant-bundle-repair",
+      "taskName": "Workspace transplant bundle repair",
+      "category": "scripting",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "08-workspace-transplant-bundle-repair",
+      "taskName": "Workspace transplant bundle repair",
+      "category": "scripting",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "08-workspace-transplant-bundle-repair",
+      "taskName": "Workspace transplant bundle repair",
+      "category": "scripting",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "08-workspace-transplant-bundle-repair",
+      "taskName": "Workspace transplant bundle repair",
+      "category": "scripting",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "08-workspace-transplant-bundle-repair",
+      "taskName": "Workspace transplant bundle repair",
+      "category": "scripting",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "09-gitops-workspace-render-validation",
+      "taskName": "GitOps workspace render validation",
+      "category": "gitops",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "09-gitops-workspace-render-validation",
+      "taskName": "GitOps workspace render validation",
+      "category": "gitops",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "09-gitops-workspace-render-validation",
+      "taskName": "GitOps workspace render validation",
+      "category": "gitops",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "09-gitops-workspace-render-validation",
+      "taskName": "GitOps workspace render validation",
+      "category": "gitops",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "09-gitops-workspace-render-validation",
+      "taskName": "GitOps workspace render validation",
+      "category": "gitops",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "10-bootstrap-phase-validation-repair",
+      "taskName": "Bootstrap phase validation repair",
+      "category": "platform-bootstrap",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "10-bootstrap-phase-validation-repair",
+      "taskName": "Bootstrap phase validation repair",
+      "category": "platform-bootstrap",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "10-bootstrap-phase-validation-repair",
+      "taskName": "Bootstrap phase validation repair",
+      "category": "platform-bootstrap",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
     },
     {
       "taskId": "10-bootstrap-phase-validation-repair",
@@ -1131,6 +3197,368 @@
       "requestAccountingSource": "proxy-call-count"
     },
     {
+      "taskId": "10-bootstrap-phase-validation-repair",
+      "taskName": "Bootstrap phase validation repair",
+      "category": "platform-bootstrap",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "10-bootstrap-phase-validation-repair",
+      "taskName": "Bootstrap phase validation repair",
+      "category": "platform-bootstrap",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "11-mcp-openbao-contract-repair",
+      "taskName": "MCP OpenBao contract repair",
+      "category": "gitops",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "11-mcp-openbao-contract-repair",
+      "taskName": "MCP OpenBao contract repair",
+      "category": "gitops",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "11-mcp-openbao-contract-repair",
+      "taskName": "MCP OpenBao contract repair",
+      "category": "gitops",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "11-mcp-openbao-contract-repair",
+      "taskName": "MCP OpenBao contract repair",
+      "category": "gitops",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "11-mcp-openbao-contract-repair",
+      "taskName": "MCP OpenBao contract repair",
+      "category": "gitops",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "12-pre-argocd-bootstrap-sequencing",
+      "taskName": "Pre-ArgoCD bootstrap sequencing",
+      "category": "platform-bootstrap",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "12-pre-argocd-bootstrap-sequencing",
+      "taskName": "Pre-ArgoCD bootstrap sequencing",
+      "category": "platform-bootstrap",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "12-pre-argocd-bootstrap-sequencing",
+      "taskName": "Pre-ArgoCD bootstrap sequencing",
+      "category": "platform-bootstrap",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
       "taskId": "12-pre-argocd-bootstrap-sequencing",
       "taskName": "Pre-ArgoCD bootstrap sequencing",
       "category": "platform-bootstrap",
@@ -1195,6 +3623,549 @@
       "requestAccountingSource": "proxy-call-count"
     },
     {
+      "taskId": "12-pre-argocd-bootstrap-sequencing",
+      "taskName": "Pre-ArgoCD bootstrap sequencing",
+      "category": "platform-bootstrap",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "12-pre-argocd-bootstrap-sequencing",
+      "taskName": "Pre-ArgoCD bootstrap sequencing",
+      "category": "platform-bootstrap",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "13-wildcard-tls-route-coverage",
+      "taskName": "Wildcard TLS route coverage",
+      "category": "gitops",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "13-wildcard-tls-route-coverage",
+      "taskName": "Wildcard TLS route coverage",
+      "category": "gitops",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "13-wildcard-tls-route-coverage",
+      "taskName": "Wildcard TLS route coverage",
+      "category": "gitops",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "13-wildcard-tls-route-coverage",
+      "taskName": "Wildcard TLS route coverage",
+      "category": "gitops",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "13-wildcard-tls-route-coverage",
+      "taskName": "Wildcard TLS route coverage",
+      "category": "gitops",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "14-build-workspace-plane-convergence",
+      "taskName": "Build workspace plane convergence",
+      "category": "gitops",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "14-build-workspace-plane-convergence",
+      "taskName": "Build workspace plane convergence",
+      "category": "gitops",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "14-build-workspace-plane-convergence",
+      "taskName": "Build workspace plane convergence",
+      "category": "gitops",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "14-build-workspace-plane-convergence",
+      "taskName": "Build workspace plane convergence",
+      "category": "gitops",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "14-build-workspace-plane-convergence",
+      "taskName": "Build workspace plane convergence",
+      "category": "gitops",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "15-workspace-runtime-access-convergence",
+      "taskName": "Workspace runtime access convergence",
+      "category": "gitops",
+      "model": "opencode/gemini-3-flash",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "15-workspace-runtime-access-convergence",
+      "taskName": "Workspace runtime access convergence",
+      "category": "gitops",
+      "model": "opencode/gemini-3.1-pro",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "15-workspace-runtime-access-convergence",
+      "taskName": "Workspace runtime access convergence",
+      "category": "gitops",
+      "model": "opencode/glm-5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
       "taskId": "15-workspace-runtime-access-convergence",
       "taskName": "Workspace runtime access convergence",
       "category": "gitops",
@@ -1257,6 +4228,84 @@
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "15-workspace-runtime-access-convergence",
+      "taskName": "Workspace runtime access convergence",
+      "category": "gitops",
+      "model": "opencode/minimax-m2.5-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
+    },
+    {
+      "taskId": "15-workspace-runtime-access-convergence",
+      "taskName": "Workspace runtime access convergence",
+      "category": "gitops",
+      "model": "opencode/nemotron-3-super-free",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 0,
+      "averageWallTimeMs": 0,
+      "totalCostUsd": 0,
+      "averageCostUsd": 0,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: limited",
+      "unattendedBenchmarkRuns": "limited",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "limited"
+        }
+      ],
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ],
+      "requestAccountingSource": "synthetic-timeout"
     }
   ],
   "benchmarkedModels": [
@@ -1303,6 +4352,122 @@
       "stabilityNotes": "Observed to complete ORPT-Bench scripting smoke runs cleanly and is the current preferred headless dev baseline.",
       "unattendedBenchmarkRuns": "supported",
       "knownLimitations": []
+    },
+    {
+      "model": "opencode/glm-5",
+      "compositeScore": 0.06666666666666667,
+      "successRate": 0.06666666666666667,
+      "totalCostUsd": 0.0044668,
+      "totalWallTimeMs": 106647,
+      "totalRequestUnits": 25,
+      "priceTier": "low",
+      "devTier": "standard",
+      "recommendedUse": "balanced-general",
+      "family": "z-ai",
+      "intelligenceScore": 50,
+      "agenticScore": null,
+      "speedTokensPerSecond": 70,
+      "blendedPricePer1mTokensUsd": 1.6,
+      "sourceUrl": "https://artificialanalysis.ai/models/glm-5",
+      "pricingNotes": "OpenRouter reference blend for z-ai/glm-5 is 1.115 USD per 1M tokens using a 3:1 input:output mix.",
+      "headlessFriendly": null,
+      "stabilityNotes": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "knownLimitations": []
+    },
+    {
+      "model": "opencode/gemini-3.1-pro",
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalCostUsd": 0,
+      "totalWallTimeMs": 106715,
+      "totalRequestUnits": 8,
+      "priceTier": "medium",
+      "devTier": "dev-cheap",
+      "recommendedUse": "dev-general",
+      "family": "google",
+      "intelligenceScore": 57,
+      "agenticScore": null,
+      "speedTokensPerSecond": 127,
+      "blendedPricePer1mTokensUsd": 4.5,
+      "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+      "pricingNotes": "OpenRouter reference blend for google/gemini-3.1-pro-preview is 4.5 USD per 1M tokens using a 3:1 input:output mix.",
+      "headlessFriendly": null,
+      "stabilityNotes": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "knownLimitations": []
+    },
+    {
+      "model": "opencode/gemini-3-flash",
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalCostUsd": 0,
+      "totalWallTimeMs": 106764,
+      "totalRequestUnits": 3,
+      "priceTier": "low",
+      "devTier": "dev-cheap",
+      "recommendedUse": "dev-general",
+      "family": "google",
+      "intelligenceScore": 46,
+      "agenticScore": null,
+      "speedTokensPerSecond": 179,
+      "blendedPricePer1mTokensUsd": 1.1,
+      "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+      "pricingNotes": "OpenRouter reference blend for google/gemini-3-flash-preview is 1.125 USD per 1M tokens using a 3:1 input:output mix.",
+      "headlessFriendly": false,
+      "stabilityNotes": "Observed to loop and hit the benchmark process deadline on the task-05 scripting smoke run, so it should not be in the default headless dev matrix.",
+      "unattendedBenchmarkRuns": "limited",
+      "knownLimitations": [
+        "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+      ]
+    },
+    {
+      "model": "opencode/nemotron-3-super-free",
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalCostUsd": 0,
+      "totalWallTimeMs": 106714,
+      "totalRequestUnits": 8,
+      "priceTier": "free",
+      "devTier": "dev-cheap",
+      "recommendedUse": "dev-smoke",
+      "family": "nvidia",
+      "intelligenceScore": 36,
+      "agenticScore": null,
+      "speedTokensPerSecond": 155,
+      "blendedPricePer1mTokensUsd": 0,
+      "sourceUrl": "https://artificialanalysis.ai/models/nvidia-nemotron-3-super-120b-a12b",
+      "pricingNotes": "OpenRouter reference blend for nvidia/nemotron-3-super-120b-a12b:free is 0 USD per 1M tokens using a 3:1 input:output mix. Reference price uses nvidia/nemotron-3-super-120b-a12b at 0.2 USD per 1M tokens from the same OpenRouter family.",
+      "headlessFriendly": false,
+      "stabilityNotes": "Observed to take a slow, tool-heavy path on the scripting smoke task.",
+      "unattendedBenchmarkRuns": "limited",
+      "knownLimitations": [
+        "Takes a slow, tool-heavy path on the scripting smoke task."
+      ]
+    },
+    {
+      "model": "opencode/minimax-m2.5-free",
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalCostUsd": 0,
+      "totalWallTimeMs": 106710,
+      "totalRequestUnits": 8,
+      "priceTier": "free",
+      "devTier": "dev-cheap",
+      "recommendedUse": "dev-smoke",
+      "family": "minimax",
+      "intelligenceScore": null,
+      "agenticScore": null,
+      "speedTokensPerSecond": null,
+      "blendedPricePer1mTokensUsd": 0,
+      "sourceUrl": "https://openrouter.ai/api/v1/models",
+      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing minimax/minimax-m2.5:free using a 3:1 input:output blend. Reference price uses minimax/minimax-m2.5 at 0.336 USD per 1M tokens from the same OpenRouter family.",
+      "headlessFriendly": false,
+      "stabilityNotes": "Observed to trigger external_directory permission prompts in headless runs.",
+      "unattendedBenchmarkRuns": "unsupported",
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ]
     }
   ],
   "benchmarkComposition": {
@@ -1364,22 +4529,22 @@
         "count": 1
       }
     ],
-    "totalRequestUnits": 353,
-    "totalCostUsd": 0.19172275000000005,
-    "totalDurationMs": 2188799
+    "totalRequestUnits": 405,
+    "totalCostUsd": 0.19618955000000005,
+    "totalDurationMs": 2722349
   },
   "leaderboardHighlights": [
     {
       "label": "Cheapest full run",
-      "model": "opencode/gpt-5.4-mini",
-      "value": "$0.0454",
-      "detail": "0.529 composite"
+      "model": "opencode/gemini-3.1-pro",
+      "value": "$0.0000",
+      "detail": "0.0 composite"
     },
     {
       "label": "Fastest full run",
-      "model": "opencode/gpt-5.4-mini",
-      "value": "14m 10s",
-      "detail": "53% success"
+      "model": "opencode/glm-5",
+      "value": "1m 47s",
+      "detail": "7% success"
     },
     {
       "label": "Best ORPT",
@@ -1397,12 +4562,192 @@
   "pairwiseSummary": [
     {
       "leftModel": "opencode/gpt-5.4",
+      "rightModel": "opencode/gemini-3.1-pro",
+      "leftWins": 9,
+      "rightWins": 0,
+      "ties": 6,
+      "comparedTasks": 15,
+      "margin": 9
+    },
+    {
+      "leftModel": "opencode/gpt-5.4",
+      "rightModel": "opencode/gemini-3-flash",
+      "leftWins": 9,
+      "rightWins": 0,
+      "ties": 6,
+      "comparedTasks": 15,
+      "margin": 9
+    },
+    {
+      "leftModel": "opencode/gpt-5.4",
+      "rightModel": "opencode/nemotron-3-super-free",
+      "leftWins": 9,
+      "rightWins": 0,
+      "ties": 6,
+      "comparedTasks": 15,
+      "margin": 9
+    },
+    {
+      "leftModel": "opencode/gpt-5.4",
+      "rightModel": "opencode/minimax-m2.5-free",
+      "leftWins": 9,
+      "rightWins": 0,
+      "ties": 6,
+      "comparedTasks": 15,
+      "margin": 9
+    },
+    {
+      "leftModel": "opencode/gpt-5.4",
+      "rightModel": "opencode/glm-5",
+      "leftWins": 9,
+      "rightWins": 1,
+      "ties": 5,
+      "comparedTasks": 15,
+      "margin": 8
+    },
+    {
+      "leftModel": "opencode/gpt-5.4-mini",
+      "rightModel": "opencode/gemini-3.1-pro",
+      "leftWins": 8,
+      "rightWins": 0,
+      "ties": 7,
+      "comparedTasks": 15,
+      "margin": 8
+    },
+    {
+      "leftModel": "opencode/gpt-5.4-mini",
+      "rightModel": "opencode/gemini-3-flash",
+      "leftWins": 8,
+      "rightWins": 0,
+      "ties": 7,
+      "comparedTasks": 15,
+      "margin": 8
+    },
+    {
+      "leftModel": "opencode/gpt-5.4-mini",
+      "rightModel": "opencode/nemotron-3-super-free",
+      "leftWins": 8,
+      "rightWins": 0,
+      "ties": 7,
+      "comparedTasks": 15,
+      "margin": 8
+    },
+    {
+      "leftModel": "opencode/gpt-5.4-mini",
+      "rightModel": "opencode/minimax-m2.5-free",
+      "leftWins": 8,
+      "rightWins": 0,
+      "ties": 7,
+      "comparedTasks": 15,
+      "margin": 8
+    },
+    {
+      "leftModel": "opencode/gpt-5.4",
       "rightModel": "opencode/gpt-5.4-mini",
       "leftWins": 1,
       "rightWins": 8,
       "ties": 6,
       "comparedTasks": 15,
       "margin": -7
+    },
+    {
+      "leftModel": "opencode/gpt-5.4-mini",
+      "rightModel": "opencode/glm-5",
+      "leftWins": 8,
+      "rightWins": 1,
+      "ties": 6,
+      "comparedTasks": 15,
+      "margin": 7
+    },
+    {
+      "leftModel": "opencode/glm-5",
+      "rightModel": "opencode/gemini-3.1-pro",
+      "leftWins": 1,
+      "rightWins": 0,
+      "ties": 14,
+      "comparedTasks": 15,
+      "margin": 1
+    },
+    {
+      "leftModel": "opencode/glm-5",
+      "rightModel": "opencode/gemini-3-flash",
+      "leftWins": 1,
+      "rightWins": 0,
+      "ties": 14,
+      "comparedTasks": 15,
+      "margin": 1
+    },
+    {
+      "leftModel": "opencode/glm-5",
+      "rightModel": "opencode/nemotron-3-super-free",
+      "leftWins": 1,
+      "rightWins": 0,
+      "ties": 14,
+      "comparedTasks": 15,
+      "margin": 1
+    },
+    {
+      "leftModel": "opencode/glm-5",
+      "rightModel": "opencode/minimax-m2.5-free",
+      "leftWins": 1,
+      "rightWins": 0,
+      "ties": 14,
+      "comparedTasks": 15,
+      "margin": 1
+    },
+    {
+      "leftModel": "opencode/gemini-3.1-pro",
+      "rightModel": "opencode/gemini-3-flash",
+      "leftWins": 0,
+      "rightWins": 0,
+      "ties": 15,
+      "comparedTasks": 15,
+      "margin": 0
+    },
+    {
+      "leftModel": "opencode/gemini-3.1-pro",
+      "rightModel": "opencode/nemotron-3-super-free",
+      "leftWins": 0,
+      "rightWins": 0,
+      "ties": 15,
+      "comparedTasks": 15,
+      "margin": 0
+    },
+    {
+      "leftModel": "opencode/gemini-3.1-pro",
+      "rightModel": "opencode/minimax-m2.5-free",
+      "leftWins": 0,
+      "rightWins": 0,
+      "ties": 15,
+      "comparedTasks": 15,
+      "margin": 0
+    },
+    {
+      "leftModel": "opencode/gemini-3-flash",
+      "rightModel": "opencode/nemotron-3-super-free",
+      "leftWins": 0,
+      "rightWins": 0,
+      "ties": 15,
+      "comparedTasks": 15,
+      "margin": 0
+    },
+    {
+      "leftModel": "opencode/gemini-3-flash",
+      "rightModel": "opencode/minimax-m2.5-free",
+      "leftWins": 0,
+      "rightWins": 0,
+      "ties": 15,
+      "comparedTasks": 15,
+      "margin": 0
+    },
+    {
+      "leftModel": "opencode/nemotron-3-super-free",
+      "rightModel": "opencode/minimax-m2.5-free",
+      "leftWins": 0,
+      "rightWins": 0,
+      "ties": 15,
+      "comparedTasks": 15,
+      "margin": 0
     }
   ],
   "categorySummary": [
@@ -1427,6 +4772,51 @@
           "averageRequestUnits": 12.6,
           "averageCostUsd": 0.0031046399999999997,
           "averageWallTimeMs": 77406
+        },
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 5,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 5,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 5,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 5,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 5,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     },
@@ -1444,6 +4834,33 @@
           "averageWallTimeMs": 103313.5
         },
         {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
           "model": "opencode/gpt-5.4-mini",
           "taskCount": 2,
           "averageCompositeScore": 0.5,
@@ -1451,6 +4868,24 @@
           "averageRequestUnits": 10,
           "averageCostUsd": 0.004042725,
           "averageWallTimeMs": 45088
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     },
@@ -1458,6 +4893,33 @@
       "category": "platform-bootstrap",
       "taskCount": 2,
       "models": [
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
         {
           "model": "opencode/gpt-5.4",
           "taskCount": 2,
@@ -1475,6 +4937,24 @@
           "averageRequestUnits": 10,
           "averageCostUsd": 0.00351945,
           "averageWallTimeMs": 52189.5
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     },
@@ -1499,6 +4979,51 @@
           "averageRequestUnits": 11.5,
           "averageCostUsd": 0.002818875,
           "averageWallTimeMs": 53575.5
+        },
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     },
@@ -1523,6 +5048,51 @@
           "averageRequestUnits": 7,
           "averageCostUsd": 0.0023319,
           "averageWallTimeMs": 29445
+        },
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     },
@@ -1530,6 +5100,33 @@
       "category": "docker-compose",
       "taskCount": 1,
       "models": [
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
         {
           "model": "opencode/gpt-5.4",
           "taskCount": 1,
@@ -1547,6 +5144,24 @@
           "averageRequestUnits": 10,
           "averageCostUsd": 0.0020934,
           "averageWallTimeMs": 33457
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     },
@@ -1554,6 +5169,33 @@
       "category": "iac",
       "taskCount": 1,
       "models": [
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 1,
+          "averageCompositeScore": 1,
+          "averageSuccessRate": 1,
+          "averageRequestUnits": 20,
+          "averageCostUsd": 0.0044668,
+          "averageWallTimeMs": 83299
+        },
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 3,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 106764
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 8,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 106715
+        },
         {
           "model": "opencode/gpt-5.4",
           "taskCount": 1,
@@ -1571,6 +5213,24 @@
           "averageRequestUnits": 6,
           "averageCostUsd": 0.00295725,
           "averageWallTimeMs": 32264
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 8,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 106710
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 8,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 106714
         }
       ]
     },
@@ -1578,6 +5238,33 @@
       "category": "terraform",
       "taskCount": 1,
       "models": [
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 5,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 23348
+        },
         {
           "model": "opencode/gpt-5.4",
           "taskCount": 1,
@@ -1595,6 +5282,24 @@
           "averageRequestUnits": 7,
           "averageCostUsd": 0.0017784,
           "averageWallTimeMs": 66347
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     }
@@ -1621,6 +5326,51 @@
           "averageRequestUnits": 8,
           "averageCostUsd": 0.001497,
           "averageWallTimeMs": 29064
+        },
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     },
@@ -1628,6 +5378,33 @@
       "difficulty": "expert",
       "taskCount": 6,
       "models": [
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 6,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 6,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 6,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
         {
           "model": "opencode/gpt-5.4",
           "taskCount": 6,
@@ -1645,6 +5422,24 @@
           "averageRequestUnits": 11.5,
           "averageCostUsd": 0.0032916250000000007,
           "averageWallTimeMs": 70894
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 6,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 6,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     },
@@ -1652,6 +5447,33 @@
       "difficulty": "high",
       "taskCount": 7,
       "models": [
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 7,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 7,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 7,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0.7142857142857143,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 3335.4285714285716
+        },
         {
           "model": "opencode/gpt-5.4",
           "taskCount": 7,
@@ -1669,6 +5491,24 @@
           "averageRequestUnits": 10.428571428571429,
           "averageCostUsd": 0.0030346071428571423,
           "averageWallTimeMs": 51936.71428571428
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 7,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 7,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 0,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 0
         }
       ]
     },
@@ -1676,6 +5516,33 @@
       "difficulty": "medium",
       "taskCount": 1,
       "models": [
+        {
+          "model": "opencode/glm-5",
+          "taskCount": 1,
+          "averageCompositeScore": 1,
+          "averageSuccessRate": 1,
+          "averageRequestUnits": 20,
+          "averageCostUsd": 0.0044668,
+          "averageWallTimeMs": 83299
+        },
+        {
+          "model": "opencode/gemini-3-flash",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 3,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 106764
+        },
+        {
+          "model": "opencode/gemini-3.1-pro",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 8,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 106715
+        },
         {
           "model": "opencode/gpt-5.4",
           "taskCount": 1,
@@ -1693,6 +5560,24 @@
           "averageRequestUnits": 6,
           "averageCostUsd": 0.00295725,
           "averageWallTimeMs": 32264
+        },
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 8,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 106710
+        },
+        {
+          "model": "opencode/nemotron-3-super-free",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 8,
+          "averageCostUsd": 0,
+          "averageWallTimeMs": 106714
         }
       ]
     }
@@ -1712,6 +5597,46 @@
       "outputTokens": 1852,
       "reasoningTokens": 2516,
       "cacheReadTokens": 261120,
+      "cacheWriteTokens": 0
+    },
+    {
+      "model": "opencode/glm-5",
+      "inputTokens": 1211,
+      "outputTokens": 103,
+      "reasoningTokens": 0,
+      "cacheReadTokens": 14631,
+      "cacheWriteTokens": 0
+    },
+    {
+      "model": "opencode/gemini-3.1-pro",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "reasoningTokens": 0,
+      "cacheReadTokens": 0,
+      "cacheWriteTokens": 0
+    },
+    {
+      "model": "opencode/gemini-3-flash",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "reasoningTokens": 0,
+      "cacheReadTokens": 0,
+      "cacheWriteTokens": 0
+    },
+    {
+      "model": "opencode/nemotron-3-super-free",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "reasoningTokens": 0,
+      "cacheReadTokens": 0,
+      "cacheWriteTokens": 0
+    },
+    {
+      "model": "opencode/minimax-m2.5-free",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "reasoningTokens": 0,
+      "cacheReadTokens": 0,
       "cacheWriteTokens": 0
     }
   ],
@@ -1849,6 +5774,22 @@
   ],
   "history": [
     {
+      "id": "2026-04-08T02-26-48-652Z",
+      "startedAt": "2026-04-08T02:26:48.653Z",
+      "completedAt": "2026-04-08T02:36:45.349Z",
+      "benchmarkCycle": null,
+      "taskCount": 15,
+      "modelCount": 5,
+      "repeats": 1,
+      "totalRuns": 75,
+      "successfulRuns": 1,
+      "topModel": "opencode/glm-5",
+      "topCompositeScore": 0.06666666666666667,
+      "topSuccessRate": 0.06666666666666667,
+      "href": "results/history/2026-04-08T02-26-48-652Z.json",
+      "isLatest": true
+    },
+    {
       "id": "2026-04-07T23-14-03-414Z",
       "startedAt": "2026-04-07T23:14:03.415Z",
       "completedAt": "2026-04-07T23:36:23.749Z",
@@ -1862,7 +5803,7 @@
       "topCompositeScore": 0.5343493333333333,
       "topSuccessRate": 0.6,
       "href": "results/history/2026-04-07T23-14-03-414Z.json",
-      "isLatest": true
+      "isLatest": false
     }
   ]
 }

@@ -6,16 +6,31 @@
       "type": "bar",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash",
+        "opencode/nemotron-3-super-free",
+        "opencode/minimax-m2.5-free"
       ],
       "y": [
         0.534,
-        0.529
+        0.529,
+        0.067,
+        0,
+        0,
+        0,
+        0
       ],
       "marker": {
         "color": [
           "#86a8ff",
-          "#f472b6"
+          "#f472b6",
+          "#73f0c5",
+          "#c084fc",
+          "#c084fc",
+          "#fb7185",
+          "#38bdf8"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -24,7 +39,12 @@
       },
       "text": [
         0.534,
-        0.529
+        0.529,
+        0.067,
+        0,
+        0,
+        0,
+        0
       ],
       "textposition": "auto",
       "textfont": {
@@ -33,7 +53,12 @@
       },
       "hovertemplate": [
         "opencode/gpt-5.4<br>Composite score: 0.534<br>60% success | 13.11 ORPT<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Composite score: 0.529<br>53% success | 11.00 ORPT<extra></extra>"
+        "opencode/gpt-5.4-mini<br>Composite score: 0.529<br>53% success | 11.00 ORPT<extra></extra>",
+        "opencode/glm-5<br>Composite score: 0.067<br>7% success | 20.00 ORPT<extra></extra>",
+        "opencode/gemini-3.1-pro<br>Composite score: 0<br>0% success | n/a ORPT<extra></extra>",
+        "opencode/gemini-3-flash<br>Composite score: 0<br>0% success | n/a ORPT<extra></extra>",
+        "opencode/nemotron-3-super-free<br>Composite score: 0<br>0% success | n/a ORPT<extra></extra>",
+        "opencode/minimax-m2.5-free<br>Composite score: 0<br>0% success | n/a ORPT<extra></extra>"
       ]
     }
   ],
