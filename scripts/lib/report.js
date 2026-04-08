@@ -54,7 +54,7 @@ function renderModelSummaryTable(summary, catalogByModel, taskCatalogById) {
   summary.forEach((entry, index) => {
     const comparability = getComparabilityDetails(entry, catalogByModel, taskCatalogById)
     lines.push(
-      `| ${index + 1} | ${entry.model} | ${entry.score.toFixed(2)} | ${(entry.valueScore ?? 0).toFixed(3)} | ${(entry.compositeScore ?? 0).toFixed(3)} | ${(entry.successRate * 100).toFixed(0)}% | ${(entry.dnfTasks ?? 0).toFixed(0)} | ${entry.totalRequestCount.toFixed(0)} | ${entry.orpt == null ? 'n/a' : entry.orpt.toFixed(2)} | ${(entry.totalWallTimeMs / 1000).toFixed(1)} | ${entry.totalCostUsd.toFixed(4)} | ${entry.eligible ? 'yes' : 'no'} | ${comparability.comparable ? 'yes' : 'no'} | ${comparability.comparabilityNote} |`
+      `| ${index + 1} | ${entry.model} | ${entry.score.toFixed(2)} | ${(entry.valueScore ?? 0).toFixed(3)} | ${(entry.compositeScore ?? 0).toFixed(3)} | ${(entry.successRate * 100).toFixed(0)}% | ${(entry.dnfTasks ?? 0).toFixed(0)} | ${entry.totalRequestCount.toFixed(0)} | ${entry.orpt == null ? 'n/a' : entry.orpt.toFixed(2)} | ${(entry.totalWallTimeMs / 1000).toFixed(1)} | ${formatReportCost(entry.totalCostUsd)} | ${entry.eligible ? 'yes' : 'no'} | ${comparability.comparable ? 'yes' : 'no'} | ${comparability.comparabilityNote} |`
     )
   })
 
@@ -63,6 +63,10 @@ function renderModelSummaryTable(summary, catalogByModel, taskCatalogById) {
   }
 
   return lines.join('\n')
+}
+
+function formatReportCost(value) {
+  return Number.isFinite(value) ? value.toFixed(4) : 'n/a'
 }
 
 function renderTaskSummaryTable(summary, catalogByModel, taskCatalogById) {
@@ -74,7 +78,7 @@ function renderTaskSummaryTable(summary, catalogByModel, taskCatalogById) {
   summary.forEach((entry) => {
     const comparability = getComparabilityDetails(entry, catalogByModel, taskCatalogById)
     lines.push(
-      `| ${entry.taskId} | ${entry.model} | ${entry.score.toFixed(2)} | ${(entry.valueScore ?? 0).toFixed(3)} | ${(entry.compositeScore ?? 0).toFixed(3)} | ${(entry.successRate * 100).toFixed(0)}% | ${(entry.dnfs ?? 0).toFixed(0)} | ${entry.totalRequestCount.toFixed(0)} | ${entry.averageRequestUnits == null ? 'n/a' : entry.averageRequestUnits.toFixed(2)} | ${(entry.totalWallTimeMs / 1000).toFixed(1)} | ${entry.totalCostUsd.toFixed(4)} | ${entry.averageSteps.toFixed(2)} | ${comparability.comparable ? 'yes' : 'no'} | ${comparability.comparabilityNote} |`
+      `| ${entry.taskId} | ${entry.model} | ${entry.score.toFixed(2)} | ${(entry.valueScore ?? 0).toFixed(3)} | ${(entry.compositeScore ?? 0).toFixed(3)} | ${(entry.successRate * 100).toFixed(0)}% | ${(entry.dnfs ?? 0).toFixed(0)} | ${entry.totalRequestCount.toFixed(0)} | ${entry.averageRequestUnits == null ? 'n/a' : entry.averageRequestUnits.toFixed(2)} | ${(entry.totalWallTimeMs / 1000).toFixed(1)} | ${formatReportCost(entry.totalCostUsd)} | ${entry.averageSteps.toFixed(2)} | ${comparability.comparable ? 'yes' : 'no'} | ${comparability.comparabilityNote} |`
     )
   })
 
@@ -235,7 +239,7 @@ function renderIncludedTasks(run) {
     .join('\n')
 }
 
-function renderReadme(run) {
+export function renderReadme(run) {
   const totals = {
     models: new Set((run.results || []).map((entry) => entry.model)).size,
     tasks: new Set((run.results || []).map((entry) => entry.taskId)).size,

@@ -85,7 +85,7 @@
           "steps": { "type": "number" },
           "requestUnits": { "type": ["number", "null"] },
           "requestAccountingSource": { "type": ["string", "null"] },
-          "costUsd": { "type": "number" },
+          "costUsd": { "type": ["number", "null"] },
           "sessionId": { "type": ["string", "null"] }
         }
       }
@@ -128,10 +128,10 @@
           "orpt": { "type": ["number", "null"] },
           "totalRequestUnits": { "type": ["number", "null"] },
           "totalWallTimeMs": { "type": "number" },
-          "totalCostUsd": { "type": "number" },
+          "totalCostUsd": { "type": ["number", "null"] },
           "averageDurationMs": { "type": "number" },
           "medianSteps": { "type": ["number", "null"] },
-          "averageCostUsd": { "type": "number" },
+          "averageCostUsd": { "type": ["number", "null"] },
           "eligible": { "type": "boolean" },
           "comparable": { "type": "boolean" },
           "comparabilityNote": { "type": ["string", "null"] },
@@ -165,8 +165,8 @@
           "averageRequestUnits": { "type": ["number", "null"] },
           "totalWallTimeMs": { "type": "number" },
           "averageWallTimeMs": { "type": "number" },
-          "totalCostUsd": { "type": "number" },
-          "averageCostUsd": { "type": "number" },
+          "totalCostUsd": { "type": ["number", "null"] },
+          "averageCostUsd": { "type": ["number", "null"] },
           "averageSteps": { "type": "number" },
           "eligible": { "type": "boolean" },
           "comparable": { "type": "boolean" },
