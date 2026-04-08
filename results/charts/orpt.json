@@ -2,10 +2,10 @@
   {
     "type": "bar",
     "x": [
-      "opencode/glm-5.1"
+      "opencode/big-pickle"
     ],
     "y": [
-      13.75
+      15.071428571428571
     ],
     "marker": {
       "color": "#2563eb"

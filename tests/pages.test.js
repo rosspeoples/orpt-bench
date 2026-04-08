@@ -239,6 +239,103 @@ test('pages build publishes provider-limited smoke evidence with raw failure det
   }
 })
 
+test('pages build keeps older full-run models visible while marking prior task sets limited', async () => {
+  const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'orpt-bench-pages-'))
+  const outputDir = path.join(rootDir, 'site')
+
+  try {
+    await fs.mkdir(path.join(rootDir, 'results', 'history'), { recursive: true })
+    await fs.mkdir(path.join(rootDir, 'models'), { recursive: true })
+    await fs.mkdir(path.join(rootDir, 'docs'), { recursive: true })
+
+    const olderFullRun = {
+      run: {
+        id: 'weekly-15',
+        startedAt: '2026-04-07T23:00:00.000Z',
+        completedAt: '2026-04-07T23:14:03.414Z',
+        benchmarkCycle: 'weekly',
+        models: ['opencode/gpt-5.4', 'opencode/gpt-5.4-mini'],
+        taskCount: 15,
+        taskPatterns: ['*'],
+        repeats: 1,
+      },
+      results: [
+        { taskId: '01-task', taskName: 'Task 1', category: 'infra', model: 'opencode/gpt-5.4', provider: 'opencode', success: true, score: 1, durationMs: 1000, requestUnits: 5, requestCount: 5, requestAccountingSource: 'proxy-call-count', costUsd: 0.1, steps: 5, tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } } },
+        { taskId: '01-task', taskName: 'Task 1', category: 'infra', model: 'opencode/gpt-5.4-mini', provider: 'opencode', success: true, score: 1, durationMs: 1200, requestUnits: 4, requestCount: 4, requestAccountingSource: 'proxy-call-count', costUsd: 0.05, steps: 4, tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } } }
+      ],
+      modelCatalog: {
+        models: [
+          { model: 'opencode/gpt-5.4', family: 'openai', devTier: 'standard', priceTier: 'high', recommendedUse: 'flagship', benchmark: { blendedPricePer1mTokensUsd: 10 }, stability: { headlessFriendly: true, notes: null }, featureSupport: { unattendedBenchmarkRuns: 'supported', knownLimitations: [] } },
+          { model: 'opencode/gpt-5.4-mini', family: 'openai', devTier: 'dev-cheap', priceTier: 'low', recommendedUse: 'dev-general', benchmark: { blendedPricePer1mTokensUsd: 1.68 }, stability: { headlessFriendly: true, notes: null }, featureSupport: { unattendedBenchmarkRuns: 'supported', knownLimitations: [] } },
+          { model: 'opencode/glm-5.1', family: 'zhipu', devTier: 'standard', priceTier: 'low', recommendedUse: 'general', benchmark: { blendedPricePer1mTokensUsd: 1 }, stability: { headlessFriendly: true, notes: null }, featureSupport: { unattendedBenchmarkRuns: 'supported', knownLimitations: [] } }
+        ]
+      },
+      taskCatalog: [{ id: '01-task', name: 'Task 1', difficulty: 'medium', timeoutSeconds: 300, requiredCapabilities: [] }],
+      scoring: {
+        valueScoreWeights: { orpt: 0.45, cost: 0.35, time: 0.2 },
+        compositeScoreWeights: { score: 0.7, valueScore: 0.3 }
+      }
+    }
+
+    const newerFullRun = {
+      run: {
+        id: 'candidate-17',
+        startedAt: '2026-04-08T22:00:00.000Z',
+        completedAt: '2026-04-08T22:13:41.723Z',
+        benchmarkCycle: 'candidate_full',
+        models: ['opencode/glm-5.1'],
+        taskCount: 17,
+        taskPatterns: ['*'],
+        repeats: 1,
+      },
+      results: [
+        { taskId: '01-task', taskName: 'Task 1', category: 'infra', model: 'opencode/glm-5.1', provider: 'opencode', success: true, score: 1, durationMs: 900, requestUnits: 3, requestCount: 3, requestAccountingSource: 'proxy-call-count', costUsd: 0.02, steps: 3, tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } } },
+        { taskId: '02-task', taskName: 'Task 2', category: 'infra', model: 'opencode/glm-5.1', provider: 'opencode', success: true, score: 1, durationMs: 900, requestUnits: 3, requestCount: 3, requestAccountingSource: 'proxy-call-count', costUsd: 0.02, steps: 3, tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } } }
+      ],
+      modelCatalog: olderFullRun.modelCatalog,
+      taskCatalog: [
+        { id: '01-task', name: 'Task 1', difficulty: 'medium', timeoutSeconds: 300, requiredCapabilities: [] },
+        { id: '02-task', name: 'Task 2', difficulty: 'medium', timeoutSeconds: 300, requiredCapabilities: [] }
+      ],
+      scoring: olderFullRun.scoring
+    }
+
+    await fs.writeFile(path.join(rootDir, 'results', 'latest.json'), `${JSON.stringify(newerFullRun, null, 2)}\n`, 'utf8')
+    await fs.writeFile(path.join(rootDir, 'results', 'history', 'weekly-15.json'), `${JSON.stringify(olderFullRun, null, 2)}\n`, 'utf8')
+    await fs.writeFile(path.join(rootDir, 'results', 'history', 'candidate-17.json'), `${JSON.stringify(newerFullRun, null, 2)}\n`, 'utf8')
+    await fs.writeFile(path.join(rootDir, 'results', 'leaderboard.md'), '# fixture\n', 'utf8')
+    await fs.writeFile(path.join(rootDir, 'models', 'README.md'), '# models\n', 'utf8')
+    await fs.writeFile(path.join(rootDir, 'docs', 'result-schema.json'), '{}\n', 'utf8')
+    await fs.writeFile(path.join(rootDir, 'DESIGN.md'), '# design\n', 'utf8')
+
+    const previousCwd = process.cwd()
+    process.chdir(rootDir)
+    try {
+      await runNode(['/var/home/rpeoples/Code/orpt-bench/scripts/lib/build-github-pages.js'], {
+        cwd: rootDir,
+        env: {
+          ...process.env,
+          PUBLISH_PAGES_OUTPUT_DIR: outputDir,
+          PUBLISH_GITHUB_REPOSITORY: 'https://github.com/example/orpt-bench'
+        }
+      })
+    } finally {
+      process.chdir(previousCwd)
+    }
+
+    const siteData = JSON.parse(await fs.readFile(path.join(outputDir, 'site-data.json'), 'utf8'))
+    const modelNames = siteData.modelSummary.map((entry) => entry.model)
+    const gptMini = siteData.modelSummary.find((entry) => entry.model === 'opencode/gpt-5.4-mini')
+
+    assert.match(modelNames.join(','), /opencode\/gpt-5\.4/)
+    assert.match(modelNames.join(','), /opencode\/gpt-5\.4-mini/)
+    assert.equal(gptMini.comparable, false)
+    assert.match(gptMini.comparabilityNote, /earlier task set/) 
+  } finally {
+    await fs.rm(rootDir, { recursive: true, force: true })
+  }
+})
+
 test('pages build classifies provider model-not-found and provider http smoke failures explicitly', async () => {
   const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'orpt-bench-pages-'))
   const outputDir = path.join(rootDir, 'site')

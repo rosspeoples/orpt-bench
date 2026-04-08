@@ -256,7 +256,7 @@ function dedupeRunEntries(entries) {
 
 function buildPublicationContext(allEntries, latestReport) {
   const fullTaskCount = Math.max(...allEntries.map(({ report }) => inferTaskCount(report)), inferTaskCount(latestReport), 0);
-  const publishableEntries = allEntries.filter(({ report }) => isPublishableRun(report, fullTaskCount));
+  const publishableEntries = allEntries.filter(({ report }) => isPublishableRun(report));
   const selectedEntriesByModel = new Map();
 
   for (const entry of publishableEntries) {
@@ -304,22 +304,21 @@ function inferTaskCount(report) {
   return report?.run?.taskCount || report?.taskCatalog?.length || new Set((report?.results || []).map((entry) => entry.taskId)).size || 0;
 }
 
+function isCurrentTaskSet(report, fullTaskCount) {
+  return inferTaskCount(report) === fullTaskCount;
+}
+
 function runCompletedAt(report) {
   const value = Date.parse(report?.run?.completedAt || report?.run?.startedAt || 0);
   return Number.isFinite(value) ? value : 0;
 }
 
-function isPublishableRun(report, fullTaskCount) {
+function isPublishableRun(report) {
   if (!report?.run || !Array.isArray(report.results) || report.results.length === 0) {
     return false;
   }
 
   if (report.run.benchmarkCycle === 'candidate_smoke') {
-    return false;
-  }
-
-  const taskCount = inferTaskCount(report);
-  if (fullTaskCount > 0 && taskCount < fullTaskCount) {
     return false;
   }
 
@@ -529,6 +528,8 @@ function buildPublishedRun(entries, latestReport, fullTaskCount) {
   }
 
   const sourceRunIds = entries.map(({ report }) => report.run?.id).filter(Boolean);
+  const latestTaskCatalog = latestReport.taskCatalog || latestIncludedReport.taskCatalog || [];
+  const latestTaskIds = new Set(latestTaskCatalog.map((task) => task.id));
   const publishedRun = {
     ...latestIncludedReport,
     run: {
@@ -542,12 +543,47 @@ function buildPublishedRun(entries, latestReport, fullTaskCount) {
     },
     results: mergedResults,
     modelCatalog: latestReport.modelCatalog || latestIncludedReport.modelCatalog || { models: [] },
-    taskCatalog: latestReport.taskCatalog || latestIncludedReport.taskCatalog || [],
+    taskCatalog: latestTaskCatalog,
     scoring: latestReport.scoring || latestIncludedReport.scoring || null,
   };
 
   aggregateRun(publishedRun, latestReport.requestExtractors || latestIncludedReport.requestExtractors || null);
+  annotateLegacyTaskSetComparability(publishedRun, entries, fullTaskCount, latestTaskIds);
   return publishedRun;
+}
+
+function annotateLegacyTaskSetComparability(report, entries, fullTaskCount, latestTaskIds) {
+  const latestEntryByModel = new Map();
+  for (const entry of entries) {
+    for (const modelName of modelNamesForRun(entry.report)) {
+      if (!latestEntryByModel.has(modelName)) {
+        latestEntryByModel.set(modelName, entry.report);
+      }
+    }
+  }
+
+  for (const summary of report.modelSummary || []) {
+    const sourceReport = latestEntryByModel.get(summary.model);
+    if (!sourceReport || isCurrentTaskSet(sourceReport, fullTaskCount)) {
+      continue;
+    }
+    summary.comparable = false;
+    summary.comparabilityNote = `Published on earlier task set (${inferTaskCount(sourceReport)} tasks vs current ${fullTaskCount})`;
+  }
+
+  for (const row of report.taskSummary || []) {
+    const sourceReport = latestEntryByModel.get(row.model);
+    if (!sourceReport || isCurrentTaskSet(sourceReport, fullTaskCount)) {
+      continue;
+    }
+    if (!latestTaskIds.has(row.taskId)) {
+      row.comparable = false;
+      row.comparabilityNote = `Task not in current benchmark set; source run used ${inferTaskCount(sourceReport)} tasks`;
+      continue;
+    }
+    row.comparable = false;
+    row.comparabilityNote = `Model published on earlier task set (${inferTaskCount(sourceReport)} tasks vs current ${fullTaskCount})`;
+  }
 }
 
 for (const { fileName, report } of publicationContext.history) {
