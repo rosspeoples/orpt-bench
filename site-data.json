@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T01:05:08.810Z",
+  "generatedAt": "2026-04-08T01:41:42.985Z",
   "repository": {
     "url": "https://github.com/rosspeoples/orpt-bench",
     "pagesUrl": "https://rosspeoples.github.io/orpt-bench/",
@@ -1259,30 +1259,587 @@
       "requestAccountingSource": "proxy-call-count"
     }
   ],
+  "benchmarkedModels": [
+    {
+      "model": "opencode/gpt-5.4",
+      "compositeScore": 0.5343493333333333,
+      "successRate": 0.6,
+      "totalCostUsd": 0.1462765,
+      "totalWallTimeMs": 1338550,
+      "totalRequestUnits": 197,
+      "priceTier": "medium",
+      "devTier": "standard",
+      "recommendedUse": "release-frontier",
+      "family": "openai",
+      "intelligenceScore": 57,
+      "agenticScore": null,
+      "speedTokensPerSecond": 74,
+      "blendedPricePer1mTokensUsd": 5.6,
+      "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-4",
+      "pricingNotes": "OpenRouter reference blend for openai/gpt-5.4 is 5.625 USD per 1M tokens using a 3:1 input:output mix.",
+      "headlessFriendly": null,
+      "stabilityNotes": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "knownLimitations": []
+    },
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "compositeScore": 0.5290873333333334,
+      "successRate": 0.5333333333333333,
+      "totalCostUsd": 0.045446249999999994,
+      "totalWallTimeMs": 850249,
+      "totalRequestUnits": 156,
+      "priceTier": "low",
+      "devTier": "dev-cheap",
+      "recommendedUse": "dev-general",
+      "family": "openai",
+      "intelligenceScore": null,
+      "agenticScore": null,
+      "speedTokensPerSecond": null,
+      "blendedPricePer1mTokensUsd": 1.6875,
+      "sourceUrl": "https://openrouter.ai/api/v1/models",
+      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-mini using a 3:1 input:output blend.",
+      "headlessFriendly": true,
+      "stabilityNotes": "Observed to complete ORPT-Bench scripting smoke runs cleanly and is the current preferred headless dev baseline.",
+      "unattendedBenchmarkRuns": "supported",
+      "knownLimitations": []
+    }
+  ],
+  "benchmarkComposition": {
+    "taskCount": 15,
+    "categoryCount": 8,
+    "difficultyCount": 4,
+    "requiredCapabilities": [
+      "unattendedBenchmarkRuns"
+    ],
+    "categories": [
+      {
+        "label": "gitops",
+        "count": 5
+      },
+      {
+        "label": "kubernetes",
+        "count": 2
+      },
+      {
+        "label": "platform-bootstrap",
+        "count": 2
+      },
+      {
+        "label": "scripting",
+        "count": 2
+      },
+      {
+        "label": "ansible",
+        "count": 1
+      },
+      {
+        "label": "docker-compose",
+        "count": 1
+      },
+      {
+        "label": "iac",
+        "count": 1
+      },
+      {
+        "label": "terraform",
+        "count": 1
+      }
+    ],
+    "difficulties": [
+      {
+        "label": "high",
+        "count": 7
+      },
+      {
+        "label": "expert",
+        "count": 6
+      },
+      {
+        "label": "control",
+        "count": 1
+      },
+      {
+        "label": "medium",
+        "count": 1
+      }
+    ],
+    "totalRequestUnits": 353,
+    "totalCostUsd": 0.19172275000000005,
+    "totalDurationMs": 2188799
+  },
+  "leaderboardHighlights": [
+    {
+      "label": "Cheapest full run",
+      "model": "opencode/gpt-5.4-mini",
+      "value": "$0.0454",
+      "detail": "0.529 composite"
+    },
+    {
+      "label": "Fastest full run",
+      "model": "opencode/gpt-5.4-mini",
+      "value": "14m 10s",
+      "detail": "53% success"
+    },
+    {
+      "label": "Best ORPT",
+      "model": "opencode/gpt-5.4-mini",
+      "value": "11.00",
+      "detail": "requests per solved task"
+    },
+    {
+      "label": "Most reliable",
+      "model": "opencode/gpt-5.4",
+      "value": "60%",
+      "detail": "9 solved tasks"
+    }
+  ],
+  "pairwiseSummary": [
+    {
+      "leftModel": "opencode/gpt-5.4",
+      "rightModel": "opencode/gpt-5.4-mini",
+      "leftWins": 1,
+      "rightWins": 8,
+      "ties": 6,
+      "comparedTasks": 15,
+      "margin": -7
+    }
+  ],
+  "categorySummary": [
+    {
+      "category": "gitops",
+      "taskCount": 5,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 5,
+          "averageCompositeScore": 0.6984893999999999,
+          "averageSuccessRate": 0.8,
+          "averageRequestUnits": 14.4,
+          "averageCostUsd": 0.0104323,
+          "averageWallTimeMs": 100283
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 5,
+          "averageCompositeScore": 0.7907612,
+          "averageSuccessRate": 0.8,
+          "averageRequestUnits": 12.6,
+          "averageCostUsd": 0.0031046399999999997,
+          "averageWallTimeMs": 77406
+        }
+      ]
+    },
+    {
+      "category": "kubernetes",
+      "taskCount": 2,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 2,
+          "averageCompositeScore": 0.947553,
+          "averageSuccessRate": 1,
+          "averageRequestUnits": 17,
+          "averageCostUsd": 0.0089405,
+          "averageWallTimeMs": 103313.5
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 2,
+          "averageCompositeScore": 0.5,
+          "averageSuccessRate": 0.5,
+          "averageRequestUnits": 10,
+          "averageCostUsd": 0.004042725,
+          "averageWallTimeMs": 45088
+        }
+      ]
+    },
+    {
+      "category": "platform-bootstrap",
+      "taskCount": 2,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 11.5,
+          "averageCostUsd": 0.013518249999999999,
+          "averageWallTimeMs": 87592
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 2,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 10,
+          "averageCostUsd": 0.00351945,
+          "averageWallTimeMs": 52189.5
+        }
+      ]
+    },
+    {
+      "category": "scripting",
+      "taskCount": 2,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 2,
+          "averageCompositeScore": 0.88812,
+          "averageSuccessRate": 1,
+          "averageRequestUnits": 11,
+          "averageCostUsd": 0.00888075,
+          "averageWallTimeMs": 72411
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 2,
+          "averageCompositeScore": 0.991252,
+          "averageSuccessRate": 1,
+          "averageRequestUnits": 11.5,
+          "averageCostUsd": 0.002818875,
+          "averageWallTimeMs": 53575.5
+        }
+      ]
+    },
+    {
+      "category": "ansible",
+      "taskCount": 1,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 1,
+          "averageCompositeScore": 0.851447,
+          "averageSuccessRate": 1,
+          "averageRequestUnits": 11,
+          "averageCostUsd": 0.0066685,
+          "averageWallTimeMs": 51652
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 1,
+          "averageCompositeScore": 1,
+          "averageSuccessRate": 1,
+          "averageRequestUnits": 7,
+          "averageCostUsd": 0.0023319,
+          "averageWallTimeMs": 29445
+        }
+      ]
+    },
+    {
+      "category": "docker-compose",
+      "taskCount": 1,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 8,
+          "averageCostUsd": 0.006643,
+          "averageWallTimeMs": 35346
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 10,
+          "averageCostUsd": 0.0020934,
+          "averageWallTimeMs": 33457
+        }
+      ]
+    },
+    {
+      "category": "iac",
+      "taskCount": 1,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 11,
+          "averageCostUsd": 0.0083865,
+          "averageWallTimeMs": 73164
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 6,
+          "averageCostUsd": 0.00295725,
+          "averageWallTimeMs": 32264
+        }
+      ]
+    },
+    {
+      "category": "terraform",
+      "taskCount": 1,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 16,
+          "averageCostUsd": 0.009738,
+          "averageWallTimeMs": 150340
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 7,
+          "averageCostUsd": 0.0017784,
+          "averageWallTimeMs": 66347
+        }
+      ]
+    }
+  ],
+  "difficultySummary": [
+    {
+      "difficulty": "control",
+      "taskCount": 1,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 1,
+          "averageCompositeScore": 0.885708,
+          "averageSuccessRate": 1,
+          "averageRequestUnits": 7,
+          "averageCostUsd": 0.0052825,
+          "averageWallTimeMs": 35195
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 1,
+          "averageCompositeScore": 0.982504,
+          "averageSuccessRate": 1,
+          "averageRequestUnits": 8,
+          "averageCostUsd": 0.001497,
+          "averageWallTimeMs": 29064
+        }
+      ]
+    },
+    {
+      "difficulty": "expert",
+      "taskCount": 6,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 6,
+          "averageCompositeScore": 0.43392516666666664,
+          "averageSuccessRate": 0.5,
+          "averageRequestUnits": 13.833333333333334,
+          "averageCostUsd": 0.011709916666666667,
+          "averageWallTimeMs": 98065.66666666667
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 6,
+          "averageCompositeScore": 0.49565183333333335,
+          "averageSuccessRate": 0.5,
+          "averageRequestUnits": 11.5,
+          "averageCostUsd": 0.0032916250000000007,
+          "averageWallTimeMs": 70894
+        }
+      ]
+    },
+    {
+      "difficulty": "high",
+      "taskCount": 7,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 7,
+          "averageCompositeScore": 0.6465687142857143,
+          "averageSuccessRate": 0.7142857142857143,
+          "averageRequestUnits": 13.714285714285714,
+          "averageCostUsd": 0.008906857142857143,
+          "averageWallTimeMs": 91685.28571428571
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 7,
+          "averageCompositeScore": 0.5685564285714285,
+          "averageSuccessRate": 0.5714285714285714,
+          "averageRequestUnits": 10.428571428571429,
+          "averageCostUsd": 0.0030346071428571423,
+          "averageWallTimeMs": 51936.71428571428
+        }
+      ]
+    },
+    {
+      "difficulty": "medium",
+      "taskCount": 1,
+      "models": [
+        {
+          "model": "opencode/gpt-5.4",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 11,
+          "averageCostUsd": 0.0083865,
+          "averageWallTimeMs": 73164
+        },
+        {
+          "model": "opencode/gpt-5.4-mini",
+          "taskCount": 1,
+          "averageCompositeScore": 0,
+          "averageSuccessRate": 0,
+          "averageRequestUnits": 6,
+          "averageCostUsd": 0.00295725,
+          "averageWallTimeMs": 32264
+        }
+      ]
+    }
+  ],
+  "tokenSummary": [
+    {
+      "model": "opencode/gpt-5.4",
+      "inputTokens": 6583,
+      "outputTokens": 3288,
+      "reasoningTokens": 669,
+      "cacheReadTokens": 281856,
+      "cacheWriteTokens": 0
+    },
+    {
+      "model": "opencode/gpt-5.4-mini",
+      "inputTokens": 8275,
+      "outputTokens": 1852,
+      "reasoningTokens": 2516,
+      "cacheReadTokens": 261120,
+      "cacheWriteTokens": 0
+    }
+  ],
   "charts": [
     {
       "slug": "composite-score",
-      "eyebrow": "Primary ranking",
+      "eyebrow": "Leaderboard",
       "title": "Composite score",
-      "description": "Default benchmark ordering: correctness first, efficiency second.",
+      "description": "Correctness-first overall ranking across the full benchmark set.",
       "jsonPath": "results/charts/composite-score.json",
       "htmlPath": "results/charts/composite-score.html"
     },
     {
       "slug": "success-rate",
-      "eyebrow": "Correctness view",
+      "eyebrow": "Reliability",
       "title": "Success rate",
-      "description": "Shows how often a model actually closes benchmark tasks, independent of efficiency.",
+      "description": "How often each model actually closes tasks, independent of efficiency.",
       "jsonPath": "results/charts/success-rate.json",
       "htmlPath": "results/charts/success-rate.html"
     },
     {
       "slug": "orpt",
-      "eyebrow": "Efficiency view",
+      "eyebrow": "Request efficiency",
       "title": "ORPT",
-      "description": "Lower is better: fewer OpenCode requests required per successful task.",
+      "description": "Lower is better: fewer requests per successful task.",
       "jsonPath": "results/charts/orpt.json",
       "htmlPath": "results/charts/orpt.html"
+    },
+    {
+      "slug": "total-cost",
+      "eyebrow": "Benchmark economics",
+      "title": "Total benchmark cost",
+      "description": "Total spend per model across the published full run.",
+      "jsonPath": "results/charts/total-cost.json",
+      "htmlPath": "results/charts/total-cost.html"
+    },
+    {
+      "slug": "composite-vs-cost",
+      "eyebrow": "Tradeoff frontier",
+      "title": "Composite vs benchmark cost",
+      "description": "Quality against the actual cost of clearing the published benchmark suite.",
+      "jsonPath": "results/charts/composite-vs-cost.json",
+      "htmlPath": "results/charts/composite-vs-cost.html"
+    },
+    {
+      "slug": "composite-vs-catalog-price",
+      "eyebrow": "Catalog priors",
+      "title": "Composite vs catalog price",
+      "description": "Observed ORPT-Bench quality against catalog blended price per 1M tokens.",
+      "jsonPath": "results/charts/composite-vs-catalog-price.json",
+      "htmlPath": "results/charts/composite-vs-catalog-price.html"
+    },
+    {
+      "slug": "total-wall-time",
+      "eyebrow": "Benchmark speed",
+      "title": "Total wall time",
+      "description": "Lower is better: total elapsed model runtime across benchmark tasks.",
+      "jsonPath": "results/charts/total-wall-time.json",
+      "htmlPath": "results/charts/total-wall-time.html"
+    },
+    {
+      "slug": "total-requests",
+      "eyebrow": "Traffic profile",
+      "title": "Total requests",
+      "description": "Total request units consumed across the published run.",
+      "jsonPath": "results/charts/total-requests.json",
+      "htmlPath": "results/charts/total-requests.html"
+    },
+    {
+      "slug": "cost-by-outcome",
+      "eyebrow": "Failure burn",
+      "title": "Spend split by outcome",
+      "description": "How much benchmark spend went to solved tasks versus failed attempts.",
+      "jsonPath": "results/charts/cost-by-outcome.json",
+      "htmlPath": "results/charts/cost-by-outcome.html"
+    },
+    {
+      "slug": "token-breakdown",
+      "eyebrow": "Execution profile",
+      "title": "Token breakdown",
+      "description": "Input, output, reasoning, and cache token mix by model across the suite.",
+      "jsonPath": "results/charts/token-breakdown.json",
+      "htmlPath": "results/charts/token-breakdown.html"
+    },
+    {
+      "slug": "category-composite-heatmap",
+      "eyebrow": "Benchmark composition",
+      "title": "Category composite heatmap",
+      "description": "Average composite score by benchmark category and model.",
+      "wide": true,
+      "jsonPath": "results/charts/category-composite-heatmap.json",
+      "htmlPath": "results/charts/category-composite-heatmap.html"
+    },
+    {
+      "slug": "difficulty-success-heatmap",
+      "eyebrow": "Benchmark composition",
+      "title": "Difficulty success heatmap",
+      "description": "Average success rate by task difficulty and model.",
+      "wide": true,
+      "jsonPath": "results/charts/difficulty-success-heatmap.json",
+      "htmlPath": "results/charts/difficulty-success-heatmap.html"
+    },
+    {
+      "slug": "task-composite-heatmap",
+      "eyebrow": "Task breakdown",
+      "title": "Task composite heatmap",
+      "description": "Per-task comparative quality. Higher is better.",
+      "wide": true,
+      "jsonPath": "results/charts/task-composite-heatmap.json",
+      "htmlPath": "results/charts/task-composite-heatmap.html"
+    },
+    {
+      "slug": "task-cost-heatmap",
+      "eyebrow": "Task economics",
+      "title": "Task cost heatmap",
+      "description": "Per-task average cost by model. Lower is better.",
+      "wide": true,
+      "jsonPath": "results/charts/task-cost-heatmap.json",
+      "htmlPath": "results/charts/task-cost-heatmap.html"
+    },
+    {
+      "slug": "task-duration-heatmap",
+      "eyebrow": "Task speed",
+      "title": "Task duration heatmap",
+      "description": "Per-task average duration by model. Lower is better.",
+      "wide": true,
+      "jsonPath": "results/charts/task-duration-heatmap.json",
+      "htmlPath": "results/charts/task-duration-heatmap.html"
     }
   ],
   "history": [

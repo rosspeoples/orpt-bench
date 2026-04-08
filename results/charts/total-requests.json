@@ -1,32 +1,32 @@
 {
-  "title": "Composite score",
-  "description": "Correctness-first overall ranking across the full benchmark set.",
+  "title": "Total requests",
+  "description": "Total request units consumed across the published run.",
   "data": [
     {
       "type": "bar",
       "x": [
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/gpt-5.4"
       ],
       "y": [
-        0.534,
-        0.529
+        156,
+        197
       ],
       "marker": {
-        "color": "#7c3aed",
+        "color": "#ec4899",
         "line": {
           "color": "rgba(255,255,255,0.18)",
           "width": 1
         }
       },
       "text": [
-        0.534,
-        0.529
+        156,
+        197
       ],
       "textposition": "auto",
       "hovertemplate": [
-        "opencode/gpt-5.4<br>Composite score: 0.534<br>60% success | 13.11 ORPT<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Composite score: 0.529<br>53% success | 11.00 ORPT<extra></extra>"
+        "opencode/gpt-5.4-mini<br>Request units: 156<br>53% success | 14m 10s wall time<extra></extra>",
+        "opencode/gpt-5.4<br>Request units: 197<br>60% success | 22m 19s wall time<extra></extra>"
       ]
     }
   ],
@@ -56,8 +56,8 @@
       "automargin": true,
       "zeroline": false,
       "gridcolor": "rgba(15, 23, 42, 0.08)",
-      "title": "Composite score"
+      "title": "Request units"
     },
-    "title": "Composite score"
+    "title": "Total requests"
   }
 }

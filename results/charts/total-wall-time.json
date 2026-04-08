@@ -1,32 +1,32 @@
 {
-  "title": "Composite score",
-  "description": "Correctness-first overall ranking across the full benchmark set.",
+  "title": "Total wall time",
+  "description": "Lower is better: total elapsed model runtime across benchmark tasks.",
   "data": [
     {
       "type": "bar",
       "x": [
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/gpt-5.4"
       ],
       "y": [
-        0.534,
-        0.529
+        14.17,
+        22.31
       ],
       "marker": {
-        "color": "#7c3aed",
+        "color": "#06b6d4",
         "line": {
           "color": "rgba(255,255,255,0.18)",
           "width": 1
         }
       },
       "text": [
-        0.534,
-        0.529
+        14.17,
+        22.31
       ],
       "textposition": "auto",
       "hovertemplate": [
-        "opencode/gpt-5.4<br>Composite score: 0.534<br>60% success | 13.11 ORPT<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Composite score: 0.529<br>53% success | 11.00 ORPT<extra></extra>"
+        "opencode/gpt-5.4-mini<br>Minutes: 14.17<br>53% success | $0.0454 total cost<extra></extra>",
+        "opencode/gpt-5.4<br>Minutes: 22.31<br>60% success | $0.1463 total cost<extra></extra>"
       ]
     }
   ],
@@ -56,8 +56,8 @@
       "automargin": true,
       "zeroline": false,
       "gridcolor": "rgba(15, 23, 42, 0.08)",
-      "title": "Composite score"
+      "title": "Minutes"
     },
-    "title": "Composite score"
+    "title": "Total wall time"
   }
 }

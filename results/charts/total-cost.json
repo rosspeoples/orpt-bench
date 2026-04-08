@@ -1,32 +1,32 @@
 {
-  "title": "Composite score",
-  "description": "Correctness-first overall ranking across the full benchmark set.",
+  "title": "Total benchmark cost",
+  "description": "Total spend per model across the published full run.",
   "data": [
     {
       "type": "bar",
       "x": [
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/gpt-5.4"
       ],
       "y": [
-        0.534,
-        0.529
+        0.0454,
+        0.1463
       ],
       "marker": {
-        "color": "#7c3aed",
+        "color": "#f59e0b",
         "line": {
           "color": "rgba(255,255,255,0.18)",
           "width": 1
         }
       },
       "text": [
-        0.534,
-        0.529
+        0.0454,
+        0.1463
       ],
       "textposition": "auto",
       "hovertemplate": [
-        "opencode/gpt-5.4<br>Composite score: 0.534<br>60% success | 13.11 ORPT<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Composite score: 0.529<br>53% success | 11.00 ORPT<extra></extra>"
+        "opencode/gpt-5.4-mini<br>USD: 0.0454<br>0.529 composite | 156 requests<extra></extra>",
+        "opencode/gpt-5.4<br>USD: 0.1463<br>0.534 composite | 197 requests<extra></extra>"
       ]
     }
   ],
@@ -56,8 +56,8 @@
       "automargin": true,
       "zeroline": false,
       "gridcolor": "rgba(15, 23, 42, 0.08)",
-      "title": "Composite score"
+      "title": "USD"
     },
-    "title": "Composite score"
+    "title": "Total benchmark cost"
   }
 }
