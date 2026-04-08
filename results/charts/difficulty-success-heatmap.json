@@ -6,12 +6,7 @@
       "type": "heatmap",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini",
-        "opencode/glm-5",
-        "opencode/gemini-3.1-pro",
-        "opencode/gemini-3-flash",
-        "opencode/nemotron-3-super-free",
-        "opencode/minimax-m2.5-free"
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         "control (1 tasks)",
@@ -22,37 +17,17 @@
       "z": [
         [
           1,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0
+          1
         ],
         [
           0.5,
-          0.5,
-          0,
-          0,
-          0,
-          0,
-          0
+          0.5
         ],
         [
           0.7142857142857143,
-          0.5714285714285714,
-          0,
-          0,
-          0,
-          0,
-          0
+          0.5714285714285714
         ],
         [
-          0,
-          0,
-          1,
-          0,
-          0,
           0,
           0
         ]
@@ -60,37 +35,17 @@
       "text": [
         [
           "100%",
-          "100%",
-          "0%",
-          "0%",
-          "0%",
-          "0%",
-          "0%"
+          "100%"
         ],
         [
           "50%",
-          "50%",
-          "0%",
-          "0%",
-          "0%",
-          "0%",
-          "0%"
+          "50%"
         ],
         [
           "71%",
-          "57%",
-          "0%",
-          "0%",
-          "0%",
-          "0%",
-          "0%"
+          "57%"
         ],
         [
-          "0%",
-          "0%",
-          "100%",
-          "0%",
-          "0%",
           "0%",
           "0%"
         ]
@@ -98,39 +53,19 @@
       "customdata": [
         [
           "Avg success: 100%<br>Avg composite: 0.886<br>Avg requests: 7.00<br>Avg cost: $0.0053<br>Tasks in band: 1",
-          "Avg success: 100%<br>Avg composite: 0.983<br>Avg requests: 8.00<br>Avg cost: $0.0015<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 1"
+          "Avg success: 100%<br>Avg composite: 0.983<br>Avg requests: 8.00<br>Avg cost: $0.0015<br>Tasks in band: 1"
         ],
         [
           "Avg success: 50%<br>Avg composite: 0.434<br>Avg requests: 13.83<br>Avg cost: $0.0117<br>Tasks in band: 6",
-          "Avg success: 50%<br>Avg composite: 0.496<br>Avg requests: 11.50<br>Avg cost: $0.0033<br>Tasks in band: 6",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 6",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 6",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 6",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 6",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 6"
+          "Avg success: 50%<br>Avg composite: 0.496<br>Avg requests: 11.50<br>Avg cost: $0.0033<br>Tasks in band: 6"
         ],
         [
           "Avg success: 71%<br>Avg composite: 0.647<br>Avg requests: 13.71<br>Avg cost: $0.0089<br>Tasks in band: 7",
-          "Avg success: 57%<br>Avg composite: 0.569<br>Avg requests: 10.43<br>Avg cost: $0.0030<br>Tasks in band: 7",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.71<br>Avg cost: $0.0000<br>Tasks in band: 7",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 7",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 7",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 7",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 0.00<br>Avg cost: $0.0000<br>Tasks in band: 7"
+          "Avg success: 57%<br>Avg composite: 0.569<br>Avg requests: 10.43<br>Avg cost: $0.0030<br>Tasks in band: 7"
         ],
         [
           "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 11.00<br>Avg cost: $0.0084<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 6.00<br>Avg cost: $0.0030<br>Tasks in band: 1",
-          "Avg success: 100%<br>Avg composite: 1.0<br>Avg requests: 20.00<br>Avg cost: $0.0045<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 8.00<br>Avg cost: $0.0000<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 3.00<br>Avg cost: $0.0000<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 8.00<br>Avg cost: $0.0000<br>Tasks in band: 1",
-          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 8.00<br>Avg cost: $0.0000<br>Tasks in band: 1"
+          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 6.00<br>Avg cost: $0.0030<br>Tasks in band: 1"
         ]
       ],
       "texttemplate": "%{text}",

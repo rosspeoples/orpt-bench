@@ -7,31 +7,16 @@
       "name": "Solved tasks cost",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini",
-        "opencode/glm-5",
-        "opencode/gemini-3.1-pro",
-        "opencode/gemini-3-flash",
-        "opencode/nemotron-3-super-free",
-        "opencode/minimax-m2.5-free"
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         0.0813,
-        0.0258,
-        0.0045,
-        0,
-        0,
-        0,
-        0
+        0.0258
       ],
       "marker": {
         "color": [
           "#86a8ff",
-          "#f472b6",
-          "#73f0c5",
-          "#c084fc",
-          "#c084fc",
-          "#fb7185",
-          "#38bdf8"
+          "#f472b6"
         ],
         "opacity": 0.95
       }
@@ -41,31 +26,16 @@
       "name": "Failed tasks cost",
       "x": [
         "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini",
-        "opencode/glm-5",
-        "opencode/gemini-3.1-pro",
-        "opencode/gemini-3-flash",
-        "opencode/nemotron-3-super-free",
-        "opencode/minimax-m2.5-free"
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         0.065,
-        0.0196,
-        0,
-        0,
-        0,
-        0,
-        0
+        0.0196
       ],
       "marker": {
         "color": [
           "rgba(134, 168, 255, 0.42)",
-          "rgba(244, 114, 182, 0.42)",
-          "rgba(115, 240, 197, 0.42)",
-          "rgba(192, 132, 252, 0.42)",
-          "rgba(192, 132, 252, 0.42)",
-          "rgba(251, 113, 133, 0.42)",
-          "rgba(56, 189, 248, 0.42)"
+          "rgba(244, 114, 182, 0.42)"
         ],
         "opacity": 0.95
       }

@@ -1,21 +1,5 @@
 [
   {
-    "id": "2026-04-08T02-26-48-652Z",
-    "startedAt": "2026-04-08T02:26:48.653Z",
-    "completedAt": "2026-04-08T02:36:45.349Z",
-    "benchmarkCycle": null,
-    "taskCount": 15,
-    "modelCount": 5,
-    "repeats": 1,
-    "totalRuns": 75,
-    "successfulRuns": 1,
-    "topModel": "opencode/glm-5",
-    "topCompositeScore": 0.06666666666666667,
-    "topSuccessRate": 0.06666666666666667,
-    "href": "results/history/2026-04-08T02-26-48-652Z.json",
-    "isLatest": true
-  },
-  {
     "id": "2026-04-07T23-14-03-414Z",
     "startedAt": "2026-04-07T23:14:03.415Z",
     "completedAt": "2026-04-07T23:36:23.749Z",
@@ -29,6 +13,6 @@
     "topCompositeScore": 0.5343493333333333,
     "topSuccessRate": 0.6,
     "href": "results/history/2026-04-07T23-14-03-414Z.json",
-    "isLatest": false
+    "isLatest": true
   }
 ]

@@ -5,30 +5,15 @@
     {
       "type": "bar",
       "x": [
-        "opencode/gemini-3.1-pro",
-        "opencode/gemini-3-flash",
-        "opencode/nemotron-3-super-free",
-        "opencode/minimax-m2.5-free",
-        "opencode/glm-5",
         "opencode/gpt-5.4-mini",
         "opencode/gpt-5.4"
       ],
       "y": [
-        0,
-        0,
-        0,
-        0,
-        0.0045,
         0.0454,
         0.1463
       ],
       "marker": {
         "color": [
-          "#c084fc",
-          "#c084fc",
-          "#fb7185",
-          "#38bdf8",
-          "#73f0c5",
           "#f472b6",
           "#86a8ff"
         ],
@@ -38,11 +23,6 @@
         }
       },
       "text": [
-        0,
-        0,
-        0,
-        0,
-        0.0045,
         0.0454,
         0.1463
       ],
@@ -52,11 +32,6 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gemini-3.1-pro<br>USD: 0<br>0.0 composite | 8 requests<extra></extra>",
-        "opencode/gemini-3-flash<br>USD: 0<br>0.0 composite | 3 requests<extra></extra>",
-        "opencode/nemotron-3-super-free<br>USD: 0<br>0.0 composite | 8 requests<extra></extra>",
-        "opencode/minimax-m2.5-free<br>USD: 0<br>0.0 composite | 8 requests<extra></extra>",
-        "opencode/glm-5<br>USD: 0.0045<br>0.067 composite | 25 requests<extra></extra>",
         "opencode/gpt-5.4-mini<br>USD: 0.0454<br>0.529 composite | 156 requests<extra></extra>",
         "opencode/gpt-5.4<br>USD: 0.1463<br>0.534 composite | 197 requests<extra></extra>"
       ]

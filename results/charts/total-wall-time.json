@@ -5,30 +5,15 @@
     {
       "type": "bar",
       "x": [
-        "opencode/glm-5",
-        "opencode/minimax-m2.5-free",
-        "opencode/nemotron-3-super-free",
-        "opencode/gemini-3.1-pro",
-        "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
         "opencode/gpt-5.4"
       ],
       "y": [
-        1.78,
-        1.78,
-        1.78,
-        1.78,
-        1.78,
         14.17,
         22.31
       ],
       "marker": {
         "color": [
-          "#73f0c5",
-          "#38bdf8",
-          "#fb7185",
-          "#c084fc",
-          "#c084fc",
           "#f472b6",
           "#86a8ff"
         ],
@@ -38,11 +23,6 @@
         }
       },
       "text": [
-        1.78,
-        1.78,
-        1.78,
-        1.78,
-        1.78,
         14.17,
         22.31
       ],
@@ -52,11 +32,6 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/glm-5<br>Minutes: 1.78<br>7% success | $0.0045 total cost<extra></extra>",
-        "opencode/minimax-m2.5-free<br>Minutes: 1.78<br>0% success | $0.0000 total cost<extra></extra>",
-        "opencode/nemotron-3-super-free<br>Minutes: 1.78<br>0% success | $0.0000 total cost<extra></extra>",
-        "opencode/gemini-3.1-pro<br>Minutes: 1.78<br>0% success | $0.0000 total cost<extra></extra>",
-        "opencode/gemini-3-flash<br>Minutes: 1.78<br>0% success | $0.0000 total cost<extra></extra>",
         "opencode/gpt-5.4-mini<br>Minutes: 14.17<br>53% success | $0.0454 total cost<extra></extra>",
         "opencode/gpt-5.4<br>Minutes: 22.31<br>60% success | $0.1463 total cost<extra></extra>"
       ]
