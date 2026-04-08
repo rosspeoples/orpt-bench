@@ -34,4 +34,6 @@ The generated Pages site is an interactive static dashboard rather than a markdo
 
 The publication flow treats `Gitea` as the source of truth and force-pushes both the GitHub source branch and the generated `gh-pages` branch.
 
-The `GitHub Publication` workflow currently targets the custom `benchmarks-orpt-bench` runner label. This repository does not have an `ubuntu-latest` runner available, so changing the workflow to `runs-on: ubuntu-latest` leaves publication jobs queued indefinitely until that label is provisioned on the Gitea instance.
+The `GitHub Publication` workflow currently targets the custom `benchmarks-orpt-bench` runner label for scheduling and explicitly runs inside `docker.gitea.com/runner-images:ubuntu-latest`. This repository does not have an `ubuntu-latest` runner available, so changing the workflow to `runs-on: ubuntu-latest` leaves publication jobs queued indefinitely until that label is provisioned on the Gitea instance.
+
+The explicit job container also avoids the runner's default fallback image for custom labels, which was pulling `node:20-bookworm` from Docker Hub and failing under unauthenticated rate limits.

@@ -9,6 +9,8 @@ on:
 jobs:
   publish-github:
     runs-on: benchmarks-orpt-bench
+    container:
+      image: docker.gitea.com/runner-images:ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
