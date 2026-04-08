@@ -5,6 +5,37 @@ import net from 'node:net'
 
 import { ensureDir } from './fs.js'
 
+function permissionRules(runtime) {
+  const sandboxPattern = `${runtime.sandboxDir.replace(/\\/g, '/')}/**`
+  const toolOutputPattern = '/root/.local/share/opencode/tool-output/**'
+
+  return {
+    question: 'deny',
+    plan_enter: 'deny',
+    plan_exit: 'deny',
+    read: {
+      [sandboxPattern]: 'allow',
+      [toolOutputPattern]: 'allow',
+      '*.env': 'ask',
+      '*.env.*': 'ask',
+      '*.env.example': 'allow'
+    },
+    edit: {
+      [sandboxPattern]: 'allow'
+    },
+    bash: {
+      [sandboxPattern]: 'allow'
+    },
+    webfetch: 'allow',
+    task: { '*': 'allow' },
+    external_directory: {
+      [sandboxPattern]: 'allow',
+      [toolOutputPattern]: 'allow',
+      '*': 'deny'
+    }
+  }
+}
+
 async function requestJson({ baseUrl, pathname, method = 'GET', query = {}, body, timeoutMs = 120000 }) {
   const url = new URL(pathname, baseUrl)
   for (const [key, value] of Object.entries(query)) {
@@ -50,6 +81,7 @@ export async function startOpenCodeServer({ runtime, model, proxy }) {
   const { providerID } = model
   const logDir = path.join(runtime.tmpDir, 'logs')
   await ensureDir(logDir)
+  await ensureDir(runtime.sandboxDir)
   const logFile = path.join(logDir, `${providerID}-${model.modelID.replace(/[\/]/g, '-')}.log`)
   const lines = []
 
@@ -84,20 +116,10 @@ export async function startOpenCodeServer({ runtime, model, proxy }) {
     model: `${model.providerID}/${model.modelID}`,
     small_model: `${model.providerID}/${model.modelID}`,
     provider: providerConfig,
-    permission: {
-      edit: 'allow',
-      bash: 'allow',
-      webfetch: 'allow',
-      task: 'allow'
-    },
+    permission: permissionRules(runtime),
     agent: {
       build: {
-        permission: {
-          edit: 'allow',
-          bash: { '*': 'allow' },
-          webfetch: 'allow',
-          task: { '*': 'allow' }
-        }
+        permission: permissionRules(runtime)
       }
     },
     watcher: {
@@ -113,6 +135,7 @@ export async function startOpenCodeServer({ runtime, model, proxy }) {
   ]
 
   const child = spawn('opencode', args, {
+    cwd: runtime.sandboxDir,
     env: {
       ...process.env,
       OPENCODE_CONFIG_CONTENT: JSON.stringify(opencodeConfig)

@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises'
+import os from 'node:os'
 import path from 'node:path'
 
 import { readJson } from './fs.js'
@@ -67,6 +68,7 @@ export async function loadRuntimeConfig() {
   const repeats = parseInteger(process.env.BENCHMARK_REPEATS, 1)
   const taskTimeoutMs = parseInteger(process.env.BENCHMARK_TIMEOUT_SECONDS, Math.round(baseConfig.runner.taskTimeoutMs / 1000)) * 1000
   const processTimeoutMs = parseInteger(process.env.BENCHMARK_PROCESS_TIMEOUT_SECONDS, 0) * 1000
+  const modelConcurrency = Math.max(1, parseInteger(process.env.BENCHMARK_MODEL_CONCURRENCY, 1))
   const providerOverrides = process.env.BENCHMARK_PROVIDER_OVERRIDES_JSON
     ? JSON.parse(process.env.BENCHMARK_PROVIDER_OVERRIDES_JSON)
     : {}
@@ -81,6 +83,9 @@ export async function loadRuntimeConfig() {
       }
     }
   }
+  if (process.env.BENCHMARK_PROXY_LISTEN_PORT) {
+    proxy.listenPort = parseInteger(process.env.BENCHMARK_PROXY_LISTEN_PORT, proxy.listenPort || 18080)
+  }
 
   const writeReadme = parseBoolean(process.env.BENCHMARK_WRITE_README, true)
 
@@ -94,9 +99,13 @@ export async function loadRuntimeConfig() {
     repeats,
     taskTimeoutMs,
     processTimeoutMs,
+    modelConcurrency,
     writeReadme,
     resultsDir: resolvePath(rootDir, process.env.ORPT_RESULTS_DIR || 'results'),
     tmpDir: resolvePath(rootDir, process.env.ORPT_TMP_DIR || '.tmp'),
+    sandboxDir: process.env.ORPT_SANDBOX_DIR
+      ? resolvePath(rootDir, process.env.ORPT_SANDBOX_DIR)
+      : path.join(os.tmpdir(), 'orpt-bench-sandbox'),
     providerOverrides,
     proxy,
     inferApiKeyEnv,

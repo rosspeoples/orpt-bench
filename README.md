@@ -45,7 +45,7 @@ Included task areas:
 
 ## Included Tasks
 
-- Difficulty mix: control=1, medium=1, high=7, expert=5
+- Difficulty mix: control=1, medium=1, high=7, expert=6
 
 1. Kubernetes rollout repair (01-iac-kubernetes-rollout, medium)
 2. Terraform static site repair (02-terraform-static-site, high)
@@ -61,6 +61,7 @@ Included task areas:
 12. Pre-ArgoCD bootstrap sequencing (12-pre-argocd-bootstrap-sequencing, expert)
 13. Wildcard TLS route coverage (13-wildcard-tls-route-coverage, expert)
 14. Build workspace plane convergence (14-build-workspace-plane-convergence, expert)
+15. Workspace runtime access convergence (15-workspace-runtime-access-convergence, expert)
 
 ## Quickstart
 

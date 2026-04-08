@@ -385,7 +385,7 @@ function medianNumber(values) {
 }
 
 async function prepareRunTaskDir(runtime, runID, task, model, repeatIndex) {
-  const runTaskDir = path.join(runtime.tmpDir, 'runs', runID, task.id, `${slugify(model.providerID)}-${slugify(model.modelID)}`, `repeat-${repeatIndex}`)
+  const runTaskDir = path.join(runtime.sandboxDir, 'runs', runID, task.id, `${slugify(model.providerID)}-${slugify(model.modelID)}`, `repeat-${repeatIndex}`)
   await copyDir(task.taskDir, runTaskDir)
   return {
     runTaskDir,
@@ -600,22 +600,43 @@ export async function runBenchmark(runtime) {
 
   await ensureDir(path.join(runtime.tmpDir, 'child-runs'))
 
-  for (const model of runtime.models) {
+  const childTimeoutMs = runtime.processTimeoutMs > 0 ? runtime.processTimeoutMs + 15000 : 0
+  const remainingModels = [...runtime.models]
+  const childResults = []
+
+  async function runChild(model, childIndex) {
     const outputFile = path.join(runtime.tmpDir, 'child-runs', `${slugify(model)}.json`)
+    const proxyListenPort = (runtime.proxy?.listenPort || 18080) + childIndex + 1
     const child = await runCommand('node', ['scripts/cli.js', 'benchmark-single'], {
       cwd: runtime.rootDir,
       env: {
         ...process.env,
         BENCHMARK_MODELS: model,
         BENCHMARK_CHILD_OUTPUT_FILE: outputFile,
-        BENCHMARK_PARENT_RUN_ID: runID
+        BENCHMARK_PARENT_RUN_ID: runID,
+        BENCHMARK_PROXY_LISTEN_PORT: String(proxyListenPort)
       },
-      timeoutMs: runtime.processTimeoutMs > 0 ? runtime.processTimeoutMs + 15000 : 0
+      timeoutMs: childTimeoutMs
     })
 
     let childRun = null
     if (await exists(outputFile)) {
       childRun = await readJson(outputFile)
+    }
+
+    return { model, child, childRun }
+  }
+
+  while (remainingModels.length) {
+    const batch = remainingModels.splice(0, runtime.modelConcurrency)
+    const batchStartIndex = childResults.length
+    const settled = await Promise.all(batch.map((model, index) => runChild(model, batchStartIndex + index)))
+    childResults.push(...settled)
+  }
+
+  let childFailure = null
+  for (const { model, child, childRun } of childResults) {
+    if (childRun) {
       combined.results.push(...(childRun.results || []))
       aggregateRun(combined, runtime.baseConfig.runner.requestExtractors)
       await writeRunArtifacts(runtime, combined)
@@ -636,7 +657,7 @@ export async function runBenchmark(runtime) {
         modelName: model,
         provider: model.split('/')[0],
         entries: missingEntries,
-        reason: `Model run timed out after ${Math.round((runtime.processTimeoutMs + 15000) / 1000)}s`,
+        reason: `Model run timed out after ${Math.round(childTimeoutMs / 1000)}s`,
         durationMs: runtime.processTimeoutMs > 0 ? runtime.processTimeoutMs : 0
       })
       combined.results.push(...synthetic)
@@ -648,21 +669,24 @@ export async function runBenchmark(runtime) {
       continue
     }
 
-    if (child.code !== 0) {
-      console.error(child.stderr || child.stdout)
-      break
+    if (child.code !== 0 && !childFailure) {
+      childFailure = new Error(child.stderr || child.stdout || `Child benchmark failed for ${model}`)
     }
   }
 
   combined.run.completedAt = nowIso()
   aggregateRun(combined, runtime.baseConfig.runner.requestExtractors)
   await writeRunArtifacts(runtime, combined)
+  if (childFailure) {
+    throw childFailure
+  }
   return combined
 }
 
 export async function validateWorkspace(runtime) {
   const tasks = await loadTasks(runtime)
   const validationRoot = path.join(runtime.tmpDir, 'validation-fixtures')
+  await ensureDir(validationRoot)
 
   for (const task of tasks) {
     const taskCopyDir = path.join(validationRoot, path.basename(task.taskDir))

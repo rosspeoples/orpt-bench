@@ -150,3 +150,17 @@ test('aggregateRun preserves task difficulty metadata in task catalog inputs', (
   assert.equal(run.taskCatalog[0].difficulty, 'control')
   assert.equal(run.taskCatalog[1].difficulty, 'high')
 })
+
+test('runtime config defaults model concurrency to one when unset', async () => {
+  const { loadRuntimeConfig } = await import('../scripts/lib/config.js')
+  const previous = process.env.BENCHMARK_MODEL_CONCURRENCY
+  delete process.env.BENCHMARK_MODEL_CONCURRENCY
+
+  try {
+    const runtime = await loadRuntimeConfig()
+    assert.equal(runtime.modelConcurrency, 1)
+  } finally {
+    if (previous == null) delete process.env.BENCHMARK_MODEL_CONCURRENCY
+    else process.env.BENCHMARK_MODEL_CONCURRENCY = previous
+  }
+})

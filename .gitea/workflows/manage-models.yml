@@ -35,10 +35,11 @@ jobs:
 
       - name: Commit model-management updates
         run: |
+          branch="${GITHUB_REF_NAME:-main}"
           export GIT_AUTHOR_NAME=gitea-actions
           export GIT_AUTHOR_EMAIL=gitea-actions@localhost
           export GIT_COMMITTER_NAME=gitea-actions
           export GIT_COMMITTER_EMAIL=gitea-actions@localhost
-          git add models README.md .github/workflows/benchmark.yml .github/workflows/manage-models.yml .gitea/workflows/benchmark.yml .gitea/workflows/manage-models.yml ci/commit-results.sh package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js scripts/lib/config.js scripts/lib/benchmark.js scripts/sync-github-issues.js tests/models.test.js tests/automation.test.js
+          git add models README.md results .github/workflows/benchmark.yml .github/workflows/manage-models.yml .gitea/workflows/benchmark.yml .gitea/workflows/manage-models.yml ci/commit-results.sh package.json scripts/cli.js scripts/lib/models.js scripts/lib/automation.js scripts/lib/config.js scripts/lib/benchmark.js scripts/build-github-pages.sh scripts/lib/build-github-pages.js scripts/sync-github-issues.js tests/models.test.js tests/automation.test.js ci/Dockerfile
           git commit -m "automate model lifecycle planning" || exit 0
-          git push || true
+          git push origin "HEAD:${branch}"

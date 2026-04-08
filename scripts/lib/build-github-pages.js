@@ -2,27 +2,27 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 
+import { aggregateRun } from './benchmark.js';
+
 const outputDir = process.env.PUBLISH_PAGES_OUTPUT_DIR || process.env.GITHUB_PAGES_OUTPUT_DIR;
 
 if (!outputDir) {
   throw new Error('missing PUBLISH_PAGES_OUTPUT_DIR or GITHUB_PAGES_OUTPUT_DIR');
 }
 
-const latest = readJson(path.join(process.cwd(), 'results/latest.json'));
+const latestRawRun = readJson(path.join(process.cwd(), 'results/latest.json'));
 const repoUrl = normalizeRepositoryUrl(process.env.PUBLISH_GITHUB_REPOSITORY || detectRepositoryUrl());
 const pagesUrl = derivePagesUrl(repoUrl);
 const historyDir = path.join(process.cwd(), 'results/history');
-const historyFiles = fs.existsSync(historyDir)
-  ? fs.readdirSync(historyDir).filter((entry) => entry.endsWith('.json')).sort().reverse()
-  : [];
+const historyEntries = loadHistoryEntries(historyDir);
+const allRunEntries = dedupeRunEntries([...historyEntries, { fileName: null, report: latestRawRun }]);
+const publicationContext = buildPublicationContext(allRunEntries, latestRawRun);
 const chartDefinitions = [
   {
     slug: 'composite-score',
     eyebrow: 'Primary ranking',
     title: 'Composite score',
     description: 'Default benchmark ordering: correctness first, efficiency second.',
-    jsonPath: 'results/charts/composite-score.json',
-    htmlPath: 'results/charts/composite-score.html',
     layout: {
       title: 'Composite Score by Model',
       xaxis: { automargin: true },
@@ -34,8 +34,6 @@ const chartDefinitions = [
     eyebrow: 'Correctness view',
     title: 'Success rate',
     description: 'Shows how often a model actually closes benchmark tasks, independent of efficiency.',
-    jsonPath: 'results/charts/success-rate.json',
-    htmlPath: 'results/charts/success-rate.html',
     layout: {
       title: 'Task Success Rate by Model',
       xaxis: { automargin: true },
@@ -47,8 +45,6 @@ const chartDefinitions = [
     eyebrow: 'Efficiency view',
     title: 'ORPT',
     description: 'Lower is better: fewer OpenCode requests required per successful task.',
-    jsonPath: 'results/charts/orpt.json',
-    htmlPath: 'results/charts/orpt.html',
     layout: {
       title: 'Average OpenCode Requests Per Successful Task',
       xaxis: { automargin: true },
@@ -56,7 +52,7 @@ const chartDefinitions = [
     },
   },
 ];
-const publishedCharts = buildPublishedCharts(chartDefinitions);
+const publishedCharts = buildPublishedCharts(chartDefinitions, publicationContext.publishedRun);
 
 const siteData = {
   generatedAt: new Date().toISOString(),
@@ -66,7 +62,8 @@ const siteData = {
     ...deriveRepositoryParts(repoUrl),
   },
   docs: {
-    latestResultPath: 'results/latest.json',
+    latestResultPath: 'results/published.json',
+    latestRawResultPath: 'results/latest.json',
     leaderboardPath: 'leaderboard.md',
     modelCatalogPath: 'models/index.md',
     resultSchemaPath: 'docs/result-schema.json',
@@ -74,18 +71,173 @@ const siteData = {
     historyIndexPath: 'results/history/index.json',
     sourceUrl: repoUrl,
   },
-  latestRun: summarizeRun(latest),
-  scoring: latest.scoring ?? null,
-  taskCatalog: latest.taskCatalog ?? [],
-  modelSummary: sortByComposite(latest.modelSummary ?? latest.leaderboard ?? []),
-  taskSummary: sortByComposite(latest.taskSummary ?? []),
+  latestRun: summarizeRun(publicationContext.publishedRun),
+  latestRawRun: summarizeRun(latestRawRun),
+  scoring: publicationContext.publishedRun.scoring ?? null,
+  taskCatalog: publicationContext.publishedRun.taskCatalog ?? [],
+  modelSummary: sortByComposite(publicationContext.publishedRun.modelSummary ?? publicationContext.publishedRun.leaderboard ?? []),
+  taskSummary: sortByComposite(publicationContext.publishedRun.taskSummary ?? []),
   charts: publishedCharts.map(({ data, layout, ...chart }) => chart),
-  history: historyFiles.map((fileName) => summarizeHistoricalRun(fileName, latest.run?.id ?? null)),
+  history: publicationContext.history.map(({ fileName, report }) => summarizeHistoricalRun(fileName, report, publicationContext.latestIncludedRunId)),
 };
 
+writeJson(path.join(outputDir, 'results/published.json'), publicationContext.publishedRun);
 writeJson(path.join(outputDir, 'site-data.json'), siteData);
 writeJson(path.join(outputDir, 'results/history/index.json'), siteData.history);
 fs.writeFileSync(path.join(outputDir, 'index.html'), renderHtml(siteData), 'utf8');
+
+function loadHistoryEntries(directory) {
+  if (!fs.existsSync(directory)) {
+    return [];
+  }
+
+  return fs.readdirSync(directory)
+    .filter((entry) => entry.endsWith('.json'))
+    .sort()
+    .map((fileName) => ({
+      fileName,
+      report: readJson(path.join(directory, fileName)),
+    }));
+}
+
+function dedupeRunEntries(entries) {
+  const deduped = new Map();
+  for (const entry of entries) {
+    const runId = entry.report?.run?.id || entry.fileName || JSON.stringify(entry.report?.run || {});
+    const existing = deduped.get(runId);
+    if (!existing) {
+      deduped.set(runId, entry);
+      continue;
+    }
+
+    if (existing.fileName && !entry.fileName) {
+      continue;
+    }
+
+    if (!existing.fileName && entry.fileName) {
+      deduped.set(runId, entry);
+      continue;
+    }
+
+    deduped.set(runId, entry);
+  }
+
+  return [...deduped.values()].sort((left, right) => runCompletedAt(right.report) - runCompletedAt(left.report));
+}
+
+function buildPublicationContext(allEntries, latestReport) {
+  const fullTaskCount = Math.max(...allEntries.map(({ report }) => inferTaskCount(report)), inferTaskCount(latestReport), 0);
+  const publishableEntries = allEntries.filter(({ report }) => isPublishableRun(report, fullTaskCount));
+  const selectedEntriesByModel = new Map();
+
+  for (const entry of publishableEntries) {
+    for (const modelName of modelNamesForRun(entry.report)) {
+      if (!selectedEntriesByModel.has(modelName)) {
+        selectedEntriesByModel.set(modelName, entry);
+      }
+    }
+  }
+
+  const selectedEntries = [...new Set(selectedEntriesByModel.values())].sort((left, right) => runCompletedAt(right.report) - runCompletedAt(left.report));
+  const publishedRun = buildPublishedRun(selectedEntries, latestReport, fullTaskCount);
+  const latestIncludedRunId = selectedEntries[0]?.report?.run?.id || latestReport?.run?.id || null;
+
+  return {
+    publishedRun,
+    history: publishableEntries,
+    latestIncludedRunId,
+  };
+}
+
+function inferTaskCount(report) {
+  return report?.run?.taskCount || report?.taskCatalog?.length || new Set((report?.results || []).map((entry) => entry.taskId)).size || 0;
+}
+
+function runCompletedAt(report) {
+  const value = Date.parse(report?.run?.completedAt || report?.run?.startedAt || 0);
+  return Number.isFinite(value) ? value : 0;
+}
+
+function isPublishableRun(report, fullTaskCount) {
+  if (!report?.run || !Array.isArray(report.results) || report.results.length === 0) {
+    return false;
+  }
+
+  if (report.run.benchmarkCycle === 'candidate_smoke') {
+    return false;
+  }
+
+  const taskCount = inferTaskCount(report);
+  if (fullTaskCount > 0 && taskCount < fullTaskCount) {
+    return false;
+  }
+
+  const taskPatterns = report.run.taskPatterns || [];
+  if (taskPatterns.length > 0 && !(taskPatterns.length === 1 && taskPatterns[0] === '*')) {
+    return false;
+  }
+
+  return true;
+}
+
+function modelNamesForRun(report) {
+  if (Array.isArray(report?.modelSummary) && report.modelSummary.length) {
+    return report.modelSummary.map((entry) => entry.model).filter(Boolean);
+  }
+  if (Array.isArray(report?.run?.models) && report.run.models.length) {
+    return report.run.models.filter(Boolean);
+  }
+  return [...new Set((report?.results || []).map((entry) => entry.model).filter(Boolean))];
+}
+
+function buildPublishedRun(entries, latestReport, fullTaskCount) {
+  if (!entries.length) {
+    return latestReport;
+  }
+
+  const latestIncludedReport = entries[0].report;
+  const selectedModels = new Set();
+  const mergedResults = [];
+
+  for (const entry of entries) {
+    const modelsForEntry = modelNamesForRun(entry.report);
+    for (const modelName of modelsForEntry) {
+      if (selectedModels.has(modelName)) {
+        continue;
+      }
+      selectedModels.add(modelName);
+      mergedResults.push(...(entry.report.results || []).filter((result) => result.model === modelName));
+    }
+  }
+
+  const sourceRunIds = entries.map(({ report }) => report.run?.id).filter(Boolean);
+  const publishedRun = {
+    ...latestIncludedReport,
+    run: {
+      ...latestIncludedReport.run,
+      id: latestIncludedReport.run?.id || latestReport?.run?.id || null,
+      models: [...selectedModels].sort(),
+      taskCount: fullTaskCount || inferTaskCount(latestIncludedReport),
+      taskPatterns: ['*'],
+      publishedView: true,
+      sourceRunIds,
+    },
+    results: mergedResults,
+    modelCatalog: latestReport.modelCatalog || latestIncludedReport.modelCatalog || { models: [] },
+    taskCatalog: latestReport.taskCatalog || latestIncludedReport.taskCatalog || [],
+    scoring: latestReport.scoring || latestIncludedReport.scoring || null,
+  };
+
+  aggregateRun(publishedRun, latestReport.requestExtractors || latestIncludedReport.requestExtractors || null);
+  return publishedRun;
+}
+
+for (const { fileName, report } of publicationContext.history) {
+  if (!fileName) {
+    continue;
+  }
+  writeJson(path.join(outputDir, 'results/history', fileName), report);
+}
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -96,23 +248,55 @@ function writeJson(filePath, value) {
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-function buildPublishedCharts(definitions) {
+function buildPublishedCharts(definitions, report) {
+  const leaderboard = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
+  const eligible = leaderboard.filter((entry) => entry.comparable && entry.eligible && entry.orpt != null);
+  const chartDataBySlug = {
+    'composite-score': [
+      {
+        type: 'bar',
+        x: leaderboard.map((entry) => entry.model),
+        y: leaderboard.map((entry) => Number(((entry.compositeScore ?? 0) * 100).toFixed(2))),
+        marker: { color: '#7c3aed' },
+        name: 'Composite Score %',
+      },
+    ],
+    'success-rate': [
+      {
+        type: 'bar',
+        x: leaderboard.map((entry) => entry.model),
+        y: leaderboard.map((entry) => Number(((entry.successRate ?? 0) * 100).toFixed(2))),
+        marker: { color: '#16a34a' },
+        name: 'Success Rate %',
+      },
+    ],
+    orpt: [
+      {
+        type: 'bar',
+        x: eligible.map((entry) => entry.model),
+        y: eligible.map((entry) => entry.orpt),
+        marker: { color: '#2563eb' },
+        name: 'ORPT',
+      },
+    ],
+  };
+
   return definitions.flatMap((definition) => {
-    const sourcePath = path.join(process.cwd(), definition.jsonPath);
-    if (!fs.existsSync(sourcePath)) {
+    const data = chartDataBySlug[definition.slug];
+    if (!data) {
       return [];
     }
 
-    const data = readJson(sourcePath);
-    const targetPath = path.join(outputDir, definition.htmlPath);
-    fs.mkdirSync(path.dirname(targetPath), { recursive: true });
-    fs.writeFileSync(targetPath, renderStandaloneChartHtml({
+    const jsonPath = `results/charts/${definition.slug}.json`;
+    const htmlPath = `results/charts/${definition.slug}.html`;
+    writeJson(path.join(outputDir, jsonPath), data);
+    fs.writeFileSync(path.join(outputDir, htmlPath), renderStandaloneChartHtml({
       title: definition.title,
       data,
       layout: definition.layout,
     }), 'utf8');
 
-    return [{ ...definition, data }];
+    return [{ ...definition, jsonPath, htmlPath, data }];
   });
 }
 
@@ -230,8 +414,7 @@ function summarizeRun(report) {
   };
 }
 
-function summarizeHistoricalRun(fileName, latestRunId) {
-  const report = readJson(path.join(historyDir, fileName));
+function summarizeHistoricalRun(fileName, report, latestRunId) {
   const runSummary = summarizeRun(report);
   const topModel = runSummary.topModel;
 
@@ -248,7 +431,7 @@ function summarizeHistoricalRun(fileName, latestRunId) {
     topModel: topModel?.model ?? null,
     topCompositeScore: topModel?.compositeScore ?? null,
     topSuccessRate: topModel?.successRate ?? null,
-    href: `results/history/${fileName}`,
+    href: fileName ? `results/history/${fileName}` : null,
     isLatest: report.run?.id === latestRunId,
   };
 }

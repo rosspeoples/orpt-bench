@@ -37,9 +37,18 @@ jobs:
 
       - name: Commit updated artifacts
         run: |
+          branch="${GITHUB_REF_NAME:-main}"
           export GIT_AUTHOR_NAME=gitea-actions
           export GIT_AUTHOR_EMAIL=gitea-actions@localhost
           export GIT_COMMITTER_NAME=gitea-actions
           export GIT_COMMITTER_EMAIL=gitea-actions@localhost
-          bash ci/commit-results.sh || true
-          git push || true
+          bash ci/commit-results.sh
+          git push origin "HEAD:${branch}"
+
+      - name: Publish GitHub Pages from benchmark result
+        env:
+          PUBLISH_GITHUB_USERNAME: ${{ secrets.PUBLISH_GITHUB_USERNAME }}
+          PUBLISH_GITHUB_TOKEN: ${{ secrets.PUBLISH_GITHUB_TOKEN }}
+          PUBLISH_GITHUB_REPOSITORY: ${{ secrets.PUBLISH_GITHUB_REPOSITORY }}
+          PUBLISH_GITHUB_PAGES_BRANCH: ${{ secrets.PUBLISH_GITHUB_PAGES_BRANCH }}
+        run: bash scripts/publish-github-pages.sh
