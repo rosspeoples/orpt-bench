@@ -2,7 +2,7 @@
 
 OpenCode Agentic Efficiency Benchmark measures how many OpenCode requests a model consumes per successful task on reproducible DevOps and light-coding fixtures.
 
-The suite is intended for senior-level platform and infrastructure repair work. One control task provides a basic sanity check, while the scored benchmark should otherwise skew toward medium/high difficulty and reward models that can sustain real multi-step investigation loops.
+The suite is intended for senior-level platform and infrastructure repair work. A three-step control ramp provides a basic unattended sanity check before the scored benchmark leans into medium/high difficulty and rewards models that can sustain real multi-step investigation loops.
 
 Model pricing in this repo is generated for benchmark use during `sync-models`. The normalized catalog keeps both the actual listed blended price and, when useful, a clearly labeled reference blended price for free variants derived from a paid sibling or nearby family model.
 
@@ -34,6 +34,7 @@ The GitHub Pages publication is the canonical place for dynamic benchmark output
 - The task set is intentionally weighted toward real repair-oriented DevOps work rather than toy prompts
 - Capability gating matters: models with benchmark-affecting limitations can be surfaced, but excluded from the primary comparable cohort when appropriate
 - Tasks live under `tasks/*`, each with its own fixture, prompt, and verifier
+- Candidate smoke runs use an ordered control ramp: `16-event-status-shell` -> `17-log-level-rollup` -> `05-log-audit-script`
 
 Included task areas:
 
@@ -45,7 +46,7 @@ Included task areas:
 
 ## Included Tasks
 
-- Difficulty mix: control=1, medium=1, high=7, expert=6
+- Difficulty mix: control=3, medium=1, high=7, expert=6
 
 1. Kubernetes rollout repair (01-iac-kubernetes-rollout, medium)
 2. Terraform static site repair (02-terraform-static-site, high)
@@ -62,6 +63,8 @@ Included task areas:
 13. Wildcard TLS route coverage (13-wildcard-tls-route-coverage, expert)
 14. Build workspace plane convergence (14-build-workspace-plane-convergence, expert)
 15. Workspace runtime access convergence (15-workspace-runtime-access-convergence, expert)
+16. Event status shell summary (16-event-status-shell, control)
+17. Log level rollup shell script (17-log-level-rollup, control)
 
 ## Quickstart
 
@@ -127,7 +130,7 @@ docker compose run --rm runner use-matrix dev
 Useful smoke-test example:
 
 ```bash
-BENCHMARK_MODELS=opencode/gpt-5.4-mini BENCHMARK_TASK_GLOB=05* docker compose run --rm runner benchmark
+BENCHMARK_MODELS=opencode/gpt-5.4-mini BENCHMARK_TASK_GLOB=16-event-status-shell,17-log-level-rollup,05* docker compose run --rm runner benchmark
 ```
 
 Durable publication-quality full run:

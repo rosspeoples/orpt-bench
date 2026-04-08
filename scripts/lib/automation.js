@@ -19,8 +19,8 @@ const DEFAULT_MODEL_POLICY = {
   },
   benchmarkCycles: {
     candidate_smoke: {
-      description: 'Control-task smoke run for newly discovered models before they enter broader recurring benchmarks',
-      taskGlob: '05*',
+      description: 'Ordered control-ramp smoke run for newly discovered models before they enter broader recurring benchmarks',
+      taskGlob: '16-event-status-shell,17-log-level-rollup,05*',
       repeats: 1,
       maxModels: 4
     },
@@ -39,6 +39,29 @@ const DEFAULT_MODEL_POLICY = {
       repeats: 1
     }
   }
+}
+
+const CONTROL_SMOKE_TASK_PATTERNS = ['16-event-status-shell', '17-log-level-rollup', '05*']
+const CONTROL_SMOKE_TASK_IDS = ['16-event-status-shell', '17-log-level-rollup', '05-log-audit-script']
+const LEGACY_CONTROL_SMOKE_TASK_PATTERNS = ['05*']
+
+function sameStringArray(left, right) {
+  if (left.length !== right.length) return false
+  return left.every((value, index) => value === right[index])
+}
+
+function matchesControlSmokeTaskPatterns(taskPatterns) {
+  return sameStringArray(taskPatterns, CONTROL_SMOKE_TASK_PATTERNS)
+    || sameStringArray(taskPatterns, LEGACY_CONTROL_SMOKE_TASK_PATTERNS)
+}
+
+function matchesControlSmokeTaskIds(taskIds) {
+  return sameStringArray(taskIds, CONTROL_SMOKE_TASK_IDS)
+    || (taskIds.length === 1 && taskIds[0] === '05-log-audit-script')
+}
+
+function inferTaskCount(run) {
+  return run?.run?.taskCount || run?.taskCatalog?.length || new Set((run?.results || []).map((entry) => entry.taskId)).size || 0
 }
 
 function uniqueStrings(values) {
@@ -242,10 +265,10 @@ function isSmokeBenchmarkRun(run) {
   if (benchmarkCycle === 'candidate_smoke') return true
 
   const taskPatterns = Array.isArray(run?.run?.taskPatterns) ? run.run.taskPatterns.filter(Boolean) : []
-  if (taskPatterns.length === 1 && taskPatterns[0] === '05*') return true
+  if (matchesControlSmokeTaskPatterns(taskPatterns)) return true
 
   const taskIds = Array.isArray(run?.taskCatalog) ? run.taskCatalog.map((task) => task.id).filter(Boolean) : []
-  return taskIds.length === 1 && taskIds[0].startsWith('05-')
+  return matchesControlSmokeTaskIds(taskIds)
 }
 
 export function buildBenchmarkHistoryIndex(runs) {
@@ -254,6 +277,7 @@ export function buildBenchmarkHistoryIndex(runs) {
   for (const run of runs || []) {
     const benchmarkedAt = run?.run?.completedAt || run?.run?.startedAt || null
     const smokeBenchmark = isSmokeBenchmarkRun(run)
+    const expectedSmokeTaskCount = smokeBenchmark ? (inferTaskCount(run) || 0) : 0
     for (const entry of summarizeRunModelEntries(run)) {
       if (!byModel.has(entry.model)) {
         byModel.set(entry.model, {
@@ -275,6 +299,7 @@ export function buildBenchmarkHistoryIndex(runs) {
       }
 
       const summary = byModel.get(entry.model)
+      const passedSmokeBenchmark = smokeBenchmark && !entry.providerLimited && expectedSmokeTaskCount > 0 && entry.successfulTasks >= expectedSmokeTaskCount
       summary.benchmarkSessions += 1
       summary.totalTaskRuns += entry.runs || 0
       summary.successfulTaskRuns += entry.successfulTasks || 0
@@ -282,7 +307,7 @@ export function buildBenchmarkHistoryIndex(runs) {
       if (smokeBenchmark) {
         summary.smokeBenchmarkSessions += 1
         if (entry.providerLimited) summary.providerLimitedSmokeBenchmarkSessions += 1
-        else if (entry.successfulTasks > 0) summary.successfulSmokeBenchmarkSessions += 1
+        else if (passedSmokeBenchmark) summary.successfulSmokeBenchmarkSessions += 1
         else summary.failedSmokeBenchmarkSessions += 1
       }
       if (benchmarkedAt) {
@@ -290,7 +315,7 @@ export function buildBenchmarkHistoryIndex(runs) {
         if (!summary.lastBenchmarkedAt || Date.parse(benchmarkedAt) > Date.parse(summary.lastBenchmarkedAt)) summary.lastBenchmarkedAt = benchmarkedAt
         if (smokeBenchmark) {
           if (!summary.lastSmokeBenchmarkedAt || Date.parse(benchmarkedAt) > Date.parse(summary.lastSmokeBenchmarkedAt)) summary.lastSmokeBenchmarkedAt = benchmarkedAt
-          if (entry.successfulTasks > 0 && (!summary.lastSuccessfulSmokeBenchmarkAt || Date.parse(benchmarkedAt) > Date.parse(summary.lastSuccessfulSmokeBenchmarkAt))) {
+          if (passedSmokeBenchmark && (!summary.lastSuccessfulSmokeBenchmarkAt || Date.parse(benchmarkedAt) > Date.parse(summary.lastSuccessfulSmokeBenchmarkAt))) {
             summary.lastSuccessfulSmokeBenchmarkAt = benchmarkedAt
           }
         }
@@ -488,7 +513,7 @@ export function buildAutomationPlan({ catalog, matrices, lifecycle, policy = DEF
       description: smokeConfig.description,
       enabled: smokeModels.length > 0,
       matrix: null,
-      taskGlob: smokeConfig.taskGlob || '05*',
+      taskGlob: smokeConfig.taskGlob || DEFAULT_MODEL_POLICY.benchmarkCycles.candidate_smoke.taskGlob,
       repeats: smokeConfig.repeats || 1,
       models: smokeModels
     }

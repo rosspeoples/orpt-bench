@@ -371,7 +371,7 @@ docker compose run --rm runner use-matrix dev
 Useful smoke-test example:
 
 \`\`\`bash
-BENCHMARK_MODELS=opencode/gpt-5.4-mini BENCHMARK_TASK_GLOB=05* docker compose run --rm runner benchmark
+BENCHMARK_MODELS=opencode/gpt-5.4-mini BENCHMARK_TASK_GLOB=16-event-status-shell,17-log-level-rollup,05* docker compose run --rm runner benchmark
 \`\`\`
 
 Generated benchmark artifacts are written to \`results/\` locally. Use the live Pages site for published rankings, tables, and history rather than checking volatile result tables into the root README.

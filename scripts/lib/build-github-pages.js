@@ -6,6 +6,9 @@ import { aggregateRun } from './benchmark.js';
 
 const outputDir = process.env.PUBLISH_PAGES_OUTPUT_DIR || process.env.GITHUB_PAGES_OUTPUT_DIR;
 const MODEL_COLOR_PALETTE = ['#73f0c5', '#86a8ff', '#f59e0b', '#f472b6', '#22c55e', '#38bdf8', '#c084fc', '#fb7185'];
+const CONTROL_SMOKE_TASK_PATTERNS = ['16-event-status-shell', '17-log-level-rollup', '05*'];
+const CONTROL_SMOKE_TASK_IDS = ['16-event-status-shell', '17-log-level-rollup', '05-log-audit-script'];
+const LEGACY_CONTROL_SMOKE_TASK_PATTERNS = ['05*'];
 const CHART_THEME = {
   paper: '#08101f',
   plot: '#0d1830',
@@ -256,6 +259,21 @@ function buildSmokeRuns(allEntries) {
     .sort((left, right) => Date.parse(right.completedAt || right.startedAt || 0) - Date.parse(left.completedAt || left.startedAt || 0));
 }
 
+function sameStringArray(left, right) {
+  if (left.length !== right.length) return false;
+  return left.every((value, index) => value === right[index]);
+}
+
+function matchesControlSmokeTaskPatterns(taskPatterns) {
+  return sameStringArray(taskPatterns, CONTROL_SMOKE_TASK_PATTERNS)
+    || sameStringArray(taskPatterns, LEGACY_CONTROL_SMOKE_TASK_PATTERNS);
+}
+
+function matchesControlSmokeTaskIds(taskIds) {
+  return sameStringArray(taskIds, CONTROL_SMOKE_TASK_IDS)
+    || (taskIds.length === 1 && taskIds[0] === '05-log-audit-script');
+}
+
 function inferTaskCount(report) {
   return report?.run?.taskCount || report?.taskCatalog?.length || new Set((report?.results || []).map((entry) => entry.taskId)).size || 0;
 }
@@ -296,14 +314,15 @@ function isSmokeBenchmarkRun(report) {
   if (benchmarkCycle === 'candidate_smoke') return true;
 
   const taskPatterns = Array.isArray(report?.run?.taskPatterns) ? report.run.taskPatterns.filter(Boolean) : [];
-  if (taskPatterns.length === 1 && taskPatterns[0] === '05*') return true;
+  if (matchesControlSmokeTaskPatterns(taskPatterns)) return true;
 
   const taskIds = Array.isArray(report?.taskCatalog) ? report.taskCatalog.map((task) => task.id).filter(Boolean) : [];
-  return taskIds.length === 1 && taskIds[0].startsWith('05-');
+  return matchesControlSmokeTaskIds(taskIds);
 }
 
 function summarizeSmokeRun(fileName, report) {
   const resultRows = Array.isArray(report?.results) ? report.results : [];
+  const expectedTaskCount = report?.run?.taskCount || report?.taskCatalog?.length || 0;
   return {
     fileName,
     id: report?.run?.id || fileName || null,
@@ -328,7 +347,8 @@ function summarizeSmokeRun(fileName, report) {
         totalRequestUnits: sum(rows.map((entry) => entry.requestUnits || 0)),
         totalRequestCount: sum(rows.map((entry) => entry.requestCount || 0)),
         totalSteps: sum(rows.map((entry) => entry.steps || 0)),
-        failed: rows.length > 0 && successes === 0,
+        passed: rows.length > 0 && expectedTaskCount > 0 && successes >= expectedTaskCount,
+        failed: rows.length > 0 && (expectedTaskCount === 0 ? successes === 0 : successes < expectedTaskCount),
         providerLimited: rows.some((entry) => isProviderLimitedEntry(entry)),
         lastError: rows.find((entry) => entry.error?.message)?.error?.message || rows.find((entry) => entry.verifier?.stderr)?.verifier?.stderr || null,
         failureSummary: summarizeFailureEvidence(representativeFailure),
@@ -348,12 +368,22 @@ function selectRepresentativeFailure(rows) {
     || failures[0];
 }
 
+function summarizeFailureText(entry) {
+  const parts = [
+    entry?.error?.message || null,
+    entry?.error?.stack || null,
+    entry?.verifier?.stderr || null,
+    ...((entry?.logExcerpt || []).filter(Boolean)),
+  ].filter(Boolean);
+  return parts.join('\n');
+}
+
 function isProviderLimitedEntry(entry) {
   const proxyStatus = firstFinite((entry?.proxyRecords || []).map((record) => record?.status));
-  const combinedMessage = `${entry?.error?.message || ''} ${entry?.verifier?.stderr || ''}`;
+  const combinedMessage = summarizeFailureText(entry);
   return entry?.providerLimited === true
     || proxyStatus === 429
-    || /AI_APICallError|failed with 429/i.test(combinedMessage);
+    || /failed with 429|too_many_requests/i.test(combinedMessage);
 }
 
 function summarizeFailureEvidence(entry) {
@@ -361,8 +391,11 @@ function summarizeFailureEvidence(entry) {
     return null;
   }
 
+  const combinedMessage = summarizeFailureText(entry);
   const proxyStatus = firstFinite((entry.proxyRecords || []).map((record) => record?.status));
   const retryAfter = firstPresent((entry.proxyRecords || []).map((record) => record?.responseHeaders?.['retry-after'] || record?.responseHeaders?.['Retry-After']));
+  const suggestedModel = combinedMessage.match(/"suggestions":\["([^"]+)"\]/)?.[1] || null;
+  const errorSignature = combinedMessage.match(/ProviderModelNotFoundError|AI_APICallError(?::[^\n]*)?/i)?.[0] || null;
 
   return {
     outcomeLabel: classifySmokeOutcome(entry),
@@ -377,6 +410,8 @@ function summarizeFailureEvidence(entry) {
     requestUnits: Number.isFinite(entry.requestUnits) ? entry.requestUnits : null,
     requestCount: Number.isFinite(entry.requestCount) ? entry.requestCount : null,
     steps: Number.isFinite(entry.steps) ? entry.steps : null,
+    errorSignature,
+    suggestedModel,
   };
 }
 
@@ -384,14 +419,23 @@ function classifySmokeOutcome(entry) {
   if (!entry) {
     return 'unknown';
   }
+  if (entry.success) {
+    return 'passed';
+  }
+
+  const combinedMessage = summarizeFailureText(entry);
+  const proxyStatus = firstFinite((entry?.proxyRecords || []).map((record) => record?.status));
   if (isProviderLimitedEntry(entry)) {
     return 'provider-limited';
   }
+  if (/ProviderModelNotFoundError/i.test(combinedMessage)) {
+    return 'provider-model-not-found';
+  }
+  if (Number.isFinite(proxyStatus) && proxyStatus >= 400) {
+    return 'provider-http-error';
+  }
   if (entry.dnf && entry.dnfReason === 'task-timeout') {
     return 'timed out';
-  }
-  if (entry.success) {
-    return 'passed';
   }
   return 'failed';
 }
@@ -1124,18 +1168,18 @@ function buildPublishedTaskSummary(report) {
     const failureSummary = summarizeTaskFailureEvidence(report, row);
     return {
       ...row,
-      outcome: summarizeTaskOutcome(row),
-      outcomeTone: taskOutcomeTone(row),
+      outcome: summarizeTaskOutcome(row, failureSummary),
+      outcomeTone: taskOutcomeTone(row, failureSummary),
       failureSummary,
       failureDetail: buildFailureDetailLine(failureSummary),
     };
   });
 }
 
-function summarizeTaskOutcome(row) {
-  const failureOutcome = row?.failureSummary?.outcomeLabel || null;
-  if (failureOutcome === 'provider-limited' || row?.providerLimited) {
-    return 'provider-limited';
+function summarizeTaskOutcome(row, failureSummary = row?.failureSummary || null) {
+  const failureOutcome = failureSummary?.outcomeLabel || null;
+  if (failureOutcome && failureOutcome.startsWith('provider-')) {
+    return failureOutcome;
   }
   if (Number.isFinite(row?.dnfs) && row.dnfs > 0) {
     return 'dnf';
@@ -1149,8 +1193,8 @@ function summarizeTaskOutcome(row) {
   return 'mixed';
 }
 
-function taskOutcomeTone(row) {
-  if ((row?.failureSummary?.outcomeLabel || null) === 'provider-limited' || row?.providerLimited) return 'warn';
+function taskOutcomeTone(row, failureSummary = row?.failureSummary || null) {
+  if ((failureSummary?.outcomeLabel || '').startsWith('provider-') || row?.providerLimited) return 'warn';
   if (Number.isFinite(row?.dnfs) && row.dnfs > 0) return 'warn';
   if (row?.successRate === 1) return 'good';
   return 'bad';
@@ -2522,7 +2566,10 @@ ${runs.map((run) => run.models.map((model) => `<div class="key-row"><div><strong
 }
 
 function renderSmokeOutcomeLabel(model) {
-  if (model.providerLimited) return 'provider-limited smoke';
+  const outcome = model.failureSummary?.outcomeLabel || null;
+  if (outcome === 'provider-limited' || model.providerLimited) return 'provider-limited smoke';
+  if (outcome === 'provider-model-not-found') return 'provider-model-not-found smoke';
+  if (outcome === 'provider-http-error') return 'provider-http-error smoke';
   if (model.failed) return 'failed smoke';
   return 'passed smoke';
 }
@@ -2570,11 +2617,17 @@ function buildFailureDetailLine(failure) {
     return null;
   }
   const parts = [];
+  if (failure.errorSignature) {
+    parts.push(failure.errorSignature);
+  }
   if (failure.errorMessage) {
     parts.push(failure.errorMessage);
   }
   if (failure.verifierStderr && failure.verifierStderr !== failure.errorMessage) {
     parts.push(failure.verifierStderr);
+  }
+  if (failure.suggestedModel) {
+    parts.push(`suggested_model=${failure.suggestedModel}`);
   }
   return parts.join(' | ') || null;
 }

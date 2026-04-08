@@ -20,7 +20,7 @@ export async function loadTasks(runtime) {
     })
   }
 
-  return tasks.sort((a, b) => a.id.localeCompare(b.id))
+  return tasks
 }
 
 export function parseModel(model) {

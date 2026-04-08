@@ -1,0 +1,5 @@
+2026-04-01T09:00:00Z auth OK session_started
+2026-04-01T09:01:00Z auth WARN password_near_expiry
+2026-04-01T09:02:00Z billing FAIL invoice_publish_failed
+2026-04-01T09:03:00Z edge OK request_served
+2026-04-01T09:04:00Z edge FAIL upstream_timeout

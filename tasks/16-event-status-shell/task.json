@@ -1,0 +1,10 @@
+{
+  "id": "16-event-status-shell",
+  "name": "Event status shell summary",
+  "category": "scripting",
+  "difficulty": "control",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Implement the shell script so it reads the provided event log file and prints a single JSON object with total_events, ok_events, warn_events, and fail_events. Keep the script POSIX shell compatible where practical, make it executable, and do not change fixture data. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 20
+}

@@ -1,0 +1,3 @@
+2026-04-01T11:00:00Z api INFO started
+2026-04-01T11:01:00Z api WARN cache_miss
+2026-04-01T11:02:00Z api ERROR upstream_timeout

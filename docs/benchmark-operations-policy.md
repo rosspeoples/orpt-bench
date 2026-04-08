@@ -25,10 +25,12 @@ Visibility and recurring spend are separate decisions.
 
 ## Control Smoke Gate
 
-The control smoke task is the first benchmark gate for cheap unattended support.
+The control smoke gate is an ordered three-task ramp for cheap unattended support.
 
-- The control smoke run uses task `05-log-audit-script`.
-- Models that cannot complete the control smoke task within the configured timeout should receive a DNF and a zero score.
+- The candidate smoke run uses `16-event-status-shell`, then `17-log-level-rollup`, then `05-log-audit-script`.
+- Task `05-log-audit-script` remains the control anchor; it is not replaced or renamed.
+- A passing smoke session means the model clears the full control ramp within the configured task timeouts.
+- Models that time out or fail anywhere in the control ramp should receive a DNF or failed row for that task and a zero score for the failed task.
 - That result is useful and should be published.
 - A control-smoke failure means the model is not worth continued default unattended support in cheap recurring matrices.
 

@@ -17,8 +17,8 @@
   },
   "benchmarkCycles": {
     "candidate_smoke": {
-      "description": "Control-task smoke run for newly discovered models before they enter broader recurring benchmarks",
-      "taskGlob": "05*",
+      "description": "Ordered control-ramp smoke run for newly discovered models before they enter broader recurring benchmarks",
+      "taskGlob": "16-event-status-shell,17-log-level-rollup,05*",
       "repeats": 1,
       "maxModels": 4
     },

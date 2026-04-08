@@ -179,9 +179,9 @@ function isTaskTimeoutError(error) {
   return /Timed out after \d+ms|Task exceeded \d+s hard timeout/i.test(message)
 }
 
-function isProviderLimitedFailure({ verifier, error, proxyRecords }) {
+export function isProviderLimitedFailure({ verifier, error, proxyRecords }) {
   const message = `${error?.message || ''} ${verifier?.stderr || ''}`
-  return /OpenCode API .* failed with 429|AI_APICallError/i.test(message) || (proxyRecords || []).some((record) => record.status === 429)
+  return /OpenCode API .* failed with 429|too_many_requests/i.test(message) || (proxyRecords || []).some((record) => record.status === 429)
 }
 
 export function runContainsSyntheticTimeoutRows(run) {

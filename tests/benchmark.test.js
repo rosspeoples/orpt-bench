@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { aggregateRun, collectRemainingTaskEntries, computeCompositeScore, computeCompositeValueScore, runContainsSyntheticTimeoutRows } from '../scripts/lib/benchmark.js'
+import { aggregateRun, collectRemainingTaskEntries, computeCompositeScore, computeCompositeValueScore, isProviderLimitedFailure, runContainsSyntheticTimeoutRows } from '../scripts/lib/benchmark.js'
 
 test('computeCompositeValueScore returns 1 for task-best comparable run', () => {
   const score = computeCompositeValueScore({
@@ -198,6 +198,26 @@ test('runContainsSyntheticTimeoutRows detects synthetic timeout artifacts', () =
   assert.equal(runContainsSyntheticTimeoutRows({ results: [{ requestAccountingSource: 'proxy-call-count' }] }), false)
 })
 
+test('isProviderLimitedFailure only marks concrete rate-limit failures as provider-limited', () => {
+  assert.equal(isProviderLimitedFailure({
+    verifier: { stderr: 'OpenCode API request failed with 429' },
+    error: null,
+    proxyRecords: []
+  }), true)
+
+  assert.equal(isProviderLimitedFailure({
+    verifier: { stderr: 'AI_APICallError: model: claude-3-5-haiku-20241022' },
+    error: null,
+    proxyRecords: [{ status: 400 }]
+  }), false)
+
+  assert.equal(isProviderLimitedFailure({
+    verifier: { stderr: '' },
+    error: { message: 'stream error: too_many_requests' },
+    proxyRecords: []
+  }), true)
+})
+
 test('runtime config defaults model concurrency to one when unset', async () => {
   const { loadRuntimeConfig } = await import('../scripts/lib/config.js')
   const previous = process.env.BENCHMARK_MODEL_CONCURRENCY
@@ -237,5 +257,24 @@ test('runtime config derives process timeout from selected task budgets', async 
     else process.env.BENCHMARK_PROCESS_TIMEOUT_SECONDS = previousProcessTimeout
     if (previousRepeats == null) delete process.env.BENCHMARK_REPEATS
     else process.env.BENCHMARK_REPEATS = previousRepeats
+  }
+})
+
+test('runtime config preserves requested task pattern order for control smoke ramp', async () => {
+  const { loadRuntimeConfig } = await import('../scripts/lib/config.js')
+  const previousTaskGlob = process.env.BENCHMARK_TASK_GLOB
+
+  process.env.BENCHMARK_TASK_GLOB = '16-event-status-shell,17-log-level-rollup,05*'
+
+  try {
+    const runtime = await loadRuntimeConfig()
+    assert.deepEqual(runtime.taskBudgetCatalog.map((task) => task.id), [
+      '16-event-status-shell',
+      '17-log-level-rollup',
+      '05-log-audit-script'
+    ])
+  } finally {
+    if (previousTaskGlob == null) delete process.env.BENCHMARK_TASK_GLOB
+    else process.env.BENCHMARK_TASK_GLOB = previousTaskGlob
   }
 })

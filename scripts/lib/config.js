@@ -48,11 +48,25 @@ function inferApiKeyEnv(providerID) {
 
 async function discoverTaskDirs(rootDir, taskPatterns) {
   const entries = await fs.readdir(path.join(rootDir, 'tasks'), { withFileTypes: true })
-  return entries
+  const taskNames = entries
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name)
-    .filter((name) => matchPattern(name, taskPatterns))
     .sort()
+
+  if (!taskPatterns.length || (taskPatterns.length === 1 && taskPatterns[0] === '*')) {
+    return taskNames
+  }
+
+  const ordered = []
+  const seen = new Set()
+  for (const pattern of taskPatterns) {
+    for (const name of taskNames) {
+      if (!matchPattern(name, [pattern]) || seen.has(name)) continue
+      seen.add(name)
+      ordered.push(name)
+    }
+  }
+  return ordered
 }
 
 async function loadTaskBudgetCatalog(rootDir, taskNames) {

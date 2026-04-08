@@ -13,7 +13,7 @@ Updated: 2026-04-08T02:03:06.421Z
 
 | Cycle | Enabled | Matrix | Task Glob | Models |
 | --- | --- | --- | --- | --- |
-| candidate_smoke | yes | direct | 05* | opencode/gpt-5.4, opencode/claude-opus-4-6, opencode/claude-sonnet-4-6, opencode/gemini-3.1-pro |
+| candidate_smoke | yes | direct | 16-event-status-shell,17-log-level-rollup,05* | opencode/gpt-5.4, opencode/claude-opus-4-6, opencode/claude-sonnet-4-6, opencode/gemini-3.1-pro |
 | weekly | yes | current_task_cheap_comparable | * | opencode/gpt-5.4-mini |
 | monthly | yes | release | * | opencode/gemini-3.1-pro, opencode/gpt-5.4, opencode/claude-sonnet-4-6, opencode/glm-5, opencode/claude-opus-4-6 |
 

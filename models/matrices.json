@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-08T02:16:22.219Z",
+  "updatedAt": "2026-04-08T16:30:00.000Z",
   "taskSet": {
     "taskIds": [
       "01-iac-kubernetes-rollout",
@@ -16,7 +16,9 @@
       "12-pre-argocd-bootstrap-sequencing",
       "13-wildcard-tls-route-coverage",
       "14-build-workspace-plane-convergence",
-      "15-workspace-runtime-access-convergence"
+      "15-workspace-runtime-access-convergence",
+      "16-event-status-shell",
+      "17-log-level-rollup"
     ],
     "requiredCapabilities": [
       "unattendedBenchmarkRuns"

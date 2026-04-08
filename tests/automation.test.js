@@ -137,6 +137,7 @@ test('automation plan schedules candidate smoke and recurring cycles', () => {
   })
 
   assert.deepEqual(plan.cycles.candidate_smoke.models, ['opencode/grok-4.20'])
+  assert.equal(plan.cycles.candidate_smoke.taskGlob, '16-event-status-shell,17-log-level-rollup,05*')
   assert.equal(plan.cycles.weekly.matrix, 'current_task_cheap_comparable')
   assert.equal(plan.cycles.monthly.matrix, 'release')
 })
@@ -163,9 +164,9 @@ test('candidate model becomes active after a passing smoke benchmark', () => {
           benchmarkCycle: 'candidate_smoke',
           completedAt: '2026-04-07T01:00:00.000Z'
         },
-        taskCatalog: [{ id: '05-log-audit-script' }],
+        taskCatalog: [{ id: '16-event-status-shell' }, { id: '17-log-level-rollup' }, { id: '05-log-audit-script' }],
         modelSummary: [
-          { model: 'opencode/grok-4.20', runs: 1, successfulTasks: 1, comparable: true }
+          { model: 'opencode/grok-4.20', runs: 3, successfulTasks: 3, comparable: true }
         ]
       },
       {
@@ -174,9 +175,9 @@ test('candidate model becomes active after a passing smoke benchmark', () => {
           benchmarkCycle: 'candidate_smoke',
           completedAt: '2026-04-07T01:30:00.000Z'
         },
-        taskCatalog: [{ id: '05-log-audit-script' }],
+        taskCatalog: [{ id: '16-event-status-shell' }, { id: '17-log-level-rollup' }, { id: '05-log-audit-script' }],
         modelSummary: [
-          { model: 'opencode/grok-4.20', runs: 1, successfulTasks: 1, comparable: true }
+          { model: 'opencode/grok-4.20', runs: 3, successfulTasks: 3, comparable: true }
         ]
       }
     ],
@@ -210,9 +211,9 @@ test('candidate model remains candidate until required smoke passes are met', ()
           benchmarkCycle: 'candidate_smoke',
           completedAt: '2026-04-08T01:00:00.000Z'
         },
-        taskCatalog: [{ id: '05-log-audit-script' }],
+        taskCatalog: [{ id: '16-event-status-shell' }, { id: '17-log-level-rollup' }, { id: '05-log-audit-script' }],
         modelSummary: [
-          { model: 'opencode/grok-4.20', runs: 1, successfulTasks: 1, comparable: true }
+          { model: 'opencode/grok-4.20', runs: 3, successfulTasks: 3, comparable: true }
         ]
       }
     ],
@@ -222,6 +223,43 @@ test('candidate model remains candidate until required smoke passes are met', ()
 
   assert.equal(lifecycle.models[0].lifecycleStage, 'candidate')
   assert.match(lifecycle.models[0].lifecycleReason, /2-run smoke promotion requirement/i)
+})
+
+test('partial control-ramp smoke run does not count as a passing smoke benchmark', () => {
+  const lifecycle = buildLifecycleCatalog({
+    catalog: {
+      models: [
+        {
+          model: 'opencode/grok-4.20',
+          modelId: 'grok-4.20',
+          family: 'x-ai',
+          created: 1776000000,
+          recommendedUse: 'balanced-general',
+          benchmark: { intelligenceScore: 54 }
+        }
+      ]
+    },
+    previousLifecycle: { models: [] },
+    benchmarkHistory: [
+      {
+        run: {
+          id: 'smoke-run-partial',
+          benchmarkCycle: 'candidate_smoke',
+          completedAt: '2026-04-08T01:00:00.000Z'
+        },
+        taskCatalog: [{ id: '16-event-status-shell' }, { id: '17-log-level-rollup' }, { id: '05-log-audit-script' }],
+        modelSummary: [
+          { model: 'opencode/grok-4.20', runs: 3, successfulTasks: 2, comparable: true }
+        ]
+      }
+    ],
+    policy: DEFAULT_MODEL_POLICY,
+    now: '2026-04-08T02:00:00.000Z'
+  })
+
+  assert.equal(lifecycle.models[0].successfulSmokeBenchmarkSessions, 0)
+  assert.equal(lifecycle.models[0].failedSmokeBenchmarkSessions, 1)
+  assert.equal(lifecycle.models[0].lifecycleStage, 'candidate')
 })
 
 test('provider-limited smoke run does not count as a failed smoke benchmark', () => {
