@@ -160,6 +160,9 @@ const chartDefinitions = [
     build: buildTaskDurationHeatmap,
   },
 ];
+const publishedTaskSummary = buildPublishedTaskSummary(publicationContext.publishedRun);
+const publishedTaskInsights = buildTaskInsightRows(publishedTaskSummary, publicationContext.publishedRun.taskCatalog ?? []);
+const publishedBenchmarkedModels = buildBenchmarkedModels(publicationContext.publishedRun);
 const publishedCharts = buildPublishedCharts(chartDefinitions, publicationContext.publishedRun);
 
 const siteData = {
@@ -184,9 +187,9 @@ const siteData = {
   scoring: publicationContext.publishedRun.scoring ?? null,
   taskCatalog: publicationContext.publishedRun.taskCatalog ?? [],
   modelSummary: sortByComposite(publicationContext.publishedRun.modelSummary ?? publicationContext.publishedRun.leaderboard ?? []),
-  taskSummary: buildPublishedTaskSummary(publicationContext.publishedRun),
-  taskInsights: buildTaskInsightRows(buildPublishedTaskSummary(publicationContext.publishedRun), publicationContext.publishedRun.taskCatalog ?? []),
-  benchmarkedModels: buildBenchmarkedModels(publicationContext.publishedRun),
+  taskSummary: publishedTaskSummary,
+  taskInsights: publishedTaskInsights,
+  benchmarkedModels: publishedBenchmarkedModels,
   benchmarkComposition: buildBenchmarkComposition(publicationContext.publishedRun),
   leaderboardHighlights: buildLeaderboardHighlights(publicationContext.publishedRun),
   pairwiseSummary: buildPairwiseSummary(publicationContext.publishedRun),
@@ -202,6 +205,15 @@ writeJson(path.join(outputDir, 'results/published.json'), publicationContext.pub
 writeJson(path.join(outputDir, 'site-data.json'), siteData);
 writeJson(path.join(outputDir, 'results/history/index.json'), siteData.history);
 fs.writeFileSync(path.join(outputDir, 'index.html'), renderHtml(siteData), 'utf8');
+
+for (const modelPage of buildModelDetailPages({
+  siteData,
+  charts: publishedCharts,
+  benchmarkedModels: publishedBenchmarkedModels,
+})) {
+  fs.mkdirSync(path.dirname(path.join(outputDir, modelPage.path)), { recursive: true });
+  fs.writeFileSync(path.join(outputDir, modelPage.path), renderModelDetailHtml(modelPage), 'utf8');
+}
 
 function loadHistoryEntries(directory) {
   if (!fs.existsSync(directory)) {
@@ -1259,6 +1271,7 @@ function buildBenchmarkedModels(report) {
     const catalogEntry = catalogByModel.get(summary.model) || null;
     return {
       model: summary.model,
+      detailPath: `models/${slugifyModelName(summary.model)}.html`,
       compositeScore: summary.compositeScore ?? null,
       successRate: summary.successRate ?? null,
       totalCostUsd: summary.totalCostUsd ?? null,
@@ -1691,6 +1704,218 @@ function formatDurationMarkup(value) {
     return `${remainder}s`;
   }
   return `${minutes}m ${String(remainder).padStart(2, '0')}s`;
+}
+
+function formatSignedScoreMarkup(value) {
+  if (!Number.isFinite(value)) return 'n/a';
+  return `${value >= 0 ? '+' : ''}${formatScoreMarkup(value)}`;
+}
+
+function formatSignedPercentMarkup(value) {
+  if (!Number.isFinite(value)) return 'n/a';
+  return `${value >= 0 ? '+' : ''}${formatPercentMarkup(value)}`;
+}
+
+function formatSignedDecimalMarkup(value, decimals = 2) {
+  if (!Number.isFinite(value)) return 'n/a';
+  return `${value >= 0 ? '+' : ''}${Number(value).toFixed(decimals)}`;
+}
+
+function formatSignedCurrencyMarkup(value) {
+  if (!Number.isFinite(value)) return 'n/a';
+  return `${value >= 0 ? '+' : '-'}${formatCurrencyMarkup(Math.abs(value))}`;
+}
+
+function formatSignedDurationMarkup(value) {
+  if (!Number.isFinite(value)) return 'n/a';
+  return `${value >= 0 ? '+' : '-'}${formatDurationMarkup(Math.abs(value))}`;
+}
+
+function slugifyModelName(value) {
+  return String(value || 'model')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    || 'model';
+}
+
+function buildModelDetailPages({ siteData, charts, benchmarkedModels }) {
+  const taskSummary = Array.isArray(siteData.taskSummary) ? siteData.taskSummary : [];
+  const taskInsights = Array.isArray(siteData.taskInsights) ? siteData.taskInsights : [];
+  const allModels = Array.isArray(siteData.modelSummary) ? siteData.modelSummary : [];
+  const benchmarkedModelMap = new Map((benchmarkedModels || []).map((entry) => [entry.model, entry]));
+
+  return allModels.map((modelSummary) => {
+    const benchmarkedModel = benchmarkedModelMap.get(modelSummary.model) || null;
+    const detailPath = `models/${slugifyModelName(modelSummary.model)}.html`;
+    const baselineRows = buildModelBaselineRows(allModels, modelSummary.model);
+    const modelTasks = taskSummary.filter((row) => row.model === modelSummary.model);
+    const modelInsights = buildModelFocusedTaskInsights(taskSummary, taskInsights, modelSummary.model);
+    const modelCharts = buildModelBaselineCharts(allModels, modelSummary.model, charts);
+    const comparisons = buildModelComparisons(allModels, modelSummary.model, taskSummary);
+
+    return {
+      path: detailPath,
+      repository: siteData.repository,
+      docs: siteData.docs,
+      latestRun: siteData.latestRun,
+      scoring: siteData.scoring,
+      modelSummary,
+      benchmarkedModel,
+      baselineRows,
+      modelTasks,
+      modelInsights,
+      modelCharts,
+      comparisons,
+      taskCatalog: siteData.taskCatalog,
+    };
+  });
+}
+
+function buildModelBaselineRows(models, baselineModel) {
+  const baseline = models.find((entry) => entry.model === baselineModel) || null;
+  if (!baseline) {
+    return [];
+  }
+
+  return sortByComposite(models).map((entry) => ({
+    ...entry,
+    deltaComposite: toComparableNumber(entry.compositeScore) - toComparableNumber(baseline.compositeScore),
+    deltaSuccessRate: toComparableNumber(entry.successRate) - toComparableNumber(baseline.successRate),
+    deltaOrpt: toComparableNumber(entry.orpt) - toComparableNumber(baseline.orpt),
+    deltaCostUsd: toComparableNumber(entry.totalCostUsd) - toComparableNumber(baseline.totalCostUsd),
+    deltaWallTimeMs: toComparableNumber(entry.totalWallTimeMs) - toComparableNumber(baseline.totalWallTimeMs),
+    isBaseline: entry.model === baselineModel,
+  }));
+}
+
+function buildModelFocusedTaskInsights(taskSummary, taskInsights, baselineModel) {
+  const taskRowsById = new Map();
+  for (const row of taskSummary || []) {
+    if (!taskRowsById.has(row.taskId)) {
+      taskRowsById.set(row.taskId, []);
+    }
+    taskRowsById.get(row.taskId).push(row);
+  }
+
+  return (taskInsights || []).map((insight) => {
+    const rows = taskRowsById.get(insight.taskId) || [];
+    const baselineRow = rows.find((row) => row.model === baselineModel) || null;
+    const bestRow = [...rows].sort((left, right) => toComparableNumber(right.compositeScore) - toComparableNumber(left.compositeScore))[0] || null;
+    return {
+      ...insight,
+      baselineOutcome: baselineRow?.outcome || 'missing',
+      baselineOutcomeTone: baselineRow?.outcomeTone || 'warn',
+      baselineComposite: baselineRow?.compositeScore ?? null,
+      baselineSuccessRate: baselineRow?.successRate ?? null,
+      baselineCostUsd: baselineRow?.averageCostUsd ?? null,
+      baselineWallTimeMs: baselineRow?.averageWallTimeMs ?? null,
+      baselineRequestUnits: baselineRow?.averageRequestUnits ?? null,
+      baselineVsBestGap: bestRow ? toComparableNumber(bestRow.compositeScore) - toComparableNumber(baselineRow?.compositeScore) : null,
+      baselineWon: baselineRow ? baselineRow.model === insight.winnerModel : false,
+    };
+  }).sort((left, right) => {
+    if (left.baselineWon !== right.baselineWon) {
+      return left.baselineWon ? 1 : -1;
+    }
+    return toComparableNumber(right.baselineVsBestGap) - toComparableNumber(left.baselineVsBestGap);
+  });
+}
+
+function buildModelComparisons(models, baselineModel, taskSummary) {
+  const baseline = models.find((entry) => entry.model === baselineModel) || null;
+  if (!baseline) {
+    return [];
+  }
+
+  const groupedTasks = new Map();
+  for (const row of taskSummary || []) {
+    if (!groupedTasks.has(row.taskId)) {
+      groupedTasks.set(row.taskId, new Map());
+    }
+    groupedTasks.get(row.taskId).set(row.model, row);
+  }
+
+  return models
+    .filter((entry) => entry.model !== baselineModel)
+    .map((entry) => {
+      let baselineWins = 0;
+      let challengerWins = 0;
+      let ties = 0;
+      for (const modelRows of groupedTasks.values()) {
+        const baselineRow = modelRows.get(baselineModel);
+        const challengerRow = modelRows.get(entry.model);
+        if (!baselineRow || !challengerRow) {
+          continue;
+        }
+        const delta = toComparableNumber(baselineRow.compositeScore) - toComparableNumber(challengerRow.compositeScore);
+        if (delta > 0.000001) baselineWins += 1;
+        else if (delta < -0.000001) challengerWins += 1;
+        else ties += 1;
+      }
+      return {
+        baselineModel,
+        challengerModel: entry.model,
+        baselineWins,
+        challengerWins,
+        ties,
+        comparedTasks: baselineWins + challengerWins + ties,
+        compositeDelta: toComparableNumber(baseline.compositeScore) - toComparableNumber(entry.compositeScore),
+        successDelta: toComparableNumber(baseline.successRate) - toComparableNumber(entry.successRate),
+        costDelta: toComparableNumber(baseline.totalCostUsd) - toComparableNumber(entry.totalCostUsd),
+        wallTimeDelta: toComparableNumber(baseline.totalWallTimeMs) - toComparableNumber(entry.totalWallTimeMs),
+        orptDelta: toComparableNumber(baseline.orpt) - toComparableNumber(entry.orpt),
+      };
+    })
+    .sort((left, right) => Math.abs(right.compositeDelta) - Math.abs(left.compositeDelta));
+}
+
+function buildModelBaselineCharts(models, baselineModel) {
+  const baselineRows = buildModelBaselineRows(models, baselineModel);
+  return [
+    buildModelDeltaChart({ rows: baselineRows, baselineModel, key: 'deltaComposite', title: 'Composite delta vs baseline', axisTitle: 'Composite delta' }),
+    buildModelDeltaChart({ rows: baselineRows, baselineModel, key: 'deltaSuccessRate', title: 'Success delta vs baseline', axisTitle: 'Success rate delta', percent: true }),
+    buildModelDeltaChart({ rows: baselineRows, baselineModel, key: 'deltaCostUsd', title: 'Cost delta vs baseline', axisTitle: 'USD delta' }),
+    buildModelDeltaChart({ rows: baselineRows, baselineModel, key: 'deltaWallTimeMs', title: 'Wall time delta vs baseline', axisTitle: 'Minutes delta', duration: true }),
+  ].filter(Boolean);
+}
+
+function buildModelDeltaChart({ rows, baselineModel, key, title, axisTitle, percent = false, duration = false }) {
+  if (!rows.length) {
+    return null;
+  }
+
+  const values = rows.map((row) => {
+    const raw = row[key];
+    if (duration) return Number(((raw ?? 0) / 60000).toFixed(2));
+    if (percent) return Number((((raw ?? 0) * 100)).toFixed(2));
+    return Number((raw ?? 0).toFixed(4));
+  });
+
+  return {
+    title,
+    html: renderStandaloneChartHtml({
+      title,
+      data: [{
+        type: 'bar',
+        x: rows.map((row) => row.model),
+        y: values,
+        marker: {
+          color: rows.map((row) => row.isBaseline ? '#73f0c5' : '#86a8ff'),
+          line: { color: 'rgba(255,255,255,0.22)', width: 1.5 },
+        },
+        text: values,
+        textposition: 'auto',
+        hovertemplate: rows.map((row) => `${row.model}<br>${axisTitle}: ${escapeHtmlMarkup(String(duration ? Number(((row[key] ?? 0) / 60000).toFixed(2)) : percent ? Number((((row[key] ?? 0) * 100)).toFixed(2)) : Number((row[key] ?? 0).toFixed(4))))}<br>Baseline: ${escapeHtmlMarkup(baselineModel)}<extra></extra>`),
+      }],
+      layout: buildChartLayout({
+        title,
+        yaxis: { title: axisTitle, zeroline: true },
+        height: 420,
+        margin: { l: 72, r: 24, t: 72, b: 112 },
+      }),
+    }),
+  };
 }
 
 function renderHtml(data) {
@@ -2975,10 +3200,192 @@ ${models.map((model) => `      <article class="model-card">
         ${model.pricingNotes ? `<p class="panel-copy" style="margin-top:14px;">${escapeHtmlMarkup(model.pricingNotes)}</p>` : ''}
         ${model.stabilityNotes ? `<p class="panel-copy" style="margin-top:10px;">${escapeHtmlMarkup(model.stabilityNotes)}</p>` : ''}
         <div class="card-actions">
+          ${model.detailPath ? `<a class="card-link" href="${escapeAttributeMarkup(model.detailPath)}">Model detail page</a>` : ''}
           ${model.sourceUrl ? `<a class="card-link" href="${escapeAttributeMarkup(model.sourceUrl)}">Catalog source</a>` : ''}
         </div>
       </article>`).join('\n')}
     </div>`;
+}
+
+function renderModelDetailHtml(page) {
+  const model = page.modelSummary;
+  const catalog = page.benchmarkedModel;
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtmlMarkup(model.model)} | ORPT-Bench</title>
+  <meta name="color-scheme" content="dark light">
+  <style>
+    :root {
+      --bg: #060816;
+      --panel: rgba(15, 20, 38, 0.88);
+      --border: rgba(122, 162, 255, 0.18);
+      --text: #edf2ff;
+      --muted: #99a4c8;
+      --accent: #73f0c5;
+      --warning: #ffd36e;
+      --danger: #ff7a9a;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(134, 168, 255, 0.18), transparent 35%),
+        radial-gradient(circle at 85% 15%, rgba(115, 240, 197, 0.12), transparent 28%),
+        linear-gradient(180deg, #080b18 0%, #05070f 100%);
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .shell { width: min(1380px, calc(100vw - 32px)); margin: 0 auto; padding: 28px 0 72px; }
+    .topbar, .hero, .panel { border: 1px solid var(--border); border-radius: var(--radius); background: linear-gradient(180deg, rgba(16, 21, 41, 0.96), rgba(9, 12, 24, 0.96)); box-shadow: var(--shadow); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 18px; margin-bottom: 22px; }
+    .hero { padding: 26px; }
+    .panel { padding: 20px; margin-top: 22px; }
+    .hero-grid, .stats-grid, .chart-grid, .summary-grid { display: grid; gap: 16px; }
+    .hero-grid { grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr); }
+    .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .chart-grid, .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .eyebrow, .micro { font-family: var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); font-size: 0.78rem; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(1.9rem, 4vw, 3rem); line-height: 0.98; margin: 10px 0 12px; }
+    .muted, .panel-copy { color: var(--muted); line-height: 1.6; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(122, 162, 255, 0.14); font-size: 0.8rem; white-space: nowrap; }
+    .pill.good { color: var(--accent); border-color: rgba(115, 240, 197, 0.24); background: rgba(115, 240, 197, 0.08); }
+    .pill.warn { color: var(--warning); border-color: rgba(255, 211, 110, 0.24); background: rgba(255, 211, 110, 0.08); }
+    .pill.bad { color: var(--danger); border-color: rgba(255, 122, 154, 0.24); background: rgba(255, 122, 154, 0.08); }
+    .metric, .summary-item { border: 1px solid rgba(122, 162, 255, 0.12); border-radius: var(--radius-sm); background: rgba(9, 14, 28, 0.78); padding: 16px; }
+    .metric-value { font-size: 1.7rem; font-weight: 700; margin-top: 6px; }
+    .table-wrap { overflow: auto; margin-top: 14px; border-radius: 12px; border: 1px solid rgba(122, 162, 255, 0.08); }
+    table { width: 100%; border-collapse: collapse; min-width: 920px; background: rgba(7, 10, 20, 0.82); }
+    th, td { padding: 12px 14px; border-bottom: 1px solid rgba(122, 162, 255, 0.08); text-align: left; vertical-align: top; font-size: 0.93rem; }
+    th { background: rgba(12, 18, 35, 0.96); color: var(--muted); font-weight: 600; }
+    .card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .card-link { padding: 9px 12px; border-radius: 999px; border: 1px solid var(--border); }
+    iframe { width: 100%; height: 420px; border: 0; border-radius: 12px; background: #08101f; margin-top: 14px; }
+    @media (max-width: 980px) {
+      .hero-grid, .stats-grid, .chart-grid, .summary-grid { grid-template-columns: 1fr; }
+      iframe { height: 380px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div><strong>ORPT-Bench model detail</strong></div>
+      <div class="card-actions" style="margin-top:0;">
+        <a class="card-link" href="../index.html">Back to main dashboard</a>
+        ${catalog?.sourceUrl ? `<a class="card-link" href="${escapeAttributeMarkup(catalog.sourceUrl)}">Catalog source</a>` : ''}
+      </div>
+    </div>
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Model benchmark profile</div>
+          <h1>${escapeHtmlMarkup(model.model)}</h1>
+          <p class="panel-copy">This page uses <strong>${escapeHtmlMarkup(model.model)}</strong> as the comparison baseline. Every chart and table below is intended to answer the same question: where this model leads, where it lags, and what it costs in quality, time, and request pressure.</p>
+          <div class="card-actions">
+            ${catalog?.family ? `<span class="pill">${escapeHtmlMarkup(catalog.family)}</span>` : ''}
+            ${catalog?.priceTier ? `<span class="pill">${escapeHtmlMarkup(catalog.priceTier)} price tier</span>` : ''}
+            ${catalog?.devTier ? `<span class="pill">${escapeHtmlMarkup(catalog.devTier)}</span>` : ''}
+            ${catalog?.recommendedUse ? `<span class="pill">${escapeHtmlMarkup(catalog.recommendedUse)}</span>` : ''}
+          </div>
+        </div>
+        <div class="summary-grid">
+          <div class="summary-item"><div class="micro">Composite</div><div class="metric-value">${escapeHtmlMarkup(formatScoreMarkup(model.compositeScore))}</div><div class="muted">Correctness-weighted overall standing</div></div>
+          <div class="summary-item"><div class="micro">Success</div><div class="metric-value">${escapeHtmlMarkup(formatPercentMarkup(model.successRate))}</div><div class="muted">Tasks completed successfully</div></div>
+          <div class="summary-item"><div class="micro">ORPT</div><div class="metric-value">${escapeHtmlMarkup(formatDecimalMarkup(model.orpt, 2))}</div><div class="muted">Requests per solved task</div></div>
+          <div class="summary-item"><div class="micro">Total cost</div><div class="metric-value">${escapeHtmlMarkup(formatCurrencyMarkup(model.totalCostUsd))}</div><div class="muted">Observed benchmark spend</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="micro">Baseline comparison</div>
+      <h3>How the field moves relative to ${escapeHtmlMarkup(model.model)}</h3>
+      <p class="panel-copy">These charts use ${escapeHtmlMarkup(model.model)} as zero. Positive bars mean other models are above the baseline on that metric; negative bars mean they trail it.</p>
+      <div class="chart-grid">
+        ${page.modelCharts.map((chart) => `<article><h3>${escapeHtmlMarkup(chart.title)}</h3><iframe loading="lazy" srcdoc="${escapeAttributeMarkup(chart.html)}" title="${escapeAttributeMarkup(chart.title)}"></iframe></article>`).join('')}
+      </div>
+    </section>
+    <section class="panel">
+      <div class="micro">Decision table</div>
+      <h3>Field comparison against the baseline</h3>
+      <p class="panel-copy">Use this to decide whether another model beats ${escapeHtmlMarkup(model.model)} enough to justify the change.</p>
+      ${renderStaticTable({
+        rows: page.baselineRows,
+        columns: [
+          { key: 'model', label: 'Model', render: (row) => row.isBaseline ? `${escapeHtmlMarkup(row.model)} <span class="pill good">Baseline</span>` : escapeHtmlMarkup(row.model) },
+          { key: 'compositeScore', label: 'Composite', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.compositeScore)) },
+          { key: 'deltaComposite', label: 'Delta vs baseline', render: (row) => escapeHtmlMarkup(formatSignedScoreMarkup(row.deltaComposite)) },
+          { key: 'successRate', label: 'Success', render: (row) => escapeHtmlMarkup(formatPercentMarkup(row.successRate)) },
+          { key: 'deltaSuccessRate', label: 'Success delta', render: (row) => escapeHtmlMarkup(formatSignedPercentMarkup(row.deltaSuccessRate)) },
+          { key: 'orpt', label: 'ORPT', render: (row) => escapeHtmlMarkup(formatDecimalMarkup(row.orpt, 2)) },
+          { key: 'deltaOrpt', label: 'ORPT delta', render: (row) => escapeHtmlMarkup(formatSignedDecimalMarkup(row.deltaOrpt, 2)) },
+          { key: 'totalCostUsd', label: 'Cost', render: (row) => escapeHtmlMarkup(formatCurrencyMarkup(row.totalCostUsd)) },
+          { key: 'deltaCostUsd', label: 'Cost delta', render: (row) => escapeHtmlMarkup(formatSignedCurrencyMarkup(row.deltaCostUsd)) },
+          { key: 'totalWallTimeMs', label: 'Wall time', render: (row) => escapeHtmlMarkup(formatDurationMarkup(row.totalWallTimeMs)) },
+        ],
+      })}
+    </section>
+    <section class="summary-grid">
+      <div class="panel">
+        <div class="micro">Task story</div>
+        <h3>Where ${escapeHtmlMarkup(model.model)} separates</h3>
+        <p class="panel-copy">This table puts the most revealing tasks first: unsolved tasks, single-solver tasks, and tasks where the baseline trails the winner by a meaningful margin.</p>
+        ${renderStaticTable({
+          rows: page.modelInsights,
+          columns: [
+            { key: 'taskName', label: 'Task', render: (row) => escapeHtmlMarkup(row.taskName) },
+            { key: 'fieldReadLabel', label: 'Field read', render: (row) => badgeMarkup(row.fieldReadLabel, row.fieldReadTone) },
+            { key: 'baselineOutcome', label: 'Baseline result', render: (row) => badgeMarkup(row.baselineOutcome, row.baselineOutcomeTone) },
+            { key: 'winnerModel', label: 'Winner', render: (row) => row.winnerModel ? `${escapeHtmlMarkup(row.winnerModel)}<div class="muted">${escapeHtmlMarkup(formatScoreMarkup(row.winnerCompositeScore))}</div>` : '<span class="muted">n/a</span>' },
+            { key: 'baselineVsBestGap', label: 'Gap to winner', render: (row) => escapeHtmlMarkup(formatScoreMarkup(row.baselineVsBestGap)) },
+            { key: 'baselineCostUsd', label: 'Baseline cost', render: (row) => escapeHtmlMarkup(formatCurrencyMarkup(row.baselineCostUsd)) },
+            { key: 'baselineWallTimeMs', label: 'Baseline time', render: (row) => escapeHtmlMarkup(formatDurationMarkup(row.baselineWallTimeMs)) },
+          ],
+        })}
+      </div>
+      <div class="panel">
+        <div class="micro">Head to head</div>
+        <h3>Direct matchups</h3>
+        <p class="panel-copy">Pairwise task wins and top-line deltas show whether a challenger truly beats the baseline or just looks cheaper or faster in isolation.</p>
+        ${renderStaticTable({
+          rows: page.comparisons,
+          columns: [
+            { key: 'challengerModel', label: 'Challenger', render: (row) => escapeHtmlMarkup(row.challengerModel) },
+            { key: 'record', label: 'Task record', render: (row) => `${escapeHtmlMarkup(formatIntegerMarkup(row.baselineWins))}-${escapeHtmlMarkup(formatIntegerMarkup(row.challengerWins))}<div class="muted">${escapeHtmlMarkup(formatIntegerMarkup(row.ties))} ties</div>` },
+            { key: 'compositeDelta', label: 'Composite edge', render: (row) => escapeHtmlMarkup(formatSignedScoreMarkup(row.compositeDelta)) },
+            { key: 'successDelta', label: 'Success edge', render: (row) => escapeHtmlMarkup(formatSignedPercentMarkup(row.successDelta)) },
+            { key: 'costDelta', label: 'Cost edge', render: (row) => escapeHtmlMarkup(formatSignedCurrencyMarkup(row.costDelta)) },
+            { key: 'wallTimeDelta', label: 'Time edge', render: (row) => escapeHtmlMarkup(formatSignedDurationMarkup(row.wallTimeDelta)) },
+            { key: 'orptDelta', label: 'ORPT edge', render: (row) => escapeHtmlMarkup(formatSignedDecimalMarkup(row.orptDelta, 2)) },
+          ],
+        })}
+      </div>
+    </section>
+    <section class="panel">
+      <div class="micro">Model context</div>
+      <h3>Benchmark and catalog detail</h3>
+      <p class="panel-copy">The benchmark result only matters in context: this section pairs the observed benchmark outcome with the catalog metadata and operating characteristics behind it.</p>
+      <div class="summary-grid">
+        <div class="summary-item">${renderStatRow('Requests', formatIntegerMarkup(model.totalRequestUnits))}${renderStatRow('Wall time', formatDurationMarkup(model.totalWallTimeMs))}${renderStatRow('Average task cost', formatCurrencyMarkup(model.averageCostUsd))}${renderStatRow('Benchmark support', escapeHtmlMarkup(catalog?.unattendedBenchmarkRuns || 'unknown'))}</div>
+        <div class="summary-item">${renderStatRow('Catalog blended price', formatCurrencyMarkupPerMillion(catalog?.blendedPricePer1mTokensUsd))}${renderStatRow('Catalog speed', catalog?.speedTokensPerSecond != null ? `${escapeHtmlMarkup(formatIntegerMarkup(catalog.speedTokensPerSecond))} tok/s` : 'n/a')}${renderStatRow('Intelligence', catalog?.intelligenceScore != null ? escapeHtmlMarkup(String(catalog.intelligenceScore)) : 'n/a')}${renderStatRow('Agentic', catalog?.agenticScore != null ? escapeHtmlMarkup(String(catalog.agenticScore)) : 'n/a')}</div>
+      </div>
+      ${catalog?.pricingNotes ? `<p class="panel-copy" style="margin-top:14px;">${escapeHtmlMarkup(catalog.pricingNotes)}</p>` : ''}
+      ${catalog?.stabilityNotes ? `<p class="panel-copy" style="margin-top:10px;">${escapeHtmlMarkup(catalog.stabilityNotes)}</p>` : ''}
+    </section>
+  </div>
+</body>
+</html>`;
 }
 
 function renderModelMetaPill(label) {

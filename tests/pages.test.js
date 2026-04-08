@@ -654,8 +654,14 @@ test('pages build surfaces executive leaderboard and pre-rendered comparison tab
     assert.match(html, /Task insights/)
     assert.match(html, /Field read/)
     assert.match(html, /id="task-summary-table">\s*<div class="table-wrap"><table>/)
+    assert.match(html, /Model detail page/)
     assert.match(html, /Completion score/)
     assert.match(html, /Completion vs benchmark cost/)
+
+    const modelPage = await fs.readFile(path.join(outputDir, 'models', 'opencode-gpt-5-4-mini.html'), 'utf8')
+    assert.match(modelPage, /Direct matchups/)
+    assert.match(modelPage, /How the field moves relative to/)
+    assert.match(modelPage, /Field comparison against the baseline/)
   } finally {
     await fs.rm(rootDir, { recursive: true, force: true })
   }
