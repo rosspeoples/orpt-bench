@@ -5,6 +5,16 @@ import { execSync } from 'node:child_process';
 import { aggregateRun } from './benchmark.js';
 
 const outputDir = process.env.PUBLISH_PAGES_OUTPUT_DIR || process.env.GITHUB_PAGES_OUTPUT_DIR;
+const MODEL_COLOR_PALETTE = ['#73f0c5', '#86a8ff', '#f59e0b', '#f472b6', '#22c55e', '#38bdf8', '#c084fc', '#fb7185'];
+const CHART_THEME = {
+  paper: '#08101f',
+  plot: '#0d1830',
+  text: '#edf2ff',
+  muted: '#99a4c8',
+  grid: 'rgba(153, 164, 200, 0.16)',
+  border: 'rgba(153, 164, 200, 0.22)',
+  hover: '#0a1324',
+};
 
 if (!outputDir) {
   throw new Error('missing PUBLISH_PAGES_OUTPUT_DIR or GITHUB_PAGES_OUTPUT_DIR');
@@ -23,6 +33,7 @@ const chartDefinitions = [
     eyebrow: 'Leaderboard',
     title: 'Composite score',
     description: 'Correctness-first overall ranking across the full benchmark set.',
+    featured: true,
     build: buildCompositeScoreChart,
   },
   {
@@ -30,6 +41,7 @@ const chartDefinitions = [
     eyebrow: 'Reliability',
     title: 'Success rate',
     description: 'How often each model actually closes tasks, independent of efficiency.',
+    featured: true,
     build: buildSuccessRateChart,
   },
   {
@@ -37,6 +49,7 @@ const chartDefinitions = [
     eyebrow: 'Request efficiency',
     title: 'ORPT',
     description: 'Lower is better: fewer requests per successful task.',
+    featured: true,
     build: buildOrptChart,
   },
   {
@@ -51,6 +64,7 @@ const chartDefinitions = [
     eyebrow: 'Tradeoff frontier',
     title: 'Composite vs benchmark cost',
     description: 'Quality against the actual cost of clearing the published benchmark suite.',
+    featured: true,
     build: buildCompositeVsCostChart,
   },
   {
@@ -58,6 +72,7 @@ const chartDefinitions = [
     eyebrow: 'Catalog priors',
     title: 'Composite vs catalog price',
     description: 'Observed ORPT-Bench quality against catalog blended price per 1M tokens.',
+    featured: true,
     build: buildCompositeVsCatalogPriceChart,
   },
   {
@@ -364,7 +379,6 @@ function buildCompositeScoreChart(report) {
     metricKey: 'compositeScore',
     title: 'Composite score',
     axisTitle: 'Composite score',
-    color: '#7c3aed',
     valueFormatter: (value) => Number((value ?? 0).toFixed(3)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatDecimalMarkup(row.orpt, 2)} ORPT`,
   });
@@ -377,7 +391,6 @@ function buildSuccessRateChart(report) {
     metricKey: 'successRate',
     title: 'Success rate',
     axisTitle: 'Success rate (%)',
-    color: '#16a34a',
     valueFormatter: (value) => Number((((value ?? 0) * 100)).toFixed(2)),
     customText: (row) => `${formatScoreMarkup(row.compositeScore)} composite | ${formatIntegerMarkup(row.successfulTasks)} solved`,
   });
@@ -392,7 +405,6 @@ function buildOrptChart(report) {
     metricKey: 'orpt',
     title: 'ORPT',
     axisTitle: 'Requests per solved task',
-    color: '#2563eb',
     valueFormatter: (value) => Number((value ?? 0).toFixed(2)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
   });
@@ -407,7 +419,6 @@ function buildTotalCostChart(report) {
     metricKey: 'totalCostUsd',
     title: 'Total benchmark cost',
     axisTitle: 'USD',
-    color: '#f59e0b',
     valueFormatter: (value) => Number((value ?? 0).toFixed(4)),
     customText: (row) => `${formatScoreMarkup(row.compositeScore)} composite | ${formatIntegerMarkup(row.totalRequestUnits)} requests`,
   });
@@ -429,16 +440,11 @@ function buildCompositeVsCostChart(report) {
         y: rows.map((entry) => Number(entry.compositeScore.toFixed(3))),
         text: rows.map((entry) => entry.model),
         textposition: 'top center',
+        textfont: { color: CHART_THEME.text, size: 12 },
         marker: {
           size: rows.map((entry) => 16 + Math.round((entry.successRate ?? 0) * 18)),
-          color: rows.map((entry) => entry.successRate ?? 0),
-          colorscale: [
-            [0, '#ef4444'],
-            [0.5, '#f59e0b'],
-            [1, '#22c55e'],
-          ],
-          line: { color: '#0f172a', width: 1 },
-          colorbar: { title: 'Success', tickformat: ',.0%' },
+          color: rows.map((entry) => colorForModel(entry.model)),
+          line: { color: 'rgba(255,255,255,0.22)', width: 1.5 },
         },
         customdata: rows.map((entry) => [
           formatPercentMarkup(entry.successRate),
@@ -453,7 +459,7 @@ function buildCompositeVsCostChart(report) {
       title: 'Composite vs benchmark cost',
       xaxis: { title: 'Total benchmark cost (USD)' },
       yaxis: { title: 'Composite score', range: [0, 1.05] },
-      height: 390,
+      height: 520,
     }),
   };
 }
@@ -474,15 +480,11 @@ function buildCompositeVsCatalogPriceChart(report) {
         y: rows.map((entry) => Number(entry.compositeScore.toFixed(3))),
         text: rows.map((entry) => entry.model),
         textposition: 'top center',
+        textfont: { color: CHART_THEME.text, size: 12 },
         marker: {
           size: rows.map((entry) => 16 + Math.round((entry.successRate ?? 0) * 18)),
-          color: rows.map((entry) => entry.intelligenceScore ?? 0),
-          colorscale: [
-            [0, '#3b82f6'],
-            [1, '#7c3aed'],
-          ],
-          line: { color: '#0f172a', width: 1 },
-          colorbar: { title: 'Catalog intelligence' },
+          color: rows.map((entry) => colorForModel(entry.model)),
+          line: { color: 'rgba(255,255,255,0.22)', width: 1.5 },
         },
         customdata: rows.map((entry) => [
           formatPercentMarkup(entry.successRate),
@@ -497,7 +499,7 @@ function buildCompositeVsCatalogPriceChart(report) {
       title: 'Composite vs catalog price',
       xaxis: { title: 'Catalog blended price (USD / 1M tok)' },
       yaxis: { title: 'Composite score', range: [0, 1.05] },
-      height: 390,
+      height: 520,
     }),
   };
 }
@@ -511,7 +513,6 @@ function buildTotalWallTimeChart(report) {
     metricKey: 'totalWallTimeMs',
     title: 'Total wall time',
     axisTitle: 'Minutes',
-    color: '#06b6d4',
     valueFormatter: (value) => Number((((value ?? 0) / 60000)).toFixed(2)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
   });
@@ -526,7 +527,6 @@ function buildTotalRequestsChart(report) {
     metricKey: 'totalRequestUnits',
     title: 'Total requests',
     axisTitle: 'Request units',
-    color: '#ec4899',
     valueFormatter: (value) => Number((value ?? 0).toFixed(0)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatDurationMarkup(row.totalWallTimeMs)} wall time`,
   });
@@ -559,21 +559,21 @@ function buildCostByOutcomeChart(report) {
         name: 'Solved tasks cost',
         x: models.map((entry) => entry.model),
         y: models.map((entry) => Number(costByModel.get(entry.model).success.toFixed(4))),
-        marker: { color: '#22c55e' },
+        marker: { color: models.map((entry) => colorForModel(entry.model)), opacity: 0.95 },
       },
       {
         type: 'bar',
         name: 'Failed tasks cost',
         x: models.map((entry) => entry.model),
         y: models.map((entry) => Number(costByModel.get(entry.model).failure.toFixed(4))),
-        marker: { color: '#ef4444' },
+        marker: { color: models.map((entry) => fadeColor(colorForModel(entry.model), 0.42)), opacity: 0.95 },
       },
     ],
     layout: buildChartLayout({
       title: 'Spend split by outcome',
       barmode: 'stack',
       yaxis: { title: 'USD' },
-      height: 390,
+      height: 460,
     }),
   };
 }
@@ -587,17 +587,17 @@ function buildTokenBreakdownChart(report) {
   const models = summary.map((entry) => entry.model);
   return {
     data: [
-      { type: 'bar', name: 'Input', x: models, y: summary.map((entry) => entry.inputTokens), marker: { color: '#3b82f6' } },
-      { type: 'bar', name: 'Output', x: models, y: summary.map((entry) => entry.outputTokens), marker: { color: '#22c55e' } },
-      { type: 'bar', name: 'Reasoning', x: models, y: summary.map((entry) => entry.reasoningTokens), marker: { color: '#7c3aed' } },
-      { type: 'bar', name: 'Cache read', x: models, y: summary.map((entry) => entry.cacheReadTokens), marker: { color: '#f59e0b' } },
-      { type: 'bar', name: 'Cache write', x: models, y: summary.map((entry) => entry.cacheWriteTokens), marker: { color: '#ec4899' } },
+      { type: 'bar', name: 'Input', x: models, y: summary.map((entry) => entry.inputTokens), marker: { color: '#2dd4bf' } },
+      { type: 'bar', name: 'Output', x: models, y: summary.map((entry) => entry.outputTokens), marker: { color: '#60a5fa' } },
+      { type: 'bar', name: 'Reasoning', x: models, y: summary.map((entry) => entry.reasoningTokens), marker: { color: '#c084fc' } },
+      { type: 'bar', name: 'Cache read', x: models, y: summary.map((entry) => entry.cacheReadTokens), marker: { color: '#fbbf24' } },
+      { type: 'bar', name: 'Cache write', x: models, y: summary.map((entry) => entry.cacheWriteTokens), marker: { color: '#fb7185' } },
     ],
     layout: buildChartLayout({
       title: 'Token breakdown',
       barmode: 'stack',
       yaxis: { title: 'Tokens' },
-      height: 390,
+      height: 460,
     }),
   };
 }
@@ -727,7 +727,7 @@ function buildTaskDurationHeatmap(report) {
   });
 }
 
-function buildModelBarChart({ rows, metricKey, title, axisTitle, color, valueFormatter, customText }) {
+function buildModelBarChart({ rows, metricKey, title, axisTitle, valueFormatter, customText }) {
   if (!rows.length) {
     return null;
   }
@@ -738,15 +738,20 @@ function buildModelBarChart({ rows, metricKey, title, axisTitle, color, valueFor
         type: 'bar',
         x: rows.map((entry) => entry.model),
         y: rows.map((entry) => valueFormatter(entry[metricKey])),
-        marker: { color, line: { color: 'rgba(255,255,255,0.18)', width: 1 } },
+        marker: {
+          color: rows.map((entry) => colorForModel(entry.model)),
+          line: { color: 'rgba(255,255,255,0.22)', width: 1.5 },
+        },
         text: rows.map((entry) => valueFormatter(entry[metricKey])),
         textposition: 'auto',
+        textfont: { color: CHART_THEME.text, size: 12 },
         hovertemplate: rows.map((entry) => `${entry.model}<br>${axisTitle}: ${escapeHtmlMarkup(String(valueFormatter(entry[metricKey])))}<br>${escapeHtmlMarkup(customText(entry))}<extra></extra>`),
       },
     ],
     layout: buildChartLayout({
       title,
       yaxis: { title: axisTitle },
+      height: 420,
     }),
   };
 }
@@ -856,26 +861,73 @@ function buildGroupedMetricHeatmap({ report, title, groupKey, groups, labelForma
 
 function buildChartLayout(overrides = {}) {
   return {
-    paper_bgcolor: '#ffffff',
-    plot_bgcolor: '#ffffff',
-    font: { family: 'Inter, ui-sans-serif, system-ui, sans-serif', color: '#0f172a', size: 12 },
-    margin: { l: 56, r: 24, t: 54, b: 56 },
-    height: 360,
+    paper_bgcolor: CHART_THEME.paper,
+    plot_bgcolor: CHART_THEME.plot,
+    font: { family: 'Inter, ui-sans-serif, system-ui, sans-serif', color: CHART_THEME.text, size: 13 },
+    title: { font: { color: CHART_THEME.text, size: 20 } },
+    hoverlabel: { bgcolor: CHART_THEME.hover, bordercolor: CHART_THEME.border, font: { color: CHART_THEME.text } },
+    legend: { font: { color: CHART_THEME.muted }, orientation: 'h', x: 0, y: 1.12 },
+    margin: { l: 72, r: 24, t: 72, b: 82 },
+    height: 440,
     xaxis: {
       automargin: true,
-      tickfont: { size: 11 },
-      gridcolor: 'rgba(15, 23, 42, 0.08)',
+      tickfont: { size: 12, color: CHART_THEME.muted },
+      titlefont: { color: CHART_THEME.text, size: 13 },
+      gridcolor: CHART_THEME.grid,
+      linecolor: CHART_THEME.border,
+      zerolinecolor: CHART_THEME.grid,
+      tickangle: -18,
     },
     yaxis: {
       automargin: true,
       zeroline: false,
-      gridcolor: 'rgba(15, 23, 42, 0.08)',
+      tickfont: { size: 12, color: CHART_THEME.muted },
+      titlefont: { color: CHART_THEME.text, size: 13 },
+      gridcolor: CHART_THEME.grid,
+      linecolor: CHART_THEME.border,
     },
     ...overrides,
-    margin: { l: 56, r: 24, t: 54, b: 56, ...(overrides.margin || {}) },
-    xaxis: { automargin: true, tickfont: { size: 11 }, gridcolor: 'rgba(15, 23, 42, 0.08)', ...(overrides.xaxis || {}) },
-    yaxis: { automargin: true, zeroline: false, gridcolor: 'rgba(15, 23, 42, 0.08)', ...(overrides.yaxis || {}) },
+    margin: { l: 72, r: 24, t: 72, b: 82, ...(overrides.margin || {}) },
+    xaxis: {
+      automargin: true,
+      tickfont: { size: 12, color: CHART_THEME.muted },
+      titlefont: { color: CHART_THEME.text, size: 13 },
+      gridcolor: CHART_THEME.grid,
+      linecolor: CHART_THEME.border,
+      zerolinecolor: CHART_THEME.grid,
+      tickangle: -18,
+      ...(overrides.xaxis || {}),
+    },
+    yaxis: {
+      automargin: true,
+      zeroline: false,
+      tickfont: { size: 12, color: CHART_THEME.muted },
+      titlefont: { color: CHART_THEME.text, size: 13 },
+      gridcolor: CHART_THEME.grid,
+      linecolor: CHART_THEME.border,
+      ...(overrides.yaxis || {}),
+    },
   };
+}
+
+function colorForModel(model) {
+  let hash = 0;
+  for (let index = 0; index < model.length; index += 1) {
+    hash = ((hash * 31) + model.charCodeAt(index)) >>> 0;
+  }
+  return MODEL_COLOR_PALETTE[hash % MODEL_COLOR_PALETTE.length];
+}
+
+function fadeColor(hexColor, opacity) {
+  const match = /^#([0-9a-f]{6})$/i.exec(hexColor);
+  if (!match) {
+    return hexColor;
+  }
+  const value = match[1];
+  const red = parseInt(value.slice(0, 2), 16);
+  const green = parseInt(value.slice(2, 4), 16);
+  const blue = parseInt(value.slice(4, 6), 16);
+  return `rgba(${red}, ${green}, ${blue}, ${opacity})`;
 }
 
 function buildTaskMatrix(report) {
@@ -1484,20 +1536,23 @@ function renderHtml(data) {
     .section-header { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 14px; }
     .section-title { font-size: clamp(1.3rem, 2vw, 1.7rem); letter-spacing: -0.03em; margin-bottom: 4px; }
     .hint { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--warning); font-size: 0.72rem; }
-    .chart-grid, .docs-grid, .model-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .chart-grid, .docs-grid, .model-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .insight-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .chart-card, .doc-card, .table-panel { padding: 18px; }
+    .chart-card, .doc-card, .table-panel { padding: 20px; }
+    .chart-card.featured { grid-column: 1 / -1; }
     .chart-card.wide { grid-column: 1 / -1; }
     .chart-card iframe {
       width: 100%;
-      height: 320px;
+      height: 460px;
       border: 0;
       border-radius: 12px;
-      background: #ffffff;
+      background: linear-gradient(180deg, rgba(8, 16, 31, 0.98), rgba(13, 24, 48, 0.98));
       margin: 14px 0 12px;
+      box-shadow: inset 0 0 0 1px rgba(153, 164, 200, 0.12);
     }
-    .chart-card.wide iframe { height: 620px; }
+    .chart-card.featured iframe { height: 620px; }
+    .chart-card.wide iframe { height: 720px; }
     .card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
     .card-link {
       padding: 9px 12px;
@@ -1507,6 +1562,7 @@ function renderHtml(data) {
       font-size: 0.9rem;
     }
     .table-panel { padding-bottom: 8px; }
+    .chart-note { color: var(--muted); font-size: 0.88rem; line-height: 1.55; margin-top: 8px; }
     .insight-card {
       border: 1px solid rgba(122, 162, 255, 0.12);
       border-radius: var(--radius-sm);
@@ -1628,8 +1684,10 @@ function renderHtml(data) {
         flex-direction: column;
         align-items: stretch;
       }
-      .chart-card iframe { height: 260px; }
-      .chart-card.wide iframe { height: 420px; }
+      .chart-grid, .docs-grid, .model-cards, .insight-grid, .summary-grid { grid-template-columns: 1fr; }
+      .chart-card iframe { height: 340px; }
+      .chart-card.featured iframe { height: 420px; }
+      .chart-card.wide iframe { height: 520px; }
     }
   </style>
 </head>
@@ -2114,10 +2172,11 @@ function renderChartCards(charts) {
   }
 
   return `<div class="chart-grid">
-${charts.map((chart) => `        <article class="chart-card${chart.wide ? ' wide' : ''}">
+${charts.map((chart) => `        <article class="chart-card${chart.featured ? ' featured' : ''}${chart.wide ? ' wide' : ''}">
           <div class="micro muted">${escapeHtmlMarkup(chart.eyebrow)}</div>
           <h3>${escapeHtmlMarkup(chart.title)}</h3>
           <p class="panel-copy">${escapeHtmlMarkup(chart.description)}</p>
+          <p class="chart-note">${escapeHtmlMarkup(chartReadingHint(chart))}</p>
           <iframe loading="lazy" src="${escapeAttributeMarkup(chart.htmlPath)}" title="${escapeAttributeMarkup(chart.title)} chart"></iframe>
           <div class="card-actions">
             <a class="card-link" href="${escapeAttributeMarkup(chart.htmlPath)}">Open chart</a>
@@ -2125,6 +2184,31 @@ ${charts.map((chart) => `        <article class="chart-card${chart.wide ? ' wide
           </div>
         </article>`).join('\n')}
       </div>`;
+}
+
+function chartReadingHint(chart) {
+  switch (chart.slug) {
+    case 'composite-vs-cost':
+      return 'Upper-left is the best observed frontier: higher quality for less total benchmark spend.';
+    case 'composite-vs-catalog-price':
+      return 'This compares observed benchmark quality with catalog pricing priors rather than run spend alone.';
+    case 'cost-by-outcome':
+      return 'The faded segment is spend burned on failed tasks; the solid segment is spend attached to solved tasks.';
+    case 'token-breakdown':
+      return 'Use this to see whether a model spends proportionally on reasoning, generation, or cached context.';
+    case 'category-composite-heatmap':
+      return 'Rows expose category strengths and blind spots that disappear in a single top-line score.';
+    case 'difficulty-success-heatmap':
+      return 'This isolates whether a model falls apart as task difficulty rises.';
+    case 'task-composite-heatmap':
+      return 'This is the most detailed quality comparison on the page: every task, every model, one glance.';
+    case 'task-cost-heatmap':
+      return 'Use this to find where a model is overpaying for equivalent or worse outcomes.';
+    case 'task-duration-heatmap':
+      return 'Use this to spot slow tasks and whether the delay tracks with better outcomes or wasted effort.';
+    default:
+      return 'Each model keeps the same color across direct comparison charts so cross-chart scanning is consistent.';
+  }
 }
 
 function renderLeaderboardHighlights(highlights) {
