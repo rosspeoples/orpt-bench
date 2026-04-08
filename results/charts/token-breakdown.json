@@ -6,10 +6,12 @@
       "type": "bar",
       "name": "Input",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
+        232084,
         6583,
         8275
       ],
@@ -21,10 +23,12 @@
       "type": "bar",
       "name": "Output",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
+        2947,
         3288,
         1852
       ],
@@ -36,10 +40,12 @@
       "type": "bar",
       "name": "Reasoning",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
+        0,
         669,
         2516
       ],
@@ -51,10 +57,12 @@
       "type": "bar",
       "name": "Cache read",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
+        0,
         281856,
         261120
       ],
@@ -66,10 +74,12 @@
       "type": "bar",
       "name": "Cache write",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
+        0,
         0,
         0
       ],

@@ -6,16 +6,19 @@
       "type": "bar",
       "x": [
         "opencode/gpt-5.4-mini",
-        "opencode/gpt-5.4"
+        "opencode/gpt-5.4",
+        "opencode/glm-5"
       ],
       "y": [
         156,
-        197
+        197,
+        204
       ],
       "marker": {
         "color": [
           "#f472b6",
-          "#86a8ff"
+          "#86a8ff",
+          "#73f0c5"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -24,7 +27,8 @@
       },
       "text": [
         156,
-        197
+        197,
+        204
       ],
       "textposition": "auto",
       "textfont": {
@@ -33,7 +37,8 @@
       },
       "hovertemplate": [
         "opencode/gpt-5.4-mini<br>Request units: 156<br>53% success | 14m 10s wall time<extra></extra>",
-        "opencode/gpt-5.4<br>Request units: 197<br>60% success | 22m 19s wall time<extra></extra>"
+        "opencode/gpt-5.4<br>Request units: 197<br>60% success | 22m 19s wall time<extra></extra>",
+        "opencode/glm-5<br>Request units: 204<br>73% success | 13m 33s wall time<extra></extra>"
       ]
     }
   ],

@@ -5,15 +5,18 @@
     {
       "type": "bar",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
-        0.534,
-        0.529
+        0.658,
+        0.519,
+        0.505
       ],
       "marker": {
         "color": [
+          "#73f0c5",
           "#86a8ff",
           "#f472b6"
         ],
@@ -23,8 +26,9 @@
         }
       },
       "text": [
-        0.534,
-        0.529
+        0.658,
+        0.519,
+        0.505
       ],
       "textposition": "auto",
       "textfont": {
@@ -32,8 +36,9 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gpt-5.4<br>Composite score: 0.534<br>60% success | 13.11 ORPT<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Composite score: 0.529<br>53% success | 11.00 ORPT<extra></extra>"
+        "opencode/glm-5<br>Composite score: 0.658<br>73% success | 14.27 ORPT<extra></extra>",
+        "opencode/gpt-5.4<br>Composite score: 0.519<br>60% success | 13.11 ORPT<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Composite score: 0.505<br>53% success | 11.00 ORPT<extra></extra>"
       ]
     }
   ],

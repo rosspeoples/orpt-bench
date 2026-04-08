@@ -6,15 +6,18 @@
       "type": "bar",
       "name": "Solved tasks cost",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
+        0.1936,
         0.0813,
         0.0258
       ],
       "marker": {
         "color": [
+          "#73f0c5",
           "#86a8ff",
           "#f472b6"
         ],
@@ -25,15 +28,18 @@
       "type": "bar",
       "name": "Failed tasks cost",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
+        0.0479,
         0.065,
         0.0196
       ],
       "marker": {
         "color": [
+          "rgba(115, 240, 197, 0.42)",
           "rgba(134, 168, 255, 0.42)",
           "rgba(244, 114, 182, 0.42)"
         ],

@@ -5,15 +5,18 @@
     {
       "type": "bar",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4-mini",
         "opencode/gpt-5.4"
       ],
       "y": [
+        13.55,
         14.17,
         22.31
       ],
       "marker": {
         "color": [
+          "#73f0c5",
           "#f472b6",
           "#86a8ff"
         ],
@@ -23,6 +26,7 @@
         }
       },
       "text": [
+        13.55,
         14.17,
         22.31
       ],
@@ -32,6 +36,7 @@
         "size": 12
       },
       "hovertemplate": [
+        "opencode/glm-5<br>Minutes: 13.55<br>73% success | $0.2415 total cost<extra></extra>",
         "opencode/gpt-5.4-mini<br>Minutes: 14.17<br>53% success | $0.0454 total cost<extra></extra>",
         "opencode/gpt-5.4<br>Minutes: 22.31<br>60% success | $0.1463 total cost<extra></extra>"
       ]

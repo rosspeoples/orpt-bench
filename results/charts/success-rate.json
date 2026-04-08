@@ -5,15 +5,18 @@
     {
       "type": "bar",
       "x": [
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
+        73.33,
         60,
         53.33
       ],
       "marker": {
         "color": [
+          "#73f0c5",
           "#86a8ff",
           "#f472b6"
         ],
@@ -23,6 +26,7 @@
         }
       },
       "text": [
+        73.33,
         60,
         53.33
       ],
@@ -32,8 +36,9 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gpt-5.4<br>Success rate (%): 60<br>0.534 composite | 9 solved<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Success rate (%): 53.33<br>0.529 composite | 8 solved<extra></extra>"
+        "opencode/glm-5<br>Success rate (%): 73.33<br>0.658 composite | 11 solved<extra></extra>",
+        "opencode/gpt-5.4<br>Success rate (%): 60<br>0.519 composite | 9 solved<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Success rate (%): 53.33<br>0.505 composite | 8 solved<extra></extra>"
       ]
     }
   ],

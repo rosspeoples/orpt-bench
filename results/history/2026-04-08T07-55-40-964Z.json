@@ -1138,13 +1138,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.476665,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
+        "orptFactor": 0.777778,
+        "costFactor": 0.166317,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 0.842999
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",
@@ -1686,13 +1686,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.386072,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
+        "orptFactor": 0.7,
+        "costFactor": 0.104283,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 0.815822
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",
@@ -2149,13 +2149,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.698994,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 1,
+        "costFactor": 0.359449,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 0.909698
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",
@@ -2508,13 +2508,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.620848,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 1,
+        "costFactor": 0.256171,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 0.886254
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",
@@ -2748,13 +2748,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.533835,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 1,
+        "costFactor": 0.166403,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 0.86015
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",
@@ -3313,13 +3313,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.468507,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
+        "orptFactor": 0.818182,
+        "costFactor": 0.148333,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 0.840552
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",
@@ -4269,13 +4269,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.491438,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
+        "orptFactor": 0.833333,
+        "costFactor": 0.166068,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 0.847431
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",
@@ -4611,13 +4611,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.56069,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
+        "orptFactor": 0.928571,
+        "costFactor": 0.210594,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 0.868207
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",
