@@ -160,12 +160,28 @@
     }
   ],
   "layout": {
-    "paper_bgcolor": "#ffffff",
-    "plot_bgcolor": "#ffffff",
+    "paper_bgcolor": "#08101f",
+    "plot_bgcolor": "#0d1830",
     "font": {
       "family": "Inter, ui-sans-serif, system-ui, sans-serif",
-      "color": "#0f172a",
-      "size": 12
+      "color": "#edf2ff",
+      "size": 13
+    },
+    "title": "Category composite heatmap",
+    "hoverlabel": {
+      "bgcolor": "#0a1324",
+      "bordercolor": "rgba(153, 164, 200, 0.22)",
+      "font": {
+        "color": "#edf2ff"
+      }
+    },
+    "legend": {
+      "font": {
+        "color": "#99a4c8"
+      },
+      "orientation": "h",
+      "x": 0,
+      "y": 1.12
     },
     "margin": {
       "l": 180,
@@ -177,17 +193,32 @@
     "xaxis": {
       "automargin": true,
       "tickfont": {
-        "size": 11
+        "size": 12,
+        "color": "#99a4c8"
       },
-      "gridcolor": "rgba(15, 23, 42, 0.08)",
+      "titlefont": {
+        "color": "#edf2ff",
+        "size": 13
+      },
+      "gridcolor": "rgba(153, 164, 200, 0.16)",
+      "linecolor": "rgba(153, 164, 200, 0.22)",
+      "zerolinecolor": "rgba(153, 164, 200, 0.16)",
       "tickangle": -24
     },
     "yaxis": {
       "automargin": true,
       "zeroline": false,
-      "gridcolor": "rgba(15, 23, 42, 0.08)",
+      "tickfont": {
+        "size": 12,
+        "color": "#99a4c8"
+      },
+      "titlefont": {
+        "color": "#edf2ff",
+        "size": 13
+      },
+      "gridcolor": "rgba(153, 164, 200, 0.16)",
+      "linecolor": "rgba(153, 164, 200, 0.22)",
       "autorange": "reversed"
-    },
-    "title": "Category composite heatmap"
+    }
   }
 }

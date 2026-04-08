@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T01:41:42.985Z",
+  "generatedAt": "2026-04-08T02:06:34.058Z",
   "repository": {
     "url": "https://github.com/rosspeoples/orpt-bench",
     "pagesUrl": "https://rosspeoples.github.io/orpt-bench/",
@@ -1721,6 +1721,7 @@
       "eyebrow": "Leaderboard",
       "title": "Composite score",
       "description": "Correctness-first overall ranking across the full benchmark set.",
+      "featured": true,
       "jsonPath": "results/charts/composite-score.json",
       "htmlPath": "results/charts/composite-score.html"
     },
@@ -1729,6 +1730,7 @@
       "eyebrow": "Reliability",
       "title": "Success rate",
       "description": "How often each model actually closes tasks, independent of efficiency.",
+      "featured": true,
       "jsonPath": "results/charts/success-rate.json",
       "htmlPath": "results/charts/success-rate.html"
     },
@@ -1737,6 +1739,7 @@
       "eyebrow": "Request efficiency",
       "title": "ORPT",
       "description": "Lower is better: fewer requests per successful task.",
+      "featured": true,
       "jsonPath": "results/charts/orpt.json",
       "htmlPath": "results/charts/orpt.html"
     },
@@ -1753,6 +1756,7 @@
       "eyebrow": "Tradeoff frontier",
       "title": "Composite vs benchmark cost",
       "description": "Quality against the actual cost of clearing the published benchmark suite.",
+      "featured": true,
       "jsonPath": "results/charts/composite-vs-cost.json",
       "htmlPath": "results/charts/composite-vs-cost.html"
     },
@@ -1761,6 +1765,7 @@
       "eyebrow": "Catalog priors",
       "title": "Composite vs catalog price",
       "description": "Observed ORPT-Bench quality against catalog blended price per 1M tokens.",
+      "featured": true,
       "jsonPath": "results/charts/composite-vs-catalog-price.json",
       "htmlPath": "results/charts/composite-vs-catalog-price.html"
     },
