@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T14:54:29.072Z",
+  "generatedAt": "2026-04-08T15:07:40.394Z",
   "repository": {
     "url": "https://github.com/rosspeoples/orpt-bench",
     "pagesUrl": "https://rosspeoples.github.io/orpt-bench/",
@@ -3549,11 +3549,26 @@
   ],
   "charts": [
     {
+      "slug": "completion-score",
+      "eyebrow": "Completion",
+      "title": "Completion score",
+      "description": "Raw task completion across the full benchmark set, before value weighting.",
+      "jsonPath": "results/charts/completion-score.json",
+      "htmlPath": "results/charts/completion-score.html"
+    },
+    {
+      "slug": "value-score",
+      "eyebrow": "Value",
+      "title": "Value score",
+      "description": "Efficiency after a task is solved, blending ORPT, total cost, and wall time.",
+      "jsonPath": "results/charts/value-score.json",
+      "htmlPath": "results/charts/value-score.html"
+    },
+    {
       "slug": "composite-score",
       "eyebrow": "Leaderboard",
       "title": "Composite score",
       "description": "Correctness-first overall ranking across the full benchmark set.",
-      "featured": true,
       "jsonPath": "results/charts/composite-score.json",
       "htmlPath": "results/charts/composite-score.html"
     },
@@ -3586,8 +3601,8 @@
     {
       "slug": "composite-vs-cost",
       "eyebrow": "Tradeoff frontier",
-      "title": "Composite vs benchmark cost",
-      "description": "Quality against the actual cost of clearing the published benchmark suite.",
+      "title": "Completion vs benchmark cost",
+      "description": "Who clears the suite most completely for the least total benchmark spend.",
       "featured": true,
       "jsonPath": "results/charts/composite-vs-cost.json",
       "htmlPath": "results/charts/composite-vs-cost.html"

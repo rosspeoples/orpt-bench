@@ -1,36 +1,20 @@
 {
-  "title": "Completion vs benchmark cost",
-  "description": "Who clears the suite most completely for the least total benchmark spend.",
+  "title": "Value score",
+  "description": "Efficiency after a task is solved, blending ORPT, total cost, and wall time.",
   "data": [
     {
-      "type": "scatter",
-      "mode": "markers+text",
+      "type": "bar",
       "x": [
-        0.2415,
-        0.1463,
-        0.0454
-      ],
-      "y": [
-        0.733,
-        0.6,
-        0.533
-      ],
-      "text": [
         "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
-      "textposition": "top center",
-      "textfont": {
-        "color": "#edf2ff",
-        "size": 12
-      },
+      "y": [
+        0.482,
+        0.329,
+        0.439
+      ],
       "marker": {
-        "size": [
-          28,
-          25,
-          25
-        ],
         "color": [
           "#73f0c5",
           "#86a8ff",
@@ -41,27 +25,21 @@
           "width": 1.5
         }
       },
-      "customdata": [
-        [
-          "0.658",
-          "14.27",
-          "204",
-          "13m 33s"
-        ],
-        [
-          "0.519",
-          "13.11",
-          "197",
-          "22m 19s"
-        ],
-        [
-          "0.505",
-          "11.00",
-          "156",
-          "14m 10s"
-        ]
+      "text": [
+        0.482,
+        0.329,
+        0.439
       ],
-      "hovertemplate": "%{text}<br>Total cost: $%{x:.4f}<br>Completion: %{y:.3f}<br>Composite: %{customdata[0]}<br>ORPT: %{customdata[1]}<br>Requests: %{customdata[2]}<br>Wall time: %{customdata[3]}<extra></extra>"
+      "textposition": "auto",
+      "textfont": {
+        "color": "#edf2ff",
+        "size": 12
+      },
+      "hovertemplate": [
+        "opencode/glm-5<br>Value score: 0.482<br>0.733 completion | $0.2415 total cost<extra></extra>",
+        "opencode/gpt-5.4<br>Value score: 0.329<br>0.6 completion | $0.1463 total cost<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Value score: 0.439<br>0.533 completion | $0.0454 total cost<extra></extra>"
+      ]
     }
   ],
   "layout": {
@@ -72,7 +50,7 @@
       "color": "#edf2ff",
       "size": 13
     },
-    "title": "Completion vs benchmark cost",
+    "title": "Value score",
     "hoverlabel": {
       "bgcolor": "#0a1324",
       "bordercolor": "rgba(153, 164, 200, 0.22)",
@@ -94,7 +72,7 @@
       "t": 72,
       "b": 82
     },
-    "height": 520,
+    "height": 420,
     "xaxis": {
       "automargin": true,
       "tickfont": {
@@ -108,8 +86,7 @@
       "gridcolor": "rgba(153, 164, 200, 0.16)",
       "linecolor": "rgba(153, 164, 200, 0.22)",
       "zerolinecolor": "rgba(153, 164, 200, 0.16)",
-      "tickangle": -18,
-      "title": "Total benchmark cost (USD)"
+      "tickangle": -18
     },
     "yaxis": {
       "automargin": true,
@@ -124,11 +101,7 @@
       },
       "gridcolor": "rgba(153, 164, 200, 0.16)",
       "linecolor": "rgba(153, 164, 200, 0.22)",
-      "title": "Completion score",
-      "range": [
-        0,
-        1.05
-      ]
+      "title": "Value score"
     }
   }
 }
