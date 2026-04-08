@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T16:54:17.623Z",
+  "generatedAt": "2026-04-08T17:39:58.823Z",
   "repository": {
     "url": "https://github.com/rosspeoples/orpt-bench",
     "pagesUrl": "https://rosspeoples.github.io/orpt-bench/",
@@ -2608,6 +2608,7 @@
   "benchmarkedModels": [
     {
       "model": "opencode/glm-5",
+      "detailPath": "models/opencode-glm-5.html",
       "compositeScore": 0.6580741999999999,
       "successRate": 0.7333333333333333,
       "totalCostUsd": 0.2415144,
@@ -2630,6 +2631,7 @@
     },
     {
       "model": "opencode/gpt-5.4",
+      "detailPath": "models/opencode-gpt-5-4.html",
       "compositeScore": 0.5187250666666666,
       "successRate": 0.6,
       "totalCostUsd": 0.1462765,
@@ -2652,6 +2654,7 @@
     },
     {
       "model": "opencode/gpt-5.4-mini",
+      "detailPath": "models/opencode-gpt-5-4-mini.html",
       "compositeScore": 0.5048964,
       "successRate": 0.5333333333333333,
       "totalCostUsd": 0.045446249999999994,
