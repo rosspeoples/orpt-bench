@@ -32,11 +32,24 @@ const allRunEntries = dedupeRunEntries([...historyEntries, { fileName: null, rep
 const publicationContext = buildPublicationContext(allRunEntries, latestRawRun);
 const chartDefinitions = [
   {
+    slug: 'completion-score',
+    eyebrow: 'Completion',
+    title: 'Completion score',
+    description: 'Raw task completion across the full benchmark set, before value weighting.',
+    build: buildCompletionScoreChart,
+  },
+  {
+    slug: 'value-score',
+    eyebrow: 'Value',
+    title: 'Value score',
+    description: 'Efficiency after a task is solved, blending ORPT, total cost, and wall time.',
+    build: buildValueScoreChart,
+  },
+  {
     slug: 'composite-score',
     eyebrow: 'Leaderboard',
     title: 'Composite score',
     description: 'Correctness-first overall ranking across the full benchmark set.',
-    featured: true,
     build: buildCompositeScoreChart,
   },
   {
@@ -65,8 +78,8 @@ const chartDefinitions = [
   {
     slug: 'composite-vs-cost',
     eyebrow: 'Tradeoff frontier',
-    title: 'Composite vs benchmark cost',
-    description: 'Quality against the actual cost of clearing the published benchmark suite.',
+    title: 'Completion vs benchmark cost',
+    description: 'Who clears the suite most completely for the least total benchmark spend.',
     featured: true,
     build: buildCompositeVsCostChart,
   },
@@ -577,6 +590,32 @@ function buildCompositeScoreChart(report) {
   });
 }
 
+function buildCompletionScoreChart(report) {
+  const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? [])
+    .filter((entry) => Number.isFinite(entry.score));
+  return buildModelBarChart({
+    rows,
+    metricKey: 'score',
+    title: 'Completion score',
+    axisTitle: 'Completion score',
+    valueFormatter: (value) => Number((value ?? 0).toFixed(3)),
+    customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatScoreMarkup(row.valueScore)} value`,
+  });
+}
+
+function buildValueScoreChart(report) {
+  const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? [])
+    .filter((entry) => Number.isFinite(entry.valueScore));
+  return buildModelBarChart({
+    rows,
+    metricKey: 'valueScore',
+    title: 'Value score',
+    axisTitle: 'Value score',
+    valueFormatter: (value) => Number((value ?? 0).toFixed(3)),
+    customText: (row) => `${formatScoreMarkup(row.score)} completion | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
+  });
+}
+
 function buildSuccessRateChart(report) {
   const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? []);
   return buildModelBarChart({
@@ -619,7 +658,7 @@ function buildTotalCostChart(report) {
 
 function buildCompositeVsCostChart(report) {
   const rows = sortByComposite(report.modelSummary ?? report.leaderboard ?? [])
-    .filter((entry) => Number.isFinite(entry.compositeScore) && Number.isFinite(entry.totalCostUsd));
+    .filter((entry) => Number.isFinite(entry.score) && Number.isFinite(entry.totalCostUsd));
   if (!rows.length) {
     return null;
   }
@@ -630,28 +669,28 @@ function buildCompositeVsCostChart(report) {
         type: 'scatter',
         mode: 'markers+text',
         x: rows.map((entry) => Number(entry.totalCostUsd.toFixed(4))),
-        y: rows.map((entry) => Number(entry.compositeScore.toFixed(3))),
+        y: rows.map((entry) => Number(entry.score.toFixed(3))),
         text: rows.map((entry) => entry.model),
         textposition: 'top center',
         textfont: { color: CHART_THEME.text, size: 12 },
         marker: {
-          size: rows.map((entry) => 16 + Math.round((entry.successRate ?? 0) * 18)),
+          size: rows.map((entry) => 16 + Math.round((entry.compositeScore ?? 0) * 18)),
           color: rows.map((entry) => colorForModel(entry.model)),
           line: { color: 'rgba(255,255,255,0.22)', width: 1.5 },
         },
         customdata: rows.map((entry) => [
-          formatPercentMarkup(entry.successRate),
+          formatScoreMarkup(entry.compositeScore),
           formatDecimalMarkup(entry.orpt, 2),
           formatIntegerMarkup(entry.totalRequestUnits),
           formatDurationMarkup(entry.totalWallTimeMs),
         ]),
-        hovertemplate: '%{text}<br>Total cost: $%{x:.4f}<br>Composite: %{y:.3f}<br>Success: %{customdata[0]}<br>ORPT: %{customdata[1]}<br>Requests: %{customdata[2]}<br>Wall time: %{customdata[3]}<extra></extra>',
+        hovertemplate: '%{text}<br>Total cost: $%{x:.4f}<br>Completion: %{y:.3f}<br>Composite: %{customdata[0]}<br>ORPT: %{customdata[1]}<br>Requests: %{customdata[2]}<br>Wall time: %{customdata[3]}<extra></extra>',
       },
     ],
     layout: buildChartLayout({
-      title: 'Composite vs benchmark cost',
+      title: 'Completion vs benchmark cost',
       xaxis: { title: 'Total benchmark cost (USD)' },
-      yaxis: { title: 'Composite score', range: [0, 1.05] },
+      yaxis: { title: 'Completion score', range: [0, 1.05] },
       height: 520,
     }),
   };
@@ -1747,7 +1786,7 @@ function renderHtml(data) {
       background: linear-gradient(180deg, rgba(16, 21, 41, 0.96), rgba(9, 12, 24, 0.96));
       box-shadow: var(--shadow);
     }
-    .hero { padding: 34px; margin-bottom: 22px; }
+    .hero { padding: 24px 26px; margin-bottom: 18px; }
     .hero::before, .panel::before {
       content: "";
       position: absolute;
@@ -1760,15 +1799,15 @@ function renderHtml(data) {
       mask-composite: exclude;
       pointer-events: none;
     }
-    .hero-grid, .stats-grid, .chart-grid, .docs-grid, .insight-grid, .summary-grid { display: grid; gap: 16px; }
-    .hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.9fr); align-items: start; gap: 24px; }
+    .hero-grid, .stats-grid, .chart-grid, .docs-grid, .insight-grid, .summary-grid, .executive-grid { display: grid; gap: 16px; }
+    .hero-grid { grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.8fr); align-items: start; gap: 20px; }
     .eyebrow, .hint, .micro { font-family: var(--mono); letter-spacing: 0.04em; text-transform: uppercase; }
     .eyebrow { color: var(--accent); font-size: 0.78rem; margin-bottom: 10px; }
     h1, h2, h3, p { margin: 0; }
-    h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 0.95; letter-spacing: -0.04em; max-width: 14ch; margin-bottom: 16px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 3.1rem); line-height: 0.96; letter-spacing: -0.04em; max-width: 18ch; margin-bottom: 12px; }
     .hero p, .panel-copy, .muted { color: var(--muted); line-height: 1.6; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-    .summary-list { display: grid; gap: 10px; margin-top: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+    .summary-list { display: grid; gap: 10px; }
     .summary-item, .metric, .doc-card, .chart-card, .table-panel {
       border: 1px solid rgba(122, 162, 255, 0.12);
       border-radius: var(--radius-sm);
@@ -1785,6 +1824,7 @@ function renderHtml(data) {
     .section-header { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 14px; }
     .section-title { font-size: clamp(1.3rem, 2vw, 1.7rem); letter-spacing: -0.03em; margin-bottom: 4px; }
     .hint { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--warning); font-size: 0.72rem; }
+    .executive-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .chart-grid, .docs-grid, .model-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .insight-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1802,6 +1842,11 @@ function renderHtml(data) {
     }
     .chart-card.featured iframe { height: 620px; }
     .chart-card.wide iframe { height: 720px; }
+    .chart-card.compact iframe { height: 300px; }
+    .chart-card.compact .chart-note { margin-top: 6px; }
+    .chart-card.executive h3 { font-size: 1.05rem; }
+    .chart-card.executive .panel-copy { line-height: 1.5; }
+    .chart-card.executive .card-actions { margin-top: 10px; }
     .card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
     .card-link {
       padding: 9px 12px;
@@ -1812,6 +1857,31 @@ function renderHtml(data) {
     }
     .table-panel { padding-bottom: 8px; }
     .chart-note { color: var(--muted); font-size: 0.88rem; line-height: 1.55; margin-top: 8px; }
+    details.disclosure {
+      border: 1px solid rgba(122, 162, 255, 0.12);
+      border-radius: var(--radius-sm);
+      background: rgba(9, 14, 28, 0.78);
+      padding: 18px 20px;
+    }
+    details.disclosure summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 600;
+    }
+    details.disclosure summary::-webkit-details-marker { display: none; }
+    details.disclosure summary::after {
+      content: '+';
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 1rem;
+    }
+    details.disclosure[open] summary::after { content: '-'; }
+    .disclosure-copy { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+    .disclosure-body { margin-top: 16px; }
     .insight-card {
       border: 1px solid rgba(122, 162, 255, 0.12);
       border-radius: var(--radius-sm);
@@ -1924,20 +1994,22 @@ function renderHtml(data) {
     footer { margin-top: 22px; padding: 18px 2px 0; color: var(--muted); font-size: 0.92rem; }
     @media (max-width: 1180px) {
       .hero-grid, .stats-grid, .chart-grid, .docs-grid, .model-cards, .insight-grid, .summary-grid { grid-template-columns: 1fr 1fr; }
+      .executive-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 840px) {
       .shell { width: min(100vw - 20px, 1380px); padding-top: 14px; }
       .topbar { position: static; border-radius: 22px; }
       .hero, .panel, .chart-card, .doc-card, .table-panel, .metric { padding: 16px; }
-      .hero-grid, .stats-grid, .chart-grid, .docs-grid, .model-cards, .insight-grid, .summary-grid, .section-header {
+      .hero-grid, .stats-grid, .chart-grid, .docs-grid, .model-cards, .insight-grid, .summary-grid, .executive-grid, .section-header {
         grid-template-columns: 1fr;
         flex-direction: column;
         align-items: stretch;
       }
-      .chart-grid, .docs-grid, .model-cards, .insight-grid, .summary-grid { grid-template-columns: 1fr; }
+      .chart-grid, .docs-grid, .model-cards, .insight-grid, .summary-grid, .executive-grid { grid-template-columns: 1fr; }
       .chart-card iframe { height: 340px; }
       .chart-card.featured iframe { height: 420px; }
       .chart-card.wide iframe { height: 520px; }
+      .chart-card.compact iframe { height: 280px; }
     }
   </style>
 </head>
@@ -1949,55 +2021,92 @@ function renderHtml(data) {
         <div>ORPT-Bench</div>
       </div>
       <div class="nav">
-        <a href="#charts">Charts</a>
-        <a href="#insights">Insights</a>
-        <a href="#smoke">Smoke</a>
+        <a href="#charts">Summary</a>
         <a href="#comparison">Comparison</a>
         <a href="#matrix">Matrix</a>
+        <a href="#insights">Insights</a>
         <a href="#catalog">Catalog</a>
-        <a href="#docs">Docs</a>
-        <a href="#history">History</a>
+        <a href="#reference">Reference</a>
       </div>
     </div>
-    <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">OpenCode benchmark publication</div>
-           <h1>Benchmark data you can actually compare at a glance.</h1>
-           <p>
-             ORPT-Bench measures correctness, request efficiency, time, and cost across a fixed task suite.
-             This publication is the operator view: rankings, per-task deltas, cost and speed tradeoffs,
-             catalog context, and links back to the raw benchmark artifacts.
-           </p>
-          <div class="hero-actions" id="hero-actions"></div>
-          <div class="hint">Hint: every comparison table is sortable and starts in composite-score order.</div>
-        </div>
-        <div class="summary-list">
-          <div class="summary-item">
-            <strong>How to read the ranking</strong>
-             <div class="muted">Composite score is 70% raw task score and 30% value score. Value score blends ORPT, total cost, and wall time using the published scoring weights.</div>
-           </div>
-           <div class="summary-item">
-             <strong>What lives here</strong>
-             <div class="muted">Model leaderboard tables, task-by-task comparison grids, benchmarked model catalog cards, embedded charts, docs links, and historical snapshots.</div>
-           </div>
-           <div class="summary-item">
-             <strong>Where deeper detail lives</strong>
-              <div class="muted">Use the docs section for the benchmark design, schema, model catalog, raw JSON, and history index. Every embedded chart also has a direct artifact link.</div>
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">OpenCode benchmark publication</div>
+            <h1>Results first. Context when you need it.</h1>
+            <p>ORPT-Bench measures task completion, efficiency, time, and cost across a fixed repair-oriented suite. This view now leads with the benchmark answers: who finishes the work, who delivers value, and what you pay for it.</p>
+            <div class="hero-actions" id="hero-actions"></div>
+            <div class="hint">Hint: every comparison table is sortable and starts in composite-score order.</div>
+          </div>
+          <div class="summary-list">
+            <div class="summary-item">
+              <strong>What changed</strong>
+              <div class="muted">Top-line model results and the cost frontier appear immediately. Reference material stays available below in expandable sections.</div>
             </div>
             <div class="summary-item">
-              <strong>Research framing</strong>
-              <div class="muted">Artificial Analysis style depth comes from making tradeoffs visible: benchmark-composition context, category and difficulty splits, pairwise deltas, and observed-versus-prior cost/speed comparisons.</div>
+              <strong>How to read the scores</strong>
+              <div class="muted">Completion score is raw task completion. Value score captures efficiency after solving. Composite score blends both with the published weighting.</div>
             </div>
           </div>
         </div>
-     </section>
-     <section class="stats-grid" id="stats"></section>
-    <section class="section" id="insights">
+      </section>
+      <section class="section" id="charts">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Executive Summary</div>
+            <p class="panel-copy">The first row answers the three questions that matter most: can the model finish the work, does it do so efficiently, and how does the blended ranking shake out?</p>
+          </div>
+        </div>
+        ${renderChartCards(selectCharts(data.charts, ['completion-score', 'value-score', 'composite-score']), 'executive')}
+        <div class="section-header section">
+          <div>
+            <div class="section-title">Cost Frontier</div>
+            <p class="panel-copy">Completion versus total benchmark cost shows who actually clears the suite and what it costs to get there.</p>
+          </div>
+        </div>
+        ${renderChartCards(selectCharts(data.charts, ['composite-vs-cost']), 'frontier')}
+      </section>
+      <section class="stats-grid" id="stats"></section>
+      <section class="section" id="comparison">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Comparison Tables</div>
+            <p class="panel-copy">Sortable tables keep the current benchmark state inspectable without forcing users through raw markdown or buried artifacts.</p>
+            <div class="hint">Hint: click any column header to re-sort. Composite score is the default.</div>
+          </div>
+        </div>
+        <div class="panel table-panel">
+          <div class="micro muted">Comparable cohort overview</div>
+          <h3>Model summary</h3>
+          <p class="panel-copy">Use this table for the main leaderboard view across models in the latest run.</p>
+          <div id="model-summary-table"></div>
+        </div>
+        <div class="panel table-panel section">
+          <div class="micro muted">Task-by-task breakdown</div>
+          <h3>Task summary</h3>
+          <p class="panel-copy">This is the fastest way to see where a model succeeded, where it missed, and what each task cost in requests, time, and dollars.</p>
+          <div id="task-summary-table"></div>
+        </div>
+      </section>
+      <section class="section" id="matrix">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Task Comparison Matrix</div>
+            <p class="panel-copy">Each task row shows exactly how the published models compare on composite score, success, requests, cost, and time for that benchmark target.</p>
+          </div>
+        </div>
+        <div class="panel table-panel">
+          <div class="micro muted">Per-task model deltas</div>
+          <h3>Task-by-task model matrix</h3>
+          <p class="panel-copy">Use this when you need to know not just who won overall, but where they paid for it and where they failed.</p>
+          ${renderTaskMatrix(data)}
+        </div>
+      </section>
+      <section class="section" id="insights">
       <div class="section-header">
         <div>
-          <div class="section-title">Research Highlights</div>
-          <p class="panel-copy">This section answers the questions a benchmark reader usually asks first: what the suite contains, who won which tradeoff, and how the models compare head-to-head.</p>
+          <div class="section-title">Highlights</div>
+            <p class="panel-copy">After the top-line results, these sections answer the next useful questions: who leads each tradeoff, where models separate, and what the benchmark composition looks like.</p>
         </div>
       </div>
       <div class="insight-grid">
@@ -2005,30 +2114,16 @@ function renderHtml(data) {
       </div>
       <div class="summary-grid section">
         <div class="panel list-panel">
-          <div class="micro muted">Benchmark composition</div>
-          <h3>Suite composition</h3>
-          <p class="panel-copy">A benchmark is only meaningful if you can see what kinds of tasks dominate the signal.</p>
-          ${renderBenchmarkComposition(data.benchmarkComposition)}
-        </div>
-        <div class="panel list-panel">
           <div class="micro muted">Head-to-head</div>
           <h3>Pairwise outcomes</h3>
           <p class="panel-copy">Task-level pairwise wins show whether the leaderboard leader actually dominates the suite or just edges ahead on aggregate.</p>
           ${renderPairwiseSummary(data.pairwiseSummary || [])}
         </div>
-      </div>
-      <div class="summary-grid section">
         <div class="panel list-panel">
-          <div class="micro muted">Category splits</div>
-          <h3>Category summary</h3>
-          <p class="panel-copy">Average quality, speed, and cost by benchmark category.</p>
-          ${renderGroupedSummary(data.categorySummary || [], 'category')}
-        </div>
-        <div class="panel list-panel">
-          <div class="micro muted">Difficulty splits</div>
-          <h3>Difficulty summary</h3>
-          <p class="panel-copy">How performance changes as the suite moves from control to expert tasks.</p>
-          ${renderGroupedSummary(data.difficultySummary || [], 'difficulty')}
+          <div class="micro muted">Benchmark composition</div>
+          <h3>Suite composition</h3>
+          <p class="panel-copy">A benchmark is only meaningful if you can see what kinds of tasks dominate the signal.</p>
+          ${renderBenchmarkComposition(data.benchmarkComposition)}
         </div>
       </div>
       <div class="panel list-panel section">
@@ -2037,64 +2132,13 @@ function renderHtml(data) {
         <p class="panel-copy">Observed token mix across the suite helps explain whether a model is spending heavily on reasoning, cached context, or generation.</p>
         ${renderTokenSummary(data.tokenSummary || [])}
       </div>
-    </section>
-    <section class="section" id="smoke">
-      <div class="section-header">
+      <div class="section section-header">
         <div>
-          <div class="section-title">Smoke Failures</div>
-          <p class="panel-copy">Failed smoke runs are useful evidence. They stay visible here so bad cheap models are measured once, published honestly, and then kept out of recurring unattended loops.</p>
+          <div class="section-title">Deep Dive Charts</div>
+          <p class="panel-copy">The rest of the visual analysis is still here, just moved below the primary answers.</p>
         </div>
       </div>
-      <div class="panel list-panel">
-        <div class="micro muted">Published control-task evidence</div>
-        <h3>Candidate smoke outcomes</h3>
-         <p class="panel-copy">These runs are not mixed into the main full-run leaderboard, but they are intentionally published for transparency, including provider-side failures, timeout behavior, and raw verifier evidence.</p>
-        ${renderSmokeRuns(data.smokeRuns || [])}
-      </div>
-    </section>
-    <section class="section" id="charts">
-      <div class="section-header">
-        <div>
-          <div class="section-title">Charts First</div>
-          <p class="panel-copy">These charts now cover overall ranking, cost and speed frontiers, execution profiles, and category or task-level breakdowns in the same spirit as benchmark publications like Artificial Analysis.</p>
-        </div>
-      </div>
-      ${renderChartCards(data.charts)}
-    </section>
-    <section class="section" id="comparison">
-      <div class="section-header">
-        <div>
-          <div class="section-title">Comparison Tables</div>
-          <p class="panel-copy">Sortable tables keep the current benchmark state inspectable without dumping raw markdown into the repository README.</p>
-          <div class="hint">Hint: click any column header to re-sort. Composite score is the default.</div>
-        </div>
-      </div>
-      <div class="panel table-panel">
-        <div class="micro muted">Comparable cohort overview</div>
-        <h3>Model summary</h3>
-        <p class="panel-copy">Use this table for the main leaderboard view across models in the latest run.</p>
-        <div id="model-summary-table"></div>
-      </div>
-      <div class="panel table-panel section">
-        <div class="micro muted">Task-by-task breakdown</div>
-        <h3>Task summary</h3>
-        <p class="panel-copy">This is the fastest way to see where a model succeeded, where it missed, and what each task cost in requests, time, and dollars.</p>
-        <div id="task-summary-table"></div>
-      </div>
-    </section>
-    <section class="section" id="matrix">
-      <div class="section-header">
-        <div>
-          <div class="section-title">Task Comparison Matrix</div>
-          <p class="panel-copy">Each task row shows exactly how the published models compare on composite score, success, requests, cost, and time for that benchmark target.</p>
-        </div>
-      </div>
-      <div class="panel table-panel">
-        <div class="micro muted">Per-task model deltas</div>
-        <h3>Task-by-task model matrix</h3>
-        <p class="panel-copy">Use this when you need to know not just who won overall, but where they paid for it and where they failed.</p>
-        ${renderTaskMatrix(data)}
-      </div>
+      ${renderChartCards(selectCharts(data.charts, [], ['completion-score', 'value-score', 'composite-score', 'composite-vs-cost']), 'secondary')}
     </section>
     <section class="section" id="catalog">
       <div class="section-header">
@@ -2105,28 +2149,56 @@ function renderHtml(data) {
       </div>
       ${renderBenchmarkedModels(data.benchmarkedModels || [])}
     </section>
-    <section class="section" id="docs">
+    <section class="section" id="reference">
       <div class="section-header">
         <div>
-          <div class="section-title">Docs And Artifacts</div>
-          <p class="panel-copy">Short summaries here link out to the detailed docs and raw benchmark artifacts behind the dashboard.</p>
+          <div class="section-title">Reference</div>
+          <p class="panel-copy">Less frequently used detail stays available, but out of the critical path.</p>
         </div>
       </div>
-      <div class="docs-grid" id="docs-grid"></div>
-    </section>
-    <section class="section" id="history">
-      <div class="section-header">
-        <div>
-          <div class="section-title">Historical Snapshots</div>
-          <p class="panel-copy">Each historical entry links to the raw archived JSON snapshot so longitudinal comparisons remain possible without bloating the root README.</p>
+      <details class="disclosure section" id="benchmark-context">
+        <summary>Benchmark context and splits</summary>
+        <div class="disclosure-copy">Category and difficulty summaries, plus benchmark framing for deeper reading.</div>
+        <div class="disclosure-body summary-grid">
+          <div class="panel list-panel">
+            <div class="micro muted">Category splits</div>
+            <h3>Category summary</h3>
+            <p class="panel-copy">Average quality, speed, and cost by benchmark category.</p>
+            ${renderGroupedSummary(data.categorySummary || [], 'category')}
+          </div>
+          <div class="panel list-panel">
+            <div class="micro muted">Difficulty splits</div>
+            <h3>Difficulty summary</h3>
+            <p class="panel-copy">How performance changes as the suite moves from control to expert tasks.</p>
+            ${renderGroupedSummary(data.difficultySummary || [], 'difficulty')}
+          </div>
         </div>
-      </div>
-      <div class="panel table-panel">
-        <div class="micro muted">If available, older benchmark publications appear here</div>
-        <h3>Run history</h3>
-        <p class="panel-copy">Snapshots are sorted by their top composite score by default. Use the raw JSON links for detailed offline analysis.</p>
-        <div id="history-table"></div>
-      </div>
+      </details>
+      <details class="disclosure section" id="smoke">
+        <summary>Smoke failures and non-mainline evidence</summary>
+        <div class="disclosure-copy">Failed smoke runs are still published for transparency, without occupying prime dashboard space.</div>
+        <div class="disclosure-body panel list-panel">
+          <div class="micro muted">Published control-task evidence</div>
+          <h3>Candidate smoke outcomes</h3>
+          <p class="panel-copy">These runs are not mixed into the main full-run leaderboard, but they are intentionally published for transparency, including provider-side failures, timeout behavior, and raw verifier evidence.</p>
+          ${renderSmokeRuns(data.smokeRuns || [])}
+        </div>
+      </details>
+      <details class="disclosure section" id="docs">
+        <summary>Docs and raw artifacts</summary>
+        <div class="disclosure-copy">Raw JSON, schemas, benchmark design, model catalog, and repository links.</div>
+        <div class="disclosure-body docs-grid" id="docs-grid"></div>
+      </details>
+      <details class="disclosure section" id="history">
+        <summary>Historical snapshots</summary>
+        <div class="disclosure-copy">Archived benchmark snapshots remain available for longitudinal comparisons.</div>
+        <div class="disclosure-body panel table-panel">
+          <div class="micro muted">If available, older benchmark publications appear here</div>
+          <h3>Run history</h3>
+          <p class="panel-copy">Snapshots are sorted by their top composite score by default. Use the raw JSON links for detailed offline analysis.</p>
+          <div id="history-table"></div>
+        </div>
+      </details>
     </section>
     <footer id="footer"></footer>
   </div>
@@ -2434,13 +2506,16 @@ function renderHtml(data) {
 `;
 }
 
-function renderChartCards(charts) {
+function renderChartCards(charts, variant = 'default') {
   if (!Array.isArray(charts) || charts.length === 0) {
     return '<div class="empty">No published charts are available for this benchmark run.</div>';
   }
 
-  return `<div class="chart-grid">
-${charts.map((chart) => `        <article class="chart-card${chart.featured ? ' featured' : ''}${chart.wide ? ' wide' : ''}">
+  const gridClass = variant === 'executive' ? 'executive-grid' : 'chart-grid';
+  const cardVariantClass = variant === 'executive' ? ' compact executive' : '';
+
+  return `<div class="${gridClass}">
+${charts.map((chart) => `        <article class="chart-card${cardVariantClass}${variant !== 'executive' && chart.featured ? ' featured' : ''}${variant !== 'executive' && chart.wide ? ' wide' : ''}">
           <div class="micro muted">${escapeHtmlMarkup(chart.eyebrow)}</div>
           <h3>${escapeHtmlMarkup(chart.title)}</h3>
           <p class="panel-copy">${escapeHtmlMarkup(chart.description)}</p>
@@ -2451,7 +2526,23 @@ ${charts.map((chart) => `        <article class="chart-card${chart.featured ? ' 
             <a class="card-link" href="${escapeAttributeMarkup(chart.jsonPath)}">View chart data</a>
           </div>
         </article>`).join('\n')}
-      </div>`;
+       </div>`;
+}
+
+function selectCharts(charts, includeSlugs = [], excludeSlugs = []) {
+  if (!Array.isArray(charts) || charts.length === 0) {
+    return [];
+  }
+
+  const chartMap = new Map(charts.map((chart) => [chart.slug, chart]));
+  const excluded = new Set(excludeSlugs);
+  if (includeSlugs.length > 0) {
+    return includeSlugs
+      .map((slug) => chartMap.get(slug))
+      .filter((chart) => chart && !excluded.has(chart.slug));
+  }
+
+  return charts.filter((chart) => !excluded.has(chart.slug));
 }
 
 function chartReadingHint(chart) {

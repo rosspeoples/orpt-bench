@@ -27,10 +27,10 @@ The build script publishes a small static site using the repository's generated 
 
 The generated Pages site is an interactive static dashboard rather than a markdown dump. It includes:
 
-- chart-first navigation for composite score, success rate, and ORPT
-- sortable comparison tables that default to composite score
-- documentation links for the design doc, result schema, model catalog, and raw JSON artifacts
-- a generated history index when archived run snapshots are present
+- an executive-summary row for completion score, value score, and composite score
+- a top-level completion-versus-cost frontier chart
+- sortable comparison tables and task matrix views directly beneath the summary charts
+- expandable reference sections for benchmark context, smoke evidence, docs, raw artifacts, and history
 
 The publication flow treats `Gitea` as the source of truth and force-pushes both the GitHub source branch and the generated `gh-pages` branch.
 
