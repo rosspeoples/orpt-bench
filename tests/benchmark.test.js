@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { aggregateRun, collectRemainingTaskEntries, computeCompositeScore, computeCompositeValueScore, isProviderLimitedFailure, runContainsSyntheticTimeoutRows } from '../scripts/lib/benchmark.js'
+import { aggregateRun, collectRemainingTaskEntries, computeCompositeScore, computeCompositeValueScore, isProviderLimitedFailure, runContainsSyntheticTimeoutRows, shouldWriteLatestRunArtifact, summarizeFailureOutcome } from '../scripts/lib/benchmark.js'
 
 test('computeCompositeValueScore returns 1 for task-best comparable run', () => {
   const score = computeCompositeValueScore({
@@ -216,6 +216,42 @@ test('isProviderLimitedFailure only marks concrete rate-limit failures as provid
     error: { message: 'stream error: too_many_requests' },
     proxyRecords: []
   }), true)
+})
+
+test('summarizeFailureOutcome classifies provider model not found and provider http failures', () => {
+  assert.deepEqual(summarizeFailureOutcome({
+    verifier: { stderr: '', stdout: '' },
+    error: { message: 'ProviderModelNotFoundError' },
+    proxyRecords: [],
+    logExcerpt: ['ERROR ProviderModelNotFoundError {"suggestions":["gemini-3.1-pro"]}']
+  }), {
+    outcomeLabel: 'provider-model-not-found',
+    proxyStatus: null,
+    suggestedModel: 'gemini-3.1-pro'
+  })
+
+  assert.deepEqual(summarizeFailureOutcome({
+    verifier: { stderr: 'AI_APICallError: model: claude-3-5-haiku-20241022', stdout: '' },
+    error: { message: 'AI_APICallError: model: claude-3-5-haiku-20241022' },
+    proxyRecords: [{ status: 400 }],
+    logExcerpt: []
+  }), {
+    outcomeLabel: 'provider-http-error',
+    proxyStatus: 400,
+    suggestedModel: null
+  })
+})
+
+test('shouldWriteLatestRunArtifact allows smoke synthetic rows but blocks canonical full-run synthetic rows', () => {
+  assert.equal(shouldWriteLatestRunArtifact({
+    run: { benchmarkCycle: 'candidate_smoke' },
+    results: [{ requestAccountingSource: 'synthetic-timeout', dnfReason: 'process-timeout' }]
+  }), true)
+
+  assert.equal(shouldWriteLatestRunArtifact({
+    run: { benchmarkCycle: 'weekly' },
+    results: [{ requestAccountingSource: 'synthetic-timeout', dnfReason: 'process-timeout' }]
+  }), false)
 })
 
 test('runtime config defaults model concurrency to one when unset', async () => {

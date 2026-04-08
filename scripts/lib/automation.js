@@ -43,7 +43,6 @@ const DEFAULT_MODEL_POLICY = {
 
 const CONTROL_SMOKE_TASK_PATTERNS = ['16-event-status-shell', '17-log-level-rollup', '05*']
 const CONTROL_SMOKE_TASK_IDS = ['16-event-status-shell', '17-log-level-rollup', '05-log-audit-script']
-const LEGACY_CONTROL_SMOKE_TASK_PATTERNS = ['05*']
 
 function sameStringArray(left, right) {
   if (left.length !== right.length) return false
@@ -52,12 +51,10 @@ function sameStringArray(left, right) {
 
 function matchesControlSmokeTaskPatterns(taskPatterns) {
   return sameStringArray(taskPatterns, CONTROL_SMOKE_TASK_PATTERNS)
-    || sameStringArray(taskPatterns, LEGACY_CONTROL_SMOKE_TASK_PATTERNS)
 }
 
 function matchesControlSmokeTaskIds(taskIds) {
   return sameStringArray(taskIds, CONTROL_SMOKE_TASK_IDS)
-    || (taskIds.length === 1 && taskIds[0] === '05-log-audit-script')
 }
 
 function inferTaskCount(run) {
@@ -261,9 +258,6 @@ function summarizeRunModelEntries(run) {
 }
 
 function isSmokeBenchmarkRun(run) {
-  const benchmarkCycle = run?.run?.benchmarkCycle || null
-  if (benchmarkCycle === 'candidate_smoke') return true
-
   const taskPatterns = Array.isArray(run?.run?.taskPatterns) ? run.run.taskPatterns.filter(Boolean) : []
   if (matchesControlSmokeTaskPatterns(taskPatterns)) return true
 

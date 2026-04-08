@@ -50,7 +50,7 @@ run_smoke() {
   printf '[%s] smoke %s\n' "$(date -u +%FT%TZ)" "${model}" | tee -a "${LOG_DIR}/runner.log"
 
   if BENCHMARK_MODELS="${model}" \
-    BENCHMARK_TASK_GLOB='05*' \
+    BENCHMARK_TASK_GLOB='16-event-status-shell,17-log-level-rollup,05*' \
     BENCHMARK_CYCLE='candidate_smoke' \
     BENCHMARK_REPEATS=1 \
     BENCHMARK_PROCESS_TIMEOUT_SECONDS=0 \
@@ -86,9 +86,16 @@ run_smoke() {
   cost="$(extract_latest_field '.results[-1].costUsd // "unknown"')"
   note="$(extract_latest_field '.results[-1].error.message // .results[-1].verifier.stderr // ""')"
 
+  local provider_outcome
+  provider_outcome="$(extract_latest_field '.results[-1].failureSummary.outcomeLabel // empty')"
+
   if [[ "${success}" == "true" ]]; then
     status="PASS"
     printf '%s\n' "${model}" >>"${PASSERS_FILE}"
+  elif [[ "${provider_outcome}" == "provider-model-not-found" ]]; then
+    status="PROVIDER_MODEL_NOT_FOUND"
+  elif [[ "${provider_outcome}" == "provider-http-error" ]]; then
+    status="PROVIDER_HTTP_ERROR"
   elif [[ "${provider_limited}" == "true" ]]; then
     status="PROVIDER_LIMITED"
   elif [[ "${dnf}" == "true" ]]; then

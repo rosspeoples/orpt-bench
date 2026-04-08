@@ -3049,9 +3049,59 @@ function renderSmokeRuns(runs) {
     return '<div class="empty">No smoke benchmark runs have been published yet.</div>';
   }
 
-  return `<div class="key-list">
+  return `${renderSmokeTriageTable(runs)}<div class="key-list">
 ${runs.map((run) => run.models.map((model) => `<div class="key-row"><div><strong>${escapeHtmlMarkup(model.model)}</strong><div class="muted">${escapeHtmlMarkup((run.taskIds || []).join(', ') || 'no task ids')} | ${escapeHtmlMarkup(run.id || 'unknown run')}</div></div><div><div class="key-row-value">${escapeHtmlMarkup(renderSmokeOutcomeLabel(model))}</div><div class="muted">success=${escapeHtmlMarkup(formatPercentMarkup(model.successRate))} | dnf=${escapeHtmlMarkup(formatIntegerMarkup(model.dnfs))} | requests=${escapeHtmlMarkup(formatIntegerMarkup(model.totalRequestUnits))} | calls=${escapeHtmlMarkup(formatIntegerMarkup(model.totalRequestCount))} | steps=${escapeHtmlMarkup(formatIntegerMarkup(model.totalSteps))} | cost=${escapeHtmlMarkup(formatSmokeCostMarkup(model))} | wall=${escapeHtmlMarkup(formatDurationMarkup(model.totalWallTimeMs))}</div>${renderSmokeFailureDetails(model)}</div></div>`).join('\n')).join('\n')}
   </div>`;
+}
+
+function renderSmokeTriageTable(runs) {
+  const rows = (runs || []).flatMap((run) => (run.models || []).map((model) => ({
+    runId: run.id || 'unknown run',
+    model: model.model,
+    outcome: renderSmokeOutcomeLabel(model),
+    successes: model.successes || 0,
+    runs: model.runs || 0,
+    totalRequestUnits: model.totalRequestUnits,
+    totalCostUsd: model.totalCostUsd,
+    recommendation: recommendSmokeAction(model),
+  })))
+
+  if (!rows.length) {
+    return ''
+  }
+
+  return `<div class="micro muted">Decision support</div><div class="table-wrap"><table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Outcome</th>
+        <th>Control Tasks</th>
+        <th>Requests</th>
+        <th>Cost</th>
+        <th>Recommendation</th>
+      </tr>
+    </thead>
+    <tbody>
+${rows.map((row) => `      <tr>
+        <td>${escapeHtmlMarkup(row.model)}</td>
+        <td>${escapeHtmlMarkup(row.outcome)}</td>
+        <td>${escapeHtmlMarkup(`${row.successes}/${row.runs}`)}</td>
+        <td>${escapeHtmlMarkup(formatIntegerMarkup(row.totalRequestUnits))}</td>
+        <td>${escapeHtmlMarkup(formatSmokeCostMarkup({ totalCostUsd: row.totalCostUsd, failed: row.successes < row.runs }))}</td>
+        <td>${escapeHtmlMarkup(row.recommendation)}</td>
+      </tr>`).join('\n')}
+    </tbody>
+  </table></div>`
+}
+
+function recommendSmokeAction(model) {
+  const outcome = model?.failureSummary?.outcomeLabel || null
+  if (model?.passed) return 'promote'
+  if (outcome === 'provider-model-not-found' || outcome === 'provider-http-error' || outcome === 'provider-limited' || model?.providerLimited) {
+    return 'wait for provider'
+  }
+  if ((model?.dnfs || 0) > 0) return 'retry'
+  return 'block'
 }
 
 function renderSmokeOutcomeLabel(model) {

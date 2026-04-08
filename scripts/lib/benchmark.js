@@ -184,8 +184,51 @@ export function isProviderLimitedFailure({ verifier, error, proxyRecords }) {
   return /OpenCode API .* failed with 429|too_many_requests/i.test(message) || (proxyRecords || []).some((record) => record.status === 429)
 }
 
+export function summarizeFailureOutcome({ verifier, error, proxyRecords = [], logExcerpt = [] }) {
+  const combinedMessage = [
+    error?.message || '',
+    verifier?.stderr || '',
+    verifier?.stdout || '',
+    ...(logExcerpt || [])
+  ].filter(Boolean).join(' ')
+  const proxyStatus = proxyRecords.find((record) => Number.isFinite(record?.status))?.status ?? null
+  const suggestionMatch = combinedMessage.match(/"suggestions":\["([^"]+)"\]/)
+  const suggestedModel = suggestionMatch?.[1] || null
+
+  if (isProviderLimitedFailure({ verifier, error, proxyRecords })) {
+    return {
+      outcomeLabel: 'provider-limited',
+      proxyStatus,
+      suggestedModel: null
+    }
+  }
+
+  if (/ProviderModelNotFoundError/i.test(combinedMessage)) {
+    return {
+      outcomeLabel: 'provider-model-not-found',
+      proxyStatus,
+      suggestedModel
+    }
+  }
+
+  if (proxyStatus != null && proxyStatus >= 400) {
+    return {
+      outcomeLabel: 'provider-http-error',
+      proxyStatus,
+      suggestedModel: null
+    }
+  }
+
+  return null
+}
+
 export function runContainsSyntheticTimeoutRows(run) {
   return (run?.results || []).some((entry) => entry?.requestAccountingSource === 'synthetic-timeout' || entry?.dnfReason === 'process-timeout')
+}
+
+export function shouldWriteLatestRunArtifact(run) {
+  if (!runContainsSyntheticTimeoutRows(run)) return true
+  return run?.run?.benchmarkCycle === 'candidate_smoke'
 }
 
 async function runCommand(command, args, options = {}) {
@@ -476,6 +519,9 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
   }
   const messageSummary = summarizeMessage(messageInfo, promptPayload?.parts || [], logLines)
   const providerLimited = isProviderLimitedFailure({ verifier, error, proxyRecords })
+  const failureSummary = !(!error && verifier.code === 0)
+    ? summarizeFailureOutcome({ verifier, error, proxyRecords, logExcerpt: logLines.slice(-50) })
+    : null
 
   return {
     runId: runID,
@@ -503,6 +549,7 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     dnf,
     dnfReason,
     providerLimited,
+    failureSummary,
     proxyRecords,
     logExcerpt: logLines.slice(-50),
     verifier: {
@@ -520,7 +567,7 @@ async function writeRunArtifacts(runtime, run) {
   const historyFile = path.join(runtime.rootDir, runtime.baseConfig.results.historyDir, `${run.run.id}.json`)
   await writeJson(historyFile, run)
 
-  if (!runContainsSyntheticTimeoutRows(run)) {
+  if (shouldWriteLatestRunArtifact(run)) {
     await writeJson(latestFile, run)
   }
 }

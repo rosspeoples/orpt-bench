@@ -522,6 +522,10 @@ test('pages build classifies provider model-not-found and provider http smoke fa
     assert.equal(smokeByModel.get('opencode/claude-3-5-haiku').failureSummary.outcomeLabel, 'provider-http-error')
     assert.equal(smokeByModel.get('opencode/claude-3-5-haiku').failureSummary.proxyStatus, 400)
 
+    assert.match(html, /Decision support/)
+    assert.match(html, /Recommendation/)
+    assert.match(html, /wait for provider/)
+
     assert.match(html, /provider-model-not-found smoke/)
     assert.match(html, /suggested_model=gemini-3.1-pro/)
     assert.match(html, /provider-http-error smoke/)

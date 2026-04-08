@@ -284,9 +284,9 @@ test('provider-limited smoke run does not count as a failed smoke benchmark', ()
           benchmarkCycle: 'candidate_smoke',
           completedAt: '2026-04-08T06:10:03.148Z'
         },
-        taskCatalog: [{ id: '05-log-audit-script' }],
+        taskCatalog: [{ id: '16-event-status-shell' }, { id: '17-log-level-rollup' }, { id: '05-log-audit-script' }],
         modelSummary: [
-          { model: 'opencode/nemotron-3-super-free', runs: 1, successfulTasks: 0, comparable: false, providerLimited: true }
+          { model: 'opencode/nemotron-3-super-free', runs: 3, successfulTasks: 0, comparable: false, providerLimited: true }
         ]
       }
     ],
@@ -296,6 +296,44 @@ test('provider-limited smoke run does not count as a failed smoke benchmark', ()
 
   assert.equal(lifecycle.models[0].failedSmokeBenchmarkSessions, 0)
   assert.equal(lifecycle.models[0].providerLimitedSmokeBenchmarkSessions, 1)
+  assert.equal(lifecycle.models[0].lifecycleStage, 'candidate')
+})
+
+test('legacy single-task smoke run no longer counts as smoke benchmark history', () => {
+  const lifecycle = buildLifecycleCatalog({
+    catalog: {
+      models: [
+        {
+          model: 'opencode/glm-5',
+          modelId: 'glm-5',
+          family: 'zhipu',
+          created: 1776000000,
+          recommendedUse: 'dev-smoke',
+          benchmark: { intelligenceScore: 40 }
+        }
+      ]
+    },
+    previousLifecycle: { models: [] },
+    benchmarkHistory: [
+      {
+        run: {
+          id: 'legacy-smoke-1',
+          benchmarkCycle: 'candidate_smoke',
+          completedAt: '2026-04-08T07:47:09.306Z',
+          taskPatterns: ['05*']
+        },
+        taskCatalog: [{ id: '05-log-audit-script' }],
+        modelSummary: [
+          { model: 'opencode/glm-5', runs: 1, successfulTasks: 1, comparable: true, providerLimited: false }
+        ]
+      }
+    ],
+    policy: DEFAULT_MODEL_POLICY,
+    now: '2026-04-08T08:00:00.000Z'
+  })
+
+  assert.equal(lifecycle.models[0].smokeBenchmarkSessions, 0)
+  assert.equal(lifecycle.models[0].successfulSmokeBenchmarkSessions, 0)
   assert.equal(lifecycle.models[0].lifecycleStage, 'candidate')
 })
 
