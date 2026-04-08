@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>opencode/gpt-5.4 | ORPT-Bench</title>
+  <title>opencode/minimax-m2.5 | ORPT-Bench</title>
   <meta name="color-scheme" content="dark light">
   <style>
     :root {
@@ -72,34 +72,34 @@
       <div><strong>ORPT-Bench model detail</strong></div>
       <div class="card-actions" style="margin-top:0;">
         <a class="card-link" href="../index.html">Back to main dashboard</a>
-        <a class="card-link" href="https://artificialanalysis.ai/models/gpt-5-4">Catalog source</a>
+        <a class="card-link" href="https://openrouter.ai/api/v1/models">Catalog source</a>
       </div>
     </div>
     <section class="hero">
       <div class="hero-grid">
         <div>
           <div class="eyebrow">Model benchmark profile</div>
-          <h1>opencode/gpt-5.4</h1>
-          <p class="panel-copy">This page uses <strong>opencode/gpt-5.4</strong> as the comparison baseline. Every chart and table below is intended to answer the same question: where this model leads, where it lags, and what it costs in quality, time, and request pressure.</p>
+          <h1>opencode/minimax-m2.5</h1>
+          <p class="panel-copy">This page uses <strong>opencode/minimax-m2.5</strong> as the comparison baseline. Every chart and table below is intended to answer the same question: where this model leads, where it lags, and what it costs in quality, time, and request pressure.</p>
           <div class="card-actions">
-            <span class="pill">openai</span>
-            <span class="pill">medium price tier</span>
-            <span class="pill">standard</span>
-            <span class="pill">release-frontier</span>
+            <span class="pill">minimax</span>
+            <span class="pill">low price tier</span>
+            <span class="pill">dev-cheap</span>
+            <span class="pill">dev-general</span>
           </div>
         </div>
         <div class="summary-grid">
-          <div class="summary-item"><div class="micro">Composite</div><div class="metric-value">0.519</div><div class="muted">Correctness-weighted overall standing</div></div>
-          <div class="summary-item"><div class="micro">Success</div><div class="metric-value">60%</div><div class="muted">Tasks completed successfully</div></div>
-          <div class="summary-item"><div class="micro">ORPT</div><div class="metric-value">13.11</div><div class="muted">Requests per solved task</div></div>
-          <div class="summary-item"><div class="micro">Total cost</div><div class="metric-value">$0.1463</div><div class="muted">Observed benchmark spend</div></div>
+          <div class="summary-item"><div class="micro">Composite</div><div class="metric-value">0.63</div><div class="muted">Correctness-weighted overall standing</div></div>
+          <div class="summary-item"><div class="micro">Success</div><div class="metric-value">65%</div><div class="muted">Tasks completed successfully</div></div>
+          <div class="summary-item"><div class="micro">ORPT</div><div class="metric-value">13.45</div><div class="muted">Requests per solved task</div></div>
+          <div class="summary-item"><div class="micro">Total cost</div><div class="metric-value">$0.0822</div><div class="muted">Observed benchmark spend</div></div>
         </div>
       </div>
     </section>
     <section class="panel">
       <div class="micro">Baseline comparison</div>
-      <h3>How the field moves relative to opencode/gpt-5.4</h3>
-      <p class="panel-copy">These charts use opencode/gpt-5.4 as zero. Positive bars mean other models are above the baseline on that metric; negative bars mean they trail it.</p>
+      <h3>How the field moves relative to opencode/minimax-m2.5</h3>
+      <p class="panel-copy">These charts use opencode/minimax-m2.5 as zero. Positive bars mean other models are above the baseline on that metric; negative bars mean they trail it.</p>
       <div class="chart-grid">
         <article><h3>Composite delta vs baseline</h3><iframe loading="lazy" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -116,7 +116,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/glm-5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[0.1393,0,-0.0138],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.1393,0,-0.0138],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/glm-5&lt;br&gt;Composite delta: 0.1393&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Composite delta: 0&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Composite delta: -0.0138&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5&quot;],&quot;y&quot;:[0.2801,0],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.2801,0],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/glm-5.1&lt;br&gt;Composite delta: 0.2801&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Composite delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Composite delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Composite delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -137,7 +137,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/glm-5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[13.33,0,-6.67],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[13.33,0,-6.67],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/glm-5&lt;br&gt;Success rate delta: 13.33&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Success rate delta: -6.67&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5&quot;],&quot;y&quot;:[29.41,0],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[29.41,0],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/glm-5.1&lt;br&gt;Success rate delta: 29.41&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Success delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Success rate delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -158,7 +158,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/glm-5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[0.0952,0,-0.1008],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.0952,0,-0.1008],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/glm-5&lt;br&gt;USD delta: 0.0952&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;USD delta: -0.1008&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5&quot;],&quot;y&quot;:[0.0002,0],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.0002,0],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/glm-5.1&lt;br&gt;USD delta: 0.0002&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Cost delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;USD delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -179,7 +179,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/glm-5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[-8.76,0,-8.14],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[-8.76,0,-8.14],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/glm-5&lt;br&gt;Minutes delta: -8.76&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Minutes delta: 0&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Minutes delta: -8.14&lt;br&gt;Baseline: opencode/gpt-5.4&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5&quot;],&quot;y&quot;:[16.15,0],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[16.15,0],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/glm-5.1&lt;br&gt;Minutes delta: 16.15&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Minutes delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Wall time delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Minutes delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -191,7 +191,7 @@
     <section class="panel">
       <div class="micro">Decision table</div>
       <h3>Field comparison against the baseline</h3>
-      <p class="panel-copy">Use this to decide whether another model beats opencode/gpt-5.4 enough to justify the change.</p>
+      <p class="panel-copy">Use this to decide whether another model beats opencode/minimax-m2.5 enough to justify the change.</p>
       <div class="table-wrap"><table>
     <thead>
       <tr>
@@ -209,39 +209,27 @@
     </thead>
     <tbody>
       <tr>
-        <td>opencode/glm-5</td>
-        <td>0.658</td>
-        <td>+0.139</td>
-        <td>73%</td>
-        <td>+13%</td>
-        <td>14.27</td>
-        <td>+1.16</td>
-        <td>$0.2415</td>
-        <td>+$0.0952</td>
-        <td>13m 33s</td>
+        <td>opencode/glm-5.1</td>
+        <td>0.91</td>
+        <td>+0.28</td>
+        <td>94%</td>
+        <td>+29%</td>
+        <td>13.75</td>
+        <td>+0.30</td>
+        <td>$0.0823</td>
+        <td>+$0.0002</td>
+        <td>30m 19s</td>
       </tr>
       <tr>
-        <td>opencode/gpt-5.4 <span class="pill good">Baseline</span></td>
-        <td>0.519</td>
+        <td>opencode/minimax-m2.5 <span class="pill good">Baseline</span></td>
+        <td>0.63</td>
         <td>+0.0</td>
-        <td>60%</td>
+        <td>65%</td>
         <td>+0%</td>
-        <td>13.11</td>
+        <td>13.45</td>
         <td>+0.00</td>
-        <td>$0.1463</td>
+        <td>$0.0822</td>
         <td>+$0.0000</td>
-        <td>22m 19s</td>
-      </tr>
-      <tr>
-        <td>opencode/gpt-5.4-mini</td>
-        <td>0.505</td>
-        <td>-0.014</td>
-        <td>53%</td>
-        <td>-7%</td>
-        <td>11.00</td>
-        <td>-2.11</td>
-        <td>$0.0454</td>
-        <td>-$0.1008</td>
         <td>14m 10s</td>
       </tr>
     </tbody>
@@ -250,7 +238,7 @@
     <section class="summary-grid">
       <div class="panel">
         <div class="micro">Task story</div>
-        <h3>Where opencode/gpt-5.4 separates</h3>
+        <h3>Where opencode/minimax-m2.5 separates</h3>
         <p class="panel-copy">This table puts the most revealing tasks first: unsolved tasks, single-solver tasks, and tasks where the baseline trails the winner by a meaningful margin.</p>
         <div class="table-wrap"><table>
     <thead>
@@ -266,112 +254,85 @@
     </thead>
     <tbody>
       <tr>
-        <td>Kubernetes rollout repair</td>
+        <td>Ansible nginx role completion</td>
         <td><span class="pill warn">Single solver</span></td>
         <td><span class="pill bad">failed</span></td>
-        <td>opencode/glm-5<div class="muted">1.0</div></td>
+        <td>opencode/glm-5.1<div class="muted">1.0</div></td>
         <td>1.0</td>
-        <td>$0.0084</td>
-        <td>1m 13s</td>
+        <td>$0.0045</td>
+        <td>33s</td>
       </tr>
       <tr>
-        <td>Pre-ArgoCD bootstrap sequencing</td>
+        <td>Bootstrap phase validation repair</td>
         <td><span class="pill warn">Single solver</span></td>
         <td><span class="pill bad">failed</span></td>
-        <td>opencode/glm-5<div class="muted">1.0</div></td>
+        <td>opencode/glm-5.1<div class="muted">1.0</div></td>
         <td>1.0</td>
-        <td>$0.0124</td>
-        <td>1m 05s</td>
+        <td>$0.0056</td>
+        <td>1m 06s</td>
+      </tr>
+      <tr>
+        <td>Event status shell summary</td>
+        <td><span class="pill warn">Single solver</span></td>
+        <td><span class="pill warn">dnf</span></td>
+        <td>opencode/glm-5.1<div class="muted">1.0</div></td>
+        <td>1.0</td>
+        <td>n/a</td>
+        <td>45s</td>
+      </tr>
+      <tr>
+        <td>Terraform static site repair</td>
+        <td><span class="pill warn">Single solver</span></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/glm-5.1<div class="muted">1.0</div></td>
+        <td>1.0</td>
+        <td>$0.0046</td>
+        <td>37s</td>
       </tr>
       <tr>
         <td>Workspace runtime access convergence</td>
         <td><span class="pill warn">Single solver</span></td>
         <td><span class="pill bad">failed</span></td>
-        <td>opencode/glm-5<div class="muted">1.0</div></td>
+        <td>opencode/glm-5.1<div class="muted">1.0</div></td>
         <td>1.0</td>
-        <td>$0.0132</td>
-        <td>2m 37s</td>
+        <td>$0.0065</td>
+        <td>1m 05s</td>
       </tr>
       <tr>
-        <td>MCP OpenBao contract repair</td>
-        <td><span class="pill warn">Clear separation</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.991</div></td>
-        <td>0.161</td>
-        <td>$0.0087</td>
-        <td>1m 38s</td>
-      </tr>
-      <tr>
-        <td>Ansible nginx role completion</td>
+        <td>Kubernetes rollout repair</td>
         <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.977</div></td>
-        <td>0.137</td>
-        <td>$0.0067</td>
-        <td>52s</td>
-      </tr>
-      <tr>
-        <td>Wildcard TLS route coverage</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.955</div></td>
-        <td>0.114</td>
-        <td>$0.0090</td>
-        <td>1m 00s</td>
+        <td>opencode/glm-5.1<div class="muted">0.996</div></td>
+        <td>0.068</td>
+        <td>$0.0049</td>
+        <td>58s</td>
       </tr>
       <tr>
         <td>Workspace transplant bundle repair</td>
         <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.964</div></td>
-        <td>0.096</td>
-        <td>$0.0125</td>
-        <td>1m 50s</td>
+        <td>opencode/glm-5.1<div class="muted">0.991</div></td>
+        <td>0.055</td>
+        <td>$0.0047</td>
+        <td>47s</td>
       </tr>
       <tr>
-        <td>Log audit shell script</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.964</div></td>
-        <td>0.09</td>
-        <td>$0.0053</td>
-        <td>35s</td>
-      </tr>
-      <tr>
-        <td>CNPG restore manifest repair</td>
+        <td>Log level rollup shell script</td>
         <td><span class="pill good">Crowded field</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.928</div></td>
-        <td>0.08</td>
-        <td>$0.0095</td>
-        <td>1m 34s</td>
+        <td>opencode/glm-5.1<div class="muted">0.968</div></td>
+        <td>0.034</td>
+        <td>$0.0043</td>
+        <td>30s</td>
       </tr>
       <tr>
-        <td>GitOps workspace render validation</td>
+        <td>Kubernetes OIDC RBAC repair</td>
         <td><span class="pill good">Crowded field</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.885</div></td>
-        <td>0.06</td>
-        <td>$0.0089</td>
-        <td>1m 28s</td>
-      </tr>
-      <tr>
-        <td>Build workspace plane convergence</td>
-        <td><span class="pill good">Crowded field</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.91</div></td>
-        <td>0.053</td>
-        <td>$0.0123</td>
-        <td>1m 39s</td>
-      </tr>
-      <tr>
-        <td>Bootstrap phase validation repair</td>
-        <td><span class="pill bad">Nobody solved it</span></td>
-        <td><span class="pill bad">failed</span></td>
-        <td><span class="muted">n/a</span></td>
-        <td>0.0</td>
-        <td>$0.0146</td>
-        <td>1m 50s</td>
+        <td>opencode/glm-5.1<div class="muted">0.959</div></td>
+        <td>0.003</td>
+        <td>$0.0059</td>
+        <td>1m 32s</td>
       </tr>
       <tr>
         <td>Docker Compose observability fix</td>
@@ -379,26 +340,71 @@
         <td><span class="pill bad">failed</span></td>
         <td><span class="muted">n/a</span></td>
         <td>0.0</td>
-        <td>$0.0066</td>
-        <td>35s</td>
+        <td>$0.0044</td>
+        <td>31s</td>
       </tr>
       <tr>
-        <td>Terraform static site repair</td>
-        <td><span class="pill bad">Nobody solved it</span></td>
-        <td><span class="pill bad">failed</span></td>
-        <td><span class="muted">n/a</span></td>
-        <td>0.0</td>
-        <td>$0.0097</td>
-        <td>2m 30s</td>
-      </tr>
-      <tr>
-        <td>Kubernetes OIDC RBAC repair</td>
-        <td><span class="pill warn">Single solver</span></td>
+        <td>Pre-ArgoCD bootstrap sequencing</td>
+        <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4<div class="muted">1.0</div></td>
+        <td>opencode/minimax-m2.5<div class="muted">1.0</div></td>
         <td>0.0</td>
-        <td>$0.0084</td>
-        <td>1m 53s</td>
+        <td>$0.0052</td>
+        <td>1m 06s</td>
+      </tr>
+      <tr>
+        <td>CNPG restore manifest repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/minimax-m2.5<div class="muted">0.998</div></td>
+        <td>0.0</td>
+        <td>$0.0053</td>
+        <td>43s</td>
+      </tr>
+      <tr>
+        <td>Wildcard TLS route coverage</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/minimax-m2.5<div class="muted">1.0</div></td>
+        <td>0.0</td>
+        <td>$0.0049</td>
+        <td>47s</td>
+      </tr>
+      <tr>
+        <td>MCP OpenBao contract repair</td>
+        <td><span class="pill good">Crowded field</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/minimax-m2.5<div class="muted">0.995</div></td>
+        <td>0.0</td>
+        <td>$0.0051</td>
+        <td>41s</td>
+      </tr>
+      <tr>
+        <td>GitOps workspace render validation</td>
+        <td><span class="pill good">Crowded field</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/minimax-m2.5<div class="muted">0.991</div></td>
+        <td>0.0</td>
+        <td>$0.0056</td>
+        <td>58s</td>
+      </tr>
+      <tr>
+        <td>Log audit shell script</td>
+        <td><span class="pill good">Crowded field</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/minimax-m2.5<div class="muted">0.988</div></td>
+        <td>0.0</td>
+        <td>$0.0041</td>
+        <td>27s</td>
+      </tr>
+      <tr>
+        <td>Build workspace plane convergence</td>
+        <td><span class="pill good">Crowded field</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/minimax-m2.5<div class="muted">0.989</div></td>
+        <td>0.0</td>
+        <td>$0.0064</td>
+        <td>1m 05s</td>
       </tr>
     </tbody>
   </table></div>
@@ -421,22 +427,13 @@
     </thead>
     <tbody>
       <tr>
-        <td>opencode/glm-5</td>
-        <td>2-10<div class="muted">3 ties</div></td>
-        <td>-0.139</td>
-        <td>-13%</td>
-        <td>-$0.0952</td>
-        <td>+8m 46s</td>
-        <td>-1.16</td>
-      </tr>
-      <tr>
-        <td>opencode/gpt-5.4-mini</td>
-        <td>1-8<div class="muted">6 ties</div></td>
-        <td>+0.014</td>
-        <td>+7%</td>
-        <td>+$0.1008</td>
-        <td>+8m 08s</td>
-        <td>+2.11</td>
+        <td>opencode/glm-5.1</td>
+        <td>7-9<div class="muted">1 ties</div></td>
+        <td>-0.28</td>
+        <td>-29%</td>
+        <td>-$0.0002</td>
+        <td>-16m 09s</td>
+        <td>-0.30</td>
       </tr>
     </tbody>
   </table></div>
@@ -447,10 +444,10 @@
       <h3>Benchmark and catalog detail</h3>
       <p class="panel-copy">The benchmark result only matters in context: this section pairs the observed benchmark outcome with the catalog metadata and operating characteristics behind it.</p>
       <div class="summary-grid">
-        <div class="summary-item"><div class="stat-row"><span>Requests</span><strong>197</strong></div><div class="stat-row"><span>Wall time</span><strong>22m 19s</strong></div><div class="stat-row"><span>Average task cost</span><strong>$0.0090</strong></div><div class="stat-row"><span>Benchmark support</span><strong>unknown</strong></div></div>
-        <div class="summary-item"><div class="stat-row"><span>Catalog blended price</span><strong>$5.6000 / 1M tok</strong></div><div class="stat-row"><span>Catalog speed</span><strong>74 tok/s</strong></div><div class="stat-row"><span>Intelligence</span><strong>57</strong></div><div class="stat-row"><span>Agentic</span><strong>n/a</strong></div></div>
+        <div class="summary-item"><div class="stat-row"><span>Requests</span><strong>227</strong></div><div class="stat-row"><span>Wall time</span><strong>14m 10s</strong></div><div class="stat-row"><span>Average task cost</span><strong>$0.0051</strong></div><div class="stat-row"><span>Benchmark support</span><strong>unknown</strong></div></div>
+        <div class="summary-item"><div class="stat-row"><span>Catalog blended price</span><strong>$0.3360 / 1M tok</strong></div><div class="stat-row"><span>Catalog speed</span><strong>n/a</strong></div><div class="stat-row"><span>Intelligence</span><strong>n/a</strong></div><div class="stat-row"><span>Agentic</span><strong>n/a</strong></div></div>
       </div>
-      <p class="panel-copy" style="margin-top:14px;">OpenRouter reference blend for openai/gpt-5.4 is 5.625 USD per 1M tokens using a 3:1 input:output mix.</p>
+      <p class="panel-copy" style="margin-top:14px;">Primary blended price derived automatically from OpenRouter listing minimax/minimax-m2.5 using a 3:1 input:output blend.</p>
       
     </section>
   </div>

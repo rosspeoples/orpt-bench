@@ -5,20 +5,17 @@
     {
       "type": "bar",
       "x": [
-        "opencode/gpt-5.4-mini",
-        "opencode/gpt-5.4",
-        "opencode/glm-5"
+        "opencode/minimax-m2.5",
+        "opencode/glm-5.1"
       ],
       "y": [
-        11,
-        13.11,
-        14.27
+        13.45,
+        13.75
       ],
       "marker": {
         "color": [
-          "#f472b6",
-          "#86a8ff",
-          "#73f0c5"
+          "#22c55e",
+          "#f472b6"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -26,9 +23,8 @@
         }
       },
       "text": [
-        11,
-        13.11,
-        14.27
+        13.45,
+        13.75
       ],
       "textposition": "auto",
       "textfont": {
@@ -36,9 +32,8 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gpt-5.4-mini<br>Requests per solved task: 11<br>53% success | $0.0454 total cost<extra></extra>",
-        "opencode/gpt-5.4<br>Requests per solved task: 13.11<br>60% success | $0.1463 total cost<extra></extra>",
-        "opencode/glm-5<br>Requests per solved task: 14.27<br>73% success | $0.2415 total cost<extra></extra>"
+        "opencode/minimax-m2.5<br>Requests per solved task: 13.45<br>65% success | $0.0822 total cost<extra></extra>",
+        "opencode/glm-5.1<br>Requests per solved task: 13.75<br>94% success | $0.0823 total cost<extra></extra>"
       ]
     }
   ],

@@ -5,20 +5,17 @@
     {
       "type": "bar",
       "x": [
-        "opencode/glm-5",
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/glm-5.1",
+        "opencode/minimax-m2.5"
       ],
       "y": [
-        0.733,
-        0.6,
-        0.533
+        0.941,
+        0.647
       ],
       "marker": {
         "color": [
-          "#73f0c5",
-          "#86a8ff",
-          "#f472b6"
+          "#f472b6",
+          "#22c55e"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -26,9 +23,8 @@
         }
       },
       "text": [
-        0.733,
-        0.6,
-        0.533
+        0.941,
+        0.647
       ],
       "textposition": "auto",
       "textfont": {
@@ -36,9 +32,8 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/glm-5<br>Completion score: 0.733<br>73% success | 0.482 value<extra></extra>",
-        "opencode/gpt-5.4<br>Completion score: 0.6<br>60% success | 0.329 value<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Completion score: 0.533<br>53% success | 0.439 value<extra></extra>"
+        "opencode/glm-5.1<br>Completion score: 0.941<br>94% success | 0.838 value<extra></extra>",
+        "opencode/minimax-m2.5<br>Completion score: 0.647<br>65% success | 0.591 value<extra></extra>"
       ]
     }
   ],

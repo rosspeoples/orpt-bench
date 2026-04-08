@@ -86,7 +86,18 @@
           "requestUnits": { "type": ["number", "null"] },
           "requestAccountingSource": { "type": ["string", "null"] },
           "costUsd": { "type": ["number", "null"] },
-          "sessionId": { "type": ["string", "null"] }
+          "sessionId": { "type": ["string", "null"] },
+          "providerLimited": { "type": ["boolean", "null"] },
+          "dnf": { "type": ["boolean", "null"] },
+          "dnfReason": { "type": ["string", "null"] },
+          "failureSummary": {
+            "type": ["object", "null"],
+            "properties": {
+              "outcomeLabel": { "type": ["string", "null"] },
+              "proxyStatus": { "type": ["number", "null"] },
+              "suggestedModel": { "type": ["string", "null"] }
+            }
+          }
         }
       }
     },
