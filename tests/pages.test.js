@@ -115,9 +115,9 @@ test('pages build publishes provider-limited smoke evidence with raw failure det
         taskCount: 3,
         taskPatterns: ['16-event-status-shell', '17-log-level-rollup', '05*'],
         repeats: 1,
-        taskTimeoutSeconds: 60,
-        processTimeoutSeconds: 61,
-        derivedRunTimeoutSeconds: 61
+        taskTimeoutSeconds: 75,
+        processTimeoutSeconds: 210,
+        derivedRunTimeoutSeconds: 210
       },
       results: [
         {
@@ -168,21 +168,21 @@ test('pages build publishes provider-limited smoke evidence with raw failure det
           id: '16-event-status-shell',
           name: 'Event status shell summary',
           difficulty: 'control',
-          timeoutSeconds: 20,
+          timeoutSeconds: 45,
           requiredCapabilities: ['unattendedBenchmarkRuns']
         },
         {
           id: '17-log-level-rollup',
           name: 'Log level rollup shell script',
           difficulty: 'control',
-          timeoutSeconds: 40,
+          timeoutSeconds: 60,
           requiredCapabilities: ['unattendedBenchmarkRuns']
         },
         {
           id: '05-log-audit-script',
           name: 'Log audit shell script',
           difficulty: 'control',
-          timeoutSeconds: 60,
+          timeoutSeconds: 75,
           requiredCapabilities: ['unattendedBenchmarkRuns']
         }
       ],
@@ -335,9 +335,9 @@ test('pages build classifies provider model-not-found and provider http smoke fa
         taskCount: 3,
         taskPatterns: ['16-event-status-shell', '17-log-level-rollup', '05*'],
         repeats: 1,
-        taskTimeoutSeconds: 60,
-        processTimeoutSeconds: 61,
-        derivedRunTimeoutSeconds: 61
+        taskTimeoutSeconds: 75,
+        processTimeoutSeconds: 210,
+        derivedRunTimeoutSeconds: 210
       },
       results: [
         {
@@ -382,21 +382,21 @@ test('pages build classifies provider model-not-found and provider http smoke fa
           id: '16-event-status-shell',
           name: 'Event status shell summary',
           difficulty: 'control',
-          timeoutSeconds: 20,
+          timeoutSeconds: 45,
           requiredCapabilities: ['unattendedBenchmarkRuns']
         },
         {
           id: '17-log-level-rollup',
           name: 'Log level rollup shell script',
           difficulty: 'control',
-          timeoutSeconds: 40,
+          timeoutSeconds: 60,
           requiredCapabilities: ['unattendedBenchmarkRuns']
         },
         {
           id: '05-log-audit-script',
           name: 'Log audit shell script',
           difficulty: 'control',
-          timeoutSeconds: 60,
+          timeoutSeconds: 75,
           requiredCapabilities: ['unattendedBenchmarkRuns']
         }
       ],
@@ -413,9 +413,9 @@ test('pages build classifies provider model-not-found and provider http smoke fa
         taskCount: 3,
         taskPatterns: ['16-event-status-shell', '17-log-level-rollup', '05*'],
         repeats: 1,
-        taskTimeoutSeconds: 60,
-        processTimeoutSeconds: 61,
-        derivedRunTimeoutSeconds: 61
+        taskTimeoutSeconds: 75,
+        processTimeoutSeconds: 210,
+        derivedRunTimeoutSeconds: 210
       },
       results: [
         {
@@ -467,21 +467,21 @@ test('pages build classifies provider model-not-found and provider http smoke fa
           id: '16-event-status-shell',
           name: 'Event status shell summary',
           difficulty: 'control',
-          timeoutSeconds: 20,
+          timeoutSeconds: 45,
           requiredCapabilities: ['unattendedBenchmarkRuns']
         },
         {
           id: '17-log-level-rollup',
           name: 'Log level rollup shell script',
           difficulty: 'control',
-          timeoutSeconds: 40,
+          timeoutSeconds: 60,
           requiredCapabilities: ['unattendedBenchmarkRuns']
         },
         {
           id: '05-log-audit-script',
           name: 'Log audit shell script',
           difficulty: 'control',
-          timeoutSeconds: 60,
+          timeoutSeconds: 75,
           requiredCapabilities: ['unattendedBenchmarkRuns']
         }
       ],

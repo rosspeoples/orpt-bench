@@ -1,0 +1,1899 @@
+{
+  "run": {
+    "id": "2026-04-08T20-57-47-380Z",
+    "startedAt": "2026-04-08T20:57:47.381Z",
+    "completedAt": "2026-04-08T20:58:44.945Z",
+    "benchmarkCycle": "candidate_smoke",
+    "models": [
+      "opencode/glm-5.1",
+      "opencode/minimax-m2.5"
+    ],
+    "taskCount": 1,
+    "taskPatterns": [
+      "16-event-status-shell"
+    ],
+    "repeats": 1,
+    "taskTimeoutSeconds": 30,
+    "processTimeoutSeconds": 31,
+    "derivedRunTimeoutSeconds": 31
+  },
+  "results": [
+    {
+      "runId": "2026-04-08T20-57-47-380Z",
+      "repeat": 1,
+      "taskId": "16-event-status-shell",
+      "taskName": "Event status shell summary",
+      "category": "scripting",
+      "model": "opencode/glm-5.1",
+      "provider": "opencode",
+      "sessionId": null,
+      "success": false,
+      "score": 0,
+      "durationMs": 31000,
+      "startedAt": "2026-04-08T20:58:44.931Z",
+      "completedAt": "2026-04-08T20:58:44.931Z",
+      "steps": 0,
+      "requestCount": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "reasoning": 0,
+        "cache": {
+          "read": 0,
+          "write": 0
+        }
+      },
+      "costUsd": 0,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 0,
+      "requestAccountingSource": "synthetic-timeout",
+      "dnf": true,
+      "dnfReason": "process-timeout",
+      "proxyRecords": [],
+      "logExcerpt": [],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 124,
+        "stdout": "",
+        "stderr": "Model run timed out after 31s"
+      },
+      "error": {
+        "message": "Model run timed out after 31s",
+        "stack": null
+      },
+      "valueScore": 0,
+      "valueScoreComponents": {
+        "orptFactor": 0,
+        "costFactor": 0,
+        "timeFactor": 0
+      },
+      "compositeScore": 0
+    },
+    {
+      "runId": "2026-04-08T20-57-47-380Z",
+      "repeat": 1,
+      "taskId": "16-event-status-shell",
+      "taskName": "Event status shell summary",
+      "category": "scripting",
+      "model": "opencode/minimax-m2.5",
+      "provider": "opencode",
+      "sessionId": "ses_2911c71c8ffefsmP1QPsuSZS92",
+      "success": true,
+      "score": 1,
+      "durationMs": 24890,
+      "startedAt": "2026-04-08T20:58:19.979Z",
+      "completedAt": "2026-04-08T20:58:44.869Z",
+      "steps": 9,
+      "requestCount": 8,
+      "tokens": {
+        "total": 12731,
+        "input": 12608,
+        "output": 123,
+        "reasoning": 0,
+        "cache": {
+          "write": 0,
+          "read": 0
+        }
+      },
+      "costUsd": 0.00393,
+      "toolInvocations": {},
+      "filesChanged": 0,
+      "diff": [],
+      "requestUnits": 8,
+      "requestAccountingSource": "proxy-call-count",
+      "dnf": false,
+      "dnfReason": null,
+      "providerLimited": false,
+      "failureSummary": null,
+      "proxyRecords": [
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/chat/completions",
+          "upstreamUrl": "https://opencode.ai/zen/v1/chat/completions",
+          "status": 200,
+          "responseHeaders": {
+            "cache-control": "no-cache",
+            "cf-ray": "9e943085091b5877-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Wed, 08 Apr 2026 20:58:20 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-08T20:58:22.958Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/chat/completions",
+          "upstreamUrl": "https://opencode.ai/zen/v1/chat/completions",
+          "status": 200,
+          "responseHeaders": {
+            "cache-control": "no-cache",
+            "cf-ray": "9e943096bbda5877-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Wed, 08 Apr 2026 20:58:23 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-08T20:58:26.922Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/chat/completions",
+          "upstreamUrl": "https://opencode.ai/zen/v1/chat/completions",
+          "status": 200,
+          "responseHeaders": {
+            "cache-control": "no-cache",
+            "cf-ray": "9e9430aecb905877-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Wed, 08 Apr 2026 20:58:27 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-08T20:58:32.874Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/chat/completions",
+          "upstreamUrl": "https://opencode.ai/zen/v1/chat/completions",
+          "status": 200,
+          "responseHeaders": {
+            "cache-control": "no-cache",
+            "cf-ray": "9e9430d4cea15877-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Wed, 08 Apr 2026 20:58:33 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-08T20:58:35.091Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/chat/completions",
+          "upstreamUrl": "https://opencode.ai/zen/v1/chat/completions",
+          "status": 200,
+          "responseHeaders": {
+            "cache-control": "no-cache",
+            "cf-ray": "9e9430e20f805877-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Wed, 08 Apr 2026 20:58:35 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-08T20:58:38.029Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/chat/completions",
+          "upstreamUrl": "https://opencode.ai/zen/v1/chat/completions",
+          "status": 200,
+          "responseHeaders": {
+            "cache-control": "no-cache",
+            "cf-ray": "9e9430f41a605877-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Wed, 08 Apr 2026 20:58:38 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-08T20:58:39.942Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/chat/completions",
+          "upstreamUrl": "https://opencode.ai/zen/v1/chat/completions",
+          "status": 200,
+          "responseHeaders": {
+            "cache-control": "no-cache",
+            "cf-ray": "9e9431006c535877-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Wed, 08 Apr 2026 20:58:40 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-08T20:58:42.052Z"
+        },
+        {
+          "providerID": "opencode",
+          "method": "POST",
+          "path": "/zen/v1/chat/completions",
+          "upstreamUrl": "https://opencode.ai/zen/v1/chat/completions",
+          "status": 200,
+          "responseHeaders": {
+            "cache-control": "no-cache",
+            "cf-ray": "9e94310d5e655877-OMA",
+            "connection": "keep-alive",
+            "content-type": "text/event-stream",
+            "date": "Wed, 08 Apr 2026 20:58:42 GMT",
+            "server": "cloudflare",
+            "transfer-encoding": "chunked"
+          },
+          "at": "2026-04-08T20:58:44.715Z"
+        }
+      ],
+      "logExcerpt": [
+        "INFO  2026-04-08T20:58:44 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +1ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.part.delta publishing",
+        "INFO  2026-04-08T20:58:44 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-08T20:58:44 +1ms service=bus type=message.part.updated publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=message.updated publishing",
+        "INFO  2026-04-08T20:58:44 +3ms service=bus type=session.updated publishing",
+        "INFO  2026-04-08T20:58:44 +3ms service=bus type=message.updated publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=session.status publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=session.prompt step=8 sessionID=ses_2911c71c8ffefsmP1QPsuSZS92 loop",
+        "INFO  2026-04-08T20:58:44 +2ms service=session.prompt sessionID=ses_2911c71c8ffefsmP1QPsuSZS92 exiting loop",
+        "INFO  2026-04-08T20:58:44 +3ms service=bus type=session.status publishing",
+        "INFO  2026-04-08T20:58:44 +0ms service=bus type=session.idle publishing",
+        "INFO  2026-04-08T20:58:44 +1ms service=bus type=session.diff publishing",
+        "INFO  2026-04-08T20:58:44 +1ms service=bus type=message.updated publishing",
+        "INFO  2026-04-08T20:58:44 +1ms service=session.compaction pruning",
+        "INFO  2026-04-08T20:58:44 +2ms service=session.compaction pruned=0 total=0 found",
+        "INFO  2026-04-08T20:58:44 +1ms service=server method=GET path=/session/ses_2911c71c8ffefsmP1QPsuSZS92/diff request",
+        "INFO  2026-04-08T20:58:44 +0ms service=server status=started method=GET path=/session/ses_2911c71c8ffefsmP1QPsuSZS92/diff request",
+        "INFO  2026-04-08T20:58:44 +4ms service=server status=completed duration=4 method=GET path=/session/ses_2911c71c8ffefsmP1QPsuSZS92/diff request"
+      ],
+      "verifier": {
+        "command": "python3 verify.py",
+        "code": 0,
+        "stdout": "ok\n",
+        "stderr": ""
+      },
+      "error": null,
+      "valueScore": 1,
+      "valueScoreComponents": {
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
+      },
+      "compositeScore": 1
+    }
+  ],
+  "leaderboard": [
+    {
+      "model": "opencode/minimax-m2.5",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 1,
+      "failedTasks": 0,
+      "dnfTasks": 0,
+      "providerLimited": false,
+      "successRate": 1,
+      "score": 1,
+      "valueScore": 1,
+      "compositeScore": 1,
+      "orpt": 8,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "totalWallTimeMs": 24890,
+      "totalCostUsd": 0.00393,
+      "averageDurationMs": 24890,
+      "medianSteps": 9,
+      "averageCostUsd": 0.00393,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "model": "opencode/glm-5.1",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 0,
+      "failedTasks": 1,
+      "dnfTasks": 1,
+      "providerLimited": false,
+      "successRate": 0,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "orpt": null,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "totalWallTimeMs": 31000,
+      "totalCostUsd": 0,
+      "averageDurationMs": 0,
+      "medianSteps": null,
+      "averageCostUsd": null,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": null
+    }
+  ],
+  "modelSummary": [
+    {
+      "model": "opencode/minimax-m2.5",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 1,
+      "failedTasks": 0,
+      "dnfTasks": 0,
+      "providerLimited": false,
+      "successRate": 1,
+      "score": 1,
+      "valueScore": 1,
+      "compositeScore": 1,
+      "orpt": 8,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "totalWallTimeMs": 24890,
+      "totalCostUsd": 0.00393,
+      "averageDurationMs": 24890,
+      "medianSteps": 9,
+      "averageCostUsd": 0.00393,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "model": "opencode/glm-5.1",
+      "provider": "opencode",
+      "runs": 1,
+      "successfulTasks": 0,
+      "failedTasks": 1,
+      "dnfTasks": 1,
+      "providerLimited": false,
+      "successRate": 0,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "orpt": null,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "totalWallTimeMs": 31000,
+      "totalCostUsd": 0,
+      "averageDurationMs": 0,
+      "medianSteps": null,
+      "averageCostUsd": null,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": null
+    }
+  ],
+  "taskSummary": [
+    {
+      "taskId": "16-event-status-shell",
+      "taskName": "Event status shell summary",
+      "category": "scripting",
+      "model": "opencode/minimax-m2.5",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 1,
+      "failures": 0,
+      "dnfs": 0,
+      "providerLimited": false,
+      "score": 1,
+      "valueScore": 1,
+      "compositeScore": 1,
+      "successRate": 1,
+      "totalRequestCount": 8,
+      "totalRequestUnits": 8,
+      "averageRequestUnits": 8,
+      "totalWallTimeMs": 24890,
+      "averageWallTimeMs": 24890,
+      "totalCostUsd": 0.00393,
+      "averageCostUsd": 0.00393,
+      "averageSteps": 9,
+      "eligible": true,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "proxy-call-count"
+    },
+    {
+      "taskId": "16-event-status-shell",
+      "taskName": "Event status shell summary",
+      "category": "scripting",
+      "model": "opencode/glm-5.1",
+      "provider": "opencode",
+      "runs": 1,
+      "successes": 0,
+      "failures": 1,
+      "dnfs": 1,
+      "providerLimited": false,
+      "score": 0,
+      "valueScore": 0,
+      "compositeScore": 0,
+      "successRate": 0,
+      "totalRequestCount": 0,
+      "totalRequestUnits": 0,
+      "averageRequestUnits": 0,
+      "totalWallTimeMs": 31000,
+      "averageWallTimeMs": 31000,
+      "totalCostUsd": 0,
+      "averageCostUsd": null,
+      "averageSteps": 0,
+      "eligible": false,
+      "comparable": true,
+      "comparabilityNote": null,
+      "unattendedBenchmarkRuns": "unknown",
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ],
+      "unsupportedCapabilities": [],
+      "knownLimitations": [],
+      "requestAccountingSource": "synthetic-timeout"
+    }
+  ],
+  "modelCatalog": {
+    "updatedAt": "2026-04-08T02:03:06.400Z",
+    "source": {
+      "provider": "opencode",
+      "inventoryUrl": "https://opencode.ai/zen/v1/models",
+      "enrichmentSources": [
+        {
+          "id": "artificial-analysis",
+          "name": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai",
+          "notes": "Manual seed data for model intelligence, agentic, speed, and selected benchmark price metrics until a stable machine-readable source is integrated."
+        },
+        {
+          "id": "openrouter",
+          "name": "OpenRouter",
+          "url": "https://openrouter.ai/api/v1/models",
+          "notes": "Automatic pricing enrichment source from OpenRouter model listings. When ORPT-Bench shows a reference price for a free model, it is explicitly labeled as a paid sibling or nearby family reference derived with a 3:1 input:output blend from OpenRouter prompt/output prices."
+        }
+      ]
+    },
+    "models": [
+      {
+        "model": "opencode/gemini-3.1-pro",
+        "modelId": "gemini-3.1-pro",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "google",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": 57,
+          "agenticScore": null,
+          "speedTokensPerSecond": 127,
+          "blendedPricePer1mTokensUsd": 4.5,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for google/gemini-3.1-pro-preview is 4.5 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gemini-3-flash",
+        "modelId": "gemini-3-flash",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "google",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": 46,
+          "agenticScore": null,
+          "speedTokensPerSecond": 179,
+          "blendedPricePer1mTokensUsd": 1.1,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-flash-reasoning",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for google/gemini-3-flash-preview is 1.125 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": false,
+          "notes": "Observed to loop and hit the benchmark process deadline on the task-05 scripting smoke run, so it should not be in the default headless dev matrix."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "limited",
+          "knownLimitations": [
+            "Loops and hits the benchmark process deadline on the task-05 scripting smoke run."
+          ]
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/nemotron-3-super-free",
+        "modelId": "nemotron-3-super-free",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "nvidia",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": 36,
+          "agenticScore": null,
+          "speedTokensPerSecond": 155,
+          "blendedPricePer1mTokensUsd": 0,
+          "referenceBlendedPricePer1mTokensUsd": 0.2,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/nvidia-nemotron-3-super-120b-a12b",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for nvidia/nemotron-3-super-120b-a12b:free is 0 USD per 1M tokens using a 3:1 input:output mix. Reference price uses nvidia/nemotron-3-super-120b-a12b at 0.2 USD per 1M tokens from the same OpenRouter family."
+        },
+        "stability": {
+          "headlessFriendly": false,
+          "notes": "Observed to take a slow, tool-heavy path on the scripting smoke task."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "limited",
+          "knownLimitations": [
+            "Takes a slow, tool-heavy path on the scripting smoke task."
+          ]
+        },
+        "priceTier": "free",
+        "recommendedUse": "dev-smoke",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-3-5-haiku",
+        "modelId": "claude-3-5-haiku",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 10,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.5 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-haiku-4-5",
+        "modelId": "claude-haiku-4-5",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 60,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.6-fast using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gemini-3-pro",
+        "modelId": "gemini-3-pro",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "google",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.5625,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing google/gemini-3.1-flash-lite-preview using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5-nano",
+        "modelId": "gpt-5-nano",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.1375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5-nano using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.1-codex-mini",
+        "modelId": "gpt-5.1-codex-mini",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.6875,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.1-codex-mini using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.4-mini",
+        "modelId": "gpt-5.4-mini",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 1.6875,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-mini using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": true,
+          "notes": "Observed to complete ORPT-Bench scripting smoke runs cleanly and is the current preferred headless dev baseline."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "supported",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.4-nano",
+        "modelId": "gpt-5.4-nano",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.4625,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-nano using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/minimax-m2.1",
+        "modelId": "minimax-m2.1",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "minimax",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.44,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing minimax/minimax-m2.1 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/minimax-m2.5",
+        "modelId": "minimax-m2.5",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "minimax",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.336,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing minimax/minimax-m2.5 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/minimax-m2.5-free",
+        "modelId": "minimax-m2.5-free",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "minimax",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0,
+          "referenceBlendedPricePer1mTokensUsd": 0.336,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing minimax/minimax-m2.5:free using a 3:1 input:output blend. Reference price uses minimax/minimax-m2.5 at 0.336 USD per 1M tokens from the same OpenRouter family."
+        },
+        "stability": {
+          "headlessFriendly": false,
+          "notes": "Observed to trigger external_directory permission prompts in headless runs."
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unsupported",
+          "knownLimitations": [
+            "Triggers external_directory permission prompts in headless runs."
+          ]
+        },
+        "priceTier": "free",
+        "recommendedUse": "dev-smoke",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/qwen3.6-plus-free",
+        "modelId": "qwen3.6-plus-free",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "unknown",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 1.125,
+          "referenceBlendedPricePer1mTokensUsd": 1.125,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing qwen/qwen3.6-plus using a 3:1 input:output blend. Reference price uses qwen/qwen3.6-plus at 1.125 USD per 1M tokens from the same OpenRouter family."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "dev-smoke",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/trinity-large-preview-free",
+        "modelId": "trinity-large-preview-free",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "unknown",
+        "devTier": "dev-cheap",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0,
+          "referenceBlendedPricePer1mTokensUsd": 0.3775,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing arcee-ai/trinity-large-preview:free using a 3:1 input:output blend. Reference price uses arcee-ai/trinity-large-thinking at 0.3775 USD per 1M tokens from the same OpenRouter family."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "free",
+        "recommendedUse": "dev-smoke",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-opus-4-6",
+        "modelId": "claude-opus-4-6",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "expensive",
+        "benchmark": {
+          "intelligenceScore": 53,
+          "agenticScore": null,
+          "speedTokensPerSecond": 49,
+          "blendedPricePer1mTokensUsd": 10,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for anthropic/claude-opus-4.6-fast is 60 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "balanced-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-opus-4-1",
+        "modelId": "claude-opus-4-1",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "expensive",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 60,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.6-fast using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-opus-4-5",
+        "modelId": "claude-opus-4-5",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "expensive",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 60,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.6-fast using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.4-pro",
+        "modelId": "gpt-5.4-pro",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "expensive",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 67.5,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-pro using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": true
+      },
+      {
+        "model": "opencode/gpt-5.4",
+        "modelId": "gpt-5.4",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": 57,
+          "agenticScore": null,
+          "speedTokensPerSecond": 74,
+          "blendedPricePer1mTokensUsd": 5.6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-4",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for openai/gpt-5.4 is 5.625 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "release-frontier",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-sonnet-4-6",
+        "modelId": "claude-sonnet-4-6",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": 52,
+          "agenticScore": null,
+          "speedTokensPerSecond": 67,
+          "blendedPricePer1mTokensUsd": 6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for anthropic/claude-opus-4.6-fast is 60 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "balanced-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/glm-5",
+        "modelId": "glm-5",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": 50,
+          "agenticScore": null,
+          "speedTokensPerSecond": 70,
+          "blendedPricePer1mTokensUsd": 1.6,
+          "referenceBlendedPricePer1mTokensUsd": 1.115,
+          "source": "artificial-analysis",
+          "sourceUrl": "https://artificialanalysis.ai/models/glm-5",
+          "confidence": "manual",
+          "pricingSourceType": "manual-primary-with-openrouter-reference",
+          "pricingConfidence": "high",
+          "pricingNotes": "OpenRouter reference blend for z-ai/glm-5 is 1.115 USD per 1M tokens using a 3:1 input:output mix."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "balanced-general",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/big-pickle",
+        "modelId": "big-pickle",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "unknown",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": null,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "manual",
+          "sourceUrl": null,
+          "confidence": "manual",
+          "pricingSourceType": null,
+          "pricingConfidence": null,
+          "pricingNotes": "No trustworthy automatic pricing reference found yet, so cost is currently unknown."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "unknown",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-sonnet-4",
+        "modelId": "claude-sonnet-4",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 6,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-sonnet-4 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/claude-sonnet-4-5",
+        "modelId": "claude-sonnet-4-5",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "anthropic",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 60,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing anthropic/claude-opus-4.6-fast using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "high",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/glm-4.6",
+        "modelId": "glm-4.6",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.7675,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing z-ai/glm-4.6 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/glm-4.7",
+        "modelId": "glm-4.7",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.73,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing z-ai/glm-4.7 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/glm-5.1",
+        "modelId": "glm-5.1",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "z-ai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 1.935,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing z-ai/glm-5.1 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5",
+        "modelId": "gpt-5",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5-codex",
+        "modelId": "gpt-5-codex",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5-codex using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.1",
+        "modelId": "gpt-5.1",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.1 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.1-codex",
+        "modelId": "gpt-5.1-codex",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.1-codex using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.1-codex-max",
+        "modelId": "gpt-5.1-codex-max",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 3.4375,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.1-codex-max using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.2",
+        "modelId": "gpt-5.2",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 4.8125,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.2 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.2-codex",
+        "modelId": "gpt-5.2-codex",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 4.8125,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.2-codex using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.3-codex",
+        "modelId": "gpt-5.3-codex",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 4.8125,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.3-codex using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "medium",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/gpt-5.3-codex-spark",
+        "modelId": "gpt-5.3-codex-spark",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "openai",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.4625,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing openai/gpt-5.4-nano using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/kimi-k2",
+        "modelId": "kimi-k2",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "moonshot",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 1.0025,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing moonshotai/kimi-k2 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/kimi-k2-thinking",
+        "modelId": "kimi-k2-thinking",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "moonshot",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.8525,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing moonshotai/kimi-k2-thinking using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      },
+      {
+        "model": "opencode/kimi-k2.5",
+        "modelId": "kimi-k2.5",
+        "object": "model",
+        "created": 1775613785,
+        "ownedBy": "opencode",
+        "family": "moonshot",
+        "devTier": "standard",
+        "benchmark": {
+          "intelligenceScore": null,
+          "agenticScore": null,
+          "speedTokensPerSecond": null,
+          "blendedPricePer1mTokensUsd": 0.717025,
+          "referenceBlendedPricePer1mTokensUsd": null,
+          "source": "openrouter",
+          "sourceUrl": "https://openrouter.ai/api/v1/models",
+          "confidence": "automatic",
+          "pricingSourceType": "automatic-openrouter-primary",
+          "pricingConfidence": "medium",
+          "pricingNotes": "Primary blended price derived automatically from OpenRouter listing moonshotai/kimi-k2.5 using a 3:1 input:output blend."
+        },
+        "stability": {
+          "headlessFriendly": null,
+          "notes": null
+        },
+        "featureSupport": {
+          "unattendedBenchmarkRuns": "unknown",
+          "knownLimitations": []
+        },
+        "priceTier": "low",
+        "recommendedUse": "standard",
+        "excludedFromMatrices": false
+      }
+    ]
+  },
+  "taskCatalog": [
+    {
+      "id": "16-event-status-shell",
+      "name": "Event status shell summary",
+      "difficulty": "control",
+      "timeoutSeconds": 30,
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    }
+  ],
+  "scoring": {
+    "valueScoreWeights": {
+      "orpt": 0.45,
+      "cost": 0.35,
+      "time": 0.2
+    },
+    "compositeScoreWeights": {
+      "score": 0.7,
+      "valueScore": 0.3
+    }
+  },
+  "requestExtractors": {
+    "headerCandidates": [
+      "x-opencode-requests-used",
+      "x-opencode-request-units",
+      "x-request-cost-units",
+      "x-usage-requests",
+      "x-ratelimit-requests-used"
+    ],
+    "logRegexes": [
+      "requests?[_ -]?used[=: ]+([0-9]+)",
+      "request[_ -]?units[=: ]+([0-9]+)",
+      "quota[_ -]?used[=: ]+([0-9]+)"
+    ]
+  }
+}

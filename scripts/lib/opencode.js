@@ -5,7 +5,7 @@ import net from 'node:net'
 
 import { ensureDir } from './fs.js'
 
-function permissionRules(runtime) {
+export function permissionRules(runtime) {
   const sandboxPattern = `${runtime.sandboxDir.replace(/\\/g, '/')}/**`
   const toolOutputPattern = '/root/.local/share/opencode/tool-output/**'
 
@@ -29,9 +29,9 @@ function permissionRules(runtime) {
     webfetch: 'allow',
     task: { '*': 'allow' },
     external_directory: {
-      [sandboxPattern]: 'allow',
+      '*': 'deny',
       [toolOutputPattern]: 'allow',
-      '*': 'deny'
+      [sandboxPattern]: 'allow'
     }
   }
 }
@@ -77,11 +77,13 @@ async function requestJson({ baseUrl, pathname, method = 'GET', query = {}, body
   }
 }
 
-export async function startOpenCodeServer({ runtime, model, proxy }) {
+export async function startOpenCodeServer({ runtime, model, proxy, workingDirectory = null }) {
   const { providerID } = model
   const logDir = path.join(runtime.tmpDir, 'logs')
   await ensureDir(logDir)
   await ensureDir(runtime.sandboxDir)
+  const serverCwd = workingDirectory || runtime.sandboxDir
+  await ensureDir(serverCwd)
   const logFile = path.join(logDir, `${providerID}-${model.modelID.replace(/[\/]/g, '-')}.log`)
   const lines = []
 
@@ -112,6 +114,7 @@ export async function startOpenCodeServer({ runtime, model, proxy }) {
   const opencodeConfig = {
     share: 'disabled',
     autoupdate: false,
+    lsp: false,
     default_agent: runtime.agent,
     model: `${model.providerID}/${model.modelID}`,
     small_model: `${model.providerID}/${model.modelID}`,
@@ -135,7 +138,7 @@ export async function startOpenCodeServer({ runtime, model, proxy }) {
   ]
 
   const child = spawn('opencode', args, {
-    cwd: runtime.sandboxDir,
+    cwd: serverCwd,
     env: {
       ...process.env,
       OPENCODE_CONFIG_CONTENT: JSON.stringify(opencodeConfig)

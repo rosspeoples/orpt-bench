@@ -102,7 +102,8 @@ export async function loadRuntimeConfig() {
   const maxTaskTimeoutSeconds = taskBudgetCatalog.reduce((max, task) => Math.max(max, task.timeoutSeconds), 0)
   const taskTimeoutSeconds = maxTaskTimeoutSeconds
   const taskTimeoutMs = taskTimeoutSeconds * 1000
-  const derivedRunTimeoutSeconds = (taskBudgetCatalog.reduce((total, task) => total + task.timeoutSeconds, 0) + taskBudgetCatalog.length) * repeats
+  const perTaskSlackSeconds = 10
+  const derivedRunTimeoutSeconds = (taskBudgetCatalog.reduce((total, task) => total + task.timeoutSeconds, 0) + (taskBudgetCatalog.length * perTaskSlackSeconds)) * repeats
   const processTimeoutSeconds = derivedRunTimeoutSeconds
   const processTimeoutMs = processTimeoutSeconds * 1000
   const modelConcurrency = Math.max(1, parseInteger(process.env.BENCHMARK_MODEL_CONCURRENCY, 1))

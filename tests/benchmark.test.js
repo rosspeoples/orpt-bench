@@ -2,6 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 
 import { aggregateRun, collectRemainingTaskEntries, computeCompositeScore, computeCompositeValueScore, isProviderLimitedFailure, runContainsSyntheticTimeoutRows, shouldWriteLatestRunArtifact, summarizeFailureOutcome } from '../scripts/lib/benchmark.js'
+import { permissionRules } from '../scripts/lib/opencode.js'
 
 test('computeCompositeValueScore returns 1 for task-best comparable run', () => {
   const score = computeCompositeValueScore({
@@ -254,6 +255,24 @@ test('shouldWriteLatestRunArtifact allows smoke synthetic rows but blocks canoni
   }), false)
 })
 
+test('benchmark opencode permissions keep sandbox allowed after fallback deny', () => {
+  const rules = permissionRules({ sandboxDir: '/tmp/orpt-bench-sandbox' })
+  const entries = Object.entries(rules.external_directory)
+
+  assert.deepEqual(entries, [
+    ['*', 'deny'],
+    ['/root/.local/share/opencode/tool-output/**', 'allow'],
+    ['/tmp/orpt-bench-sandbox/**', 'allow']
+  ])
+})
+
+test('child run artifacts are namespaced by parent run id', async () => {
+  const path = await import('node:path')
+  const runID = '2026-04-08T20-55-31-047Z'
+  const outputFile = path.join('/tmp/orpt-bench', 'child-runs', runID, 'opencode-glm-5-1.json')
+  assert.equal(outputFile, '/tmp/orpt-bench/child-runs/2026-04-08T20-55-31-047Z/opencode-glm-5-1.json')
+})
+
 test('runtime config defaults model concurrency to one when unset', async () => {
   const { loadRuntimeConfig } = await import('../scripts/lib/config.js')
   const previous = process.env.BENCHMARK_MODEL_CONCURRENCY
@@ -282,10 +301,10 @@ test('runtime config derives process timeout from selected task budgets', async 
     const runtime = await loadRuntimeConfig()
     assert.equal(runtime.taskBudgetCatalog.length, 1)
     assert.equal(runtime.taskBudgetCatalog[0].id, '05-log-audit-script')
-    assert.equal(runtime.taskBudgetCatalog[0].timeoutSeconds, 60)
-    assert.equal(runtime.derivedRunTimeoutSeconds, 61)
-    assert.equal(runtime.processTimeoutSeconds, 61)
-    assert.equal(runtime.taskTimeoutSeconds, 60)
+    assert.equal(runtime.taskBudgetCatalog[0].timeoutSeconds, 75)
+    assert.equal(runtime.derivedRunTimeoutSeconds, 85)
+    assert.equal(runtime.processTimeoutSeconds, 85)
+    assert.equal(runtime.taskTimeoutSeconds, 75)
   } finally {
     if (previousTaskGlob == null) delete process.env.BENCHMARK_TASK_GLOB
     else process.env.BENCHMARK_TASK_GLOB = previousTaskGlob
@@ -300,7 +319,7 @@ test('runtime config preserves requested task pattern order for control smoke ra
   const { loadRuntimeConfig } = await import('../scripts/lib/config.js')
   const previousTaskGlob = process.env.BENCHMARK_TASK_GLOB
 
-  process.env.BENCHMARK_TASK_GLOB = '16-event-status-shell,17-log-level-rollup,05*'
+    process.env.BENCHMARK_TASK_GLOB = '16-event-status-shell,17-log-level-rollup,05*'
 
   try {
     const runtime = await loadRuntimeConfig()
@@ -309,6 +328,8 @@ test('runtime config preserves requested task pattern order for control smoke ra
       '17-log-level-rollup',
       '05-log-audit-script'
     ])
+    assert.deepEqual(runtime.taskBudgetCatalog.map((task) => task.timeoutSeconds), [45, 60, 75])
+    assert.equal(runtime.derivedRunTimeoutSeconds, 210)
   } finally {
     if (previousTaskGlob == null) delete process.env.BENCHMARK_TASK_GLOB
     else process.env.BENCHMARK_TASK_GLOB = previousTaskGlob

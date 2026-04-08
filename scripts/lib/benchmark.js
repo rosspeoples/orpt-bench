@@ -463,8 +463,8 @@ async function prepareRunTaskDir(runtime, runID, task, model, repeatIndex) {
   }
 }
 
-async function executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, taskTimeoutMs }) {
-  const { runTaskDir, workspaceDir } = await prepareRunTaskDir(runtime, runID, task, model, repeatIndex)
+async function executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, taskTimeoutMs, preparedDirs = null }) {
+  const { runTaskDir, workspaceDir } = preparedDirs || await prepareRunTaskDir(runtime, runID, task, model, repeatIndex)
   const startedAt = nowIso()
   const startedMs = Date.now()
   const logCursor = server.logCursor()
@@ -562,6 +562,10 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
   }
 }
 
+async function restartOpenCodeServerForWorkspace({ runtime, model, proxy, workspaceDir }) {
+  return await startOpenCodeServer({ runtime, model, proxy, workingDirectory: workspaceDir })
+}
+
 async function writeRunArtifacts(runtime, run) {
   const latestFile = path.join(runtime.rootDir, runtime.baseConfig.results.latestFile)
   const historyFile = path.join(runtime.rootDir, runtime.baseConfig.results.historyDir, `${run.run.id}.json`)
@@ -610,28 +614,37 @@ export async function runBenchmarkSingle(runtime, modelsOverride = null, runIDOv
     for (const modelName of models) {
       const model = parseModel(modelName)
       console.log(`START model ${model.providerID}/${model.modelID}`)
-      let server = await startOpenCodeServer({ runtime, model, proxy })
+      let server = null
 
       try {
         for (let repeatIndex = 1; repeatIndex <= runtime.repeats; repeatIndex += 1) {
           for (let taskIndex = 0; taskIndex < tasks.length; taskIndex += 1) {
             const task = tasks[taskIndex]
             const taskTimeoutMs = computeTaskTimeoutMs(runtime, task, processDeadlineAt)
+            const preparedDirs = await prepareRunTaskDir(runtime, runID, task, model, repeatIndex)
+            const { workspaceDir } = preparedDirs
 
-            const result = await executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, taskTimeoutMs })
+            if (server) {
+              await server.close()
+            }
+            server = await restartOpenCodeServerForWorkspace({ runtime, model, proxy, workspaceDir })
+
+            const result = await executeTask({ runtime, task, model, repeatIndex, runID, server, proxy, taskTimeoutMs, preparedDirs })
             run.results.push(result)
             await flushRunProgress(runtime, run, writeArtifacts)
             console.log(`${result.success ? 'PASS' : result.dnf ? 'DNF' : 'FAIL'} ${result.taskId} ${result.model} steps=${result.steps} requestUnits=${result.requestUnits ?? 'n/a'}`)
 
             if (result.dnf) {
               await server.close()
-              server = await startOpenCodeServer({ runtime, model, proxy })
+              server = null
             }
           }
         }
       } finally {
         console.log(`STOP model ${model.providerID}/${model.modelID}`)
-        await server.close()
+        if (server) {
+          await server.close()
+        }
         await flushRunProgress(runtime, run, writeArtifacts)
       }
     }
@@ -682,13 +695,15 @@ export async function runBenchmark(runtime) {
   }
 
   await ensureDir(path.join(runtime.tmpDir, 'child-runs'))
+  const childRunDir = path.join(runtime.tmpDir, 'child-runs', runID)
+  await ensureDir(childRunDir)
 
   const childTimeoutMs = runtime.processTimeoutMs > 0 ? runtime.processTimeoutMs : 0
   const remainingModels = [...runtime.models]
   const childResults = []
 
   async function runChild(model, childIndex) {
-    const outputFile = path.join(runtime.tmpDir, 'child-runs', `${slugify(model)}.json`)
+    const outputFile = path.join(childRunDir, `${slugify(model)}.json`)
     const proxyListenPort = (runtime.proxy?.listenPort || 18080) + childIndex + 1
     const child = await runCommand('node', ['scripts/cli.js', 'benchmark-single'], {
       cwd: runtime.rootDir,
@@ -705,6 +720,9 @@ export async function runBenchmark(runtime) {
     let childRun = null
     if (await exists(outputFile)) {
       childRun = await readJson(outputFile)
+      if (childRun?.run?.id !== runID) {
+        childRun = null
+      }
     }
 
     return { model, child, childRun }
