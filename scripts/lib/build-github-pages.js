@@ -2248,7 +2248,7 @@ function renderHtml(data) {
     for (const stat of stats) {
       const node = document.createElement('article');
       node.className = 'metric';
-      node.innerHTML = '\n        <div class="metric-label micro">' + escapeHtml(stat.label) + '</div>\n        <div class="metric-value">' + escapeHtml(stat.value) + '</div>\n        <div class="metric-note">' + escapeHtml(stat.note) + '</div>\n      ';
+      node.innerHTML = '\\n        <div class="metric-label micro">' + escapeHtml(stat.label) + '</div>\\n        <div class="metric-value">' + escapeHtml(stat.value) + '</div>\\n        <div class="metric-note">' + escapeHtml(stat.note) + '</div>\\n      ';
       statsRoot.appendChild(node);
     }
     const docsGrid = document.getElementById('docs-grid');
@@ -2264,7 +2264,7 @@ function renderHtml(data) {
     for (const card of docCards) {
       const node = document.createElement('article');
       node.className = 'doc-card';
-      node.innerHTML = '\n        <div class="micro muted">Detailed reference</div>\n        <h3>' + escapeHtml(card.title) + '</h3>\n        <p class="panel-copy">' + escapeHtml(card.summary) + '</p>\n      ';
+      node.innerHTML = '\\n        <div class="micro muted">Detailed reference</div>\\n        <h3>' + escapeHtml(card.title) + '</h3>\\n        <p class="panel-copy">' + escapeHtml(card.summary) + '</p>\\n      ';
       const actions = document.createElement('div');
       actions.className = 'card-actions';
       actions.appendChild(linkPill(card.href, card.label));
