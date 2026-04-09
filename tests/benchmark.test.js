@@ -336,6 +336,38 @@ test('runtime config preserves requested task pattern order for control smoke ra
   }
 })
 
+test('runtime config falls back to .env.benchmark when shell env is unset', async () => {
+  const fs = await import('node:fs/promises')
+  const path = await import('node:path')
+  const previousModels = process.env.BENCHMARK_MODELS
+  const previousTaskGlob = process.env.BENCHMARK_TASK_GLOB
+  const envPath = path.join(process.cwd(), '.env.benchmark')
+  const originalEnvFile = await fs.readFile(envPath, 'utf8')
+
+  delete process.env.BENCHMARK_MODELS
+  delete process.env.BENCHMARK_TASK_GLOB
+
+  try {
+    await fs.writeFile(envPath, [
+      'BENCHMARK_MODELS=opencode/gpt-5.4-mini',
+      'BENCHMARK_TASK_GLOB=05*',
+      'BENCHMARK_REPEATS=1',
+      'BENCHMARK_PROCESS_TIMEOUT_SECONDS=0'
+    ].join('\n') + '\n', 'utf8')
+
+    const { loadRuntimeConfig } = await import('../scripts/lib/config.js')
+    const runtime = await loadRuntimeConfig()
+    assert.deepEqual(runtime.models, ['opencode/gpt-5.4-mini'])
+    assert.deepEqual(runtime.taskBudgetCatalog.map((task) => task.id), ['05-log-audit-script'])
+  } finally {
+    await fs.writeFile(envPath, originalEnvFile, 'utf8')
+    if (previousModels == null) delete process.env.BENCHMARK_MODELS
+    else process.env.BENCHMARK_MODELS = previousModels
+    if (previousTaskGlob == null) delete process.env.BENCHMARK_TASK_GLOB
+    else process.env.BENCHMARK_TASK_GLOB = previousTaskGlob
+  }
+})
+
 test('benchmark command refuses to run outside containerized runner environment', async () => {
   const previousExpectedRunner = process.env.ORPT_EXPECTED_RUNNER
   const previousTaskGlob = process.env.BENCHMARK_TASK_GLOB

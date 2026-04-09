@@ -23,6 +23,33 @@ function parseBoolean(value, fallback) {
   return ['1', 'true', 'yes', 'on'].includes(String(value).toLowerCase())
 }
 
+async function readEnvFile(envFilePath) {
+  try {
+    const content = await fs.readFile(envFilePath, 'utf8')
+    const values = {}
+    for (const rawLine of content.split(/\r?\n/)) {
+      const line = rawLine.trim()
+      if (!line || line.startsWith('#')) continue
+      const separatorIndex = line.indexOf('=')
+      if (separatorIndex <= 0) continue
+      const key = line.slice(0, separatorIndex).trim()
+      const value = line.slice(separatorIndex + 1)
+      values[key] = value
+    }
+    return values
+  } catch {
+    return {}
+  }
+}
+
+function envValue(processEnv, fileEnv, key) {
+  const direct = processEnv[key]
+  if (direct != null && direct !== '') return direct
+  const fileValue = fileEnv[key]
+  if (fileValue != null && fileValue !== '') return fileValue
+  return undefined
+}
+
 function resolvePath(rootDir, value) {
   if (!value) return rootDir
   return path.isAbsolute(value) ? value : path.join(rootDir, value)
@@ -90,15 +117,17 @@ async function loadTaskBudgetCatalog(rootDir, taskNames) {
 export async function loadRuntimeConfig() {
   const rootDir = process.cwd()
   const baseConfig = await readJson(path.join(rootDir, 'benchmark.config.json'))
-  const models = parseList(process.env.BENCHMARK_MODELS).length
-    ? parseList(process.env.BENCHMARK_MODELS)
+  const fileEnv = await readEnvFile(path.join(rootDir, '.env.benchmark'))
+  const benchmarkModels = envValue(process.env, fileEnv, 'BENCHMARK_MODELS')
+  const models = parseList(benchmarkModels).length
+    ? parseList(benchmarkModels)
     : baseConfig.models
 
-  const taskPatterns = parseList(process.env.BENCHMARK_TASK_GLOB || '*')
+  const taskPatterns = parseList(envValue(process.env, fileEnv, 'BENCHMARK_TASK_GLOB') || '*')
   const taskNames = await discoverTaskDirs(rootDir, taskPatterns)
   const taskBudgetCatalog = await loadTaskBudgetCatalog(rootDir, taskNames)
   const taskDirs = taskNames.map((name) => path.join(rootDir, 'tasks', name))
-  const repeats = parseInteger(process.env.BENCHMARK_REPEATS, 1)
+  const repeats = parseInteger(envValue(process.env, fileEnv, 'BENCHMARK_REPEATS'), 1)
   const maxTaskTimeoutSeconds = taskBudgetCatalog.reduce((max, task) => Math.max(max, task.timeoutSeconds), 0)
   const taskTimeoutSeconds = maxTaskTimeoutSeconds
   const taskTimeoutMs = taskTimeoutSeconds * 1000
@@ -106,9 +135,10 @@ export async function loadRuntimeConfig() {
   const derivedRunTimeoutSeconds = (taskBudgetCatalog.reduce((total, task) => total + task.timeoutSeconds, 0) + (taskBudgetCatalog.length * perTaskSlackSeconds)) * repeats
   const processTimeoutSeconds = derivedRunTimeoutSeconds
   const processTimeoutMs = processTimeoutSeconds * 1000
-  const modelConcurrency = Math.max(1, parseInteger(process.env.BENCHMARK_MODEL_CONCURRENCY, 1))
-  const providerOverrides = process.env.BENCHMARK_PROVIDER_OVERRIDES_JSON
-    ? JSON.parse(process.env.BENCHMARK_PROVIDER_OVERRIDES_JSON)
+  const modelConcurrency = Math.max(1, parseInteger(envValue(process.env, fileEnv, 'BENCHMARK_MODEL_CONCURRENCY'), 1))
+  const providerOverridesValue = envValue(process.env, fileEnv, 'BENCHMARK_PROVIDER_OVERRIDES_JSON')
+  const providerOverrides = providerOverridesValue
+    ? JSON.parse(providerOverridesValue)
     : {}
 
   const proxy = baseConfig.proxy || {
@@ -121,16 +151,17 @@ export async function loadRuntimeConfig() {
       }
     }
   }
-  if (process.env.BENCHMARK_PROXY_LISTEN_PORT) {
-    proxy.listenPort = parseInteger(process.env.BENCHMARK_PROXY_LISTEN_PORT, proxy.listenPort || 18080)
+  const proxyListenPort = envValue(process.env, fileEnv, 'BENCHMARK_PROXY_LISTEN_PORT')
+  if (proxyListenPort) {
+    proxy.listenPort = parseInteger(proxyListenPort, proxy.listenPort || 18080)
   }
 
-  const writeReadme = parseBoolean(process.env.BENCHMARK_WRITE_README, true)
+  const writeReadme = parseBoolean(envValue(process.env, fileEnv, 'BENCHMARK_WRITE_README'), true)
 
   return {
     rootDir,
     baseConfig,
-    benchmarkCycle: process.env.BENCHMARK_CYCLE || null,
+    benchmarkCycle: envValue(process.env, fileEnv, 'BENCHMARK_CYCLE') || null,
     models,
     taskPatterns,
     taskDirs,
@@ -143,10 +174,10 @@ export async function loadRuntimeConfig() {
     taskBudgetCatalog,
     modelConcurrency,
     writeReadme,
-    resultsDir: resolvePath(rootDir, process.env.ORPT_RESULTS_DIR || 'results'),
-    tmpDir: resolvePath(rootDir, process.env.ORPT_TMP_DIR || '.tmp'),
-    sandboxDir: process.env.ORPT_SANDBOX_DIR
-      ? resolvePath(rootDir, process.env.ORPT_SANDBOX_DIR)
+    resultsDir: resolvePath(rootDir, envValue(process.env, fileEnv, 'ORPT_RESULTS_DIR') || 'results'),
+    tmpDir: resolvePath(rootDir, envValue(process.env, fileEnv, 'ORPT_TMP_DIR') || '.tmp'),
+    sandboxDir: envValue(process.env, fileEnv, 'ORPT_SANDBOX_DIR')
+      ? resolvePath(rootDir, envValue(process.env, fileEnv, 'ORPT_SANDBOX_DIR'))
       : path.join(os.tmpdir(), 'orpt-bench-sandbox'),
     providerOverrides,
     proxy,
@@ -159,6 +190,6 @@ export async function loadRuntimeConfig() {
       valueScoreWeights: { orpt: 0.45, cost: 0.35, time: 0.2 },
       compositeScoreWeights: { score: 0.7, valueScore: 0.3 }
     },
-    agent: process.env.BENCHMARK_AGENT || baseConfig.runner.agent || 'build'
+    agent: envValue(process.env, fileEnv, 'BENCHMARK_AGENT') || baseConfig.runner.agent || 'build'
   }
 }
