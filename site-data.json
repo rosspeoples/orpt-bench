@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-09T02:45:21.287Z",
+  "generatedAt": "2026-04-09T02:57:29.852Z",
   "repository": {
     "url": "https://github.com/rosspeoples/orpt-bench",
     "pagesUrl": "https://rosspeoples.github.io/orpt-bench/",
@@ -63,48 +63,65 @@
     }
   },
   "latestRawRun": {
-    "id": "2026-04-09T00-36-28-598Z",
-    "startedAt": "2026-04-09T00:36:28.598Z",
-    "completedAt": "2026-04-09T00:56:00.770Z",
-    "benchmarkCycle": "candidate_full",
-    "taskCount": 17,
+    "id": "2026-04-09T02-43-07-636Z",
+    "startedAt": "2026-04-09T02:43:07.637Z",
+    "completedAt": "2026-04-09T02:46:04.959Z",
+    "benchmarkCycle": "candidate_smoke",
+    "taskCount": 3,
     "taskPatterns": [
-      "*"
+      "16-event-status-shell",
+      "17-log-level-rollup",
+      "05*"
     ],
     "repeats": 1,
-    "modelCount": 1,
-    "totalRuns": 17,
-    "successfulRuns": 16,
-    "comparableModels": 1,
+    "modelCount": 3,
+    "totalRuns": 9,
+    "successfulRuns": 1,
+    "comparableModels": 2,
     "topModel": {
-      "model": "opencode/gpt-5.4-nano",
+      "model": "opencode/minimax-m2.5-free",
       "provider": "opencode",
-      "runs": 17,
-      "successfulTasks": 16,
-      "failedTasks": 1,
+      "runs": 3,
+      "successfulTasks": 1,
+      "failedTasks": 2,
       "dnfTasks": 1,
       "providerLimited": false,
-      "successRate": 0.9411764705882353,
-      "score": 0.9411764705882353,
-      "valueScore": 0.9411764705882353,
-      "compositeScore": 0.9411764705882353,
-      "orpt": 18.6875,
-      "totalRequestCount": 310,
-      "totalRequestUnits": 310,
-      "totalWallTimeMs": 1147420,
-      "totalCostUsd": 0.013270389999999998,
-      "averageDurationMs": 67957,
-      "medianSteps": 18.5,
-      "averageCostUsd": 0.0008293993749999999,
+      "successRate": 0.3333333333333333,
+      "score": 0.3333333333333333,
+      "valueScore": 0,
+      "compositeScore": 0.2333333333333333,
+      "orpt": 8,
+      "totalRequestCount": 24,
+      "totalRequestUnits": 24,
+      "totalWallTimeMs": 161817,
+      "totalCostUsd": 0,
+      "averageDurationMs": 37006,
+      "medianSteps": 9,
+      "averageCostUsd": null,
       "eligible": true,
-      "comparable": true,
-      "comparabilityNote": null,
-      "unattendedBenchmarkRuns": "unknown",
+      "comparable": false,
+      "comparabilityNote": "unattendedBenchmarkRuns: unsupported",
+      "unattendedBenchmarkRuns": "unsupported",
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ],
-      "unsupportedCapabilities": [],
-      "knownLimitations": [],
+      "unsupportedCapabilities": [
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        },
+        {
+          "capability": "unattendedBenchmarkRuns",
+          "support": "unsupported"
+        }
+      ],
+      "knownLimitations": [
+        "Triggers external_directory permission prompts in headless runs."
+      ],
       "requestAccountingSource": "proxy-call-count"
     }
   },
@@ -121,141 +138,6 @@
   },
   "taskCatalog": [
     {
-      "id": "01-iac-kubernetes-rollout",
-      "name": "Kubernetes rollout repair",
-      "difficulty": "medium",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "02-terraform-static-site",
-      "name": "Terraform static site repair",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "03-ansible-nginx-role",
-      "name": "Ansible nginx role completion",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "04-docker-compose-observability",
-      "name": "Docker Compose observability fix",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "05-log-audit-script",
-      "name": "Log audit shell script",
-      "difficulty": "control",
-      "timeoutSeconds": 75,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "06-kubernetes-oidc-rbac-repair",
-      "name": "Kubernetes OIDC RBAC repair",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "07-cnpg-restore-manifest-repair",
-      "name": "CNPG restore manifest repair",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "08-workspace-transplant-bundle-repair",
-      "name": "Workspace transplant bundle repair",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "09-gitops-workspace-render-validation",
-      "name": "GitOps workspace render validation",
-      "difficulty": "high",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "10-bootstrap-phase-validation-repair",
-      "name": "Bootstrap phase validation repair",
-      "difficulty": "expert",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "11-mcp-openbao-contract-repair",
-      "name": "MCP OpenBao contract repair",
-      "difficulty": "expert",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "12-pre-argocd-bootstrap-sequencing",
-      "name": "Pre-ArgoCD bootstrap sequencing",
-      "difficulty": "expert",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "13-wildcard-tls-route-coverage",
-      "name": "Wildcard TLS route coverage",
-      "difficulty": "expert",
-      "timeoutSeconds": 300,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "14-build-workspace-plane-convergence",
-      "name": "Build workspace plane convergence",
-      "difficulty": "expert",
-      "timeoutSeconds": 420,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
-      "id": "15-workspace-runtime-access-convergence",
-      "name": "Workspace runtime access convergence",
-      "difficulty": "expert",
-      "timeoutSeconds": 420,
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ]
-    },
-    {
       "id": "16-event-status-shell",
       "name": "Event status shell summary",
       "difficulty": "control",
@@ -269,6 +151,15 @@
       "name": "Log level rollup shell script",
       "difficulty": "control",
       "timeoutSeconds": 60,
+      "requiredCapabilities": [
+        "unattendedBenchmarkRuns"
+      ]
+    },
+    {
+      "id": "05-log-audit-script",
+      "name": "Log audit shell script",
+      "difficulty": "control",
+      "timeoutSeconds": 75,
       "requiredCapabilities": [
         "unattendedBenchmarkRuns"
       ]
@@ -552,9 +443,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -628,9 +517,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -666,9 +553,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -742,9 +627,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -894,9 +777,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -932,9 +813,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -970,9 +849,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1008,9 +885,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1046,9 +921,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1084,9 +957,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1122,9 +993,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1160,9 +1029,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1198,9 +1065,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1236,9 +1101,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1274,9 +1137,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1312,9 +1173,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1350,9 +1209,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1426,9 +1283,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1502,9 +1357,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1540,9 +1393,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1578,9 +1429,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1616,9 +1465,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1654,9 +1501,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1692,9 +1537,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1728,11 +1571,9 @@
       "averageSteps": 10,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1768,9 +1609,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1844,9 +1683,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1882,9 +1719,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1920,9 +1755,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1958,9 +1791,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -1996,9 +1827,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2034,9 +1863,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2110,9 +1937,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2146,11 +1971,9 @@
       "averageSteps": 11,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2186,9 +2009,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2300,9 +2121,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2336,11 +2155,9 @@
       "averageSteps": 8,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2376,9 +2193,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2414,9 +2229,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2452,9 +2265,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2566,9 +2377,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2642,9 +2451,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2680,9 +2487,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2716,11 +2521,9 @@
       "averageSteps": 16,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2754,11 +2557,9 @@
       "averageSteps": 15,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2794,9 +2595,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2832,9 +2631,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2870,9 +2667,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2908,9 +2703,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2946,9 +2739,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -2984,9 +2775,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3020,11 +2809,9 @@
       "averageSteps": 20,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3058,11 +2845,9 @@
       "averageSteps": 11,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3098,9 +2883,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3136,9 +2919,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3174,9 +2955,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3210,11 +2989,9 @@
       "averageSteps": 9,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3250,9 +3027,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3288,9 +3063,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3326,9 +3099,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3362,11 +3133,9 @@
       "averageSteps": 9,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3400,11 +3169,9 @@
       "averageSteps": 16,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3438,11 +3205,9 @@
       "averageSteps": 15,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3478,9 +3243,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3516,9 +3279,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3592,9 +3353,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3628,11 +3387,9 @@
       "averageSteps": 14,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3666,11 +3423,9 @@
       "averageSteps": 13,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3704,11 +3459,9 @@
       "averageSteps": 21,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3742,11 +3495,9 @@
       "averageSteps": 14,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3782,9 +3533,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3820,9 +3569,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3856,11 +3603,9 @@
       "averageSteps": 12,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3896,9 +3641,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3934,9 +3677,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -3970,11 +3711,9 @@
       "averageSteps": 13,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4008,11 +3747,9 @@
       "averageSteps": 14,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4046,11 +3783,9 @@
       "averageSteps": 10,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4084,11 +3819,9 @@
       "averageSteps": 12,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4122,11 +3855,9 @@
       "averageSteps": 20,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4160,11 +3891,9 @@
       "averageSteps": 15,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4198,11 +3927,9 @@
       "averageSteps": 16,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4236,11 +3963,9 @@
       "averageSteps": 16,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4274,11 +3999,9 @@
       "averageSteps": 33,
       "eligible": true,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4314,9 +4037,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4365,11 +4086,9 @@
       "averageSteps": 12,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4418,11 +4137,9 @@
       "averageSteps": 7,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4473,9 +4190,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4524,11 +4239,9 @@
       "averageSteps": 20,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4577,11 +4290,9 @@
       "averageSteps": 17,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4630,11 +4341,9 @@
       "averageSteps": 8,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4685,9 +4394,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4738,9 +4445,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4791,9 +4496,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4844,9 +4547,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4895,11 +4596,9 @@
       "averageSteps": 10,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -4950,9 +4649,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5001,11 +4698,9 @@
       "averageSteps": 9,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5054,11 +4749,9 @@
       "averageSteps": 11,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5109,9 +4802,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5213,11 +4904,9 @@
       "averageSteps": 8,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5266,11 +4955,9 @@
       "averageSteps": 11,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5319,11 +5006,9 @@
       "averageSteps": 11,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5372,11 +5057,9 @@
       "averageSteps": 15,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5425,11 +5108,9 @@
       "averageSteps": 11,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5480,9 +5161,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5531,11 +5210,9 @@
       "averageSteps": 10,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5584,11 +5261,9 @@
       "averageSteps": 11,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5637,11 +5312,9 @@
       "averageSteps": 22,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5690,11 +5363,9 @@
       "averageSteps": 16,
       "eligible": false,
       "comparable": false,
-      "comparabilityNote": "Model published on earlier task set (15 tasks vs current 17)",
+      "comparabilityNote": "Task not in current benchmark set; source run used 15 tasks",
       "unattendedBenchmarkRuns": "supported",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5745,9 +5416,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -5798,9 +5467,7 @@
       "comparable": true,
       "comparabilityNote": null,
       "unattendedBenchmarkRuns": "unknown",
-      "requiredCapabilities": [
-        "unattendedBenchmarkRuns"
-      ],
+      "requiredCapabilities": [],
       "unsupportedCapabilities": [],
       "knownLimitations": [],
       "requestAccountingSource": "proxy-call-count",
@@ -6443,62 +6110,22 @@
     }
   ],
   "benchmarkComposition": {
-    "taskCount": 17,
-    "categoryCount": 8,
-    "difficultyCount": 4,
+    "taskCount": 3,
+    "categoryCount": 1,
+    "difficultyCount": 1,
     "requiredCapabilities": [
       "unattendedBenchmarkRuns"
     ],
     "categories": [
       {
-        "label": "gitops",
-        "count": 5
-      },
-      {
         "label": "scripting",
-        "count": 4
-      },
-      {
-        "label": "kubernetes",
-        "count": 2
-      },
-      {
-        "label": "platform-bootstrap",
-        "count": 2
-      },
-      {
-        "label": "ansible",
-        "count": 1
-      },
-      {
-        "label": "docker-compose",
-        "count": 1
-      },
-      {
-        "label": "iac",
-        "count": 1
-      },
-      {
-        "label": "terraform",
-        "count": 1
+        "count": 3
       }
     ],
     "difficulties": [
       {
-        "label": "high",
-        "count": 7
-      },
-      {
-        "label": "expert",
-        "count": 6
-      },
-      {
         "label": "control",
         "count": 3
-      },
-      {
-        "label": "medium",
-        "count": 1
       }
     ],
     "totalRequestUnits": 1927,
@@ -7491,236 +7118,80 @@
       ]
     },
     {
-      "difficulty": "expert",
-      "taskCount": 6,
+      "difficulty": "unspecified",
+      "taskCount": 14,
       "models": [
         {
-          "model": "opencode/big-pickle",
-          "taskCount": 6,
-          "averageCompositeScore": 0.9245700000000001,
-          "averageSuccessRate": 1,
-          "averageRequestUnits": 19.333333333333332,
-          "averageCostUsd": 0,
-          "averageWallTimeMs": 62864.333333333336
+          "model": "opencode/glm-5",
+          "taskCount": 14,
+          "averageCompositeScore": 0.5612066428571428,
+          "averageSuccessRate": 0.7142857142857143,
+          "averageRequestUnits": 13.857142857142858,
+          "averageCostUsd": 0.01622565714285714,
+          "averageWallTimeMs": 56587.28571428572
         },
         {
           "model": "opencode/glm-5.1",
-          "taskCount": 6,
-          "averageCompositeScore": 0.8025306666666666,
-          "averageSuccessRate": 1,
-          "averageRequestUnits": 16.333333333333332,
-          "averageCostUsd": 0.006011206666666667,
-          "averageWallTimeMs": 132159.5
+          "taskCount": 14,
+          "averageCompositeScore": 0.752524857142857,
+          "averageSuccessRate": 0.9285714285714286,
+          "averageRequestUnits": 14.928571428571429,
+          "averageCostUsd": 0.00510821142857143,
+          "averageWallTimeMs": 120792.5
         },
         {
           "model": "opencode/gpt-5.4-nano",
-          "taskCount": 6,
-          "averageCompositeScore": 0.9314255,
+          "taskCount": 14,
+          "averageCompositeScore": 0.9185989285714286,
           "averageSuccessRate": 1,
-          "averageRequestUnits": 17.833333333333332,
-          "averageCostUsd": 0.0008753533333333333,
-          "averageWallTimeMs": 62110.333333333336
+          "averageRequestUnits": 19.5,
+          "averageCostUsd": 0.0008435142857142856,
+          "averageWallTimeMs": 71153.85714285714
         },
         {
           "model": "opencode/kimi-k2.5",
-          "taskCount": 6,
-          "averageCompositeScore": 0.7031553333333332,
-          "averageSuccessRate": 0.8333333333333334,
-          "averageRequestUnits": 18.333333333333332,
-          "averageCostUsd": 0.003416826666666667,
-          "averageWallTimeMs": 47400
-        },
-        {
-          "model": "opencode/glm-5",
-          "taskCount": 6,
-          "averageCompositeScore": 0.6559796666666666,
-          "averageSuccessRate": 0.8333333333333334,
-          "averageRequestUnits": 16.333333333333332,
-          "averageCostUsd": 0.018993266666666668,
-          "averageWallTimeMs": 42800.333333333336
-        },
-        {
-          "model": "opencode/gpt-5.4",
-          "taskCount": 6,
-          "averageCompositeScore": 0.3925258333333333,
-          "averageSuccessRate": 0.5,
-          "averageRequestUnits": 13.833333333333334,
-          "averageCostUsd": 0.011709916666666667,
-          "averageWallTimeMs": 98065.66666666667
-        },
-        {
-          "model": "opencode/gpt-5.4-mini",
-          "taskCount": 6,
-          "averageCompositeScore": 0.42559216666666666,
-          "averageSuccessRate": 0.5,
-          "averageRequestUnits": 11.5,
-          "averageCostUsd": 0.0032916250000000007,
-          "averageWallTimeMs": 70894
+          "taskCount": 14,
+          "averageCompositeScore": 0.7302034285714285,
+          "averageSuccessRate": 0.8571428571428571,
+          "averageRequestUnits": 16.214285714285715,
+          "averageCostUsd": 0.003139894285714286,
+          "averageWallTimeMs": 44152.21428571428
         },
         {
           "model": "opencode/minimax-m2.5",
-          "taskCount": 6,
-          "averageCompositeScore": 0.5500916666666668,
-          "averageSuccessRate": 0.6666666666666666,
-          "averageRequestUnits": 14.666666666666666,
-          "averageCostUsd": 0.00561725,
-          "averageWallTimeMs": 58169.666666666664
-        }
-      ]
-    },
-    {
-      "difficulty": "high",
-      "taskCount": 7,
-      "models": [
-        {
-          "model": "opencode/glm-5.1",
-          "taskCount": 7,
-          "averageCompositeScore": 0.6973357142857142,
-          "averageSuccessRate": 0.8571428571428571,
-          "averageRequestUnits": 14.285714285714286,
-          "averageCostUsd": 0.0043307885714285715,
-          "averageWallTimeMs": 121205.71428571429
-        },
-        {
-          "model": "opencode/gpt-5.4-nano",
-          "taskCount": 7,
-          "averageCompositeScore": 0.914689,
-          "averageSuccessRate": 1,
-          "averageRequestUnits": 20.714285714285715,
-          "averageCostUsd": 0.0007968614285714285,
-          "averageWallTimeMs": 77821.28571428571
-        },
-        {
-          "model": "opencode/big-pickle",
-          "taskCount": 7,
-          "averageCompositeScore": 0.6593187142857142,
-          "averageSuccessRate": 0.7142857142857143,
-          "averageRequestUnits": 27.714285714285715,
-          "averageCostUsd": 0,
-          "averageWallTimeMs": 117499.14285714286
-        },
-        {
-          "model": "opencode/glm-5",
-          "taskCount": 7,
-          "averageCompositeScore": 0.44989814285714286,
-          "averageSuccessRate": 0.5714285714285714,
-          "averageRequestUnits": 11,
-          "averageCostUsd": 0.013721342857142858,
-          "averageWallTimeMs": 69666
-        },
-        {
-          "model": "opencode/gpt-5.4",
-          "taskCount": 7,
-          "averageCompositeScore": 0.5534714285714285,
-          "averageSuccessRate": 0.7142857142857143,
+          "taskCount": 14,
+          "averageCompositeScore": 0.5243660714285714,
+          "averageSuccessRate": 0.6428571428571429,
           "averageRequestUnits": 13.714285714285714,
-          "averageCostUsd": 0.008906857142857143,
-          "averageWallTimeMs": 91685.28571428571
-        },
-        {
-          "model": "opencode/gpt-5.4-mini",
-          "taskCount": 7,
-          "averageCompositeScore": 0.4675512857142857,
-          "averageSuccessRate": 0.5714285714285714,
-          "averageRequestUnits": 10.428571428571429,
-          "averageCostUsd": 0.0030346071428571423,
-          "averageWallTimeMs": 51936.71428571428
-        },
-        {
-          "model": "opencode/kimi-k2.5",
-          "taskCount": 7,
-          "averageCompositeScore": 0.7259800000000001,
-          "averageSuccessRate": 0.8571428571428571,
-          "averageRequestUnits": 15.285714285714286,
-          "averageCostUsd": 0.003020697142857143,
-          "averageWallTimeMs": 44287
-        },
-        {
-          "model": "opencode/minimax-m2.5",
-          "taskCount": 7,
-          "averageCompositeScore": 0.46197414285714283,
-          "averageSuccessRate": 0.5714285714285714,
-          "averageRequestUnits": 12.142857142857142,
-          "averageCostUsd": 0.005021828571428571,
-          "averageWallTimeMs": 48756.857142857145
-        }
-      ]
-    },
-    {
-      "difficulty": "medium",
-      "taskCount": 1,
-      "models": [
-        {
-          "model": "opencode/glm-5",
-          "taskCount": 1,
-          "averageCompositeScore": 0.771728,
-          "averageSuccessRate": 1,
-          "averageRequestUnits": 19,
-          "averageCostUsd": 0.0171502,
-          "averageWallTimeMs": 47758
-        },
-        {
-          "model": "opencode/glm-5.1",
-          "taskCount": 1,
-          "averageCompositeScore": 0.838814,
-          "averageSuccessRate": 1,
-          "averageRequestUnits": 11,
-          "averageCostUsd": 0.0051322,
-          "averageWallTimeMs": 49698
-        },
-        {
-          "model": "opencode/gpt-5.4-nano",
-          "taskCount": 1,
-          "averageCompositeScore": 0.869009,
-          "averageSuccessRate": 1,
-          "averageRequestUnits": 21,
-          "averageCostUsd": 0.00097905,
-          "averageWallTimeMs": 78743
-        },
-        {
-          "model": "opencode/kimi-k2.5",
-          "taskCount": 1,
-          "averageCompositeScore": 0.922056,
-          "averageSuccessRate": 1,
-          "averageRequestUnits": 10,
-          "averageCostUsd": 0.00231268,
-          "averageWallTimeMs": 23722
-        },
-        {
-          "model": "opencode/minimax-m2.5",
-          "taskCount": 1,
-          "averageCompositeScore": 0.806756,
-          "averageSuccessRate": 1,
-          "averageRequestUnits": 19,
-          "averageCostUsd": 0.0049446,
-          "averageWallTimeMs": 57646
+          "averageCostUsd": 0.005271492857142857,
+          "averageWallTimeMs": 53425.857142857145
         },
         {
           "model": "opencode/big-pickle",
-          "taskCount": 1,
-          "averageCompositeScore": 0,
-          "averageSuccessRate": 0,
-          "averageRequestUnits": 6,
+          "taskCount": 14,
+          "averageCompositeScore": 0.7259036428571429,
+          "averageSuccessRate": 0.7857142857142857,
+          "averageRequestUnits": 22.571428571428573,
           "averageCostUsd": 0,
-          "averageWallTimeMs": 31104
+          "averageWallTimeMs": 87913.14285714286
         },
         {
           "model": "opencode/gpt-5.4",
-          "taskCount": 1,
-          "averageCompositeScore": 0,
-          "averageSuccessRate": 0,
-          "averageRequestUnits": 11,
-          "averageCostUsd": 0.0083865,
-          "averageWallTimeMs": 73164
+          "taskCount": 14,
+          "averageCompositeScore": 0.4449610714285715,
+          "averageSuccessRate": 0.5714285714285714,
+          "averageRequestUnits": 13.571428571428571,
+          "averageCostUsd": 0.010071,
+          "averageWallTimeMs": 93096.78571428571
         },
         {
           "model": "opencode/gpt-5.4-mini",
-          "taskCount": 1,
-          "averageCompositeScore": 0,
-          "averageSuccessRate": 0,
-          "averageRequestUnits": 6,
-          "averageCostUsd": 0.00295725,
-          "averageWallTimeMs": 32264
+          "taskCount": 14,
+          "averageCompositeScore": 0.41617228571428566,
+          "averageSuccessRate": 0.5,
+          "averageRequestUnits": 10.571428571428571,
+          "averageCostUsd": 0.0031392321428571424,
+          "averageWallTimeMs": 58656.07142857143
         }
       ]
     }
@@ -7792,6 +7263,117 @@
     }
   ],
   "smokeRuns": [
+    {
+      "fileName": "2026-04-09T02-43-07-636Z.json",
+      "id": "2026-04-09T02-43-07-636Z",
+      "startedAt": "2026-04-09T02:43:07.637Z",
+      "completedAt": "2026-04-09T02:46:04.959Z",
+      "benchmarkCycle": "candidate_smoke",
+      "taskCount": 3,
+      "taskIds": [
+        "16-event-status-shell",
+        "17-log-level-rollup",
+        "05-log-audit-script"
+      ],
+      "models": [
+        {
+          "model": "opencode/minimax-m2.5-free",
+          "successes": 1,
+          "dnfs": 1,
+          "runs": 3,
+          "successRate": 0.3333333333333333,
+          "totalCostUsd": 0,
+          "totalWallTimeMs": 161817,
+          "totalRequestUnits": 24,
+          "totalRequestCount": 24,
+          "totalSteps": 27,
+          "passed": false,
+          "failed": true,
+          "providerLimited": false,
+          "lastError": "Timed out after 60000ms",
+          "failureSummary": {
+            "outcomeLabel": "timed out",
+            "providerLimited": false,
+            "dnf": true,
+            "dnfReason": "task-timeout",
+            "verifierCode": 124,
+            "verifierStderr": "Task exceeded 60s hard timeout",
+            "errorMessage": "Timed out after 60000ms",
+            "proxyStatus": 200,
+            "retryAfter": null,
+            "requestUnits": 7,
+            "requestCount": 7,
+            "steps": 8,
+            "errorSignature": null,
+            "suggestedModel": null
+          }
+        },
+        {
+          "model": "opencode/qwen3.6-plus-free",
+          "successes": 0,
+          "dnfs": 0,
+          "runs": 3,
+          "successRate": 0,
+          "totalCostUsd": null,
+          "totalWallTimeMs": 804,
+          "totalRequestUnits": 0,
+          "totalRequestCount": 0,
+          "totalSteps": 3,
+          "passed": false,
+          "failed": true,
+          "providerLimited": false,
+          "lastError": null,
+          "failureSummary": {
+            "outcomeLabel": "provider-model-not-found",
+            "providerLimited": false,
+            "dnf": false,
+            "dnfReason": null,
+            "verifierCode": 1,
+            "verifierStderr": null,
+            "errorMessage": null,
+            "proxyStatus": null,
+            "retryAfter": null,
+            "requestUnits": null,
+            "requestCount": 0,
+            "steps": 1,
+            "errorSignature": "ProviderModelNotFoundError",
+            "suggestedModel": null
+          }
+        },
+        {
+          "model": "opencode/trinity-large-preview-free",
+          "successes": 0,
+          "dnfs": 0,
+          "runs": 3,
+          "successRate": 0,
+          "totalCostUsd": null,
+          "totalWallTimeMs": 819,
+          "totalRequestUnits": 0,
+          "totalRequestCount": 0,
+          "totalSteps": 3,
+          "passed": false,
+          "failed": true,
+          "providerLimited": false,
+          "lastError": null,
+          "failureSummary": {
+            "outcomeLabel": "provider-model-not-found",
+            "providerLimited": false,
+            "dnf": false,
+            "dnfReason": null,
+            "verifierCode": 1,
+            "verifierStderr": null,
+            "errorMessage": null,
+            "proxyStatus": null,
+            "retryAfter": null,
+            "requestUnits": null,
+            "requestCount": 0,
+            "steps": 1,
+            "errorSignature": "ProviderModelNotFoundError",
+            "suggestedModel": null
+          }
+        }
+      ]
+    },
     {
       "fileName": "2026-04-09T00-25-29-045Z.json",
       "id": "2026-04-09T00-25-29-045Z",
