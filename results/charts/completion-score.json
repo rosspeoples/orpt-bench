@@ -4,17 +4,8 @@
   "data": [
     {
       "type": "bar",
+      "orientation": "h",
       "x": [
-        "opencode/gpt-5.4-nano",
-        "opencode/big-pickle",
-        "opencode/glm-5.1",
-        "opencode/kimi-k2.5",
-        "opencode/glm-5",
-        "opencode/minimax-m2.5",
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
-      ],
-      "y": [
         0.941,
         0.824,
         0.941,
@@ -24,15 +15,25 @@
         0.6,
         0.533
       ],
+      "y": [
+        "opencode/gpt-5.4-nano",
+        "opencode/big-pickle",
+        "opencode/glm-5.1",
+        "opencode/kimi-k2.5",
+        "opencode/glm-5",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4",
+        "opencode/gpt-5.4-mini"
+      ],
       "marker": {
         "color": [
-          "#73f0c5",
-          "#fb7185",
+          "#e879f9",
+          "#38bdf8",
           "#f472b6",
-          "#86a8ff",
-          "#73f0c5",
-          "#22c55e",
-          "#86a8ff",
+          "#a78bfa",
+          "#4ade80",
+          "#e879f9",
+          "#a78bfa",
           "#f472b6"
         ],
         "line": {
@@ -50,7 +51,8 @@
         0.6,
         0.533
       ],
-      "textposition": "auto",
+      "textposition": "outside",
+      "cliponaxis": false,
       "textfont": {
         "color": "#edf2ff",
         "size": 12
@@ -92,12 +94,12 @@
       "y": 1.12
     },
     "margin": {
-      "l": 72,
-      "r": 24,
+      "l": 260,
+      "r": 64,
       "t": 72,
-      "b": 112
+      "b": 72
     },
-    "height": 420,
+    "height": 460,
     "xaxis": {
       "automargin": true,
       "tickfont": {
@@ -111,14 +113,15 @@
       "gridcolor": "rgba(153, 164, 200, 0.16)",
       "linecolor": "rgba(153, 164, 200, 0.22)",
       "zerolinecolor": "rgba(153, 164, 200, 0.16)",
-      "tickangle": -18
+      "tickangle": -18,
+      "title": "Completion score"
     },
     "yaxis": {
       "automargin": true,
       "zeroline": false,
       "tickfont": {
-        "size": 12,
-        "color": "#99a4c8"
+        "size": 13,
+        "color": "#edf2ff"
       },
       "titlefont": {
         "color": "#edf2ff",
@@ -126,7 +129,7 @@
       },
       "gridcolor": "rgba(153, 164, 200, 0.16)",
       "linecolor": "rgba(153, 164, 200, 0.22)",
-      "title": "Completion score"
+      "autorange": "reversed"
     }
   }
 }
