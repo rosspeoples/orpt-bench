@@ -637,6 +637,7 @@ function buildCompositeScoreChart(report) {
     axisTitle: 'Composite score',
     valueFormatter: (value) => Number((value ?? 0).toFixed(3)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatDecimalMarkup(row.orpt, 2)} ORPT`,
+    reverseYAxis: true,
   });
 }
 
@@ -650,6 +651,7 @@ function buildCompletionScoreChart(report) {
     axisTitle: 'Completion score',
     valueFormatter: (value) => Number((value ?? 0).toFixed(3)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatScoreMarkup(row.valueScore)} value`,
+    reverseYAxis: true,
   });
 }
 
@@ -663,6 +665,7 @@ function buildValueScoreChart(report) {
     axisTitle: 'Value score',
     valueFormatter: (value) => Number((value ?? 0).toFixed(3)),
     customText: (row) => `${formatScoreMarkup(row.score)} completion | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
+    reverseYAxis: true,
   });
 }
 
@@ -675,6 +678,7 @@ function buildSuccessRateChart(report) {
     axisTitle: 'Success rate (%)',
     valueFormatter: (value) => Number((((value ?? 0) * 100)).toFixed(2)),
     customText: (row) => `${formatScoreMarkup(row.compositeScore)} composite | ${formatIntegerMarkup(row.successfulTasks)} solved`,
+    reverseYAxis: true,
   });
 }
 
@@ -689,6 +693,7 @@ function buildOrptChart(report) {
     axisTitle: 'Requests per solved task',
     valueFormatter: (value) => Number((value ?? 0).toFixed(2)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
+    reverseYAxis: false,
   });
 }
 
@@ -703,6 +708,7 @@ function buildTotalCostChart(report) {
     axisTitle: 'USD',
     valueFormatter: (value) => Number((value ?? 0).toFixed(4)),
     customText: (row) => `${formatScoreMarkup(row.compositeScore)} composite | ${formatIntegerMarkup(row.totalRequestUnits)} requests`,
+    reverseYAxis: false,
   });
 }
 
@@ -797,6 +803,7 @@ function buildTotalWallTimeChart(report) {
     axisTitle: 'Minutes',
     valueFormatter: (value) => Number((((value ?? 0) / 60000)).toFixed(2)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
+    reverseYAxis: false,
   });
 }
 
@@ -811,6 +818,7 @@ function buildTotalRequestsChart(report) {
     axisTitle: 'Request units',
     valueFormatter: (value) => Number((value ?? 0).toFixed(0)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatDurationMarkup(row.totalWallTimeMs)} wall time`,
+    reverseYAxis: false,
   });
 }
 
@@ -1009,7 +1017,7 @@ function buildTaskDurationHeatmap(report) {
   });
 }
 
-function buildModelBarChart({ rows, metricKey, title, axisTitle, valueFormatter, customText }) {
+function buildModelBarChart({ rows, metricKey, title, axisTitle, valueFormatter, customText, reverseYAxis = true }) {
   if (!rows.length) {
     return null;
   }
@@ -1038,7 +1046,7 @@ function buildModelBarChart({ rows, metricKey, title, axisTitle, valueFormatter,
     layout: buildChartLayout({
       title,
       xaxis: { title: axisTitle },
-      yaxis: { automargin: true, autorange: 'reversed', tickfont: { size: 13, color: CHART_THEME.text } },
+      yaxis: { automargin: true, autorange: reverseYAxis ? 'reversed' : true, tickfont: { size: 13, color: CHART_THEME.text } },
       height,
       margin: { l: 260, r: 64, t: 72, b: 72 },
     }),
@@ -2679,7 +2687,7 @@ function renderHtml(data) {
         result = toNumericSortValue(left.compositeScore) - toNumericSortValue(right.compositeScore);
       }
       if (result === 0 && 'orpt' in left && 'orpt' in right) {
-        result = toNumericSortValue(right.orpt) - toNumericSortValue(left.orpt);
+        result = toNumericSortValue(left.orpt) - toNumericSortValue(right.orpt);
       }
       return state.direction === 'desc' ? -result : result;
     }
