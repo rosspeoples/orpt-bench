@@ -1,0 +1,40 @@
+interfaces:
+  - name: eno1
+    type: ethernet
+    state: up
+    ipv4:
+      enabled: true
+      dhcp: false
+      address:
+        - ip: 10.42.0.2
+          prefix-length: 24
+  - name: eno2
+    type: ethernet
+    state: up
+    ipv4:
+      enabled: true
+      dhcp: false
+      address:
+        - ip: 10.42.0.1
+          prefix-length: 24
+  - name: br0
+    type: linux-bridge
+    state: up
+    bridge:
+      options:
+        vlan-filtering: false
+      port:
+        - name: eno1
+  - name: br0.42
+    type: vlan
+    state: up
+    vlan:
+      base-iface: eno2
+      id: 24
+    ipv4:
+      enabled: false
+routes:
+  config:
+    - destination: 0.0.0.0/0
+      next-hop-interface: br0.42
+      table-id: 254

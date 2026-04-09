@@ -1,0 +1,10 @@
+{
+  "id": "21-rhel-k3s-node-prep-repair",
+  "name": "RHEL k3s node preparation repair",
+  "category": "kubernetes",
+  "difficulty": "expert",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the RHEL k3s node-preparation files so the host stays compatible with SELinux enforcing, firewalld, and the documented flannel VXLAN bootstrap path. Keep the existing RHEL-native approach, make the smallest correct changes, and do not add unrelated files. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 360
+}

@@ -1,0 +1,10 @@
+{
+  "id": "24-k3s-registry-mirror-trust-repair",
+  "name": "K3s registry mirror trust repair",
+  "category": "kubernetes",
+  "difficulty": "expert",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the checked-in k3s registry mirror configuration so the cluster uses the documented local mirror with proper TLS trust instead of insecure shortcuts. Keep the existing k3s registries.yaml approach, make the smallest correct changes, and do not add unrelated files. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 360
+}

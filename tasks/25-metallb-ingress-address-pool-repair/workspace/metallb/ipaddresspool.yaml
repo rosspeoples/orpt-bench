@@ -1,0 +1,9 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: ingress
+  namespace: default
+spec:
+  addresses:
+    - 10.42.0.1-10.42.0.20
+  avoidBuggyIPs: false

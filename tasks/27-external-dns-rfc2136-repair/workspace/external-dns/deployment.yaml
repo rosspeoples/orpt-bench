@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns
+  namespace: networking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: external-dns
+  template:
+    metadata:
+      labels:
+        app: external-dns
+    spec:
+      containers:
+        - name: external-dns
+          image: registry.k8s.io/external-dns/external-dns:v0.15.0
+          args:
+            - --provider=aws
+            - --source=service
+            - --registry=txt
+            - --txt-owner-id=default
+            - --domain-filter=thepeoples.cc
+            - --rfc2136-host=127.0.0.1
+            - --rfc2136-port=8053
+            - --rfc2136-zone=thepeoples.cc
+            - --rfc2136-tsig-secret-alg=hmac-md5
+            - --rfc2136-tsig-keyname=external-dns.
+            - --rfc2136-tsig-secret=$(DNS_SECRET)
+          env:
+            - name: DNS_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: external-dns
+                  key: secret

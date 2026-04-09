@@ -1,0 +1,10 @@
+{
+  "id": "22-nftables-router-ingress-repair",
+  "name": "nftables router ingress repair",
+  "category": "networking",
+  "difficulty": "expert",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the nftables ruleset so the router keeps a default-drop posture, forwards LAN traffic correctly toward the WAN, and DNATs HTTP/HTTPS to the k3s ingress VIP. Keep nftables as the source of truth, make the smallest correct changes, and do not add unrelated files. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 360
+}

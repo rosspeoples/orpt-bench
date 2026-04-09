@@ -1,0 +1,10 @@
+{
+  "id": "20-apparmor-dnsmasq-profile-repair",
+  "name": "AppArmor dnsmasq profile repair",
+  "category": "linux-hardening",
+  "difficulty": "high",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the dnsmasq AppArmor profile so the custom router layout works without switching the service to complain mode or unconfined operation. Keep the existing AppArmor/local-include structure, make the smallest correct changes, and do not add unrelated files. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 300
+}

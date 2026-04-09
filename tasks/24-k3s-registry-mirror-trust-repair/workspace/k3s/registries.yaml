@@ -1,0 +1,12 @@
+mirrors:
+  docker.io:
+    endpoint:
+      - http://registry.thepeoples.dev:5000/v2
+  ghcr.io:
+    endpoint:
+      - https://registry.thepeoples.dev:5000/v2
+configs:
+  registry.thepeoples.dev:5000:
+    tls:
+      ca_file: /etc/pki/ca-trust/source/anchors/registry-ca.pem
+      insecure_skip_verify: true

@@ -1,0 +1,11 @@
+[Unit]
+Description=Local registry mirror
+
+[Container]
+Image=docker.io/library/registry:2
+ContainerName=registry
+Volume=/srv/registry:/var/lib/registry
+PublishPort=5000:5000
+
+[Install]
+WantedBy=multi-user.target

@@ -42,10 +42,13 @@ Included task areas:
 - Docker Compose observability repair
 - Shell scripting and workspace bundle repair
 - Bootstrap sequencing and platform validation
+- RHEL host firewall, SELinux, and k3s node preparation repair
+- Router edge-policy repair with firewalld, nftables, and AppArmor
+- RHEL NetworkManager, MetalLB, Traefik, and cluster DNS automation repair
 
 ## Included Tasks
 
-- Difficulty mix: control=3, medium=1, high=7, expert=6
+- Difficulty mix: control=3, medium=2, high=10, expert=12
 
 1. Kubernetes rollout repair (01-iac-kubernetes-rollout, medium)
 2. Terraform static site repair (02-terraform-static-site, high)
@@ -64,6 +67,16 @@ Included task areas:
 15. Workspace runtime access convergence (15-workspace-runtime-access-convergence, expert)
 16. Event status shell summary (16-event-status-shell, control)
 17. Log level rollup shell script (17-log-level-rollup, control)
+18. RHEL edge firewalld router repair (18-rhel-edge-firewalld-router-repair, medium)
+19. SELinux registry volume label repair (19-selinux-registry-volume-label-repair, high)
+20. AppArmor dnsmasq profile repair (20-apparmor-dnsmasq-profile-repair, high)
+21. RHEL k3s node preparation repair (21-rhel-k3s-node-prep-repair, expert)
+22. nftables router ingress repair (22-nftables-router-ingress-repair, expert)
+23. RHEL NetworkManager bridge VLAN repair (23-rhel-networkmanager-bridge-vlan-repair, high)
+24. K3s registry mirror trust repair (24-k3s-registry-mirror-trust-repair, expert)
+25. MetalLB ingress address pool repair (25-metallb-ingress-address-pool-repair, expert)
+26. Traefik forwarded header trust repair (26-traefik-forwarded-header-trust-repair, expert)
+27. ExternalDNS RFC2136 repair (27-external-dns-rfc2136-repair, expert)
 
 ## Quickstart
 

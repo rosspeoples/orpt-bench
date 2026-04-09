@@ -1,0 +1,35 @@
+flush ruleset
+
+table inet filter {
+  chain input {
+    type filter hook input priority filter; policy drop;
+    iifname "lo" accept
+    ct state established,related accept
+    iifname "lan0" udp dport { 53, 67 } accept
+    iifname "lan0" tcp dport { 22, 53 } accept
+  }
+
+  chain forward {
+    type filter hook forward priority filter; policy accept;
+    ct state established,related accept
+    iifname "lan0" oifname "wan0" ct state established,related accept
+    iifname "wan0" oifname "lan0" ct state established,related accept
+    iifname "wan0" oifname "lan0" ip daddr 10.42.0.20 tcp dport 80 ct state new,established,related accept
+  }
+
+  chain output {
+    type filter hook output priority filter; policy accept;
+  }
+}
+
+table ip nat {
+  chain prerouting {
+    type nat hook prerouting priority dstnat; policy accept;
+    iifname "wan0" tcp dport 80 dnat to 10.42.0.20:80
+  }
+
+  chain postrouting {
+    type nat hook postrouting priority srcnat; policy accept;
+    oifname "lan0" ip saddr 10.42.0.0/24 masquerade
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "18-rhel-edge-firewalld-router-repair",
+  "name": "RHEL edge firewalld router repair",
+  "category": "networking",
+  "difficulty": "medium",
+  "requiredCapabilities": ["unattendedBenchmarkRuns"],
+  "prompt": "You are working in a benchmark fixture. Repair the checked-in firewalld router policy so it matches the local RHEL edge-router contract: WAN stays on the external zone, LAN services stay internal, masquerading happens only toward the internet, and HTTP/HTTPS are forwarded to the ingress VIP. Keep the existing firewalld-based approach, make the smallest correct changes, and do not add unrelated files. Success means the verifier script passes.",
+  "verifier": "python3 verify.py",
+  "timeoutSeconds": 240
+}

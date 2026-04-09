@@ -1,0 +1,8 @@
+[Unit]
+Description=The Peoples router dnsmasq
+
+[Service]
+ExecStart=/usr/sbin/dnsmasq --keep-in-foreground --conf-dir=/srv/router/dnsmasq.d --addn-hosts=/srv/router/hosts/router.hosts --dhcp-leasefile=/var/lib/thepeoples/router/dnsmasq.leases --pid-file=/run/thepeoples/dnsmasq/dnsmasq.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+/srv/router/dnsmasq/*.conf r,
+/srv/router/hosts/* r,
+/var/lib/misc/dnsmasq.leases rw,
+/run/dnsmasq/dnsmasq.pid rw,
+deny /srv/router/dnsmasq.d/** rw,

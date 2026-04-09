@@ -1,0 +1,27 @@
+defaultZone: public
+zones:
+  external:
+    interfaces:
+      - br0
+    masquerade: false
+    services:
+      - ssh
+      - dns
+      - dhcp
+    forwardPorts:
+      - port: 80
+        protocol: tcp
+        toAddr: 10.42.0.20
+        toPort: 80
+  internal:
+    interfaces:
+      - eno1
+    masquerade: true
+    services:
+      - cockpit
+    forwardPorts: []
+policies:
+  lanToWan:
+    ingressZone: external
+    egressZone: internal
+    target: ACCEPT

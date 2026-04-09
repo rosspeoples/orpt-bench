@@ -1,0 +1,6 @@
+#include <tunables/global>
+
+profile usr.sbin.dnsmasq /usr/sbin/dnsmasq flags=(attach_disconnected,complain) {
+  #include <abstractions/base>
+  #include <local/usr.sbin.dnsmasq>
+}
