@@ -10,7 +10,7 @@
     "totalRuns": 135,
     "successfulRuns": 91,
     "topModel": "opencode/claude-opus-4-6",
-    "topCompositeScore": 0.7758302592592592,
+    "topCompositeScore": 0.7478492962962962,
     "topSuccessRate": 0.8888888888888888,
     "href": "results/history/2026-04-09T14-34-38-436Z.json",
     "isLatest": true
