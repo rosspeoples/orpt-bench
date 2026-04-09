@@ -99,3 +99,48 @@ test('summarizeSessionMessages sums all assistant message costs tokens and tool 
   })
   assert.deepEqual(summary.toolInvocations, { read: 2, apply_patch: 1 })
 })
+
+test('summarizeSessionMessages sums assistant ledger rows that only expose info cost and tokens', () => {
+  const summary = summarizeSessionMessages([
+    {
+      info: {
+        role: 'user'
+      },
+      parts: []
+    },
+    {
+      info: {
+        role: 'assistant',
+        cost: 0.00213322,
+        tokens: {
+          input: 7925,
+          output: 361,
+          reasoning: 53,
+          cache: { read: 1536, write: 0 }
+        }
+      },
+      parts: []
+    },
+    {
+      info: {
+        role: 'assistant',
+        cost: 0.00069746,
+        tokens: {
+          input: 302,
+          output: 309,
+          reasoning: 45,
+          cache: { read: 9728, write: 0 }
+        }
+      },
+      parts: []
+    }
+  ])
+
+  assert.equal(summary.costUsd, 0.00283068)
+  assert.deepEqual(summary.tokens, {
+    input: 8227,
+    output: 670,
+    reasoning: 98,
+    cache: { read: 11264, write: 0 }
+  })
+})

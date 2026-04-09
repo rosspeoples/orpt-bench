@@ -44,21 +44,28 @@ export function computeOpenCodeZenCostUsd(modelName, tokens) {
   return Number(cost.toFixed(8))
 }
 
-function resolveBenchmarkCost({ modelName, provider, messageSummary, sessionExportError = null }) {
+function resolveBenchmarkCost({ modelName, provider, messageSummary, sessionCostSource = null, sessionExportError = null, sessionDbError = null }) {
   if (provider === 'opencode') {
     if (messageSummary.costUsd != null) {
+      const source = sessionCostSource === 'session-db-cost'
+        ? 'session-db-cost'
+        : 'session-export-cost'
+      const notes = sessionCostSource === 'session-db-cost'
+        ? 'Summed from assistant messages stored in the live OpenCode SQLite message ledger for the session.'
+        : 'Summed from all assistant messages in the exported OpenCode session.'
       return {
         costUsd: messageSummary.costUsd,
-        costAccountingSource: 'session-export-cost',
-        costAccountingNotes: 'Summed from all assistant messages in the exported OpenCode session.',
+        costAccountingSource: source,
+        costAccountingNotes: notes,
         costAccountingUrl: null
       }
     }
 
     const reconstructed = computeOpenCodeZenCostUsd(modelName, messageSummary.tokens)
     if (reconstructed != null) {
-      const notes = sessionExportError
-        ? `Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts after session export failed: ${sessionExportError}`
+      const upstreamFailure = sessionDbError || sessionExportError
+      const notes = upstreamFailure
+        ? `Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts after exact session cost recovery failed: ${upstreamFailure}`
         : 'Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.'
       return {
         costUsd: reconstructed,
@@ -549,6 +556,8 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
   let dnf = false
   let dnfReason = null
   let sessionExportError = null
+  let sessionDbError = null
+  let sessionCostSource = null
 
   try {
     const session = await server.createSession(workspaceDir, `${task.id}:${model.providerID}/${model.modelID}`)
@@ -562,8 +571,20 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
       model
     })
     try {
-      const sessionExport = await server.exportSession({ sessionID, timeoutMs: taskTimeoutMs })
-      promptPayload = { ...promptPayload, sessionExport }
+      const sessionMessages = await server.sessionMessagesFromDb({ sessionID, timeoutMs: taskTimeoutMs })
+      if (sessionMessages.length) {
+        promptPayload = { ...promptPayload, sessionMessages }
+        sessionCostSource = 'session-db-cost'
+      }
+    } catch (caught) {
+      sessionDbError = caught.message
+    }
+    try {
+      if (!promptPayload?.sessionMessages?.length) {
+        const sessionExport = await server.exportSession({ sessionID, timeoutMs: taskTimeoutMs })
+        promptPayload = { ...promptPayload, sessionExport }
+        sessionCostSource = 'session-export-cost'
+      }
     } catch (caught) {
       sessionExportError = caught.message
     }
@@ -595,14 +616,18 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     cost: null,
     tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
   }
-  const messageSummary = promptPayload?.sessionExport?.messages?.length
+  const messageSummary = promptPayload?.sessionMessages?.length
+    ? summarizeSessionMessages(promptPayload.sessionMessages, logLines)
+    : promptPayload?.sessionExport?.messages?.length
     ? summarizeSessionMessages(promptPayload.sessionExport.messages, logLines)
     : summarizeMessage(messageInfo, promptPayload?.parts || [], logLines)
   const benchmarkCost = resolveBenchmarkCost({
     modelName: `${model.providerID}/${model.modelID}`,
     provider: model.providerID,
     messageSummary,
-    sessionExportError
+    sessionCostSource,
+    sessionExportError,
+    sessionDbError
   })
   const providerLimited = isProviderLimitedFailure({ verifier, error, proxyRecords })
   const failureSummary = !(!error && verifier.code === 0)

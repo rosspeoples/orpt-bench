@@ -136,6 +136,37 @@ async function exportSessionJson(sessionID, { cwd, timeoutMs = 120000, retries =
   throw lastError
 }
 
+function parseStoredMessagePayload(raw) {
+  if (!raw) return null
+  try {
+    return JSON.parse(raw)
+  } catch {
+    return null
+  }
+}
+
+async function sessionMessagesFromDb(sessionID, { cwd = process.cwd(), timeoutMs = 120000 } = {}) {
+  const rows = await runOpenCodeJson([
+    'db',
+    `select data from message where session_id = '${sessionID.replace(/'/g, "''")}' order by time_created asc`,
+    '--format',
+    'json'
+  ], { cwd, timeoutMs })
+
+  return (rows || [])
+    .map((row) => parseStoredMessagePayload(row?.data))
+    .filter(Boolean)
+    .map((message) => ({
+      info: {
+        id: message.id || null,
+        role: message.role || null,
+        cost: Number.isFinite(message.cost) ? message.cost : null,
+        tokens: message.tokens || {}
+      },
+      parts: []
+    }))
+}
+
 export async function startOpenCodeServer({ runtime, model, proxy, workingDirectory = null }) {
   const { providerID } = model
   const logDir = path.join(runtime.tmpDir, 'logs')
@@ -288,6 +319,9 @@ export async function startOpenCodeServer({ runtime, model, proxy, workingDirect
     },
     async exportSession({ sessionID, timeoutMs = 120000 }) {
       return await exportSessionJson(sessionID, { cwd: serverCwd, timeoutMs })
+    },
+    async sessionMessagesFromDb({ sessionID, timeoutMs = 120000 }) {
+      return await sessionMessagesFromDb(sessionID, { cwd: serverCwd, timeoutMs })
     },
     async sessionDiff({ directory, sessionID }) {
       const response = await requestJson({

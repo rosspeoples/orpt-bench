@@ -141,6 +141,55 @@ test('aggregateRun preserves exact exported session costs in summaries', () => {
   assert.equal(run.taskSummary[0].totalCostUsd, 0.0314238)
 })
 
+test('aggregateRun preserves DB-backed session costs in summaries', () => {
+  const run = {
+    results: [
+      {
+        taskId: 'task-1',
+        taskName: 'Task 1',
+        category: 'scripting',
+        model: 'opencode/gpt-5.4-nano',
+        provider: 'opencode',
+        success: true,
+        score: 1,
+        durationMs: 1000,
+        requestUnits: 16,
+        requestAccountingSource: 'proxy-call-count',
+        costUsd: 0.0151336,
+        costAccountingSource: 'session-db-cost',
+        steps: 17,
+        tokens: { input: 21498, output: 2686, reasoning: 2818, cache: { read: 208640, write: 0 } }
+      }
+    ],
+    modelCatalog: {
+      models: [
+        {
+          model: 'opencode/gpt-5.4-nano',
+          featureSupport: {
+            unattendedBenchmarkRuns: 'supported'
+          }
+        }
+      ]
+    },
+    taskCatalog: [
+      {
+        id: 'task-1',
+        name: 'Task 1',
+        requiredCapabilities: ['unattendedBenchmarkRuns']
+      }
+    ],
+    scoring: {
+      valueScoreWeights: { orpt: 0.45, cost: 0.35, time: 0.2 },
+      compositeScoreWeights: { score: 0.7, valueScore: 0.3 }
+    }
+  }
+
+  aggregateRun(run, { headerCandidates: [], logRegexes: [] })
+
+  assert.equal(run.modelSummary[0].totalCostUsd, 0.0151336)
+  assert.equal(run.taskSummary[0].totalCostUsd, 0.0151336)
+})
+
 test('collectRemainingTaskEntries includes current and subsequent tasks across repeats', () => {
   const tasks = [
     { id: '01' },

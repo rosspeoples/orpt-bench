@@ -55,6 +55,16 @@ DNF is a first-class result state.
 - Wall time and cost still count against the model.
 - Benchmark output should show DNF counts in summaries and DNF status where practical in detailed views.
 
+## Cost Accounting Integrity
+
+Pricing integrity is a release-blocking requirement.
+
+- Cost telemetry must be accurate to 8 decimal places whenever the upstream system exposes exact billed values.
+- For OpenCode runs, the default source of truth is the live OpenCode SQLite `message` ledger for the benchmark session, not `opencode export --pure`.
+- `opencode export --pure` may still be useful for debugging or non-billing metadata, but it must not be treated as the authoritative billing ledger unless independently validated against the live message store.
+- If the benchmark cannot recover exact session cost from the authoritative source, the run should be marked with explicit fallback provenance and treated as lower-confidence pricing evidence.
+- Any discovered discrepancy between benchmark-recorded spend and provider-billed spend is a correctness incident and should be investigated before relying on published VALUE results.
+
 ## Invalid Run Admission
 
 Broken synthetic timeout artifacts must not become canonical benchmark outputs.
