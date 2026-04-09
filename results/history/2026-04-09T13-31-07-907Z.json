@@ -14,7 +14,10 @@
     "repeats": 1,
     "taskTimeoutSeconds": 420,
     "processTimeoutSeconds": 8190,
-    "derivedRunTimeoutSeconds": 8190
+    "derivedRunTimeoutSeconds": 8190,
+    "costRepairAppliedAt": "2026-04-09T19:41:58.852Z",
+    "costRepairStrategy": "zen-io-token-reconstruction",
+    "costRepairNotes": "OpenCode provider costs repaired in place from official Zen input/output rates using recorded prompt-side and completion-side token counts."
   },
   "results": [
     {
@@ -43,7 +46,7 @@
           "read": 13312
         }
       },
-      "costUsd": 0.0022884,
+      "costUsd": 0.011274,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -264,7 +267,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -292,7 +298,7 @@
           "read": 23552
         }
       },
-      "costUsd": 0.00256215,
+      "costUsd": 0.01845975,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -561,7 +567,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -589,7 +598,7 @@
           "read": 12800
         }
       },
-      "costUsd": 0.002529,
+      "costUsd": 0.011169,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -762,7 +771,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -790,7 +802,7 @@
           "read": 13312
         }
       },
-      "costUsd": 0.0058869,
+      "costUsd": 0.0148725,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -1027,7 +1039,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -1055,7 +1070,7 @@
           "read": 12288
         }
       },
-      "costUsd": 0.0018036,
+      "costUsd": 0.010098,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -1244,7 +1259,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -1272,7 +1290,7 @@
           "read": 16896
         }
       },
-      "costUsd": 0.00445695,
+      "costUsd": 0.01586175,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -1477,7 +1495,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -1505,7 +1526,7 @@
           "read": 14336
         }
       },
-      "costUsd": 0.00331545,
+      "costUsd": 0.01299225,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -1742,7 +1763,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -1770,7 +1794,7 @@
           "read": 17920
         }
       },
-      "costUsd": 0.00261375,
+      "costUsd": 0.01470975,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -2071,7 +2095,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -2099,7 +2126,7 @@
           "read": 21504
         }
       },
-      "costUsd": 0.00258555,
+      "costUsd": 0.01710075,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -2400,7 +2427,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -2428,7 +2458,7 @@
           "read": 17408
         }
       },
-      "costUsd": 0.00403635,
+      "costUsd": 0.01578675,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -2697,7 +2727,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -2725,7 +2758,7 @@
           "read": 17408
         }
       },
-      "costUsd": 0.00201435,
+      "costUsd": 0.01376475,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -2978,7 +3011,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -3006,7 +3042,7 @@
           "read": 17408
         }
       },
-      "costUsd": 0.0025866,
+      "costUsd": 0.014337,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -3275,7 +3311,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -3303,7 +3342,7 @@
           "read": 16384
         }
       },
-      "costUsd": 0.00294555,
+      "costUsd": 0.01400475,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -3540,7 +3579,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -3568,7 +3610,7 @@
           "read": 23040
         }
       },
-      "costUsd": 0.002466,
+      "costUsd": 0.018018,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -3853,7 +3895,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -3881,7 +3926,7 @@
           "read": 31232
         }
       },
-      "costUsd": 0.0039144,
+      "costUsd": 0.024996,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -4246,7 +4291,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -4274,7 +4322,7 @@
           "read": 11264
         }
       },
-      "costUsd": 0.0017133,
+      "costUsd": 0.0093165,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -4463,7 +4511,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -4491,7 +4542,7 @@
           "read": 12800
         }
       },
-      "costUsd": 0.00234075,
+      "costUsd": 0.01098075,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -4680,7 +4731,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -4708,7 +4762,7 @@
           "read": 12288
         }
       },
-      "costUsd": 0.0032931,
+      "costUsd": 0.0115875,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -4897,7 +4951,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -4925,7 +4982,7 @@
           "read": 16384
         }
       },
-      "costUsd": 0.00268455,
+      "costUsd": 0.01374375,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -5162,7 +5219,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -5190,7 +5250,7 @@
           "read": 18432
         }
       },
-      "costUsd": 0.00583965,
+      "costUsd": 0.01828125,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -5459,7 +5519,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -5487,7 +5550,7 @@
           "read": 15872
         }
       },
-      "costUsd": 0.0021864,
+      "costUsd": 0.0129,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -5724,7 +5787,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -5752,7 +5818,7 @@
           "read": 18432
         }
       },
-      "costUsd": 0.0040779,
+      "costUsd": 0.0165195,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -5957,7 +6023,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -5985,7 +6054,7 @@
           "read": 13312
         }
       },
-      "costUsd": 0.0023199,
+      "costUsd": 0.0113055,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -6190,7 +6259,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -6218,7 +6290,7 @@
           "read": 11776
         }
       },
-      "costUsd": 0.0024972,
+      "costUsd": 0.010446,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -6407,7 +6479,10 @@
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 1
+      "compositeScore": 1,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -6435,7 +6510,7 @@
           "read": 13824
         }
       },
-      "costUsd": 0.0026058,
+      "costUsd": 0.011937,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -6640,7 +6715,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -6668,7 +6746,7 @@
           "read": 20992
         }
       },
-      "costUsd": 0.00275265,
+      "costUsd": 0.01692225,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -6921,7 +6999,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     },
     {
       "runId": "2026-04-09T13-31-07-907Z",
@@ -6949,7 +7030,7 @@
           "read": 14848
         }
       },
-      "costUsd": 0.0024501,
+      "costUsd": 0.0124725,
       "toolInvocations": {},
       "filesChanged": 0,
       "diff": [],
@@ -7138,7 +7219,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "zen-io-token-reconstruction",
+      "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
+      "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
     }
   ],
   "leaderboard": [
@@ -7158,10 +7242,10 @@
       "totalRequestCount": 268,
       "totalRequestUnits": 268,
       "totalWallTimeMs": 1614820,
-      "totalCostUsd": 0.0807663,
+      "totalCostUsd": 0.3838575000000001,
       "averageDurationMs": 62489,
       "medianSteps": 11,
-      "averageCostUsd": 0.0024365423076923073,
+      "averageCostUsd": 0.013256480769230769,
       "eligible": true,
       "comparable": true,
       "comparabilityNote": null,
@@ -8796,10 +8880,10 @@
       "totalRequestCount": 268,
       "totalRequestUnits": 268,
       "totalWallTimeMs": 1614820,
-      "totalCostUsd": 0.0807663,
+      "totalCostUsd": 0.3838575000000001,
       "averageDurationMs": 62489,
       "medianSteps": 11,
-      "averageCostUsd": 0.0024365423076923073,
+      "averageCostUsd": 0.013256480769230769,
       "eligible": true,
       "comparable": true,
       "comparabilityNote": null,
@@ -8833,8 +8917,8 @@
       "averageRequestUnits": 9,
       "totalWallTimeMs": 40714,
       "averageWallTimeMs": 40714,
-      "totalCostUsd": 0.0022884,
-      "averageCostUsd": 0.0022884,
+      "totalCostUsd": 0.011274,
+      "averageCostUsd": 0.011274,
       "averageSteps": 10,
       "eligible": true,
       "comparable": true,
@@ -8867,8 +8951,8 @@
       "averageRequestUnits": 12,
       "totalWallTimeMs": 107632,
       "averageWallTimeMs": 107632,
-      "totalCostUsd": 0.00256215,
-      "averageCostUsd": 0.00256215,
+      "totalCostUsd": 0.01845975,
+      "averageCostUsd": 0.01845975,
       "averageSteps": 12,
       "eligible": true,
       "comparable": true,
@@ -8901,8 +8985,8 @@
       "averageRequestUnits": 6,
       "totalWallTimeMs": 24643,
       "averageWallTimeMs": 24643,
-      "totalCostUsd": 0.002529,
-      "averageCostUsd": 0.002529,
+      "totalCostUsd": 0.011169,
+      "averageCostUsd": 0.011169,
       "averageSteps": 7,
       "eligible": true,
       "comparable": true,
@@ -8935,8 +9019,8 @@
       "averageRequestUnits": 10,
       "totalWallTimeMs": 50606,
       "averageWallTimeMs": 50606,
-      "totalCostUsd": 0.0058869,
-      "averageCostUsd": 0.0058869,
+      "totalCostUsd": 0.0148725,
+      "averageCostUsd": 0.0148725,
       "averageSteps": 11,
       "eligible": false,
       "comparable": true,
@@ -8969,8 +9053,8 @@
       "averageRequestUnits": 7,
       "totalWallTimeMs": 27415,
       "averageWallTimeMs": 27415,
-      "totalCostUsd": 0.0018036,
-      "averageCostUsd": 0.0018036,
+      "totalCostUsd": 0.010098,
+      "averageCostUsd": 0.010098,
       "averageSteps": 8,
       "eligible": true,
       "comparable": true,
@@ -9003,8 +9087,8 @@
       "averageRequestUnits": 8,
       "totalWallTimeMs": 51696,
       "averageWallTimeMs": 51696,
-      "totalCostUsd": 0.00445695,
-      "averageCostUsd": 0.00445695,
+      "totalCostUsd": 0.01586175,
+      "averageCostUsd": 0.01586175,
       "averageSteps": 9,
       "eligible": false,
       "comparable": true,
@@ -9037,8 +9121,8 @@
       "averageRequestUnits": 10,
       "totalWallTimeMs": 36723,
       "averageWallTimeMs": 36723,
-      "totalCostUsd": 0.00331545,
-      "averageCostUsd": 0.00331545,
+      "totalCostUsd": 0.01299225,
+      "averageCostUsd": 0.01299225,
       "averageSteps": 11,
       "eligible": true,
       "comparable": true,
@@ -9071,8 +9155,8 @@
       "averageRequestUnits": 14,
       "totalWallTimeMs": 66577,
       "averageWallTimeMs": 66577,
-      "totalCostUsd": 0.00261375,
-      "averageCostUsd": 0.00261375,
+      "totalCostUsd": 0.01470975,
+      "averageCostUsd": 0.01470975,
       "averageSteps": 15,
       "eligible": true,
       "comparable": true,
@@ -9105,8 +9189,8 @@
       "averageRequestUnits": 14,
       "totalWallTimeMs": 85779,
       "averageWallTimeMs": 85779,
-      "totalCostUsd": 0.00258555,
-      "averageCostUsd": 0.00258555,
+      "totalCostUsd": 0.01710075,
+      "averageCostUsd": 0.01710075,
       "averageSteps": 15,
       "eligible": true,
       "comparable": true,
@@ -9139,8 +9223,8 @@
       "averageRequestUnits": 12,
       "totalWallTimeMs": 56690,
       "averageWallTimeMs": 56690,
-      "totalCostUsd": 0.00403635,
-      "averageCostUsd": 0.00403635,
+      "totalCostUsd": 0.01578675,
+      "averageCostUsd": 0.01578675,
       "averageSteps": 13,
       "eligible": false,
       "comparable": true,
@@ -9173,8 +9257,8 @@
       "averageRequestUnits": 11,
       "totalWallTimeMs": 44976,
       "averageWallTimeMs": 44976,
-      "totalCostUsd": 0.00201435,
-      "averageCostUsd": 0.00201435,
+      "totalCostUsd": 0.01376475,
+      "averageCostUsd": 0.01376475,
       "averageSteps": 12,
       "eligible": true,
       "comparable": true,
@@ -9207,8 +9291,8 @@
       "averageRequestUnits": 12,
       "totalWallTimeMs": 43573,
       "averageWallTimeMs": 43573,
-      "totalCostUsd": 0.0025866,
-      "averageCostUsd": 0.0025866,
+      "totalCostUsd": 0.014337,
+      "averageCostUsd": 0.014337,
       "averageSteps": 13,
       "eligible": false,
       "comparable": true,
@@ -9241,8 +9325,8 @@
       "averageRequestUnits": 10,
       "totalWallTimeMs": 226717,
       "averageWallTimeMs": 226717,
-      "totalCostUsd": 0.00294555,
-      "averageCostUsd": 0.00294555,
+      "totalCostUsd": 0.01400475,
+      "averageCostUsd": 0.01400475,
       "averageSteps": 11,
       "eligible": true,
       "comparable": true,
@@ -9275,8 +9359,8 @@
       "averageRequestUnits": 13,
       "totalWallTimeMs": 60151,
       "averageWallTimeMs": 60151,
-      "totalCostUsd": 0.002466,
-      "averageCostUsd": 0.002466,
+      "totalCostUsd": 0.018018,
+      "averageCostUsd": 0.018018,
       "averageSteps": 14,
       "eligible": true,
       "comparable": true,
@@ -9309,8 +9393,8 @@
       "averageRequestUnits": 18,
       "totalWallTimeMs": 155592,
       "averageWallTimeMs": 155592,
-      "totalCostUsd": 0.0039144,
-      "averageCostUsd": 0.0039144,
+      "totalCostUsd": 0.024996,
+      "averageCostUsd": 0.024996,
       "averageSteps": 19,
       "eligible": false,
       "comparable": true,
@@ -9343,8 +9427,8 @@
       "averageRequestUnits": 7,
       "totalWallTimeMs": 26834,
       "averageWallTimeMs": 26834,
-      "totalCostUsd": 0.0017133,
-      "averageCostUsd": 0.0017133,
+      "totalCostUsd": 0.0093165,
+      "averageCostUsd": 0.0093165,
       "averageSteps": 8,
       "eligible": true,
       "comparable": true,
@@ -9377,8 +9461,8 @@
       "averageRequestUnits": 7,
       "totalWallTimeMs": 39878,
       "averageWallTimeMs": 39878,
-      "totalCostUsd": 0.00234075,
-      "averageCostUsd": 0.00234075,
+      "totalCostUsd": 0.01098075,
+      "averageCostUsd": 0.01098075,
       "averageSteps": 8,
       "eligible": true,
       "comparable": true,
@@ -9411,8 +9495,8 @@
       "averageRequestUnits": 7,
       "totalWallTimeMs": 25427,
       "averageWallTimeMs": 25427,
-      "totalCostUsd": 0.0032931,
-      "averageCostUsd": 0.0032931,
+      "totalCostUsd": 0.0115875,
+      "averageCostUsd": 0.0115875,
       "averageSteps": 8,
       "eligible": false,
       "comparable": true,
@@ -9445,8 +9529,8 @@
       "averageRequestUnits": 10,
       "totalWallTimeMs": 55508,
       "averageWallTimeMs": 55508,
-      "totalCostUsd": 0.00268455,
-      "averageCostUsd": 0.00268455,
+      "totalCostUsd": 0.01374375,
+      "averageCostUsd": 0.01374375,
       "averageSteps": 11,
       "eligible": false,
       "comparable": true,
@@ -9479,8 +9563,8 @@
       "averageRequestUnits": 12,
       "totalWallTimeMs": 90221,
       "averageWallTimeMs": 90221,
-      "totalCostUsd": 0.00583965,
-      "averageCostUsd": 0.00583965,
+      "totalCostUsd": 0.01828125,
+      "averageCostUsd": 0.01828125,
       "averageSteps": 13,
       "eligible": false,
       "comparable": true,
@@ -9513,8 +9597,8 @@
       "averageRequestUnits": 10,
       "totalWallTimeMs": 35831,
       "averageWallTimeMs": 35831,
-      "totalCostUsd": 0.0021864,
-      "averageCostUsd": 0.0021864,
+      "totalCostUsd": 0.0129,
+      "averageCostUsd": 0.0129,
       "averageSteps": 11,
       "eligible": false,
       "comparable": true,
@@ -9547,8 +9631,8 @@
       "averageRequestUnits": 8,
       "totalWallTimeMs": 49160,
       "averageWallTimeMs": 49160,
-      "totalCostUsd": 0.0040779,
-      "averageCostUsd": 0.0040779,
+      "totalCostUsd": 0.0165195,
+      "averageCostUsd": 0.0165195,
       "averageSteps": 9,
       "eligible": false,
       "comparable": true,
@@ -9581,8 +9665,8 @@
       "averageRequestUnits": 8,
       "totalWallTimeMs": 30960,
       "averageWallTimeMs": 30960,
-      "totalCostUsd": 0.0023199,
-      "averageCostUsd": 0.0023199,
+      "totalCostUsd": 0.0113055,
+      "averageCostUsd": 0.0113055,
       "averageSteps": 9,
       "eligible": false,
       "comparable": true,
@@ -9615,8 +9699,8 @@
       "averageRequestUnits": 7,
       "totalWallTimeMs": 24318,
       "averageWallTimeMs": 24318,
-      "totalCostUsd": 0.0024972,
-      "averageCostUsd": 0.0024972,
+      "totalCostUsd": 0.010446,
+      "averageCostUsd": 0.010446,
       "averageSteps": 8,
       "eligible": true,
       "comparable": true,
@@ -9649,8 +9733,8 @@
       "averageRequestUnits": 8,
       "totalWallTimeMs": 29612,
       "averageWallTimeMs": 29612,
-      "totalCostUsd": 0.0026058,
-      "averageCostUsd": 0.0026058,
+      "totalCostUsd": 0.011937,
+      "averageCostUsd": 0.011937,
       "averageSteps": 9,
       "eligible": false,
       "comparable": true,
@@ -9683,8 +9767,8 @@
       "averageRequestUnits": 11,
       "totalWallTimeMs": 99142,
       "averageWallTimeMs": 99142,
-      "totalCostUsd": 0.00275265,
-      "averageCostUsd": 0.00275265,
+      "totalCostUsd": 0.01692225,
+      "averageCostUsd": 0.01692225,
       "averageSteps": 12,
       "eligible": false,
       "comparable": true,
@@ -9717,8 +9801,8 @@
       "averageRequestUnits": 7,
       "totalWallTimeMs": 28445,
       "averageWallTimeMs": 28445,
-      "totalCostUsd": 0.0024501,
-      "averageCostUsd": 0.0024501,
+      "totalCostUsd": 0.0124725,
+      "averageCostUsd": 0.0124725,
       "averageSteps": 8,
       "eligible": false,
       "comparable": true,

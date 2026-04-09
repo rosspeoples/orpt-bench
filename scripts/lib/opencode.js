@@ -77,6 +77,65 @@ async function requestJson({ baseUrl, pathname, method = 'GET', query = {}, body
   }
 }
 
+async function runOpenCodeJson(args, { cwd = process.cwd(), timeoutMs = 120000 } = {}) {
+  return await new Promise((resolve, reject) => {
+    const child = spawn('opencode', args, {
+      cwd,
+      env: process.env,
+      stdio: ['ignore', 'pipe', 'pipe']
+    })
+
+    let stdout = ''
+    let stderr = ''
+    const timer = setTimeout(() => {
+      child.kill('SIGTERM')
+      setTimeout(() => {
+        if (child.exitCode == null) child.kill('SIGKILL')
+      }, 3000)
+    }, timeoutMs)
+
+    child.stdout.on('data', (chunk) => {
+      stdout += chunk.toString()
+    })
+    child.stderr.on('data', (chunk) => {
+      stderr += chunk.toString()
+    })
+    child.once('error', (error) => {
+      clearTimeout(timer)
+      reject(error)
+    })
+    child.once('exit', (code) => {
+      clearTimeout(timer)
+      if (code !== 0) {
+        reject(new Error(`opencode ${args.join(' ')} failed with code ${code}: ${(stderr || stdout).trim()}`))
+        return
+      }
+
+      try {
+        resolve(JSON.parse(stdout))
+      } catch (error) {
+        reject(new Error(`Failed to parse opencode ${args.join(' ')} JSON output: ${error.message}`))
+      }
+    })
+  })
+}
+
+async function exportSessionJson(sessionID, { cwd, timeoutMs = 120000, retries = 5, retryDelayMs = 250 } = {}) {
+  let lastError = null
+
+  for (let attempt = 1; attempt <= retries; attempt += 1) {
+    try {
+      return await runOpenCodeJson(['export', sessionID, '--pure'], { cwd, timeoutMs })
+    } catch (error) {
+      lastError = error
+      if (attempt === retries) break
+      await new Promise((resolve) => setTimeout(resolve, retryDelayMs))
+    }
+  }
+
+  throw lastError
+}
+
 export async function startOpenCodeServer({ runtime, model, proxy, workingDirectory = null }) {
   const { providerID } = model
   const logDir = path.join(runtime.tmpDir, 'logs')
@@ -226,6 +285,9 @@ export async function startOpenCodeServer({ runtime, model, proxy, workingDirect
         timeoutMs: taskTimeoutMs
       })
       return response.data
+    },
+    async exportSession({ sessionID, timeoutMs = 120000 }) {
+      return await exportSessionJson(sessionID, { cwd: serverCwd, timeoutMs })
     },
     async sessionDiff({ directory, sessionID }) {
       const response = await requestJson({

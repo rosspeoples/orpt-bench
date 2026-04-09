@@ -7,9 +7,75 @@ import addFormats from 'ajv-formats'
 
 import { loadTasks, parseModel } from './tasks.js'
 import { average, copyDir, ensureDir, exists, nowIso, readJson, slugify, sum, writeJson, writeText } from './fs.js'
-import { extractRequestUnits, summarizeMessage } from './extract.js'
+import { extractRequestUnits, summarizeMessage, summarizeSessionMessages } from './extract.js'
 import { startOpenCodeServer } from './opencode.js'
 import { startRecordingProxy } from './proxy.js'
+
+const OPENCODE_ZEN_PRICING_PER_MILLION = {
+  'opencode/claude-opus-4-6': { input: 5, output: 25, cacheRead: 0.5, cacheWrite: 6.25, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/claude-sonnet-4-6': { input: 3, output: 15, cacheRead: 0.3, cacheWrite: 3.75, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/claude-haiku-4-5': { input: 1, output: 5, cacheRead: 0.1, cacheWrite: 1.25, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/claude-3-5-haiku': { input: 0.8, output: 4, cacheRead: 0.08, cacheWrite: 1, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/gpt-5.4': { input: 2.5, output: 15, cacheRead: 0.25, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/gpt-5.4-pro': { input: 30, output: 180, cacheRead: 30, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/gpt-5.4-mini': { input: 0.75, output: 4.5, cacheRead: 0.075, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/gpt-5.4-nano': { input: 0.2, output: 1.25, cacheRead: 0.02, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/gemini-3.1-pro': { input: 2, output: 12, cacheRead: 0.2, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/gemini-3-flash': { input: 0.5, output: 3, cacheRead: 0.05, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/glm-5.1': { input: 1.4, output: 4.4, cacheRead: 0.26, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/glm-5': { input: 1, output: 3.2, cacheRead: 0.2, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/minimax-m2.5': { input: 0.3, output: 1.2, cacheRead: 0.06, cacheWrite: 0.375, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/big-pickle': { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/nemotron-3-super-free': { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/minimax-m2.5-free': { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' },
+  'opencode/qwen3.6-plus-free': { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, source: 'https://opencode.ai/docs/zen/#pricing' }
+}
+
+export function computeOpenCodeZenCostUsd(modelName, tokens) {
+  const pricing = OPENCODE_ZEN_PRICING_PER_MILLION[modelName]
+  if (!pricing || !tokens) return null
+  const cache = tokens.cache || {}
+  const inputTokens = (tokens.input || 0) + (cache.read || 0) + (cache.write || 0)
+  const outputTokens = (tokens.output || 0) + (tokens.reasoning || 0)
+  const cost = (
+    (inputTokens * pricing.input) +
+    (outputTokens * pricing.output)
+  ) / 1_000_000
+  return Number(cost.toFixed(8))
+}
+
+function resolveBenchmarkCost({ modelName, provider, messageSummary, sessionExportError = null }) {
+  if (provider === 'opencode') {
+    if (messageSummary.costUsd != null) {
+      return {
+        costUsd: messageSummary.costUsd,
+        costAccountingSource: 'session-export-cost',
+        costAccountingNotes: 'Summed from all assistant messages in the exported OpenCode session.',
+        costAccountingUrl: null
+      }
+    }
+
+    const reconstructed = computeOpenCodeZenCostUsd(modelName, messageSummary.tokens)
+    if (reconstructed != null) {
+      const notes = sessionExportError
+        ? `Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts after session export failed: ${sessionExportError}`
+        : 'Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.'
+      return {
+        costUsd: reconstructed,
+        costAccountingSource: 'zen-io-token-reconstruction',
+        costAccountingNotes: notes,
+        costAccountingUrl: OPENCODE_ZEN_PRICING_PER_MILLION[modelName].source
+      }
+    }
+  }
+
+  return {
+    costUsd: messageSummary.costUsd,
+    costAccountingSource: messageSummary.costUsd == null ? null : 'session-message-cost',
+    costAccountingNotes: messageSummary.costUsd == null ? null : 'Captured from the OpenCode session message payload.',
+    costAccountingUrl: null
+  }
+}
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value))
@@ -482,6 +548,7 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
   let diff = []
   let dnf = false
   let dnfReason = null
+  let sessionExportError = null
 
   try {
     const session = await server.createSession(workspaceDir, `${task.id}:${model.providerID}/${model.modelID}`)
@@ -494,6 +561,12 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
       agent: runtime.agent,
       model
     })
+    try {
+      const sessionExport = await server.exportSession({ sessionID, timeoutMs: taskTimeoutMs })
+      promptPayload = { ...promptPayload, sessionExport }
+    } catch (caught) {
+      sessionExportError = caught.message
+    }
     diff = await server.sessionDiff({ directory: workspaceDir, sessionID })
     verifier = await runCommand('python3', [path.join(runTaskDir, 'verify.py')], { cwd: runTaskDir, env: process.env })
   } catch (caught) {
@@ -522,7 +595,15 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     cost: null,
     tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
   }
-  const messageSummary = summarizeMessage(messageInfo, promptPayload?.parts || [], logLines)
+  const messageSummary = promptPayload?.sessionExport?.messages?.length
+    ? summarizeSessionMessages(promptPayload.sessionExport.messages, logLines)
+    : summarizeMessage(messageInfo, promptPayload?.parts || [], logLines)
+  const benchmarkCost = resolveBenchmarkCost({
+    modelName: `${model.providerID}/${model.modelID}`,
+    provider: model.providerID,
+    messageSummary,
+    sessionExportError
+  })
   const providerLimited = isProviderLimitedFailure({ verifier, error, proxyRecords })
   const failureSummary = !(!error && verifier.code === 0)
     ? summarizeFailureOutcome({ verifier, error, proxyRecords, logExcerpt: logLines.slice(-50) })
@@ -545,7 +626,10 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     steps: messageSummary.steps,
     requestCount: proxyRecords.length,
     tokens: messageSummary.tokens,
-    costUsd: messageSummary.costUsd,
+    costUsd: benchmarkCost.costUsd,
+    costAccountingSource: benchmarkCost.costAccountingSource,
+    costAccountingNotes: benchmarkCost.costAccountingNotes,
+    costAccountingUrl: benchmarkCost.costAccountingUrl,
     toolInvocations: messageSummary.toolInvocations,
     filesChanged: Array.isArray(diff) ? diff.length : 0,
     diff,

@@ -120,3 +120,68 @@ export function summarizeMessage(info, parts, logLines = []) {
     tokens: info.tokens && Object.keys(info.tokens).length ? info.tokens : totalTokensFromSteps
   }
 }
+
+function emptyTokens() {
+  return {
+    input: 0,
+    output: 0,
+    reasoning: 0,
+    cache: { read: 0, write: 0 }
+  }
+}
+
+function normalizeTokens(tokens) {
+  const cache = tokens?.cache || {}
+  return {
+    input: Number(tokens?.input || 0),
+    output: Number(tokens?.output || 0),
+    reasoning: Number(tokens?.reasoning || 0),
+    cache: {
+      read: Number(cache.read || 0),
+      write: Number(cache.write || 0)
+    }
+  }
+}
+
+function addTokens(total, tokens) {
+  total.input += tokens.input
+  total.output += tokens.output
+  total.reasoning += tokens.reasoning
+  total.cache.read += tokens.cache.read
+  total.cache.write += tokens.cache.write
+  return total
+}
+
+export function summarizeSessionMessages(messages, logLines = []) {
+  const assistantMessages = (messages || []).filter((message) => message?.info?.role === 'assistant')
+  const aggregate = {
+    steps: 0,
+    toolInvocations: {},
+    costUsd: null,
+    tokens: emptyTokens()
+  }
+  let sawCost = false
+
+  for (const message of assistantMessages) {
+    const summary = summarizeMessage(message.info || {}, message.parts || [], [])
+    aggregate.steps += summary.steps
+    for (const [tool, count] of Object.entries(summary.toolInvocations)) {
+      aggregate.toolInvocations[tool] = (aggregate.toolInvocations[tool] || 0) + count
+    }
+    addTokens(aggregate.tokens, normalizeTokens(summary.tokens))
+    if (Number.isFinite(summary.costUsd)) {
+      aggregate.costUsd = (aggregate.costUsd || 0) + summary.costUsd
+      sawCost = true
+    }
+  }
+
+  const logSummary = summarizeLogLines(logLines)
+  aggregate.steps = Math.max(aggregate.steps, logSummary.steps)
+
+  return {
+    steps: aggregate.steps,
+    toolInvocations: aggregate.toolInvocations,
+    costUsd: sawCost ? Number(aggregate.costUsd.toFixed(8)) : null,
+    tokens: aggregate.tokens
+  }
+}

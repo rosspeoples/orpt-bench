@@ -54,7 +54,10 @@
         "models": { "type": "array", "items": { "type": "string" } },
         "taskTimeoutSeconds": { "type": ["number", "null"] },
         "processTimeoutSeconds": { "type": ["number", "null"] },
-        "derivedRunTimeoutSeconds": { "type": ["number", "null"] }
+        "derivedRunTimeoutSeconds": { "type": ["number", "null"] },
+        "costRepairAppliedAt": { "type": ["string", "null"] },
+        "costRepairStrategy": { "type": ["string", "null"] },
+        "costRepairNotes": { "type": ["string", "null"] }
       }
     },
     "results": {
@@ -86,6 +89,9 @@
           "requestUnits": { "type": ["number", "null"] },
           "requestAccountingSource": { "type": ["string", "null"] },
           "costUsd": { "type": ["number", "null"] },
+          "costAccountingSource": { "type": ["string", "null"] },
+          "costAccountingNotes": { "type": ["string", "null"] },
+          "costAccountingUrl": { "type": ["string", "null"] },
           "sessionId": { "type": ["string", "null"] },
           "providerLimited": { "type": ["boolean", "null"] },
           "dnf": { "type": ["boolean", "null"] },

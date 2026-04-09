@@ -11,12 +11,16 @@ export async function readJson(filePath) {
 
 export async function writeJson(filePath, value) {
   await ensureDir(path.dirname(filePath))
-  await fs.writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8')
+  const tempFilePath = `${filePath}.tmp-${process.pid}-${Date.now()}`
+  await fs.writeFile(tempFilePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8')
+  await fs.rename(tempFilePath, filePath)
 }
 
 export async function writeText(filePath, value) {
   await ensureDir(path.dirname(filePath))
-  await fs.writeFile(filePath, value, 'utf8')
+  const tempFilePath = `${filePath}.tmp-${process.pid}-${Date.now()}`
+  await fs.writeFile(tempFilePath, value, 'utf8')
+  await fs.rename(tempFilePath, filePath)
 }
 
 export async function copyDir(source, destination) {

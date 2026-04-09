@@ -3,16 +3,16 @@
     "type": "bar",
     "x": [
       "opencode/claude-opus-4-6",
+      "opencode/glm-5",
       "opencode/gpt-5.4",
       "opencode/claude-sonnet-4-6",
-      "opencode/glm-5",
       "opencode/gemini-3.1-pro"
     ],
     "y": [
       14.875,
+      13.2,
       11,
       16.428571428571427,
-      13.2,
       8
     ],
     "marker": {

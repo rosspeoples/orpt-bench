@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { aggregateRun, collectRemainingTaskEntries, computeCompositeScore, computeCompositeValueScore, isProviderLimitedFailure, runContainsSyntheticTimeoutRows, shouldWriteLatestRunArtifact, summarizeFailureOutcome } from '../scripts/lib/benchmark.js'
+import { aggregateRun, collectRemainingTaskEntries, computeCompositeScore, computeCompositeValueScore, computeOpenCodeZenCostUsd, isProviderLimitedFailure, runContainsSyntheticTimeoutRows, shouldWriteLatestRunArtifact, summarizeFailureOutcome } from '../scripts/lib/benchmark.js'
 import { permissionRules } from '../scripts/lib/opencode.js'
 
 test('computeCompositeValueScore returns 1 for task-best comparable run', () => {
@@ -64,6 +64,81 @@ test('computeCompositeScore keeps correctness dominant', () => {
   assert.equal(computeCompositeScore(0, 0), 0)
   assert.equal(computeCompositeScore(1, 0.5), 0.85)
   assert.equal(computeCompositeScore(0, 1), 0.3)
+})
+
+test('computeOpenCodeZenCostUsd bills recorded prompt-side tokens at input rate and completion-side tokens at output rate', () => {
+  const cost = computeOpenCodeZenCostUsd('opencode/claude-sonnet-4-6', {
+    input: 1000,
+    output: 200,
+    reasoning: 50,
+    cache: { read: 5000, write: 1000 }
+  })
+
+  assert.equal(cost, 0.02475)
+})
+
+test('computeOpenCodeZenCostUsd returns null for unknown model pricing', () => {
+  assert.equal(computeOpenCodeZenCostUsd('opencode/unknown-model', { input: 1, output: 1, reasoning: 0, cache: { read: 0, write: 0 } }), null)
+})
+
+test('computeOpenCodeZenCostUsd remains available as fallback when exact session export cost is missing', () => {
+  const cost = computeOpenCodeZenCostUsd('opencode/gpt-5.4-mini', {
+    input: 1000,
+    output: 100,
+    reasoning: 0,
+    cache: { read: 500, write: 0 }
+  })
+
+  assert.equal(cost, 0.001575)
+})
+
+test('aggregateRun preserves exact exported session costs in summaries', () => {
+  const run = {
+    results: [
+      {
+        taskId: 'task-1',
+        taskName: 'Task 1',
+        category: 'scripting',
+        model: 'opencode/gpt-5.4-mini',
+        provider: 'opencode',
+        success: true,
+        score: 1,
+        durationMs: 1000,
+        requestUnits: 5,
+        requestAccountingSource: 'proxy-call-count',
+        costUsd: 0.0314238,
+        costAccountingSource: 'session-export-cost',
+        steps: 8,
+        tokens: { input: 100, output: 50, reasoning: 10, cache: { read: 500, write: 0 } }
+      }
+    ],
+    modelCatalog: {
+      models: [
+        {
+          model: 'opencode/gpt-5.4-mini',
+          featureSupport: {
+            unattendedBenchmarkRuns: 'supported'
+          }
+        }
+      ]
+    },
+    taskCatalog: [
+      {
+        id: 'task-1',
+        name: 'Task 1',
+        requiredCapabilities: ['unattendedBenchmarkRuns']
+      }
+    ],
+    scoring: {
+      valueScoreWeights: { orpt: 0.45, cost: 0.35, time: 0.2 },
+      compositeScoreWeights: { score: 0.7, valueScore: 0.3 }
+    }
+  }
+
+  aggregateRun(run, { headerCandidates: [], logRegexes: [] })
+
+  assert.equal(run.modelSummary[0].totalCostUsd, 0.0314238)
+  assert.equal(run.taskSummary[0].totalCostUsd, 0.0314238)
 })
 
 test('collectRemainingTaskEntries includes current and subsequent tasks across repeats', () => {

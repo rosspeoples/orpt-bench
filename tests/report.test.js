@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { extractRequestUnits, summarizeLogLines, summarizeParts } from '../scripts/lib/extract.js'
+import { extractRequestUnits, summarizeLogLines, summarizeParts, summarizeSessionMessages } from '../scripts/lib/extract.js'
 
 test('extractRequestUnits sums matching proxy header values', () => {
   const summary = extractRequestUnits({
@@ -44,4 +44,58 @@ test('summarizeMessage returns null cost when provider cost is unavailable', asy
   const { summarizeMessage } = await import('../scripts/lib/extract.js')
   const summary = summarizeMessage({}, [], [])
   assert.equal(summary.costUsd, null)
+})
+
+test('summarizeSessionMessages sums all assistant message costs tokens and tool calls', () => {
+  const summary = summarizeSessionMessages([
+    {
+      info: {
+        role: 'user'
+      },
+      parts: [{ type: 'text', text: 'fix it' }]
+    },
+    {
+      info: {
+        role: 'assistant',
+        cost: 0.01,
+        tokens: {
+          input: 100,
+          output: 20,
+          reasoning: 5,
+          cache: { read: 10, write: 3 }
+        }
+      },
+      parts: [
+        { type: 'tool', tool: 'read' },
+        { type: 'step-finish', cost: 0.01, tokens: { input: 100, output: 20, reasoning: 5, cache: { read: 10, write: 3 } } }
+      ]
+    },
+    {
+      info: {
+        role: 'assistant',
+        cost: 0.02,
+        tokens: {
+          input: 50,
+          output: 10,
+          reasoning: 1,
+          cache: { read: 7, write: 0 }
+        }
+      },
+      parts: [
+        { type: 'tool', tool: 'read' },
+        { type: 'tool', tool: 'apply_patch' },
+        { type: 'step-finish', cost: 0.02, tokens: { input: 50, output: 10, reasoning: 1, cache: { read: 7, write: 0 } } }
+      ]
+    }
+  ], ['INFO service=session.prompt step=0', 'INFO service=session.prompt step=1'])
+
+  assert.equal(summary.steps, 2)
+  assert.equal(summary.costUsd, 0.03)
+  assert.deepEqual(summary.tokens, {
+    input: 150,
+    output: 30,
+    reasoning: 6,
+    cache: { read: 17, write: 3 }
+  })
+  assert.deepEqual(summary.toolInvocations, { read: 2, apply_patch: 1 })
 })
