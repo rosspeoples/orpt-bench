@@ -1,5 +1,37 @@
 [
   {
+    "id": "2026-04-08T23-28-14-467Z",
+    "startedAt": "2026-04-08T23:28:14.468Z",
+    "completedAt": "2026-04-08T23:50:21.195Z",
+    "benchmarkCycle": "candidate_full",
+    "taskCount": 17,
+    "modelCount": 1,
+    "repeats": 1,
+    "totalRuns": 17,
+    "successfulRuns": 14,
+    "topModel": "opencode/big-pickle",
+    "topCompositeScore": 0.8235294117647058,
+    "topSuccessRate": 0.8235294117647058,
+    "href": "results/history/2026-04-08T23-28-14-467Z.json",
+    "isLatest": true
+  },
+  {
+    "id": "2026-04-08T23-28-14-463Z",
+    "startedAt": "2026-04-08T23:28:14.464Z",
+    "completedAt": "2026-04-08T23:39:58.663Z",
+    "benchmarkCycle": "candidate_full",
+    "taskCount": 17,
+    "modelCount": 1,
+    "repeats": 1,
+    "totalRuns": 17,
+    "successfulRuns": 14,
+    "topModel": "opencode/kimi-k2.5",
+    "topCompositeScore": 0.8235294117647058,
+    "topSuccessRate": 0.8235294117647058,
+    "href": "results/history/2026-04-08T23-28-14-463Z.json",
+    "isLatest": false
+  },
+  {
     "id": "2026-04-08T22-13-41-723Z",
     "startedAt": "2026-04-08T22:13:41.724Z",
     "completedAt": "2026-04-08T22:44:24.665Z",
@@ -13,7 +45,7 @@
     "topCompositeScore": 0.9411764705882353,
     "topSuccessRate": 0.9411764705882353,
     "href": "results/history/2026-04-08T22-13-41-723Z.json",
-    "isLatest": true
+    "isLatest": false
   },
   {
     "id": "2026-04-08T21-33-53-638Z",
@@ -29,6 +61,38 @@
     "topCompositeScore": 0.6470588235294118,
     "topSuccessRate": 0.6470588235294118,
     "href": "results/history/2026-04-08T21-33-53-638Z.json",
+    "isLatest": false
+  },
+  {
+    "id": "2026-04-08T07-55-40-964Z",
+    "startedAt": "2026-04-08T07:55:40.965Z",
+    "completedAt": "2026-04-08T08:09:16.712Z",
+    "benchmarkCycle": "weekly",
+    "taskCount": 15,
+    "modelCount": 1,
+    "repeats": 1,
+    "totalRuns": 15,
+    "successfulRuns": 11,
+    "topModel": "opencode/glm-5",
+    "topCompositeScore": 0.7333333333333333,
+    "topSuccessRate": 0.7333333333333333,
+    "href": "results/history/2026-04-08T07-55-40-964Z.json",
+    "isLatest": false
+  },
+  {
+    "id": "2026-04-07T23-14-03-414Z",
+    "startedAt": "2026-04-07T23:14:03.415Z",
+    "completedAt": "2026-04-07T23:36:23.749Z",
+    "benchmarkCycle": null,
+    "taskCount": 15,
+    "modelCount": 2,
+    "repeats": 1,
+    "totalRuns": 30,
+    "successfulRuns": 17,
+    "topModel": "opencode/gpt-5.4",
+    "topCompositeScore": 0.5343493333333333,
+    "topSuccessRate": 0.6,
+    "href": "results/history/2026-04-07T23-14-03-414Z.json",
     "isLatest": false
   }
 ]

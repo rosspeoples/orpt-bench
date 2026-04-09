@@ -6,16 +6,31 @@
       "type": "bar",
       "x": [
         "opencode/glm-5.1",
-        "opencode/minimax-m2.5"
+        "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/glm-5",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4",
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         0.941,
-        0.647
+        0.824,
+        0.824,
+        0.733,
+        0.647,
+        0.6,
+        0.533
       ],
       "marker": {
         "color": [
           "#f472b6",
-          "#22c55e"
+          "#86a8ff",
+          "#fb7185",
+          "#73f0c5",
+          "#22c55e",
+          "#86a8ff",
+          "#f472b6"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -24,7 +39,12 @@
       },
       "text": [
         0.941,
-        0.647
+        0.824,
+        0.824,
+        0.733,
+        0.647,
+        0.6,
+        0.533
       ],
       "textposition": "auto",
       "textfont": {
@@ -32,8 +52,13 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/glm-5.1<br>Completion score: 0.941<br>94% success | 0.838 value<extra></extra>",
-        "opencode/minimax-m2.5<br>Completion score: 0.647<br>65% success | 0.591 value<extra></extra>"
+        "opencode/glm-5.1<br>Completion score: 0.941<br>94% success | 0.572 value<extra></extra>",
+        "opencode/kimi-k2.5<br>Completion score: 0.824<br>82% success | 0.675 value<extra></extra>",
+        "opencode/big-pickle<br>Completion score: 0.824<br>82% success | 0.653 value<extra></extra>",
+        "opencode/glm-5<br>Completion score: 0.733<br>73% success | 0.332 value<extra></extra>",
+        "opencode/minimax-m2.5<br>Completion score: 0.647<br>65% success | 0.399 value<extra></extra>",
+        "opencode/gpt-5.4<br>Completion score: 0.6<br>60% success | 0.269 value<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Completion score: 0.533<br>53% success | 0.389 value<extra></extra>"
       ]
     }
   ],

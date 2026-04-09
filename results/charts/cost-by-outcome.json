@@ -7,16 +7,31 @@
       "name": "Solved tasks cost",
       "x": [
         "opencode/glm-5.1",
-        "opencode/minimax-m2.5"
+        "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/glm-5",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4",
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         0.0823,
-        0.0564
+        0.0414,
+        0,
+        0.1936,
+        0.0564,
+        0.0813,
+        0.0258
       ],
       "marker": {
         "color": [
           "#f472b6",
-          "#22c55e"
+          "#86a8ff",
+          "#fb7185",
+          "#73f0c5",
+          "#22c55e",
+          "#86a8ff",
+          "#f472b6"
         ],
         "opacity": 0.95
       }
@@ -26,16 +41,31 @@
       "name": "Failed tasks cost",
       "x": [
         "opencode/glm-5.1",
-        "opencode/minimax-m2.5"
+        "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/glm-5",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4",
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         0,
-        0.0257
+        0.0089,
+        0,
+        0.0479,
+        0.0257,
+        0.065,
+        0.0196
       ],
       "marker": {
         "color": [
           "rgba(244, 114, 182, 0.42)",
-          "rgba(34, 197, 94, 0.42)"
+          "rgba(134, 168, 255, 0.42)",
+          "rgba(251, 113, 133, 0.42)",
+          "rgba(115, 240, 197, 0.42)",
+          "rgba(34, 197, 94, 0.42)",
+          "rgba(134, 168, 255, 0.42)",
+          "rgba(244, 114, 182, 0.42)"
         ],
         "opacity": 0.95
       }

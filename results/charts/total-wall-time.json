@@ -5,16 +5,31 @@
     {
       "type": "bar",
       "x": [
+        "opencode/kimi-k2.5",
+        "opencode/glm-5",
         "opencode/minimax-m2.5",
+        "opencode/gpt-5.4-mini",
+        "opencode/big-pickle",
+        "opencode/gpt-5.4",
         "opencode/glm-5.1"
       ],
       "y": [
+        11.32,
+        13.55,
         14.16,
+        14.17,
+        21.7,
+        22.31,
         30.31
       ],
       "marker": {
         "color": [
+          "#86a8ff",
+          "#73f0c5",
           "#22c55e",
+          "#f472b6",
+          "#fb7185",
+          "#86a8ff",
           "#f472b6"
         ],
         "line": {
@@ -23,7 +38,12 @@
         }
       },
       "text": [
+        11.32,
+        13.55,
         14.16,
+        14.17,
+        21.7,
+        22.31,
         30.31
       ],
       "textposition": "auto",
@@ -32,7 +52,12 @@
         "size": 12
       },
       "hovertemplate": [
+        "opencode/kimi-k2.5<br>Minutes: 11.32<br>82% success | $0.0503 total cost<extra></extra>",
+        "opencode/glm-5<br>Minutes: 13.55<br>73% success | $0.2415 total cost<extra></extra>",
         "opencode/minimax-m2.5<br>Minutes: 14.16<br>65% success | $0.0822 total cost<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Minutes: 14.17<br>53% success | $0.0454 total cost<extra></extra>",
+        "opencode/big-pickle<br>Minutes: 21.7<br>82% success | $0.0000 total cost<extra></extra>",
+        "opencode/gpt-5.4<br>Minutes: 22.31<br>60% success | $0.1463 total cost<extra></extra>",
         "opencode/glm-5.1<br>Minutes: 30.31<br>94% success | $0.0823 total cost<extra></extra>"
       ]
     }

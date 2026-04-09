@@ -7,11 +7,21 @@
       "name": "Input",
       "x": [
         "opencode/glm-5.1",
-        "opencode/minimax-m2.5"
+        "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/glm-5",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4",
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         2896,
-        256920
+        11741,
+        4603,
+        232084,
+        256920,
+        6583,
+        8275
       ],
       "marker": {
         "color": "#2dd4bf"
@@ -22,11 +32,21 @@
       "name": "Output",
       "x": [
         "opencode/glm-5.1",
-        "opencode/minimax-m2.5"
+        "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/glm-5",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4",
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         1947,
-        4241
+        6610,
+        3933,
+        2947,
+        4241,
+        3288,
+        1852
       ],
       "marker": {
         "color": "#60a5fa"
@@ -37,11 +57,21 @@
       "name": "Reasoning",
       "x": [
         "opencode/glm-5.1",
-        "opencode/minimax-m2.5"
+        "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/glm-5",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4",
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         0,
-        0
+        0,
+        0,
+        0,
+        0,
+        669,
+        2516
       ],
       "marker": {
         "color": "#c084fc"
@@ -52,11 +82,21 @@
       "name": "Cache read",
       "x": [
         "opencode/glm-5.1",
-        "opencode/minimax-m2.5"
+        "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/glm-5",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4",
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
         268160,
-        0
+        292352,
+        230586,
+        0,
+        0,
+        281856,
+        261120
       ],
       "marker": {
         "color": "#fbbf24"
@@ -67,9 +107,19 @@
       "name": "Cache write",
       "x": [
         "opencode/glm-5.1",
-        "opencode/minimax-m2.5"
+        "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/glm-5",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4",
+        "opencode/gpt-5.4-mini"
       ],
       "y": [
+        0,
+        0,
+        915,
+        0,
+        0,
         0,
         0
       ],
