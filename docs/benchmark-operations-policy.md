@@ -63,6 +63,14 @@ Broken synthetic timeout artifacts must not become canonical benchmark outputs.
 - Runs containing synthetic timeout filler rows must not be eligible for GitHub Pages publication.
 - Invalid raw artifacts may be retained for debugging, but must not be treated as benchmark evidence.
 
+## Task-Set Drift
+
+Task-set and harness changes invalidate direct comparability with older full-run results.
+
+- Any added task, removed task, materially changed verifier, or scoring/harness change should trigger a fresh approved-cohort rerun before new leaderboard output is treated as canonical for the current task set.
+- Until that rerun is published, older results may remain visible as historical evidence, but should be treated as earlier-task-set or earlier-harness outputs rather than current comparable baselines.
+- Generated model-matrix artifacts must be refreshed before scheduling those reruns when the checked-in task set changes.
+
 ## Preflight Requirements
 
 Before any token-spending run, verify and print:
@@ -74,6 +82,7 @@ Before any token-spending run, verify and print:
 - derived outer timeout
 - process timeout override
 - whether any runner containers are already active
+- whether generated matrix/lifecycle artifacts were refreshed after the latest task-set or harness changes
 
 If any of these are wrong, do not run the benchmark.
 

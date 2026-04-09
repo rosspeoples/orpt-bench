@@ -1,7 +1,7 @@
 # Model Lifecycle Issues
 
-Updated: 2026-04-08T02:03:06.421Z
+Updated: 2026-04-09T03:52:58.464Z
 
 ## Planned Issues
 
-- [deprecated] Deprecate opencode/glm-5
+- None

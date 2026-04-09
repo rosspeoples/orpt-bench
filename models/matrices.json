@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-08T16:30:00.000Z",
+  "updatedAt": "2026-04-09T03:52:58.420Z",
   "taskSet": {
     "taskIds": [
       "01-iac-kubernetes-rollout",
@@ -18,7 +18,17 @@
       "14-build-workspace-plane-convergence",
       "15-workspace-runtime-access-convergence",
       "16-event-status-shell",
-      "17-log-level-rollup"
+      "17-log-level-rollup",
+      "18-rhel-edge-firewalld-router-repair",
+      "19-selinux-registry-volume-label-repair",
+      "20-apparmor-dnsmasq-profile-repair",
+      "21-rhel-k3s-node-prep-repair",
+      "22-nftables-router-ingress-repair",
+      "23-rhel-networkmanager-bridge-vlan-repair",
+      "24-k3s-registry-mirror-trust-repair",
+      "25-metallb-ingress-address-pool-repair",
+      "26-traefik-forwarded-header-trust-repair",
+      "27-external-dns-rfc2136-repair"
     ],
     "requiredCapabilities": [
       "unattendedBenchmarkRuns"

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-08T02:03:06.400Z",
+  "updatedAt": "2026-04-09T03:52:58.415Z",
   "models": [
     {
       "model": "opencode/gemini-3.1-pro",
@@ -146,7 +146,7 @@
       "devTier": "dev-cheap",
       "intelligenceScore": null,
       "agenticScore": null,
-      "blendedPricePer1mTokensUsd": 0.44,
+      "blendedPricePer1mTokensUsd": 0.455,
       "referenceBlendedPricePer1mTokensUsd": null,
       "pricingSource": "openrouter",
       "pricingSourceUrl": "https://openrouter.ai/api/v1/models",
@@ -188,13 +188,13 @@
       "devTier": "dev-cheap",
       "intelligenceScore": null,
       "agenticScore": null,
-      "blendedPricePer1mTokensUsd": 1.125,
-      "referenceBlendedPricePer1mTokensUsd": 1.125,
+      "blendedPricePer1mTokensUsd": 0.73125,
+      "referenceBlendedPricePer1mTokensUsd": 0.73125,
       "pricingSource": "openrouter",
       "pricingSourceUrl": "https://openrouter.ai/api/v1/models",
       "pricingSourceType": "automatic-openrouter-primary",
       "pricingConfidence": "medium",
-      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing qwen/qwen3.6-plus using a 3:1 input:output blend. Reference price uses qwen/qwen3.6-plus at 1.125 USD per 1M tokens from the same OpenRouter family.",
+      "pricingNotes": "Primary blended price derived automatically from OpenRouter listing qwen/qwen3.6-plus using a 3:1 input:output blend. Reference price uses qwen/qwen3.6-plus at 0.73125 USD per 1M tokens from the same OpenRouter family.",
       "unattendedBenchmarkRuns": "unknown"
     },
     {
@@ -384,7 +384,7 @@
       "devTier": "standard",
       "intelligenceScore": null,
       "agenticScore": null,
-      "blendedPricePer1mTokensUsd": 1.935,
+      "blendedPricePer1mTokensUsd": 2.14625,
       "referenceBlendedPricePer1mTokensUsd": null,
       "pricingSource": "openrouter",
       "pricingSourceUrl": "https://openrouter.ai/api/v1/models",
@@ -538,7 +538,7 @@
       "devTier": "standard",
       "intelligenceScore": null,
       "agenticScore": null,
-      "blendedPricePer1mTokensUsd": 0.8525,
+      "blendedPricePer1mTokensUsd": 1.075,
       "referenceBlendedPricePer1mTokensUsd": null,
       "pricingSource": "openrouter",
       "pricingSourceUrl": "https://openrouter.ai/api/v1/models",

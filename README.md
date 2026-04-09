@@ -19,6 +19,8 @@ The GitHub Pages publication is the canonical place for dynamic benchmark output
 - links to raw JSON artifacts, the result schema, and deeper docs
 - historical snapshot links when archived runs are available
 
+After any harness change or task-set change, previously published full-run results should be treated as historical rather than current-task comparable until the approved cohorts are re-run on the updated task set.
+
 ## Scoring
 
 - `Score` remains binary correctness: pass = `1`, fail = `0`
@@ -99,6 +101,18 @@ Environment variables:
 - `BENCHMARK_TASK_GLOB`: task subset filter
 - `BENCHMARK_PROCESS_TIMEOUT_SECONDS`: hard timeout for the benchmark process during development; keep `0` for full real benchmark runs
 - `BENCHMARK_WRITE_README`: write generated README and charts
+
+## Post-Change Reruns
+
+- Any task addition, verifier-hardening change, or harness-scoring change should trigger a fresh full rerun for the approved recurring cohorts before treating leaderboard output as current-task canonical.
+- Refresh generated model artifacts with `docker compose run --rm runner sync-models` before planning those reruns, because comparable matrices and lifecycle summaries depend on the checked-in task set.
+- Recommended rerun order after task-set changes:
+
+1. `candidate_smoke` for newly discovered or still-candidate models only
+2. `weekly` for the current cheap comparable cohort on `BENCHMARK_TASK_GLOB=*`
+3. `monthly` for the release cohort on `BENCHMARK_TASK_GLOB=*`
+
+- If generated matrix artifacts are stale relative to `tasks/*`, do not treat `models/MATRICES.md`, `models/matrices.json`, or `models/LIFECYCLE.md` as authoritative until `sync-models` has been re-run.
 
 ## Model Inventory
 

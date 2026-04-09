@@ -1,26 +1,32 @@
 {
-  "updatedAt": "2026-04-08T02:03:06.421Z",
+  "updatedAt": "2026-04-09T03:52:58.464Z",
   "summary": {
-    "discovered": 1,
-    "stageChanges": 1,
+    "discovered": 0,
+    "stageChanges": 3,
     "inventoryChanges": 0,
     "candidateSmokeQueued": 4,
-    "deprecated": 1,
+    "deprecated": 0,
     "sunset": 0
   },
-  "discovered": [
-    {
-      "model": "opencode/glm-5.1",
-      "lifecycleStage": "candidate",
-      "reason": "Discovered in the current inventory and awaiting initial smoke benchmarking."
-    }
-  ],
+  "discovered": [],
   "stageChanges": [
     {
+      "model": "opencode/gemini-3-pro",
+      "from": "deprecated",
+      "to": "candidate",
+      "reason": "Awaiting 2 passing smoke benchmark runs before promotion into recurring cohorts."
+    },
+    {
       "model": "opencode/glm-5",
-      "from": "candidate",
-      "to": "deprecated",
-      "reason": "Superseded by opencode/glm-5.1."
+      "from": "deprecated",
+      "to": "candidate",
+      "reason": "Successful benchmark data exists, but the model has not yet met the 2-run smoke promotion requirement."
+    },
+    {
+      "model": "opencode/minimax-m2.1",
+      "from": "deprecated",
+      "to": "candidate",
+      "reason": "Awaiting 2 passing smoke benchmark runs before promotion into recurring cohorts."
     }
   ],
   "inventoryChanges": [],
@@ -34,8 +40,8 @@
       "reason": "Discovered in the current inventory and awaiting initial smoke benchmarking."
     },
     {
-      "model": "opencode/gemini-3.1-pro",
-      "reason": "Discovered in the current inventory and awaiting initial smoke benchmarking."
+      "model": "opencode/glm-5",
+      "reason": "Successful benchmark data exists, but the model has not yet met the 2-run smoke promotion requirement."
     },
     {
       "model": "opencode/gpt-5.4",
@@ -44,10 +50,10 @@
   ],
   "smokeQueueChanges": {
     "added": [
-      "opencode/gemini-3.1-pro"
+      "opencode/glm-5"
     ],
     "removed": [
-      "opencode/glm-5"
+      "opencode/gemini-3.1-pro"
     ]
   }
 }

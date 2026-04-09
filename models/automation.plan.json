@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-04-08T02:03:06.421Z",
+  "updatedAt": "2026-04-09T03:52:58.464Z",
   "lifecycleSummary": {
-    "candidate": 22,
+    "candidate": 25,
     "active": 1,
-    "deprecated": 17,
+    "deprecated": 14,
     "sunset": 0
   },
   "cycles": {
@@ -17,7 +17,7 @@
         "opencode/gpt-5.4",
         "opencode/claude-opus-4-6",
         "opencode/claude-sonnet-4-6",
-        "opencode/gemini-3.1-pro"
+        "opencode/glm-5"
       ]
     },
     "weekly": {
