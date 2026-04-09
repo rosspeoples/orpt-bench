@@ -2,10 +2,10 @@
   {
     "type": "bar",
     "x": [
-      "opencode/big-pickle"
+      "opencode/gpt-5.4-mini"
     ],
     "y": [
-      82.35
+      48.15
     ],
     "marker": {
       "color": "#16a34a"
