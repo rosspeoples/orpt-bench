@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-04-09T13-31-07-907Z",
+    "startedAt": "2026-04-09T13:31:07.908Z",
+    "completedAt": "2026-04-09T13:58:41.408Z",
+    "benchmarkCycle": "weekly",
+    "taskCount": 27,
+    "modelCount": 1,
+    "repeats": 1,
+    "totalRuns": 27,
+    "successfulRuns": 13,
+    "topModel": "opencode/gpt-5.4-mini",
+    "topCompositeScore": 0.48148148148148145,
+    "topSuccessRate": 0.48148148148148145,
+    "href": "results/history/2026-04-09T13-31-07-907Z.json",
+    "isLatest": true
+  },
+  {
     "id": "2026-04-09T00-36-28-598Z",
     "startedAt": "2026-04-09T00:36:28.598Z",
     "completedAt": "2026-04-09T00:56:00.770Z",
@@ -13,7 +29,7 @@
     "topCompositeScore": 0.9411764705882353,
     "topSuccessRate": 0.9411764705882353,
     "href": "results/history/2026-04-09T00-36-28-598Z.json",
-    "isLatest": true
+    "isLatest": false
   },
   {
     "id": "2026-04-08T23-28-14-467Z",

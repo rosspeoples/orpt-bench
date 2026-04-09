@@ -8,8 +8,8 @@
       "x": [
         0,
         0.0133,
-        0.0454,
         0.0503,
+        0.0808,
         0.0822,
         0.0823,
         0.1463,
@@ -18,8 +18,8 @@
       "y": [
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
-        "opencode/gpt-5.4-mini",
         "opencode/kimi-k2.5",
+        "opencode/gpt-5.4-mini",
         "opencode/minimax-m2.5",
         "opencode/glm-5.1",
         "opencode/gpt-5.4",
@@ -29,8 +29,8 @@
         "color": [
           "#38bdf8",
           "#e879f9",
-          "#f472b6",
           "#a78bfa",
+          "#f472b6",
           "#e879f9",
           "#f472b6",
           "#a78bfa",
@@ -44,8 +44,8 @@
       "text": [
         0,
         0.0133,
-        0.0454,
         0.0503,
+        0.0808,
         0.0822,
         0.0823,
         0.1463,
@@ -59,12 +59,12 @@
       },
       "hovertemplate": [
         "opencode/big-pickle<br>USD: 0<br>0.771 composite | 340 requests<extra></extra>",
-        "opencode/gpt-5.4-nano<br>USD: 0.0133<br>0.864 composite | 310 requests<extra></extra>",
-        "opencode/gpt-5.4-mini<br>USD: 0.0454<br>0.449 composite | 156 requests<extra></extra>",
+        "opencode/gpt-5.4-nano<br>USD: 0.0133<br>0.863 composite | 310 requests<extra></extra>",
         "opencode/kimi-k2.5<br>USD: 0.0503<br>0.708 composite | 257 requests<extra></extra>",
+        "opencode/gpt-5.4-mini<br>USD: 0.0808<br>0.426 composite | 268 requests<extra></extra>",
         "opencode/minimax-m2.5<br>USD: 0.0822<br>0.533 composite | 227 requests<extra></extra>",
-        "opencode/glm-5.1<br>USD: 0.0823<br>0.771 composite | 236 requests<extra></extra>",
-        "opencode/gpt-5.4<br>USD: 0.1463<br>0.471 composite | 197 requests<extra></extra>",
+        "opencode/glm-5.1<br>USD: 0.0823<br>0.768 composite | 236 requests<extra></extra>",
+        "opencode/gpt-5.4<br>USD: 0.1463<br>0.472 composite | 197 requests<extra></extra>",
         "opencode/glm-5<br>USD: 0.2415<br>0.577 composite | 204 requests<extra></extra>"
       ]
     }

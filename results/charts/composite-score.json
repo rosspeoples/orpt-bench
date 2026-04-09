@@ -6,14 +6,14 @@
       "type": "bar",
       "orientation": "h",
       "x": [
-        0.864,
+        0.863,
         0.771,
-        0.771,
+        0.768,
         0.708,
         0.577,
         0.533,
-        0.471,
-        0.449
+        0.472,
+        0.426
       ],
       "y": [
         "opencode/gpt-5.4-nano",
@@ -42,14 +42,14 @@
         }
       },
       "text": [
-        0.864,
+        0.863,
         0.771,
-        0.771,
+        0.768,
         0.708,
         0.577,
         0.533,
-        0.471,
-        0.449
+        0.472,
+        0.426
       ],
       "textposition": "outside",
       "cliponaxis": false,
@@ -58,14 +58,14 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gpt-5.4-nano<br>Composite score: 0.864<br>94% success | 18.69 ORPT<extra></extra>",
+        "opencode/gpt-5.4-nano<br>Composite score: 0.863<br>94% success | 18.69 ORPT<extra></extra>",
         "opencode/big-pickle<br>Composite score: 0.771<br>82% success | 15.07 ORPT<extra></extra>",
-        "opencode/glm-5.1<br>Composite score: 0.771<br>94% success | 13.75 ORPT<extra></extra>",
+        "opencode/glm-5.1<br>Composite score: 0.768<br>94% success | 13.75 ORPT<extra></extra>",
         "opencode/kimi-k2.5<br>Composite score: 0.708<br>82% success | 16.21 ORPT<extra></extra>",
         "opencode/glm-5<br>Composite score: 0.577<br>73% success | 14.27 ORPT<extra></extra>",
         "opencode/minimax-m2.5<br>Composite score: 0.533<br>65% success | 13.45 ORPT<extra></extra>",
-        "opencode/gpt-5.4<br>Composite score: 0.471<br>60% success | 13.11 ORPT<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Composite score: 0.449<br>53% success | 11.00 ORPT<extra></extra>"
+        "opencode/gpt-5.4<br>Composite score: 0.472<br>60% success | 13.11 ORPT<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Composite score: 0.426<br>48% success | 9.77 ORPT<extra></extra>"
       ]
     }
   ],

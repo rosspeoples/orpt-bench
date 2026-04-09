@@ -13,7 +13,7 @@
         0.733,
         0.647,
         0.6,
-        0.533
+        0.481
       ],
       "y": [
         "opencode/gpt-5.4-nano",
@@ -49,7 +49,7 @@
         0.733,
         0.647,
         0.6,
-        0.533
+        0.481
       ],
       "textposition": "outside",
       "cliponaxis": false,
@@ -58,14 +58,14 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gpt-5.4-nano<br>Completion score: 0.941<br>94% success | 0.683 value<extra></extra>",
-        "opencode/big-pickle<br>Completion score: 0.824<br>82% success | 0.648 value<extra></extra>",
-        "opencode/glm-5.1<br>Completion score: 0.941<br>94% success | 0.373 value<extra></extra>",
-        "opencode/kimi-k2.5<br>Completion score: 0.824<br>82% success | 0.44 value<extra></extra>",
-        "opencode/glm-5<br>Completion score: 0.733<br>73% success | 0.211 value<extra></extra>",
-        "opencode/minimax-m2.5<br>Completion score: 0.647<br>65% success | 0.268 value<extra></extra>",
-        "opencode/gpt-5.4<br>Completion score: 0.6<br>60% success | 0.17 value<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Completion score: 0.533<br>53% success | 0.252 value<extra></extra>"
+        "opencode/gpt-5.4-nano<br>Completion score: 0.941<br>94% success | 0.68 value<extra></extra>",
+        "opencode/big-pickle<br>Completion score: 0.824<br>82% success | 0.65 value<extra></extra>",
+        "opencode/glm-5.1<br>Completion score: 0.941<br>94% success | 0.365 value<extra></extra>",
+        "opencode/kimi-k2.5<br>Completion score: 0.824<br>82% success | 0.438 value<extra></extra>",
+        "opencode/glm-5<br>Completion score: 0.733<br>73% success | 0.212 value<extra></extra>",
+        "opencode/minimax-m2.5<br>Completion score: 0.647<br>65% success | 0.267 value<extra></extra>",
+        "opencode/gpt-5.4<br>Completion score: 0.6<br>60% success | 0.172 value<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Completion score: 0.481<br>48% success | 0.296 value<extra></extra>"
       ]
     }
   ],

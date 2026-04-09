@@ -16,7 +16,9 @@
       ],
       "y": [
         "control (3 tasks)",
-        "unspecified (14 tasks)"
+        "expert (12 tasks)",
+        "high (10 tasks)",
+        "medium (2 tasks)"
       ],
       "z": [
         [
@@ -31,12 +33,32 @@
         ],
         [
           1,
-          0.7857142857142857,
-          0.9285714285714286,
-          0.8571428571428571,
+          1,
+          1,
+          0.8333333333333334,
+          0.8333333333333334,
+          0.6666666666666666,
+          0.5,
+          0.3333333333333333
+        ],
+        [
+          1,
           0.7142857142857143,
-          0.6428571428571429,
+          0.8571428571428571,
+          0.8571428571428571,
           0.5714285714285714,
+          0.5714285714285714,
+          0.7142857142857143,
+          0.5
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
           0.5
         ]
       ],
@@ -53,35 +75,75 @@
         ],
         [
           "100%",
-          "79%",
-          "93%",
-          "86%",
+          "100%",
+          "100%",
+          "83%",
+          "83%",
+          "67%",
+          "50%",
+          "33%"
+        ],
+        [
+          "100%",
           "71%",
-          "64%",
+          "86%",
+          "86%",
           "57%",
+          "57%",
+          "71%",
+          "50%"
+        ],
+        [
+          "100%",
+          "0%",
+          "100%",
+          "100%",
+          "100%",
+          "100%",
+          "0%",
           "50%"
         ]
       ],
       "customdata": [
         [
           "Avg success: 67%<br>Avg composite: 0.608<br>Avg requests: 12.33<br>Avg cost: $0.0005<br>Tasks in band: 3",
-          "Avg success: 100%<br>Avg composite: 0.981<br>Avg requests: 8.00<br>Avg cost: $0.0000<br>Tasks in band: 3",
-          "Avg success: 100%<br>Avg composite: 0.855<br>Avg requests: 9.00<br>Avg cost: $0.0036<br>Tasks in band: 3",
-          "Avg success: 67%<br>Avg composite: 0.607<br>Avg requests: 10.00<br>Avg cost: $0.0021<br>Tasks in band: 3",
+          "Avg success: 100%<br>Avg composite: 0.976<br>Avg requests: 8.00<br>Avg cost: $0.0000<br>Tasks in band: 3",
+          "Avg success: 100%<br>Avg composite: 0.851<br>Avg requests: 9.00<br>Avg cost: $0.0036<br>Tasks in band: 3",
+          "Avg success: 67%<br>Avg composite: 0.602<br>Avg requests: 10.00<br>Avg cost: $0.0021<br>Tasks in band: 3",
           "Avg success: 100%<br>Avg composite: 0.791<br>Avg requests: 10.00<br>Avg cost: $0.0144<br>Tasks in band: 1",
-          "Avg success: 67%<br>Avg composite: 0.574<br>Avg requests: 11.67<br>Avg cost: $0.0028<br>Tasks in band: 3",
+          "Avg success: 67%<br>Avg composite: 0.571<br>Avg requests: 11.67<br>Avg cost: $0.0028<br>Tasks in band: 3",
           "Avg success: 100%<br>Avg composite: 0.837<br>Avg requests: 7.00<br>Avg cost: $0.0053<br>Tasks in band: 1",
-          "Avg success: 100%<br>Avg composite: 0.908<br>Avg requests: 8.00<br>Avg cost: $0.0015<br>Tasks in band: 1"
+          "Avg success: 100%<br>Avg composite: 0.921<br>Avg requests: 7.00<br>Avg cost: $0.0020<br>Tasks in band: 3"
         ],
         [
-          "Avg success: 100%<br>Avg composite: 0.919<br>Avg requests: 19.50<br>Avg cost: $0.0008<br>Tasks in band: 14",
-          "Avg success: 79%<br>Avg composite: 0.726<br>Avg requests: 22.57<br>Avg cost: $0.0000<br>Tasks in band: 14",
-          "Avg success: 93%<br>Avg composite: 0.753<br>Avg requests: 14.93<br>Avg cost: $0.0051<br>Tasks in band: 14",
-          "Avg success: 86%<br>Avg composite: 0.73<br>Avg requests: 16.21<br>Avg cost: $0.0031<br>Tasks in band: 14",
-          "Avg success: 71%<br>Avg composite: 0.561<br>Avg requests: 13.86<br>Avg cost: $0.0162<br>Tasks in band: 14",
-          "Avg success: 64%<br>Avg composite: 0.524<br>Avg requests: 13.71<br>Avg cost: $0.0053<br>Tasks in band: 14",
-          "Avg success: 57%<br>Avg composite: 0.445<br>Avg requests: 13.57<br>Avg cost: $0.0101<br>Tasks in band: 14",
-          "Avg success: 50%<br>Avg composite: 0.416<br>Avg requests: 10.57<br>Avg cost: $0.0031<br>Tasks in band: 14"
+          "Avg success: 100%<br>Avg composite: 0.935<br>Avg requests: 17.83<br>Avg cost: $0.0009<br>Tasks in band: 6",
+          "Avg success: 100%<br>Avg composite: 0.928<br>Avg requests: 19.33<br>Avg cost: $0.0000<br>Tasks in band: 6",
+          "Avg success: 100%<br>Avg composite: 0.804<br>Avg requests: 16.33<br>Avg cost: $0.0060<br>Tasks in band: 6",
+          "Avg success: 83%<br>Avg composite: 0.706<br>Avg requests: 18.33<br>Avg cost: $0.0034<br>Tasks in band: 6",
+          "Avg success: 83%<br>Avg composite: 0.657<br>Avg requests: 16.33<br>Avg cost: $0.0190<br>Tasks in band: 6",
+          "Avg success: 67%<br>Avg composite: 0.552<br>Avg requests: 14.67<br>Avg cost: $0.0056<br>Tasks in band: 6",
+          "Avg success: 50%<br>Avg composite: 0.394<br>Avg requests: 13.83<br>Avg cost: $0.0117<br>Tasks in band: 6",
+          "Avg success: 33%<br>Avg composite: 0.297<br>Avg requests: 10.58<br>Avg cost: $0.0029<br>Tasks in band: 12"
+        ],
+        [
+          "Avg success: 100%<br>Avg composite: 0.91<br>Avg requests: 20.71<br>Avg cost: $0.0008<br>Tasks in band: 7",
+          "Avg success: 71%<br>Avg composite: 0.659<br>Avg requests: 27.71<br>Avg cost: $0.0000<br>Tasks in band: 7",
+          "Avg success: 86%<br>Avg composite: 0.693<br>Avg requests: 14.29<br>Avg cost: $0.0043<br>Tasks in band: 7",
+          "Avg success: 86%<br>Avg composite: 0.726<br>Avg requests: 15.29<br>Avg cost: $0.0030<br>Tasks in band: 7",
+          "Avg success: 57%<br>Avg composite: 0.45<br>Avg requests: 11.00<br>Avg cost: $0.0137<br>Tasks in band: 7",
+          "Avg success: 57%<br>Avg composite: 0.462<br>Avg requests: 12.14<br>Avg cost: $0.0050<br>Tasks in band: 7",
+          "Avg success: 71%<br>Avg composite: 0.553<br>Avg requests: 13.71<br>Avg cost: $0.0089<br>Tasks in band: 7",
+          "Avg success: 50%<br>Avg composite: 0.427<br>Avg requests: 10.40<br>Avg cost: $0.0035<br>Tasks in band: 10"
+        ],
+        [
+          "Avg success: 100%<br>Avg composite: 0.861<br>Avg requests: 21.00<br>Avg cost: $0.0010<br>Tasks in band: 1",
+          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 6.00<br>Avg cost: $0.0000<br>Tasks in band: 1",
+          "Avg success: 100%<br>Avg composite: 0.832<br>Avg requests: 11.00<br>Avg cost: $0.0051<br>Tasks in band: 1",
+          "Avg success: 100%<br>Avg composite: 0.912<br>Avg requests: 10.00<br>Avg cost: $0.0023<br>Tasks in band: 1",
+          "Avg success: 100%<br>Avg composite: 0.768<br>Avg requests: 19.00<br>Avg cost: $0.0172<br>Tasks in band: 1",
+          "Avg success: 100%<br>Avg composite: 0.802<br>Avg requests: 19.00<br>Avg cost: $0.0049<br>Tasks in band: 1",
+          "Avg success: 0%<br>Avg composite: 0.0<br>Avg requests: 11.00<br>Avg cost: $0.0084<br>Tasks in band: 1",
+          "Avg success: 50%<br>Avg composite: 0.45<br>Avg requests: 8.00<br>Avg cost: $0.0028<br>Tasks in band: 2"
         ]
       ],
       "texttemplate": "%{text}",
@@ -145,7 +207,7 @@
       "t": 54,
       "b": 90
     },
-    "height": 320,
+    "height": 428,
     "xaxis": {
       "automargin": true,
       "tickfont": {

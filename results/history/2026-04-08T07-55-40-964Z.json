@@ -436,13 +436,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.239094,
+      "valueScore": 0.228023,
       "valueScoreComponents": {
-        "orptFactor": 0.526316,
+        "orptFactor": 0.473684,
         "costFactor": 0.057087,
         "timeFactor": 0.496713
       },
-      "compositeScore": 0.771728
+      "compositeScore": 0.768407
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",
@@ -3313,13 +3313,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.284446,
+      "valueScore": 0.311327,
       "valueScoreComponents": {
-        "orptFactor": 0.818182,
+        "orptFactor": 1,
         "costFactor": 0.038744,
         "timeFactor": 0.864419
       },
-      "compositeScore": 0.785334
+      "compositeScore": 0.793398
     },
     {
       "runId": "2026-04-08T07-55-40-964Z",

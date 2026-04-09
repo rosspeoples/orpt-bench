@@ -116,7 +116,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[0.3305,0.2378,0.2374,0.1752,0.0433,0,-0.0621,-0.0842],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.3305,0.2378,0.2374,0.1752,0.0433,0,-0.0621,-0.0842],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Composite delta: 0.3305&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Composite delta: 0.2378&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Composite delta: 0.2374&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Composite delta: 0.1752&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Composite delta: 0.0433&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Composite delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Composite delta: -0.0621&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Composite delta: -0.0842&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[0.3298,0.2384,0.2353,0.1749,0.0439,0,-0.0614,-0.1072],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.3298,0.2384,0.2353,0.1749,0.0439,0,-0.0614,-0.1072],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Composite delta: 0.3298&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Composite delta: 0.2384&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Composite delta: 0.2353&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Composite delta: 0.1749&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Composite delta: 0.0439&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Composite delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Composite delta: -0.0614&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Composite delta: -0.1072&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Composite delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Composite delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -137,7 +137,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[29.41,17.65,29.41,17.65,8.63,0,-4.71,-11.37],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[29.41,17.65,29.41,17.65,8.63,0,-4.71,-11.37],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Success rate delta: 29.41&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Success rate delta: 17.65&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Success rate delta: 29.41&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Success rate delta: 17.65&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Success rate delta: 8.63&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Success rate delta: -4.71&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Success rate delta: -11.37&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[29.41,17.65,29.41,17.65,8.63,0,-4.71,-16.56],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[29.41,17.65,29.41,17.65,8.63,0,-4.71,-16.56],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Success rate delta: 29.41&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Success rate delta: 17.65&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Success rate delta: 29.41&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Success rate delta: 17.65&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Success rate delta: 8.63&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Success rate delta: -4.71&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Success rate delta: -16.56&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Success delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Success rate delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -158,7 +158,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[-0.0689,-0.0822,0.0002,-0.0319,0.1593,0,0.0641,-0.0367],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[-0.0689,-0.0822,0.0002,-0.0319,0.1593,0,0.0641,-0.0367],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;USD delta: -0.0689&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;USD delta: -0.0822&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;USD delta: 0.0002&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;USD delta: -0.0319&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;USD delta: 0.1593&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;USD delta: 0.0641&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;USD delta: -0.0367&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[-0.0689,-0.0822,0.0002,-0.0319,0.1593,0,0.0641,-0.0014],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[-0.0689,-0.0822,0.0002,-0.0319,0.1593,0,0.0641,-0.0014],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;USD delta: -0.0689&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;USD delta: -0.0822&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;USD delta: 0.0002&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;USD delta: -0.0319&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;USD delta: 0.1593&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;USD delta: 0.0641&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;USD delta: -0.0014&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Cost delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;USD delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -179,7 +179,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[4.96,7.54,16.15,-2.85,-0.62,0,8.14,0.01],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[4.96,7.54,16.15,-2.85,-0.62,0,8.14,0.01],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Minutes delta: 4.96&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Minutes delta: 7.54&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Minutes delta: 16.15&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Minutes delta: -2.85&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Minutes delta: -0.62&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Minutes delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Minutes delta: 8.14&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Minutes delta: 0.01&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/gpt-5.4-mini&quot;],&quot;y&quot;:[4.96,7.54,16.15,-2.85,-0.62,0,8.14,12.75],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[4.96,7.54,16.15,-2.85,-0.62,0,8.14,12.75],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Minutes delta: 4.96&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Minutes delta: 7.54&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Minutes delta: 16.15&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Minutes delta: -2.85&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Minutes delta: -0.62&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Minutes delta: 0&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Minutes delta: 8.14&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Minutes delta: 12.75&lt;br&gt;Baseline: opencode/minimax-m2.5&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Wall time delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Minutes delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -210,7 +210,7 @@
     <tbody>
       <tr>
         <td>opencode/gpt-5.4-nano</td>
-        <td>0.864</td>
+        <td>0.863</td>
         <td>+0.33</td>
         <td>94%</td>
         <td>+29%</td>
@@ -234,8 +234,8 @@
       </tr>
       <tr>
         <td>opencode/glm-5.1</td>
-        <td>0.771</td>
-        <td>+0.237</td>
+        <td>0.768</td>
+        <td>+0.235</td>
         <td>94%</td>
         <td>+29%</td>
         <td>13.75</td>
@@ -259,7 +259,7 @@
       <tr>
         <td>opencode/glm-5</td>
         <td>0.577</td>
-        <td>+0.043</td>
+        <td>+0.044</td>
         <td>73%</td>
         <td>+9%</td>
         <td>14.27</td>
@@ -282,8 +282,8 @@
       </tr>
       <tr>
         <td>opencode/gpt-5.4</td>
-        <td>0.471</td>
-        <td>-0.062</td>
+        <td>0.472</td>
+        <td>-0.061</td>
         <td>60%</td>
         <td>-5%</td>
         <td>13.11</td>
@@ -294,15 +294,15 @@
       </tr>
       <tr>
         <td>opencode/gpt-5.4-mini</td>
-        <td>0.449</td>
-        <td>-0.084</td>
-        <td>53%</td>
-        <td>-11%</td>
-        <td>11.00</td>
-        <td>-2.45</td>
-        <td>$0.0454</td>
-        <td>-$0.0367</td>
-        <td>14m 10s</td>
+        <td>0.426</td>
+        <td>-0.107</td>
+        <td>48%</td>
+        <td>-17%</td>
+        <td>9.77</td>
+        <td>-3.69</td>
+        <td>$0.0808</td>
+        <td>-$0.0014</td>
+        <td>26m 55s</td>
       </tr>
     </tbody>
   </table></div>
@@ -353,6 +353,15 @@
         <td>1m 05s</td>
       </tr>
       <tr>
+        <td>Terraform static site repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/gpt-5.4-mini<div class="muted">0.926</div></td>
+        <td>0.926</td>
+        <td>$0.0046</td>
+        <td>37s</td>
+      </tr>
+      <tr>
         <td>Bootstrap phase validation repair</td>
         <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill bad">failed</span></td>
@@ -360,15 +369,6 @@
         <td>0.882</td>
         <td>$0.0056</td>
         <td>1m 06s</td>
-      </tr>
-      <tr>
-        <td>Terraform static site repair</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill bad">failed</span></td>
-        <td>opencode/glm-5.1<div class="muted">0.881</div></td>
-        <td>0.881</td>
-        <td>$0.0046</td>
-        <td>37s</td>
       </tr>
       <tr>
         <td>Ansible nginx role completion</td>
@@ -419,8 +419,8 @@
         <td>MCP OpenBao contract repair</td>
         <td><span class="pill good">Crowded field</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/big-pickle<div class="muted">0.936</div></td>
-        <td>0.119</td>
+        <td>opencode/big-pickle<div class="muted">0.959</div></td>
+        <td>0.131</td>
         <td>$0.0051</td>
         <td>41s</td>
       </tr>
@@ -437,8 +437,8 @@
         <td>Kubernetes rollout repair</td>
         <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/kimi-k2.5<div class="muted">0.922</div></td>
-        <td>0.115</td>
+        <td>opencode/kimi-k2.5<div class="muted">0.912</div></td>
+        <td>0.11</td>
         <td>$0.0049</td>
         <td>58s</td>
       </tr>
@@ -455,8 +455,8 @@
         <td>Log level rollup shell script</td>
         <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/big-pickle<div class="muted">0.977</div></td>
-        <td>0.102</td>
+        <td>opencode/big-pickle<div class="muted">0.961</div></td>
+        <td>0.096</td>
         <td>$0.0043</td>
         <td>30s</td>
       </tr>
@@ -477,6 +477,96 @@
         <td>0.094</td>
         <td>$0.0056</td>
         <td>58s</td>
+      </tr>
+      <tr>
+        <td>AppArmor dnsmasq profile repair</td>
+        <td><span class="pill bad">Nobody solved it</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td><span class="muted">n/a</span></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>ExternalDNS RFC2136 repair</td>
+        <td><span class="pill bad">Nobody solved it</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td><span class="muted">n/a</span></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>MetalLB ingress address pool repair</td>
+        <td><span class="pill bad">Nobody solved it</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td><span class="muted">n/a</span></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>nftables router ingress repair</td>
+        <td><span class="pill bad">Nobody solved it</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td><span class="muted">n/a</span></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>RHEL edge firewalld router repair</td>
+        <td><span class="pill bad">Nobody solved it</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td><span class="muted">n/a</span></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>RHEL k3s node preparation repair</td>
+        <td><span class="pill bad">Nobody solved it</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td><span class="muted">n/a</span></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>RHEL NetworkManager bridge VLAN repair</td>
+        <td><span class="pill bad">Nobody solved it</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td><span class="muted">n/a</span></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>SELinux registry volume label repair</td>
+        <td><span class="pill bad">Nobody solved it</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td><span class="muted">n/a</span></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>Traefik forwarded header trust repair</td>
+        <td><span class="pill bad">Nobody solved it</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td><span class="muted">n/a</span></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <td>K3s registry mirror trust repair</td>
+        <td><span class="pill warn">Single solver</span></td>
+        <td><span class="pill warn">missing</span></td>
+        <td>opencode/gpt-5.4-mini<div class="muted">1.0</div></td>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>n/a</td>
       </tr>
     </tbody>
   </table></div>
@@ -519,7 +609,7 @@
       <tr>
         <td>opencode/glm-5.1</td>
         <td>7-9<div class="muted">1 ties</div></td>
-        <td>-0.237</td>
+        <td>-0.235</td>
         <td>-29%</td>
         <td>-$0.0002</td>
         <td>-16m 09s</td>
@@ -536,17 +626,17 @@
       </tr>
       <tr>
         <td>opencode/gpt-5.4-mini</td>
-        <td>5-6<div class="muted">4 ties</div></td>
-        <td>+0.084</td>
-        <td>+11%</td>
-        <td>+$0.0367</td>
-        <td>-0s</td>
-        <td>+2.45</td>
+        <td>3-11<div class="muted">3 ties</div></td>
+        <td>+0.107</td>
+        <td>+17%</td>
+        <td>+$0.0014</td>
+        <td>-12m 45s</td>
+        <td>+3.69</td>
       </tr>
       <tr>
         <td>opencode/gpt-5.4</td>
         <td>10-1<div class="muted">4 ties</div></td>
-        <td>+0.062</td>
+        <td>+0.061</td>
         <td>+5%</td>
         <td>-$0.0641</td>
         <td>-8m 09s</td>
@@ -555,7 +645,7 @@
       <tr>
         <td>opencode/glm-5</td>
         <td>9-3<div class="muted">3 ties</div></td>
-        <td>-0.043</td>
+        <td>-0.044</td>
         <td>-9%</td>
         <td>-$0.1593</td>
         <td>+37s</td>

@@ -5401,13 +5401,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.787783,
+      "valueScore": 0.862232,
       "valueScoreComponents": {
-        "orptFactor": 0.692308,
+        "orptFactor": 0.846154,
         "costFactor": 1,
         "timeFactor": 0.694001
       },
-      "compositeScore": 0.936335
+      "compositeScore": 0.95867
     },
     {
       "runId": "2026-04-08T23-28-14-467Z",
@@ -7578,13 +7578,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.924223,
+      "valueScore": 0.870323,
       "valueScoreComponents": {
-        "orptFactor": 1,
+        "orptFactor": 0.875,
         "costFactor": 1,
         "timeFactor": 0.674347
       },
-      "compositeScore": 0.977267
+      "compositeScore": 0.961097
     }
   ],
   "leaderboard": [
