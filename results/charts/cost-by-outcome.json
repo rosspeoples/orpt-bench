@@ -6,10 +6,10 @@
       "type": "bar",
       "name": "Solved tasks cost",
       "x": [
-        "opencode/gpt-5.4-nano",
-        "opencode/big-pickle",
         "opencode/glm-5.1",
         "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/gpt-5.4-nano",
         "opencode/claude-opus-4-6",
         "opencode/gpt-5.4",
         "opencode/glm-5",
@@ -19,10 +19,10 @@
         "opencode/gemini-3.1-pro"
       ],
       "y": [
-        0.0133,
-        0,
         0.0823,
         0.0414,
+        0,
+        0.3523,
         19.1788,
         6.9453,
         2.6419,
@@ -33,10 +33,10 @@
       ],
       "marker": {
         "color": [
-          "#e879f9",
-          "#38bdf8",
           "#f472b6",
           "#a78bfa",
+          "#38bdf8",
+          "#e879f9",
           "#fb7185",
           "#a78bfa",
           "#4ade80",
@@ -52,10 +52,10 @@
       "type": "bar",
       "name": "Failed tasks cost",
       "x": [
-        "opencode/gpt-5.4-nano",
-        "opencode/big-pickle",
         "opencode/glm-5.1",
         "opencode/kimi-k2.5",
+        "opencode/big-pickle",
+        "opencode/gpt-5.4-nano",
         "opencode/claude-opus-4-6",
         "opencode/gpt-5.4",
         "opencode/glm-5",
@@ -66,9 +66,9 @@
       ],
       "y": [
         0,
-        0,
-        0,
         0.0089,
+        0,
+        0.0693,
         2.6968,
         2.0374,
         0.8482,
@@ -79,10 +79,10 @@
       ],
       "marker": {
         "color": [
-          "rgba(232, 121, 249, 0.42)",
-          "rgba(56, 189, 248, 0.42)",
           "rgba(244, 114, 182, 0.42)",
           "rgba(167, 139, 250, 0.42)",
+          "rgba(56, 189, 248, 0.42)",
+          "rgba(232, 121, 249, 0.42)",
           "rgba(251, 113, 133, 0.42)",
           "rgba(167, 139, 250, 0.42)",
           "rgba(74, 222, 128, 0.42)",

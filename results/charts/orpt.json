@@ -11,6 +11,7 @@
         11,
         13.2,
         14.88,
+        15.17,
         16.43
       ],
       "y": [
@@ -19,6 +20,7 @@
         "opencode/gpt-5.4",
         "opencode/glm-5",
         "opencode/claude-opus-4-6",
+        "opencode/gpt-5.4-nano",
         "opencode/claude-sonnet-4-6"
       ],
       "marker": {
@@ -28,6 +30,7 @@
           "#a78bfa",
           "#4ade80",
           "#fb7185",
+          "#e879f9",
           "#fb7185"
         ],
         "line": {
@@ -41,6 +44,7 @@
         11,
         13.2,
         14.88,
+        15.17,
         16.43
       ],
       "textposition": "outside",
@@ -55,6 +59,7 @@
         "opencode/gpt-5.4<br>Requests per solved task: 11<br>78% success | $8.9827 total cost<extra></extra>",
         "opencode/glm-5<br>Requests per solved task: 13.2<br>74% success | $3.4901 total cost<extra></extra>",
         "opencode/claude-opus-4-6<br>Requests per solved task: 14.88<br>89% success | $21.8757 total cost<extra></extra>",
+        "opencode/gpt-5.4-nano<br>Requests per solved task: 15.17<br>85% success | $0.4215 total cost<extra></extra>",
         "opencode/claude-sonnet-4-6<br>Requests per solved task: 16.43<br>78% success | $11.8406 total cost<extra></extra>"
       ]
     }
