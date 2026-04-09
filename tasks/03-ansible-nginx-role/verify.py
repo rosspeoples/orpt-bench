@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import subprocess
 from pathlib import Path
 
 import yaml
@@ -15,15 +14,15 @@ def require(cond: bool, message: str) -> None:
 root = Path(__file__).parent / "workspace"
 role_root = root / "roles" / "web"
 
-subprocess.run([
-    "ansible-playbook",
-    "--syntax-check",
-    "-i",
-    "localhost,",
-    "-c",
-    "local",
-    "playbook.yml",
-], cwd=root, check=True, capture_output=True, text=True)
+playbook = yaml.safe_load((root / "playbook.yml").read_text())
+require(isinstance(playbook, list) and playbook, "playbook must contain at least one play")
+play = playbook[0]
+require(play.get("hosts") == "all", "playbook must target all hosts")
+require(play.get("gather_facts") is False, "playbook must keep gather_facts disabled")
+require(play.get("roles") == ["web"], "playbook must include the web role exactly once")
+vars_block = play.get("vars") or {}
+require(vars_block.get("server_name") == "demo.internal", "playbook must provide server_name=demo.internal")
+require(vars_block.get("document_root") == "/srv/demo/current/public", "playbook must provide the expected document_root")
 
 tasks = yaml.safe_load((role_root / "tasks" / "main.yml").read_text())
 handlers = yaml.safe_load((role_root / "handlers" / "main.yml").read_text())

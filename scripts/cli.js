@@ -4,6 +4,21 @@ import { loadRuntimeConfig } from './lib/config.js'
 import { selectModelMatrix, syncModelCatalog, useModelMatrix } from './lib/models.js'
 import { generateReports } from './lib/report.js'
 
+export function ensureExpectedRunnerEnvironment(command, runtime) {
+  if (command !== 'benchmark' && command !== 'benchmark-single') return
+
+  const expected = process.env.ORPT_EXPECTED_RUNNER || ''
+  if (expected === 'container') return
+
+  const isFullTaskRun = runtime.taskPatterns.length === 1 && runtime.taskPatterns[0] === '*'
+  const guidance = 'Run benchmarks through the containerized runner, e.g. `docker compose run --rm runner benchmark`.'
+  if (command === 'benchmark' || isFullTaskRun) {
+    throw new Error(`Refusing benchmark execution outside the expected container runner environment. ${guidance}`)
+  }
+
+  throw new Error(`Refusing benchmark-single execution outside the expected container runner environment. ${guidance}`)
+}
+
 function ensureSafeFullBenchmarkRuntime(runtime) {
   const configuredProcessTimeoutSeconds = Number.parseInt(process.env.BENCHMARK_PROCESS_TIMEOUT_SECONDS || '0', 10)
   const isFullTaskRun = runtime.taskPatterns.length === 1 && runtime.taskPatterns[0] === '*'
@@ -12,11 +27,12 @@ function ensureSafeFullBenchmarkRuntime(runtime) {
   }
 }
 
-async function main() {
+export async function main() {
   const command = process.argv[2] || 'benchmark'
   const runtime = await loadRuntimeConfig()
 
   if (command === 'benchmark') {
+    ensureExpectedRunnerEnvironment(command, runtime)
     ensureSafeFullBenchmarkRuntime(runtime)
     const result = await runBenchmark(runtime)
     if (runtime.writeReadme) {
@@ -26,6 +42,7 @@ async function main() {
   }
 
   if (command === 'benchmark-single') {
+    ensureExpectedRunnerEnvironment(command, runtime)
     const result = await runBenchmarkSingle(
       runtime,
       runtime.models,
@@ -93,7 +110,12 @@ async function main() {
   throw new Error(`Unknown command: ${command}`)
 }
 
-main().catch((error) => {
-  console.error(error.stack || error.message || String(error))
-  process.exitCode = 1
-})
+const invokedPath = process.argv[1]
+const isDirectCliExecution = invokedPath && new URL(import.meta.url).pathname === invokedPath
+
+if (isDirectCliExecution) {
+  main().catch((error) => {
+    console.error(error.stack || error.message || String(error))
+    process.exitCode = 1
+  })
+}

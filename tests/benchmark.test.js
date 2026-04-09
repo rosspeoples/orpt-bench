@@ -335,3 +335,25 @@ test('runtime config preserves requested task pattern order for control smoke ra
     else process.env.BENCHMARK_TASK_GLOB = previousTaskGlob
   }
 })
+
+test('benchmark command refuses to run outside containerized runner environment', async () => {
+  const previousExpectedRunner = process.env.ORPT_EXPECTED_RUNNER
+  const previousTaskGlob = process.env.BENCHMARK_TASK_GLOB
+
+  delete process.env.ORPT_EXPECTED_RUNNER
+  process.env.BENCHMARK_TASK_GLOB = '*'
+
+  try {
+    const runtime = await (await import('../scripts/lib/config.js')).loadRuntimeConfig()
+    const { ensureExpectedRunnerEnvironment } = await import('../scripts/cli.js')
+    assert.throws(
+      () => ensureExpectedRunnerEnvironment('benchmark', runtime),
+      /Refusing benchmark execution outside the expected container runner environment/
+    )
+  } finally {
+    if (previousExpectedRunner == null) delete process.env.ORPT_EXPECTED_RUNNER
+    else process.env.ORPT_EXPECTED_RUNNER = previousExpectedRunner
+    if (previousTaskGlob == null) delete process.env.BENCHMARK_TASK_GLOB
+    else process.env.BENCHMARK_TASK_GLOB = previousTaskGlob
+  }
+})

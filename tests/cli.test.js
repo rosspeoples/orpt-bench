@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-test('full benchmark safety gate rejects nonzero process timeout', async () => {
+test('full benchmark safety gate rejects host benchmark execution before token spend', async () => {
   const { spawn } = await import('node:child_process')
 
   await new Promise((resolve, reject) => {
@@ -24,7 +24,7 @@ test('full benchmark safety gate rejects nonzero process timeout', async () => {
     child.on('exit', (code) => {
       try {
         assert.notEqual(code, 0)
-        assert.match(stderr, /Refusing full benchmark run with explicit BENCHMARK_PROCESS_TIMEOUT_SECONDS=120/)
+        assert.match(stderr, /Refusing benchmark execution outside the expected container runner environment/)
         resolve()
       } catch (error) {
         reject(error)

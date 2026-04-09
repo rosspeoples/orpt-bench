@@ -266,6 +266,11 @@ async function runCommand(command, args, options = {}) {
   })
 }
 
+function isVerifierDependencyFailure(result) {
+  const combined = `${result?.stderr || ''}\n${result?.stdout || ''}`
+  return /ModuleNotFoundError|ImportError|No module named|FileNotFoundError: \[Errno 2\] No such file or directory|command not found|can't open file/i.test(combined)
+}
+
 export function aggregateRun(run, extractors) {
   const byModel = new Map()
   const byTaskAndModel = new Map()
@@ -793,6 +798,9 @@ export async function validateWorkspace(runtime) {
     const taskCopyDir = path.join(validationRoot, path.basename(task.taskDir))
     await copyDir(task.taskDir, taskCopyDir)
     const result = await runCommand('python3', [path.join(taskCopyDir, 'verify.py')], { cwd: taskCopyDir, env: process.env })
+    if (isVerifierDependencyFailure(result)) {
+      throw new Error(`Task ${task.id} verifier failed due to missing dependency or setup error during validation:\n${(result.stderr || result.stdout).trim()}`)
+    }
     if (result.code === 0) {
       throw new Error(`Task fixture ${task.id} already passes verifier; benchmark fixtures must start broken.`)
     }

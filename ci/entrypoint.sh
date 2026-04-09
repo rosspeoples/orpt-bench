@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+export ORPT_EXPECTED_RUNNER=container
+
 if [ ! -d /workspace/node_modules/ajv ]; then
   npm install --no-fund --no-audit
 fi
