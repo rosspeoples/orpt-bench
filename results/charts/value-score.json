@@ -5,28 +5,31 @@
     {
       "type": "bar",
       "x": [
+        "opencode/gpt-5.4-nano",
+        "opencode/big-pickle",
         "opencode/glm-5.1",
         "opencode/kimi-k2.5",
-        "opencode/big-pickle",
         "opencode/glm-5",
         "opencode/minimax-m2.5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
-        0.572,
-        0.675,
-        0.653,
-        0.332,
-        0.399,
-        0.269,
-        0.389
+        0.683,
+        0.648,
+        0.373,
+        0.44,
+        0.211,
+        0.268,
+        0.17,
+        0.252
       ],
       "marker": {
         "color": [
+          "#73f0c5",
+          "#fb7185",
           "#f472b6",
           "#86a8ff",
-          "#fb7185",
           "#73f0c5",
           "#22c55e",
           "#86a8ff",
@@ -38,13 +41,14 @@
         }
       },
       "text": [
-        0.572,
-        0.675,
-        0.653,
-        0.332,
-        0.399,
-        0.269,
-        0.389
+        0.683,
+        0.648,
+        0.373,
+        0.44,
+        0.211,
+        0.268,
+        0.17,
+        0.252
       ],
       "textposition": "auto",
       "textfont": {
@@ -52,13 +56,14 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/glm-5.1<br>Value score: 0.572<br>0.941 completion | $0.0823 total cost<extra></extra>",
-        "opencode/kimi-k2.5<br>Value score: 0.675<br>0.824 completion | $0.0503 total cost<extra></extra>",
-        "opencode/big-pickle<br>Value score: 0.653<br>0.824 completion | $0.0000 total cost<extra></extra>",
-        "opencode/glm-5<br>Value score: 0.332<br>0.733 completion | $0.2415 total cost<extra></extra>",
-        "opencode/minimax-m2.5<br>Value score: 0.399<br>0.647 completion | $0.0822 total cost<extra></extra>",
-        "opencode/gpt-5.4<br>Value score: 0.269<br>0.6 completion | $0.1463 total cost<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Value score: 0.389<br>0.533 completion | $0.0454 total cost<extra></extra>"
+        "opencode/gpt-5.4-nano<br>Value score: 0.683<br>0.941 completion | $0.0133 total cost<extra></extra>",
+        "opencode/big-pickle<br>Value score: 0.648<br>0.824 completion | $0.0000 total cost<extra></extra>",
+        "opencode/glm-5.1<br>Value score: 0.373<br>0.941 completion | $0.0823 total cost<extra></extra>",
+        "opencode/kimi-k2.5<br>Value score: 0.44<br>0.824 completion | $0.0503 total cost<extra></extra>",
+        "opencode/glm-5<br>Value score: 0.211<br>0.733 completion | $0.2415 total cost<extra></extra>",
+        "opencode/minimax-m2.5<br>Value score: 0.268<br>0.647 completion | $0.0822 total cost<extra></extra>",
+        "opencode/gpt-5.4<br>Value score: 0.17<br>0.6 completion | $0.1463 total cost<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Value score: 0.252<br>0.533 completion | $0.0454 total cost<extra></extra>"
       ]
     }
   ],

@@ -8,20 +8,23 @@
         "opencode/minimax-m2.5",
         "opencode/glm-5.1",
         "opencode/big-pickle",
-        "opencode/kimi-k2.5"
+        "opencode/kimi-k2.5",
+        "opencode/gpt-5.4-nano"
       ],
       "y": [
         13.45,
         13.75,
         15.07,
-        16.21
+        16.21,
+        18.69
       ],
       "marker": {
         "color": [
           "#22c55e",
           "#f472b6",
           "#fb7185",
-          "#86a8ff"
+          "#86a8ff",
+          "#73f0c5"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -32,7 +35,8 @@
         13.45,
         13.75,
         15.07,
-        16.21
+        16.21,
+        18.69
       ],
       "textposition": "auto",
       "textfont": {
@@ -43,7 +47,8 @@
         "opencode/minimax-m2.5<br>Requests per solved task: 13.45<br>65% success | $0.0822 total cost<extra></extra>",
         "opencode/glm-5.1<br>Requests per solved task: 13.75<br>94% success | $0.0823 total cost<extra></extra>",
         "opencode/big-pickle<br>Requests per solved task: 15.07<br>82% success | $0.0000 total cost<extra></extra>",
-        "opencode/kimi-k2.5<br>Requests per solved task: 16.21<br>82% success | $0.0503 total cost<extra></extra>"
+        "opencode/kimi-k2.5<br>Requests per solved task: 16.21<br>82% success | $0.0503 total cost<extra></extra>",
+        "opencode/gpt-5.4-nano<br>Requests per solved task: 18.69<br>94% success | $0.0133 total cost<extra></extra>"
       ]
     }
   ],

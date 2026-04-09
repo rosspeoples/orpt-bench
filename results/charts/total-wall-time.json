@@ -9,6 +9,7 @@
         "opencode/glm-5",
         "opencode/minimax-m2.5",
         "opencode/gpt-5.4-mini",
+        "opencode/gpt-5.4-nano",
         "opencode/big-pickle",
         "opencode/gpt-5.4",
         "opencode/glm-5.1"
@@ -18,6 +19,7 @@
         13.55,
         14.16,
         14.17,
+        19.12,
         21.7,
         22.31,
         30.31
@@ -28,6 +30,7 @@
           "#73f0c5",
           "#22c55e",
           "#f472b6",
+          "#73f0c5",
           "#fb7185",
           "#86a8ff",
           "#f472b6"
@@ -42,6 +45,7 @@
         13.55,
         14.16,
         14.17,
+        19.12,
         21.7,
         22.31,
         30.31
@@ -56,6 +60,7 @@
         "opencode/glm-5<br>Minutes: 13.55<br>73% success | $0.2415 total cost<extra></extra>",
         "opencode/minimax-m2.5<br>Minutes: 14.16<br>65% success | $0.0822 total cost<extra></extra>",
         "opencode/gpt-5.4-mini<br>Minutes: 14.17<br>53% success | $0.0454 total cost<extra></extra>",
+        "opencode/gpt-5.4-nano<br>Minutes: 19.12<br>94% success | $0.0133 total cost<extra></extra>",
         "opencode/big-pickle<br>Minutes: 21.7<br>82% success | $0.0000 total cost<extra></extra>",
         "opencode/gpt-5.4<br>Minutes: 22.31<br>60% success | $0.1463 total cost<extra></extra>",
         "opencode/glm-5.1<br>Minutes: 30.31<br>94% success | $0.0823 total cost<extra></extra>"

@@ -3533,13 +3533,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.766513,
+      "valueScore": 0.74985,
       "valueScoreComponents": {
         "orptFactor": 0.7,
         "costFactor": 1,
-        "timeFactor": 0.590374
+        "timeFactor": 0.528934
       },
-      "compositeScore": 0.929954
+      "compositeScore": 0.924955
     },
     {
       "runId": "2026-04-08T23-28-14-467Z",
@@ -6549,13 +6549,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.746969,
+      "valueScore": 0.692875,
       "valueScoreComponents": {
-        "orptFactor": 0.722222,
+        "orptFactor": 0.611111,
         "costFactor": 1,
         "timeFactor": 0.48362
       },
-      "compositeScore": 0.924091
+      "compositeScore": 0.907863
     },
     {
       "runId": "2026-04-08T23-28-14-467Z",

@@ -5,9 +5,10 @@
     {
       "type": "bar",
       "x": [
+        "opencode/gpt-5.4-nano",
+        "opencode/big-pickle",
         "opencode/glm-5.1",
         "opencode/kimi-k2.5",
-        "opencode/big-pickle",
         "opencode/glm-5",
         "opencode/minimax-m2.5",
         "opencode/gpt-5.4",
@@ -16,6 +17,7 @@
       "y": [
         0.941,
         0.824,
+        0.941,
         0.824,
         0.733,
         0.647,
@@ -24,9 +26,10 @@
       ],
       "marker": {
         "color": [
+          "#73f0c5",
+          "#fb7185",
           "#f472b6",
           "#86a8ff",
-          "#fb7185",
           "#73f0c5",
           "#22c55e",
           "#86a8ff",
@@ -40,6 +43,7 @@
       "text": [
         0.941,
         0.824,
+        0.941,
         0.824,
         0.733,
         0.647,
@@ -52,13 +56,14 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/glm-5.1<br>Completion score: 0.941<br>94% success | 0.572 value<extra></extra>",
-        "opencode/kimi-k2.5<br>Completion score: 0.824<br>82% success | 0.675 value<extra></extra>",
-        "opencode/big-pickle<br>Completion score: 0.824<br>82% success | 0.653 value<extra></extra>",
-        "opencode/glm-5<br>Completion score: 0.733<br>73% success | 0.332 value<extra></extra>",
-        "opencode/minimax-m2.5<br>Completion score: 0.647<br>65% success | 0.399 value<extra></extra>",
-        "opencode/gpt-5.4<br>Completion score: 0.6<br>60% success | 0.269 value<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Completion score: 0.533<br>53% success | 0.389 value<extra></extra>"
+        "opencode/gpt-5.4-nano<br>Completion score: 0.941<br>94% success | 0.683 value<extra></extra>",
+        "opencode/big-pickle<br>Completion score: 0.824<br>82% success | 0.648 value<extra></extra>",
+        "opencode/glm-5.1<br>Completion score: 0.941<br>94% success | 0.373 value<extra></extra>",
+        "opencode/kimi-k2.5<br>Completion score: 0.824<br>82% success | 0.44 value<extra></extra>",
+        "opencode/glm-5<br>Completion score: 0.733<br>73% success | 0.211 value<extra></extra>",
+        "opencode/minimax-m2.5<br>Completion score: 0.647<br>65% success | 0.268 value<extra></extra>",
+        "opencode/gpt-5.4<br>Completion score: 0.6<br>60% success | 0.17 value<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Completion score: 0.533<br>53% success | 0.252 value<extra></extra>"
       ]
     }
   ],

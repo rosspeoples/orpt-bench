@@ -5,28 +5,31 @@
     {
       "type": "bar",
       "x": [
+        "opencode/gpt-5.4-nano",
+        "opencode/big-pickle",
         "opencode/glm-5.1",
         "opencode/kimi-k2.5",
-        "opencode/big-pickle",
         "opencode/glm-5",
         "opencode/minimax-m2.5",
         "opencode/gpt-5.4",
         "opencode/gpt-5.4-mini"
       ],
       "y": [
-        0.83,
-        0.779,
-        0.772,
-        0.613,
-        0.573,
-        0.501,
-        0.49
+        0.864,
+        0.771,
+        0.771,
+        0.708,
+        0.577,
+        0.533,
+        0.471,
+        0.449
       ],
       "marker": {
         "color": [
+          "#73f0c5",
+          "#fb7185",
           "#f472b6",
           "#86a8ff",
-          "#fb7185",
           "#73f0c5",
           "#22c55e",
           "#86a8ff",
@@ -38,13 +41,14 @@
         }
       },
       "text": [
-        0.83,
-        0.779,
-        0.772,
-        0.613,
-        0.573,
-        0.501,
-        0.49
+        0.864,
+        0.771,
+        0.771,
+        0.708,
+        0.577,
+        0.533,
+        0.471,
+        0.449
       ],
       "textposition": "auto",
       "textfont": {
@@ -52,13 +56,14 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/glm-5.1<br>Composite score: 0.83<br>94% success | 13.75 ORPT<extra></extra>",
-        "opencode/kimi-k2.5<br>Composite score: 0.779<br>82% success | 16.21 ORPT<extra></extra>",
-        "opencode/big-pickle<br>Composite score: 0.772<br>82% success | 15.07 ORPT<extra></extra>",
-        "opencode/glm-5<br>Composite score: 0.613<br>73% success | 14.27 ORPT<extra></extra>",
-        "opencode/minimax-m2.5<br>Composite score: 0.573<br>65% success | 13.45 ORPT<extra></extra>",
-        "opencode/gpt-5.4<br>Composite score: 0.501<br>60% success | 13.11 ORPT<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Composite score: 0.49<br>53% success | 11.00 ORPT<extra></extra>"
+        "opencode/gpt-5.4-nano<br>Composite score: 0.864<br>94% success | 18.69 ORPT<extra></extra>",
+        "opencode/big-pickle<br>Composite score: 0.771<br>82% success | 15.07 ORPT<extra></extra>",
+        "opencode/glm-5.1<br>Composite score: 0.771<br>94% success | 13.75 ORPT<extra></extra>",
+        "opencode/kimi-k2.5<br>Composite score: 0.708<br>82% success | 16.21 ORPT<extra></extra>",
+        "opencode/glm-5<br>Composite score: 0.577<br>73% success | 14.27 ORPT<extra></extra>",
+        "opencode/minimax-m2.5<br>Composite score: 0.533<br>65% success | 13.45 ORPT<extra></extra>",
+        "opencode/gpt-5.4<br>Composite score: 0.471<br>60% success | 13.11 ORPT<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Composite score: 0.449<br>53% success | 11.00 ORPT<extra></extra>"
       ]
     }
   ],
