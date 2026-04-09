@@ -2,10 +2,18 @@
   {
     "type": "bar",
     "x": [
-      "opencode/gpt-5.4-mini"
+      "opencode/claude-opus-4-6",
+      "opencode/gpt-5.4",
+      "opencode/claude-sonnet-4-6",
+      "opencode/glm-5",
+      "opencode/gemini-3.1-pro"
     ],
     "y": [
-      48.15
+      77.58,
+      73.94,
+      70.75,
+      67.07,
+      15.79
     ],
     "marker": {
       "color": "#7c3aed"
