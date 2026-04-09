@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-04-09T14-34-38-436Z",
+    "startedAt": "2026-04-09T14:34:38.437Z",
+    "completedAt": "2026-04-09T18:49:52.937Z",
+    "benchmarkCycle": "monthly",
+    "taskCount": 27,
+    "modelCount": 5,
+    "repeats": 1,
+    "totalRuns": 135,
+    "successfulRuns": 91,
+    "topModel": "opencode/claude-opus-4-6",
+    "topCompositeScore": 0.7758302592592592,
+    "topSuccessRate": 0.8888888888888888,
+    "href": "results/history/2026-04-09T14-34-38-436Z.json",
+    "isLatest": true
+  },
+  {
     "id": "2026-04-09T13-31-07-907Z",
     "startedAt": "2026-04-09T13:31:07.908Z",
     "completedAt": "2026-04-09T13:58:41.408Z",
@@ -13,7 +29,7 @@
     "topCompositeScore": 0.48148148148148145,
     "topSuccessRate": 0.48148148148148145,
     "href": "results/history/2026-04-09T13-31-07-907Z.json",
-    "isLatest": true
+    "isLatest": false
   },
   {
     "id": "2026-04-09T00-36-28-598Z",

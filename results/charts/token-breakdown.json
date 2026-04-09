@@ -9,21 +9,27 @@
         "opencode/gpt-5.4-nano",
         "opencode/big-pickle",
         "opencode/glm-5.1",
+        "opencode/claude-opus-4-6",
         "opencode/kimi-k2.5",
+        "opencode/gpt-5.4",
+        "opencode/claude-sonnet-4-6",
         "opencode/glm-5",
         "opencode/minimax-m2.5",
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/gemini-3.1-pro"
       ],
       "y": [
         11181,
         4603,
         2896,
+        27,
         11741,
-        232084,
+        29395,
+        24,
+        433386,
         256920,
-        6583,
-        14828
+        14828,
+        13181
       ],
       "marker": {
         "color": "#2dd4bf"
@@ -36,21 +42,27 @@
         "opencode/gpt-5.4-nano",
         "opencode/big-pickle",
         "opencode/glm-5.1",
+        "opencode/claude-opus-4-6",
         "opencode/kimi-k2.5",
+        "opencode/gpt-5.4",
+        "opencode/claude-sonnet-4-6",
         "opencode/glm-5",
         "opencode/minimax-m2.5",
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/gemini-3.1-pro"
       ],
       "y": [
         2536,
         3933,
         1947,
+        8130,
         6610,
-        2947,
+        4788,
+        5574,
+        5303,
         4241,
-        3288,
-        3094
+        3094,
+        1333
       ],
       "marker": {
         "color": "#60a5fa"
@@ -63,11 +75,14 @@
         "opencode/gpt-5.4-nano",
         "opencode/big-pickle",
         "opencode/glm-5.1",
+        "opencode/claude-opus-4-6",
         "opencode/kimi-k2.5",
+        "opencode/gpt-5.4",
+        "opencode/claude-sonnet-4-6",
         "opencode/glm-5",
         "opencode/minimax-m2.5",
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/gemini-3.1-pro"
       ],
       "y": [
         1327,
@@ -75,9 +90,12 @@
         0,
         0,
         0,
+        1290,
         0,
-        669,
-        4899
+        0,
+        0,
+        4899,
+        1340
       ],
       "marker": {
         "color": "#c084fc"
@@ -90,21 +108,27 @@
         "opencode/gpt-5.4-nano",
         "opencode/big-pickle",
         "opencode/glm-5.1",
+        "opencode/claude-opus-4-6",
         "opencode/kimi-k2.5",
+        "opencode/gpt-5.4",
+        "opencode/claude-sonnet-4-6",
         "opencode/glm-5",
         "opencode/minimax-m2.5",
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/gemini-3.1-pro"
       ],
       "y": [
         310272,
         230586,
         268160,
+        536949,
         292352,
+        419200,
+        464850,
         0,
         0,
-        281856,
-        449024
+        449024,
+        74758
       ],
       "marker": {
         "color": "#fbbf24"
@@ -117,17 +141,23 @@
         "opencode/gpt-5.4-nano",
         "opencode/big-pickle",
         "opencode/glm-5.1",
+        "opencode/claude-opus-4-6",
         "opencode/kimi-k2.5",
+        "opencode/gpt-5.4",
+        "opencode/claude-sonnet-4-6",
         "opencode/glm-5",
         "opencode/minimax-m2.5",
-        "opencode/gpt-5.4",
-        "opencode/gpt-5.4-mini"
+        "opencode/gpt-5.4-mini",
+        "opencode/gemini-3.1-pro"
       ],
       "y": [
         0,
         915,
         0,
+        13015,
         0,
+        0,
+        10992,
         0,
         0,
         0,

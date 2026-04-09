@@ -6,14 +6,29 @@
       "type": "bar",
       "orientation": "h",
       "x": [
-        9.77
+        8,
+        9.77,
+        11,
+        13.2,
+        14.88,
+        16.43
       ],
       "y": [
-        "opencode/gpt-5.4-mini"
+        "opencode/gemini-3.1-pro",
+        "opencode/gpt-5.4-mini",
+        "opencode/gpt-5.4",
+        "opencode/glm-5",
+        "opencode/claude-opus-4-6",
+        "opencode/claude-sonnet-4-6"
       ],
       "marker": {
         "color": [
-          "#f472b6"
+          "#f59e0b",
+          "#f472b6",
+          "#a78bfa",
+          "#4ade80",
+          "#fb7185",
+          "#fb7185"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -21,7 +36,12 @@
         }
       },
       "text": [
-        9.77
+        8,
+        9.77,
+        11,
+        13.2,
+        14.88,
+        16.43
       ],
       "textposition": "outside",
       "cliponaxis": false,
@@ -30,7 +50,12 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gpt-5.4-mini<br>Requests per solved task: 9.77<br>48% success | $0.0808 total cost<extra></extra>"
+        "opencode/gemini-3.1-pro<br>Requests per solved task: 8<br>19% success | $0.0734 total cost<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Requests per solved task: 9.77<br>48% success | $0.0808 total cost<extra></extra>",
+        "opencode/gpt-5.4<br>Requests per solved task: 11<br>78% success | $0.2695 total cost<extra></extra>",
+        "opencode/glm-5<br>Requests per solved task: 13.2<br>74% success | $0.4504 total cost<extra></extra>",
+        "opencode/claude-opus-4-6<br>Requests per solved task: 14.88<br>89% success | $0.5532 total cost<extra></extra>",
+        "opencode/claude-sonnet-4-6<br>Requests per solved task: 16.43<br>78% success | $0.2644 total cost<extra></extra>"
       ]
     }
   ],

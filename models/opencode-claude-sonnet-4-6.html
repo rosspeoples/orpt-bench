@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>opencode/claude-sonnet-4-6 | ORPT-Bench</title>
+  <meta name="color-scheme" content="dark light">
+  <style>
+    :root {
+      --bg: #060816;
+      --panel: rgba(15, 20, 38, 0.88);
+      --border: rgba(122, 162, 255, 0.18);
+      --text: #edf2ff;
+      --muted: #99a4c8;
+      --accent: #73f0c5;
+      --warning: #ffd36e;
+      --danger: #ff7a9a;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(134, 168, 255, 0.18), transparent 35%),
+        radial-gradient(circle at 85% 15%, rgba(115, 240, 197, 0.12), transparent 28%),
+        linear-gradient(180deg, #080b18 0%, #05070f 100%);
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .shell { width: min(1380px, calc(100vw - 32px)); margin: 0 auto; padding: 28px 0 72px; }
+    .topbar, .hero, .panel { border: 1px solid var(--border); border-radius: var(--radius); background: linear-gradient(180deg, rgba(16, 21, 41, 0.96), rgba(9, 12, 24, 0.96)); box-shadow: var(--shadow); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 18px; margin-bottom: 22px; }
+    .hero { padding: 26px; }
+    .panel { padding: 20px; margin-top: 22px; }
+    .hero-grid, .stats-grid, .chart-grid, .summary-grid { display: grid; gap: 16px; }
+    .hero-grid { grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr); }
+    .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .chart-grid, .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .eyebrow, .micro { font-family: var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); font-size: 0.78rem; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(1.9rem, 4vw, 3rem); line-height: 0.98; margin: 10px 0 12px; }
+    .muted, .panel-copy { color: var(--muted); line-height: 1.6; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(122, 162, 255, 0.14); font-size: 0.8rem; white-space: nowrap; }
+    .pill.good { color: var(--accent); border-color: rgba(115, 240, 197, 0.24); background: rgba(115, 240, 197, 0.08); }
+    .pill.warn { color: var(--warning); border-color: rgba(255, 211, 110, 0.24); background: rgba(255, 211, 110, 0.08); }
+    .pill.bad { color: var(--danger); border-color: rgba(255, 122, 154, 0.24); background: rgba(255, 122, 154, 0.08); }
+    .metric, .summary-item { border: 1px solid rgba(122, 162, 255, 0.12); border-radius: var(--radius-sm); background: rgba(9, 14, 28, 0.78); padding: 16px; }
+    .metric-value { font-size: 1.7rem; font-weight: 700; margin-top: 6px; }
+    .table-wrap { overflow: auto; margin-top: 14px; border-radius: 12px; border: 1px solid rgba(122, 162, 255, 0.08); }
+    table { width: 100%; border-collapse: collapse; min-width: 920px; background: rgba(7, 10, 20, 0.82); }
+    th, td { padding: 12px 14px; border-bottom: 1px solid rgba(122, 162, 255, 0.08); text-align: left; vertical-align: top; font-size: 0.93rem; }
+    th { background: rgba(12, 18, 35, 0.96); color: var(--muted); font-weight: 600; }
+    .card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .card-link { padding: 9px 12px; border-radius: 999px; border: 1px solid var(--border); }
+    iframe { width: 100%; height: 420px; border: 0; border-radius: 12px; background: #08101f; margin-top: 14px; }
+    @media (max-width: 980px) {
+      .hero-grid, .stats-grid, .chart-grid, .summary-grid { grid-template-columns: 1fr; }
+      iframe { height: 380px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div><strong>ORPT-Bench model detail</strong></div>
+      <div class="card-actions" style="margin-top:0;">
+        <a class="card-link" href="../index.html">Back to main dashboard</a>
+        <a class="card-link" href="https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive">Catalog source</a>
+      </div>
+    </div>
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Model benchmark profile</div>
+          <h1>opencode/claude-sonnet-4-6</h1>
+          <p class="panel-copy">This page uses <strong>opencode/claude-sonnet-4-6</strong> as the comparison baseline. Every chart and table below is intended to answer the same question: where this model leads, where it lags, and what it costs in quality, time, and request pressure.</p>
+          <div class="card-actions">
+            <span class="pill">anthropic</span>
+            <span class="pill">medium price tier</span>
+            <span class="pill">standard</span>
+            <span class="pill">balanced-general</span>
+          </div>
+        </div>
+        <div class="summary-grid">
+          <div class="summary-item"><div class="micro">Composite</div><div class="metric-value">0.647</div><div class="muted">Correctness-weighted overall standing</div></div>
+          <div class="summary-item"><div class="micro">Success</div><div class="metric-value">78%</div><div class="muted">Tasks completed successfully</div></div>
+          <div class="summary-item"><div class="micro">ORPT</div><div class="metric-value">16.43</div><div class="muted">Requests per solved task</div></div>
+          <div class="summary-item"><div class="micro">Total cost</div><div class="metric-value">$0.2644</div><div class="muted">Observed benchmark spend</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="micro">Baseline comparison</div>
+      <h3>How the field moves relative to opencode/claude-sonnet-4-6</h3>
+      <p class="panel-copy">These charts use opencode/claude-sonnet-4-6 as zero. Positive bars mean other models are above the baseline on that metric; negative bars mean they trail it.</p>
+      <div class="chart-grid">
+        <article><h3>Composite delta vs baseline</h3><iframe loading="lazy" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Composite delta vs baseline&lt;/title&gt;
+  &lt;script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;style&gt;
+    html, body { margin: 0; height: 100%; background: #08101f; }
+    #chart { width: 100%; height: 100%; }
+  &lt;/style&gt;
+  &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
+  &lt;script&gt;
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/gemini-3.1-pro&quot;],&quot;y&quot;:[0.2099,0.1243,0.1161,0.0699,0.0583,0.0157,0,-0.0365,-0.1143,-0.2275,-0.4963],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.2099,0.1243,0.1161,0.0699,0.0583,0.0157,0,-0.0365,-0.1143,-0.2275,-0.4963],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Composite delta: 0.2099&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Composite delta: 0.1243&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Composite delta: 0.1161&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;Composite delta: 0.0699&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Composite delta: 0.0583&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Composite delta: 0.0157&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;Composite delta: 0&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Composite delta: -0.0365&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Composite delta: -0.1143&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Composite delta: -0.2275&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;Composite delta: -0.4963&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Composite delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Composite delta&quot;}};
+    Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Composite delta vs baseline"></iframe></article><article><h3>Success delta vs baseline</h3><iframe loading="lazy" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Success delta vs baseline&lt;/title&gt;
+  &lt;script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;style&gt;
+    html, body { margin: 0; height: 100%; background: #08101f; }
+    #chart { width: 100%; height: 100%; }
+  &lt;/style&gt;
+  &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
+  &lt;script&gt;
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/gemini-3.1-pro&quot;],&quot;y&quot;:[16.34,4.58,16.34,11.11,4.58,0,0,-3.7,-13.07,-29.63,-59.26],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[16.34,4.58,16.34,11.11,4.58,0,0,-3.7,-13.07,-29.63,-59.26],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Success rate delta: 16.34&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Success rate delta: 4.58&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Success rate delta: 16.34&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;Success rate delta: 11.11&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Success rate delta: 4.58&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Success rate delta: -3.7&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Success rate delta: -13.07&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Success rate delta: -29.63&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;Success rate delta: -59.26&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Success delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Success rate delta&quot;}};
+    Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Success delta vs baseline"></iframe></article><article><h3>Cost delta vs baseline</h3><iframe loading="lazy" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Cost delta vs baseline&lt;/title&gt;
+  &lt;script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;style&gt;
+    html, body { margin: 0; height: 100%; background: #08101f; }
+    #chart { width: 100%; height: 100%; }
+  &lt;/style&gt;
+  &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
+  &lt;script&gt;
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/gemini-3.1-pro&quot;],&quot;y&quot;:[-0.2511,-0.2644,-0.182,0.2888,-0.2141,0.0051,0,0.186,-0.1822,-0.1836,-0.191],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[-0.2511,-0.2644,-0.182,0.2888,-0.2141,0.0051,0,0.186,-0.1822,-0.1836,-0.191],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;USD delta: -0.2511&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;USD delta: -0.2644&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;USD delta: -0.182&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;USD delta: 0.2888&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;USD delta: -0.2141&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;USD delta: 0.0051&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;USD delta: 0.186&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;USD delta: -0.1822&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;USD delta: -0.1836&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;USD delta: -0.191&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Cost delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;USD delta&quot;}};
+    Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Cost delta vs baseline"></iframe></article><article><h3>Wall time delta vs baseline</h3><iframe loading="lazy" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Wall time delta vs baseline&lt;/title&gt;
+  &lt;script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;style&gt;
+    html, body { margin: 0; height: 100%; background: #08101f; }
+    #chart { width: 100%; height: 100%; }
+  &lt;/style&gt;
+  &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
+  &lt;script&gt;
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/gemini-3.1-pro&quot;],&quot;y&quot;:[-23.39,-20.81,-12.2,-2.44,-31.19,-9.72,0,-20.84,-28.35,-15.6,71.72],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[-23.39,-20.81,-12.2,-2.44,-31.19,-9.72,0,-20.84,-28.35,-15.6,71.72],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Minutes delta: -23.39&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Minutes delta: -20.81&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Minutes delta: -12.2&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;Minutes delta: -2.44&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Minutes delta: -31.19&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Minutes delta: -9.72&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;Minutes delta: 0&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Minutes delta: -20.84&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Minutes delta: -28.35&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Minutes delta: -15.6&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;Minutes delta: 71.72&lt;br&gt;Baseline: opencode/claude-sonnet-4-6&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Wall time delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Minutes delta&quot;}};
+    Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Wall time delta vs baseline"></iframe></article>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="micro">Decision table</div>
+      <h3>Field comparison against the baseline</h3>
+      <p class="panel-copy">Use this to decide whether another model beats opencode/claude-sonnet-4-6 enough to justify the change.</p>
+      <div class="table-wrap"><table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Composite</th>
+        <th>Delta vs baseline</th>
+        <th>Success</th>
+        <th>Success delta</th>
+        <th>ORPT</th>
+        <th>ORPT delta</th>
+        <th>Cost</th>
+        <th>Cost delta</th>
+        <th>Wall time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>opencode/gpt-5.4-nano</td>
+        <td>0.857</td>
+        <td>+0.21</td>
+        <td>94%</td>
+        <td>+16%</td>
+        <td>18.69</td>
+        <td>+2.26</td>
+        <td>$0.0133</td>
+        <td>-$0.2511</td>
+        <td>19m 07s</td>
+      </tr>
+      <tr>
+        <td>opencode/big-pickle</td>
+        <td>0.771</td>
+        <td>+0.124</td>
+        <td>82%</td>
+        <td>+5%</td>
+        <td>15.07</td>
+        <td>-1.36</td>
+        <td>$0.0000</td>
+        <td>-$0.2644</td>
+        <td>21m 42s</td>
+      </tr>
+      <tr>
+        <td>opencode/glm-5.1</td>
+        <td>0.763</td>
+        <td>+0.116</td>
+        <td>94%</td>
+        <td>+16%</td>
+        <td>13.75</td>
+        <td>-2.68</td>
+        <td>$0.0823</td>
+        <td>-$0.1820</td>
+        <td>30m 19s</td>
+      </tr>
+      <tr>
+        <td>opencode/claude-opus-4-6</td>
+        <td>0.717</td>
+        <td>+0.07</td>
+        <td>89%</td>
+        <td>+11%</td>
+        <td>14.88</td>
+        <td>-1.55</td>
+        <td>$0.5532</td>
+        <td>+$0.2888</td>
+        <td>40m 04s</td>
+      </tr>
+      <tr>
+        <td>opencode/kimi-k2.5</td>
+        <td>0.705</td>
+        <td>+0.058</td>
+        <td>82%</td>
+        <td>+5%</td>
+        <td>16.21</td>
+        <td>-0.21</td>
+        <td>$0.0503</td>
+        <td>-$0.2141</td>
+        <td>11m 19s</td>
+      </tr>
+      <tr>
+        <td>opencode/gpt-5.4</td>
+        <td>0.663</td>
+        <td>+0.016</td>
+        <td>78%</td>
+        <td>+0%</td>
+        <td>11.00</td>
+        <td>-5.43</td>
+        <td>$0.2695</td>
+        <td>+$0.0051</td>
+        <td>32m 47s</td>
+      </tr>
+      <tr>
+        <td>opencode/claude-sonnet-4-6 <span class="pill good">Baseline</span></td>
+        <td>0.647</td>
+        <td>+0.0</td>
+        <td>78%</td>
+        <td>+0%</td>
+        <td>16.43</td>
+        <td>+0.00</td>
+        <td>$0.2644</td>
+        <td>+$0.0000</td>
+        <td>42m 31s</td>
+      </tr>
+      <tr>
+        <td>opencode/glm-5</td>
+        <td>0.61</td>
+        <td>-0.037</td>
+        <td>74%</td>
+        <td>-4%</td>
+        <td>13.20</td>
+        <td>-3.23</td>
+        <td>$0.4504</td>
+        <td>+$0.1860</td>
+        <td>21m 40s</td>
+      </tr>
+      <tr>
+        <td>opencode/minimax-m2.5</td>
+        <td>0.533</td>
+        <td>-0.114</td>
+        <td>65%</td>
+        <td>-13%</td>
+        <td>13.45</td>
+        <td>-2.97</td>
+        <td>$0.0822</td>
+        <td>-$0.1822</td>
+        <td>14m 10s</td>
+      </tr>
+      <tr>
+        <td>opencode/gpt-5.4-mini</td>
+        <td>0.419</td>
+        <td>-0.228</td>
+        <td>48%</td>
+        <td>-30%</td>
+        <td>9.77</td>
+        <td>-6.66</td>
+        <td>$0.0808</td>
+        <td>-$0.1836</td>
+        <td>26m 55s</td>
+      </tr>
+      <tr>
+        <td>opencode/gemini-3.1-pro</td>
+        <td>0.151</td>
+        <td>-0.496</td>
+        <td>19%</td>
+        <td>-59%</td>
+        <td>8.00</td>
+        <td>-8.43</td>
+        <td>$0.0734</td>
+        <td>-$0.1910</td>
+        <td>114m 14s</td>
+      </tr>
+    </tbody>
+  </table></div>
+    </section>
+    <section class="summary-grid">
+      <div class="panel">
+        <div class="micro">Task story</div>
+        <h3>Where opencode/claude-sonnet-4-6 separates</h3>
+        <p class="panel-copy">This table puts the most revealing tasks first: unsolved tasks, single-solver tasks, and tasks where the baseline trails the winner by a meaningful margin.</p>
+        <div class="table-wrap"><table>
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Field read</th>
+        <th>Baseline result</th>
+        <th>Winner</th>
+        <th>Gap to winner</th>
+        <th>Baseline cost</th>
+        <th>Baseline time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>SELinux registry volume label repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/gpt-5.4<div class="muted">1.0</div></td>
+        <td>1.0</td>
+        <td>$0.0150</td>
+        <td>54s</td>
+      </tr>
+      <tr>
+        <td>CNPG restore manifest repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill warn">dnf</span></td>
+        <td>opencode/big-pickle<div class="muted">1.0</div></td>
+        <td>1.0</td>
+        <td>n/a</td>
+        <td>5m 00s</td>
+      </tr>
+      <tr>
+        <td>Docker Compose observability fix</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.988</div></td>
+        <td>0.988</td>
+        <td>$0.0100</td>
+        <td>53s</td>
+      </tr>
+      <tr>
+        <td>ExternalDNS RFC2136 repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/gpt-5.4<div class="muted">0.938</div></td>
+        <td>0.938</td>
+        <td>n/a</td>
+        <td>5m 01s</td>
+      </tr>
+      <tr>
+        <td>Workspace runtime access convergence</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.934</div></td>
+        <td>0.934</td>
+        <td>n/a</td>
+        <td>5m 01s</td>
+      </tr>
+      <tr>
+        <td>Kubernetes rollout repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/kimi-k2.5<div class="muted">0.863</div></td>
+        <td>0.863</td>
+        <td>$0.0095</td>
+        <td>42s</td>
+      </tr>
+      <tr>
+        <td>Build workspace plane convergence</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">1.0</div></td>
+        <td>0.228</td>
+        <td>$0.0131</td>
+        <td>2m 07s</td>
+      </tr>
+      <tr>
+        <td>Wildcard TLS route coverage</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.991</div></td>
+        <td>0.222</td>
+        <td>$0.0129</td>
+        <td>1m 08s</td>
+      </tr>
+      <tr>
+        <td>Kubernetes OIDC RBAC repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.956</div></td>
+        <td>0.178</td>
+        <td>$0.0114</td>
+        <td>1m 15s</td>
+      </tr>
+      <tr>
+        <td>Log audit shell script</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.968</div></td>
+        <td>0.173</td>
+        <td>$0.0075</td>
+        <td>45s</td>
+      </tr>
+      <tr>
+        <td>MCP OpenBao contract repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.948</div></td>
+        <td>0.171</td>
+        <td>$0.0101</td>
+        <td>56s</td>
+      </tr>
+      <tr>
+        <td>Event status shell summary</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.961</div></td>
+        <td>0.169</td>
+        <td>$0.0076</td>
+        <td>33s</td>
+      </tr>
+      <tr>
+        <td>GitOps workspace render validation</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.922</div></td>
+        <td>0.165</td>
+        <td>$0.0126</td>
+        <td>3m 09s</td>
+      </tr>
+      <tr>
+        <td>Workspace transplant bundle repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.926</div></td>
+        <td>0.158</td>
+        <td>$0.0092</td>
+        <td>1m 24s</td>
+      </tr>
+      <tr>
+        <td>Pre-ArgoCD bootstrap sequencing</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.93</div></td>
+        <td>0.143</td>
+        <td>$0.0111</td>
+        <td>1m 16s</td>
+      </tr>
+      <tr>
+        <td>MetalLB ingress address pool repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4<div class="muted">0.999</div></td>
+        <td>0.129</td>
+        <td>$0.0136</td>
+        <td>1m 20s</td>
+      </tr>
+      <tr>
+        <td>Ansible nginx role completion</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.879</div></td>
+        <td>0.118</td>
+        <td>$0.0096</td>
+        <td>42s</td>
+      </tr>
+      <tr>
+        <td>AppArmor dnsmasq profile repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4<div class="muted">0.992</div></td>
+        <td>0.111</td>
+        <td>$0.0121</td>
+        <td>1m 18s</td>
+      </tr>
+      <tr>
+        <td>Bootstrap phase validation repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.882</div></td>
+        <td>0.11</td>
+        <td>$0.0138</td>
+        <td>1m 24s</td>
+      </tr>
+      <tr>
+        <td>Log level rollup shell script</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.961</div></td>
+        <td>0.11</td>
+        <td>$0.0076</td>
+        <td>32s</td>
+      </tr>
+      <tr>
+        <td>K3s registry mirror trust repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-mini<div class="muted">0.948</div></td>
+        <td>0.093</td>
+        <td>$0.0091</td>
+        <td>26s</td>
+      </tr>
+      <tr>
+        <td>RHEL k3s node preparation repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/glm-5<div class="muted">0.981</div></td>
+        <td>0.08</td>
+        <td>$0.0148</td>
+        <td>1m 31s</td>
+      </tr>
+      <tr>
+        <td>RHEL NetworkManager bridge VLAN repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/glm-5<div class="muted">0.916</div></td>
+        <td>0.055</td>
+        <td>$0.0138</td>
+        <td>57s</td>
+      </tr>
+      <tr>
+        <td>Traefik forwarded header trust repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4<div class="muted">0.931</div></td>
+        <td>0.021</td>
+        <td>$0.0083</td>
+        <td>1m 10s</td>
+      </tr>
+      <tr>
+        <td>Terraform static site repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4<div class="muted">0.843</div></td>
+        <td>0.008</td>
+        <td>$0.0083</td>
+        <td>34s</td>
+      </tr>
+      <tr>
+        <td>nftables router ingress repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/claude-sonnet-4-6<div class="muted">1.0</div></td>
+        <td>0.0</td>
+        <td>$0.0123</td>
+        <td>1m 06s</td>
+      </tr>
+      <tr>
+        <td>RHEL edge firewalld router repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/claude-sonnet-4-6<div class="muted">0.975</div></td>
+        <td>0.0</td>
+        <td>$0.0110</td>
+        <td>1m 27s</td>
+      </tr>
+    </tbody>
+  </table></div>
+      </div>
+      <div class="panel">
+        <div class="micro">Head to head</div>
+        <h3>Direct matchups</h3>
+        <p class="panel-copy">Pairwise task wins and top-line deltas show whether a challenger truly beats the baseline or just looks cheaper or faster in isolation.</p>
+        <div class="table-wrap"><table>
+    <thead>
+      <tr>
+        <th>Challenger</th>
+        <th>Task record</th>
+        <th>Composite edge</th>
+        <th>Success edge</th>
+        <th>Cost edge</th>
+        <th>Time edge</th>
+        <th>ORPT edge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>opencode/gemini-3.1-pro</td>
+        <td>21-2<div class="muted">4 ties</div></td>
+        <td>+0.496</td>
+        <td>+59%</td>
+        <td>+$0.1910</td>
+        <td>-71m 43s</td>
+        <td>+8.43</td>
+      </tr>
+      <tr>
+        <td>opencode/gpt-5.4-mini</td>
+        <td>10-13<div class="muted">4 ties</div></td>
+        <td>+0.228</td>
+        <td>+30%</td>
+        <td>+$0.1836</td>
+        <td>+15m 36s</td>
+        <td>+6.66</td>
+      </tr>
+      <tr>
+        <td>opencode/gpt-5.4-nano</td>
+        <td>2-15<div class="muted">0 ties</div></td>
+        <td>-0.21</td>
+        <td>-16%</td>
+        <td>+$0.2511</td>
+        <td>+23m 23s</td>
+        <td>-2.26</td>
+      </tr>
+      <tr>
+        <td>opencode/big-pickle</td>
+        <td>1-14<div class="muted">2 ties</div></td>
+        <td>-0.124</td>
+        <td>-5%</td>
+        <td>+$0.2644</td>
+        <td>+20m 49s</td>
+        <td>+1.36</td>
+      </tr>
+      <tr>
+        <td>opencode/glm-5.1</td>
+        <td>1-15<div class="muted">1 ties</div></td>
+        <td>-0.116</td>
+        <td>-16%</td>
+        <td>+$0.1820</td>
+        <td>+12m 12s</td>
+        <td>+2.68</td>
+      </tr>
+      <tr>
+        <td>opencode/minimax-m2.5</td>
+        <td>4-11<div class="muted">2 ties</div></td>
+        <td>+0.114</td>
+        <td>+13%</td>
+        <td>+$0.1822</td>
+        <td>+28m 21s</td>
+        <td>+2.97</td>
+      </tr>
+      <tr>
+        <td>opencode/claude-opus-4-6</td>
+        <td>18-7<div class="muted">2 ties</div></td>
+        <td>-0.07</td>
+        <td>-11%</td>
+        <td>-$0.2888</td>
+        <td>+2m 26s</td>
+        <td>+1.55</td>
+      </tr>
+      <tr>
+        <td>opencode/kimi-k2.5</td>
+        <td>2-14<div class="muted">1 ties</div></td>
+        <td>-0.058</td>
+        <td>-5%</td>
+        <td>+$0.2141</td>
+        <td>+31m 11s</td>
+        <td>+0.21</td>
+      </tr>
+      <tr>
+        <td>opencode/glm-5</td>
+        <td>10-15<div class="muted">2 ties</div></td>
+        <td>+0.037</td>
+        <td>+4%</td>
+        <td>-$0.1860</td>
+        <td>+20m 51s</td>
+        <td>+3.23</td>
+      </tr>
+      <tr>
+        <td>opencode/gpt-5.4</td>
+        <td>8-18<div class="muted">1 ties</div></td>
+        <td>-0.016</td>
+        <td>+0%</td>
+        <td>-$0.0051</td>
+        <td>+9m 43s</td>
+        <td>+5.43</td>
+      </tr>
+    </tbody>
+  </table></div>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="micro">Model context</div>
+      <h3>Benchmark and catalog detail</h3>
+      <p class="panel-copy">The benchmark result only matters in context: this section pairs the observed benchmark outcome with the catalog metadata and operating characteristics behind it.</p>
+      <div class="summary-grid">
+        <div class="summary-item"><div class="stat-row"><span>Requests</span><strong>403</strong></div><div class="stat-row"><span>Wall time</span><strong>42m 31s</strong></div><div class="stat-row"><span>Average task cost</span><strong>$0.0109</strong></div><div class="stat-row"><span>Benchmark support</span><strong>unknown</strong></div></div>
+        <div class="summary-item"><div class="stat-row"><span>Catalog blended price</span><strong>$6.0000 / 1M tok</strong></div><div class="stat-row"><span>Catalog speed</span><strong>67 tok/s</strong></div><div class="stat-row"><span>Intelligence</span><strong>52</strong></div><div class="stat-row"><span>Agentic</span><strong>n/a</strong></div></div>
+      </div>
+      <p class="panel-copy" style="margin-top:14px;">OpenRouter reference blend for anthropic/claude-opus-4.6-fast is 60 USD per 1M tokens using a 3:1 input:output mix.</p>
+      
+    </section>
+  </div>
+</body>
+</html>
