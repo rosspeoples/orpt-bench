@@ -26,6 +26,7 @@ After any harness change or task-set change, previously published full-run resul
 - `Score` remains binary correctness: pass = `1`, fail = `0`
 - `Value Score` is a secondary efficiency metric computed only from successful comparable runs
 - `Value Score` combines normalized ORPT, actual observed cost, and wall time using a weighted geometric mean
+- ORPT is lower-is-better: fewer requests per successful task is more efficient
 - Current value weights: ORPT `0.45`, cost `0.35`, time `0.20`
 - Failed or non-comparable runs receive `0.000`
 - `Composite Score = 0.70 * Score + 0.30 * Value Score`
