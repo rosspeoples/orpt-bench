@@ -5,7 +5,7 @@ import { execSync } from 'node:child_process';
 import { aggregateRun } from './benchmark.js';
 
 const outputDir = process.env.PUBLISH_PAGES_OUTPUT_DIR || process.env.GITHUB_PAGES_OUTPUT_DIR;
-const MODEL_COLOR_PALETTE = ['#73f0c5', '#86a8ff', '#f59e0b', '#f472b6', '#22c55e', '#38bdf8', '#c084fc', '#fb7185'];
+const MODEL_COLOR_PALETTE = ['#4ade80', '#60a5fa', '#f59e0b', '#f472b6', '#22d3ee', '#a78bfa', '#f97316', '#14b8a6', '#e879f9', '#84cc16', '#fb7185', '#38bdf8'];
 const CONTROL_SMOKE_TASK_PATTERNS = ['16-event-status-shell', '17-log-level-rollup', '05*'];
 const CONTROL_SMOKE_TASK_IDS = ['16-event-status-shell', '17-log-level-rollup', '05-log-audit-script'];
 const LEGACY_CONTROL_SMOKE_TASK_PATTERNS = ['05*'];
@@ -32,6 +32,14 @@ const allRunEntries = dedupeRunEntries([...historyEntries, { fileName: null, rep
 const publicationContext = buildPublicationContext(allRunEntries, latestRawRun);
 const chartDefinitions = [
   {
+    slug: 'composite-score',
+    eyebrow: 'Leaderboard',
+    title: 'Composite score',
+    description: 'Correctness-first overall ranking across the full benchmark set.',
+    featured: true,
+    build: buildCompositeScoreChart,
+  },
+  {
     slug: 'completion-score',
     eyebrow: 'Completion',
     title: 'Completion score',
@@ -44,13 +52,6 @@ const chartDefinitions = [
     title: 'Value score',
     description: 'Efficiency after a task is solved, blending ORPT, total cost, and wall time.',
     build: buildValueScoreChart,
-  },
-  {
-    slug: 'composite-score',
-    eyebrow: 'Leaderboard',
-    title: 'Composite score',
-    description: 'Correctness-first overall ranking across the full benchmark set.',
-    build: buildCompositeScoreChart,
   },
   {
     slug: 'success-rate',
@@ -1013,27 +1014,33 @@ function buildModelBarChart({ rows, metricKey, title, axisTitle, valueFormatter,
     return null;
   }
 
+  const topRows = rows.slice(0, 12);
+  const height = Math.max(460, 150 + (topRows.length * 34));
+
   return {
     data: [
       {
         type: 'bar',
-        x: rows.map((entry) => entry.model),
-        y: rows.map((entry) => valueFormatter(entry[metricKey])),
+        orientation: 'h',
+        x: topRows.map((entry) => valueFormatter(entry[metricKey])),
+        y: topRows.map((entry) => entry.model),
         marker: {
-          color: rows.map((entry) => colorForModel(entry.model)),
+          color: topRows.map((entry) => colorForModel(entry.model)),
           line: { color: 'rgba(255,255,255,0.22)', width: 1.5 },
         },
-        text: rows.map((entry) => valueFormatter(entry[metricKey])),
-        textposition: 'auto',
+        text: topRows.map((entry) => valueFormatter(entry[metricKey])),
+        textposition: 'outside',
+        cliponaxis: false,
         textfont: { color: CHART_THEME.text, size: 12 },
-        hovertemplate: rows.map((entry) => `${entry.model}<br>${axisTitle}: ${escapeHtmlMarkup(String(valueFormatter(entry[metricKey])))}<br>${escapeHtmlMarkup(customText(entry))}<extra></extra>`),
+        hovertemplate: topRows.map((entry) => `${entry.model}<br>${axisTitle}: ${escapeHtmlMarkup(String(valueFormatter(entry[metricKey])))}<br>${escapeHtmlMarkup(customText(entry))}<extra></extra>`),
       },
     ],
     layout: buildChartLayout({
       title,
-      yaxis: { title: axisTitle },
-      height: 420,
-      margin: { l: 72, r: 24, t: 72, b: 112 },
+      xaxis: { title: axisTitle },
+      yaxis: { automargin: true, autorange: 'reversed', tickfont: { size: 13, color: CHART_THEME.text } },
+      height,
+      margin: { l: 260, r: 64, t: 72, b: 72 },
     }),
   };
 }
@@ -2107,7 +2114,7 @@ function renderHtml(data) {
       margin: 14px 0 12px;
       box-shadow: inset 0 0 0 1px rgba(153, 164, 200, 0.12);
     }
-    .chart-card.featured iframe { height: 620px; }
+    .chart-card.featured iframe { height: 700px; }
     .chart-card.wide iframe { height: 720px; }
     .chart-card.compact iframe { height: 420px; }
     .chart-card.compact .chart-note { margin-top: 6px; }
@@ -2275,7 +2282,7 @@ function renderHtml(data) {
       }
       .chart-grid, .docs-grid, .model-cards, .insight-grid, .summary-grid, .executive-grid { grid-template-columns: 1fr; }
       .chart-card iframe { height: 340px; }
-      .chart-card.featured iframe { height: 420px; }
+      .chart-card.featured iframe { height: 520px; }
       .chart-card.wide iframe { height: 520px; }
       .chart-card.compact iframe { height: 380px; }
     }
@@ -2325,7 +2332,7 @@ function renderHtml(data) {
             <p class="panel-copy">The first row answers the three questions that matter most: can the model finish the work, does it do so efficiently, and how does the blended ranking shake out?</p>
           </div>
         </div>
-        ${renderChartCards(selectCharts(data.charts, ['completion-score', 'value-score', 'composite-score']), 'executive')}
+        ${renderChartCards(selectCharts(data.charts, ['composite-score', 'success-rate', 'orpt']), 'executive')}
         <div class="section-header section">
           <div>
             <div class="section-title">Cost Frontier</div>
