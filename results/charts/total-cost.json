@@ -149,7 +149,7 @@
       },
       "gridcolor": "rgba(153, 164, 200, 0.16)",
       "linecolor": "rgba(153, 164, 200, 0.22)",
-      "autorange": true
+      "autorange": "reversed"
     }
   }
 }
