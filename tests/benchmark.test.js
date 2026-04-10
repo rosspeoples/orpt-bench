@@ -92,6 +92,17 @@ test('computeOpenCodeZenCostUsd remains available as fallback when exact session
   assert.equal(cost, 0.001575)
 })
 
+test('computeOpenCodeZenCostUsd clamps signed token deltas when reconstructing cost', () => {
+  const cost = computeOpenCodeZenCostUsd('opencode/glm-5', {
+    input: -10569,
+    output: 207,
+    reasoning: 0,
+    cache: { read: 22048, write: 0 }
+  })
+
+  assert.equal(cost, 0.0121414)
+})
+
 test('aggregateRun preserves exact exported session costs in summaries', () => {
   const run = {
     results: [

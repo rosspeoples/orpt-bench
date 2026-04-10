@@ -112,6 +112,8 @@ export function summarizeMessage(info, parts, logLines = []) {
   return {
     steps,
     toolInvocations,
+    hasNegativeCostData: Number.isFinite(info.cost) && info.cost < 0,
+    hasNegativeTokenData: hasNegativeTokens(info.tokens && Object.keys(info.tokens).length ? info.tokens : totalTokensFromSteps),
     costUsd: (() => {
       if (typeof info.cost === 'number' && Number.isFinite(info.cost)) return info.cost
       if (stepParts.length === 0) return null
@@ -133,14 +135,23 @@ function emptyTokens() {
 function normalizeTokens(tokens) {
   const cache = tokens?.cache || {}
   return {
-    input: Number(tokens?.input || 0),
-    output: Number(tokens?.output || 0),
-    reasoning: Number(tokens?.reasoning || 0),
+    input: Math.max(0, Number(tokens?.input || 0)),
+    output: Math.max(0, Number(tokens?.output || 0)),
+    reasoning: Math.max(0, Number(tokens?.reasoning || 0)),
     cache: {
-      read: Number(cache.read || 0),
-      write: Number(cache.write || 0)
+      read: Math.max(0, Number(cache.read || 0)),
+      write: Math.max(0, Number(cache.write || 0))
     }
   }
+}
+
+function hasNegativeTokens(tokens) {
+  const cache = tokens?.cache || {}
+  return Number(tokens?.input || 0) < 0 ||
+    Number(tokens?.output || 0) < 0 ||
+    Number(tokens?.reasoning || 0) < 0 ||
+    Number(cache.read || 0) < 0 ||
+    Number(cache.write || 0) < 0
 }
 
 function addTokens(total, tokens) {
@@ -158,7 +169,9 @@ export function summarizeSessionMessages(messages, logLines = []) {
     steps: 0,
     toolInvocations: {},
     costUsd: null,
-    tokens: emptyTokens()
+    tokens: emptyTokens(),
+    hasNegativeCostData: false,
+    hasNegativeTokenData: false
   }
   let sawCost = false
 
@@ -168,6 +181,8 @@ export function summarizeSessionMessages(messages, logLines = []) {
     for (const [tool, count] of Object.entries(summary.toolInvocations)) {
       aggregate.toolInvocations[tool] = (aggregate.toolInvocations[tool] || 0) + count
     }
+    aggregate.hasNegativeCostData = aggregate.hasNegativeCostData || summary.hasNegativeCostData
+    aggregate.hasNegativeTokenData = aggregate.hasNegativeTokenData || hasNegativeTokens(summary.tokens)
     addTokens(aggregate.tokens, normalizeTokens(summary.tokens))
     if (Number.isFinite(summary.costUsd)) {
       aggregate.costUsd = (aggregate.costUsd || 0) + summary.costUsd
@@ -181,6 +196,8 @@ export function summarizeSessionMessages(messages, logLines = []) {
   return {
     steps: aggregate.steps,
     toolInvocations: aggregate.toolInvocations,
+    hasNegativeCostData: aggregate.hasNegativeCostData,
+    hasNegativeTokenData: aggregate.hasNegativeTokenData,
     costUsd: sawCost ? Number(aggregate.costUsd.toFixed(8)) : null,
     tokens: aggregate.tokens
   }

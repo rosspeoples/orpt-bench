@@ -46,7 +46,7 @@ export function computeOpenCodeZenCostUsd(modelName, tokens) {
 
 function resolveBenchmarkCost({ modelName, provider, messageSummary, sessionCostSource = null, sessionExportError = null, sessionDbError = null }) {
   if (provider === 'opencode') {
-    if (messageSummary.costUsd != null) {
+    if (messageSummary.costUsd != null && !messageSummary.hasNegativeCostData && !messageSummary.hasNegativeTokenData) {
       const source = sessionCostSource === 'session-db-cost'
         ? 'session-db-cost'
         : 'session-export-cost'
@@ -63,7 +63,10 @@ function resolveBenchmarkCost({ modelName, provider, messageSummary, sessionCost
 
     const reconstructed = computeOpenCodeZenCostUsd(modelName, messageSummary.tokens)
     if (reconstructed != null) {
-      const upstreamFailure = sessionDbError || sessionExportError
+      const exactLedgerIssue = messageSummary.hasNegativeCostData || messageSummary.hasNegativeTokenData
+        ? 'session ledger contained signed cost/token deltas that are not safe as exact billed totals'
+        : null
+      const upstreamFailure = exactLedgerIssue || sessionDbError || sessionExportError
       const notes = upstreamFailure
         ? `Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts after exact session cost recovery failed: ${upstreamFailure}`
         : 'Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.'

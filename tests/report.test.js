@@ -144,3 +144,43 @@ test('summarizeSessionMessages sums assistant ledger rows that only expose info 
     cache: { read: 11264, write: 0 }
   })
 })
+
+test('summarizeSessionMessages clamps signed token deltas and marks negative ledger data', () => {
+  const summary = summarizeSessionMessages([
+    {
+      info: {
+        role: 'assistant',
+        cost: 0.0119434,
+        tokens: {
+          input: 10833,
+          output: 337,
+          reasoning: 0,
+          cache: { read: 160, write: 0 }
+        }
+      },
+      parts: []
+    },
+    {
+      info: {
+        role: 'assistant',
+        cost: -0.005497,
+        tokens: {
+          input: -10569,
+          output: 207,
+          reasoning: 0,
+          cache: { read: 22048, write: 0 }
+        }
+      },
+      parts: []
+    }
+  ])
+
+  assert.equal(summary.hasNegativeCostData, true)
+  assert.equal(summary.hasNegativeTokenData, true)
+  assert.deepEqual(summary.tokens, {
+    input: 10833,
+    output: 544,
+    reasoning: 0,
+    cache: { read: 22208, write: 0 }
+  })
+})

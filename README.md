@@ -6,13 +6,6 @@ The suite is intended for senior-level platform and infrastructure repair work. 
 
 Model pricing in this repo is generated for benchmark use during `sync-models`. The normalized catalog keeps both the actual listed blended price and, when useful, a clearly labeled reference blended price for free variants derived from a paid sibling or nearby family model.
 
-## Cost Accuracy
-
-- Cost is the most important benchmark telemetry field because it directly affects VALUE scoring and publication decisions.
-- OpenCode benchmark cost accounting must use the live OpenCode SQLite message ledger for the session whenever that ledger is available.
-- `opencode export --pure` is not treated as billing-safe for publication-quality accounting, because live investigation showed cases where the SQLite message ledger retained full assistant `cost` rows while export output truncated or undercounted the same session.
-- Published OpenCode costs should be considered trustworthy only when the result row records a DB-backed cost source such as `session-db-cost`, or another explicitly documented exact source of truth.
-
 ## Live Results
 
 - Live benchmark site: <https://rosspeoples.github.io/orpt-bench/>

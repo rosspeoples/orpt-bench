@@ -2,18 +2,18 @@
   {
     "type": "bar",
     "x": [
-      "opencode/claude-opus-4-6",
       "opencode/glm-5",
-      "opencode/gpt-5.4",
-      "opencode/claude-sonnet-4-6",
-      "opencode/gemini-3.1-pro"
+      "opencode/gemini-3.1-pro",
+      "opencode/minimax-m2.5-free",
+      "opencode/gemini-3-flash",
+      "opencode/nemotron-3-super-free"
     ],
     "y": [
-      88.89,
-      74.07,
-      77.78,
-      77.78,
-      18.52
+      81.48,
+      37.04,
+      59.26,
+      59.26,
+      25.93
     ],
     "marker": {
       "color": "#16a34a"
