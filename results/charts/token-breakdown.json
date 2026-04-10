@@ -6,7 +6,6 @@
       "type": "bar",
       "name": "Input",
       "x": [
-        "opencode/glm-5.1",
         "opencode/kimi-k2.5",
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
@@ -15,6 +14,7 @@
         "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/glm-5.1",
         "opencode/minimax-m2.5-free",
         "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
@@ -22,7 +22,6 @@
         "opencode/nemotron-3-super-free"
       ],
       "y": [
-        2896,
         11741,
         4603,
         565422,
@@ -31,6 +30,7 @@
         29395,
         24,
         256920,
+        577858,
         471764,
         2966158,
         14828,
@@ -45,7 +45,6 @@
       "type": "bar",
       "name": "Output",
       "x": [
-        "opencode/glm-5.1",
         "opencode/kimi-k2.5",
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
@@ -54,6 +53,7 @@
         "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/glm-5.1",
         "opencode/minimax-m2.5-free",
         "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
@@ -61,7 +61,6 @@
         "opencode/nemotron-3-super-free"
       ],
       "y": [
-        1947,
         6610,
         3933,
         87985,
@@ -70,6 +69,7 @@
         4788,
         5574,
         4241,
+        63642,
         77044,
         47085,
         3094,
@@ -84,7 +84,6 @@
       "type": "bar",
       "name": "Reasoning",
       "x": [
-        "opencode/glm-5.1",
         "opencode/kimi-k2.5",
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
@@ -93,6 +92,7 @@
         "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/glm-5.1",
         "opencode/minimax-m2.5-free",
         "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
@@ -102,11 +102,11 @@
       "y": [
         0,
         0,
-        0,
         69555,
         0,
         0,
         1290,
+        0,
         0,
         0,
         0,
@@ -123,7 +123,6 @@
       "type": "bar",
       "name": "Cache read",
       "x": [
-        "opencode/glm-5.1",
         "opencode/kimi-k2.5",
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
@@ -132,6 +131,7 @@
         "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/glm-5.1",
         "opencode/minimax-m2.5-free",
         "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
@@ -139,7 +139,6 @@
         "opencode/nemotron-3-super-free"
       ],
       "y": [
-        268160,
         292352,
         230586,
         5576704,
@@ -148,6 +147,7 @@
         419200,
         464850,
         0,
+        3048416,
         4840912,
         5200440,
         449024,
@@ -162,7 +162,6 @@
       "type": "bar",
       "name": "Cache write",
       "x": [
-        "opencode/glm-5.1",
         "opencode/kimi-k2.5",
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
@@ -171,6 +170,7 @@
         "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/glm-5.1",
         "opencode/minimax-m2.5-free",
         "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
@@ -179,13 +179,13 @@
       ],
       "y": [
         0,
-        0,
         915,
         0,
         13015,
         0,
         0,
         10992,
+        0,
         0,
         0,
         0,

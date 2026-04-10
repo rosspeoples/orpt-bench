@@ -6,7 +6,6 @@
       "type": "bar",
       "name": "Solved tasks cost",
       "x": [
-        "opencode/glm-5.1",
         "opencode/kimi-k2.5",
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
@@ -15,6 +14,7 @@
         "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/glm-5.1",
         "opencode/minimax-m2.5-free",
         "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
@@ -22,7 +22,6 @@
         "opencode/nemotron-3-super-free"
       ],
       "y": [
-        0.0823,
         0.0414,
         0,
         0.3523,
@@ -31,6 +30,7 @@
         6.9453,
         9.9509,
         0.0564,
+        1.6362,
         0,
         1.9465,
         0.1723,
@@ -39,7 +39,6 @@
       ],
       "marker": {
         "color": [
-          "#f472b6",
           "#a78bfa",
           "#38bdf8",
           "#e879f9",
@@ -48,6 +47,7 @@
           "#a78bfa",
           "#fb7185",
           "#e879f9",
+          "#f472b6",
           "#84cc16",
           "#f97316",
           "#f472b6",
@@ -61,7 +61,6 @@
       "type": "bar",
       "name": "Failed tasks cost",
       "x": [
-        "opencode/glm-5.1",
         "opencode/kimi-k2.5",
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
@@ -70,6 +69,7 @@
         "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/glm-5.1",
         "opencode/minimax-m2.5-free",
         "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
@@ -77,7 +77,6 @@
         "opencode/nemotron-3-super-free"
       ],
       "y": [
-        0,
         0.0089,
         0,
         0.0693,
@@ -86,6 +85,7 @@
         2.0374,
         1.8897,
         0.0257,
+        0.2454,
         0,
         0.4842,
         0.2115,
@@ -94,7 +94,6 @@
       ],
       "marker": {
         "color": [
-          "rgba(244, 114, 182, 0.42)",
           "rgba(167, 139, 250, 0.42)",
           "rgba(56, 189, 248, 0.42)",
           "rgba(232, 121, 249, 0.42)",
@@ -103,6 +102,7 @@
           "rgba(167, 139, 250, 0.42)",
           "rgba(251, 113, 133, 0.42)",
           "rgba(232, 121, 249, 0.42)",
+          "rgba(244, 114, 182, 0.42)",
           "rgba(132, 204, 22, 0.42)",
           "rgba(249, 115, 22, 0.42)",
           "rgba(244, 114, 182, 0.42)",

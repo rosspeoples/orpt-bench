@@ -12,12 +12,12 @@
         21.7,
         26.91,
         27.54,
-        30.31,
         32.79,
         40.07,
         41.56,
         42.51,
-        51.42
+        51.42,
+        62.86
       ],
       "y": [
         "opencode/kimi-k2.5",
@@ -26,12 +26,12 @@
         "opencode/big-pickle",
         "opencode/gpt-5.4-mini",
         "opencode/gpt-5.4-nano",
-        "opencode/glm-5.1",
         "opencode/gpt-5.4",
         "opencode/claude-opus-4-6",
         "opencode/minimax-m2.5-free",
         "opencode/claude-sonnet-4-6",
-        "opencode/gemini-3.1-pro"
+        "opencode/gemini-3.1-pro",
+        "opencode/gemini-3-flash"
       ],
       "marker": {
         "color": [
@@ -41,12 +41,12 @@
           "#38bdf8",
           "#f472b6",
           "#e879f9",
-          "#f472b6",
           "#a78bfa",
           "#fb7185",
           "#84cc16",
           "#fb7185",
-          "#f59e0b"
+          "#f59e0b",
+          "#f97316"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -60,12 +60,12 @@
         21.7,
         26.91,
         27.54,
-        30.31,
         32.79,
         40.07,
         41.56,
         42.51,
-        51.42
+        51.42,
+        62.86
       ],
       "textposition": "outside",
       "cliponaxis": false,
@@ -80,12 +80,12 @@
         "opencode/big-pickle<br>Minutes: 21.7<br>82% success | $0.0000 total cost<extra></extra>",
         "opencode/gpt-5.4-mini<br>Minutes: 26.91<br>48% success | $0.3839 total cost<extra></extra>",
         "opencode/gpt-5.4-nano<br>Minutes: 27.54<br>85% success | $0.4215 total cost<extra></extra>",
-        "opencode/glm-5.1<br>Minutes: 30.31<br>94% success | $0.0823 total cost<extra></extra>",
         "opencode/gpt-5.4<br>Minutes: 32.79<br>78% success | $8.9827 total cost<extra></extra>",
         "opencode/claude-opus-4-6<br>Minutes: 40.07<br>89% success | $21.8757 total cost<extra></extra>",
         "opencode/minimax-m2.5-free<br>Minutes: 41.56<br>59% success | $0.0000 total cost<extra></extra>",
         "opencode/claude-sonnet-4-6<br>Minutes: 42.51<br>78% success | $11.8406 total cost<extra></extra>",
-        "opencode/gemini-3.1-pro<br>Minutes: 51.42<br>37% success | $5.8536 total cost<extra></extra>"
+        "opencode/gemini-3.1-pro<br>Minutes: 51.42<br>37% success | $5.8536 total cost<extra></extra>",
+        "opencode/gemini-3-flash<br>Minutes: 62.86<br>59% success | $2.4307 total cost<extra></extra>"
       ]
     }
   ],

@@ -354,13 +354,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.131965,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.642857,
+        "costFactor": 0.020251,
+        "timeFactor": 0.099485
       },
-      "compositeScore": 1
+      "compositeScore": 0.739589
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -614,13 +614,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.421255,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.555556,
+        "costFactor": 0.36395,
+        "timeFactor": 0.291923
       },
-      "compositeScore": 1
+      "compositeScore": 0.826376
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -874,13 +874,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.236898,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.666667,
+        "costFactor": 0.057998,
+        "timeFactor": 0.271045
       },
-      "compositeScore": 1
+      "compositeScore": 0.771069
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -1886,13 +1886,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.27002,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "costFactor": 0.054461,
+        "timeFactor": 0.233793
       },
-      "compositeScore": 1
+      "compositeScore": 0.781006
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -2129,13 +2129,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.259191,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "costFactor": 0.051944,
+        "timeFactor": 0.206971
       },
-      "compositeScore": 1
+      "compositeScore": 0.777757
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -2542,13 +2542,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.145103,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.5,
+        "costFactor": 0.023101,
+        "timeFactor": 0.223535
       },
-      "compositeScore": 1
+      "compositeScore": 0.743531
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -2972,13 +2972,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.161965,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.631579,
+        "costFactor": 0.030019,
+        "timeFactor": 0.144776
       },
-      "compositeScore": 1
+      "compositeScore": 0.748589
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -3232,13 +3232,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.190738,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "costFactor": 0.020154,
+        "timeFactor": 0.234173
       },
-      "compositeScore": 1
+      "compositeScore": 0.757221
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -3628,13 +3628,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.173547,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.764706,
+        "costFactor": 0.021492,
+        "timeFactor": 0.238644
       },
-      "compositeScore": 1
+      "compositeScore": 0.752064
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -3956,13 +3956,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.170374,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.615385,
+        "costFactor": 0.031672,
+        "timeFactor": 0.179994
       },
-      "compositeScore": 1
+      "compositeScore": 0.751112
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -4267,13 +4267,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.235017,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "costFactor": 0.034944,
+        "timeFactor": 0.253857
       },
-      "compositeScore": 1
+      "compositeScore": 0.770505
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -4714,13 +4714,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.364149,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.75,
+        "costFactor": 0.200392,
+        "timeFactor": 0.203807
       },
-      "compositeScore": 1
+      "compositeScore": 0.809245
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -5186,13 +5186,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.220794,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.7,
+        "costFactor": 0.04285,
+        "timeFactor": 0.290102
       },
-      "compositeScore": 1
+      "compositeScore": 0.766238
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -5723,13 +5723,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.497593,
       "valueScoreComponents": {
-        "orptFactor": 1,
+        "orptFactor": 0.615385,
         "costFactor": 1,
-        "timeFactor": 1
+        "timeFactor": 0.090948
       },
-      "compositeScore": 1
+      "compositeScore": 0.849278
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -6732,13 +6732,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.365948,
       "valueScoreComponents": {
-        "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "orptFactor": 0.9,
+        "costFactor": 0.130188,
+        "timeFactor": 0.294816
       },
-      "compositeScore": 1
+      "compositeScore": 0.809784
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -6924,13 +6924,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.50385,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "costFactor": 0.225849,
+        "timeFactor": 0.438859
       },
-      "compositeScore": 1
+      "compositeScore": 0.851155
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -7461,13 +7461,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.483263,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 1,
-        "timeFactor": 1
+        "costFactor": 0.227892,
+        "timeFactor": 0.350665
       },
-      "compositeScore": 1
+      "compositeScore": 0.844979
     },
     {
       "runId": "2026-04-10T13-40-27-133Z",
@@ -7772,13 +7772,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 1,
+      "valueScore": 0.792359,
       "valueScoreComponents": {
-        "orptFactor": 1,
+        "orptFactor": 0.916667,
         "costFactor": 1,
-        "timeFactor": 1
+        "timeFactor": 0.379869
       },
-      "compositeScore": 1
+      "compositeScore": 0.937708
     }
   ],
   "leaderboard": [

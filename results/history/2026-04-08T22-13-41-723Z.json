@@ -304,13 +304,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.596182,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.818182,
-        "costFactor": 0.450622,
-        "timeFactor": 0.477323
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.878855,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -718,13 +718,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.448826,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.277778,
+        "orptFactor": 1,
         "costFactor": 1,
-        "timeFactor": 0.32514
+        "timeFactor": 1
       },
-      "compositeScore": 0.834648,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -1030,13 +1030,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.508192,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.5,
-        "costFactor": 0.683905,
-        "timeFactor": 0.313483
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.852458,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -1673,13 +1673,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.724494,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.666667,
+        "orptFactor": 1,
         "costFactor": 1,
-        "timeFactor": 0.497027
+        "timeFactor": 1
       },
-      "compositeScore": 0.917348,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -2019,13 +2019,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.606308,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.857143,
-        "costFactor": 0.629864,
-        "timeFactor": 0.260265
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.881892,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -2416,13 +2416,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.418005,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.470588,
-        "costFactor": 0.491552,
-        "timeFactor": 0.241113
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.825401,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -2660,13 +2660,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.808578,
+      "valueScore": 1,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 0.762831,
-        "timeFactor": 0.555086
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.942573,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -3023,13 +3023,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.525247,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.6,
-        "costFactor": 0.494943,
-        "timeFactor": 0.432021
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.857574,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -3386,13 +3386,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.560865,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.8,
-        "costFactor": 0.586161,
-        "timeFactor": 0.233513
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.868259,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -3698,13 +3698,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.52497,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.833333,
-        "costFactor": 0.438707,
-        "timeFactor": 0.254112
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.857491,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -4129,13 +4129,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.46595,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.684211,
-        "costFactor": 0.454107,
-        "timeFactor": 0.205349
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.839785,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -4492,13 +4492,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.434861,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.533333,
-        "costFactor": 0.487701,
-        "timeFactor": 0.224769
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.830458,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -4855,13 +4855,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.680262,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.8,
-        "costFactor": 0.721212,
-        "timeFactor": 0.426403
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.904079,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -5337,13 +5337,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.685741,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.681818,
+        "orptFactor": 1,
         "costFactor": 1,
-        "timeFactor": 0.35896
+        "timeFactor": 1
       },
-      "compositeScore": 0.905722,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -5615,13 +5615,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.559551,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.6,
-        "costFactor": 0.577844,
-        "timeFactor": 0.452052
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.867865,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null
@@ -5859,13 +5859,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.615326,
+      "valueScore": 1,
       "valueScoreComponents": {
-        "orptFactor": 0.875,
-        "costFactor": 0.545102,
-        "timeFactor": 0.344485
+        "orptFactor": 1,
+        "costFactor": 1,
+        "timeFactor": 1
       },
-      "compositeScore": 0.884598,
+      "compositeScore": 1,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null

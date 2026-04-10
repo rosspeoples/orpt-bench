@@ -3581,13 +3581,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.888639,
+      "valueScore": 0.84749,
       "valueScoreComponents": {
-        "orptFactor": 0.769231,
+        "orptFactor": 0.692308,
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 0.966592,
+      "compositeScore": 0.954247,
       "costAccountingSource": "historical-low-confidence",
       "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
       "costAccountingUrl": null

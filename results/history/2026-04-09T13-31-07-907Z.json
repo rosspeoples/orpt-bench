@@ -561,13 +561,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.33659,
+      "valueScore": 0.524666,
       "valueScoreComponents": {
         "orptFactor": 0.416667,
-        "costFactor": 0.26744,
+        "costFactor": 0.950673,
         "timeFactor": 0.311413
       },
-      "compositeScore": 0.800977,
+      "compositeScore": 0.8574,
       "costAccountingSource": "zen-io-token-reconstruction",
       "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
       "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
@@ -1253,13 +1253,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.60017,
+      "valueScore": 0.626253,
       "valueScoreComponents": {
         "orptFactor": 0.857143,
-        "costFactor": 0.358982,
+        "costFactor": 0.405377,
         "timeFactor": 0.661645
       },
-      "compositeScore": 0.880051,
+      "compositeScore": 0.887876,
       "costAccountingSource": "zen-io-token-reconstruction",
       "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
       "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
@@ -3005,13 +3005,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.454462,
+      "valueScore": 0.433418,
       "valueScoreComponents": {
-        "orptFactor": 0.909091,
+        "orptFactor": 0.818182,
         "costFactor": 0.153927,
         "timeFactor": 0.635072
       },
-      "compositeScore": 0.836339,
+      "compositeScore": 0.830025,
       "costAccountingSource": "zen-io-token-reconstruction",
       "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
       "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
@@ -6473,13 +6473,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.881935,
+      "valueScore": 0.758017,
       "valueScoreComponents": {
-        "orptFactor": 1,
+        "orptFactor": 0.714286,
         "costFactor": 0.85353,
         "timeFactor": 0.703964
       },
-      "compositeScore": 0.96458,
+      "compositeScore": 0.927405,
       "costAccountingSource": "zen-io-token-reconstruction",
       "costAccountingNotes": "Computed from official OpenCode Zen input/output rates using recorded prompt-side and completion-side token counts.",
       "costAccountingUrl": "https://opencode.ai/docs/zen/#pricing"
