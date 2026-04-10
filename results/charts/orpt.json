@@ -2,14 +2,12 @@
   {
     "type": "bar",
     "x": [
-      "opencode/kimi-k2.5",
-      "opencode/big-pickle",
-      "opencode/minimax-m2.5"
+      "opencode/glm-5",
+      "opencode/gpt-5.4-mini"
     ],
     "y": [
-      14.25,
-      15.38888888888889,
-      18.866666666666667
+      11.571428571428571,
+      9.538461538461538
     ],
     "marker": {
       "color": "#2563eb"

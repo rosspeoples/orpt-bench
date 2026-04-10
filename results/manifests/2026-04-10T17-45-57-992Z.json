@@ -1,0 +1,19 @@
+{
+  "runId": "2026-04-10T17-45-57-992Z",
+  "startedAt": "2026-04-10T17:45:57.992Z",
+  "completedAt": "2026-04-10T18:29:13.267Z",
+  "benchmarkCycle": "adhoc",
+  "models": [
+    "opencode/gpt-5.4-mini",
+    "opencode/glm-5"
+  ],
+  "taskCount": 27,
+  "historyFile": "results/history/2026-04-10T17-45-57-992Z.json",
+  "childRunsDir": ".tmp/child-runs/2026-04-10T17-45-57-992Z",
+  "logDir": ".tmp/logs",
+  "resultCount": 54,
+  "modelResultCounts": {
+    "opencode/gpt-5.4-mini": 27,
+    "opencode/glm-5": 27
+  }
+}
