@@ -1,0 +1,17 @@
+{
+  "runId": "2026-04-10T13-40-27-133Z",
+  "startedAt": "2026-04-10T13:40:27.134Z",
+  "completedAt": "2026-04-10T14:45:45.195Z",
+  "benchmarkCycle": "adhoc",
+  "models": [
+    "opencode/glm-5.1"
+  ],
+  "taskCount": 27,
+  "historyFile": "results/history/2026-04-10T13-40-27-133Z.json",
+  "childRunsDir": ".tmp/child-runs/2026-04-10T13-40-27-133Z",
+  "logDir": ".tmp/logs",
+  "resultCount": 27,
+  "modelResultCounts": {
+    "opencode/glm-5.1": 27
+  }
+}

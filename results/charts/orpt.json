@@ -2,12 +2,10 @@
   {
     "type": "bar",
     "x": [
-      "opencode/glm-5",
-      "opencode/gemini-3.1-pro"
+      "opencode/glm-5.1"
     ],
     "y": [
-      11.409090909090908,
-      12.7
+      12.055555555555555
     ],
     "marker": {
       "color": "#2563eb"
