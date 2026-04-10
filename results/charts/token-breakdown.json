@@ -11,12 +11,15 @@
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
         "opencode/claude-opus-4-6",
-        "opencode/gpt-5.4",
         "opencode/glm-5",
+        "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/minimax-m2.5-free",
+        "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
-        "opencode/gemini-3.1-pro"
+        "opencode/gemini-3.1-pro",
+        "opencode/nemotron-3-super-free"
       ],
       "y": [
         2896,
@@ -24,12 +27,15 @@
         4603,
         565422,
         27,
+        20062,
         29395,
-        433386,
         24,
         256920,
+        471764,
+        2966158,
         14828,
-        13181
+        1363843,
+        3000485
       ],
       "marker": {
         "color": "#2dd4bf"
@@ -44,12 +50,15 @@
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
         "opencode/claude-opus-4-6",
-        "opencode/gpt-5.4",
         "opencode/glm-5",
+        "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/minimax-m2.5-free",
+        "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
-        "opencode/gemini-3.1-pro"
+        "opencode/gemini-3.1-pro",
+        "opencode/nemotron-3-super-free"
       ],
       "y": [
         1947,
@@ -57,12 +66,15 @@
         3933,
         87985,
         8130,
+        58963,
         4788,
-        5303,
         5574,
         4241,
+        77044,
+        47085,
         3094,
-        1333
+        33058,
+        20944
       ],
       "marker": {
         "color": "#60a5fa"
@@ -77,12 +89,15 @@
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
         "opencode/claude-opus-4-6",
-        "opencode/gpt-5.4",
         "opencode/glm-5",
+        "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/minimax-m2.5-free",
+        "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
-        "opencode/gemini-3.1-pro"
+        "opencode/gemini-3.1-pro",
+        "opencode/nemotron-3-super-free"
       ],
       "y": [
         0,
@@ -90,12 +105,15 @@
         0,
         69555,
         0,
+        0,
         1290,
         0,
         0,
         0,
+        182101,
         4899,
-        1340
+        174127,
+        17835
       ],
       "marker": {
         "color": "#c084fc"
@@ -110,12 +128,15 @@
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
         "opencode/claude-opus-4-6",
-        "opencode/gpt-5.4",
         "opencode/glm-5",
+        "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/minimax-m2.5-free",
+        "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
-        "opencode/gemini-3.1-pro"
+        "opencode/gemini-3.1-pro",
+        "opencode/nemotron-3-super-free"
       ],
       "y": [
         268160,
@@ -123,12 +144,15 @@
         230586,
         5576704,
         536949,
+        6112256,
         419200,
-        0,
         464850,
         0,
+        4840912,
+        5200440,
         449024,
-        74758
+        3198507,
+        0
       ],
       "marker": {
         "color": "#fbbf24"
@@ -143,12 +167,15 @@
         "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
         "opencode/claude-opus-4-6",
-        "opencode/gpt-5.4",
         "opencode/glm-5",
+        "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
         "opencode/minimax-m2.5",
+        "opencode/minimax-m2.5-free",
+        "opencode/gemini-3-flash",
         "opencode/gpt-5.4-mini",
-        "opencode/gemini-3.1-pro"
+        "opencode/gemini-3.1-pro",
+        "opencode/nemotron-3-super-free"
       ],
       "y": [
         0,
@@ -159,6 +186,9 @@
         0,
         0,
         10992,
+        0,
+        0,
+        0,
         0,
         0,
         0

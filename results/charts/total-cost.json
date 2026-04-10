@@ -7,43 +7,46 @@
       "orientation": "h",
       "x": [
         0,
+        0,
+        0,
         0.0503,
         0.0822,
         0.0823,
         0.3839,
         0.4215,
-        3.4901,
-        6.981,
-        8.9827,
-        11.8406,
-        21.8757
+        2.4307,
+        5.8536,
+        6.2197,
+        8.9827
       ],
       "y": [
         "opencode/big-pickle",
+        "opencode/minimax-m2.5-free",
+        "opencode/nemotron-3-super-free",
         "opencode/kimi-k2.5",
         "opencode/minimax-m2.5",
         "opencode/glm-5.1",
         "opencode/gpt-5.4-mini",
         "opencode/gpt-5.4-nano",
-        "opencode/glm-5",
+        "opencode/gemini-3-flash",
         "opencode/gemini-3.1-pro",
-        "opencode/gpt-5.4",
-        "opencode/claude-sonnet-4-6",
-        "opencode/claude-opus-4-6"
+        "opencode/glm-5",
+        "opencode/gpt-5.4"
       ],
       "marker": {
         "color": [
           "#38bdf8",
+          "#84cc16",
+          "#f472b6",
           "#a78bfa",
           "#e879f9",
           "#f472b6",
           "#f472b6",
           "#e879f9",
-          "#4ade80",
+          "#f97316",
           "#f59e0b",
-          "#a78bfa",
-          "#fb7185",
-          "#fb7185"
+          "#4ade80",
+          "#a78bfa"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -52,16 +55,17 @@
       },
       "text": [
         0,
+        0,
+        0,
         0.0503,
         0.0822,
         0.0823,
         0.3839,
         0.4215,
-        3.4901,
-        6.981,
-        8.9827,
-        11.8406,
-        21.8757
+        2.4307,
+        5.8536,
+        6.2197,
+        8.9827
       ],
       "textposition": "outside",
       "cliponaxis": false,
@@ -70,17 +74,18 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/big-pickle<br>USD: 0<br>0.773 composite | 340 requests<extra></extra>",
+        "opencode/big-pickle<br>USD: 0<br>0.767 composite | 340 requests<extra></extra>",
+        "opencode/minimax-m2.5-free<br>USD: 0<br>0.415 composite | 475 requests<extra></extra>",
+        "opencode/nemotron-3-super-free<br>USD: 0<br>0.181 composite | 502 requests<extra></extra>",
         "opencode/kimi-k2.5<br>USD: 0.0503<br>0.775 composite | 257 requests<extra></extra>",
-        "opencode/minimax-m2.5<br>USD: 0.0822<br>0.577 composite | 227 requests<extra></extra>",
-        "opencode/glm-5.1<br>USD: 0.0823<br>0.824 composite | 236 requests<extra></extra>",
+        "opencode/minimax-m2.5<br>USD: 0.0822<br>0.575 composite | 227 requests<extra></extra>",
+        "opencode/glm-5.1<br>USD: 0.0823<br>0.821 composite | 236 requests<extra></extra>",
         "opencode/gpt-5.4-mini<br>USD: 0.3839<br>0.408 composite | 268 requests<extra></extra>",
-        "opencode/gpt-5.4-nano<br>USD: 0.4215<br>0.74 composite | 413 requests<extra></extra>",
-        "opencode/glm-5<br>USD: 3.4901<br>0.587 composite | 317 requests<extra></extra>",
-        "opencode/gemini-3.1-pro<br>USD: 6.981<br>0.142 composite | 213 requests<extra></extra>",
-        "opencode/gpt-5.4<br>USD: 8.9827<br>0.6 composite | 280 requests<extra></extra>",
-        "opencode/claude-sonnet-4-6<br>USD: 11.8406<br>0.58 composite | 403 requests<extra></extra>",
-        "opencode/claude-opus-4-6<br>USD: 21.8757<br>0.663 composite | 418 requests<extra></extra>"
+        "opencode/gpt-5.4-nano<br>USD: 0.4215<br>0.739 composite | 413 requests<extra></extra>",
+        "opencode/gemini-3-flash<br>USD: 2.4307<br>0.415 composite | 508 requests<extra></extra>",
+        "opencode/gemini-3.1-pro<br>USD: 5.8536<br>0.279 composite | 307 requests<extra></extra>",
+        "opencode/glm-5<br>USD: 6.2197<br>0.635 composite | 306 requests<extra></extra>",
+        "opencode/gpt-5.4<br>USD: 8.9827<br>0.599 composite | 280 requests<extra></extra>"
       ]
     }
   ],
@@ -114,7 +119,7 @@
       "t": 72,
       "b": 72
     },
-    "height": 524,
+    "height": 558,
     "xaxis": {
       "automargin": true,
       "tickfont": {

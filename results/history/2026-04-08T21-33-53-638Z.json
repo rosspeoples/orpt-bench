@@ -437,13 +437,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.35194,
+      "valueScore": 0.458502,
       "valueScoreComponents": {
-        "orptFactor": 0.263158,
+        "orptFactor": 0.473684,
         "costFactor": 0.467718,
         "timeFactor": 0.411512
       },
-      "compositeScore": 0.805582
+      "compositeScore": 0.837551
     },
     {
       "runId": "2026-04-08T21-33-53-638Z",
@@ -1469,13 +1469,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.85636,
+      "valueScore": 0.776047,
       "valueScoreComponents": {
-        "orptFactor": 0.875,
+        "orptFactor": 0.75,
         "costFactor": 0.88555,
-        "timeFactor": 0.76938
+        "timeFactor": 0.665163
       },
-      "compositeScore": 0.956908
+      "compositeScore": 0.932814
     },
     {
       "runId": "2026-04-08T21-33-53-638Z",
@@ -2481,13 +2481,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.680608,
+      "valueScore": 0.656313,
       "valueScoreComponents": {
         "orptFactor": 0.666667,
         "costFactor": 0.651308,
-        "timeFactor": 0.770129
+        "timeFactor": 0.642146
       },
-      "compositeScore": 0.904182
+      "compositeScore": 0.896894
     },
     {
       "runId": "2026-04-08T21-33-53-638Z",
@@ -3955,13 +3955,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.763118,
+      "valueScore": 0.744074,
       "valueScoreComponents": {
         "orptFactor": 1,
         "costFactor": 0.554942,
-        "timeFactor": 0.725315
+        "timeFactor": 0.639218
       },
-      "compositeScore": 0.928935
+      "compositeScore": 0.923222
     },
     {
       "runId": "2026-04-08T21-33-53-638Z",
@@ -4247,13 +4247,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.705342,
+      "valueScore": 0.612872,
       "valueScoreComponents": {
-        "orptFactor": 0.818182,
+        "orptFactor": 0.727273,
         "costFactor": 0.545116,
-        "timeFactor": 0.792923
+        "timeFactor": 0.511887
       },
-      "compositeScore": 0.911603
+      "compositeScore": 0.883862
     },
     {
       "runId": "2026-04-08T21-33-53-638Z",
@@ -5655,13 +5655,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.549788,
+      "valueScore": 0.53722,
       "valueScoreComponents": {
         "orptFactor": 0.583333,
         "costFactor": 0.451878,
-        "timeFactor": 0.67823
+        "timeFactor": 0.604174
       },
-      "compositeScore": 0.864936
+      "compositeScore": 0.861166
     }
   ],
   "leaderboard": [

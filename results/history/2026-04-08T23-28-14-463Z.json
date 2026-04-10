@@ -274,13 +274,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.732043,
+      "valueScore": 0.953694,
       "valueScoreComponents": {
-        "orptFactor": 0.5,
+        "orptFactor": 0.9,
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 0.919613
+      "compositeScore": 0.986108
     },
     {
       "runId": "2026-04-08T23-28-14-463Z",
@@ -1293,13 +1293,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.861906,
+      "valueScore": 0.7909,
       "valueScoreComponents": {
-        "orptFactor": 0.71875,
+        "orptFactor": 0.59375,
         "costFactor": 1,
         "timeFactor": 1
       },
-      "compositeScore": 0.958572
+      "compositeScore": 0.93727
     },
     {
       "runId": "2026-04-08T23-28-14-463Z",
@@ -2577,13 +2577,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.634765,
+      "valueScore": 0.612107,
       "valueScoreComponents": {
         "orptFactor": 0.421053,
         "costFactor": 1,
-        "timeFactor": 0.721619
+        "timeFactor": 0.601698
       },
-      "compositeScore": 0.890429
+      "compositeScore": 0.883632
     },
     {
       "runId": "2026-04-08T23-28-14-463Z",
@@ -4165,13 +4165,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.603646,
+      "valueScore": 0.588582,
       "valueScoreComponents": {
         "orptFactor": 0.40625,
         "costFactor": 1,
-        "timeFactor": 0.608313
+        "timeFactor": 0.536104
       },
-      "compositeScore": 0.881094
+      "compositeScore": 0.876575
     },
     {
       "runId": "2026-04-08T23-28-14-463Z",
@@ -4494,13 +4494,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.819694,
+      "valueScore": 0.712232,
       "valueScoreComponents": {
-        "orptFactor": 0.642857,
+        "orptFactor": 0.571429,
         "costFactor": 1,
-        "timeFactor": 1
+        "timeFactor": 0.64557
       },
-      "compositeScore": 0.945908
+      "compositeScore": 0.91367
     },
     {
       "runId": "2026-04-08T23-28-14-463Z",
@@ -5641,13 +5641,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.638219,
+      "valueScore": 0.666535,
       "valueScoreComponents": {
         "orptFactor": 0.461538,
         "costFactor": 1,
-        "timeFactor": 0.603087
+        "timeFactor": 0.749287
       },
-      "compositeScore": 0.891466
+      "compositeScore": 0.89996
     },
     {
       "runId": "2026-04-08T23-28-14-463Z",
@@ -5906,13 +5906,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.851715,
+      "valueScore": 0.832245,
       "valueScoreComponents": {
         "orptFactor": 0.7,
         "costFactor": 1,
-        "timeFactor": 1
+        "timeFactor": 0.890809
       },
-      "compositeScore": 0.955514
+      "compositeScore": 0.949673
     }
   ],
   "leaderboard": [

@@ -6,29 +6,29 @@
       "type": "bar",
       "orientation": "h",
       "x": [
-        8,
         9.77,
         11,
-        13.2,
+        11.41,
+        12.7,
         14.88,
         15.17,
         16.43
       ],
       "y": [
-        "opencode/gemini-3.1-pro",
         "opencode/gpt-5.4-mini",
         "opencode/gpt-5.4",
         "opencode/glm-5",
+        "opencode/gemini-3.1-pro",
         "opencode/claude-opus-4-6",
         "opencode/gpt-5.4-nano",
         "opencode/claude-sonnet-4-6"
       ],
       "marker": {
         "color": [
-          "#f59e0b",
           "#f472b6",
           "#a78bfa",
           "#4ade80",
+          "#f59e0b",
           "#fb7185",
           "#e879f9",
           "#fb7185"
@@ -39,10 +39,10 @@
         }
       },
       "text": [
-        8,
         9.77,
         11,
-        13.2,
+        11.41,
+        12.7,
         14.88,
         15.17,
         16.43
@@ -54,10 +54,10 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gemini-3.1-pro<br>Requests per solved task: 8<br>19% success | $6.9810 total cost<extra></extra>",
         "opencode/gpt-5.4-mini<br>Requests per solved task: 9.77<br>48% success | $0.3839 total cost<extra></extra>",
         "opencode/gpt-5.4<br>Requests per solved task: 11<br>78% success | $8.9827 total cost<extra></extra>",
-        "opencode/glm-5<br>Requests per solved task: 13.2<br>74% success | $3.4901 total cost<extra></extra>",
+        "opencode/glm-5<br>Requests per solved task: 11.41<br>81% success | $6.2197 total cost<extra></extra>",
+        "opencode/gemini-3.1-pro<br>Requests per solved task: 12.7<br>37% success | $5.8536 total cost<extra></extra>",
         "opencode/claude-opus-4-6<br>Requests per solved task: 14.88<br>89% success | $21.8757 total cost<extra></extra>",
         "opencode/gpt-5.4-nano<br>Requests per solved task: 15.17<br>85% success | $0.4215 total cost<extra></extra>",
         "opencode/claude-sonnet-4-6<br>Requests per solved task: 16.43<br>78% success | $11.8406 total cost<extra></extra>"
