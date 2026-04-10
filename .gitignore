@@ -9,3 +9,5 @@ package-lock.json
 results/charts/*.html
 results/history/*.tmp
 coverage/
+tasks/**/__pycache__/
+tasks/**/*.pyc
