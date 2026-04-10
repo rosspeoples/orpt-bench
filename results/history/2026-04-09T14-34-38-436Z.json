@@ -6719,13 +6719,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.237168,
+      "valueScore": 0.301754,
       "valueScoreComponents": {
-        "orptFactor": 0.642857,
-        "costFactor": 0.035875,
-        "timeFactor": 0.685721
+        "orptFactor": 0.571429,
+        "costFactor": 0.093008,
+        "timeFactor": 0.562586
       },
-      "compositeScore": 0.77115,
+      "compositeScore": 0.790526,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -6987,13 +6987,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.256975,
+      "valueScore": 0.248416,
       "valueScoreComponents": {
         "orptFactor": 0.5,
         "costFactor": 0.057754,
-        "timeFactor": 0.783424
+        "timeFactor": 0.661369
       },
-      "compositeScore": 0.777092,
+      "compositeScore": 0.774525,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -7207,13 +7207,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.2752,
+      "valueScore": 0.305486,
       "valueScoreComponents": {
-        "orptFactor": 0.857143,
-        "costFactor": 0.040768,
-        "timeFactor": 0.603684
+        "orptFactor": 1,
+        "costFactor": 0.047658,
+        "timeFactor": 0.547292
       },
-      "compositeScore": 0.78256,
+      "compositeScore": 0.791646,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -7711,13 +7711,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.184608,
+      "valueScore": 0.225661,
       "valueScoreComponents": {
-        "orptFactor": 0.545455,
-        "costFactor": 0.036575,
-        "timeFactor": 0.274144
+        "orptFactor": 0.636364,
+        "costFactor": 0.038931,
+        "timeFactor": 0.474156
       },
-      "compositeScore": 0.755382,
+      "compositeScore": 0.767698,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -8011,13 +8011,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.357557,
+      "valueScore": 0.348035,
       "valueScoreComponents": {
         "orptFactor": 1,
         "costFactor": 0.052947,
-        "timeFactor": 1
+        "timeFactor": 0.873754
       },
-      "compositeScore": 0.807267,
+      "compositeScore": 0.80441,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -8263,13 +8263,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.263206,
+      "valueScore": 0.244394,
       "valueScoreComponents": {
         "orptFactor": 0.888889,
         "costFactor": 0.037847,
-        "timeFactor": 0.507021
+        "timeFactor": 0.349943
       },
-      "compositeScore": 0.778962,
+      "compositeScore": 0.773318,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -8879,13 +8879,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.291888,
+      "valueScore": 0.267188,
       "valueScoreComponents": {
         "orptFactor": 1,
         "costFactor": 0.04087,
-        "timeFactor": 0.570317
+        "timeFactor": 0.366538
       },
-      "compositeScore": 0.787566,
+      "compositeScore": 0.780156,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -9447,13 +9447,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.262765,
+      "valueScore": 0.274677,
       "valueScoreComponents": {
         "orptFactor": 0.9,
-        "costFactor": 0.039407,
+        "costFactor": 0.044729,
         "timeFactor": 0.455553
       },
-      "compositeScore": 0.778829,
+      "compositeScore": 0.782403,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -9967,13 +9967,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.266815,
+      "valueScore": 0.321511,
       "valueScoreComponents": {
-        "orptFactor": 0.8,
-        "costFactor": 0.04485,
-        "timeFactor": 0.511121
+        "orptFactor": 0.9,
+        "costFactor": 0.051038,
+        "timeFactor": 0.794538
       },
-      "compositeScore": 0.780044,
+      "compositeScore": 0.796453,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -10267,13 +10267,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.278084,
+      "valueScore": 0.232726,
       "valueScoreComponents": {
-        "orptFactor": 1,
+        "orptFactor": 0.833333,
         "costFactor": 0.033753,
-        "timeFactor": 0.625668
+        "timeFactor": 0.387114
       },
-      "compositeScore": 0.783425,
+      "compositeScore": 0.769818,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -10711,13 +10711,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.224712,
+      "valueScore": 0.24492,
       "valueScoreComponents": {
-        "orptFactor": 0.714286,
+        "orptFactor": 0.761905,
         "costFactor": 0.052932,
-        "timeFactor": 0.209127
+        "timeFactor": 0.278181
       },
-      "compositeScore": 0.767414,
+      "compositeScore": 0.773476,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -11135,13 +11135,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.276239,
+      "valueScore": 0.307928,
       "valueScoreComponents": {
         "orptFactor": 1,
-        "costFactor": 0.044694,
-        "timeFactor": 0.370238
+        "costFactor": 0.046102,
+        "timeFactor": 0.603583
       },
-      "compositeScore": 0.782872,
+      "compositeScore": 0.792378,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -11639,13 +11639,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.267964,
+      "valueScore": 0.341014,
       "valueScoreComponents": {
-        "orptFactor": 0.666667,
+        "orptFactor": 0.833333,
         "costFactor": 0.077076,
-        "timeFactor": 0.305126
+        "timeFactor": 0.616466
       },
-      "compositeScore": 0.780389,
+      "compositeScore": 0.802304,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -11891,13 +11891,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.274827,
+      "valueScore": 0.307508,
       "valueScoreComponents": {
         "orptFactor": 1,
         "costFactor": 0.042754,
-        "timeFactor": 0.390025
+        "timeFactor": 0.684035
       },
-      "compositeScore": 0.782448,
+      "compositeScore": 0.792252,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -12695,13 +12695,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.191057,
+      "valueScore": 0.171485,
       "valueScoreComponents": {
         "orptFactor": 0.533333,
         "costFactor": 0.029188,
-        "timeFactor": 0.508129
+        "timeFactor": 0.295995
       },
-      "compositeScore": 0.757317,
+      "compositeScore": 0.751445,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -12915,13 +12915,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.193753,
+      "valueScore": 0.194318,
       "valueScoreComponents": {
         "orptFactor": 0.714286,
         "costFactor": 0.033099,
-        "timeFactor": 0.226646
+        "timeFactor": 0.229969
       },
-      "compositeScore": 0.758126,
+      "compositeScore": 0.758295,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -13183,13 +13183,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.335783,
+      "valueScore": 0.342372,
       "valueScoreComponents": {
         "orptFactor": 1,
         "costFactor": 0.046773,
-        "timeFactor": 0.90741
+        "timeFactor": 1
       },
-      "compositeScore": 0.800735,
+      "compositeScore": 0.802712,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -13499,13 +13499,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.290344,
+      "valueScore": 0.276654,
       "valueScoreComponents": {
         "orptFactor": 0.846154,
         "costFactor": 0.057537,
-        "timeFactor": 0.444528
+        "timeFactor": 0.349157
       },
-      "compositeScore": 0.787103,
+      "compositeScore": 0.782996,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -13783,13 +13783,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.407583,
+      "valueScore": 0.382628,
       "valueScoreComponents": {
         "orptFactor": 1,
         "costFactor": 0.090815,
-        "timeFactor": 0.748699
+        "timeFactor": 0.545896
       },
-      "compositeScore": 0.822275,
+      "compositeScore": 0.814788,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -14328,13 +14328,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.243786,
+      "valueScore": 0.235666,
       "valueScoreComponents": {
         "orptFactor": 0.555556,
         "costFactor": 0.03774,
-        "timeFactor": 1
+        "timeFactor": 0.844203
       },
-      "compositeScore": 0.773136,
+      "compositeScore": 0.7707,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -14657,13 +14657,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.181154,
+      "valueScore": 0.201091,
       "valueScoreComponents": {
-        "orptFactor": 0.461538,
-        "costFactor": 0.02798,
-        "timeFactor": 0.580491
+        "orptFactor": 0.538462,
+        "costFactor": 0.032709,
+        "timeFactor": 0.526265
       },
-      "compositeScore": 0.754346,
+      "compositeScore": 0.760327,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -15273,13 +15273,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.178882,
+      "valueScore": 0.218661,
       "valueScoreComponents": {
-        "orptFactor": 0.545455,
-        "costFactor": 0.026703,
-        "timeFactor": 0.406103
+        "orptFactor": 0.636364,
+        "costFactor": 0.028424,
+        "timeFactor": 0.702391
       },
-      "compositeScore": 0.753665,
+      "compositeScore": 0.765598,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -15721,13 +15721,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.237191,
+      "valueScore": 0.230875,
       "valueScoreComponents": {
         "orptFactor": 0.6,
         "costFactor": 0.034314,
-        "timeFactor": 0.866133
+        "timeFactor": 0.756787
       },
-      "compositeScore": 0.771157,
+      "compositeScore": 0.769262,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -16848,13 +16848,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.143995,
+      "valueScore": 0.13181,
       "valueScoreComponents": {
         "orptFactor": 0.409091,
         "costFactor": 0.027973,
-        "timeFactor": 0.241742
+        "timeFactor": 0.155366
       },
-      "compositeScore": 0.743198,
+      "compositeScore": 0.739543,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -17330,13 +17330,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.267895,
+      "valueScore": 0.290756,
       "valueScoreComponents": {
         "orptFactor": 0.545455,
         "costFactor": 0.065607,
-        "timeFactor": 0.634537
+        "timeFactor": 0.955603
       },
-      "compositeScore": 0.780368,
+      "compositeScore": 0.787227,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -17727,13 +17727,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.188848,
+      "valueScore": 0.197409,
       "valueScoreComponents": {
         "orptFactor": 0.529412,
-        "costFactor": 0.026541,
+        "costFactor": 0.030125,
         "timeFactor": 0.575664
       },
-      "compositeScore": 0.756654,
+      "compositeScore": 0.759223,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -18175,13 +18175,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.244872,
+      "valueScore": 0.307683,
       "valueScoreComponents": {
-        "orptFactor": 0.65,
+        "orptFactor": 0.85,
         "costFactor": 0.043679,
-        "timeFactor": 0.556112
+        "timeFactor": 0.952455
       },
-      "compositeScore": 0.773462,
+      "compositeScore": 0.792305,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -18606,13 +18606,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.15809,
+      "valueScore": 0.190497,
       "valueScoreComponents": {
-        "orptFactor": 0.421053,
-        "costFactor": 0.028492,
-        "timeFactor": 0.349943
+        "orptFactor": 0.473684,
+        "costFactor": 0.032423,
+        "timeFactor": 0.543986
       },
-      "compositeScore": 0.747427,
+      "compositeScore": 0.757149,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -19071,13 +19071,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.177951,
+      "valueScore": 0.148925,
       "valueScoreComponents": {
-        "orptFactor": 0.571429,
+        "orptFactor": 0.47619,
         "costFactor": 0.026483,
-        "timeFactor": 0.361534
+        "timeFactor": 0.223689
       },
-      "compositeScore": 0.753385,
+      "compositeScore": 0.744677,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -19790,13 +19790,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.233814,
+      "valueScore": 0.260636,
       "valueScoreComponents": {
         "orptFactor": 0.777778,
-        "costFactor": 0.030339,
-        "timeFactor": 0.557731
+        "costFactor": 0.031295,
+        "timeFactor": 0.909244
       },
-      "compositeScore": 0.770144,
+      "compositeScore": 0.778191,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -20170,13 +20170,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.309373,
+      "valueScore": 0.281775,
       "valueScoreComponents": {
-        "orptFactor": 0.941176,
+        "orptFactor": 0.764706,
         "costFactor": 0.042946,
         "timeFactor": 0.801732
       },
-      "compositeScore": 0.792812,
+      "compositeScore": 0.784532,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -20947,13 +20947,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.162808,
+      "valueScore": 0.182169,
       "valueScoreComponents": {
         "orptFactor": 0.409091,
         "costFactor": 0.027922,
-        "timeFactor": 0.448118
+        "timeFactor": 0.785921
       },
-      "compositeScore": 0.748842,
+      "compositeScore": 0.754651,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -21795,13 +21795,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.149376,
+      "valueScore": 0.139365,
       "valueScoreComponents": {
-        "orptFactor": 0.5,
+        "orptFactor": 0.428571,
         "costFactor": 0.017546,
         "timeFactor": 0.418208
       },
-      "compositeScore": 0.744813,
+      "compositeScore": 0.741809,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -22124,13 +22124,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.170764,
+      "valueScore": 0.153271,
       "valueScoreComponents": {
         "orptFactor": 0.615385,
         "costFactor": 0.016819,
-        "timeFactor": 0.551142
+        "timeFactor": 0.321051
       },
-      "compositeScore": 0.751229,
+      "compositeScore": 0.745981,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -22351,13 +22351,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.220235,
+      "valueScore": 0.220877,
       "valueScoreComponents": {
         "orptFactor": 0.714286,
         "costFactor": 0.026078,
-        "timeFactor": 0.652724
+        "timeFactor": 0.662295
       },
-      "compositeScore": 0.76607,
+      "compositeScore": 0.766263,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -22779,13 +22779,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.193164,
+      "valueScore": 0.196954,
       "valueScoreComponents": {
         "orptFactor": 0.5,
         "costFactor": 0.029661,
-        "timeFactor": 0.60343
+        "timeFactor": 0.665003
       },
-      "compositeScore": 0.757949,
+      "compositeScore": 0.759086,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -23193,13 +23193,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.249788,
+      "valueScore": 0.23801,
       "valueScoreComponents": {
         "orptFactor": 0.611111,
         "costFactor": 0.038655,
-        "timeFactor": 0.87393
+        "timeFactor": 0.686433
       },
-      "compositeScore": 0.774936,
+      "compositeScore": 0.771403,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -32235,13 +32235,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.190971,
+      "valueScore": 0.18461,
       "valueScoreComponents": {
         "orptFactor": 0.555556,
         "costFactor": 0.02243,
-        "timeFactor": 0.733243
+        "timeFactor": 0.619006
       },
-      "compositeScore": 0.757291,
+      "compositeScore": 0.755383,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -32535,13 +32535,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.141113,
+      "valueScore": 0.156643,
       "valueScoreComponents": {
-        "orptFactor": 0.5,
-        "costFactor": 0.015296,
-        "timeFactor": 0.400075
+        "orptFactor": 0.583333,
+        "costFactor": 0.017881,
+        "timeFactor": 0.362702
       },
-      "compositeScore": 0.742334,
+      "compositeScore": 0.746993,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -33618,13 +33618,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.170814,
+      "valueScore": 0.2088,
       "valueScoreComponents": {
-        "orptFactor": 0.666667,
-        "costFactor": 0.016649,
-        "timeFactor": 0.469242
+        "orptFactor": 0.777778,
+        "costFactor": 0.017722,
+        "timeFactor": 0.811595
       },
-      "compositeScore": 0.751244,
+      "compositeScore": 0.76264,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -33998,13 +33998,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.223201,
+      "valueScore": 0.217257,
       "valueScoreComponents": {
         "orptFactor": 0.75,
         "costFactor": 0.021425,
-        "timeFactor": 0.882026
+        "timeFactor": 0.770674
       },
-      "compositeScore": 0.76696,
+      "compositeScore": 0.765177,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -34394,13 +34394,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.130598,
+      "valueScore": 0.121264,
       "valueScoreComponents": {
         "orptFactor": 0.444444,
         "costFactor": 0.014024,
-        "timeFactor": 0.412169
+        "timeFactor": 0.284476
       },
-      "compositeScore": 0.739179,
+      "compositeScore": 0.736379,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -35120,13 +35120,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.172152,
+      "valueScore": 0.157585,
       "valueScoreComponents": {
         "orptFactor": 0.6,
         "costFactor": 0.017068,
-        "timeFactor": 0.592141
+        "timeFactor": 0.380564
       },
-      "compositeScore": 0.751646,
+      "compositeScore": 0.747275,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -35452,13 +35452,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.284593,
+      "valueScore": 0.308879,
       "valueScoreComponents": {
         "orptFactor": 0.857143,
         "costFactor": 0.042494,
-        "timeFactor": 0.664018
+        "timeFactor": 1
       },
-      "compositeScore": 0.785378,
+      "compositeScore": 0.792664,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -35866,13 +35866,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.150533,
+      "valueScore": 0.157357,
       "valueScoreComponents": {
         "orptFactor": 0.5,
-        "costFactor": 0.018462,
+        "costFactor": 0.020956,
         "timeFactor": 0.397627
       },
-      "compositeScore": 0.74516,
+      "compositeScore": 0.747207,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -36330,13 +36330,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.164707,
+      "valueScore": 0.206955,
       "valueScoreComponents": {
-        "orptFactor": 0.590909,
+        "orptFactor": 0.772727,
         "costFactor": 0.023253,
-        "timeFactor": 0.28596
+        "timeFactor": 0.489764
       },
-      "compositeScore": 0.749412,
+      "compositeScore": 0.762087,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -36642,13 +36642,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.169138,
+      "valueScore": 0.20381,
       "valueScoreComponents": {
-        "orptFactor": 0.666667,
-        "costFactor": 0.017779,
-        "timeFactor": 0.398164
+        "orptFactor": 0.75,
+        "costFactor": 0.020232,
+        "timeFactor": 0.618946
       },
-      "compositeScore": 0.750741,
+      "compositeScore": 0.761143,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -37056,13 +37056,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.143481,
+      "valueScore": 0.120077,
       "valueScoreComponents": {
-        "orptFactor": 0.666667,
+        "orptFactor": 0.555556,
         "costFactor": 0.013478,
-        "timeFactor": 0.283994
+        "timeFactor": 0.175713
       },
-      "compositeScore": 0.743044,
+      "compositeScore": 0.736023,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -37583,13 +37583,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.164268,
+      "valueScore": 0.179039,
       "valueScoreComponents": {
-        "orptFactor": 0.576923,
+        "orptFactor": 0.615385,
         "costFactor": 0.025726,
-        "timeFactor": 0.249513
+        "timeFactor": 0.331903
       },
-      "compositeScore": 0.74928,
+      "compositeScore": 0.753712,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -38096,13 +38096,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.179792,
+      "valueScore": 0.200418,
       "valueScoreComponents": {
         "orptFactor": 0.777778,
-        "costFactor": 0.018445,
-        "timeFactor": 0.358228
+        "costFactor": 0.019026,
+        "timeFactor": 0.584003
       },
-      "compositeScore": 0.753938,
+      "compositeScore": 0.760125,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -38476,13 +38476,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.278106,
+      "valueScore": 0.253297,
       "valueScoreComponents": {
-        "orptFactor": 1,
+        "orptFactor": 0.8125,
         "costFactor": 0.027261,
         "timeFactor": 0.909596
       },
-      "compositeScore": 0.783432,
+      "compositeScore": 0.775989,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -38844,13 +38844,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.155382,
+      "valueScore": 0.197741,
       "valueScoreComponents": {
-        "orptFactor": 0.5,
+        "orptFactor": 0.625,
         "costFactor": 0.031873,
-        "timeFactor": 0.179198
+        "timeFactor": 0.362046
       },
-      "compositeScore": 0.746615,
+      "compositeScore": 0.759322,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -39258,13 +39258,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.151669,
+      "valueScore": 0.169705,
       "valueScoreComponents": {
         "orptFactor": 0.5,
         "costFactor": 0.018082,
-        "timeFactor": 0.42816
+        "timeFactor": 0.750919
       },
-      "compositeScore": 0.745501,
+      "compositeScore": 0.750911,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -40001,13 +40001,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.124437,
+      "valueScore": 0.116097,
       "valueScoreComponents": {
-        "orptFactor": 0.5,
+        "orptFactor": 0.428571,
         "costFactor": 0.01055,
         "timeFactor": 0.408666
       },
-      "compositeScore": 0.737331,
+      "compositeScore": 0.734829,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -40313,13 +40313,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.153854,
+      "valueScore": 0.138092,
       "valueScoreComponents": {
         "orptFactor": 0.666667,
         "costFactor": 0.011697,
-        "timeFactor": 0.515985
+        "timeFactor": 0.300571
       },
-      "compositeScore": 0.746156,
+      "compositeScore": 0.741428,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -40597,13 +40597,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.121314,
+      "valueScore": 0.121668,
       "valueScoreComponents": {
         "orptFactor": 0.454545,
         "costFactor": 0.013546,
-        "timeFactor": 0.287951
+        "timeFactor": 0.292173
       },
-      "compositeScore": 0.736394,
+      "compositeScore": 0.7365,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -41228,13 +41228,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.229743,
+      "valueScore": 0.21891,
       "valueScoreComponents": {
         "orptFactor": 0.733333,
         "costFactor": 0.023616,
-        "timeFactor": 0.903994
+        "timeFactor": 0.710047
       },
-      "compositeScore": 0.768923,
+      "compositeScore": 0.765673,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null
@@ -41591,13 +41591,13 @@
         "stderr": ""
       },
       "error": null,
-      "valueScore": 0.235024,
+      "valueScore": 0.220634,
       "valueScoreComponents": {
         "orptFactor": 0.733333,
         "costFactor": 0.037911,
-        "timeFactor": 0.44239
+        "timeFactor": 0.322558
       },
-      "compositeScore": 0.770507,
+      "compositeScore": 0.76619,
       "costAccountingSource": "historical-run-total-anchor-imputed-requests",
       "costAccountingNotes": "Historical OpenCode repair anchored to exact monthly canonical run total $53.17 (user-provided exact billed total). Preserved reconstructed task costs where present, imputed prior zero-cost rows from the same model's average reconstructed cost per recorded request, then scaled the run so the total matches the exact billed total. Empirical multi-turn uplift evidence came from accessible gpt-5.4-mini benchmark session exports (22 sessions, total uplift 11.090303x, median uplift 11.6715x).",
       "costAccountingUrl": null

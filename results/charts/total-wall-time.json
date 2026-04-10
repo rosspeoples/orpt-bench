@@ -6,8 +6,8 @@
       "type": "bar",
       "orientation": "h",
       "x": [
-        21.49,
-        26.91,
+        20.17,
+        21.81,
         27.54,
         32.25,
         32.79,
@@ -54,8 +54,8 @@
         }
       },
       "text": [
-        21.49,
-        26.91,
+        20.17,
+        21.81,
         27.54,
         32.25,
         32.79,
@@ -74,8 +74,8 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/glm-5<br>Minutes: 21.49<br>81% success | $6.2197 total cost<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Minutes: 26.91<br>48% success | $0.3839 total cost<extra></extra>",
+        "opencode/glm-5<br>Minutes: 20.17<br>78% success | $6.4339 total cost<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Minutes: 21.81<br>48% success | $1.0606 total cost<extra></extra>",
         "opencode/gpt-5.4-nano<br>Minutes: 27.54<br>85% success | $0.4215 total cost<extra></extra>",
         "opencode/minimax-m2.5<br>Minutes: 32.25<br>56% success | $0.6413 total cost<extra></extra>",
         "opencode/gpt-5.4<br>Minutes: 32.79<br>78% success | $8.9827 total cost<extra></extra>",

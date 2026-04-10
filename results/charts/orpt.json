@@ -6,9 +6,9 @@
       "type": "bar",
       "orientation": "h",
       "x": [
-        9.77,
+        9.54,
         11,
-        11.41,
+        11.57,
         12.06,
         12.7,
         14.25,
@@ -51,9 +51,9 @@
         }
       },
       "text": [
-        9.77,
+        9.54,
         11,
-        11.41,
+        11.57,
         12.06,
         12.7,
         14.25,
@@ -70,9 +70,9 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gpt-5.4-mini<br>Requests per solved task: 9.77<br>48% success | $0.3839 total cost<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Requests per solved task: 9.54<br>48% success | $1.0606 total cost<extra></extra>",
         "opencode/gpt-5.4<br>Requests per solved task: 11<br>78% success | $8.9827 total cost<extra></extra>",
-        "opencode/glm-5<br>Requests per solved task: 11.41<br>81% success | $6.2197 total cost<extra></extra>",
+        "opencode/glm-5<br>Requests per solved task: 11.57<br>78% success | $6.4339 total cost<extra></extra>",
         "opencode/glm-5.1<br>Requests per solved task: 12.06<br>67% success | $1.8816 total cost<extra></extra>",
         "opencode/gemini-3.1-pro<br>Requests per solved task: 12.7<br>37% success | $5.8536 total cost<extra></extra>",
         "opencode/kimi-k2.5<br>Requests per solved task: 14.25<br>89% success | $0.9122 total cost<extra></extra>",

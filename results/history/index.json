@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-04-10T17-45-57-992Z",
+    "startedAt": "2026-04-10T17:45:57.992Z",
+    "completedAt": "2026-04-10T18:29:13.267Z",
+    "benchmarkCycle": "adhoc",
+    "taskCount": 27,
+    "modelCount": 2,
+    "repeats": 1,
+    "totalRuns": 54,
+    "successfulRuns": 34,
+    "topModel": "opencode/glm-5",
+    "topCompositeScore": 0.7115765555555555,
+    "topSuccessRate": 0.7777777777777778,
+    "href": "results/history/2026-04-10T17-45-57-992Z.json",
+    "isLatest": true
+  },
+  {
     "id": "2026-04-10T15-27-21-112Z",
     "startedAt": "2026-04-10T15:27:21.112Z",
     "completedAt": "2026-04-10T17:19:04.712Z",
@@ -13,7 +29,7 @@
     "topCompositeScore": 0.857194888888889,
     "topSuccessRate": 0.8888888888888888,
     "href": "results/history/2026-04-10T15-27-21-112Z.json",
-    "isLatest": true
+    "isLatest": false
   },
   {
     "id": "2026-04-10T13-40-27-133Z",

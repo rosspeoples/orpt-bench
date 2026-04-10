@@ -6,10 +6,10 @@
       "type": "bar",
       "orientation": "h",
       "x": [
-        268,
+        264,
+        280,
         280,
         286,
-        306,
         307,
         375,
         403,
@@ -21,9 +21,9 @@
       ],
       "y": [
         "opencode/gpt-5.4-mini",
+        "opencode/glm-5",
         "opencode/gpt-5.4",
         "opencode/glm-5.1",
-        "opencode/glm-5",
         "opencode/gemini-3.1-pro",
         "opencode/kimi-k2.5",
         "opencode/claude-sonnet-4-6",
@@ -36,9 +36,9 @@
       "marker": {
         "color": [
           "#f472b6",
+          "#4ade80",
           "#a78bfa",
           "#f472b6",
-          "#4ade80",
           "#f59e0b",
           "#a78bfa",
           "#fb7185",
@@ -54,10 +54,10 @@
         }
       },
       "text": [
-        268,
+        264,
+        280,
         280,
         286,
-        306,
         307,
         375,
         403,
@@ -74,10 +74,10 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/gpt-5.4-mini<br>Request units: 268<br>48% success | 26m 55s wall time<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Request units: 264<br>48% success | 21m 48s wall time<extra></extra>",
+        "opencode/glm-5<br>Request units: 280<br>78% success | 20m 10s wall time<extra></extra>",
         "opencode/gpt-5.4<br>Request units: 280<br>78% success | 32m 47s wall time<extra></extra>",
         "opencode/glm-5.1<br>Request units: 286<br>67% success | 64m 39s wall time<extra></extra>",
-        "opencode/glm-5<br>Request units: 306<br>81% success | 21m 30s wall time<extra></extra>",
         "opencode/gemini-3.1-pro<br>Request units: 307<br>37% success | 51m 25s wall time<extra></extra>",
         "opencode/kimi-k2.5<br>Request units: 375<br>89% success | 41m 05s wall time<extra></extra>",
         "opencode/claude-sonnet-4-6<br>Request units: 403<br>78% success | 42m 31s wall time<extra></extra>",
