@@ -693,7 +693,7 @@ function buildOrptChart(report) {
     axisTitle: 'Requests per solved task',
     valueFormatter: (value) => Number((value ?? 0).toFixed(2)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
-    reverseYAxis: false,
+    reverseYAxis: true,
   });
 }
 
@@ -708,7 +708,7 @@ function buildTotalCostChart(report) {
     axisTitle: 'USD',
     valueFormatter: (value) => Number((value ?? 0).toFixed(4)),
     customText: (row) => `${formatScoreMarkup(row.compositeScore)} composite | ${formatIntegerMarkup(row.totalRequestUnits)} requests`,
-    reverseYAxis: false,
+    reverseYAxis: true,
   });
 }
 
@@ -803,7 +803,7 @@ function buildTotalWallTimeChart(report) {
     axisTitle: 'Minutes',
     valueFormatter: (value) => Number((((value ?? 0) / 60000)).toFixed(2)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatCurrencyMarkup(row.totalCostUsd)} total cost`,
-    reverseYAxis: false,
+    reverseYAxis: true,
   });
 }
 
@@ -818,7 +818,7 @@ function buildTotalRequestsChart(report) {
     axisTitle: 'Request units',
     valueFormatter: (value) => Number((value ?? 0).toFixed(0)),
     customText: (row) => `${formatPercentMarkup(row.successRate)} success | ${formatDurationMarkup(row.totalWallTimeMs)} wall time`,
-    reverseYAxis: false,
+    reverseYAxis: true,
   });
 }
 
