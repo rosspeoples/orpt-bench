@@ -686,7 +686,24 @@ async function restartOpenCodeServerForWorkspace({ runtime, model, proxy, worksp
 async function writeRunArtifacts(runtime, run) {
   const latestFile = path.join(runtime.rootDir, runtime.baseConfig.results.latestFile)
   const historyFile = path.join(runtime.rootDir, runtime.baseConfig.results.historyDir, `${run.run.id}.json`)
+  const manifestFile = path.join(runtime.rootDir, 'results', 'manifests', `${run.run.id}.json`)
   await writeJson(historyFile, run)
+  await writeJson(manifestFile, {
+    runId: run.run.id,
+    startedAt: run.run.startedAt,
+    completedAt: run.run.completedAt,
+    benchmarkCycle: run.run.benchmarkCycle || null,
+    models: run.run.models,
+    taskCount: run.run.taskCount,
+    historyFile: path.relative(runtime.rootDir, historyFile),
+    childRunsDir: path.relative(runtime.rootDir, path.join(runtime.tmpDir, 'child-runs', run.run.id)),
+    logDir: path.relative(runtime.rootDir, path.join(runtime.tmpDir, 'logs')),
+    resultCount: Array.isArray(run.results) ? run.results.length : 0,
+    modelResultCounts: Object.fromEntries((run.run.models || []).map((modelName) => [
+      modelName,
+      (run.results || []).filter((entry) => entry.model === modelName).length
+    ]))
+  })
 
   if (shouldWriteLatestRunArtifact(run)) {
     await writeJson(latestFile, run)

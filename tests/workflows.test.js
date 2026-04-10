@@ -30,3 +30,19 @@ test('workflow files do not reference the deprecated commit-results helper', () 
     assert.doesNotMatch(content, /ci\/commit-results\.sh/)
   }
 })
+
+test('benchmark workflows upload raw child-run and log evidence', () => {
+  const workflowFiles = [
+    '../.github/workflows/benchmark.yml',
+    '../.gitea/workflows/benchmark.yml',
+    '../.github/workflows/manage-models.yml',
+    '../.gitea/workflows/manage-models.yml'
+  ]
+
+  for (const filePath of workflowFiles) {
+    const content = read(filePath)
+    assert.match(content, /\.tmp\/child-runs/)
+    assert.match(content, /\.tmp\/logs/)
+    assert.match(content, /results/)
+  }
+})

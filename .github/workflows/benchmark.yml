@@ -69,6 +69,8 @@ jobs:
           name: orpt-bench-results-${{ env.BENCHMARK_CYCLE }}
           path: |
             results
+            .tmp/child-runs
+            .tmp/logs
             models
             README.md
 

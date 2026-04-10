@@ -35,6 +35,17 @@ jobs:
       - name: Run automation tests
         run: docker compose run --rm --entrypoint bash runner -lc "node --test tests/models.test.js tests/automation.test.js"
 
+      - name: Upload model-management artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-management-artifacts
+          path: |
+            results
+            .tmp/child-runs
+            .tmp/logs
+            models
+            README.md
+
       - name: Commit model-management updates
         run: |
           branch="${GITHUB_REF_NAME:-main}"

@@ -37,6 +37,17 @@ jobs:
       - name: Run benchmark
         run: docker compose run --rm runner benchmark
 
+      - name: Upload benchmark artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: orpt-bench-results-${{ env.BENCHMARK_CYCLE }}
+          path: |
+            results
+            .tmp/child-runs
+            .tmp/logs
+            models
+            README.md
+
       - name: Commit updated artifacts
         run: |
           branch="${GITHUB_REF_NAME:-main}"
