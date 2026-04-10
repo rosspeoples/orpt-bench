@@ -35,8 +35,8 @@ export function computeOpenCodeZenCostUsd(modelName, tokens) {
   const pricing = OPENCODE_ZEN_PRICING_PER_MILLION[modelName]
   if (!pricing || !tokens) return null
   const cache = tokens.cache || {}
-  const inputTokens = (tokens.input || 0) + (cache.read || 0) + (cache.write || 0)
-  const outputTokens = (tokens.output || 0) + (tokens.reasoning || 0)
+  const inputTokens = Math.max(0, Number(tokens.input || 0)) + Math.max(0, Number(cache.read || 0)) + Math.max(0, Number(cache.write || 0))
+  const outputTokens = Math.max(0, Number(tokens.output || 0)) + Math.max(0, Number(tokens.reasoning || 0))
   const cost = (
     (inputTokens * pricing.input) +
     (outputTokens * pricing.output)

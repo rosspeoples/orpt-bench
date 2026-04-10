@@ -100,7 +100,7 @@ test('computeOpenCodeZenCostUsd clamps signed token deltas when reconstructing c
     cache: { read: 22048, write: 0 }
   })
 
-  assert.equal(cost, 0.0121414)
+  assert.equal(cost, 0.0227104)
 })
 
 test('aggregateRun preserves exact exported session costs in summaries', () => {
