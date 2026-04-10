@@ -2623,6 +2623,13 @@ function renderHtml(data) {
         return;
       }
       const state = { sortKey: config.defaultSortKey, direction: config.defaultDirection };
+      function defaultDirectionForColumn(column) {
+        if (!column) return 'desc';
+        if (column.key === 'orpt' || column.key === 'bestWinnerOrpt' || column.key === 'totalCostUsd' || column.key === 'averageCostUsd' || column.key === 'cheapestWinnerCostUsd' || column.key === 'totalWallTimeMs' || column.key === 'fastestWinnerWallTimeMs' || column.key === 'totalRequestUnits') {
+          return 'asc';
+        }
+        return 'desc';
+      }
       const panel = document.createElement('div');
       const wrap = document.createElement('div');
       wrap.className = 'table-wrap';
@@ -2647,7 +2654,7 @@ function renderHtml(data) {
               state.direction = state.direction === 'desc' ? 'asc' : 'desc';
             } else {
               state.sortKey = column.key;
-              state.direction = config.defaultSortKey === column.key ? config.defaultDirection : 'desc';
+              state.direction = config.defaultSortKey === column.key ? config.defaultDirection : defaultDirectionForColumn(column);
             }
             render();
           });

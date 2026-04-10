@@ -906,3 +906,89 @@ test('pages build ranks equal composite scores by lower ORPT first', async () =>
     await fs.rm(rootDir, { recursive: true, force: true })
   }
 })
+
+test('pages build keeps lower-is-better charts ranked with the best model at the top', async () => {
+  const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'orpt-bench-pages-'))
+  const outputDir = path.join(rootDir, 'site')
+
+  try {
+    await fs.mkdir(path.join(rootDir, 'results', 'history'), { recursive: true })
+    await fs.mkdir(path.join(rootDir, 'models'), { recursive: true })
+    await fs.mkdir(path.join(rootDir, 'docs'), { recursive: true })
+
+    const fullRun = {
+      run: {
+        id: 'full-run-lower-better',
+        startedAt: '2026-04-08T00:00:00.000Z',
+        completedAt: '2026-04-08T00:10:00.000Z',
+        benchmarkCycle: 'weekly',
+        models: ['opencode/cheap-fast', 'opencode/expensive-slow'],
+        taskCount: 2,
+        taskPatterns: ['*'],
+        repeats: 1,
+      },
+      results: [
+        {
+          taskId: '01-a', taskName: 'Task A', category: 'scripting', model: 'opencode/cheap-fast', provider: 'opencode', success: true, score: 1,
+          durationMs: 1000, requestUnits: 5, requestCount: 5, requestAccountingSource: 'proxy-call-count', costUsd: 0.01, steps: 5,
+          tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
+        },
+        {
+          taskId: '02-b', taskName: 'Task B', category: 'scripting', model: 'opencode/cheap-fast', provider: 'opencode', success: true, score: 1,
+          durationMs: 1000, requestUnits: 5, requestCount: 5, requestAccountingSource: 'proxy-call-count', costUsd: 0.01, steps: 5,
+          tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
+        },
+        {
+          taskId: '01-a', taskName: 'Task A', category: 'scripting', model: 'opencode/expensive-slow', provider: 'opencode', success: true, score: 1,
+          durationMs: 2000, requestUnits: 10, requestCount: 10, requestAccountingSource: 'proxy-call-count', costUsd: 0.05, steps: 10,
+          tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
+        },
+        {
+          taskId: '02-b', taskName: 'Task B', category: 'scripting', model: 'opencode/expensive-slow', provider: 'opencode', success: true, score: 1,
+          durationMs: 2000, requestUnits: 10, requestCount: 10, requestAccountingSource: 'proxy-call-count', costUsd: 0.05, steps: 10,
+          tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } }
+        }
+      ],
+      modelCatalog: {
+        models: [
+          { model: 'opencode/cheap-fast', benchmark: { blendedPricePer1mTokensUsd: 1 }, featureSupport: { unattendedBenchmarkRuns: 'supported', knownLimitations: [] } },
+          { model: 'opencode/expensive-slow', benchmark: { blendedPricePer1mTokensUsd: 1 }, featureSupport: { unattendedBenchmarkRuns: 'supported', knownLimitations: [] } }
+        ]
+      },
+      taskCatalog: [
+        { id: '01-a', name: 'Task A', difficulty: 'medium', timeoutSeconds: 60, requiredCapabilities: [] },
+        { id: '02-b', name: 'Task B', difficulty: 'medium', timeoutSeconds: 60, requiredCapabilities: [] }
+      ],
+      scoring: {
+        valueScoreWeights: { orpt: 0.45, cost: 0.35, time: 0.2 },
+        compositeScoreWeights: { score: 0.7, valueScore: 0.3 }
+      }
+    }
+
+    await fs.writeFile(path.join(rootDir, 'results', 'latest.json'), `${JSON.stringify(fullRun, null, 2)}\n`, 'utf8')
+    await fs.writeFile(path.join(rootDir, 'results', 'history', 'full-run-lower-better.json'), `${JSON.stringify(fullRun, null, 2)}\n`, 'utf8')
+    await fs.writeFile(path.join(rootDir, 'results', 'leaderboard.md'), '# fixture\n', 'utf8')
+    await fs.writeFile(path.join(rootDir, 'models', 'README.md'), '# models\n', 'utf8')
+    await fs.writeFile(path.join(rootDir, 'docs', 'result-schema.json'), '{}\n', 'utf8')
+    await fs.writeFile(path.join(rootDir, 'DESIGN.md'), '# design\n', 'utf8')
+
+    await runNode(['/var/home/rpeoples/Code/orpt-bench/scripts/lib/build-github-pages.js'], {
+      cwd: rootDir,
+      env: {
+        ...process.env,
+        PUBLISH_PAGES_OUTPUT_DIR: outputDir,
+        PUBLISH_GITHUB_REPOSITORY: 'https://github.com/example/orpt-bench',
+      }
+    })
+
+    const orptChart = JSON.parse(await fs.readFile(path.join(outputDir, 'results', 'charts', 'orpt.json'), 'utf8'))
+    const costChart = JSON.parse(await fs.readFile(path.join(outputDir, 'results', 'charts', 'total-cost.json'), 'utf8'))
+    const wallTimeChart = JSON.parse(await fs.readFile(path.join(outputDir, 'results', 'charts', 'total-wall-time.json'), 'utf8'))
+
+    assert.equal(orptChart.data[0].y[0], 'opencode/cheap-fast')
+    assert.equal(costChart.data[0].y[0], 'opencode/cheap-fast')
+    assert.equal(wallTimeChart.data[0].y[0], 'opencode/cheap-fast')
+  } finally {
+    await fs.rm(rootDir, { recursive: true, force: true })
+  }
+})
