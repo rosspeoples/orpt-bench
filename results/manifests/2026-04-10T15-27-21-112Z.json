@@ -1,0 +1,21 @@
+{
+  "runId": "2026-04-10T15-27-21-112Z",
+  "startedAt": "2026-04-10T15:27:21.112Z",
+  "completedAt": "2026-04-10T17:19:04.712Z",
+  "benchmarkCycle": "adhoc",
+  "models": [
+    "opencode/kimi-k2.5",
+    "opencode/big-pickle",
+    "opencode/minimax-m2.5"
+  ],
+  "taskCount": 27,
+  "historyFile": "results/history/2026-04-10T15-27-21-112Z.json",
+  "childRunsDir": ".tmp/child-runs/2026-04-10T15-27-21-112Z",
+  "logDir": ".tmp/logs",
+  "resultCount": 81,
+  "modelResultCounts": {
+    "opencode/kimi-k2.5": 27,
+    "opencode/big-pickle": 27,
+    "opencode/minimax-m2.5": 27
+  }
+}

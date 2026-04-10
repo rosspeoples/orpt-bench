@@ -87,6 +87,32 @@ function resolveBenchmarkCost({ modelName, provider, messageSummary, sessionCost
   }
 }
 
+function normalizeMissingCostAccounting({ benchmarkCost, provider, proxyRecords }) {
+  if (benchmarkCost.costUsd != null) {
+    return benchmarkCost
+  }
+
+  if (provider === 'opencode' && (proxyRecords || []).some((record) => Number(record?.status) >= 200 && Number(record?.status) < 300)) {
+    return {
+      costUsd: 0,
+      costAccountingSource: 'historical-low-confidence',
+      costAccountingNotes: 'Provider traffic was observed for this timed-out OpenCode session, but exact billed cost could not be recovered from the session ledger or reconstructed tokens. Recorded as low-confidence zero cost instead of null to keep reporting stable.',
+      costAccountingUrl: null
+    }
+  }
+
+  if (provider === 'opencode') {
+    return {
+      costUsd: 0,
+      costAccountingSource: 'historical-low-confidence',
+      costAccountingNotes: 'No exact OpenCode session cost could be recovered before timeout and no provider traffic was captured. Recorded as low-confidence zero cost instead of null to keep reporting stable.',
+      costAccountingUrl: null
+    }
+  }
+
+  return benchmarkCost
+}
+
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value))
 }
@@ -632,6 +658,7 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     sessionExportError,
     sessionDbError
   })
+  const normalizedBenchmarkCost = normalizeMissingCostAccounting({ benchmarkCost, provider: model.providerID, proxyRecords })
   const providerLimited = isProviderLimitedFailure({ verifier, error, proxyRecords })
   const failureSummary = !(!error && verifier.code === 0)
     ? summarizeFailureOutcome({ verifier, error, proxyRecords, logExcerpt: logLines.slice(-50) })
@@ -654,10 +681,10 @@ async function executeTask({ runtime, task, model, repeatIndex, runID, server, p
     steps: messageSummary.steps,
     requestCount: proxyRecords.length,
     tokens: messageSummary.tokens,
-    costUsd: benchmarkCost.costUsd,
-    costAccountingSource: benchmarkCost.costAccountingSource,
-    costAccountingNotes: benchmarkCost.costAccountingNotes,
-    costAccountingUrl: benchmarkCost.costAccountingUrl,
+    costUsd: normalizedBenchmarkCost.costUsd,
+    costAccountingSource: normalizedBenchmarkCost.costAccountingSource,
+    costAccountingNotes: normalizedBenchmarkCost.costAccountingNotes,
+    costAccountingUrl: normalizedBenchmarkCost.costAccountingUrl,
     toolInvocations: messageSummary.toolInvocations,
     filesChanged: Array.isArray(diff) ? diff.length : 0,
     diff,
