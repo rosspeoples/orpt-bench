@@ -14,7 +14,10 @@
     "repeats": 1,
     "taskTimeoutSeconds": 60,
     "processTimeoutSeconds": 61,
-    "derivedRunTimeoutSeconds": 61
+    "derivedRunTimeoutSeconds": 61,
+    "costRepairAppliedAt": "2026-04-10T04:19:18.852Z",
+    "costRepairStrategy": "historical-low-confidence",
+    "costRepairNotes": "This historical artifact contains OpenCode cost rows that predate billing-integrity fixes. Rows marked historical-low-confidence should not be treated as billing-accurate pricing evidence."
   },
   "results": [
     {
@@ -120,7 +123,10 @@
         "costFactor": 0,
         "timeFactor": 0
       },
-      "compositeScore": 0
+      "compositeScore": 0,
+      "costAccountingSource": "historical-low-confidence",
+      "costAccountingNotes": "Historical OpenCode cost row predates billing-integrity fixes and does not have trustworthy provenance. Treat this as low-confidence pricing evidence and do not compare VALUE or spend directly against billing-accurate runs without explicit repair.",
+      "costAccountingUrl": null
     }
   ],
   "leaderboard": [
