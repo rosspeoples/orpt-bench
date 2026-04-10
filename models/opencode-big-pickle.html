@@ -89,9 +89,9 @@
           </div>
         </div>
         <div class="summary-grid">
-          <div class="summary-item"><div class="micro">Composite</div><div class="metric-value">0.766</div><div class="muted">Correctness-weighted overall standing</div></div>
-          <div class="summary-item"><div class="micro">Success</div><div class="metric-value">82%</div><div class="muted">Tasks completed successfully</div></div>
-          <div class="summary-item"><div class="micro">ORPT</div><div class="metric-value">15.07</div><div class="muted">Requests per solved task</div></div>
+          <div class="summary-item"><div class="micro">Composite</div><div class="metric-value">0.615</div><div class="muted">Correctness-weighted overall standing</div></div>
+          <div class="summary-item"><div class="micro">Success</div><div class="metric-value">67%</div><div class="muted">Tasks completed successfully</div></div>
+          <div class="summary-item"><div class="micro">ORPT</div><div class="metric-value">15.39</div><div class="muted">Requests per solved task</div></div>
           <div class="summary-item"><div class="micro">Total cost</div><div class="metric-value">$0.0000</div><div class="muted">Observed benchmark spend</div></div>
         </div>
       </div>
@@ -116,7 +116,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/kimi-k2.5&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5-free&quot;,&quot;opencode/gemini-3-flash&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/gemini-3.1-pro&quot;,&quot;opencode/nemotron-3-super-free&quot;],&quot;y&quot;:[0.0081,0,-0.0239,-0.1053,-0.1296,-0.1694,-0.1861,-0.1912,-0.237,-0.3514,-0.3514,-0.3572,-0.4856,-0.5847],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.0081,0,-0.0239,-0.1053,-0.1296,-0.1694,-0.1861,-0.1912,-0.237,-0.3514,-0.3514,-0.3572,-0.4856,-0.5847],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/kimi-k2.5&lt;br&gt;Composite delta: 0.0081&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Composite delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-nano&lt;br&gt;Composite delta: -0.0239&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;Composite delta: -0.1053&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Composite delta: -0.1296&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Composite delta: -0.1694&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;Composite delta: -0.1861&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Composite delta: -0.1912&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Composite delta: -0.237&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5-free&lt;br&gt;Composite delta: -0.3514&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3-flash&lt;br&gt;Composite delta: -0.3514&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Composite delta: -0.3572&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;Composite delta: -0.4856&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/nemotron-3-super-free&lt;br&gt;Composite delta: -0.5847&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/minimax-m2.5-free&quot;,&quot;opencode/gemini-3-flash&quot;,&quot;opencode/gemini-3.1-pro&quot;,&quot;opencode/nemotron-3-super-free&quot;],&quot;y&quot;:[0.1727,0.1642,0.0542,0.0412,0,-0.0082,-0.0231,-0.0705,-0.1324,-0.163,-0.1998,-0.1998,-0.323,-0.4331],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.1727,0.1642,0.0542,0.0412,0,-0.0082,-0.0231,-0.0705,-0.1324,-0.163,-0.1998,-0.1998,-0.323,-0.4331],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Composite delta: 0.1727&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Composite delta: 0.1642&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;Composite delta: 0.0542&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Composite delta: 0.0412&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Composite delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Composite delta: -0.0082&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;Composite delta: -0.0231&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Composite delta: -0.0705&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Composite delta: -0.1324&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Composite delta: -0.163&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5-free&lt;br&gt;Composite delta: -0.1998&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3-flash&lt;br&gt;Composite delta: -0.1998&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;Composite delta: -0.323&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/nemotron-3-super-free&lt;br&gt;Composite delta: -0.4331&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Composite delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Composite delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -137,7 +137,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/kimi-k2.5&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5-free&quot;,&quot;opencode/gemini-3-flash&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/gemini-3.1-pro&quot;,&quot;opencode/nemotron-3-super-free&quot;],&quot;y&quot;:[0,0,2.83,6.54,-0.87,-4.58,-4.58,-17.65,-15.69,-23.09,-23.09,-34.2,-45.32,-56.43],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0,0,2.83,6.54,-0.87,-4.58,-4.58,-17.65,-15.69,-23.09,-23.09,-34.2,-45.32,-56.43],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/kimi-k2.5&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-nano&lt;br&gt;Success rate delta: 2.83&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;Success rate delta: 6.54&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Success rate delta: -0.87&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Success rate delta: -4.58&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;Success rate delta: -4.58&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Success rate delta: -17.65&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Success rate delta: -15.69&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5-free&lt;br&gt;Success rate delta: -23.09&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3-flash&lt;br&gt;Success rate delta: -23.09&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Success rate delta: -34.2&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;Success rate delta: -45.32&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/nemotron-3-super-free&lt;br&gt;Success rate delta: -56.43&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/minimax-m2.5-free&quot;,&quot;opencode/gemini-3-flash&quot;,&quot;opencode/gemini-3.1-pro&quot;,&quot;opencode/nemotron-3-super-free&quot;],&quot;y&quot;:[18.52,22.22,22.22,14.81,0,11.11,11.11,0,-11.11,-18.52,-7.41,-7.41,-29.63,-40.74],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[18.52,22.22,22.22,14.81,0,11.11,11.11,0,-11.11,-18.52,-7.41,-7.41,-29.63,-40.74],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Success rate delta: 18.52&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Success rate delta: 22.22&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;Success rate delta: 22.22&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Success rate delta: 14.81&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Success rate delta: 11.11&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;Success rate delta: 11.11&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Success rate delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Success rate delta: -11.11&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Success rate delta: -18.52&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5-free&lt;br&gt;Success rate delta: -7.41&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3-flash&lt;br&gt;Success rate delta: -7.41&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;Success rate delta: -29.63&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/nemotron-3-super-free&lt;br&gt;Success rate delta: -40.74&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Success delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Success rate delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -158,7 +158,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/kimi-k2.5&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5-free&quot;,&quot;opencode/gemini-3-flash&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/gemini-3.1-pro&quot;,&quot;opencode/nemotron-3-super-free&quot;],&quot;y&quot;:[0.0503,0,0.4215,21.8757,6.2197,8.9827,11.8406,0.0822,1.8816,0,2.4307,0.3839,5.8536,0],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.0503,0,0.4215,21.8757,6.2197,8.9827,11.8406,0.0822,1.8816,0,2.4307,0.3839,5.8536,0],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/kimi-k2.5&lt;br&gt;USD delta: 0.0503&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-nano&lt;br&gt;USD delta: 0.4215&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;USD delta: 21.8757&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;USD delta: 6.2197&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;USD delta: 8.9827&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;USD delta: 11.8406&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;USD delta: 0.0822&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;USD delta: 1.8816&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5-free&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3-flash&lt;br&gt;USD delta: 2.4307&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;USD delta: 0.3839&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;USD delta: 5.8536&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/nemotron-3-super-free&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/minimax-m2.5-free&quot;,&quot;opencode/gemini-3-flash&quot;,&quot;opencode/gemini-3.1-pro&quot;,&quot;opencode/nemotron-3-super-free&quot;],&quot;y&quot;:[0.4215,0.9122,21.8757,6.2197,0,8.9827,11.8406,1.8816,0.6413,0.3839,0,2.4307,5.8536,0],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[0.4215,0.9122,21.8757,6.2197,0,8.9827,11.8406,1.8816,0.6413,0.3839,0,2.4307,5.8536,0],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;USD delta: 0.4215&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;USD delta: 0.9122&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;USD delta: 21.8757&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;USD delta: 6.2197&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;USD delta: 8.9827&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;USD delta: 11.8406&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;USD delta: 1.8816&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;USD delta: 0.6413&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;USD delta: 0.3839&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5-free&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3-flash&lt;br&gt;USD delta: 2.4307&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;USD delta: 5.8536&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/nemotron-3-super-free&lt;br&gt;USD delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Cost delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;USD delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -179,7 +179,7 @@
   &lt;/style&gt;
   &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt;
   &lt;script&gt;
-    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/kimi-k2.5&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5-free&quot;,&quot;opencode/gemini-3-flash&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/gemini-3.1-pro&quot;,&quot;opencode/nemotron-3-super-free&quot;],&quot;y&quot;:[-10.38,0,5.84,18.37,-0.21,11.09,20.81,-7.54,42.96,19.86,41.16,5.21,29.71,87.3],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[-10.38,0,5.84,18.37,-0.21,11.09,20.81,-7.54,42.96,19.86,41.16,5.21,29.71,87.3],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/kimi-k2.5&lt;br&gt;Minutes delta: -10.38&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Minutes delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-nano&lt;br&gt;Minutes delta: 5.84&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;Minutes delta: 18.37&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Minutes delta: -0.21&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Minutes delta: 11.09&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;Minutes delta: 20.81&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Minutes delta: -7.54&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Minutes delta: 42.96&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5-free&lt;br&gt;Minutes delta: 19.86&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3-flash&lt;br&gt;Minutes delta: 41.16&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Minutes delta: 5.21&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;Minutes delta: 29.71&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/nemotron-3-super-free&lt;br&gt;Minutes delta: 87.3&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;]}];
+    const data = [{&quot;type&quot;:&quot;bar&quot;,&quot;x&quot;:[&quot;opencode/gpt-5.4-nano&quot;,&quot;opencode/kimi-k2.5&quot;,&quot;opencode/claude-opus-4-6&quot;,&quot;opencode/glm-5&quot;,&quot;opencode/big-pickle&quot;,&quot;opencode/gpt-5.4&quot;,&quot;opencode/claude-sonnet-4-6&quot;,&quot;opencode/glm-5.1&quot;,&quot;opencode/minimax-m2.5&quot;,&quot;opencode/gpt-5.4-mini&quot;,&quot;opencode/minimax-m2.5-free&quot;,&quot;opencode/gemini-3-flash&quot;,&quot;opencode/gemini-3.1-pro&quot;,&quot;opencode/nemotron-3-super-free&quot;],&quot;y&quot;:[-8.93,4.61,3.6,-14.98,0,-3.68,6.04,28.19,-4.22,-9.56,5.09,26.39,14.95,72.53],&quot;marker&quot;:{&quot;color&quot;:[&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#73f0c5&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;,&quot;#86a8ff&quot;],&quot;line&quot;:{&quot;color&quot;:&quot;rgba(255,255,255,0.22)&quot;,&quot;width&quot;:1.5}},&quot;text&quot;:[-8.93,4.61,3.6,-14.98,0,-3.68,6.04,28.19,-4.22,-9.56,5.09,26.39,14.95,72.53],&quot;textposition&quot;:&quot;auto&quot;,&quot;hovertemplate&quot;:[&quot;opencode/gpt-5.4-nano&lt;br&gt;Minutes delta: -8.93&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/kimi-k2.5&lt;br&gt;Minutes delta: 4.61&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-opus-4-6&lt;br&gt;Minutes delta: 3.6&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5&lt;br&gt;Minutes delta: -14.98&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/big-pickle&lt;br&gt;Minutes delta: 0&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4&lt;br&gt;Minutes delta: -3.68&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/claude-sonnet-4-6&lt;br&gt;Minutes delta: 6.04&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/glm-5.1&lt;br&gt;Minutes delta: 28.19&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5&lt;br&gt;Minutes delta: -4.22&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gpt-5.4-mini&lt;br&gt;Minutes delta: -9.56&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/minimax-m2.5-free&lt;br&gt;Minutes delta: 5.09&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3-flash&lt;br&gt;Minutes delta: 26.39&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/gemini-3.1-pro&lt;br&gt;Minutes delta: 14.95&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;,&quot;opencode/nemotron-3-super-free&lt;br&gt;Minutes delta: 72.53&lt;br&gt;Baseline: opencode/big-pickle&lt;extra&gt;&lt;/extra&gt;&quot;]}];
     const layout = {&quot;paper_bgcolor&quot;:&quot;#08101f&quot;,&quot;plot_bgcolor&quot;:&quot;#0d1830&quot;,&quot;font&quot;:{&quot;family&quot;:&quot;Inter, ui-sans-serif, system-ui, sans-serif&quot;,&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;title&quot;:&quot;Wall time delta vs baseline&quot;,&quot;hoverlabel&quot;:{&quot;bgcolor&quot;:&quot;#0a1324&quot;,&quot;bordercolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;font&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;}},&quot;legend&quot;:{&quot;font&quot;:{&quot;color&quot;:&quot;#99a4c8&quot;},&quot;orientation&quot;:&quot;h&quot;,&quot;x&quot;:0,&quot;y&quot;:1.12},&quot;margin&quot;:{&quot;l&quot;:72,&quot;r&quot;:24,&quot;t&quot;:72,&quot;b&quot;:112},&quot;height&quot;:420,&quot;xaxis&quot;:{&quot;automargin&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;zerolinecolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;tickangle&quot;:-18},&quot;yaxis&quot;:{&quot;automargin&quot;:true,&quot;zeroline&quot;:true,&quot;tickfont&quot;:{&quot;size&quot;:12,&quot;color&quot;:&quot;#99a4c8&quot;},&quot;titlefont&quot;:{&quot;color&quot;:&quot;#edf2ff&quot;,&quot;size&quot;:13},&quot;gridcolor&quot;:&quot;rgba(153, 164, 200, 0.16)&quot;,&quot;linecolor&quot;:&quot;rgba(153, 164, 200, 0.22)&quot;,&quot;title&quot;:&quot;Minutes delta&quot;}};
     Plotly.newPlot(&#39;chart&#39;, data, layout, {responsive: true});
   &lt;/script&gt;
@@ -209,121 +209,133 @@
     </thead>
     <tbody>
       <tr>
-        <td>opencode/kimi-k2.5</td>
-        <td>0.774</td>
-        <td>+0.008</td>
-        <td>82%</td>
-        <td>+0%</td>
-        <td>16.21</td>
-        <td>+1.14</td>
-        <td>$0.0503</td>
-        <td>+$0.0503</td>
-        <td>11m 19s</td>
-      </tr>
-      <tr>
-        <td>opencode/big-pickle <span class="pill good">Baseline</span></td>
-        <td>0.766</td>
-        <td>+0.0</td>
-        <td>82%</td>
-        <td>+0%</td>
-        <td>15.07</td>
-        <td>+0.00</td>
-        <td>$0.0000</td>
-        <td>+$0.0000</td>
-        <td>21m 42s</td>
-      </tr>
-      <tr>
         <td>opencode/gpt-5.4-nano</td>
-        <td>0.742</td>
-        <td>-0.024</td>
+        <td>0.787</td>
+        <td>+0.173</td>
         <td>85%</td>
-        <td>+3%</td>
+        <td>+19%</td>
         <td>15.17</td>
-        <td>+0.10</td>
+        <td>-0.21</td>
         <td>$0.4215</td>
         <td>+$0.4215</td>
         <td>27m 33s</td>
       </tr>
       <tr>
-        <td>opencode/claude-opus-4-6</td>
-        <td>0.661</td>
-        <td>-0.105</td>
+        <td>opencode/kimi-k2.5</td>
+        <td>0.779</td>
+        <td>+0.164</td>
         <td>89%</td>
-        <td>+7%</td>
+        <td>+22%</td>
+        <td>14.25</td>
+        <td>-1.14</td>
+        <td>$0.9122</td>
+        <td>+$0.9122</td>
+        <td>41m 05s</td>
+      </tr>
+      <tr>
+        <td>opencode/claude-opus-4-6</td>
+        <td>0.669</td>
+        <td>+0.054</td>
+        <td>89%</td>
+        <td>+22%</td>
         <td>14.88</td>
-        <td>-0.20</td>
+        <td>-0.51</td>
         <td>$21.8757</td>
         <td>+$21.8757</td>
         <td>40m 04s</td>
       </tr>
       <tr>
         <td>opencode/glm-5</td>
-        <td>0.637</td>
-        <td>-0.13</td>
+        <td>0.656</td>
+        <td>+0.041</td>
         <td>81%</td>
-        <td>-1%</td>
+        <td>+15%</td>
         <td>11.41</td>
-        <td>-3.66</td>
+        <td>-3.98</td>
         <td>$6.2197</td>
         <td>+$6.2197</td>
         <td>21m 30s</td>
       </tr>
       <tr>
+        <td>opencode/big-pickle <span class="pill good">Baseline</span></td>
+        <td>0.615</td>
+        <td>+0.0</td>
+        <td>67%</td>
+        <td>+0%</td>
+        <td>15.39</td>
+        <td>+0.00</td>
+        <td>$0.0000</td>
+        <td>+$0.0000</td>
+        <td>36m 28s</td>
+      </tr>
+      <tr>
         <td>opencode/gpt-5.4</td>
-        <td>0.597</td>
-        <td>-0.169</td>
+        <td>0.606</td>
+        <td>-0.008</td>
         <td>78%</td>
-        <td>-5%</td>
+        <td>+11%</td>
         <td>11.00</td>
-        <td>-4.07</td>
+        <td>-4.39</td>
         <td>$8.9827</td>
         <td>+$8.9827</td>
         <td>32m 47s</td>
       </tr>
       <tr>
         <td>opencode/claude-sonnet-4-6</td>
-        <td>0.58</td>
-        <td>-0.186</td>
+        <td>0.591</td>
+        <td>-0.023</td>
         <td>78%</td>
-        <td>-5%</td>
+        <td>+11%</td>
         <td>16.43</td>
-        <td>+1.36</td>
+        <td>+1.04</td>
         <td>$11.8406</td>
         <td>+$11.8406</td>
         <td>42m 31s</td>
       </tr>
       <tr>
-        <td>opencode/minimax-m2.5</td>
-        <td>0.575</td>
-        <td>-0.191</td>
-        <td>65%</td>
-        <td>-18%</td>
-        <td>13.45</td>
-        <td>-1.62</td>
-        <td>$0.0822</td>
-        <td>+$0.0822</td>
-        <td>14m 10s</td>
-      </tr>
-      <tr>
         <td>opencode/glm-5.1</td>
-        <td>0.529</td>
-        <td>-0.237</td>
+        <td>0.544</td>
+        <td>-0.071</td>
         <td>67%</td>
-        <td>-16%</td>
+        <td>+0%</td>
         <td>12.06</td>
-        <td>-3.02</td>
+        <td>-3.33</td>
         <td>$1.8816</td>
         <td>+$1.8816</td>
         <td>64m 39s</td>
       </tr>
       <tr>
+        <td>opencode/minimax-m2.5</td>
+        <td>0.482</td>
+        <td>-0.132</td>
+        <td>56%</td>
+        <td>-11%</td>
+        <td>18.87</td>
+        <td>+3.48</td>
+        <td>$0.6413</td>
+        <td>+$0.6413</td>
+        <td>32m 15s</td>
+      </tr>
+      <tr>
+        <td>opencode/gpt-5.4-mini</td>
+        <td>0.452</td>
+        <td>-0.163</td>
+        <td>48%</td>
+        <td>-19%</td>
+        <td>9.77</td>
+        <td>-5.62</td>
+        <td>$0.3839</td>
+        <td>+$0.3839</td>
+        <td>26m 55s</td>
+      </tr>
+      <tr>
         <td>opencode/minimax-m2.5-free</td>
         <td>0.415</td>
-        <td>-0.351</td>
+        <td>-0.2</td>
         <td>59%</td>
-        <td>-23%</td>
+        <td>-7%</td>
         <td>16.19</td>
-        <td>+1.12</td>
+        <td>+0.80</td>
         <td>$0.0000</td>
         <td>+$0.0000</td>
         <td>41m 34s</td>
@@ -331,35 +343,23 @@
       <tr>
         <td>opencode/gemini-3-flash</td>
         <td>0.415</td>
-        <td>-0.351</td>
+        <td>-0.2</td>
         <td>59%</td>
-        <td>-23%</td>
+        <td>-7%</td>
         <td>21.81</td>
-        <td>+6.74</td>
+        <td>+6.42</td>
         <td>$2.4307</td>
         <td>+$2.4307</td>
         <td>62m 52s</td>
       </tr>
       <tr>
-        <td>opencode/gpt-5.4-mini</td>
-        <td>0.409</td>
-        <td>-0.357</td>
-        <td>48%</td>
-        <td>-34%</td>
-        <td>9.77</td>
-        <td>-5.30</td>
-        <td>$0.3839</td>
-        <td>+$0.3839</td>
-        <td>26m 55s</td>
-      </tr>
-      <tr>
         <td>opencode/gemini-3.1-pro</td>
-        <td>0.281</td>
-        <td>-0.486</td>
+        <td>0.292</td>
+        <td>-0.323</td>
         <td>37%</td>
-        <td>-45%</td>
+        <td>-30%</td>
         <td>12.70</td>
-        <td>-2.37</td>
+        <td>-2.69</td>
         <td>$5.8536</td>
         <td>+$5.8536</td>
         <td>51m 25s</td>
@@ -367,11 +367,11 @@
       <tr>
         <td>opencode/nemotron-3-super-free</td>
         <td>0.181</td>
-        <td>-0.585</td>
+        <td>-0.433</td>
         <td>26%</td>
-        <td>-56%</td>
+        <td>-41%</td>
         <td>19.43</td>
-        <td>+4.36</td>
+        <td>+4.04</td>
         <td>$0.0000</td>
         <td>+$0.0000</td>
         <td>109m 00s</td>
@@ -399,246 +399,246 @@
     <tbody>
       <tr>
         <td>Kubernetes rollout repair</td>
+        <td><span class="pill warn">Clear separation</span></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/gpt-5.4-mini<div class="muted">1.0</div></td>
+        <td>1.0</td>
+        <td>n/a</td>
+        <td>59s</td>
+      </tr>
+      <tr>
+        <td>nftables router ingress repair</td>
         <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill bad">failed</span></td>
-        <td>opencode/kimi-k2.5<div class="muted">0.986</div></td>
-        <td>0.986</td>
+        <td>opencode/gpt-5.4-nano<div class="muted">1.0</div></td>
+        <td>1.0</td>
         <td>n/a</td>
-        <td>31s</td>
+        <td>52s</td>
       </tr>
       <tr>
         <td>Docker Compose observability fix</td>
         <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill warn">dnf</span></td>
-        <td>opencode/kimi-k2.5<div class="muted">0.937</div></td>
-        <td>0.937</td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.975</div></td>
+        <td>0.975</td>
         <td>n/a</td>
-        <td>5m 00s</td>
-      </tr>
-      <tr>
-        <td>Terraform static site repair</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill warn">dnf</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.857</div></td>
-        <td>0.857</td>
-        <td>n/a</td>
-        <td>5m 00s</td>
+        <td>45s</td>
       </tr>
       <tr>
         <td>Bootstrap phase validation repair</td>
         <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/kimi-k2.5<div class="muted">1.0</div></td>
-        <td>0.134</td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/kimi-k2.5<div class="muted">0.97</div></td>
+        <td>0.97</td>
         <td>n/a</td>
-        <td>1m 37s</td>
-      </tr>
-      <tr>
-        <td>Ansible nginx role completion</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/kimi-k2.5<div class="muted">1.0</div></td>
-        <td>0.121</td>
-        <td>n/a</td>
-        <td>38s</td>
-      </tr>
-      <tr>
-        <td>Kubernetes OIDC RBAC repair</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/kimi-k2.5<div class="muted">0.95</div></td>
-        <td>0.035</td>
-        <td>n/a</td>
-        <td>1m 23s</td>
-      </tr>
-      <tr>
-        <td>MCP OpenBao contract repair</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/kimi-k2.5<div class="muted">0.954</div></td>
-        <td>0.018</td>
-        <td>n/a</td>
-        <td>41s</td>
-      </tr>
-      <tr>
-        <td>GitOps workspace render validation</td>
-        <td><span class="pill good">Crowded field</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/kimi-k2.5<div class="muted">0.932</div></td>
-        <td>0.01</td>
-        <td>n/a</td>
-        <td>49s</td>
-      </tr>
-      <tr>
-        <td>Workspace runtime access convergence</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/gpt-5.4-nano<div class="muted">0.912</div></td>
-        <td>0.006</td>
-        <td>n/a</td>
-        <td>1m 19s</td>
-      </tr>
-      <tr>
-        <td>Pre-ArgoCD bootstrap sequencing</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/minimax-m2.5<div class="muted">0.923</div></td>
-        <td>0.005</td>
-        <td>n/a</td>
-        <td>1m 04s</td>
+        <td>2m 08s</td>
       </tr>
       <tr>
         <td>Log audit shell script</td>
         <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/minimax-m2.5<div class="muted">0.943</div></td>
-        <td>0.0</td>
+        <td><span class="pill warn">dnf</span></td>
+        <td>opencode/gpt-5.4-mini<div class="muted">0.958</div></td>
+        <td>0.958</td>
         <td>n/a</td>
-        <td>21s</td>
+        <td>1m 15s</td>
       </tr>
       <tr>
-        <td>nftables router ingress repair</td>
-        <td><span class="pill warn">Clear separation</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/gpt-5.4-nano<div class="muted">1.0</div></td>
+        <td>Kubernetes OIDC RBAC repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.957</div></td>
+        <td>0.957</td>
         <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
-      </tr>
-      <tr>
-        <td>RHEL k3s node preparation repair</td>
-        <td><span class="pill warn">Clear separation</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/gpt-5.4-nano<div class="muted">1.0</div></td>
-        <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
-      </tr>
-      <tr>
-        <td>RHEL NetworkManager bridge VLAN repair</td>
-        <td><span class="pill warn">Clear separation</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/gpt-5.4-nano<div class="muted">0.995</div></td>
-        <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
-      </tr>
-      <tr>
-        <td>RHEL edge firewalld router repair</td>
-        <td><span class="pill warn">Clear separation</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/gpt-5.4-nano<div class="muted">0.978</div></td>
-        <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
+        <td>1m 36s</td>
       </tr>
       <tr>
         <td>SELinux registry volume label repair</td>
         <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/glm-5<div class="muted">0.987</div></td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/kimi-k2.5<div class="muted">0.936</div></td>
+        <td>0.936</td>
         <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
-      </tr>
-      <tr>
-        <td>MetalLB ingress address pool repair</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/gpt-5.4-nano<div class="muted">0.924</div></td>
-        <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
-      </tr>
-      <tr>
-        <td>AppArmor dnsmasq profile repair</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/gpt-5.4-nano<div class="muted">0.895</div></td>
-        <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
+        <td>1m 07s</td>
       </tr>
       <tr>
         <td>Traefik forwarded header trust repair</td>
         <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/gpt-5.4-nano<div class="muted">0.918</div></td>
-        <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
-      </tr>
-      <tr>
-        <td>ExternalDNS RFC2136 repair</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/glm-5.1<div class="muted">0.938</div></td>
-        <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
-      </tr>
-      <tr>
-        <td>K3s registry mirror trust repair</td>
-        <td><span class="pill good">Crowded field</span></td>
-        <td><span class="pill warn">missing</span></td>
-        <td>opencode/gpt-5.4-mini<div class="muted">0.927</div></td>
-        <td>n/a</td>
-        <td>n/a</td>
-        <td>n/a</td>
-      </tr>
-      <tr>
-        <td>Event status shell summary</td>
-        <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/big-pickle<div class="muted">0.972</div></td>
-        <td>0.0</td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/kimi-k2.5<div class="muted">0.923</div></td>
+        <td>0.923</td>
         <td>n/a</td>
         <td>21s</td>
       </tr>
       <tr>
-        <td>CNPG restore manifest repair</td>
+        <td>Workspace runtime access convergence</td>
         <td><span class="pill good">Competitive split</span></td>
-        <td><span class="pill good">passed</span></td>
-        <td>opencode/big-pickle<div class="muted">1.0</div></td>
-        <td>0.0</td>
+        <td><span class="pill bad">failed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.912</div></td>
+        <td>0.912</td>
         <td>n/a</td>
-        <td>16s</td>
+        <td>2m 26s</td>
       </tr>
       <tr>
-        <td>Wildcard TLS route coverage</td>
+        <td>Terraform static site repair</td>
         <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/big-pickle<div class="muted">0.953</div></td>
-        <td>0.0</td>
+        <td>opencode/kimi-k2.5<div class="muted">0.988</div></td>
+        <td>0.178</td>
         <td>n/a</td>
-        <td>43s</td>
+        <td>2m 45s</td>
+      </tr>
+      <tr>
+        <td>RHEL k3s node preparation repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">1.0</div></td>
+        <td>0.143</td>
+        <td>n/a</td>
+        <td>2m 19s</td>
       </tr>
       <tr>
         <td>Build workspace plane convergence</td>
         <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/big-pickle<div class="muted">0.942</div></td>
-        <td>0.0</td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.989</div></td>
+        <td>0.108</td>
         <td>n/a</td>
-        <td>54s</td>
+        <td>2m 27s</td>
+      </tr>
+      <tr>
+        <td>ExternalDNS RFC2136 repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/kimi-k2.5<div class="muted">1.0</div></td>
+        <td>0.094</td>
+        <td>n/a</td>
+        <td>1m 54s</td>
+      </tr>
+      <tr>
+        <td>RHEL NetworkManager bridge VLAN repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.98</div></td>
+        <td>0.091</td>
+        <td>n/a</td>
+        <td>1m 06s</td>
+      </tr>
+      <tr>
+        <td>RHEL edge firewalld router repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.978</div></td>
+        <td>0.071</td>
+        <td>n/a</td>
+        <td>1m 43s</td>
+      </tr>
+      <tr>
+        <td>Ansible nginx role completion</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-mini<div class="muted">1.0</div></td>
+        <td>0.05</td>
+        <td>n/a</td>
+        <td>43s</td>
+      </tr>
+      <tr>
+        <td>AppArmor dnsmasq profile repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.895</div></td>
+        <td>0.029</td>
+        <td>n/a</td>
+        <td>1m 22s</td>
+      </tr>
+      <tr>
+        <td>Pre-ArgoCD bootstrap sequencing</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.913</div></td>
+        <td>0.028</td>
+        <td>n/a</td>
+        <td>4m 23s</td>
       </tr>
       <tr>
         <td>Log level rollup shell script</td>
         <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/big-pickle<div class="muted">0.955</div></td>
+        <td>opencode/gpt-5.4-mini<div class="muted">0.955</div></td>
+        <td>0.015</td>
+        <td>n/a</td>
+        <td>54s</td>
+      </tr>
+      <tr>
+        <td>MCP OpenBao contract repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-mini<div class="muted">0.957</div></td>
+        <td>0.003</td>
+        <td>n/a</td>
+        <td>33s</td>
+      </tr>
+      <tr>
+        <td>MetalLB ingress address pool repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/gpt-5.4-nano<div class="muted">0.924</div></td>
+        <td>0.001</td>
+        <td>n/a</td>
+        <td>57s</td>
+      </tr>
+      <tr>
+        <td>K3s registry mirror trust repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.999</div></td>
         <td>0.0</td>
         <td>n/a</td>
-        <td>30s</td>
+        <td>17s</td>
       </tr>
       <tr>
         <td>Workspace transplant bundle repair</td>
-        <td><span class="pill good">Crowded field</span></td>
+        <td><span class="pill good">Competitive split</span></td>
         <td><span class="pill good">passed</span></td>
-        <td>opencode/big-pickle<div class="muted">0.918</div></td>
+        <td>opencode/big-pickle<div class="muted">0.985</div></td>
         <td>0.0</td>
         <td>n/a</td>
-        <td>36s</td>
+        <td>25s</td>
+      </tr>
+      <tr>
+        <td>Event status shell summary</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">1.0</div></td>
+        <td>0.0</td>
+        <td>n/a</td>
+        <td>17s</td>
+      </tr>
+      <tr>
+        <td>CNPG restore manifest repair</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.984</div></td>
+        <td>0.0</td>
+        <td>n/a</td>
+        <td>37s</td>
+      </tr>
+      <tr>
+        <td>Wildcard TLS route coverage</td>
+        <td><span class="pill good">Competitive split</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.896</div></td>
+        <td>0.0</td>
+        <td>n/a</td>
+        <td>1m 08s</td>
+      </tr>
+      <tr>
+        <td>GitOps workspace render validation</td>
+        <td><span class="pill good">Crowded field</span></td>
+        <td><span class="pill good">passed</span></td>
+        <td>opencode/big-pickle<div class="muted">0.963</div></td>
+        <td>0.0</td>
+        <td>n/a</td>
+        <td>1m 09s</td>
       </tr>
     </tbody>
   </table></div>
@@ -662,120 +662,120 @@
     <tbody>
       <tr>
         <td>opencode/nemotron-3-super-free</td>
-        <td>14-1<div class="muted">2 ties</div></td>
-        <td>+0.585</td>
-        <td>+56%</td>
+        <td>18-0<div class="muted">9 ties</div></td>
+        <td>+0.433</td>
+        <td>+41%</td>
         <td>+$0.0000</td>
-        <td>-87m 18s</td>
-        <td>-4.36</td>
+        <td>-72m 32s</td>
+        <td>-4.04</td>
       </tr>
       <tr>
         <td>opencode/gemini-3.1-pro</td>
-        <td>14-2<div class="muted">1 ties</div></td>
-        <td>+0.486</td>
-        <td>+45%</td>
+        <td>17-3<div class="muted">7 ties</div></td>
+        <td>+0.323</td>
+        <td>+30%</td>
         <td>-$5.8536</td>
-        <td>-29m 43s</td>
-        <td>+2.37</td>
-      </tr>
-      <tr>
-        <td>opencode/gpt-5.4-mini</td>
-        <td>14-2<div class="muted">1 ties</div></td>
-        <td>+0.357</td>
-        <td>+34%</td>
-        <td>-$0.3839</td>
-        <td>-5m 13s</td>
-        <td>+5.30</td>
+        <td>-14m 57s</td>
+        <td>+2.69</td>
       </tr>
       <tr>
         <td>opencode/minimax-m2.5-free</td>
-        <td>14-2<div class="muted">1 ties</div></td>
-        <td>+0.351</td>
-        <td>+23%</td>
+        <td>18-4<div class="muted">5 ties</div></td>
+        <td>+0.2</td>
+        <td>+7%</td>
         <td>+$0.0000</td>
-        <td>-19m 52s</td>
-        <td>-1.12</td>
+        <td>-5m 05s</td>
+        <td>-0.80</td>
       </tr>
       <tr>
         <td>opencode/gemini-3-flash</td>
-        <td>14-1<div class="muted">2 ties</div></td>
-        <td>+0.351</td>
-        <td>+23%</td>
+        <td>18-5<div class="muted">4 ties</div></td>
+        <td>+0.2</td>
+        <td>+7%</td>
         <td>-$2.4307</td>
-        <td>-41m 10s</td>
-        <td>-6.74</td>
-      </tr>
-      <tr>
-        <td>opencode/glm-5.1</td>
-        <td>14-2<div class="muted">1 ties</div></td>
-        <td>+0.237</td>
-        <td>+16%</td>
-        <td>-$1.8816</td>
-        <td>-42m 57s</td>
-        <td>+3.02</td>
-      </tr>
-      <tr>
-        <td>opencode/minimax-m2.5</td>
-        <td>12-3<div class="muted">2 ties</div></td>
-        <td>+0.191</td>
-        <td>+18%</td>
-        <td>-$0.0822</td>
-        <td>+7m 32s</td>
-        <td>+1.62</td>
-      </tr>
-      <tr>
-        <td>opencode/claude-sonnet-4-6</td>
-        <td>14-1<div class="muted">2 ties</div></td>
-        <td>+0.186</td>
-        <td>+5%</td>
-        <td>-$11.8406</td>
-        <td>-20m 49s</td>
-        <td>-1.36</td>
-      </tr>
-      <tr>
-        <td>opencode/gpt-5.4</td>
-        <td>14-2<div class="muted">1 ties</div></td>
-        <td>+0.169</td>
-        <td>+5%</td>
-        <td>-$8.9827</td>
-        <td>-11m 05s</td>
-        <td>+4.07</td>
-      </tr>
-      <tr>
-        <td>opencode/glm-5</td>
-        <td>14-2<div class="muted">1 ties</div></td>
-        <td>+0.13</td>
-        <td>+1%</td>
-        <td>-$6.2197</td>
-        <td>+12s</td>
-        <td>+3.66</td>
-      </tr>
-      <tr>
-        <td>opencode/claude-opus-4-6</td>
-        <td>14-1<div class="muted">2 ties</div></td>
-        <td>+0.105</td>
-        <td>-7%</td>
-        <td>-$21.8757</td>
-        <td>-18m 22s</td>
-        <td>+0.20</td>
+        <td>-26m 23s</td>
+        <td>-6.42</td>
       </tr>
       <tr>
         <td>opencode/gpt-5.4-nano</td>
-        <td>13-3<div class="muted">1 ties</div></td>
-        <td>+0.024</td>
-        <td>-3%</td>
+        <td>10-14<div class="muted">3 ties</div></td>
+        <td>-0.173</td>
+        <td>-19%</td>
         <td>-$0.4215</td>
-        <td>-5m 51s</td>
-        <td>-0.10</td>
+        <td>+8m 56s</td>
+        <td>+0.21</td>
       </tr>
       <tr>
         <td>opencode/kimi-k2.5</td>
-        <td>9-7<div class="muted">1 ties</div></td>
-        <td>-0.008</td>
+        <td>15-11<div class="muted">1 ties</div></td>
+        <td>-0.164</td>
+        <td>-22%</td>
+        <td>-$0.9122</td>
+        <td>-4m 36s</td>
+        <td>+1.14</td>
+      </tr>
+      <tr>
+        <td>opencode/gpt-5.4-mini</td>
+        <td>13-7<div class="muted">7 ties</div></td>
+        <td>+0.163</td>
+        <td>+19%</td>
+        <td>-$0.3839</td>
+        <td>+9m 33s</td>
+        <td>+5.62</td>
+      </tr>
+      <tr>
+        <td>opencode/minimax-m2.5</td>
+        <td>15-6<div class="muted">6 ties</div></td>
+        <td>+0.132</td>
+        <td>+11%</td>
+        <td>-$0.6413</td>
+        <td>+4m 13s</td>
+        <td>-3.48</td>
+      </tr>
+      <tr>
+        <td>opencode/glm-5.1</td>
+        <td>17-6<div class="muted">4 ties</div></td>
+        <td>+0.071</td>
         <td>+0%</td>
-        <td>-$0.0503</td>
-        <td>+10m 23s</td>
-        <td>-1.14</td>
+        <td>-$1.8816</td>
+        <td>-28m 11s</td>
+        <td>+3.33</td>
+      </tr>
+      <tr>
+        <td>opencode/claude-opus-4-6</td>
+        <td>18-7<div class="muted">2 ties</div></td>
+        <td>-0.054</td>
+        <td>-22%</td>
+        <td>-$21.8757</td>
+        <td>-3m 36s</td>
+        <td>+0.51</td>
+      </tr>
+      <tr>
+        <td>opencode/glm-5</td>
+        <td>18-6<div class="muted">3 ties</div></td>
+        <td>-0.041</td>
+        <td>-15%</td>
+        <td>-$6.2197</td>
+        <td>+14m 59s</td>
+        <td>+3.98</td>
+      </tr>
+      <tr>
+        <td>opencode/claude-sonnet-4-6</td>
+        <td>18-5<div class="muted">4 ties</div></td>
+        <td>+0.023</td>
+        <td>-11%</td>
+        <td>-$11.8406</td>
+        <td>-6m 02s</td>
+        <td>-1.04</td>
+      </tr>
+      <tr>
+        <td>opencode/gpt-5.4</td>
+        <td>18-6<div class="muted">3 ties</div></td>
+        <td>+0.008</td>
+        <td>-11%</td>
+        <td>-$8.9827</td>
+        <td>+3m 41s</td>
+        <td>+4.39</td>
       </tr>
     </tbody>
   </table></div>
@@ -786,7 +786,7 @@
       <h3>Benchmark and catalog detail</h3>
       <p class="panel-copy">The benchmark result only matters in context: this section pairs the observed benchmark outcome with the catalog metadata and operating characteristics behind it.</p>
       <div class="summary-grid">
-        <div class="summary-item"><div class="stat-row"><span>Requests</span><strong>340</strong></div><div class="stat-row"><span>Wall time</span><strong>21m 42s</strong></div><div class="stat-row"><span>Average task cost</span><strong>n/a</strong></div><div class="stat-row"><span>Benchmark support</span><strong>unknown</strong></div></div>
+        <div class="summary-item"><div class="stat-row"><span>Requests</span><strong>414</strong></div><div class="stat-row"><span>Wall time</span><strong>36m 28s</strong></div><div class="stat-row"><span>Average task cost</span><strong>n/a</strong></div><div class="stat-row"><span>Benchmark support</span><strong>unknown</strong></div></div>
         <div class="summary-item"><div class="stat-row"><span>Catalog blended price</span><strong>n/a</strong></div><div class="stat-row"><span>Catalog speed</span><strong>n/a</strong></div><div class="stat-row"><span>Intelligence</span><strong>n/a</strong></div><div class="stat-row"><span>Agentic</span><strong>n/a</strong></div></div>
       </div>
       <p class="panel-copy" style="margin-top:14px;">No trustworthy automatic pricing reference found yet, so cost is currently unknown.</p>

@@ -6,47 +6,47 @@
       "type": "bar",
       "orientation": "h",
       "x": [
-        0.824,
-        0.824,
         0.852,
         0.889,
+        0.889,
         0.815,
-        0.778,
-        0.778,
-        0.647,
         0.667,
+        0.778,
+        0.778,
+        0.667,
+        0.556,
+        0.481,
         0.593,
-        0.593,
-        0.481
+        0.593
       ],
       "y": [
-        "opencode/kimi-k2.5",
-        "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
+        "opencode/kimi-k2.5",
         "opencode/claude-opus-4-6",
         "opencode/glm-5",
+        "opencode/big-pickle",
         "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
-        "opencode/minimax-m2.5",
         "opencode/glm-5.1",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4-mini",
         "opencode/minimax-m2.5-free",
-        "opencode/gemini-3-flash",
-        "opencode/gpt-5.4-mini"
+        "opencode/gemini-3-flash"
       ],
       "marker": {
         "color": [
-          "#a78bfa",
-          "#38bdf8",
           "#e879f9",
+          "#a78bfa",
           "#fb7185",
           "#4ade80",
+          "#38bdf8",
           "#a78bfa",
           "#fb7185",
+          "#f472b6",
           "#e879f9",
           "#f472b6",
           "#84cc16",
-          "#f97316",
-          "#f472b6"
+          "#f97316"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -54,18 +54,18 @@
         }
       },
       "text": [
-        0.824,
-        0.824,
         0.852,
         0.889,
+        0.889,
         0.815,
-        0.778,
-        0.778,
-        0.647,
         0.667,
+        0.778,
+        0.778,
+        0.667,
+        0.556,
+        0.481,
         0.593,
-        0.593,
-        0.481
+        0.593
       ],
       "textposition": "outside",
       "cliponaxis": false,
@@ -74,18 +74,18 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/kimi-k2.5<br>Completion score: 0.824<br>82% success | 0.66 value<extra></extra>",
-        "opencode/big-pickle<br>Completion score: 0.824<br>82% success | 0.632 value<extra></extra>",
-        "opencode/gpt-5.4-nano<br>Completion score: 0.852<br>85% success | 0.487 value<extra></extra>",
-        "opencode/claude-opus-4-6<br>Completion score: 0.889<br>89% success | 0.129 value<extra></extra>",
-        "opencode/glm-5<br>Completion score: 0.815<br>81% success | 0.221 value<extra></extra>",
-        "opencode/gpt-5.4<br>Completion score: 0.778<br>78% success | 0.175 value<extra></extra>",
-        "opencode/claude-sonnet-4-6<br>Completion score: 0.778<br>78% success | 0.119 value<extra></extra>",
-        "opencode/minimax-m2.5<br>Completion score: 0.647<br>65% success | 0.407 value<extra></extra>",
-        "opencode/glm-5.1<br>Completion score: 0.667<br>67% success | 0.208 value<extra></extra>",
+        "opencode/gpt-5.4-nano<br>Completion score: 0.852<br>85% success | 0.637 value<extra></extra>",
+        "opencode/kimi-k2.5<br>Completion score: 0.889<br>89% success | 0.522 value<extra></extra>",
+        "opencode/claude-opus-4-6<br>Completion score: 0.889<br>89% success | 0.155 value<extra></extra>",
+        "opencode/glm-5<br>Completion score: 0.815<br>81% success | 0.285 value<extra></extra>",
+        "opencode/big-pickle<br>Completion score: 0.667<br>67% success | 0.493 value<extra></extra>",
+        "opencode/gpt-5.4<br>Completion score: 0.778<br>78% success | 0.206 value<extra></extra>",
+        "opencode/claude-sonnet-4-6<br>Completion score: 0.778<br>78% success | 0.157 value<extra></extra>",
+        "opencode/glm-5.1<br>Completion score: 0.667<br>67% success | 0.258 value<extra></extra>",
+        "opencode/minimax-m2.5<br>Completion score: 0.556<br>56% success | 0.311 value<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Completion score: 0.481<br>48% success | 0.382 value<extra></extra>",
         "opencode/minimax-m2.5-free<br>Completion score: 0.593<br>59% success | 0.0 value<extra></extra>",
-        "opencode/gemini-3-flash<br>Completion score: 0.593<br>59% success | 0.0 value<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Completion score: 0.481<br>48% success | 0.24 value<extra></extra>"
+        "opencode/gemini-3-flash<br>Completion score: 0.593<br>59% success | 0.0 value<extra></extra>"
       ]
     }
   ],

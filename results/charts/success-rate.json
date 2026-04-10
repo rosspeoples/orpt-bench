@@ -6,47 +6,47 @@
       "type": "bar",
       "orientation": "h",
       "x": [
-        82.35,
-        82.35,
         85.19,
         88.89,
+        88.89,
         81.48,
-        77.78,
-        77.78,
-        64.71,
         66.67,
+        77.78,
+        77.78,
+        66.67,
+        55.56,
+        48.15,
         59.26,
-        59.26,
-        48.15
+        59.26
       ],
       "y": [
-        "opencode/kimi-k2.5",
-        "opencode/big-pickle",
         "opencode/gpt-5.4-nano",
+        "opencode/kimi-k2.5",
         "opencode/claude-opus-4-6",
         "opencode/glm-5",
+        "opencode/big-pickle",
         "opencode/gpt-5.4",
         "opencode/claude-sonnet-4-6",
-        "opencode/minimax-m2.5",
         "opencode/glm-5.1",
+        "opencode/minimax-m2.5",
+        "opencode/gpt-5.4-mini",
         "opencode/minimax-m2.5-free",
-        "opencode/gemini-3-flash",
-        "opencode/gpt-5.4-mini"
+        "opencode/gemini-3-flash"
       ],
       "marker": {
         "color": [
-          "#a78bfa",
-          "#38bdf8",
           "#e879f9",
+          "#a78bfa",
           "#fb7185",
           "#4ade80",
+          "#38bdf8",
           "#a78bfa",
           "#fb7185",
+          "#f472b6",
           "#e879f9",
           "#f472b6",
           "#84cc16",
-          "#f97316",
-          "#f472b6"
+          "#f97316"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -54,18 +54,18 @@
         }
       },
       "text": [
-        82.35,
-        82.35,
         85.19,
         88.89,
+        88.89,
         81.48,
-        77.78,
-        77.78,
-        64.71,
         66.67,
+        77.78,
+        77.78,
+        66.67,
+        55.56,
+        48.15,
         59.26,
-        59.26,
-        48.15
+        59.26
       ],
       "textposition": "outside",
       "cliponaxis": false,
@@ -74,18 +74,18 @@
         "size": 12
       },
       "hovertemplate": [
-        "opencode/kimi-k2.5<br>Success rate (%): 82.35<br>0.774 composite | 14 solved<extra></extra>",
-        "opencode/big-pickle<br>Success rate (%): 82.35<br>0.766 composite | 14 solved<extra></extra>",
-        "opencode/gpt-5.4-nano<br>Success rate (%): 85.19<br>0.742 composite | 23 solved<extra></extra>",
-        "opencode/claude-opus-4-6<br>Success rate (%): 88.89<br>0.661 composite | 24 solved<extra></extra>",
-        "opencode/glm-5<br>Success rate (%): 81.48<br>0.637 composite | 22 solved<extra></extra>",
-        "opencode/gpt-5.4<br>Success rate (%): 77.78<br>0.597 composite | 21 solved<extra></extra>",
-        "opencode/claude-sonnet-4-6<br>Success rate (%): 77.78<br>0.58 composite | 21 solved<extra></extra>",
-        "opencode/minimax-m2.5<br>Success rate (%): 64.71<br>0.575 composite | 11 solved<extra></extra>",
-        "opencode/glm-5.1<br>Success rate (%): 66.67<br>0.529 composite | 18 solved<extra></extra>",
+        "opencode/gpt-5.4-nano<br>Success rate (%): 85.19<br>0.787 composite | 23 solved<extra></extra>",
+        "opencode/kimi-k2.5<br>Success rate (%): 88.89<br>0.779 composite | 24 solved<extra></extra>",
+        "opencode/claude-opus-4-6<br>Success rate (%): 88.89<br>0.669 composite | 24 solved<extra></extra>",
+        "opencode/glm-5<br>Success rate (%): 81.48<br>0.656 composite | 22 solved<extra></extra>",
+        "opencode/big-pickle<br>Success rate (%): 66.67<br>0.615 composite | 18 solved<extra></extra>",
+        "opencode/gpt-5.4<br>Success rate (%): 77.78<br>0.606 composite | 21 solved<extra></extra>",
+        "opencode/claude-sonnet-4-6<br>Success rate (%): 77.78<br>0.591 composite | 21 solved<extra></extra>",
+        "opencode/glm-5.1<br>Success rate (%): 66.67<br>0.544 composite | 18 solved<extra></extra>",
+        "opencode/minimax-m2.5<br>Success rate (%): 55.56<br>0.482 composite | 15 solved<extra></extra>",
+        "opencode/gpt-5.4-mini<br>Success rate (%): 48.15<br>0.452 composite | 13 solved<extra></extra>",
         "opencode/minimax-m2.5-free<br>Success rate (%): 59.26<br>0.415 composite | 16 solved<extra></extra>",
-        "opencode/gemini-3-flash<br>Success rate (%): 59.26<br>0.415 composite | 16 solved<extra></extra>",
-        "opencode/gpt-5.4-mini<br>Success rate (%): 48.15<br>0.409 composite | 13 solved<extra></extra>"
+        "opencode/gemini-3-flash<br>Success rate (%): 59.26<br>0.415 composite | 16 solved<extra></extra>"
       ]
     }
   ],

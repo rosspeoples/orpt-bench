@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-04-10T15-27-21-112Z",
+    "startedAt": "2026-04-10T15:27:21.112Z",
+    "completedAt": "2026-04-10T17:19:04.712Z",
+    "benchmarkCycle": "adhoc",
+    "taskCount": 27,
+    "modelCount": 3,
+    "repeats": 1,
+    "totalRuns": 81,
+    "successfulRuns": 57,
+    "topModel": "opencode/kimi-k2.5",
+    "topCompositeScore": 0.857194888888889,
+    "topSuccessRate": 0.8888888888888888,
+    "href": "results/history/2026-04-10T15-27-21-112Z.json",
+    "isLatest": true
+  },
+  {
     "id": "2026-04-10T13-40-27-133Z",
     "startedAt": "2026-04-10T13:40:27.134Z",
     "completedAt": "2026-04-10T14:45:45.195Z",
@@ -13,7 +29,7 @@
     "topCompositeScore": 0.6666666666666666,
     "topSuccessRate": 0.6666666666666666,
     "href": "results/history/2026-04-10T13-40-27-133Z.json",
-    "isLatest": true
+    "isLatest": false
   },
   {
     "id": "2026-04-09T23-15-38-458Z",

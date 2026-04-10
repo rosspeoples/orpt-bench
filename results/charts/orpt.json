@@ -11,9 +11,12 @@
         11.41,
         12.06,
         12.7,
+        14.25,
         14.88,
         15.17,
-        16.43
+        15.39,
+        16.43,
+        18.87
       ],
       "y": [
         "opencode/gpt-5.4-mini",
@@ -21,9 +24,12 @@
         "opencode/glm-5",
         "opencode/glm-5.1",
         "opencode/gemini-3.1-pro",
+        "opencode/kimi-k2.5",
         "opencode/claude-opus-4-6",
         "opencode/gpt-5.4-nano",
-        "opencode/claude-sonnet-4-6"
+        "opencode/big-pickle",
+        "opencode/claude-sonnet-4-6",
+        "opencode/minimax-m2.5"
       ],
       "marker": {
         "color": [
@@ -32,9 +38,12 @@
           "#4ade80",
           "#f472b6",
           "#f59e0b",
+          "#a78bfa",
           "#fb7185",
           "#e879f9",
-          "#fb7185"
+          "#38bdf8",
+          "#fb7185",
+          "#e879f9"
         ],
         "line": {
           "color": "rgba(255,255,255,0.22)",
@@ -47,9 +56,12 @@
         11.41,
         12.06,
         12.7,
+        14.25,
         14.88,
         15.17,
-        16.43
+        15.39,
+        16.43,
+        18.87
       ],
       "textposition": "outside",
       "cliponaxis": false,
@@ -63,9 +75,12 @@
         "opencode/glm-5<br>Requests per solved task: 11.41<br>81% success | $6.2197 total cost<extra></extra>",
         "opencode/glm-5.1<br>Requests per solved task: 12.06<br>67% success | $1.8816 total cost<extra></extra>",
         "opencode/gemini-3.1-pro<br>Requests per solved task: 12.7<br>37% success | $5.8536 total cost<extra></extra>",
+        "opencode/kimi-k2.5<br>Requests per solved task: 14.25<br>89% success | $0.9122 total cost<extra></extra>",
         "opencode/claude-opus-4-6<br>Requests per solved task: 14.88<br>89% success | $21.8757 total cost<extra></extra>",
         "opencode/gpt-5.4-nano<br>Requests per solved task: 15.17<br>85% success | $0.4215 total cost<extra></extra>",
-        "opencode/claude-sonnet-4-6<br>Requests per solved task: 16.43<br>78% success | $11.8406 total cost<extra></extra>"
+        "opencode/big-pickle<br>Requests per solved task: 15.39<br>67% success | $0.0000 total cost<extra></extra>",
+        "opencode/claude-sonnet-4-6<br>Requests per solved task: 16.43<br>78% success | $11.8406 total cost<extra></extra>",
+        "opencode/minimax-m2.5<br>Requests per solved task: 18.87<br>56% success | $0.6413 total cost<extra></extra>"
       ]
     }
   ],
@@ -99,7 +114,7 @@
       "t": 72,
       "b": 72
     },
-    "height": 460,
+    "height": 524,
     "xaxis": {
       "automargin": true,
       "tickfont": {
